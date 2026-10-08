@@ -4,7 +4,7 @@
 // Do Not Track, Global Privacy Control and Umami's own opt-out are respected. Only the page
 // itself is reported: no search, hash, detailed referrer, custom event or identifier.
 const website = "e7a2dc08-58e3-4c04-8940-bd67b7b6db42";
-const domain = "fardoor.rapidoai.dev";
+const domains = ["farseek.rapidoai.dev", "fardoor.rapidoai.dev"];
 
 function optedOut() {
   return (
@@ -15,7 +15,11 @@ function optedOut() {
   );
 }
 
-if (location.hostname === domain && !navigator.webdriver && !optedOut()) {
+if (
+  domains.includes(location.hostname) &&
+  !navigator.webdriver &&
+  !optedOut()
+) {
   window.farDoorAnalyticsPayload = (type, payload) => {
     if (optedOut() || type !== "event" || payload.name || payload.id)
       return false;
@@ -29,7 +33,7 @@ if (location.hostname === domain && !navigator.webdriver && !optedOut()) {
     }
     return {
       website,
-      hostname: domain,
+      hostname: location.hostname,
       url: location.pathname,
       title: "Farseek",
       referrer,
@@ -44,7 +48,7 @@ if (location.hostname === domain && !navigator.webdriver && !optedOut()) {
   Object.assign(tracker.dataset, {
     websiteId: website,
     hostUrl: `${location.origin}/analytics`,
-    domains: domain,
+    domains: domains.join(","),
     excludeSearch: "true",
     excludeHash: "true",
     doNotTrack: "true",
