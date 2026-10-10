@@ -1,0 +1,8 @@
+live-phone exit 1 in 0 s
+live-desktop exit 1 in 0 s
+playthrough exit 0 in 376 s
+forest exit 0 in 178 s
+sea exit 0 in 109 s
+vault exit 0 in 252 s
+live-phone (system Chrome) exit 0 in 12 s
+live-desktop (system Chrome) exit 1 in 10 s
