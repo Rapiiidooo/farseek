@@ -634,8 +634,8 @@ body.reduce-motion #load-worlds li[data-state="active"] {
 }
 
 .level-card {
-  display: grid;
-  align-content: start;
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
   padding: 1.1rem 1.1rem 1.2rem;
   border: 1px solid rgba(232, 207, 164, 0.16);
@@ -744,6 +744,21 @@ body.touch #address[data-slots="6"] .glyph svg {
   margin: 0;
   font-size: 0.8rem;
   color: rgba(232, 207, 164, 0.6);
+}
+
+.level-card .starts {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.level-card.unknown {
+  border-style: dashed;
+  background: rgba(18, 12, 9, 0.35);
+}
+
+.level-card.unknown h3 {
+  color: rgba(246, 231, 200, 0.55);
 }
 
 /* --- relics ----------------------------------------------------------------------------- */

@@ -869,6 +869,8 @@ export default {
     "Abre la puerta lejana tras el puesto de control para llegar hasta aquí.",
   "Open the first far door to reach it.":
     "Abre la primera puerta lejana para llegar hasta aquí.",
+  "Open the next door to learn where it leads.":
+    "Abre la siguiente puerta para saber adónde lleva.",
   "Opening a door to somewhere else…": "Abriendo una puerta a otro lugar…",
   "Optional: take her note before crossing the restored door":
     "Opcional: toma su nota antes de cruzar la puerta restaurada",
@@ -1493,6 +1495,7 @@ export default {
   "Unauthorised traveller!": "¡Viajera no autorizada!",
   Undertow: "Resaca",
   "Union rules!": "¡Normas del sindicato!",
+  Unknown: "Desconocido",
   "Unpacking the expedition…": "Desembalando la expedición…",
   Use: "Usar",
   "Use the selected equipment": "Usar el equipo seleccionado",

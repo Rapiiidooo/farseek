@@ -386,35 +386,45 @@ export function createUI(app) {
         ? WORLDS.length
         : WORLDS.find((world) => world.entry === "finale")?.level - 1 ||
           WORLDS.length;
+    // Worlds not reached stay one unknown card, so the list never tells how many lie ahead; the
+    // local test session still opens every chapter.
+    const reached = (c) => LAB_SESSION || progress.reached.has(c.id);
+    let next = null;
     for (const definition of WORLDS) {
       const n = definition.level;
       const starts = CHAPTERS.filter((c) => c.level === n);
-      const open = starts.filter(
-        (c) => LOCAL_PREVIEW || progress.reached.has(c.id),
-      );
+      if (!starts.some(reached)) {
+        next ??= n;
+        continue;
+      }
       const card = document.createElement("div");
-      card.className = `level-card${n === 1 ? "" : ` ${definition.id}`}${open.length ? "" : " locked"}`;
+      card.className = `level-card${n === 1 ? "" : ` ${definition.id}`}`;
       card.innerHTML = `<p class="num">${t("Level {n}", { n })}</p><h3>${starts[0].title}</h3><p class="blurb">${starts[0].blurb}</p>`;
+      if (n === finalLevel && progress.finished) {
+        const p = document.createElement("p");
+        p.className = "state";
+        p.textContent = t("Completed.");
+        card.appendChild(p);
+      }
+      // The starts sit at the foot of every card, so they line up across a row.
+      const row = document.createElement("div");
+      row.className = "starts";
       for (const c of starts) {
         const b = document.createElement("button");
         b.type = "button";
         b.dataset.action = "chapter";
         b.dataset.chapter = c.id;
         b.textContent = c.start;
-        b.disabled = !LOCAL_PREVIEW && !progress.reached.has(c.id);
-        card.appendChild(b);
+        b.disabled = !reached(c);
+        row.appendChild(b);
       }
-      if (!open.length) {
-        const p = document.createElement("p");
-        p.className = "state";
-        p.textContent = definition.lockHint;
-        card.appendChild(p);
-      } else if (n === finalLevel && progress.finished) {
-        const p = document.createElement("p");
-        p.className = "state";
-        p.textContent = t("Completed.");
-        card.appendChild(p);
-      }
+      card.appendChild(row);
+      list.appendChild(card);
+    }
+    if (next !== null) {
+      const card = document.createElement("div");
+      card.className = "level-card unknown";
+      card.innerHTML = `<p class="num">${t("Level {n}", { n: next })}</p><h3>${t("Unknown")}</h3><p class="blurb">${t("Open the next door to learn where it leads.")}</p>`;
       list.appendChild(card);
     }
   }
@@ -486,8 +496,11 @@ export function createUI(app) {
 
   function wireMenu() {
     if (LOCAL_PREVIEW) {
-      for (const button of document.querySelectorAll('[data-action="levels"]'))
-        button.textContent = "Test levels";
+      if (LAB_SESSION)
+        for (const button of document.querySelectorAll(
+          '[data-action="levels"]',
+        ))
+          button.textContent = "Test levels";
       const tools = document.createElement("nav");
       tools.id = "local-tools";
       tools.setAttribute("aria-label", "Local tools");

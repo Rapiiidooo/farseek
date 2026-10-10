@@ -850,6 +850,8 @@ export default {
     "यहाँ पहुँचने के लिए चौकी के पार दूर का दरवाज़ा खोलो।",
   "Open the first far door to reach it.":
     "यहाँ पहुँचने के लिए दूर का पहला दरवाज़ा खोलो।",
+  "Open the next door to learn where it leads.":
+    "अगला दरवाज़ा खोलो और जानो कि वह कहाँ ले जाता है।",
   "Opening a door to somewhere else…": "कहीं और का दरवाज़ा खुल रहा है…",
   "Optional: take her note before crossing the restored door":
     "वैकल्पिक: बहाल दरवाज़ा पार करने से पहले उसका नोट ले लो",
@@ -1465,6 +1467,7 @@ export default {
   "Unauthorised traveller!": "अनधिकृत यात्री!",
   Undertow: "उलटी धारा",
   "Union rules!": "यूनियन के नियम!",
+  Unknown: "अज्ञात",
   "Unpacking the expedition…": "अभियान का सामान खुल रहा है…",
   Use: "इस्तेमाल",
   "Use the selected equipment": "चुना हुआ उपकरण इस्तेमाल करो",

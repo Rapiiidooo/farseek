@@ -821,6 +821,8 @@ export default {
   "Open the far door beyond the checkpoint to reach it.":
     "打开检查站后方的远方之门即可抵达。",
   "Open the first far door to reach it.": "打开第一扇远方之门即可抵达。",
+  "Open the next door to learn where it leads.":
+    "打开下一扇门，看看它通往何处。",
   "Opening a door to somewhere else…": "正在打开通往别处的门……",
   "Optional: take her note before crossing the restored door":
     "可选：穿过修复的门之前，拿走她的笔记",
@@ -1412,6 +1414,7 @@ export default {
   "Unauthorised traveller!": "未经许可的旅客！",
   Undertow: "暗流",
   "Union rules!": "工会规定！",
+  Unknown: "未知",
   "Unpacking the expedition…": "正在打开探险行囊……",
   Use: "使用",
   "Use the selected equipment": "使用所选装备",

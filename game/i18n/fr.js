@@ -876,6 +876,8 @@ export default {
     "Ouvre la porte lointaine au-delà du poste-frontière pour l’atteindre.",
   "Open the first far door to reach it.":
     "Ouvre la première porte lointaine pour l’atteindre.",
+  "Open the next door to learn where it leads.":
+    "Ouvre la porte suivante pour savoir où elle mène.",
   "Opening a door to somewhere else…": "Ouverture d’une porte vers ailleurs…",
   "Optional: take her note before crossing the restored door":
     "Facultatif : prends sa note avant de franchir la porte restaurée",
@@ -1503,6 +1505,7 @@ export default {
   "Unauthorised traveller!": "Voyageur non autorisé !",
   Undertow: "Ressac",
   "Union rules!": "Convention collective !",
+  Unknown: "Inconnu",
   "Unpacking the expedition…": "Déballage de l’expédition…",
   Use: "Utiliser",
   "Use the selected equipment": "Utiliser l’équipement choisi",

@@ -115,12 +115,16 @@ try {
       (b) => `${b.textContent}:${b.disabled ? "locked" : "open"}`,
     ),
   );
+  const unknown = await page.evaluate(
+    () => document.querySelectorAll("#level-list .level-card.unknown").length,
+  );
   check(
-    "levels screen lists every start",
+    "levels screen lists every reached start and one unknown world",
     g.menu === "levels" &&
-      buttons.length === 8 &&
-      buttons.every((b) => b.endsWith("open")),
-    buttons.join(", "),
+      buttons.length === 7 &&
+      buttons.every((b) => b.endsWith("open")) &&
+      unknown === 1,
+    `${buttons.join(", ")}; unknown cards ${unknown}`,
   );
   await shot("levels");
   await press("Escape");
