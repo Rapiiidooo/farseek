@@ -1,0 +1,264 @@
+{
+  "files": [
+    {
+      "label": "camp-1",
+      "fid": "33fe3a1e-4645-4fa7-b908-c25e55325010",
+      "description": "A woman speaks in Mandarin about the daily life of a group of people.",
+      "bytes": 141315,
+      "sha256": "0df0cd37e3a657b698ae4b76aefb8baf2b162ee32f3a50cb061d892702811330"
+    },
+    {
+      "label": "camp-2",
+      "fid": "9334a816-308b-4fe4-b0a5-0fbf61b95fea",
+      "description": "A person speaks in Mandarin about the concept of cutting ties with the past.",
+      "bytes": 114565,
+      "sha256": "5049a2c16c5601e529e6b675c130fc1839f9dd861050a6c6b0e6c24afe7f6cbf"
+    },
+    {
+      "label": "camp-3",
+      "fid": "1d629052-3d69-4f48-99a8-2f09c17053fa",
+      "description": "A woman speaks in Mandarin about camping on the last island and checking knots.",
+      "bytes": 105788,
+      "sha256": "fb79642f53fea9d685618d0e63934cc4c792b5dc2987148ee4775a9d8740cb7c"
+    },
+    {
+      "label": "castle-1",
+      "fid": "9f82d388-665a-4cd7-9d81-8b1978cae010",
+      "description": "A woman speaks in Mandarin, explaining that she left the address of the castle for future people and that she only recalls the sequence.",
+      "bytes": 90324,
+      "sha256": "b3a0615fa4e685ce30670cd377a0c6288c14a667eef31751aab808c41ae0a4be"
+    },
+    {
+      "label": "castle-2",
+      "fid": "e3f97648-6871-4654-a8fb-8661a3fb078d",
+      "description": "A woman speaks in Mandarin about the cycle of water, tree roots, and the moon.",
+      "bytes": 112058,
+      "sha256": "b8f4cba3583fdd92d54936c2921a137f2d41e32d56223ee95edb0c9b05c5835b"
+    },
+    {
+      "label": "castle-3",
+      "fid": "de430bd4-5e41-4940-9591-39f1c53d635e",
+      "description": "A woman speaks in Mandarin, saying that this is the last riddle she will leave for the listener, and that once they pass it, they will reach the vast ocean.",
+      "bytes": 90324,
+      "sha256": "cbc313875960a11469a74df06d20af5c1f0df3a5efa2304307c8e9636a7d2342"
+    },
+    {
+      "label": "ice-1",
+      "fid": "79b87061-3d73-45a0-aca9-b52273eca76b",
+      "description": "A woman speaks in Mandarin about carving a mark into ice and snow.",
+      "bytes": 71098,
+      "sha256": "de620246bd69f09870c29f6c6962e8cc86c81f58757755253c4b3e5d06ea3b9e"
+    },
+    {
+      "label": "ice-2",
+      "fid": "ace3f53b-36b9-496b-b1d7-fff033026c33",
+      "description": "A voice gives instructions in Mandarin, telling someone to stop at the roundabout and then turn towards the ring road.",
+      "bytes": 68590,
+      "sha256": "7ff9c5f44bf14ee86aab13b87899f438c5e8739e8eda2a6e4f3cefd65b88c41f"
+    },
+    {
+      "label": "radio-1",
+      "fid": "35f1cda6-c1f7-4459-919c-de0c425c8e07",
+      "description": "A woman introduces herself as Mila and gives instructions to the listener.",
+      "bytes": 104534,
+      "sha256": "7d3e5bd64d075683c98d8efaf058400754ab875091140ec05efe79908002f3ff"
+    },
+    {
+      "label": "radio-2",
+      "fid": "cb5704d6-3d0f-4803-8b56-cf9ef9aaa06e",
+      "description": "A person speaks in Mandarin about placing addresses on stone slabs.",
+      "bytes": 102862,
+      "sha256": "11ae5d47fdb11cc42323e8f2ee9ef6e975e60ef7bce47843e04aaedaf48677ed"
+    },
+    {
+      "label": "radio-3",
+      "fid": "a56362bf-3ae2-4153-a377-ff736355d735",
+      "description": "A woman speaks in Mandarin about someone taking her jewelry at a window.",
+      "bytes": 96593,
+      "sha256": "268198d7cd3eb14b953ce56aeea7058d3206af0fab82ba072269c88881843780"
+    },
+    {
+      "label": "radio-4",
+      "fid": "30a975f7-3f6f-43ae-a3c6-ad353f62870f",
+      "description": "A woman speaks in Mandarin, encouraging listeners to overcome obstacles and continue moving forward.",
+      "bytes": 126268,
+      "sha256": "ac224f0d1259f4920380c1565689a09ecb00c3d6b7bdab26d38d89f19e1e1171"
+    },
+    {
+      "label": "reunion-1",
+      "fid": "ea62afa6-b5f1-4a6d-8cee-ae74415dd075",
+      "description": "A person says the word \"Nawa\" in a clear, neutral tone.",
+      "bytes": 15927,
+      "sha256": "c2deeea17fe87d98ac370f747aa39d044a74df8d3eaef33951bb6cbf8e14bbab"
+    },
+    {
+      "label": "reunion-2",
+      "fid": "de70243b-1f8e-4718-80b9-773bde824fb5",
+      "description": "A woman speaks in Mandarin, expressing that she knows someone will follow the light, and she keeps every door lit.",
+      "bytes": 92831,
+      "sha256": "bc39dbf04a00bea8b4050f63e8d610f42d428d011b352b57c90872f633db88f4"
+    },
+    {
+      "label": "reunion-3a",
+      "fid": "2bd21321-43e8-4693-8238-f384c4a9ea4d",
+      "description": "A woman speaks in Mandarin, mentioning a map and a future journey.",
+      "bytes": 96593,
+      "sha256": "8dc3fc6ff38f7db71c2e03483fb93718f970401ba25b995e71ae39f3268efec4"
+    },
+    {
+      "label": "reunion-3b",
+      "fid": "e328c0e1-6014-467b-9f71-5628044ec86b",
+      "description": "A woman speaks in Mandarin about the path home being open and expresses a desire for someone to stay by her side next time.",
+      "bytes": 90324,
+      "sha256": "03f75154ec2ace1afb92e81813ebe314cde4c5140509b63dd3059dea77d641ad"
+    },
+    {
+      "label": "reunion-4",
+      "fid": "6aceb108-7cd2-4a73-a659-fabc186f91ee",
+      "description": "A woman speaks in Mandarin, inviting someone to continue and mentioning there are more doors.",
+      "bytes": 33899,
+      "sha256": "ebbef8ccc9d1508240215e5f577b49c150bb0d673aa92dfbe80d64166039c9b5"
+    },
+    {
+      "label": "vault-arrival",
+      "fid": "e4629035-e0a0-409e-a355-eeda8e54de5b",
+      "description": "A woman speaks in Mandarin, expressing that her presence remains in the air and inviting someone to follow her.",
+      "bytes": 123342,
+      "sha256": "e786fa447fe9feb740b8d8ae279af2c4409aeba6b6b594f96a0739b8955b4ab9"
+    },
+    {
+      "label": "vault-bank-forest",
+      "fid": "91303882-5b25-4a60-8e20-2aca1e524679",
+      "description": "A woman speaks in Mandarin, encouraging someone to climb a mountain.",
+      "bytes": 58141,
+      "sha256": "37480ee86faa06f8a5c6e61f11b69d9723699036b739d0a93fa3ee634a09c6bd"
+    },
+    {
+      "label": "vault-bay-checkpoint",
+      "fid": "fec49f09-8ea1-4213-b53e-2e7af8fc6a01",
+      "description": "A narrator speaks in Mandarin about the ancient origins of a guardian figure.",
+      "bytes": 114565,
+      "sha256": "1f338f6414e0b10c561b1116b1d06616beb0abc420f19899b0635de0a55dd78f"
+    },
+    {
+      "label": "vault-bay-court",
+      "fid": "ef95da31-25ad-4970-a797-febc8666ae7c",
+      "description": "A woman speaks in Mandarin about sunlight passing through a gap, comparing it to sunlight in a courtyard, and mentions a bronze mirror that can still rotate.",
+      "bytes": 100355,
+      "sha256": "caf36611bb37ecd36a573cdf6465b0693e373ddaaae0a98813ea87153cd2e4fe"
+    },
+    {
+      "label": "vault-bay-forest",
+      "fid": "b740fbb6-99b3-4276-b304-7daf078dd632",
+      "description": "A person speaks in Mandarin, reciting a short poem or text about water and stones.",
+      "bytes": 67336,
+      "sha256": "74585f8ee45c3daddef23753ad3635cb7907a1e1cd91ac7a42417afc0452a6bb"
+    },
+    {
+      "label": "vault-bay-frost",
+      "fid": "01d52d01-d8d6-46d9-ab62-a3eacd637cf7",
+      "description": "A woman speaks in Mandarin about moving a heavy object, likely a stone or block, using a pulley system.",
+      "bytes": 131284,
+      "sha256": "caa091f1c87811ee89ac17d828751cd8104c543588eef8f6365c79734282fa90"
+    },
+    {
+      "label": "vault-bay-isles",
+      "fid": "437ce0c0-4d96-431a-a20c-1e417a8e2984",
+      "description": "A woman speaks in Mandarin about a camera lens being blocked by something on a high platform.",
+      "bytes": 91578,
+      "sha256": "43997c2e8ae295f7a38a41d3a9fe83ba14b29b3653a9ebe71e8674ffe33dbb30"
+    },
+    {
+      "label": "vault-bay-sea",
+      "fid": "56c6fcb2-f979-4aba-a902-2427352118f5",
+      "description": "A person describes water flowing out of a tunnel.",
+      "bytes": 113311,
+      "sha256": "52f44e1ac6c4a6ce7be28c9237f4fb903e640096f384425485f53a33f2f90c33"
+    },
+    {
+      "label": "vault-crossing",
+      "fid": "aeaecc4b-3816-411b-8ff5-5bf58100a2c7",
+      "description": "A woman speaks in Mandarin, saying \"This time, we together.\"",
+      "bytes": 30138,
+      "sha256": "cdb07f7991df161775d85cb175907360cc6ecd0e1d749cf93981224a078aac62"
+    },
+    {
+      "label": "vault-done-checkpoint",
+      "fid": "ce390d47-0773-482b-97d3-c16b0a80f6de",
+      "description": "A person speaks in Mandarin about a gesture of respect.",
+      "bytes": 84054,
+      "sha256": "d0a71f8dbff07177b63668547b89fbd8b80b68b6a18684af0a98c9dfbd94815b"
+    },
+    {
+      "label": "vault-done-court",
+      "fid": "9c19be66-d8dd-430a-88cb-02475a76ce42",
+      "description": "A person speaks in Mandarin Chinese, introducing a church.",
+      "bytes": 58141,
+      "sha256": "62b36c4a674a77a7679c0e4348bc2f6371c16629b43aea3a489c166929089840"
+    },
+    {
+      "label": "vault-done-forest",
+      "fid": "47789a1a-ea77-4be4-b84f-99d0caf9040f",
+      "description": "A person speaks in Mandarin, counting items.",
+      "bytes": 36407,
+      "sha256": "7b35a83e7a698463d1f8160942b871ee640718f4330b0d2675d8696698144ac2"
+    },
+    {
+      "label": "vault-done-frost",
+      "fid": "88054a4a-4375-4f7c-9531-03c7873e5735",
+      "description": "A person speaks in Mandarin, saying \"Zi mai, pa de piao liang.\"",
+      "bytes": 31391,
+      "sha256": "8432dc386f2aefcab6618ce46e2138d4b0b1b5ffabfecba3297b81b26284df7f"
+    },
+    {
+      "label": "vault-done-isles",
+      "fid": "e1e06bbf-ffa0-4f3f-9ac1-db47fe12a4af",
+      "description": "A woman recites a poem in Mandarin Chinese with a calm and reflective tone.",
+      "bytes": 122089,
+      "sha256": "d7eae70a12e9e21e51d6352557a2d3142805e139595f030acbb6f2debebd3171"
+    },
+    {
+      "label": "vault-done-sea",
+      "fid": "713869f3-0902-4b20-a93a-b7229cb29f01",
+      "description": "A woman speaks in Mandarin, mentioning a complete address and returning to a door.",
+      "bytes": 79875,
+      "sha256": "fae798c2f0e1f5ac1590d5698c71192095ee835252bd6f0c6cd6874454f19740"
+    },
+    {
+      "label": "vault-power-frost",
+      "fid": "1c0b81d4-2d8a-4617-8883-f9dd1972002a",
+      "description": "A person speaks in Mandarin, describing the act of climbing on ice.",
+      "bytes": 99101,
+      "sha256": "04898ca0f4ae4a92bc4454d1c44eb571edee8fd6fd9fab7074c11d1c2da57973"
+    },
+    {
+      "label": "vault-reveal-address",
+      "fid": "0437ebaa-25db-4be9-a625-7408edb36ea9",
+      "description": "A person speaks in Mandarin Chinese, stating that there are six worlds and one address, and that the subject knows them.",
+      "bytes": 69844,
+      "sha256": "622347ce8dd80f63977bca30b808259d057937720c84006437ff50a52ac2df55"
+    },
+    {
+      "label": "vault-reveal-doors",
+      "fid": "7079fc2f-4bb0-4018-9f93-d6a0cd43def3",
+      "description": "A woman speaks in Mandarin about opening doors and keeping watch for future generations.",
+      "bytes": 123342,
+      "sha256": "634068e35dbbab09a486242b56472f5071021eeb9237504623ffdb2b6c13d3c7"
+    },
+    {
+      "label": "vault-reveal-fate",
+      "fid": "7ca863be-45b2-42d1-a9cf-0a35dea1d332",
+      "description": "A female narrator speaks in Mandarin, describing a narrative about beings who have not been destroyed, and their transition from physical form to light.",
+      "bytes": 123342,
+      "sha256": "5b31b8bed4c368156fa751ede30b9775f8a423ea403d56f081b31ce6e5b9d96c"
+    },
+    {
+      "label": "vault-reveal-next",
+      "fid": "6e7d9664-31ec-46b0-a4f1-bea7c16158fa",
+      "description": "A woman speaks in Mandarin, mentioning an address that has not been reached yet and that they have left it for us.",
+      "bytes": 89070,
+      "sha256": "e58d8784ddf9032de73ab2ed6c0e3b683186294a552dde7b779111d72ef098db"
+    }
+  ],
+  "missing": []
+}

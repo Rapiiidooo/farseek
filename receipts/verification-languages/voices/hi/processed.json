@@ -1,0 +1,598 @@
+{
+  "passed": true,
+  "targetLufs": -18.0,
+  "files": [
+    {
+      "name": "camp-1",
+      "source": "originals/camp-1.mp3",
+      "output": "game/audio/voice/hi/camp-1.mp3",
+      "trim": [
+        0.0,
+        7.549
+      ],
+      "duration": 7.549,
+      "sourceLufs": -14.3,
+      "gainDb": -3.7,
+      "lufs": -18.4,
+      "peak": 0.7771,
+      "bytes": 60856,
+      "sha256": "b2d0cde099e7cf6e69ca3eed1dd6db1d3a8089e30dfe9598a586d6e444d9d5a9"
+    },
+    {
+      "name": "camp-2",
+      "source": "originals/camp-2.mp3",
+      "output": "game/audio/voice/hi/camp-2.mp3",
+      "trim": [
+        0.0,
+        7.393
+      ],
+      "duration": 7.393,
+      "sourceLufs": -14.4,
+      "gainDb": -3.6,
+      "lufs": -18.4,
+      "peak": 0.7652,
+      "bytes": 59602,
+      "sha256": "623ecfab5ba57848fa58690f011c9ee6c3e3eb10d680b7129d4663fa88a68041"
+    },
+    {
+      "name": "camp-3",
+      "source": "originals/camp-3.mp3",
+      "output": "game/audio/voice/hi/camp-3.mp3",
+      "trim": [
+        0.0,
+        5.82
+      ],
+      "duration": 5.82,
+      "sourceLufs": -16.1,
+      "gainDb": -2.25,
+      "lufs": -18.8,
+      "peak": 0.8054,
+      "bytes": 47063,
+      "sha256": "e836da18c75cde63fcb21a851b1166ea788032ccdf6b0b18a4611f13f59b34e2"
+    },
+    {
+      "name": "castle-1",
+      "source": "originals/castle-1.mp3",
+      "output": "game/audio/voice/hi/castle-1.mp3",
+      "trim": [
+        0.0,
+        7.158
+      ],
+      "duration": 7.158,
+      "sourceLufs": -14.5,
+      "gainDb": -3.5,
+      "lufs": -18.4,
+      "peak": 0.7325,
+      "bytes": 57721,
+      "sha256": "f4dfd31daa47b99d425fc81e28e541a424354f181089f25eda654801976db36d"
+    },
+    {
+      "name": "castle-2",
+      "source": "originals/castle-2.mp3",
+      "output": "game/audio/voice/hi/castle-2.mp3",
+      "trim": [
+        0.01,
+        5.878
+      ],
+      "duration": 5.868,
+      "sourceLufs": -14.7,
+      "gainDb": -3.3,
+      "lufs": -18.4,
+      "peak": 0.7046,
+      "bytes": 47481,
+      "sha256": "75296f3e6a88364232fdd908b2d9e84a02060a43f5af4519c685ef6c3af57d7d"
+    },
+    {
+      "name": "castle-3",
+      "source": "originals/castle-3.mp3",
+      "output": "game/audio/voice/hi/castle-3.mp3",
+      "trim": [
+        0.0,
+        5.878
+      ],
+      "duration": 5.878,
+      "sourceLufs": -14.6,
+      "gainDb": -3.4,
+      "lufs": -18.4,
+      "peak": 0.6758,
+      "bytes": 47481,
+      "sha256": "cfd66719c5f30ce611d9670cc8e1ca79084099d80ea16beb54c3af22640df411"
+    },
+    {
+      "name": "ice-1",
+      "source": "originals/ice-1.mp3",
+      "output": "game/audio/voice/hi/ice-1.mp3",
+      "trim": [
+        0.0,
+        5.799
+      ],
+      "duration": 5.799,
+      "sourceLufs": -15.9,
+      "gainDb": -2.93,
+      "lufs": -19.2,
+      "peak": 0.8235,
+      "bytes": 46854,
+      "sha256": "535530937f1d695bf4d4b151f0afc7a04a8fdd0362cb4272527ec799bf705c7c"
+    },
+    {
+      "name": "ice-2",
+      "source": "originals/ice-2.mp3",
+      "output": "game/audio/voice/hi/ice-2.mp3",
+      "trim": [
+        0.01,
+        4.362
+      ],
+      "duration": 4.352,
+      "sourceLufs": -15.7,
+      "gainDb": -2.54,
+      "lufs": -18.7,
+      "peak": 0.799,
+      "bytes": 35360,
+      "sha256": "ce291403ae96a19c2859b83e9eb4e579491591c8555de6a828c0b99bc0ac70a2"
+    },
+    {
+      "name": "radio-1",
+      "source": "originals/radio-1.mp3",
+      "output": "game/audio/voice/hi/radio-1.mp3",
+      "trim": [
+        0.02,
+        4.833
+      ],
+      "duration": 4.813,
+      "sourceLufs": -13.9,
+      "gainDb": -4.1,
+      "lufs": -18.4,
+      "peak": 0.6849,
+      "bytes": 39122,
+      "sha256": "43a9fff259c609b4ea1f8978fb25fa11a77e26e6e1669cf231342e4397fa0a5a"
+    },
+    {
+      "name": "radio-2",
+      "source": "originals/radio-2.mp3",
+      "output": "game/audio/voice/hi/radio-2.mp3",
+      "trim": [
+        0.0,
+        6.922
+      ],
+      "duration": 6.922,
+      "sourceLufs": -14.0,
+      "gainDb": -4.0,
+      "lufs": -18.4,
+      "peak": 0.6687,
+      "bytes": 55840,
+      "sha256": "3cc06c8fd7ede35baa9dba5b613830cd6d1b8091d4c432f81ca5fb62afa45e7c"
+    },
+    {
+      "name": "radio-3",
+      "source": "originals/radio-3.mp3",
+      "output": "game/audio/voice/hi/radio-3.mp3",
+      "trim": [
+        0.0,
+        5.407
+      ],
+      "duration": 5.407,
+      "sourceLufs": -13.7,
+      "gainDb": -4.3,
+      "lufs": -18.4,
+      "peak": 0.5458,
+      "bytes": 43719,
+      "sha256": "cbbbcda7e992e9280194ce6815426a5b82e703a04516d5a955a811acd75eeb3e"
+    },
+    {
+      "name": "radio-4",
+      "source": "originals/radio-4.mp3",
+      "output": "game/audio/voice/hi/radio-4.mp3",
+      "trim": [
+        0.03,
+        7.314
+      ],
+      "duration": 7.284,
+      "sourceLufs": -15.1,
+      "gainDb": -2.9,
+      "lufs": -18.5,
+      "peak": 0.7724,
+      "bytes": 58766,
+      "sha256": "243bed1f34f72e9d7c70eb9f8ae1f53c920bb51b6d96ecfef610e1ae3873b6e0"
+    },
+    {
+      "name": "reunion-1",
+      "source": "originals/reunion-1.mp3",
+      "output": "game/audio/voice/hi/reunion-1.mp3",
+      "trim": [
+        0.0,
+        1.02
+      ],
+      "duration": 1.02,
+      "sourceLufs": -10.8,
+      "gainDb": -7.2,
+      "lufs": -18.5,
+      "peak": 0.5186,
+      "bytes": 8820,
+      "sha256": "98e9fd63dd2487f0b7cf0744f9753b771bd4acd31953c26eda44f0069c8cc32d"
+    },
+    {
+      "name": "reunion-2",
+      "source": "originals/reunion-2.mp3",
+      "output": "game/audio/voice/hi/reunion-2.mp3",
+      "trim": [
+        0.0,
+        5.407
+      ],
+      "duration": 5.407,
+      "sourceLufs": -15.6,
+      "gainDb": -2.4,
+      "lufs": -18.4,
+      "peak": 0.7839,
+      "bytes": 43719,
+      "sha256": "2736b6ce8613240afe4cdb484e453e02476554d28feb03446fcb4e8e269517fc"
+    },
+    {
+      "name": "reunion-3a",
+      "source": "originals/reunion-3a.mp3",
+      "output": "game/audio/voice/hi/reunion-3a.mp3",
+      "trim": [
+        0.02,
+        4.911
+      ],
+      "duration": 4.891,
+      "sourceLufs": -15.3,
+      "gainDb": -2.7,
+      "lufs": -18.4,
+      "peak": 0.6886,
+      "bytes": 39749,
+      "sha256": "69b676cb73451f5c7f1f72e11ec08e7244053dad3e2db77547201089f3427424"
+    },
+    {
+      "name": "reunion-3b",
+      "source": "originals/reunion-3b.mp3",
+      "output": "game/audio/voice/hi/reunion-3b.mp3",
+      "trim": [
+        0.0,
+        4.754
+      ],
+      "duration": 4.754,
+      "sourceLufs": -14.3,
+      "gainDb": -3.7,
+      "lufs": -18.4,
+      "peak": 0.7754,
+      "bytes": 38495,
+      "sha256": "0fd5b9f9dc80db65a4bb367fbc5ecb9d5bbfae0d1d4495f2d6b20954d4e5f190"
+    },
+    {
+      "name": "reunion-4",
+      "source": "originals/reunion-4.mp3",
+      "output": "game/audio/voice/hi/reunion-4.mp3",
+      "trim": [
+        0.0,
+        1.802
+      ],
+      "duration": 1.802,
+      "sourceLufs": -14.3,
+      "gainDb": -3.7,
+      "lufs": -18.4,
+      "peak": 0.6172,
+      "bytes": 14880,
+      "sha256": "41db63a4426907456e9be4a05205e644a85697b969c0f1695f63a3e89801dccf"
+    },
+    {
+      "name": "vault-arrival",
+      "source": "originals/vault-arrival.mp3",
+      "output": "game/audio/voice/hi/vault-arrival.mp3",
+      "trim": [
+        0.0,
+        7.236
+      ],
+      "duration": 7.236,
+      "sourceLufs": -14.0,
+      "gainDb": -4.0,
+      "lufs": -18.3,
+      "peak": 0.6346,
+      "bytes": 58348,
+      "sha256": "5a0225ea198ab99fe0731c0f35ec4830d2f45b4d7433a570eac362a7040cef28"
+    },
+    {
+      "name": "vault-bank-forest",
+      "source": "originals/vault-bank-forest.mp3",
+      "output": "game/audio/voice/hi/vault-bank-forest.mp3",
+      "trim": [
+        0.0,
+        3.709
+      ],
+      "duration": 3.709,
+      "sourceLufs": -14.2,
+      "gainDb": -3.8,
+      "lufs": -18.5,
+      "peak": 0.6677,
+      "bytes": 30136,
+      "sha256": "cbfd82dec9b7fd3a2120ea78feae988c5522f54439214de8e16813dbdb93389a"
+    },
+    {
+      "name": "vault-bay-checkpoint",
+      "source": "originals/vault-bay-checkpoint.mp3",
+      "output": "game/audio/voice/hi/vault-bay-checkpoint.mp3",
+      "trim": [
+        0.0,
+        7.628
+      ],
+      "duration": 7.628,
+      "sourceLufs": -13.8,
+      "gainDb": -4.2,
+      "lufs": -18.4,
+      "peak": 0.6387,
+      "bytes": 61483,
+      "sha256": "492e621cbe92c4686d298a62e7b41c881f28ba3e37314fcae461d4a7b3e00e66"
+    },
+    {
+      "name": "vault-bay-court",
+      "source": "originals/vault-bay-court.mp3",
+      "output": "game/audio/voice/hi/vault-bay-court.mp3",
+      "trim": [
+        0.0,
+        6.766
+      ],
+      "duration": 6.766,
+      "sourceLufs": -14.2,
+      "gainDb": -3.8,
+      "lufs": -18.4,
+      "peak": 0.692,
+      "bytes": 54586,
+      "sha256": "97b3a6014e4a0ad52149b70b06d9d38b0420f14334ab6c80640bc7162b285425"
+    },
+    {
+      "name": "vault-bay-forest",
+      "source": "originals/vault-bay-forest.mp3",
+      "output": "game/audio/voice/hi/vault-bay-forest.mp3",
+      "trim": [
+        0.0,
+        4.362
+      ],
+      "duration": 4.362,
+      "sourceLufs": -13.0,
+      "gainDb": -5.0,
+      "lufs": -18.4,
+      "peak": 0.6119,
+      "bytes": 35360,
+      "sha256": "c57b51ab17c6015258261ea3ddbdc4a6761fd208654484b481cd5c232f981dcf"
+    },
+    {
+      "name": "vault-bay-frost",
+      "source": "originals/vault-bay-frost.mp3",
+      "output": "game/audio/voice/hi/vault-bay-frost.mp3",
+      "trim": [
+        0.0,
+        8.124
+      ],
+      "duration": 8.124,
+      "sourceLufs": -15.8,
+      "gainDb": -2.2,
+      "lufs": -18.4,
+      "peak": 0.7947,
+      "bytes": 65453,
+      "sha256": "99c95802cebba797ff8a522777068354c25a86d1c4a210de95c24f8c3324bb49"
+    },
+    {
+      "name": "vault-bay-isles",
+      "source": "originals/vault-bay-isles.mp3",
+      "output": "game/audio/voice/hi/vault-bay-isles.mp3",
+      "trim": [
+        0.01,
+        6.531
+      ],
+      "duration": 6.521,
+      "sourceLufs": -14.7,
+      "gainDb": -3.3,
+      "lufs": -18.4,
+      "peak": 0.7778,
+      "bytes": 52705,
+      "sha256": "bea55fec2840ca7a999c298bbd38ab26eb2e2f4c23a684bafdc098fa77dc9301"
+    },
+    {
+      "name": "vault-bay-sea",
+      "source": "originals/vault-bay-sea.mp3",
+      "output": "game/audio/voice/hi/vault-bay-sea.mp3",
+      "trim": [
+        0.0,
+        6.922
+      ],
+      "duration": 6.922,
+      "sourceLufs": -15.4,
+      "gainDb": -2.6,
+      "lufs": -18.3,
+      "peak": 0.7365,
+      "bytes": 55840,
+      "sha256": "83d9efc98a56c65b51387628f54425d600fb272bc2c65d003ed7b0f51ccc5806"
+    },
+    {
+      "name": "vault-crossing",
+      "source": "originals/vault-crossing.mp3",
+      "output": "game/audio/voice/hi/vault-crossing.mp3",
+      "trim": [
+        0.0,
+        1.881
+      ],
+      "duration": 1.881,
+      "sourceLufs": -15.2,
+      "gainDb": -2.8,
+      "lufs": -18.2,
+      "peak": 0.6721,
+      "bytes": 15507,
+      "sha256": "97cfba7e6f8953bd7573e9b3805109d4dbe74cce0fb9a7e301fa6df56305585c"
+    },
+    {
+      "name": "vault-done-checkpoint",
+      "source": "originals/vault-done-checkpoint.mp3",
+      "output": "game/audio/voice/hi/vault-done-checkpoint.mp3",
+      "trim": [
+        0.0,
+        5.721
+      ],
+      "duration": 5.721,
+      "sourceLufs": -12.4,
+      "gainDb": -5.6,
+      "lufs": -18.4,
+      "peak": 0.523,
+      "bytes": 46227,
+      "sha256": "0c9c355992916668ce03b856cc4f42d71391a1a5dbcc04237ca20340c941acda"
+    },
+    {
+      "name": "vault-done-court",
+      "source": "originals/vault-done-court.mp3",
+      "output": "game/audio/voice/hi/vault-done-court.mp3",
+      "trim": [
+        0.01,
+        2.691
+      ],
+      "duration": 2.681,
+      "sourceLufs": -13.2,
+      "gainDb": -4.8,
+      "lufs": -18.4,
+      "peak": 0.6056,
+      "bytes": 21985,
+      "sha256": "3aa188778fed262db23ae06b61dee85974f03b88303c0b3e828ce73d3f9ba34e"
+    },
+    {
+      "name": "vault-done-forest",
+      "source": "originals/vault-done-forest.mp3",
+      "output": "game/audio/voice/hi/vault-done-forest.mp3",
+      "trim": [
+        0.0,
+        2.847
+      ],
+      "duration": 2.847,
+      "sourceLufs": -19.3,
+      "gainDb": 1.3,
+      "lufs": -18.4,
+      "peak": 0.7482,
+      "bytes": 23239,
+      "sha256": "a1cbbffa8afe768f54ad6c5300c057f1208d9331c43cb9700554e3dc23f400a3"
+    },
+    {
+      "name": "vault-done-frost",
+      "source": "originals/vault-done-frost.mp3",
+      "output": "game/audio/voice/hi/vault-done-frost.mp3",
+      "trim": [
+        0.0,
+        2.116
+      ],
+      "duration": 2.116,
+      "sourceLufs": -16.7,
+      "gainDb": -1.74,
+      "lufs": -18.9,
+      "peak": 0.8154,
+      "bytes": 17388,
+      "sha256": "83ac948a96caf12e1c9dcf5e3506878764d26c50bc51bfc8c6b2e784924f20a1"
+    },
+    {
+      "name": "vault-done-isles",
+      "source": "originals/vault-done-isles.mp3",
+      "output": "game/audio/voice/hi/vault-done-isles.mp3",
+      "trim": [
+        0.0,
+        6.922
+      ],
+      "duration": 6.922,
+      "sourceLufs": -16.2,
+      "gainDb": -1.8,
+      "lufs": -18.4,
+      "peak": 0.711,
+      "bytes": 55840,
+      "sha256": "c93d4111fbecfa24cde992f8d9742539ff1346764c830269c04954a7fec33b5b"
+    },
+    {
+      "name": "vault-done-sea",
+      "source": "originals/vault-done-sea.mp3",
+      "output": "game/audio/voice/hi/vault-done-sea.mp3",
+      "trim": [
+        0.0,
+        3.788
+      ],
+      "duration": 3.788,
+      "sourceLufs": -18.0,
+      "gainDb": 0.0,
+      "lufs": -18.3,
+      "peak": 0.7188,
+      "bytes": 30763,
+      "sha256": "6b978cd8a281b02d25d6e7253fee40650f821a346fa6ba86aa56dae926cad913"
+    },
+    {
+      "name": "vault-power-frost",
+      "source": "originals/vault-power-frost.mp3",
+      "output": "game/audio/voice/hi/vault-power-frost.mp3",
+      "trim": [
+        0.0,
+        6.191
+      ],
+      "duration": 6.191,
+      "sourceLufs": -14.3,
+      "gainDb": -3.7,
+      "lufs": -18.4,
+      "peak": 0.7379,
+      "bytes": 49989,
+      "sha256": "0b683b02b65372a3a5bb59bf9eab461e948570640a85c1b2de2a7d6abb1ad91a"
+    },
+    {
+      "name": "vault-reveal-address",
+      "source": "originals/vault-reveal-address.mp3",
+      "output": "game/audio/voice/hi/vault-reveal-address.mp3",
+      "trim": [
+        0.0,
+        3.474
+      ],
+      "duration": 3.474,
+      "sourceLufs": -13.9,
+      "gainDb": -4.1,
+      "lufs": -18.5,
+      "peak": 0.6613,
+      "bytes": 28255,
+      "sha256": "a23a4eed5c807e54fe12173d301e87d413399d66a513e0290bba31d33a94e914"
+    },
+    {
+      "name": "vault-reveal-doors",
+      "source": "originals/vault-reveal-doors.mp3",
+      "output": "game/audio/voice/hi/vault-reveal-doors.mp3",
+      "trim": [
+        0.0,
+        6.922
+      ],
+      "duration": 6.922,
+      "sourceLufs": -14.4,
+      "gainDb": -3.6,
+      "lufs": -18.4,
+      "peak": 0.7027,
+      "bytes": 55840,
+      "sha256": "ab41de7f593d1aa6bb7d7831994cf05229c38f1142dfc6fefc4688d28d4ca578"
+    },
+    {
+      "name": "vault-reveal-fate",
+      "source": "originals/vault-reveal-fate.mp3",
+      "output": "game/audio/voice/hi/vault-reveal-fate.mp3",
+      "trim": [
+        0.04,
+        8.124
+      ],
+      "duration": 8.084,
+      "sourceLufs": -16.3,
+      "gainDb": -2.07,
+      "lufs": -18.8,
+      "peak": 0.7964,
+      "bytes": 65244,
+      "sha256": "357c6bf220d03966a99cc6574e39b366842d523132b0d364baedbc9822802f05"
+    },
+    {
+      "name": "vault-reveal-next",
+      "source": "originals/vault-reveal-next.mp3",
+      "output": "game/audio/voice/hi/vault-reveal-next.mp3",
+      "trim": [
+        0.0,
+        6.034
+      ],
+      "duration": 6.034,
+      "sourceLufs": -14.3,
+      "gainDb": -3.7,
+      "lufs": -18.4,
+      "peak": 0.5995,
+      "bytes": 48735,
+      "sha256": "5f2d4fb9f677788e289be02ca3e7b8c4394e01ce3f6672a1574e920cf1511701"
+    }
+  ]
+}

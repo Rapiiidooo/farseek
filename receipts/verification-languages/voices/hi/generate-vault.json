@@ -1,0 +1,211 @@
+{
+  "seconds": 330.604,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"success\": true,\n  \"response_text\": \"The 20 text-to-speech nodes for Mira's vault voice-over set have been created and grouped into the frame **\\\"Mira HI vault\\\"** using the specified settings:\\n- **Backend / Node Type**: ElevenLabs Text to Speech (`text_to_speech_elevenlabs`)\\n- **Model**: ElevenLabs Eleven v3 (`ElevenLabs :: Eleven v3 (5k chars, supports v3 audio tags)`)\\n- **Voice**: `Narration :: Warm & Inviting :: Pleasant :: Nikki (F) — Warm, Measured, and Clear · English · american · mature`\\n- **Stability**: 0.5\\n- **Similarity**: 0.75\\n- **Spoken Text**: Exact quoted Hindi dialogue (omitting parenthetical delivery guidance)\\n\\nAll 20 nodes executed successfully. Below is the summary table of results:\\n\\n| Label | Node ID | Status | Error | Output fid |\\n| :--- | :--- | :--- | :--- | :--- |\\n| **vault-arrival** | 6cc5b37e | success | None | `6aa42a9b-34b9-49e9-b892-1a938eddb608` |\\n| **vault-bay-court** | c63df834 | success | None | `80e9fd9d-3f05-4376-80d9-1f0ad775f3f4` |\\n| **vault-bay-checkpoint** | 492abba0 | success | None | `dcdd1a8e-43d6-4b0e-9ac4-03622484d24b` |\\n| **vault-bay-isles** | f4e59ee6 | success | None | `2d9d4b79-44f4-4cde-9392-33795364576f` |\\n| **vault-bay-frost** | 8272037e | success | None | `014cda3b-1f82-4d62-a878-be9d3379a913` |\\n| **vault-power-frost** | c0a92932 | success | None | `0fb4e385-b5b6-451d-8841-d8efb20c9701` |\\n| **vault-bay-forest** | 5d14d60e | success | None | `d505f5c7-2614-4fda-bde1-c05600d4085f` |\\n| **vault-bank-forest** | 9893177b | success | None | `07ace6e9-e4ee-455d-9b5e-fc22d8bad2ec` |\\n| **vault-bay-sea** | f43ed0e3 | success | None | `95d41f11-2a00-490a-a759-d2fd8cb4a077` |\\n| **vault-done-court** | c8012e10 | success | None | `6db2237f-ec82-43db-b959-15c0d66d6f91` |\\n| **vault-done-checkpoint** | 46193cfd | success | None | `e615fa39-5cab-41dc-b8e0-2ffd1896cec6` |\\n| **vault-done-isles** | d864bac6 | success | None | `969d938b-ceac-4b51-8858-79969e865e49` |\\n| **vault-done-frost** | abdb9605 | success | None | `bedffa91-222f-4946-a96b-b232123ed307` |\\n| **vault-done-forest** | 14a1bd84 | success | None | `d055b858-6823-4be2-99be-d71fb9af69ee` |\\n| **vault-done-sea** | cd080261 | success | None | `c863de4a-41b0-4577-a9e4-d290a01b707c` |\\n| **vault-reveal-address** | 1a7659c7 | success | None | `382263a5-925b-4ead-8c42-6e250d41f3f4` |\\n| **vault-reveal-fate** | 87708c5f | success | None | `39c7a0e0-8514-4fd0-8fd9-14154f8e6e92` |\\n| **vault-reveal-doors** | 714290b5 | success | None | `79c2b5ac-df82-4ceb-859a-ee714bda7a93` |\\n| **vault-reveal-next** | 21f66a06 | success | None | `3283445c-365e-4959-9dfe-ae3a64331d88` |\\n| **vault-crossing** | 0da8f862 | success | None | `2c0a3679-047d-45af-8e01-c52b99eb64dc` |\",\n  \"budget_credits\": 1500,\n  \"graph_identifiers\": {\n    \"nodes\": [\n      {\n        \"short_id\": \"05be8bbe\",\n        \"node_id\": \"05be8bbe-15c4-4afe-a8fb-97ab08a5b594\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"088cb7e2\",\n        \"node_id\": \"088cb7e2-c578-4e48-a20a-3fad6eb8baf1\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"0da8f862\",\n        \"node_id\": \"0da8f862-fd24-47fb-a9cd-69af050a99cc\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"0e5d3120\",\n        \"node_id\": \"0e5d3120-7b01-4f58-ad8a-c55d453416a4\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"14a1bd84\",\n        \"node_id\": \"14a1bd84-e2cf-45f0-a41c-7734ff8ce915\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"1a7659c7\",\n        \"node_id\": \"1a7659c7-20d4-4f55-a32e-4a9accb54da1\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"1ecc0daf\",\n        \"node_id\": \"1ecc0daf-57ec-4fbb-9a67-b3d62285a88f\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"21f66a06\",\n        \"node_id\": \"21f66a06-4510-4743-8777-b7772e4ddac5\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"31dd7641\",\n        \"node_id\": \"31dd7641-f416-4495-a229-baa7f2001310\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"41995c0a\",\n        \"node_id\": \"41995c0a-ccb5-48fd-8ec5-ef92a561c866\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"46193cfd\",\n        \"node_id\": \"46193cfd-bb7c-4619-8ca0-379807905a20\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"492abba0\",\n        \"node_id\": \"492abba0-59b7-4b31-9f51-b1c63f076043\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"5d14d60e\",\n        \"node_id\": \"5d14d60e-a53f-4eee-a74b-19f06b7c3921\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"61d8f28b\",\n        \"node_id\": \"61d8f28b-9d72-4faf-bff2-e4b9b913fced\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"6cc5b37e\",\n        \"node_id\": \"6cc5b37e-4705-4afb-b081-1fdc7582620b\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"714290b5\",\n        \"node_id\": \"714290b5-9f4b-4155-9880-c12a6c3a98ea\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"73d62a3a\",\n        \"node_id\": \"73d62a3a-46f7-4e00-b9c3-14882e59d7b9\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"8272037e\",\n        \"node_id\": \"8272037e-08c1-419e-82fd-03f6fbb182a0\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"87708c5f\",\n        \"node_id\": \"87708c5f-477a-4e6b-b08f-cbedb610722c\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"8c65273a\",\n        \"node_id\": \"8c65273a-5ad3-4081-bad5-e0bddfd1a85c\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"9893177b\",\n        \"node_id\": \"9893177b-cc46-4341-ba4b-ca614bc79c04\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"a1e9f0d0\",\n        \"node_id\": \"a1e9f0d0-cbde-41a3-b0f4-5067c75670cb\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"a4f97067\",\n        \"node_id\": \"a4f97067-729e-48cf-aaae-95c6c0471ac6\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"abdb9605\",\n        \"node_id\": \"abdb9605-fa32-4802-8c08-5fc607c77fc5\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"ac7ed4f2\",\n        \"node_id\": \"ac7ed4f2-d7ed-4ff7-9fd7-7f2b8ba2f8cb\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"c0a92932\",\n        \"node_id\": \"c0a92932-981f-4ea4-95fe-9385af45061c\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"c221fc44\",\n        \"node_id\": \"c221fc44-0a9f-4828-895b-541f8b623a72\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"c63df834\",\n        \"node_id\": \"c63df834-0401-4f0d-92a1-4f18458cb0eb\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"c8012e10\",\n        \"node_id\": \"c8012e10-f6b0-481c-8673-126ed0101288\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"cd080261\",\n        \"node_id\": \"cd080261-615c-4c43-9edc-46440add15ad\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"d288dedc\",\n        \"node_id\": \"d288dedc-a28d-402b-b060-d3c12c2d3f66\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"d864bac6\",\n        \"node_id\": \"d864bac6-8203-4f74-b697-681ce8b1c4dd\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"d9286dcd\",\n        \"node_id\": \"d9286dcd-1f40-42d3-a7d8-ab758ebb7861\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"e3394478\",\n        \"node_id\": \"e3394478-ac4a-44b7-9888-83cf451b245d\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"ea2fd8e2\",\n        \"node_id\": \"ea2fd8e2-6287-4529-b572-dbd92a3c2f9e\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"f43ed0e3\",\n        \"node_id\": \"f43ed0e3-896a-4380-9e4e-a454e5bbf420\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"f4e59ee6\",\n        \"node_id\": \"f4e59ee6-2afe-4b5f-9011-d75f83f643f6\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      }\n    ],\n    \"connections\": []\n  },\n  \"cost_usd\": 1.1830350749999998,\n  \"cost_credits\": 115,\n  \"remaining_budget_credits\": 1385,\n  \"budget_exhausted\": false\n}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "response_text": "The 20 text-to-speech nodes for Mira's vault voice-over set have been created and grouped into the frame **\"Mira HI vault\"** using the specified settings:\n- **Backend / Node Type**: ElevenLabs Text to Speech (`text_to_speech_elevenlabs`)\n- **Model**: ElevenLabs Eleven v3 (`ElevenLabs :: Eleven v3 (5k chars, supports v3 audio tags)`)\n- **Voice**: `Narration :: Warm & Inviting :: Pleasant :: Nikki (F) — Warm, Measured, and Clear · English · american · mature`\n- **Stability**: 0.5\n- **Similarity**: 0.75\n- **Spoken Text**: Exact quoted Hindi dialogue (omitting parenthetical delivery guidance)\n\nAll 20 nodes executed successfully. Below is the summary table of results:\n\n| Label | Node ID | Status | Error | Output fid |\n| :--- | :--- | :--- | :--- | :--- |\n| **vault-arrival** | 6cc5b37e | success | None | `6aa42a9b-34b9-49e9-b892-1a938eddb608` |\n| **vault-bay-court** | c63df834 | success | None | `80e9fd9d-3f05-4376-80d9-1f0ad775f3f4` |\n| **vault-bay-checkpoint** | 492abba0 | success | None | `dcdd1a8e-43d6-4b0e-9ac4-03622484d24b` |\n| **vault-bay-isles** | f4e59ee6 | success | None | `2d9d4b79-44f4-4cde-9392-33795364576f` |\n| **vault-bay-frost** | 8272037e | success | None | `014cda3b-1f82-4d62-a878-be9d3379a913` |\n| **vault-power-frost** | c0a92932 | success | None | `0fb4e385-b5b6-451d-8841-d8efb20c9701` |\n| **vault-bay-forest** | 5d14d60e | success | None | `d505f5c7-2614-4fda-bde1-c05600d4085f` |\n| **vault-bank-forest** | 9893177b | success | None | `07ace6e9-e4ee-455d-9b5e-fc22d8bad2ec` |\n| **vault-bay-sea** | f43ed0e3 | success | None | `95d41f11-2a00-490a-a759-d2fd8cb4a077` |\n| **vault-done-court** | c8012e10 | success | None | `6db2237f-ec82-43db-b959-15c0d66d6f91` |\n| **vault-done-checkpoint** | 46193cfd | success | None | `e615fa39-5cab-41dc-b8e0-2ffd1896cec6` |\n| **vault-done-isles** | d864bac6 | success | None | `969d938b-ceac-4b51-8858-79969e865e49` |\n| **vault-done-frost** | abdb9605 | success | None | `bedffa91-222f-4946-a96b-b232123ed307` |\n| **vault-done-forest** | 14a1bd84 | success | None | `d055b858-6823-4be2-99be-d71fb9af69ee` |\n| **vault-done-sea** | cd080261 | success | None | `c863de4a-41b0-4577-a9e4-d290a01b707c` |\n| **vault-reveal-address** | 1a7659c7 | success | None | `382263a5-925b-4ead-8c42-6e250d41f3f4` |\n| **vault-reveal-fate** | 87708c5f | success | None | `39c7a0e0-8514-4fd0-8fd9-14154f8e6e92` |\n| **vault-reveal-doors** | 714290b5 | success | None | `79c2b5ac-df82-4ceb-859a-ee714bda7a93` |\n| **vault-reveal-next** | 21f66a06 | success | None | `3283445c-365e-4959-9dfe-ae3a64331d88` |\n| **vault-crossing** | 0da8f862 | success | None | `2c0a3679-047d-45af-8e01-c52b99eb64dc` |",
+      "budget_credits": 1500,
+      "graph_identifiers": {
+        "nodes": [
+          {
+            "short_id": "05be8bbe",
+            "node_id": "05be8bbe-15c4-4afe-a8fb-97ab08a5b594",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "088cb7e2",
+            "node_id": "088cb7e2-c578-4e48-a20a-3fad6eb8baf1",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "0da8f862",
+            "node_id": "0da8f862-fd24-47fb-a9cd-69af050a99cc",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "0e5d3120",
+            "node_id": "0e5d3120-7b01-4f58-ad8a-c55d453416a4",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "14a1bd84",
+            "node_id": "14a1bd84-e2cf-45f0-a41c-7734ff8ce915",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "1a7659c7",
+            "node_id": "1a7659c7-20d4-4f55-a32e-4a9accb54da1",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "1ecc0daf",
+            "node_id": "1ecc0daf-57ec-4fbb-9a67-b3d62285a88f",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "21f66a06",
+            "node_id": "21f66a06-4510-4743-8777-b7772e4ddac5",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "31dd7641",
+            "node_id": "31dd7641-f416-4495-a229-baa7f2001310",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "41995c0a",
+            "node_id": "41995c0a-ccb5-48fd-8ec5-ef92a561c866",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "46193cfd",
+            "node_id": "46193cfd-bb7c-4619-8ca0-379807905a20",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "492abba0",
+            "node_id": "492abba0-59b7-4b31-9f51-b1c63f076043",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "5d14d60e",
+            "node_id": "5d14d60e-a53f-4eee-a74b-19f06b7c3921",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "61d8f28b",
+            "node_id": "61d8f28b-9d72-4faf-bff2-e4b9b913fced",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "6cc5b37e",
+            "node_id": "6cc5b37e-4705-4afb-b081-1fdc7582620b",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "714290b5",
+            "node_id": "714290b5-9f4b-4155-9880-c12a6c3a98ea",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "73d62a3a",
+            "node_id": "73d62a3a-46f7-4e00-b9c3-14882e59d7b9",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "8272037e",
+            "node_id": "8272037e-08c1-419e-82fd-03f6fbb182a0",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "87708c5f",
+            "node_id": "87708c5f-477a-4e6b-b08f-cbedb610722c",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "8c65273a",
+            "node_id": "8c65273a-5ad3-4081-bad5-e0bddfd1a85c",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "9893177b",
+            "node_id": "9893177b-cc46-4341-ba4b-ca614bc79c04",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "a1e9f0d0",
+            "node_id": "a1e9f0d0-cbde-41a3-b0f4-5067c75670cb",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "a4f97067",
+            "node_id": "a4f97067-729e-48cf-aaae-95c6c0471ac6",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "abdb9605",
+            "node_id": "abdb9605-fa32-4802-8c08-5fc607c77fc5",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "ac7ed4f2",
+            "node_id": "ac7ed4f2-d7ed-4ff7-9fd7-7f2b8ba2f8cb",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "c0a92932",
+            "node_id": "c0a92932-981f-4ea4-95fe-9385af45061c",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "c221fc44",
+            "node_id": "c221fc44-0a9f-4828-895b-541f8b623a72",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "c63df834",
+            "node_id": "c63df834-0401-4f0d-92a1-4f18458cb0eb",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "c8012e10",
+            "node_id": "c8012e10-f6b0-481c-8673-126ed0101288",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "cd080261",
+            "node_id": "cd080261-615c-4c43-9edc-46440add15ad",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "d288dedc",
+            "node_id": "d288dedc-a28d-402b-b060-d3c12c2d3f66",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "d864bac6",
+            "node_id": "d864bac6-8203-4f74-b697-681ce8b1c4dd",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "d9286dcd",
+            "node_id": "d9286dcd-1f40-42d3-a7d8-ab758ebb7861",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "e3394478",
+            "node_id": "e3394478-ac4a-44b7-9888-83cf451b245d",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "ea2fd8e2",
+            "node_id": "ea2fd8e2-6287-4529-b572-dbd92a3c2f9e",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "f43ed0e3",
+            "node_id": "f43ed0e3-896a-4380-9e4e-a454e5bbf420",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "f4e59ee6",
+            "node_id": "f4e59ee6-2afe-4b5f-9011-d75f83f643f6",
+            "node_type": "text_to_speech_elevenlabs"
+          }
+        ],
+        "connections": []
+      },
+      "cost_usd": 1.1830350749999998,
+      "cost_credits": 115,
+      "remaining_budget_credits": 1385,
+      "budget_exhausted": false
+    },
+    "isError": false
+  }
+}

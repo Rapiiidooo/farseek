@@ -2,6 +2,8 @@ import * as THREE from "three";
 import { Shot } from "./story.js";
 import { BAYS, LIGHT } from "./vault.js";
 import { t } from "./i18n.js";
+import { beatLine } from "./vault-lines.js";
+import { paceFor, LINE_GAP } from "./voice.js";
 
 // Behind the sealed door: the builders' memory. A round chamber under a dome on which the
 // network is drawn in points and threads of light, six masks with a single slit standing round
@@ -801,6 +803,21 @@ export class RevealShot {
       [27.4, "reveal:next"],
     ];
     this.done = false;
+    this.rate = 1;
+    this.paceUntil = 0;
+  }
+
+  // A spoken line longer than its place (another language's take) slows the reveal until it
+  // ends; Nyra's own lines keep their time.
+  pace(at, id) {
+    const beat = beatLine(id);
+    const voice = beat?.clip ? this.vault.voice : null;
+    if (!voice) return;
+    this.paceUntil = this.beats[0]?.[0] ?? 33;
+    this.rate = paceFor(
+      this.paceUntil - at,
+      voice.length({ id: beat.clip, seconds: beat.seconds }) + LINE_GAP,
+    );
   }
 
   get skip() {
@@ -820,11 +837,15 @@ export class RevealShot {
   }
 
   update(dt, camera) {
-    this.t += dt;
+    if (this.t >= this.paceUntil) this.rate = 1;
+    this.t += dt * this.rate;
     const t = this.t;
-    this.shot.update(dt, camera);
-    while (this.beats.length && t >= this.beats[0][0])
-      this.vault.onBeat(this.beats.shift()[1]);
+    this.shot.update(dt * this.rate, camera);
+    while (this.beats.length && t >= this.beats[0][0]) {
+      const [at, id] = this.beats.shift();
+      this.vault.onBeat(id);
+      this.pace(at, id);
+    }
     for (const medal of this.vault.hall.medallions)
       this.vault.hall.setMedallion(
         medal,

@@ -1,0 +1,111 @@
+{
+  "seconds": 94.079,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"success\": true,\n  \"response_text\": \"\\nAgent credit budget exhausted. Send a new prompt to refresh the budget.\",\n  \"budget_credits\": 450,\n  \"graph_identifiers\": {\n    \"nodes\": [\n      {\n        \"short_id\": \"1b1c7559\",\n        \"node_id\": \"1b1c7559-59e7-4094-afef-cd67460dfa65\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"1cbe3191\",\n        \"node_id\": \"1cbe3191-00b4-49ef-9425-39e5966ffb89\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"22df06d6\",\n        \"node_id\": \"22df06d6-d19b-4925-8c13-afaa92a05523\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"3e30a615\",\n        \"node_id\": \"3e30a615-40fa-486d-bd5b-b01da7aedbfc\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"5ab94628\",\n        \"node_id\": \"5ab94628-9c53-41be-b639-e1a7c061859b\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"68921bef\",\n        \"node_id\": \"68921bef-e255-4595-8ef9-62675a28a01c\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"74f53072\",\n        \"node_id\": \"74f53072-386a-4d1d-9f49-b3cd98ae0942\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"7a5c23e2\",\n        \"node_id\": \"7a5c23e2-65a2-4a10-a012-37d55ffd584a\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"7ce6c864\",\n        \"node_id\": \"7ce6c864-0fd7-48a4-9650-f0870f10af55\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"8053b8ce\",\n        \"node_id\": \"8053b8ce-1b7f-488f-8646-deb5893cec0d\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"92cd8e46\",\n        \"node_id\": \"92cd8e46-b9a6-4732-9914-1718b9183e31\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"96e13f05\",\n        \"node_id\": \"96e13f05-0d57-4e21-ab81-6fa3fe00064f\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"a62607ea\",\n        \"node_id\": \"a62607ea-e597-4175-b568-7a666999d0c0\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"ab57c956\",\n        \"node_id\": \"ab57c956-77b2-4a8f-aacd-6552a5bca69a\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"abbc86cc\",\n        \"node_id\": \"abbc86cc-5df9-46c4-a3ad-c89724a91a55\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"def62b52\",\n        \"node_id\": \"def62b52-8ae1-4a4e-b719-6c186c2dc476\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"e34e35c3\",\n        \"node_id\": \"e34e35c3-b2d8-4dc3-83f5-99b389d99a16\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      }\n    ],\n    \"connections\": []\n  },\n  \"cost_usd\": 0.6471711500000001,\n  \"cost_credits\": 38,\n  \"remaining_budget_credits\": 412,\n  \"budget_exhausted\": true\n}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "response_text": "\nAgent credit budget exhausted. Send a new prompt to refresh the budget.",
+      "budget_credits": 450,
+      "graph_identifiers": {
+        "nodes": [
+          {
+            "short_id": "1b1c7559",
+            "node_id": "1b1c7559-59e7-4094-afef-cd67460dfa65",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "1cbe3191",
+            "node_id": "1cbe3191-00b4-49ef-9425-39e5966ffb89",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "22df06d6",
+            "node_id": "22df06d6-d19b-4925-8c13-afaa92a05523",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "3e30a615",
+            "node_id": "3e30a615-40fa-486d-bd5b-b01da7aedbfc",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "5ab94628",
+            "node_id": "5ab94628-9c53-41be-b639-e1a7c061859b",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "68921bef",
+            "node_id": "68921bef-e255-4595-8ef9-62675a28a01c",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "74f53072",
+            "node_id": "74f53072-386a-4d1d-9f49-b3cd98ae0942",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "7a5c23e2",
+            "node_id": "7a5c23e2-65a2-4a10-a012-37d55ffd584a",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "7ce6c864",
+            "node_id": "7ce6c864-0fd7-48a4-9650-f0870f10af55",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "8053b8ce",
+            "node_id": "8053b8ce-1b7f-488f-8646-deb5893cec0d",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "92cd8e46",
+            "node_id": "92cd8e46-b9a6-4732-9914-1718b9183e31",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "96e13f05",
+            "node_id": "96e13f05-0d57-4e21-ab81-6fa3fe00064f",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "a62607ea",
+            "node_id": "a62607ea-e597-4175-b568-7a666999d0c0",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "ab57c956",
+            "node_id": "ab57c956-77b2-4a8f-aacd-6552a5bca69a",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "abbc86cc",
+            "node_id": "abbc86cc-5df9-46c4-a3ad-c89724a91a55",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "def62b52",
+            "node_id": "def62b52-8ae1-4a4e-b719-6c186c2dc476",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "e34e35c3",
+            "node_id": "e34e35c3-b2d8-4dc3-83f5-99b389d99a16",
+            "node_type": "text_to_speech_elevenlabs"
+          }
+        ],
+        "connections": []
+      },
+      "cost_usd": 0.6471711500000001,
+      "cost_credits": 38,
+      "remaining_budget_credits": 412,
+      "budget_exhausted": true
+    },
+    "isError": false
+  }
+}

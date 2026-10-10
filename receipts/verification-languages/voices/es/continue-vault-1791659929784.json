@@ -1,0 +1,121 @@
+{
+  "arguments": {
+    "pid": "cefbe66a-9be6-4c1c-bd94-a7792f91ca89",
+    "budget_credits": 1500,
+    "prompt": "In this project the frame \"Mira ES vault\" should hold one ElevenLabs text to speech node per line below, labeled with its id, all with the same settings: the model ElevenLabs Eleven v3, the stock catalog voice \"Narration :: Warm & Inviting :: Pleasant :: Nikki (F)\", stability 0.5, similarity 0.75, style exaggeration low or default, speaker boost on, normal speed, mp3 at 44.1 kHz, language Spanish (es) if the node has a language setting. Create any node that is missing, set each node's text to exactly the quoted Spanish text below (the parentheses are delivery notes, never spoken), and run these nodes again even if they already have an output. Then report a table with the columns Label | Node ID | Status | Error | Output fid, one row for every line below, the label in bold (for example | **radio-1** | ... |) and the output fid in backticks.\n\nLines:\nvault-done-forest (live, brief, focused): \"Cinco. Falta uno.\""
+  },
+  "seconds": 215.13,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"success\": true,\n  \"response_text\": \"The node for `vault-done-forest` has been created, configured, organized inside the **Mira ES vault** frame, and executed.\\n\\n### Configuration Details\\n- **Node Type:** `text_to_speech_elevenlabs`\\n- **Text:** `\\\"Cinco. Falta uno.\\\"`\\n- **Model:** `ElevenLabs :: Eleven v3 (5k chars, supports v3 audio tags)`\\n- **Voice:** `Narration :: Warm & Inviting :: Pleasant :: Nikki (F) — Warm, Measured, and Clear · English · american · mature`\\n- **Stability:** `0.5`\\n- **Similarity:** `0.75`\\n- **Frame:** `Mira ES vault`\\n\\n### Results\\n\\n| Label | Node ID | Status | Error | Output fid |\\n| :--- | :--- | :--- | :--- | :--- |\\n| **vault-done-forest** | e0325850 | success | — | `f0bbc409-d5b8-4864-a6ba-0e26fb7f95d8` |\",\n  \"budget_credits\": 1500,\n  \"graph_identifiers\": {\n    \"nodes\": [\n      {\n        \"short_id\": \"00c44050\",\n        \"node_id\": \"00c44050-ab1a-42a1-995d-3fc2cc486ca8\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"1105ea94\",\n        \"node_id\": \"1105ea94-4fc9-4b41-97ac-6a43914b4f6e\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"18f7f7c0\",\n        \"node_id\": \"18f7f7c0-eb52-43df-aee2-a3918bc61c1e\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"3203d1c4\",\n        \"node_id\": \"3203d1c4-8520-49e8-bcdd-a444da330ee3\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"32553bf4\",\n        \"node_id\": \"32553bf4-93c2-4e34-93c1-36111a071f58\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"5acad356\",\n        \"node_id\": \"5acad356-8511-4be8-8c7d-af44c4dcf44b\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"75c7b708\",\n        \"node_id\": \"75c7b708-a80e-4f68-81af-1278921534b0\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"79ecc8ec\",\n        \"node_id\": \"79ecc8ec-aa54-4e4d-90a7-706a09d22dd2\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"81ee6b29\",\n        \"node_id\": \"81ee6b29-27e4-4f95-98fe-0cecefc120a0\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"88b92f07\",\n        \"node_id\": \"88b92f07-58e0-4148-8abf-0fbeb8dc74cc\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"97ec3586\",\n        \"node_id\": \"97ec3586-6d1b-4af4-84bd-bfb9cf4a6ec7\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"a3ca7010\",\n        \"node_id\": \"a3ca7010-4bf3-426c-a739-d6f573be0a75\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"c14d5139\",\n        \"node_id\": \"c14d5139-558b-47b7-aa98-2cce20a56edc\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"ddd86b10\",\n        \"node_id\": \"ddd86b10-dd2b-4eaa-9ae0-292315d10c35\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"e0325850\",\n        \"node_id\": \"e0325850-e32d-4a42-b6c9-8320515d0de6\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"e8933df1\",\n        \"node_id\": \"e8933df1-cd7d-4f4b-8dfc-eff3c37d2297\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"ef5d1ea9\",\n        \"node_id\": \"ef5d1ea9-f90a-452f-85b0-a1590625dd81\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"f66da4c9\",\n        \"node_id\": \"f66da4c9-5206-4a9f-a562-41170b4ba89d\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      }\n    ],\n    \"connections\": []\n  },\n  \"cost_usd\": 1.104884925,\n  \"cost_credits\": 62,\n  \"remaining_budget_credits\": 1438,\n  \"budget_exhausted\": false\n}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "response_text": "The node for `vault-done-forest` has been created, configured, organized inside the **Mira ES vault** frame, and executed.\n\n### Configuration Details\n- **Node Type:** `text_to_speech_elevenlabs`\n- **Text:** `\"Cinco. Falta uno.\"`\n- **Model:** `ElevenLabs :: Eleven v3 (5k chars, supports v3 audio tags)`\n- **Voice:** `Narration :: Warm & Inviting :: Pleasant :: Nikki (F) — Warm, Measured, and Clear · English · american · mature`\n- **Stability:** `0.5`\n- **Similarity:** `0.75`\n- **Frame:** `Mira ES vault`\n\n### Results\n\n| Label | Node ID | Status | Error | Output fid |\n| :--- | :--- | :--- | :--- | :--- |\n| **vault-done-forest** | e0325850 | success | — | `f0bbc409-d5b8-4864-a6ba-0e26fb7f95d8` |",
+      "budget_credits": 1500,
+      "graph_identifiers": {
+        "nodes": [
+          {
+            "short_id": "00c44050",
+            "node_id": "00c44050-ab1a-42a1-995d-3fc2cc486ca8",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "1105ea94",
+            "node_id": "1105ea94-4fc9-4b41-97ac-6a43914b4f6e",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "18f7f7c0",
+            "node_id": "18f7f7c0-eb52-43df-aee2-a3918bc61c1e",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "3203d1c4",
+            "node_id": "3203d1c4-8520-49e8-bcdd-a444da330ee3",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "32553bf4",
+            "node_id": "32553bf4-93c2-4e34-93c1-36111a071f58",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "5acad356",
+            "node_id": "5acad356-8511-4be8-8c7d-af44c4dcf44b",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "75c7b708",
+            "node_id": "75c7b708-a80e-4f68-81af-1278921534b0",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "79ecc8ec",
+            "node_id": "79ecc8ec-aa54-4e4d-90a7-706a09d22dd2",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "81ee6b29",
+            "node_id": "81ee6b29-27e4-4f95-98fe-0cecefc120a0",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "88b92f07",
+            "node_id": "88b92f07-58e0-4148-8abf-0fbeb8dc74cc",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "97ec3586",
+            "node_id": "97ec3586-6d1b-4af4-84bd-bfb9cf4a6ec7",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "a3ca7010",
+            "node_id": "a3ca7010-4bf3-426c-a739-d6f573be0a75",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "c14d5139",
+            "node_id": "c14d5139-558b-47b7-aa98-2cce20a56edc",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "ddd86b10",
+            "node_id": "ddd86b10-dd2b-4eaa-9ae0-292315d10c35",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "e0325850",
+            "node_id": "e0325850-e32d-4a42-b6c9-8320515d0de6",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "e8933df1",
+            "node_id": "e8933df1-cd7d-4f4b-8dfc-eff3c37d2297",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "ef5d1ea9",
+            "node_id": "ef5d1ea9-f90a-452f-85b0-a1590625dd81",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "f66da4c9",
+            "node_id": "f66da4c9-5206-4a9f-a562-41170b4ba89d",
+            "node_type": "text_to_speech_elevenlabs"
+          }
+        ],
+        "connections": []
+      },
+      "cost_usd": 1.104884925,
+      "cost_credits": 62,
+      "remaining_budget_credits": 1438,
+      "budget_exhausted": false
+    },
+    "isError": false
+  }
+}

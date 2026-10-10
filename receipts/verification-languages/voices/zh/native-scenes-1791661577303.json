@@ -1,0 +1,17 @@
+{
+  "arguments": {
+    "pid": "47f06641-a060-40b2-9b88-395fbb255425",
+    "budget_credits": 1500,
+    "prompt": "In this project, create a new frame named \"Mira ZH native scenes\" holding exactly 17 independent ElevenLabs text to speech nodes, one per line below, each labeled with its id followed by \"-native\" (for example radio-1-native). Leave every other frame and node untouched. Use one stock catalog voice for all of them, chosen as a native Mandarin Chinese speaker: a woman in her thirties, warm, calm, clear and grounded, standard accent, never breathy or theatrical. Use the model ElevenLabs Eleven v3, stability 0.5, similarity 0.75, style exaggeration low or default, speaker boost on, normal speed, mp3 at 44.1 kHz, language Mandarin Chinese (zh) if the node has a language setting. Speak exactly the quoted text, with no added words, tags or sound effects; the parentheses are delivery notes, never spoken. Run every node, then report the chosen voice's name and description, and a table with the columns Label | Node ID | Status | Error | Output fid, one row per line, the label without the \"-native\" suffix in bold (for example | **radio-1** | ... |) and the output fid in backticks.\n\nLines:\nradio-1 (a message recorded into a field radio, composed and direct): \"我是米拉。如果你在我们之后穿过了那扇门，请听好。\"\nradio-2 (a message recorded into a field radio, composed and direct): \"看守们要在他们的三块石板上盖好地址，而他们只给违规者盖章。\"\nradio-3 (a message recorded into a field radio, a little wry): \"他们在窗口扣下了我的宝珠。能拿回来的话就拿回来。\"\nradio-4 (a message recorded into a field radio, resolute): \"我们要越过他们的栏杆，穿过远方之门继续前进。追随那道光。\"\ncamp-1 (quiet journal dictation at the end of a long day): \"第十五天。天刚亮时群岛会漂到一起，我们趁它们相接时拉绳渡过。\"\ncamp-2 (quiet journal dictation, matter of fact): \"每根绳子都在我们身后断掉。后来的人需要建造者的光桥。\"\ncamp-3 (quiet journal dictation, a fond smile in the voice): \"在最后一座岛上扎营。换作奈拉，每个绳结都会检查两遍。\"\nice-1 (recorded in the cold, practical and steady): \"我把我们的标记刻进了冰里，雪埋不住它。\"\nice-2 (recorded in the cold, practical advice): \"别在薄冰上停下。箭头指向环门。\"\ncastle-1 (recorded, calm and warm): \"我给后来的人留下了城堡的地址。它只按顺序回应。\"\ncastle-2 (recorded, calm and clear, naming each step): \"先是水，再是树根的螺旋，最后是树梢上的新月。\"\ncastle-3 (recorded, warm, a little wistful): \"这是我留给你的最后一道谜题。过了它，就是大海。\"\nreunion-1 (live and close, overwhelmed with relief, almost a whisper): \"奈拉。\"\nreunion-2 (live and close, tender, holding back tears): \"我就知道你会追着光来。我在每一扇门前都让它亮着。\"\nreunion-3a (live and close, warm and hopeful): \"你带来了我们的地图。这一次，我们一起选择下一次穿越。\"\nreunion-3b (live and close, warm and hopeful): \"回家的路已经打开。下一次穿越，就待在我身边吧。\"\nreunion-4 (live and close, a smile in the voice): \"走吧。还有更多的门。\""
+  },
+  "seconds": 51.483,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Error executing tool prompt_project_agent: ACCESS_EXPIRED: Workspace access has expired (HTTP 402)"
+      }
+    ],
+    "isError": true
+  }
+}

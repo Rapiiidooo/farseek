@@ -1,0 +1,5320 @@
+[
+  {
+    "id": "radio",
+    "problems": [],
+    "programs": [
+      982,
+      982
+    ],
+    "lines": [
+      {
+        "id": "radio-1",
+        "mode": "radio",
+        "source": "clip"
+      },
+      {
+        "id": "radio-2",
+        "mode": "radio",
+        "source": "clip"
+      },
+      {
+        "id": "radio-3",
+        "mode": "radio",
+        "source": "clip"
+      },
+      {
+        "id": "radio-4",
+        "mode": "radio",
+        "source": "clip"
+      }
+    ],
+    "clips": {
+      "radio-1": "ready",
+      "radio-2": "ready",
+      "radio-3": "ready",
+      "radio-4": "ready"
+    },
+    "peakRms": 0.2294,
+    "voicedRms": 0.231,
+    "log": [
+      {
+        "t": 7709,
+        "paused": false,
+        "active": false,
+        "playing": "",
+        "scene": ""
+      },
+      {
+        "t": 12727,
+        "paused": false,
+        "active": false,
+        "playing": "",
+        "scene": "radio"
+      },
+      {
+        "t": 13610,
+        "paused": false,
+        "active": true,
+        "playing": "radio-1",
+        "scene": "radio"
+      },
+      {
+        "t": 18476,
+        "paused": false,
+        "active": false,
+        "playing": "",
+        "scene": "radio"
+      },
+      {
+        "t": 18625,
+        "paused": false,
+        "active": true,
+        "playing": "radio-2",
+        "scene": "radio"
+      },
+      {
+        "t": 25608,
+        "paused": false,
+        "active": false,
+        "playing": "",
+        "scene": "radio"
+      },
+      {
+        "t": 25759,
+        "paused": false,
+        "active": true,
+        "playing": "radio-3",
+        "scene": "radio"
+      },
+      {
+        "t": 31224,
+        "paused": false,
+        "active": false,
+        "playing": "",
+        "scene": "radio"
+      },
+      {
+        "t": 31357,
+        "paused": false,
+        "active": true,
+        "playing": "radio-4",
+        "scene": "radio"
+      },
+      {
+        "t": 38707,
+        "paused": false,
+        "active": false,
+        "playing": "",
+        "scene": "radio"
+      },
+      {
+        "t": 38941,
+        "paused": false,
+        "active": false,
+        "playing": "",
+        "scene": ""
+      }
+    ],
+    "voicedSamples": 287,
+    "quietSamples": 1,
+    "skipped": null,
+    "paused": null,
+    "timeline": [
+      {
+        "t": 0,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "",
+        "speaker": null,
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 0.08,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "",
+        "speaker": null,
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 0.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "",
+        "speaker": null,
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 0.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "",
+        "speaker": null,
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 0.33,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "",
+        "speaker": null,
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 0.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "",
+        "speaker": null,
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 0.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "",
+        "speaker": null,
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 0.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "",
+        "speaker": null,
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 0.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "",
+        "speaker": null,
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 0.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "",
+        "speaker": null,
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 0.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "",
+        "speaker": null,
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 0.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 0.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0181,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 1.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.11,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 1.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.1269,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 1.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0964,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 1.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.121,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 1.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0786,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 1.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.1303,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 1.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0642,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 1.83,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0063,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 1.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0065,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 1.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0064,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 2.08,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0068,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 2.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0064,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 2.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0065,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 2.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0071,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 2.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0067,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 2.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0208,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 2.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0486,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 2.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.1784,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 2.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0084,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 2.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.1534,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 2.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.1853,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 2.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.054,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 3.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.1159,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 3.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.1523,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 3.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0913,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 3.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0226,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 3.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.1398,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 3.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.147,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 3.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0357,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 3.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0698,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 3.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0327,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 3.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.1069,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 3.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.1247,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 3.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0664,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 4.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.1446,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 4.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0895,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 4.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.1155,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 4.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0129,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 4.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0942,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 4.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0537,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 4.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0951,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 4.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0899,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 4.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0665,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 4.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0215,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 4.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0774,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 4.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0206,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 5.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0065,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 5.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0064,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 5.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0063,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 5.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0591,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 5.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0185,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 5.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0715,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 5.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0752,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 5.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-1"
+        ],
+        "rms": 0.0402,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 5.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0.0168,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 5.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "मीरामैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 5.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 5.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0186,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 6.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0251,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 6.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.1116,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 6.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.2294,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 6.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.1856,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 6.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.164,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 6.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.1825,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 6.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0213,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 6.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0179,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 6.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.1659,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 6.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.1266,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 6.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0738,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 6.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0371,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 7.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0608,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 7.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0081,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 7.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.062,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 7.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.1308,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 7.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.1661,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 7.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0173,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 7.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.1529,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 7.83,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0644,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 7.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0079,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 7.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0922,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 8.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0847,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 8.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0315,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 8.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0067,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 8.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0481,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 8.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0082,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 8.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.1775,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 8.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0138,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 8.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.1135,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 8.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0083,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 8.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0431,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 8.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0068,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 8.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.013,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 9.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0679,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 9.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0081,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 9.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.064,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 9.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0213,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 9.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0154,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 9.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0386,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 9.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0273,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 9.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.015,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 9.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0065,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 9.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0067,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 9.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0064,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 9.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0066,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 10.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0065,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 10.15,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0062,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 10.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.156,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 10.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0427,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 10.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0935,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 10.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0279,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 10.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0178,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 10.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.1739,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 10.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0961,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 10.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0171,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 10.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0068,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 10.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0344,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 11.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.1004,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 11.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0894,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 11.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.1005,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 11.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0161,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 11.4,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0492,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 11.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0661,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 11.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0167,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 11.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0094,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 11.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.082,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 11.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0383,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 11.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0607,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 11.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0066,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 12.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0871,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 12.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0558,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 12.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0351,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 12.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0524,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 12.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0267,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 12.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0262,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 12.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0452,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 12.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0167,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 12.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0487,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 12.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-2"
+        ],
+        "rms": 0.0082,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 12.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0.006,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 12.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "मीरावार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 13.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0088,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 13.33,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.1164,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 13.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.1045,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 13.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.146,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 13.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.1657,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 13.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.1534,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 13.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0774,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 13.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0886,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 13.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0361,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 13.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0624,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 14.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0811,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 14.15,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0644,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 14.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.1044,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 14.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0071,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 14.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0237,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 14.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.1404,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 14.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0089,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 14.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0667,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 14.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0068,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 14.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0828,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 14.9,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0261,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 14.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0392,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 15.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0202,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 15.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0373,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 15.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0549,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 15.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0277,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 15.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0218,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 15.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0064,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 15.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0063,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 15.65,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0067,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 15.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0071,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 15.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0065,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 15.9,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0065,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 15.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0083,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 16.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.2052,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 16.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0605,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 16.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0867,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 16.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.015,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 16.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.1138,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 16.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0166,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 16.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.1569,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 16.65,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0625,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 16.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0965,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 16.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0429,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 16.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.1171,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 16.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0189,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 17.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0802,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 17.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0187,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 17.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0213,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 17.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0756,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 17.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.044,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 17.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0514,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 17.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0416,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 17.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0283,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 17.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0135,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 17.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0063,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 17.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0064,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 17.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0062,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 18.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0064,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 18.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0065,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 18.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0064,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 18.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0063,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 18.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-3"
+        ],
+        "rms": 0.0063,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 18.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0.0081,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 18.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "मीराउन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 18.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 18.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.018,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 18.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1273,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 18.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1546,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 18.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1713,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 19.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0226,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 19.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1217,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 19.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0159,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 19.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0853,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 19.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1883,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 19.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0095,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 19.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1736,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 19.83,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.083,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 19.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0071,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 19.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1157,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 20.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0664,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 20.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0547,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 20.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0369,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 20.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0086,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 20.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0067,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 20.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0065,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 20.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0066,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 20.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0064,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 20.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0303,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 20.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1482,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 20.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1515,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 20.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1645,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 21.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0384,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 21.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0354,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 21.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.2091,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 21.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1161,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 21.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1163,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 21.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0206,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 21.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1116,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 21.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1082,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 21.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0322,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 21.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0696,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 21.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0115,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 21.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0867,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 22.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0498,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 22.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0304,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 22.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0919,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 22.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0762,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 22.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0316,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 22.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0926,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 22.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0266,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 22.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0702,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 22.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.065,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 22.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0657,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 22.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0757,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 22.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0274,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 23.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0665,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 23.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0419,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 23.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0176,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 23.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0067,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 23.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0064,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 23.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0064,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 23.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0067,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 23.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0065,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 23.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0066,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 23.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0065,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 23.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0066,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 23.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.007,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 24.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0063,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 24.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0063,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 24.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0612,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 24.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1297,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 24.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0773,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 24.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0777,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 24.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1208,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 24.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1649,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 24.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0259,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 24.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1051,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 24.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.1223,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 24.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0732,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 25.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0065,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 25.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0552,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 25.24,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0146,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 25.32,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0424,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 25.41,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0592,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 25.49,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0098,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 25.57,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0741,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 25.66,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0555,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 25.74,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0923,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 25.82,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.0337,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 25.91,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": true,
+        "playing": [
+          "radio-4"
+        ],
+        "rms": 0.023,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 25.99,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0.0063,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 26.07,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 26.16,
+        "beat": "radio",
+        "cinematic": true,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": true,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      },
+      {
+        "t": 26.24,
+        "beat": null,
+        "cinematic": false,
+        "stage": "off",
+        "voiceActive": false,
+        "playing": [],
+        "rms": 0,
+        "subtitle": "मीराहम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+        "speaker": "मीरा",
+        "letterbox": false,
+        "card": false,
+        "mode": "play",
+        "credits": false
+      }
+    ],
+    "errors": []
+  }
+]

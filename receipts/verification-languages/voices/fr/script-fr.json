@@ -1,0 +1,298 @@
+[
+  {
+    "clip": "radio-1",
+    "text": "Ici Mira. Si vous avez franchi la porte après nous, écoutez.",
+    "delivery": "a message recorded into a field radio, composed and direct",
+    "english": "This is Mira. If you came through the door after us, listen.",
+    "englishSeconds": 4.175692,
+    "slot": 4.25
+  },
+  {
+    "clip": "radio-2",
+    "text": "Les douaniers veulent une adresse tamponnée sur leurs trois dalles, et ils ne tamponnent que les contrevenants.",
+    "delivery": "a message recorded into a field radio, composed and direct",
+    "english": "The Wardens want an address stamped on their three plates, and they only stamp offenders.",
+    "englishSeconds": 5.720794,
+    "slot": 5.75
+  },
+  {
+    "clip": "radio-3",
+    "text": "Ils ont gardé mon orbe au guichet. Reprenez-le si vous pouvez.",
+    "delivery": "a message recorded into a field radio, a little wry",
+    "english": "They kept my orb at the window. Take it back if you can.",
+    "englishSeconds": 4.262404,
+    "slot": 4.35
+  },
+  {
+    "clip": "radio-4",
+    "text": "Nous continuons par la porte lointaine, derrière leur barrière. Suivez la lumière.",
+    "delivery": "a message recorded into a field radio, resolute",
+    "english": "We're going on through the far door, past their barrier. Follow the light.",
+    "englishSeconds": 5.78,
+    "slot": 6.350000000000001
+  },
+  {
+    "clip": "camp-1",
+    "text": "Jour quinze. Aux premières lueurs, les îles se rapprochent, et nous passons à la corde pendant qu’elles se touchent.",
+    "delivery": "quiet journal dictation at the end of a long day",
+    "english": "Day fifteen. At first light the isles drift together, and we rope across while they touch.",
+    "englishSeconds": 6.140998,
+    "slot": 6.25
+  },
+  {
+    "clip": "camp-2",
+    "text": "Chaque corde cède derrière nous. Qui nous suivra aura besoin des ponts des bâtisseurs.",
+    "delivery": "quiet journal dictation, matter of fact",
+    "english": "Every rope parts behind us. Whoever follows will need the builders' bridges.",
+    "englishSeconds": 5.974286,
+    "slot": 6.15
+  },
+  {
+    "clip": "camp-3",
+    "text": "Camp sur la dernière île. Nyra aurait vérifié chaque nœud deux fois.",
+    "delivery": "quiet journal dictation, a fond smile in the voice",
+    "english": "Camp on the last isle. Nyra would have checked every knot twice.",
+    "englishSeconds": 5.455692,
+    "slot": 5.75
+  },
+  {
+    "clip": "ice-1",
+    "text": "J’ai gravé notre signe dans la glace, là où la neige ne peut pas l’ensevelir.",
+    "delivery": "recorded in the cold, practical and steady",
+    "english": "I've cut our sign into the ice, where the snow can't bury it.",
+    "englishSeconds": 3.697755,
+    "slot": 4.15
+  },
+  {
+    "clip": "ice-2",
+    "text": "Ne vous arrêtez pas sur la glace fine. La flèche indique l’anneau.",
+    "delivery": "recorded in the cold, practical advice",
+    "english": "Don't stop on the thin ice. The arrow points to the ring.",
+    "englishSeconds": 4.205692,
+    "slot": 5.55
+  },
+  {
+    "clip": "castle-1",
+    "text": "J’ai laissé l’adresse du château à qui nous suivra. Il ne répond que dans l’ordre.",
+    "delivery": "recorded, calm and warm",
+    "english": "I've left the castle's address for whoever follows. It only answers in order.",
+    "englishSeconds": 5.564082,
+    "slot": 5.75
+  },
+  {
+    "clip": "castle-2",
+    "text": "D’abord l’eau, puis la spirale de racines, puis le croissant au-dessus des arbres.",
+    "delivery": "recorded, calm and clear, naming each step",
+    "english": "Water first, then the spiral of roots, then the crescent above the trees.",
+    "englishSeconds": 5.847551,
+    "slot": 6.049999999999999
+  },
+  {
+    "clip": "castle-3",
+    "text": "C’est la dernière énigme que je vous laisse. Au-delà, la mer.",
+    "delivery": "recorded, warm, a little wistful",
+    "english": "It's the last puzzle I'll leave you. Beyond it, the sea.",
+    "englishSeconds": 4.362404,
+    "slot": 4.850000000000001
+  },
+  {
+    "clip": "reunion-1",
+    "text": "Nyra.",
+    "delivery": "live and close, overwhelmed with relief, almost a whisper",
+    "english": "Nyra.",
+    "englishSeconds": 1.44898,
+    "slot": 1.9499999999999993
+  },
+  {
+    "clip": "reunion-2",
+    "text": "Je savais que tu suivrais la lumière. Je l’ai gardée allumée à chaque porte.",
+    "delivery": "live and close, tender, holding back tears",
+    "english": "I knew you'd follow the light. I kept it burning at every door.",
+    "englishSeconds": 4.420794,
+    "slot": 4.75
+  },
+  {
+    "clip": "reunion-3a",
+    "text": "Tu as apporté notre carte. Cette fois, on choisit la prochaine traversée ensemble.",
+    "delivery": "live and close, warm and hopeful",
+    "english": "You brought our map. This time, we choose the next crossing together.",
+    "englishSeconds": 4.732653,
+    "slot": 4.949999999999999
+  },
+  {
+    "clip": "reunion-3b",
+    "text": "Le chemin du retour est ouvert. Reste à mes côtés pour la suivante.",
+    "delivery": "live and close, warm and hopeful",
+    "english": "The way home is open. Stay beside me for the next one.",
+    "englishSeconds": 4.127302,
+    "slot": 4.949999999999999
+  },
+  {
+    "clip": "reunion-4",
+    "text": "Viens. Il y a d’autres portes.",
+    "delivery": "live and close, a smile in the voice",
+    "english": "Come on. There are more doors.",
+    "englishSeconds": 1.802404,
+    "slot": 6.350000000000001
+  },
+  {
+    "clip": "vault-arrival",
+    "text": "Ici, leur air tient encore, Nyra. Tu peux marcher. Je ne suis que lumière pour l’instant, alors suis-moi.",
+    "delivery": "live and close, warm and a little amazed, gently leading",
+    "english": "Their air holds in here, Nyra. You can walk. I'm only light for now, so follow me.",
+    "englishSeconds": 4.900998,
+    "slot": 6.37
+  },
+  {
+    "clip": "vault-bay-court",
+    "text": "La lumière des étoiles par une fente, comme le soleil dans la cour. Les miroirs tournent encore.",
+    "delivery": "live, curious, recognising something familiar",
+    "english": "Starlight through a slit, like the sun in the court. The mirrors still turn.",
+    "englishSeconds": 6.034286,
+    "slot": 7.84
+  },
+  {
+    "clip": "vault-bay-checkpoint",
+    "text": "Un veilleur des bâtisseurs, plus ancien que les préposés. Détourne son tampon avec ton bouclier.",
+    "delivery": "live, wry about the keeper, then a practical tip",
+    "english": "A keeper of the builders, older than the clerks. Turn its stamp aside with your shield.",
+    "englishSeconds": 5.789184,
+    "slot": 7.53
+  },
+  {
+    "clip": "vault-bay-isles",
+    "text": "La lentille du pylône est bloquée. Quelque chose, là-haut sur cette corniche, la retient.",
+    "delivery": "live, thoughtful, looking up",
+    "english": "The pylon's lens is held shut. Something up on that shelf is doing it.",
+    "englishSeconds": 5.25059,
+    "slot": 6.83
+  },
+  {
+    "clip": "vault-bay-frost",
+    "text": "De la glace et une dalle, encore. Tu ne peux pas la pousser de là, mais le lien de l’orbe peut la tirer.",
+    "delivery": "live, practical, a small smile",
+    "english": "Ice and a plate again. You can't push it from there, but the orb's tether can drag it.",
+    "englishSeconds": 6.19,
+    "slot": 8.05
+  },
+  {
+    "clip": "vault-power-frost",
+    "text": "Ça a réveillé le sceau. Monte sur la glace, maintenant. Tu as encore mes piolets.",
+    "delivery": "live, encouraging, a little proud",
+    "english": "That woke the seal. Up the ice now. You still have my axes.",
+    "englishSeconds": 4.547551,
+    "slot": 5.91
+  },
+  {
+    "clip": "vault-bay-forest",
+    "text": "De l’eau de spores. Ne reste pas immobile sur ces pierres.",
+    "delivery": "live, quick warning, calm",
+    "english": "Spore water. Don't stand still on those stones.",
+    "englishSeconds": 3.630998,
+    "slot": 4.72
+  },
+  {
+    "clip": "vault-bank-forest",
+    "text": "Ce lierre te portera. Allez, grimpe.",
+    "delivery": "live, light and encouraging",
+    "english": "That ivy will hold you. Up you go.",
+    "englishSeconds": 3.082404,
+    "slot": 4.01
+  },
+  {
+    "clip": "vault-bay-sea",
+    "text": "Le sceau est au bout de ce passage, et l’eau en jaillit. Une seule inspiration, Nyra.",
+    "delivery": "live, serious and steady, then soft on her name",
+    "english": "The seal is at the end of that passage, and the water pours out of it. One breath, Nyra.",
+    "englishSeconds": 6.60898,
+    "slot": 8.59
+  },
+  {
+    "clip": "vault-done-court",
+    "text": "Un. La leçon de la première porte.",
+    "delivery": "live, quietly pleased",
+    "english": "One. The first door's lesson.",
+    "englishSeconds": 2.76898,
+    "slot": 3.6
+  },
+  {
+    "clip": "vault-done-checkpoint",
+    "text": "Deux. Il s’est incliné devant toi. Je crois que c’était une approbation.",
+    "delivery": "live, amused",
+    "english": "Two. It bowed to you. I think that was approval.",
+    "englishSeconds": 4.284082,
+    "slot": 5.57
+  },
+  {
+    "clip": "vault-done-isles",
+    "text": "Trois. Le sceau a bu la lumière du pont. Reviens en te balançant au câble des bâtisseurs.",
+    "delivery": "live, practical",
+    "english": "Three. The seal drank the bridge's light. Swing back on the builders' cable.",
+    "englishSeconds": 5.720794,
+    "slot": 7.44
+  },
+  {
+    "clip": "vault-done-frost",
+    "text": "Quatre. Belle escalade.",
+    "delivery": "live, warm, brief",
+    "english": "Four. Nice climb.",
+    "englishSeconds": 2.272653,
+    "slot": 2.95
+  },
+  {
+    "clip": "vault-done-forest",
+    "text": "Cinq. Plus qu’un.",
+    "delivery": "live, brief, focused",
+    "english": "Five. One more.",
+    "englishSeconds": 2.429388,
+    "slot": 3.16
+  },
+  {
+    "clip": "vault-done-sea",
+    "text": "Six. L’adresse est complète. Reviens à la porte.",
+    "delivery": "live, relieved and eager",
+    "english": "Six. That's the whole address. Come back to the door.",
+    "englishSeconds": 4.284082,
+    "slot": 5.57
+  },
+  {
+    "clip": "vault-reveal-address",
+    "text": "Six mondes, une adresse. Elle nous connaît.",
+    "delivery": "live, hushed, in awe",
+    "english": "Six worlds, one address. It knows us.",
+    "englishSeconds": 3.630998,
+    "slot": 4.35
+  },
+  {
+    "clip": "vault-reveal-fate",
+    "text": "Ils n’ont jamais disparu, Nyra. Quand leurs mondes ont péri, ils ont quitté leur corps et sont devenus lumière.",
+    "delivery": "live, slow, tender, understanding something huge",
+    "english": "They never died out, Nyra. When their worlds failed, they let their bodies go and became light.",
+    "englishSeconds": 6.970794,
+    "slot": 7.15
+  },
+  {
+    "clip": "vault-reveal-doors",
+    "text": "Chaque porte que nous avons ouverte était gardée éveillée par l’un d’eux, pour ceux qui viendraient ensuite.",
+    "delivery": "live, quiet, grateful",
+    "english": "Every door we opened was kept awake by one of them, for whoever came after.",
+    "englishSeconds": 5.28898,
+    "slot": 5.350000000000001
+  },
+  {
+    "clip": "vault-reveal-next",
+    "text": "Et une adresse qu’ils n’ont jamais atteinte. Ils l’ont laissée ouverte pour nous.",
+    "delivery": "live, soft wonder, an invitation",
+    "english": "And one address they never reached. They left it open for us.",
+    "englishSeconds": 4.989388,
+    "slot": 5.350000000000001
+  },
+  {
+    "clip": "vault-crossing",
+    "text": "Ensemble, cette fois.",
+    "delivery": "live, close, warm and certain",
+    "english": "Together, this time.",
+    "englishSeconds": 1.48898,
+    "slot": 1.94
+  }
+]

@@ -1,0 +1,30 @@
+PASS Vault shaders are prepared before play {"load":982,"now":982}
+PASS The vault starts at its arrival with the orb and pistols
+PASS The block leaves the starlight {"x":-27,"z":-15,"moving":false}
+PASS Relayed starlight wakes the court's seal
+PASS A stamp turned aside by the shield leaves the keeper reeling {"state":"stun","hostile":false,"hp":3,"pos":[18.32,-11.69],"center":[18.316052400884487,0.62,-11.690296488202325]}
+PASS The seal answers while its keeper is stunned
+PASS Pistol shots break the crystal lock
+PASS The isles crystal charges the orb
+PASS A charged pulse wakes the pylon
+PASS The bridge of light carries Nyra to the seal
+PASS The cable carries Nyra back over the chasm {"pos":[-25.118591879674028,-26.4692302065421]}
+PASS The orb's tether drags the ice out of its corner {"x":22,"z":-37,"state":"rest"}
+PASS The sliding ice wakes the plate
+PASS Mira's axes carry Nyra up the scarred ice {"feet":3.4,"climb":{"axes":true,"wall":null,"leaping":false}}
+PASS The frost seal wakes on its shelf
+PASS The sinking stones are crossed without a fall
+PASS Thick ivy carries Nyra to the ledge {"feet":3.2}
+PASS The forest seal wakes across the bog
+PASS Back over the bog unharmed
+PASS Into the well's water, swimming
+PASS The drowned seal wakes on one breath {"breath":15.5}
+PASS Out of the well with breath to spare {"health":4}
+PASS All six seals awake
+PASS The door opens on the whole address
+PASS The reveal hands control back with the next door open
+PASS Crossing the next door calls the completion callback
+PASS The completion callback rolls the credits
+PASS Mira speaks the vault's lines live from their clips {"said":20,"sources":["clip"]}
+PASS No page or WebGL errors []
+PASS No shader compiled during the vault {"load":982,"now":982}

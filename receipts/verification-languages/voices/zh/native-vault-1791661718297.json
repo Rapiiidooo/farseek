@@ -1,0 +1,17 @@
+{
+  "arguments": {
+    "pid": "47f06641-a060-40b2-9b88-395fbb255425",
+    "budget_credits": 1500,
+    "prompt": "In this project, create a new frame named \"Mira ZH native vault\" holding exactly 20 independent ElevenLabs text to speech nodes, one per line below, each labeled with its id followed by \"-native\" (for example radio-1-native). Leave every other frame and node untouched. Use one stock catalog voice for all of them, chosen as a native Mandarin Chinese speaker: a woman in her thirties, warm, calm, clear and grounded, standard accent, never breathy or theatrical. Use the model ElevenLabs Eleven v3, stability 0.5, similarity 0.75, style exaggeration low or default, speaker boost on, normal speed, mp3 at 44.1 kHz, language Mandarin Chinese (zh) if the node has a language setting. Speak exactly the quoted text, with no added words, tags or sound effects; the parentheses are delivery notes, never spoken. Run every node, then report the chosen voice's name and description, and a table with the columns Label | Node ID | Status | Error | Output fid, one row per line, the label without the \"-native\" suffix in bold (for example | **radio-1** | ... |) and the output fid in backticks.\n\nLines:\nvault-arrival (live and close, warm and a little amazed, gently leading): \"他们的空气还留在这里，奈拉。你可以步行。我暂时只是一束光，跟着我吧。\"\nvault-bay-court (live, curious, recognising something familiar): \"星光穿过狭缝，就像庭院里的阳光。铜镜依然能转动。\"\nvault-bay-checkpoint (live, wry about the keeper, then a practical tip): \"建造者的看管者，比办事员还要古老。用护盾挡开它的印章。\"\nvault-bay-isles (live, thoughtful, looking up): \"光塔的透镜被封住了。是那个高台上的什么东西在作怪。\"\nvault-bay-frost (live, practical, a small smile): \"又是冰块和石板。从那边推不动，但宝珠的牵引能把它拖过来。\"\nvault-power-frost (live, encouraging, a little proud): \"封印醒了。现在爬上冰面。我的冰镐还在你手上。\"\nvault-bay-forest (live, quick warning, calm): \"孢子水。别在那些石头上站着不动。\"\nvault-bank-forest (live, light and encouraging): \"那片常春藤撑得住你。爬上去吧。\"\nvault-bay-sea (live, serious and steady, then soft on her name): \"封印在那条通道的尽头，水正从里面涌出来。一口气游过去，奈拉。\"\nvault-done-court (live, quietly pleased): \"一枚。这是第一扇门教会我们的。\"\nvault-done-checkpoint (live, amused): \"两枚。它向你鞠了一躬。我想那是认可吧。\"\nvault-done-isles (live, practical): \"三枚。封印吸干了光桥的光。抓住建造者的缆索荡回来。\"\nvault-done-frost (live, warm, brief): \"四枚。爬得漂亮。\"\nvault-done-forest (live, brief, focused): \"五枚。还差一枚。\"\nvault-done-sea (live, relieved and eager): \"六枚。地址完整了。回到门那里去。\"\nvault-reveal-address (live, hushed, in awe): \"六个世界，一个地址。它认得我们。\"\nvault-reveal-fate (live, slow, tender, understanding something huge): \"他们从未灭绝，奈拉。当他们的世界走向衰亡，他们舍弃了肉身，化作了光。\"\nvault-reveal-doors (live, quiet, grateful): \"我们打开的每一扇门，都由他们中的一位守着，为后来的人保持苏醒。\"\nvault-reveal-next (live, soft wonder, an invitation): \"还有一个他们从未抵达的地址。他们为我们留着它。\"\nvault-crossing (live, close, warm and certain): \"这一次，我们一起。\""
+  },
+  "seconds": 84.947,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Error executing tool prompt_project_agent: ACCESS_EXPIRED: Workspace access has expired (HTTP 402)"
+      }
+    ],
+    "isError": true
+  }
+}

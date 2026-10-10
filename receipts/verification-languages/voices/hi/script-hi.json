@@ -1,0 +1,298 @@
+[
+  {
+    "clip": "radio-1",
+    "text": "मैं मीरा हूँ। अगर तुम हमारे बाद इस दरवाज़े से आए हो, तो सुनो।",
+    "delivery": "a message recorded into a field radio, composed and direct",
+    "english": "This is Mira. If you came through the door after us, listen.",
+    "englishSeconds": 4.175692,
+    "slot": 4.25
+  },
+  {
+    "clip": "radio-2",
+    "text": "वार्डनों को अपनी तीन प्लेटों पर पते का ठप्पा चाहिए, और वे सिर्फ़ अपराधियों पर ठप्पा लगाते हैं।",
+    "delivery": "a message recorded into a field radio, composed and direct",
+    "english": "The Wardens want an address stamped on their three plates, and they only stamp offenders.",
+    "englishSeconds": 5.720794,
+    "slot": 5.75
+  },
+  {
+    "clip": "radio-3",
+    "text": "उन्होंने मेरा गोला खिड़की पर रख लिया। हो सके तो उसे वापस ले लेना।",
+    "delivery": "a message recorded into a field radio, a little wry",
+    "english": "They kept my orb at the window. Take it back if you can.",
+    "englishSeconds": 4.262404,
+    "slot": 4.35
+  },
+  {
+    "clip": "radio-4",
+    "text": "हम उनके फाटक के पार, दूर के दरवाज़े से आगे जा रहे हैं। रोशनी के पीछे चलना।",
+    "delivery": "a message recorded into a field radio, resolute",
+    "english": "We're going on through the far door, past their barrier. Follow the light.",
+    "englishSeconds": 5.78,
+    "slot": 6.350000000000001
+  },
+  {
+    "clip": "camp-1",
+    "text": "पंद्रहवाँ दिन। पौ फटते ही द्वीप बहकर पास आते हैं, और जब तक वे सटे रहते हैं, हम रस्सी से पार होते हैं।",
+    "delivery": "quiet journal dictation at the end of a long day",
+    "english": "Day fifteen. At first light the isles drift together, and we rope across while they touch.",
+    "englishSeconds": 6.140998,
+    "slot": 6.25
+  },
+  {
+    "clip": "camp-2",
+    "text": "हर रस्सी हमारे पीछे टूट जाती है। जो भी पीछे आएगा, उसे निर्माताओं के पुलों की ज़रूरत होगी।",
+    "delivery": "quiet journal dictation, matter of fact",
+    "english": "Every rope parts behind us. Whoever follows will need the builders' bridges.",
+    "englishSeconds": 5.974286,
+    "slot": 6.15
+  },
+  {
+    "clip": "camp-3",
+    "text": "आखिरी द्वीप पर डेरा। नायरा होती तो हर गाँठ दो बार जाँचती।",
+    "delivery": "quiet journal dictation, a fond smile in the voice",
+    "english": "Camp on the last isle. Nyra would have checked every knot twice.",
+    "englishSeconds": 5.455692,
+    "slot": 5.75
+  },
+  {
+    "clip": "ice-1",
+    "text": "मैंने अपना निशान जमी बर्फ़ में खोद दिया है, जहाँ गिरती बर्फ़ उसे दबा न सके।",
+    "delivery": "recorded in the cold, practical and steady",
+    "english": "I've cut our sign into the ice, where the snow can't bury it.",
+    "englishSeconds": 3.697755,
+    "slot": 4.15
+  },
+  {
+    "clip": "ice-2",
+    "text": "पतली बर्फ़ पर मत रुकना। तीर चक्र की ओर इशारा करता है।",
+    "delivery": "recorded in the cold, practical advice",
+    "english": "Don't stop on the thin ice. The arrow points to the ring.",
+    "englishSeconds": 4.205692,
+    "slot": 5.55
+  },
+  {
+    "clip": "castle-1",
+    "text": "जो भी पीछे आए, उसके लिए मैंने किले का पता छोड़ा है। वह सिर्फ़ सही क्रम में जवाब देता है।",
+    "delivery": "recorded, calm and warm",
+    "english": "I've left the castle's address for whoever follows. It only answers in order.",
+    "englishSeconds": 5.564082,
+    "slot": 5.75
+  },
+  {
+    "clip": "castle-2",
+    "text": "पहले पानी, फिर जड़ों का सर्पिल, फिर पेड़ों के ऊपर अर्धचंद्र।",
+    "delivery": "recorded, calm and clear, naming each step",
+    "english": "Water first, then the spiral of roots, then the crescent above the trees.",
+    "englishSeconds": 5.847551,
+    "slot": 6.049999999999999
+  },
+  {
+    "clip": "castle-3",
+    "text": "यह आखिरी पहेली है जो मैं तुम्हारे लिए छोड़ रही हूँ। उसके आगे, समुद्र।",
+    "delivery": "recorded, warm, a little wistful",
+    "english": "It's the last puzzle I'll leave you. Beyond it, the sea.",
+    "englishSeconds": 4.362404,
+    "slot": 4.850000000000001
+  },
+  {
+    "clip": "reunion-1",
+    "text": "नायरा।",
+    "delivery": "live and close, overwhelmed with relief, almost a whisper",
+    "english": "Nyra.",
+    "englishSeconds": 1.44898,
+    "slot": 1.9499999999999993
+  },
+  {
+    "clip": "reunion-2",
+    "text": "मुझे पता था, तुम रोशनी के पीछे आओगी। मैंने हर दरवाज़े पर उसे जलाए रखा।",
+    "delivery": "live and close, tender, holding back tears",
+    "english": "I knew you'd follow the light. I kept it burning at every door.",
+    "englishSeconds": 4.420794,
+    "slot": 4.75
+  },
+  {
+    "clip": "reunion-3a",
+    "text": "तुम हमारा नक्शा ले आईं। इस बार, अगला सफ़र हम साथ चुनेंगे।",
+    "delivery": "live and close, warm and hopeful",
+    "english": "You brought our map. This time, we choose the next crossing together.",
+    "englishSeconds": 4.732653,
+    "slot": 4.949999999999999
+  },
+  {
+    "clip": "reunion-3b",
+    "text": "घर का रास्ता खुला है। अगले सफ़र में मेरे साथ रहना।",
+    "delivery": "live and close, warm and hopeful",
+    "english": "The way home is open. Stay beside me for the next one.",
+    "englishSeconds": 4.127302,
+    "slot": 4.949999999999999
+  },
+  {
+    "clip": "reunion-4",
+    "text": "चलो। और भी दरवाज़े हैं।",
+    "delivery": "live and close, a smile in the voice",
+    "english": "Come on. There are more doors.",
+    "englishSeconds": 1.802404,
+    "slot": 6.350000000000001
+  },
+  {
+    "clip": "vault-arrival",
+    "text": "यहाँ अंदर उनकी हवा टिकी है, नायरा। तुम चल सकती हो। मैं अभी बस रोशनी हूँ, तो मेरे पीछे आओ।",
+    "delivery": "live and close, warm and a little amazed, gently leading",
+    "english": "Their air holds in here, Nyra. You can walk. I'm only light for now, so follow me.",
+    "englishSeconds": 4.900998,
+    "slot": 6.37
+  },
+  {
+    "clip": "vault-bay-court",
+    "text": "एक झिरी से आती तारों की रोशनी, जैसे प्रांगण में धूप। आईने अब भी घूमते हैं।",
+    "delivery": "live, curious, recognising something familiar",
+    "english": "Starlight through a slit, like the sun in the court. The mirrors still turn.",
+    "englishSeconds": 6.034286,
+    "slot": 7.84
+  },
+  {
+    "clip": "vault-bay-checkpoint",
+    "text": "निर्माताओं का एक रखवाला, क्लर्कों से भी पुराना। अपनी ढाल से उसका ठप्पा मोड़ दो।",
+    "delivery": "live, wry about the keeper, then a practical tip",
+    "english": "A keeper of the builders, older than the clerks. Turn its stamp aside with your shield.",
+    "englishSeconds": 5.789184,
+    "slot": 7.53
+  },
+  {
+    "clip": "vault-bay-isles",
+    "text": "स्तंभ का लेंस जकड़कर बंद है। उस छज्जे पर ऊपर कुछ है, जो यह कर रहा है।",
+    "delivery": "live, thoughtful, looking up",
+    "english": "The pylon's lens is held shut. Something up on that shelf is doing it.",
+    "englishSeconds": 5.25059,
+    "slot": 6.83
+  },
+  {
+    "clip": "vault-bay-frost",
+    "text": "फिर से बर्फ़ और एक प्लेट। वहाँ से तुम उसे धकेल नहीं सकतीं, पर गोले की डोर उसे खींच सकती है।",
+    "delivery": "live, practical, a small smile",
+    "english": "Ice and a plate again. You can't push it from there, but the orb's tether can drag it.",
+    "englishSeconds": 6.19,
+    "slot": 8.05
+  },
+  {
+    "clip": "vault-power-frost",
+    "text": "सील जाग गई। अब बर्फ़ पर ऊपर चढ़ो। मेरी कुल्हाड़ियाँ अब भी तुम्हारे पास हैं।",
+    "delivery": "live, encouraging, a little proud",
+    "english": "That woke the seal. Up the ice now. You still have my axes.",
+    "englishSeconds": 4.547551,
+    "slot": 5.91
+  },
+  {
+    "clip": "vault-bay-forest",
+    "text": "बीजाणु-पानी। उन पत्थरों पर रुकी मत रहना।",
+    "delivery": "live, quick warning, calm",
+    "english": "Spore water. Don't stand still on those stones.",
+    "englishSeconds": 3.630998,
+    "slot": 4.72
+  },
+  {
+    "clip": "vault-bank-forest",
+    "text": "वह बेल तुम्हें थाम लेगी। चलो, ऊपर।",
+    "delivery": "live, light and encouraging",
+    "english": "That ivy will hold you. Up you go.",
+    "englishSeconds": 3.082404,
+    "slot": 4.01
+  },
+  {
+    "clip": "vault-bay-sea",
+    "text": "सील उस गलियारे के आखिर में है, और पानी उसी से बाहर बहता है। एक साँस, नायरा।",
+    "delivery": "live, serious and steady, then soft on her name",
+    "english": "The seal is at the end of that passage, and the water pours out of it. One breath, Nyra.",
+    "englishSeconds": 6.60898,
+    "slot": 8.59
+  },
+  {
+    "clip": "vault-done-court",
+    "text": "एक। पहले दरवाज़े का सबक।",
+    "delivery": "live, quietly pleased",
+    "english": "One. The first door's lesson.",
+    "englishSeconds": 2.76898,
+    "slot": 3.6
+  },
+  {
+    "clip": "vault-done-checkpoint",
+    "text": "दो। उसने तुम्हारे आगे सिर झुकाया। मुझे लगता है, वह मंज़ूरी थी।",
+    "delivery": "live, amused",
+    "english": "Two. It bowed to you. I think that was approval.",
+    "englishSeconds": 4.284082,
+    "slot": 5.57
+  },
+  {
+    "clip": "vault-done-isles",
+    "text": "तीन। सील पुल की रोशनी पी गई। निर्माताओं की केबल पर झूलकर वापस आओ।",
+    "delivery": "live, practical",
+    "english": "Three. The seal drank the bridge's light. Swing back on the builders' cable.",
+    "englishSeconds": 5.720794,
+    "slot": 7.44
+  },
+  {
+    "clip": "vault-done-frost",
+    "text": "चार। बढ़िया चढ़ाई।",
+    "delivery": "live, warm, brief",
+    "english": "Four. Nice climb.",
+    "englishSeconds": 2.272653,
+    "slot": 2.95
+  },
+  {
+    "clip": "vault-done-forest",
+    "text": "पाँच। एक और।",
+    "delivery": "live, brief, focused",
+    "english": "Five. One more.",
+    "englishSeconds": 2.429388,
+    "slot": 3.16
+  },
+  {
+    "clip": "vault-done-sea",
+    "text": "छह। पूरा पता हो गया। दरवाज़े पर वापस आओ।",
+    "delivery": "live, relieved and eager",
+    "english": "Six. That's the whole address. Come back to the door.",
+    "englishSeconds": 4.284082,
+    "slot": 5.57
+  },
+  {
+    "clip": "vault-reveal-address",
+    "text": "छह दुनियाएँ, एक पता। यह हमें जानता है।",
+    "delivery": "live, hushed, in awe",
+    "english": "Six worlds, one address. It knows us.",
+    "englishSeconds": 3.630998,
+    "slot": 4.35
+  },
+  {
+    "clip": "vault-reveal-fate",
+    "text": "वे कभी मिटे नहीं, नायरा। जब उनकी दुनियाएँ खत्म होने लगीं, उन्होंने अपने शरीर छोड़ दिए और रोशनी बन गए।",
+    "delivery": "live, slow, tender, understanding something huge",
+    "english": "They never died out, Nyra. When their worlds failed, they let their bodies go and became light.",
+    "englishSeconds": 6.970794,
+    "slot": 7.15
+  },
+  {
+    "clip": "vault-reveal-doors",
+    "text": "हमने जो भी दरवाज़ा खोला, उसे उन्हीं में से किसी ने जगाए रखा था, बाद में आने वालों के लिए।",
+    "delivery": "live, quiet, grateful",
+    "english": "Every door we opened was kept awake by one of them, for whoever came after.",
+    "englishSeconds": 5.28898,
+    "slot": 5.350000000000001
+  },
+  {
+    "clip": "vault-reveal-next",
+    "text": "और एक पता, जहाँ वे कभी पहुँच न सके। उसे उन्होंने हमारे लिए खुला छोड़ दिया।",
+    "delivery": "live, soft wonder, an invitation",
+    "english": "And one address they never reached. They left it open for us.",
+    "englishSeconds": 4.989388,
+    "slot": 5.350000000000001
+  },
+  {
+    "clip": "vault-crossing",
+    "text": "इस बार, साथ-साथ।",
+    "delivery": "live, close, warm and certain",
+    "english": "Together, this time.",
+    "englishSeconds": 1.48898,
+    "slot": 1.94
+  }
+]

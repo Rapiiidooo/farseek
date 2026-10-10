@@ -1,0 +1,216 @@
+{
+  "arguments": {
+    "pid": "f443c77d-b2e3-4f08-9a46-1552fed84b47",
+    "budget_credits": 1500,
+    "prompt": "In this project the frame \"Mira FR vault\" should hold one ElevenLabs text to speech node per line below, labeled with its id, all with the same settings: the model ElevenLabs Eleven v3, the stock catalog voice \"Narration :: Warm & Inviting :: Pleasant :: Nikki (F)\", stability 0.5, similarity 0.75, style exaggeration low or default, speaker boost on, normal speed, mp3 at 44.1 kHz, language French (fr) if the node has a language setting. Create any node that is missing, set each node's text to exactly the quoted French text below (the parentheses are delivery notes, never spoken), and run every node that has no output yet; leave nodes that already have an output as they are. Then report a table with the columns Label | Node ID | Status | Error | Output fid, one row for every line below, the label in bold (for example | **radio-1** | ... |) and the output fid in backticks.\n\nLines:\nvault-arrival (live and close, warm and a little amazed, gently leading): \"Ici, leur air tient encore, Nyra. Tu peux marcher. Je ne suis que lumière pour l’instant, alors suis-moi.\"\nvault-bay-court (live, curious, recognising something familiar): \"La lumière des étoiles par une fente, comme le soleil dans la cour. Les miroirs tournent encore.\"\nvault-bay-checkpoint (live, wry about the keeper, then a practical tip): \"Un veilleur des bâtisseurs, plus ancien que les préposés. Détourne son tampon avec ton bouclier.\"\nvault-bay-isles (live, thoughtful, looking up): \"La lentille du pylône est bloquée. Quelque chose, là-haut sur cette corniche, la retient.\"\nvault-bay-frost (live, practical, a small smile): \"De la glace et une dalle, encore. Tu ne peux pas la pousser de là, mais le lien de l’orbe peut la tirer.\"\nvault-power-frost (live, encouraging, a little proud): \"Ça a réveillé le sceau. Monte sur la glace, maintenant. Tu as encore mes piolets.\"\nvault-bay-forest (live, quick warning, calm): \"De l’eau de spores. Ne reste pas immobile sur ces pierres.\"\nvault-bank-forest (live, light and encouraging): \"Ce lierre te portera. Allez, grimpe.\"\nvault-bay-sea (live, serious and steady, then soft on her name): \"Le sceau est au bout de ce passage, et l’eau en jaillit. Une seule inspiration, Nyra.\"\nvault-done-court (live, quietly pleased): \"Un. La leçon de la première porte.\"\nvault-done-checkpoint (live, amused): \"Deux. Il s’est incliné devant toi. Je crois que c’était une approbation.\"\nvault-done-isles (live, practical): \"Trois. Le sceau a bu la lumière du pont. Reviens en te balançant au câble des bâtisseurs.\"\nvault-done-frost (live, warm, brief): \"Quatre. Belle escalade.\"\nvault-done-forest (live, brief, focused): \"Cinq. Plus qu’un.\"\nvault-done-sea (live, relieved and eager): \"Six. L’adresse est complète. Reviens à la porte.\"\nvault-reveal-address (live, hushed, in awe): \"Six mondes, une adresse. Elle nous connaît.\"\nvault-reveal-fate (live, slow, tender, understanding something huge): \"Ils n’ont jamais disparu, Nyra. Quand leurs mondes ont péri, ils ont quitté leur corps et sont devenus lumière.\"\nvault-reveal-doors (live, quiet, grateful): \"Chaque porte que nous avons ouverte était gardée éveillée par l’un d’eux, pour ceux qui viendraient ensuite.\"\nvault-reveal-next (live, soft wonder, an invitation): \"Et une adresse qu’ils n’ont jamais atteinte. Ils l’ont laissée ouverte pour nous.\"\nvault-crossing (live, close, warm and certain): \"Ensemble, cette fois.\""
+  },
+  "seconds": 258.696,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"success\": true,\n  \"response_text\": \"The 20 ElevenLabs text-to-speech nodes for the French vault lines have been created inside the comment frame **\\\"Mira FR vault\\\"** with the requested voice and synthesis parameters, executed, and their audio outputs generated.\\n\\n### Node Configuration Summary\\n- **Node Type**: `text_to_speech_elevenlabs`\\n- **Model**: `ElevenLabs :: Eleven v3 (5k chars, supports v3 audio tags)`\\n- **Voice**: `Narration :: Warm & Inviting :: Pleasant :: Nikki (F)`\\n- **Stability**: `0.5`\\n- **Similarity**: `0.75`\\n- **Frame**: `Mira FR vault`\\n\\n---\\n\\n### Output Table\\n\\n| Label | Node ID | Status | Error | Output fid |\\n| :--- | :--- | :--- | :--- | :--- |\\n| **vault-arrival** | d291ffc5 | success | None | `beaee94a-e967-422b-89c9-33c554178f15` |\\n| **vault-bay-court** | 3aa80183 | success | None | `4779b0f6-4c8d-4358-a01d-6a44e8697b45` |\\n| **vault-bay-checkpoint** | 9c558ccd | success | None | `cdf0990e-7b1e-43d0-8d03-2cd91af3993b` |\\n| **vault-bay-isles** | 565ff16e | success | None | `73dbecb1-2084-44e8-8471-597a8079d797` |\\n| **vault-bay-frost** | f62bed2d | success | None | `d717d699-9220-4728-b5a4-e9eb06627dcc` |\\n| **vault-power-frost** | f664f47f | success | None | `7c2ffde5-d616-4e56-9090-f30b394cefbf` |\\n| **vault-bay-forest** | 1e130936 | success | None | `85acd016-167b-4343-943b-e954c134744f` |\\n| **vault-bank-forest** | bafee49b | success | None | `900390f0-1c9d-4bc4-b235-bb2ab038aece` |\\n| **vault-bay-sea** | 764d503a | success | None | `96c320d5-5a4f-4e22-a4e3-7d6ca0105f72` |\\n| **vault-done-court** | d1d63fcf | success | None | `2a94cb3c-cef3-46d3-87ea-d81994b3779e` |\\n| **vault-done-checkpoint** | d991854c | success | None | `a3172252-724c-435e-8009-56e7fd35d58a` |\\n| **vault-done-isles** | 5940c37f | success | None | `a4daa051-a838-4968-9bf6-3013c4d8537e` |\\n| **vault-done-frost** | e2958607 | success | None | `7cb41a58-4108-42b4-917d-8873e0853d04` |\\n| **vault-done-forest** | 29f138aa | success | None | `923bdb52-0d06-4296-85f8-5c25866ea722` |\\n| **vault-done-sea** | da1dba1d | success | None | `fdbd44f3-4402-4589-870f-8a5311cf6d97` |\\n| **vault-reveal-address** | a30c597f | success | None | `0f20b186-bcfb-4f83-8790-9abbc730932c` |\\n| **vault-reveal-fate** | cd84ea11 | success | None | `0507f117-b1f4-449f-a438-64b19ee4ca85` |\\n| **vault-reveal-doors** | d90315a5 | success | None | `b131107e-c991-4b8d-b969-808a902f971e` |\\n| **vault-reveal-next** | 50c02961 | success | None | `1f76d60e-47d0-4a41-a210-629df6a81dd2` |\\n| **vault-crossing** | edae6962 | success | None | `b90101e6-24e4-4d6a-ba21-741b020c8d3d` |\",\n  \"budget_credits\": 1500,\n  \"graph_identifiers\": {\n    \"nodes\": [\n      {\n        \"short_id\": \"1b1c7559\",\n        \"node_id\": \"1b1c7559-59e7-4094-afef-cd67460dfa65\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"1cbe3191\",\n        \"node_id\": \"1cbe3191-00b4-49ef-9425-39e5966ffb89\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"1e130936\",\n        \"node_id\": \"1e130936-974e-46b3-aae9-77227c7139c3\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"22df06d6\",\n        \"node_id\": \"22df06d6-d19b-4925-8c13-afaa92a05523\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"29f138aa\",\n        \"node_id\": \"29f138aa-db0e-4133-a88f-32eb9e543ff7\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"3aa80183\",\n        \"node_id\": \"3aa80183-8689-4407-9729-ba4679ce1baa\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"3e30a615\",\n        \"node_id\": \"3e30a615-40fa-486d-bd5b-b01da7aedbfc\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"50c02961\",\n        \"node_id\": \"50c02961-0e50-44a3-bd19-eaa3152f6363\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"565ff16e\",\n        \"node_id\": \"565ff16e-e2fb-40ad-84b9-26d0fd67a1e3\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"5940c37f\",\n        \"node_id\": \"5940c37f-23e9-440a-b586-5e9b0c1c21cb\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"5ab94628\",\n        \"node_id\": \"5ab94628-9c53-41be-b639-e1a7c061859b\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"68921bef\",\n        \"node_id\": \"68921bef-e255-4595-8ef9-62675a28a01c\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"74f53072\",\n        \"node_id\": \"74f53072-386a-4d1d-9f49-b3cd98ae0942\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"764d503a\",\n        \"node_id\": \"764d503a-09a8-4425-b6e7-b8dbf05c5f9b\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"7a5c23e2\",\n        \"node_id\": \"7a5c23e2-65a2-4a10-a012-37d55ffd584a\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"7ce6c864\",\n        \"node_id\": \"7ce6c864-0fd7-48a4-9650-f0870f10af55\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"8053b8ce\",\n        \"node_id\": \"8053b8ce-1b7f-488f-8646-deb5893cec0d\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"92cd8e46\",\n        \"node_id\": \"92cd8e46-b9a6-4732-9914-1718b9183e31\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"96e13f05\",\n        \"node_id\": \"96e13f05-0d57-4e21-ab81-6fa3fe00064f\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"9c558ccd\",\n        \"node_id\": \"9c558ccd-d9ce-4604-b419-a0596d63fa2c\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"a30c597f\",\n        \"node_id\": \"a30c597f-fe0c-44d9-bc42-783dd9f98f4f\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"a62607ea\",\n        \"node_id\": \"a62607ea-e597-4175-b568-7a666999d0c0\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"ab57c956\",\n        \"node_id\": \"ab57c956-77b2-4a8f-aacd-6552a5bca69a\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"abbc86cc\",\n        \"node_id\": \"abbc86cc-5df9-46c4-a3ad-c89724a91a55\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"bafee49b\",\n        \"node_id\": \"bafee49b-4ffb-4cc3-ac97-ee777dd338e8\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"cd84ea11\",\n        \"node_id\": \"cd84ea11-3d10-4b6f-b887-af5f53681e69\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"d1d63fcf\",\n        \"node_id\": \"d1d63fcf-5065-437e-b25a-e93a228ac5de\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"d291ffc5\",\n        \"node_id\": \"d291ffc5-37ed-4ef0-b3f0-ada7778dd9a8\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"d90315a5\",\n        \"node_id\": \"d90315a5-6bdc-4b36-804b-b77e7f3884a5\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"d991854c\",\n        \"node_id\": \"d991854c-27cb-44a6-8dfd-dcc2ddc2f304\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"da1dba1d\",\n        \"node_id\": \"da1dba1d-1a08-4882-96be-5ba76aa144d9\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"def62b52\",\n        \"node_id\": \"def62b52-8ae1-4a4e-b719-6c186c2dc476\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"e2958607\",\n        \"node_id\": \"e2958607-0fbd-426c-9576-b082ed55156f\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"e34e35c3\",\n        \"node_id\": \"e34e35c3-b2d8-4dc3-83f5-99b389d99a16\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"edae6962\",\n        \"node_id\": \"edae6962-9628-4ad8-908b-e9e3d458a82d\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"f62bed2d\",\n        \"node_id\": \"f62bed2d-7bbf-45df-b000-e91ac56c9e73\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"f664f47f\",\n        \"node_id\": \"f664f47f-6c02-45e0-80ff-dc5f2cc8c751\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      }\n    ],\n    \"connections\": []\n  },\n  \"cost_usd\": 0.758785625,\n  \"cost_credits\": 100,\n  \"remaining_budget_credits\": 1400,\n  \"budget_exhausted\": false\n}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "response_text": "The 20 ElevenLabs text-to-speech nodes for the French vault lines have been created inside the comment frame **\"Mira FR vault\"** with the requested voice and synthesis parameters, executed, and their audio outputs generated.\n\n### Node Configuration Summary\n- **Node Type**: `text_to_speech_elevenlabs`\n- **Model**: `ElevenLabs :: Eleven v3 (5k chars, supports v3 audio tags)`\n- **Voice**: `Narration :: Warm & Inviting :: Pleasant :: Nikki (F)`\n- **Stability**: `0.5`\n- **Similarity**: `0.75`\n- **Frame**: `Mira FR vault`\n\n---\n\n### Output Table\n\n| Label | Node ID | Status | Error | Output fid |\n| :--- | :--- | :--- | :--- | :--- |\n| **vault-arrival** | d291ffc5 | success | None | `beaee94a-e967-422b-89c9-33c554178f15` |\n| **vault-bay-court** | 3aa80183 | success | None | `4779b0f6-4c8d-4358-a01d-6a44e8697b45` |\n| **vault-bay-checkpoint** | 9c558ccd | success | None | `cdf0990e-7b1e-43d0-8d03-2cd91af3993b` |\n| **vault-bay-isles** | 565ff16e | success | None | `73dbecb1-2084-44e8-8471-597a8079d797` |\n| **vault-bay-frost** | f62bed2d | success | None | `d717d699-9220-4728-b5a4-e9eb06627dcc` |\n| **vault-power-frost** | f664f47f | success | None | `7c2ffde5-d616-4e56-9090-f30b394cefbf` |\n| **vault-bay-forest** | 1e130936 | success | None | `85acd016-167b-4343-943b-e954c134744f` |\n| **vault-bank-forest** | bafee49b | success | None | `900390f0-1c9d-4bc4-b235-bb2ab038aece` |\n| **vault-bay-sea** | 764d503a | success | None | `96c320d5-5a4f-4e22-a4e3-7d6ca0105f72` |\n| **vault-done-court** | d1d63fcf | success | None | `2a94cb3c-cef3-46d3-87ea-d81994b3779e` |\n| **vault-done-checkpoint** | d991854c | success | None | `a3172252-724c-435e-8009-56e7fd35d58a` |\n| **vault-done-isles** | 5940c37f | success | None | `a4daa051-a838-4968-9bf6-3013c4d8537e` |\n| **vault-done-frost** | e2958607 | success | None | `7cb41a58-4108-42b4-917d-8873e0853d04` |\n| **vault-done-forest** | 29f138aa | success | None | `923bdb52-0d06-4296-85f8-5c25866ea722` |\n| **vault-done-sea** | da1dba1d | success | None | `fdbd44f3-4402-4589-870f-8a5311cf6d97` |\n| **vault-reveal-address** | a30c597f | success | None | `0f20b186-bcfb-4f83-8790-9abbc730932c` |\n| **vault-reveal-fate** | cd84ea11 | success | None | `0507f117-b1f4-449f-a438-64b19ee4ca85` |\n| **vault-reveal-doors** | d90315a5 | success | None | `b131107e-c991-4b8d-b969-808a902f971e` |\n| **vault-reveal-next** | 50c02961 | success | None | `1f76d60e-47d0-4a41-a210-629df6a81dd2` |\n| **vault-crossing** | edae6962 | success | None | `b90101e6-24e4-4d6a-ba21-741b020c8d3d` |",
+      "budget_credits": 1500,
+      "graph_identifiers": {
+        "nodes": [
+          {
+            "short_id": "1b1c7559",
+            "node_id": "1b1c7559-59e7-4094-afef-cd67460dfa65",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "1cbe3191",
+            "node_id": "1cbe3191-00b4-49ef-9425-39e5966ffb89",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "1e130936",
+            "node_id": "1e130936-974e-46b3-aae9-77227c7139c3",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "22df06d6",
+            "node_id": "22df06d6-d19b-4925-8c13-afaa92a05523",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "29f138aa",
+            "node_id": "29f138aa-db0e-4133-a88f-32eb9e543ff7",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "3aa80183",
+            "node_id": "3aa80183-8689-4407-9729-ba4679ce1baa",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "3e30a615",
+            "node_id": "3e30a615-40fa-486d-bd5b-b01da7aedbfc",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "50c02961",
+            "node_id": "50c02961-0e50-44a3-bd19-eaa3152f6363",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "565ff16e",
+            "node_id": "565ff16e-e2fb-40ad-84b9-26d0fd67a1e3",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "5940c37f",
+            "node_id": "5940c37f-23e9-440a-b586-5e9b0c1c21cb",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "5ab94628",
+            "node_id": "5ab94628-9c53-41be-b639-e1a7c061859b",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "68921bef",
+            "node_id": "68921bef-e255-4595-8ef9-62675a28a01c",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "74f53072",
+            "node_id": "74f53072-386a-4d1d-9f49-b3cd98ae0942",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "764d503a",
+            "node_id": "764d503a-09a8-4425-b6e7-b8dbf05c5f9b",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "7a5c23e2",
+            "node_id": "7a5c23e2-65a2-4a10-a012-37d55ffd584a",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "7ce6c864",
+            "node_id": "7ce6c864-0fd7-48a4-9650-f0870f10af55",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "8053b8ce",
+            "node_id": "8053b8ce-1b7f-488f-8646-deb5893cec0d",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "92cd8e46",
+            "node_id": "92cd8e46-b9a6-4732-9914-1718b9183e31",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "96e13f05",
+            "node_id": "96e13f05-0d57-4e21-ab81-6fa3fe00064f",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "9c558ccd",
+            "node_id": "9c558ccd-d9ce-4604-b419-a0596d63fa2c",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "a30c597f",
+            "node_id": "a30c597f-fe0c-44d9-bc42-783dd9f98f4f",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "a62607ea",
+            "node_id": "a62607ea-e597-4175-b568-7a666999d0c0",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "ab57c956",
+            "node_id": "ab57c956-77b2-4a8f-aacd-6552a5bca69a",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "abbc86cc",
+            "node_id": "abbc86cc-5df9-46c4-a3ad-c89724a91a55",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "bafee49b",
+            "node_id": "bafee49b-4ffb-4cc3-ac97-ee777dd338e8",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "cd84ea11",
+            "node_id": "cd84ea11-3d10-4b6f-b887-af5f53681e69",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "d1d63fcf",
+            "node_id": "d1d63fcf-5065-437e-b25a-e93a228ac5de",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "d291ffc5",
+            "node_id": "d291ffc5-37ed-4ef0-b3f0-ada7778dd9a8",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "d90315a5",
+            "node_id": "d90315a5-6bdc-4b36-804b-b77e7f3884a5",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "d991854c",
+            "node_id": "d991854c-27cb-44a6-8dfd-dcc2ddc2f304",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "da1dba1d",
+            "node_id": "da1dba1d-1a08-4882-96be-5ba76aa144d9",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "def62b52",
+            "node_id": "def62b52-8ae1-4a4e-b719-6c186c2dc476",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "e2958607",
+            "node_id": "e2958607-0fbd-426c-9576-b082ed55156f",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "e34e35c3",
+            "node_id": "e34e35c3-b2d8-4dc3-83f5-99b389d99a16",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "edae6962",
+            "node_id": "edae6962-9628-4ad8-908b-e9e3d458a82d",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "f62bed2d",
+            "node_id": "f62bed2d-7bbf-45df-b000-e91ac56c9e73",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "f664f47f",
+            "node_id": "f664f47f-6c02-45e0-80ff-dc5f2cc8c751",
+            "node_type": "text_to_speech_elevenlabs"
+          }
+        ],
+        "connections": []
+      },
+      "cost_usd": 0.758785625,
+      "cost_credits": 100,
+      "remaining_budget_credits": 1400,
+      "budget_exhausted": false
+    },
+    "isError": false
+  }
+}

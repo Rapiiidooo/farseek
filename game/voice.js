@@ -1,4 +1,4 @@
-import { t } from "./i18n.js";
+import { t, language } from "./i18n.js";
 
 // Mira's lines, each with its subtitle, through one gain under the master volume.
 // `sound.voiceActive` is true while a line is heard, so the mix can make room for it.
@@ -6,6 +6,13 @@ import { t } from "./i18n.js";
 const LEVEL = 0.85;
 const SPEAKER = t("Mira");
 const voices = new WeakMap();
+// Pauses a scene keeps after a line, before the next one or its own end.
+export const LINE_GAP = 0.2;
+export const LAST_GAP = 0.3;
+
+// A scene's clock rate while a line plays: slower when the line runs past the room the scene
+// gives it, as a translated take can, so the next line and the camera's next move wait for it.
+export const paceFor = (room, spoken) => room / Math.max(room, spoken);
 
 export function miraVoice(sound) {
   let voice = voices.get(sound);
@@ -62,11 +69,18 @@ class Voice {
     if (!clip) {
       clip = { id, state: "loading" };
       this.clips.set(id, clip);
-      fetch(new URL(`./audio/voice/${id}.mp3`, import.meta.url))
-        .then((response) => {
+      // A language without its own take of a line falls back on the English one.
+      const take = (folder) =>
+        fetch(
+          new URL(`./audio/voice/${folder}${id}.mp3`, import.meta.url),
+        ).then((response) => {
           if (!response.ok) throw new Error(`Voice ${id} ${response.status}`);
           return response.arrayBuffer();
-        })
+        });
+      (language === "en"
+        ? take("")
+        : take(`${language}/`).catch(() => take(""))
+      )
         .then((bytes) => {
           clip.bytes = bytes;
           this.decode(clip);
@@ -89,11 +103,16 @@ class Voice {
       .catch(() => (clip.state = "failed"));
   }
 
+  // How long a line takes: its take once decoded, otherwise the English take's `seconds`.
+  length(line) {
+    return this.clips.get(line.id)?.buffer?.duration ?? line.seconds;
+  }
+
   // One line: { id, text, mode: "radio" | "tape" | "live", seconds }. A clip still on its
   // way gets a moment to arrive before the line falls back to its subtitle.
   say(line, hud) {
     const clip = this.load(line.id);
-    hud?.subtitle(line.text, line.seconds + 0.4, SPEAKER);
+    hud?.subtitle(line.text, this.length(line) + 0.4, SPEAKER);
     const entry = { line, hud, clip, offset: 0, owned: true };
     const record = { id: line.id, mode: line.mode, source: "pending" };
     this.log.push(record);

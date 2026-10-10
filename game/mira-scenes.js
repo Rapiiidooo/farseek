@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { Shot } from "./story.js";
-import { miraVoice } from "./voice.js";
+import { miraVoice, paceFor, LINE_GAP, LAST_GAP } from "./voice.js";
 import { t } from "./i18n.js";
 
 // Mira at each crossing: a short scene over what she left, once per expedition. `seconds` is
@@ -112,13 +112,21 @@ export class Beat extends Shot {
     this.beat = beat;
     this.voice = miraVoice(sound);
     this.cues = cues.map(([at, id]) => ({ at, line: miraLine(id) }));
+    this.rate = 1;
   }
 
   update(dt, camera) {
-    super.update(dt, camera);
+    super.update(dt * this.rate, camera);
     this.voice.alive();
-    while (this.cues.length && this.t >= this.cues[0].at)
-      this.voice.say(this.cues.shift().line, this.hud);
+    while (this.cues.length && this.t >= this.cues[0].at) {
+      const { at, line } = this.cues.shift();
+      this.voice.say(line, this.hud);
+      const next = this.cues[0]?.at;
+      this.rate = paceFor(
+        (next ?? this.end) - at,
+        this.voice.length(line) + (next === undefined ? LAST_GAP : LINE_GAP),
+      );
+    }
     if (this.done) this.voice.release();
   }
 

@@ -1,0 +1,264 @@
+{
+  "files": [
+    {
+      "label": "camp-1",
+      "fid": "08c31bcf-e77e-4ef1-9649-9b75a35c1cdc",
+      "description": "A woman reads a short, poetic passage in French about islands approaching each other.",
+      "bytes": 127522,
+      "sha256": "c80a930a31a0195c0967aba3003e6e9273e2eff689ddeaef9217a2105b69668c"
+    },
+    {
+      "label": "camp-2",
+      "fid": "b1ef3627-df29-4053-adc8-6f7f202d7921",
+      "description": "A woman speaks in French about the importance of the bridge builders.",
+      "bytes": 100355,
+      "sha256": "394a544dff03c7ea6058ea6fe5e4be5126c9411dbac094a165150c46d219b461"
+    },
+    {
+      "label": "camp-3",
+      "fid": "ecfd27c2-9c97-4558-adfc-1210b4ff8f67",
+      "description": "A woman speaks in French about checking knots on a boat.",
+      "bytes": 84054,
+      "sha256": "2347537b13640831bb731f638ed0dd4018a8a75cd346dd2b51e197a4ed169b45"
+    },
+    {
+      "label": "castle-1",
+      "fid": "bf829618-3388-42bb-9f0f-344f3533a289",
+      "description": "A woman speaks in French about sending the castle's address to someone who will follow them, noting that they only respond in order.",
+      "bytes": 77367,
+      "sha256": "8ebf0c74252218afeb37fc53c6c273717885a75871736df73b5585ef6acae4ee"
+    },
+    {
+      "label": "castle-2",
+      "fid": "45039940-7996-463e-9cb7-b952683ccbab",
+      "description": "A person is speaking in French, describing a sequence of shapes or symbols.",
+      "bytes": 104534,
+      "sha256": "a623ceda4fc620d8057996e970e82305ebce7ef83ff3e36d7d24fe90b81dc6e2"
+    },
+    {
+      "label": "castle-3",
+      "fid": "33b9b153-2828-489a-92ef-19a10af70637",
+      "description": "A woman speaks in French, saying that this is the last riddle she leaves, and beyond it lies the sea.",
+      "bytes": 77367,
+      "sha256": "e7e2f37513148c837c9160b82d26260cf17ccb8730607677140016cdd9e2c43d"
+    },
+    {
+      "label": "ice-1",
+      "fid": "cff4a52f-7835-42c8-882f-3518fc73e109",
+      "description": "A woman speaks in French, describing carving a sign into ice.",
+      "bytes": 89070,
+      "sha256": "b435afb164d3ad408e814a4db8ecc06dab44517f6c30cdb508f693cf6645558d"
+    },
+    {
+      "label": "ice-2",
+      "fid": "77e74b1d-f994-400b-8ff0-6c47f3f68e71",
+      "description": "A woman speaks in French, giving instructions about a game or activity.",
+      "bytes": 89070,
+      "sha256": "bd54414d7d4020f6605699d0cdbdbaf70f1577cce5e3cda7c106719caa82669e"
+    },
+    {
+      "label": "radio-1",
+      "fid": "a8cfc4c1-a004-4a3f-b128-ac7e030585dd",
+      "description": "A woman speaks in French, giving instructions to listeners.",
+      "bytes": 68590,
+      "sha256": "f0c8f4e72e4d34dedd44d254efa74adcaa208628b2b7d2b0b9cf703b183f30d6"
+    },
+    {
+      "label": "radio-2",
+      "fid": "588d1a91-78c1-4d87-bd10-892d6ba0cb21",
+      "description": "A woman speaks in French about customs officials requiring a stamped address on three tiles, noting that they only stamp the contravening ones.",
+      "bytes": 102862,
+      "sha256": "a30ccb18aa8a9999de171e899d5fdc369651226d2cc97b45ee24b6e4d0156c06"
+    },
+    {
+      "label": "radio-3",
+      "fid": "6fb679fb-ccba-4788-bb7b-665cfd9bcb73",
+      "description": "A woman speaks in French, asking for her orb at the ticket counter.",
+      "bytes": 63574,
+      "sha256": "d31ecf2470dbbbf696859e043db1241fb3ce9be77a172e47f82521050567562b"
+    },
+    {
+      "label": "radio-4",
+      "fid": "c0789b66-a8a2-468c-b1fb-5ef9b3c37017",
+      "description": "A woman speaks in French, giving instructions to continue past a distant door and follow the light.",
+      "bytes": 89070,
+      "sha256": "5c968e2db50e7ec7023f1e49d01ea8610aa99e3471f10bbde5383bbff3da11e5"
+    },
+    {
+      "label": "reunion-1",
+      "fid": "3a954af4-2446-42ed-977f-4406711a955f",
+      "description": "A person says the name \"Nyra\" in a clear, calm voice.",
+      "bytes": 23868,
+      "sha256": "2c04e7e3cf52846b5350cff46f6a9678dfec74747360b9d3cd26044181e602a0"
+    },
+    {
+      "label": "reunion-2",
+      "fid": "e7de7f05-0056-42ba-a056-8c24c5ba28e3",
+      "description": "A woman speaks in French about keeping lights on at every door.",
+      "bytes": 87816,
+      "sha256": "cf34166fb2b3329c5846b22a0801161d0dcfbdc8ef7d4e793d0c68ee7a20d360"
+    },
+    {
+      "label": "reunion-3a",
+      "fid": "e3023851-59d5-4c4a-b8a1-f8bf4224055a",
+      "description": "A woman speaks in French about bringing a map and choosing a route together.",
+      "bytes": 82382,
+      "sha256": "71c5dff7aed40903cfe67a34e5bc5460dd218ce325cf6ef2cfe155538257301c"
+    },
+    {
+      "label": "reunion-3b",
+      "fid": "598de448-4977-4315-a5dd-2d8c5fd87ce8",
+      "description": "A woman speaks in French, saying that the path back is open and asking the listener to stay by her side for the next one.",
+      "bytes": 72351,
+      "sha256": "715320815cc03eddc2d4784fbf15511550e98f16234dbd05020b6365d26d0eb4"
+    },
+    {
+      "label": "reunion-4",
+      "fid": "87a5a6af-94a4-4206-af65-4e675b170595",
+      "description": "A person speaks in French, saying there are other doors.",
+      "bytes": 35153,
+      "sha256": "746bf7dce83c88c9b753af7151edded02bc51b497e88e87701b590f2451f36c3"
+    },
+    {
+      "label": "vault-arrival",
+      "fid": "beaee94a-e967-422b-89c9-33c554178f15",
+      "description": "A female voice speaks in French, giving instructions to someone named Nira.",
+      "bytes": 119581,
+      "sha256": "3614a2353332275ed86323d36c5293f55afc406935aad553b5d68cc20682277b"
+    },
+    {
+      "label": "vault-bank-forest",
+      "fid": "900390f0-1c9d-4bc4-b235-bb2ab038aece",
+      "description": "A woman speaks in French, encouraging someone to climb.",
+      "bytes": 54379,
+      "sha256": "03a36065c919427f6482e3fe6d50058995bbd07c47527df4072350278ca513c3"
+    },
+    {
+      "label": "vault-bay-checkpoint",
+      "fid": "cdf0990e-7b1e-43d0-8d03-2cd91af3993b",
+      "description": "A woman with a soft, calm voice reads a poem in French.",
+      "bytes": 128776,
+      "sha256": "29a64269b5e0d7d4c93a2abb00f2d0f92dff73d67772298dbe173d1b9b2cbce5"
+    },
+    {
+      "label": "vault-bay-court",
+      "fid": "4779b0f6-4c8d-4358-a01d-6a44e8697b45",
+      "description": "A woman with a soft, gentle voice reads a poetic text in French about light and stars.",
+      "bytes": 118327,
+      "sha256": "27270038cbafa77680dbf10a2bf6023f4c30993987f4f6006b1d8bcd87b795f7"
+    },
+    {
+      "label": "vault-bay-forest",
+      "fid": "85acd016-167b-4343-943b-e954c134744f",
+      "description": "A woman speaks in French about not staying still on stones.",
+      "bytes": 78621,
+      "sha256": "5de9a85fd26219ae98867c493b3f8e215028ab2e80bce51845def2eaf0d04653"
+    },
+    {
+      "label": "vault-bay-frost",
+      "fid": "d717d699-9220-4728-b5a4-e9eb06627dcc",
+      "description": "A woman speaks in French about ice and a sphere.",
+      "bytes": 131284,
+      "sha256": "4a49e028221cfb6874b974d2c7fe454cd0f1954c05866f55391d56149338015a"
+    },
+    {
+      "label": "vault-bay-isles",
+      "fid": "73dbecb1-2084-44e8-8471-597a8079d797",
+      "description": "A woman speaks in French about a lens being stuck on a pylon.",
+      "bytes": 113311,
+      "sha256": "023ba202aa765c1509f27911f46399d6f1d132771430e0f9e16a84fcc9012aea"
+    },
+    {
+      "label": "vault-bay-sea",
+      "fid": "96c320d5-5a4f-4e22-a4e3-7d6ca0105f72",
+      "description": "A woman with a soft, calm voice reads a poetic text in French about nature.",
+      "bytes": 99101,
+      "sha256": "8a60bca4bb7838dc13d0083489d21558ac15f458744b8613f6c911988b46f1ab"
+    },
+    {
+      "label": "vault-crossing",
+      "fid": "b90101e6-24e4-4d6a-ba21-741b020c8d3d",
+      "description": "A person speaks in French, saying \"ensemble cette fois\".",
+      "bytes": 19689,
+      "sha256": "026ee193cf6a68237eb9b20dc2656f462e862097edb166d89223386b75a0d63d"
+    },
+    {
+      "label": "vault-done-checkpoint",
+      "fid": "a3172252-724c-435e-8009-56e7fd35d58a",
+      "description": "A woman speaks in French, expressing her thoughts about someone leaning in front of her and interpreting it as an approval.",
+      "bytes": 105788,
+      "sha256": "f87bbd967501a9be7d7a292f9a6cb9a0f1315d65588db7d96d2ea278df415f85"
+    },
+    {
+      "label": "vault-done-court",
+      "fid": "2a94cb3c-cef3-46d3-87ea-d81994b3779e",
+      "description": "A woman speaks in French, saying \"La leçon de la première porte.\"",
+      "bytes": 49364,
+      "sha256": "598978af7a830f4a86feb1cde1df7e39b8b7006d8bdeee89273e75fa07b1fd4d"
+    },
+    {
+      "label": "vault-done-forest",
+      "fid": "923bdb52-0d06-4296-85f8-5c25866ea722",
+      "description": "A person speaking the numbers five plus five in German.",
+      "bytes": 28884,
+      "sha256": "66756e1fe02e4904959f23d16e5eaf953017b48b54119746af2d759f582dd2d7"
+    },
+    {
+      "label": "vault-done-frost",
+      "fid": "7cb41a58-4108-42b4-917d-8873e0853d04",
+      "description": "A person speaks the French words for 'four' and 'beautiful climb'.",
+      "bytes": 35153,
+      "sha256": "acd542a72035181a83e54f19e046f70b9008d3efa448806047f7833da16f1ffc"
+    },
+    {
+      "label": "vault-done-isles",
+      "fid": "a4daa051-a838-4968-9bf6-3013c4d8537e",
+      "description": "A person counts to three and then reads a short, poetic text in French about a jump.",
+      "bytes": 113311,
+      "sha256": "ab8fdb397a40c712e78b274057f877f97ed6f52dfc3ad68a1cf28d89bf2286d1"
+    },
+    {
+      "label": "vault-done-sea",
+      "fid": "fdbd44f3-4402-4589-870f-8a5311cf6d97",
+      "description": "A woman speaks in French, providing instructions about an address and a door.",
+      "bytes": 66082,
+      "sha256": "22ff63fad1021c09f3f8d0bb81b6bd58ece1f1ba968eafa85b12aa1f7c7a7ab9"
+    },
+    {
+      "label": "vault-power-frost",
+      "fid": "7c2ffde5-d616-4e56-9090-f30b394cefbf",
+      "description": "A woman speaks in French, giving instructions to someone to wake up and get on the ice.",
+      "bytes": 89070,
+      "sha256": "afd50d82327ffcd97cca203705cfef9f3f1644cac9540b259f6a838ff6eda615"
+    },
+    {
+      "label": "vault-reveal-address",
+      "fid": "0f20b186-bcfb-4f83-8790-9abbc730932c",
+      "description": "A woman speaks in French, stating that she knows an address.",
+      "bytes": 51871,
+      "sha256": "668afd398d580579e85d57a0a890190eb20bf1f0368ee4bbcbc713b359beb7e1"
+    },
+    {
+      "label": "vault-reveal-doors",
+      "fid": "b131107e-c991-4b8d-b969-808a902f971e",
+      "description": "A person speaking in French about doors being kept open by someone.",
+      "bytes": 101609,
+      "sha256": "7191cb44bade84283027d463b4f0805b8038bd1c7528d2b5dc184895309205e4"
+    },
+    {
+      "label": "vault-reveal-fate",
+      "fid": "0507f117-b1f4-449f-a438-64b19ee4ca85",
+      "description": "A woman speaks in French about souls that never disappear, explaining that when their worlds perish, they leave their bodies and become light.",
+      "bytes": 119581,
+      "sha256": "1e4c3fdfe3bae8081ded6a1434c4f04b38d8e7b9deb364e8008b12a7615e137a"
+    },
+    {
+      "label": "vault-reveal-next",
+      "fid": "1f76d60e-47d0-4a41-a210-629df6a81dd2",
+      "description": "A woman speaks in French about an address that was never reached, and that they left it open for us.",
+      "bytes": 82382,
+      "sha256": "5a440f997b84da1922499c41230cbfeb3086b97a2f2ebf8d021438de3dce920d"
+    }
+  ],
+  "missing": []
+}

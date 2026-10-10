@@ -1,0 +1,216 @@
+{
+  "arguments": {
+    "pid": "47f06641-a060-40b2-9b88-395fbb255425",
+    "budget_credits": 1500,
+    "prompt": "In this project the frame \"Mira ZH scenes\" should hold one ElevenLabs text to speech node per line below, labeled with its id, all with the same settings: the model ElevenLabs Eleven v3, the stock catalog voice \"Narration :: Warm & Inviting :: Pleasant :: Nikki (F)\", stability 0.5, similarity 0.75, style exaggeration low or default, speaker boost on, normal speed, mp3 at 44.1 kHz, language Mandarin Chinese (zh) if the node has a language setting. Create any node that is missing, set each node's text to exactly the quoted Mandarin Chinese text below (the parentheses are delivery notes, never spoken), and run every node that has no output yet; leave nodes that already have an output as they are. Then report a table with the columns Label | Node ID | Status | Error | Output fid, one row for every line below, the label in bold (for example | **radio-1** | ... |) and the output fid in backticks.\n\nLines:\nradio-1 (a message recorded into a field radio, composed and direct): \"我是米拉。如果你在我们之后穿过了那扇门，请听好。\"\nradio-2 (a message recorded into a field radio, composed and direct): \"看守们要在他们的三块石板上盖好地址，而他们只给违规者盖章。\"\nradio-3 (a message recorded into a field radio, a little wry): \"他们在窗口扣下了我的宝珠。能拿回来的话就拿回来。\"\nradio-4 (a message recorded into a field radio, resolute): \"我们要越过他们的栏杆，穿过远方之门继续前进。追随那道光。\"\ncamp-1 (quiet journal dictation at the end of a long day): \"第十五天。天刚亮时群岛会漂到一起，我们趁它们相接时拉绳渡过。\"\ncamp-2 (quiet journal dictation, matter of fact): \"每根绳子都在我们身后断掉。后来的人需要建造者的光桥。\"\ncamp-3 (quiet journal dictation, a fond smile in the voice): \"在最后一座岛上扎营。换作奈拉，每个绳结都会检查两遍。\"\nice-1 (recorded in the cold, practical and steady): \"我把我们的标记刻进了冰里，雪埋不住它。\"\nice-2 (recorded in the cold, practical advice): \"别在薄冰上停下。箭头指向环门。\"\ncastle-1 (recorded, calm and warm): \"我给后来的人留下了城堡的地址。它只按顺序回应。\"\ncastle-2 (recorded, calm and clear, naming each step): \"先是水，再是树根的螺旋，最后是树梢上的新月。\"\ncastle-3 (recorded, warm, a little wistful): \"这是我留给你的最后一道谜题。过了它，就是大海。\"\nreunion-1 (live and close, overwhelmed with relief, almost a whisper): \"奈拉。\"\nreunion-2 (live and close, tender, holding back tears): \"我就知道你会追着光来。我在每一扇门前都让它亮着。\"\nreunion-3a (live and close, warm and hopeful): \"你带来了我们的地图。这一次，我们一起选择下一次穿越。\"\nreunion-3b (live and close, warm and hopeful): \"回家的路已经打开。下一次穿越，就待在我身边吧。\"\nreunion-4 (live and close, a smile in the voice): \"走吧。还有更多的门。\""
+  },
+  "seconds": 67.973,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"success\": true,\n  \"response_text\": \"All 17 requested lines are already present in the frame **Mira ZH scenes**, configured with the specified settings and spoken Mandarin Chinese texts, and each node already has an existing computed audio output. Per instructions, nodes that already have outputs were left as they are.\\n\\n| Label | Node ID | Status | Error | Output fid |\\n| :--- | :--- | :--- | :--- | :--- |\\n| **radio-1** | 2f36dd38 | success | None | `35f1cda6-c1f7-4459-919c-de0c425c8e07` |\\n| **radio-2** | f8f24c7b | success | None | `cb5704d6-3d0f-4803-8b56-cf9ef9aaa06e` |\\n| **radio-3** | ddc96e6b | success | None | `a56362bf-3ae2-4153-a377-ff736355d735` |\\n| **radio-4** | 2b06543d | success | None | `30a975f7-3f6f-43ae-a3c6-ad353f62870f` |\\n| **camp-1** | 514449e6 | success | None | `33fe3a1e-4645-4fa7-b908-c25e55325010` |\\n| **camp-2** | 4e3ed960 | success | None | `9334a816-308b-4fe4-b0a5-0fbf61b95fea` |\\n| **camp-3** | 2c0ad1b1 | success | None | `1d629052-3d69-4f48-99a8-2f09c17053fa` |\\n| **ice-1** | 625aef65 | success | None | `79b87061-3d73-45a0-aca9-b52273eca76b` |\\n| **ice-2** | 89d3f881 | success | None | `ace3f53b-36b9-496b-b1d7-fff033026c33` |\\n| **castle-1** | c18d140a | success | None | `9f82d388-665a-4cd7-9d81-8b1978cae010` |\\n| **castle-2** | 2a673134 | success | None | `e3f97648-6871-4654-a8fb-8661a3fb078d` |\\n| **castle-3** | 9285142c | success | None | `de430bd4-5e41-4940-9591-39f1c53d635e` |\\n| **reunion-1** | 165b1564 | success | None | `ea62afa6-b5f1-4a6d-8cee-ae74415dd075` |\\n| **reunion-2** | 0c190991 | success | None | `de70243b-1f8e-4718-80b9-773bde824fb5` |\\n| **reunion-3a** | 3b597c81 | success | None | `2bd21321-43e8-4693-8238-f384c4a9ea4d` |\\n| **reunion-3b** | 03620e32 | success | None | `e328c0e1-6014-467b-9f71-5628044ec86b` |\\n| **reunion-4** | 1277d89a | success | None | `6aceb108-7cd2-4a73-a659-fabc186f91ee` |\",\n  \"budget_credits\": 1500,\n  \"graph_identifiers\": {\n    \"nodes\": [\n      {\n        \"short_id\": \"03620e32\",\n        \"node_id\": \"03620e32-7401-4f5e-9572-2d91e2070032\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"07c8634a\",\n        \"node_id\": \"07c8634a-9160-40da-989f-09707a501535\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"0c190991\",\n        \"node_id\": \"0c190991-30ec-4842-8910-e38e3e524215\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"1277d89a\",\n        \"node_id\": \"1277d89a-8809-46ff-aaa8-d66baa3d43a2\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"12ca4d53\",\n        \"node_id\": \"12ca4d53-2769-463a-88fd-24f94e33dd3f\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"165b1564\",\n        \"node_id\": \"165b1564-f60d-4087-b286-b2d83f7c24a4\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"21308690\",\n        \"node_id\": \"21308690-9f97-41e1-9ab1-d2e4a2ec27f0\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"239d902a\",\n        \"node_id\": \"239d902a-c79f-4b05-925a-8ea8dc9c9bc0\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"2a673134\",\n        \"node_id\": \"2a673134-323a-41dd-88c8-672b0b6a48fc\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"2b06543d\",\n        \"node_id\": \"2b06543d-f704-43bc-ba48-8b2ddb79db6c\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"2c0ad1b1\",\n        \"node_id\": \"2c0ad1b1-d252-4699-8d3d-20d6525f7426\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"2f36dd38\",\n        \"node_id\": \"2f36dd38-1b38-4b78-b587-3b0131d60306\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"2f94f0c8\",\n        \"node_id\": \"2f94f0c8-68c8-44ab-90e3-7c2f855ecf4f\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"314b0aa9\",\n        \"node_id\": \"314b0aa9-9d36-4ca9-9dc1-d45b88f4d2a2\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"31a895b2\",\n        \"node_id\": \"31a895b2-96f9-4a99-a45b-b13ce2c286d3\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"34574979\",\n        \"node_id\": \"34574979-2e4c-4513-83a8-473caccc3425\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"3b597c81\",\n        \"node_id\": \"3b597c81-0f29-4dc4-9aac-57ae2cd898d6\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"4e3ed960\",\n        \"node_id\": \"4e3ed960-4c50-49d7-ad6c-46aad6d49cf1\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"514449e6\",\n        \"node_id\": \"514449e6-2593-4917-a745-09eabd85f3c1\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"625aef65\",\n        \"node_id\": \"625aef65-5652-46bc-807f-6b0a997c9882\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"690288b9\",\n        \"node_id\": \"690288b9-2ffd-4bb9-9dba-4aba856c687b\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"6f4fef05\",\n        \"node_id\": \"6f4fef05-2a81-41af-9a20-58c7a2739e04\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"7ca9cb8b\",\n        \"node_id\": \"7ca9cb8b-f481-43eb-b06f-004b531d2c39\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"7fbc85b7\",\n        \"node_id\": \"7fbc85b7-4a3d-4163-97d8-ef88e3917eb0\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"86e0be76\",\n        \"node_id\": \"86e0be76-b624-4a78-b660-eb6256423344\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"89d3f881\",\n        \"node_id\": \"89d3f881-277c-4e4f-8c2d-b4292a6951ea\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"919d6bcb\",\n        \"node_id\": \"919d6bcb-3e0a-4b98-a9c1-872db5d80154\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"9285142c\",\n        \"node_id\": \"9285142c-653d-4713-bb33-59f80a252e45\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"a841a23a\",\n        \"node_id\": \"a841a23a-c009-4ea7-be62-29988a162c78\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"c18d140a\",\n        \"node_id\": \"c18d140a-9cc8-4685-8c00-a7e2495e8b46\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"cadefacb\",\n        \"node_id\": \"cadefacb-b367-49ae-8aee-17a9769a31ae\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"d939b415\",\n        \"node_id\": \"d939b415-9336-4c3d-93b4-bd3b7950233d\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"ddc96e6b\",\n        \"node_id\": \"ddc96e6b-1750-42a7-805a-7ac5e33f12a0\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"e2af5932\",\n        \"node_id\": \"e2af5932-dc5e-41fe-8bfb-e03e4e11376d\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"f5aaa9aa\",\n        \"node_id\": \"f5aaa9aa-439f-4990-8adc-babb23a49308\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"f8f24c7b\",\n        \"node_id\": \"f8f24c7b-62eb-40fb-8b00-b8f7ffb52e3f\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"fefc9f26\",\n        \"node_id\": \"fefc9f26-6e63-480b-a5e7-d692d7c5e200\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      }\n    ],\n    \"connections\": []\n  },\n  \"cost_usd\": 0.129715425,\n  \"cost_credits\": 8,\n  \"remaining_budget_credits\": 1492,\n  \"budget_exhausted\": false\n}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "response_text": "All 17 requested lines are already present in the frame **Mira ZH scenes**, configured with the specified settings and spoken Mandarin Chinese texts, and each node already has an existing computed audio output. Per instructions, nodes that already have outputs were left as they are.\n\n| Label | Node ID | Status | Error | Output fid |\n| :--- | :--- | :--- | :--- | :--- |\n| **radio-1** | 2f36dd38 | success | None | `35f1cda6-c1f7-4459-919c-de0c425c8e07` |\n| **radio-2** | f8f24c7b | success | None | `cb5704d6-3d0f-4803-8b56-cf9ef9aaa06e` |\n| **radio-3** | ddc96e6b | success | None | `a56362bf-3ae2-4153-a377-ff736355d735` |\n| **radio-4** | 2b06543d | success | None | `30a975f7-3f6f-43ae-a3c6-ad353f62870f` |\n| **camp-1** | 514449e6 | success | None | `33fe3a1e-4645-4fa7-b908-c25e55325010` |\n| **camp-2** | 4e3ed960 | success | None | `9334a816-308b-4fe4-b0a5-0fbf61b95fea` |\n| **camp-3** | 2c0ad1b1 | success | None | `1d629052-3d69-4f48-99a8-2f09c17053fa` |\n| **ice-1** | 625aef65 | success | None | `79b87061-3d73-45a0-aca9-b52273eca76b` |\n| **ice-2** | 89d3f881 | success | None | `ace3f53b-36b9-496b-b1d7-fff033026c33` |\n| **castle-1** | c18d140a | success | None | `9f82d388-665a-4cd7-9d81-8b1978cae010` |\n| **castle-2** | 2a673134 | success | None | `e3f97648-6871-4654-a8fb-8661a3fb078d` |\n| **castle-3** | 9285142c | success | None | `de430bd4-5e41-4940-9591-39f1c53d635e` |\n| **reunion-1** | 165b1564 | success | None | `ea62afa6-b5f1-4a6d-8cee-ae74415dd075` |\n| **reunion-2** | 0c190991 | success | None | `de70243b-1f8e-4718-80b9-773bde824fb5` |\n| **reunion-3a** | 3b597c81 | success | None | `2bd21321-43e8-4693-8238-f384c4a9ea4d` |\n| **reunion-3b** | 03620e32 | success | None | `e328c0e1-6014-467b-9f71-5628044ec86b` |\n| **reunion-4** | 1277d89a | success | None | `6aceb108-7cd2-4a73-a659-fabc186f91ee` |",
+      "budget_credits": 1500,
+      "graph_identifiers": {
+        "nodes": [
+          {
+            "short_id": "03620e32",
+            "node_id": "03620e32-7401-4f5e-9572-2d91e2070032",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "07c8634a",
+            "node_id": "07c8634a-9160-40da-989f-09707a501535",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "0c190991",
+            "node_id": "0c190991-30ec-4842-8910-e38e3e524215",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "1277d89a",
+            "node_id": "1277d89a-8809-46ff-aaa8-d66baa3d43a2",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "12ca4d53",
+            "node_id": "12ca4d53-2769-463a-88fd-24f94e33dd3f",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "165b1564",
+            "node_id": "165b1564-f60d-4087-b286-b2d83f7c24a4",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "21308690",
+            "node_id": "21308690-9f97-41e1-9ab1-d2e4a2ec27f0",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "239d902a",
+            "node_id": "239d902a-c79f-4b05-925a-8ea8dc9c9bc0",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "2a673134",
+            "node_id": "2a673134-323a-41dd-88c8-672b0b6a48fc",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "2b06543d",
+            "node_id": "2b06543d-f704-43bc-ba48-8b2ddb79db6c",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "2c0ad1b1",
+            "node_id": "2c0ad1b1-d252-4699-8d3d-20d6525f7426",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "2f36dd38",
+            "node_id": "2f36dd38-1b38-4b78-b587-3b0131d60306",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "2f94f0c8",
+            "node_id": "2f94f0c8-68c8-44ab-90e3-7c2f855ecf4f",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "314b0aa9",
+            "node_id": "314b0aa9-9d36-4ca9-9dc1-d45b88f4d2a2",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "31a895b2",
+            "node_id": "31a895b2-96f9-4a99-a45b-b13ce2c286d3",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "34574979",
+            "node_id": "34574979-2e4c-4513-83a8-473caccc3425",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "3b597c81",
+            "node_id": "3b597c81-0f29-4dc4-9aac-57ae2cd898d6",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "4e3ed960",
+            "node_id": "4e3ed960-4c50-49d7-ad6c-46aad6d49cf1",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "514449e6",
+            "node_id": "514449e6-2593-4917-a745-09eabd85f3c1",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "625aef65",
+            "node_id": "625aef65-5652-46bc-807f-6b0a997c9882",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "690288b9",
+            "node_id": "690288b9-2ffd-4bb9-9dba-4aba856c687b",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "6f4fef05",
+            "node_id": "6f4fef05-2a81-41af-9a20-58c7a2739e04",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "7ca9cb8b",
+            "node_id": "7ca9cb8b-f481-43eb-b06f-004b531d2c39",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "7fbc85b7",
+            "node_id": "7fbc85b7-4a3d-4163-97d8-ef88e3917eb0",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "86e0be76",
+            "node_id": "86e0be76-b624-4a78-b660-eb6256423344",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "89d3f881",
+            "node_id": "89d3f881-277c-4e4f-8c2d-b4292a6951ea",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "919d6bcb",
+            "node_id": "919d6bcb-3e0a-4b98-a9c1-872db5d80154",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "9285142c",
+            "node_id": "9285142c-653d-4713-bb33-59f80a252e45",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "a841a23a",
+            "node_id": "a841a23a-c009-4ea7-be62-29988a162c78",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "c18d140a",
+            "node_id": "c18d140a-9cc8-4685-8c00-a7e2495e8b46",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "cadefacb",
+            "node_id": "cadefacb-b367-49ae-8aee-17a9769a31ae",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "d939b415",
+            "node_id": "d939b415-9336-4c3d-93b4-bd3b7950233d",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "ddc96e6b",
+            "node_id": "ddc96e6b-1750-42a7-805a-7ac5e33f12a0",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "e2af5932",
+            "node_id": "e2af5932-dc5e-41fe-8bfb-e03e4e11376d",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "f5aaa9aa",
+            "node_id": "f5aaa9aa-439f-4990-8adc-babb23a49308",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "f8f24c7b",
+            "node_id": "f8f24c7b-62eb-40fb-8b00-b8f7ffb52e3f",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "fefc9f26",
+            "node_id": "fefc9f26-6e63-480b-a5e7-d692d7c5e200",
+            "node_type": "text_to_speech_elevenlabs"
+          }
+        ],
+        "connections": []
+      },
+      "cost_usd": 0.129715425,
+      "cost_credits": 8,
+      "remaining_budget_credits": 1492,
+      "budget_exhausted": false
+    },
+    "isError": false
+  }
+}

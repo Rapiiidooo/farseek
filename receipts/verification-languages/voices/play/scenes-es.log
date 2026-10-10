@@ -1,0 +1,4 @@
+radio: ok | lines radio-1:clip radio-2:clip radio-3:clip radio-4:clip | peak rms 0.1881 | programs 982->982
+camp: ok | lines camp-1:clip camp-2:clip camp-3:clip | peak rms 0.2779 | programs 982->982
+ice: ok | lines ice-1:clip ice-2:clip | peak rms 0.1909 | programs 982->982
+castle: ok | lines castle-1:clip castle-2:clip castle-3:clip | peak rms 0.2395 | programs 982->982

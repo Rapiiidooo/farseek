@@ -1,0 +1,264 @@
+{
+  "files": [
+    {
+      "label": "camp-1",
+      "fid": "25b0667d-9833-4309-8e82-f8848f4b97a6",
+      "description": "A woman reads a poem in Spanish about the sea and islands.",
+      "bytes": 128776,
+      "sha256": "4e1556ca3f740a77c96a2e830672bdb34023289ae56a4a7890d354f79786b398"
+    },
+    {
+      "label": "camp-2",
+      "fid": "a9585f11-cf34-4afa-9330-a9f89e2fa6f6",
+      "description": "A woman speaks in Spanish about the fragility of life and the need for support.",
+      "bytes": 126268,
+      "sha256": "e1a1ee3fd4e123e4051049b180a1848dacbf9fb8381594a6a3f03c68cc3faf7f"
+    },
+    {
+      "label": "camp-3",
+      "fid": "4c415ac1-6c22-4817-9ba9-5f1618ddb4bd",
+      "description": "A narrator describes a scene involving a camp on the last island and a character named Nira checking knots.",
+      "bytes": 94085,
+      "sha256": "d2c9acf8fe74fe1c3ad85c724b776dfbde5b676bda544f38eee0b5a28335a1d3"
+    },
+    {
+      "label": "castle-1",
+      "fid": "a8f5469b-6bb5-4f2d-ba59-b3a7f351ee5d",
+      "description": "A woman speaks in Spanish, giving instructions about a castle.",
+      "bytes": 95339,
+      "sha256": "694426d638954f0d3d59f6a18335b1c298cfe98070c32df5e21092e3974e7ec7"
+    },
+    {
+      "label": "castle-2",
+      "fid": "b3f2e3a5-6a72-481c-b881-8e71b051e368",
+      "description": "A woman speaks in Spanish, describing a sequence of elements: water, a spiral of roots, and a half-moon over trees.",
+      "bytes": 123342,
+      "sha256": "0620f4263f64c956fbaa14a0853bb27e4b19e129d715a7ba8812b9fef7d1b112"
+    },
+    {
+      "label": "castle-3",
+      "fid": "ddb800fd-28a0-49a4-8f0e-88203d3443fb",
+      "description": "A woman speaks in Spanish, presenting a riddle.",
+      "bytes": 79875,
+      "sha256": "36aac53da8a08f1c7d0c081cf0352576cbe934356b872f8c481ecbd8031fe016"
+    },
+    {
+      "label": "ice-1",
+      "fid": "d1577b95-0972-471c-b984-0d97ee577a66",
+      "description": "A woman speaks in Spanish about leaving a mark in the ice where the snow cannot bury it.",
+      "bytes": 69844,
+      "sha256": "c876aad751b55b4a696e7a5b448b22a4c0c8e93390f174afc13e888a8293ba09"
+    },
+    {
+      "label": "ice-2",
+      "fid": "79e19b98-1bcf-48fb-9c20-0fa52aa72ca8",
+      "description": "A woman speaks in Spanish, giving instructions about not stopping on thin ice and pointing out a ring.",
+      "bytes": 69844,
+      "sha256": "8dbd03ef12f3b861182172f375a4c679e863b8d50dc68b026db85a1f1604d500"
+    },
+    {
+      "label": "radio-1",
+      "fid": "041ce406-74de-4fd8-a836-0f424345df1b",
+      "description": "A woman speaks in Spanish, giving instructions to listen carefully.",
+      "bytes": 82382,
+      "sha256": "9836698582b64c0b1d1e338935b85499229d4b64f9734269ddb2daae207fb63e"
+    },
+    {
+      "label": "radio-2",
+      "fid": "c6b99187-5ed1-4545-8bc7-1636a8d182bc",
+      "description": "A female voice speaks in Spanish about the rules for sealers.",
+      "bytes": 122089,
+      "sha256": "0865748019d21a07ea4ac02d83d659b4c8f0595c471ee1c8fd5bf517be192151"
+    },
+    {
+      "label": "radio-3",
+      "fid": "5fe90d3b-e32e-439a-bb63-dd668b0bf171",
+      "description": "A woman speaks in Spanish about leaving her orb in the window and asks to recover it if possible.",
+      "bytes": 69844,
+      "sha256": "de8071a3e3b86a166ec499685c0b04f973d61cf9f5c5e1bd90b58a159584f260"
+    },
+    {
+      "label": "radio-4",
+      "fid": "008dd3c3-1ee0-4806-ab3e-ff6be1de19f1",
+      "description": "A woman with a soft, calm voice speaks in Spanish, narrating a poetic or reflective text about moving forward.",
+      "bytes": 99101,
+      "sha256": "d427f56162ca7be3b4b222e9ca030d4ee25e83d302ac9bb3e1e37fae7a607936"
+    },
+    {
+      "label": "reunion-1",
+      "fid": "3a954af4-2446-42ed-977f-4406711a955f",
+      "description": "A person says the name \"Nyra\" in a clear, calm voice.",
+      "bytes": 23868,
+      "sha256": "2c04e7e3cf52846b5350cff46f6a9678dfec74747360b9d3cd26044181e602a0"
+    },
+    {
+      "label": "reunion-2",
+      "fid": "86e5cc85-2642-437b-b4ed-0492f351542c",
+      "description": "A woman speaks in Spanish about keeping a light on in every room.",
+      "bytes": 73605,
+      "sha256": "fbc109aa7e2ca49b43fdf3fd35949bc6392b6d2dc3f2873bec52c5c3d23b1213"
+    },
+    {
+      "label": "reunion-3a",
+      "fid": "83634393-dceb-41ee-a58e-117f1d8529b5",
+      "description": "A woman speaks in Spanish about bringing a map and choosing the next journey together.",
+      "bytes": 87816,
+      "sha256": "22d8c87093aa9460914feae26ea7eda38bfe316329e8f1761a5d9b6ffb93a7ec"
+    },
+    {
+      "label": "reunion-3b",
+      "fid": "3be2f378-3493-484a-b46a-20c9887b2976",
+      "description": "A woman speaks in Spanish about a path home being open and asks someone to stay by her side for the next time.",
+      "bytes": 72351,
+      "sha256": "cef71b2cc97e5cdfb7dc383912a783ac07de68c4dfc15f03ae4cd35811d20e50"
+    },
+    {
+      "label": "reunion-4",
+      "fid": "e62346f7-9456-423c-9d9a-48dd5fc6accc",
+      "description": "A woman speaks in Spanish, saying \"Vamos, hay más puertas.\"",
+      "bytes": 37661,
+      "sha256": "6cd622c5638ce7c5586b4c6bba0248cb2c2e7dfd21c6304d54d2efc2fa20e090"
+    },
+    {
+      "label": "vault-arrival",
+      "fid": "683e542b-0971-419d-ae39-d5779268a771",
+      "description": "A female voice speaks in Spanish, explaining that air is preserved inside and inviting the listener to follow.",
+      "bytes": 123342,
+      "sha256": "a2f474ca892d18ea5ebcb8c77a31b12f4f80cd6dbcaf42a525c2928d6db500af"
+    },
+    {
+      "label": "vault-bank-forest",
+      "fid": "186abe28-33fe-43b5-b82c-03a811e8b654",
+      "description": "A woman speaks in Spanish, saying \"Esa hiedra te aguantará, arriba.\"",
+      "bytes": 45602,
+      "sha256": "2aaf5306b3861b139311cb7d7e9f7137388d9c0027d0f7935a0b2386ecb344a1"
+    },
+    {
+      "label": "vault-bay-checkpoint",
+      "fid": "60cfe8ef-a1a0-48c4-8834-fa364c83605c",
+      "description": "A person speaks in Spanish, reciting a poetic or literary text about a custodian of builders.",
+      "bytes": 127522,
+      "sha256": "ca60a0bcdb7e496e671fa29885ee2abd809beba7ed1aef40033d9dd31606294e"
+    },
+    {
+      "label": "vault-bay-court",
+      "fid": "ac5eaf3c-eee8-40e4-af0f-6686c627d99a",
+      "description": "A woman with a clear, calm voice recites a poem in Spanish about light and reflections.",
+      "bytes": 126268,
+      "sha256": "0374fd87ea18383a0c0d0fedbf4eb07c45b4e6b8f2ac69afc67434dce740424a"
+    },
+    {
+      "label": "vault-bay-forest",
+      "fid": "1e6b1cb7-c2aa-4dc1-904b-8bdb32953d58",
+      "description": "A woman speaks in Spanish, giving instructions to someone.",
+      "bytes": 68590,
+      "sha256": "2fc6fff8c39c4cf89894b47328bbfe6d1b995e98f7f11ec51398907b7ba73021"
+    },
+    {
+      "label": "vault-bay-frost",
+      "fid": "d9510f64-ef59-461d-9bf7-ce300a6b4afc",
+      "description": "A woman speaks in Spanish about ice and a plate, explaining that it cannot be pushed from a certain point, but an orb can drag it.",
+      "bytes": 128776,
+      "sha256": "219ed20ac04db9e2c77ae6ca3679a951e214478bd8071c7a8977964b2fbf9dae"
+    },
+    {
+      "label": "vault-bay-isles",
+      "fid": "40423f61-6896-48a7-8f57-ee4f4cb3a91c",
+      "description": "A woman speaks in Spanish about a lens being blocked.",
+      "bytes": 108296,
+      "sha256": "0adda24b20b34fcdd93800546698d9e4ec20b86fa25a26fc0f92b2243c8baead"
+    },
+    {
+      "label": "vault-bay-sea",
+      "fid": "19d376d1-2d23-4e16-be27-d3e73b9b2b04",
+      "description": "A woman speaks in Spanish about a seal at the end of a passage and water flowing from it.",
+      "bytes": 107042,
+      "sha256": "5380308eb49142cb41dc1135e6d82d521a3d6e42cf0cb571a3ca27c11c33d2c1"
+    },
+    {
+      "label": "vault-crossing",
+      "fid": "f6373fcd-0988-4b45-ae0c-730abc36819c",
+      "description": "A person speaks the phrase \"juntas esta vez\" in Spanish.",
+      "bytes": 26376,
+      "sha256": "0efd0d6d16c94e94001ee0fbae1fb8b4c1184f72600c9bb4b6a02441e17a6136"
+    },
+    {
+      "label": "vault-done-checkpoint",
+      "fid": "a375ec39-3036-458c-a6b8-5926bcb50873",
+      "description": "A person speaking in Spanish, mentioning someone bowing and a \"visto bueno\".",
+      "bytes": 96593,
+      "sha256": "585a47ec441da80b3747d9fe3379a698d8b30f870e9a3caaa2f2371978fdd959"
+    },
+    {
+      "label": "vault-done-court",
+      "fid": "e8aaf71a-7294-4c64-b364-df9aab5ef27a",
+      "description": "A person speaks in Spanish, saying the phrase 'La lección de la primera puerta'.",
+      "bytes": 54379,
+      "sha256": "266ea34b7579efe08ccf1629facd6ca3611f5f731c7b28bcf3c9024bb3731f74"
+    },
+    {
+      "label": "vault-done-forest",
+      "fid": "f0bbc409-d5b8-4864-a6ba-0e26fb7f95d8",
+      "description": "A person counts down from five to one in Spanish.",
+      "bytes": 40169,
+      "sha256": "911f9ed757c3d8b7df1efa201edde4f19b07014f7329a5d806355983558192b4"
+    },
+    {
+      "label": "vault-done-frost",
+      "fid": "69b37c59-ecd4-4200-9e07-0128a4b91814",
+      "description": "A person speaks the number four and the phrase \"buena escalada\" in Spanish.",
+      "bytes": 40169,
+      "sha256": "e2c595bf892750b9c519c1c0caacf1dc1ad8b320eaf6df1b5a52b3cb98073a3b"
+    },
+    {
+      "label": "vault-done-isles",
+      "fid": "410cc44b-9daa-4dae-bbe0-f87e10317161",
+      "description": "A woman with a clear, calm voice narrates a poetic text in Spanish, with a slight echo effect.",
+      "bytes": 120835,
+      "sha256": "a9ea339f93bd9c62cbd45fda75fbdde8bf3be62dfe2f24625d25305beca3852c"
+    },
+    {
+      "label": "vault-done-sea",
+      "fid": "82376279-2ec8-4982-92d3-8add1f2473f8",
+      "description": "A woman speaks in Spanish, providing instructions about a location and directing someone to return to a door.",
+      "bytes": 110804,
+      "sha256": "a7735a1c9b35da62fec2c4275f2e37552675ee75cb082522506f705bf30b9b05"
+    },
+    {
+      "label": "vault-power-frost",
+      "fid": "155b512b-f03d-493a-8c0b-99796758808c",
+      "description": "A woman speaks in Spanish, mentioning a seal and ice.",
+      "bytes": 102862,
+      "sha256": "c347e48a6575635a2b016c55963519f8f196ae4a357ac0710f93ed69cc57e96d"
+    },
+    {
+      "label": "vault-reveal-address",
+      "fid": "2048a4ae-3e59-477b-ba6d-2e0ad2d573c1",
+      "description": "A voiceover speaks in Spanish, stating that six worlds and one direction know us.",
+      "bytes": 59395,
+      "sha256": "b236357a40768f8f0c3fe7a82bf72db6f724d89b3cf84bdbcb4912d87707b2ba"
+    },
+    {
+      "label": "vault-reveal-doors",
+      "fid": "4e926276-a81d-42f4-b8bb-5871714d047a",
+      "description": "A woman speaks in Spanish about keeping doors open for others.",
+      "bytes": 99101,
+      "sha256": "d8cbdba1b336170dac79b6e98c8d36095881db7c29cebfeda72a1a5fa0d62926"
+    },
+    {
+      "label": "vault-reveal-fate",
+      "fid": "5b3d2d8d-ba12-4cbe-b58b-f301358f31d5",
+      "description": "A woman narrates a story in Spanish about worlds that never extinguished, leaving behind their bodies to become light.",
+      "bytes": 118327,
+      "sha256": "9a2578d2ba98f68eeb150cac6f1190a713e63bc072b33b29d633197b53988226"
+    },
+    {
+      "label": "vault-reveal-next",
+      "fid": "1c7868a0-abcc-4f1a-8db3-acff9d0353e3",
+      "description": "A woman speaks in Spanish about a direction that was never reached, leaving it open for others.",
+      "bytes": 87816,
+      "sha256": "1d137b21c41e8fd1fe81100249fd1a0f0f7f8f7532a5b570e471d39a1261dfb3"
+    }
+  ],
+  "missing": []
+}

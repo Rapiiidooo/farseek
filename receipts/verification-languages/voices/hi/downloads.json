@@ -1,0 +1,264 @@
+{
+  "files": [
+    {
+      "label": "camp-1",
+      "fid": "57463aae-7a65-493a-b6cc-b7a513ff69e5",
+      "description": "A person speaking in Hindi, describing a sequence of events.",
+      "bytes": 120835,
+      "sha256": "b6f19db8b3fc5afdd47dc511a5558aa80610b98af88f6ae5921679e319891fe6"
+    },
+    {
+      "label": "camp-2",
+      "fid": "dbb3a87f-f80f-4e98-b5e7-1d86b80fc029",
+      "description": "A woman speaks in Hindi about the concept of breaking bridges behind oneself.",
+      "bytes": 118327,
+      "sha256": "d42c85bdb2ddb56e9b6d43ecdca31826dc63a2f37a019089bc965c017e30f6a2"
+    },
+    {
+      "label": "camp-3",
+      "fid": "093228c7-d019-429f-a220-ab75ac5e0f05",
+      "description": "A woman speaks in Hindi, reciting a poem or narrative about a remote island.",
+      "bytes": 102862,
+      "sha256": "a3bfcf4f6fc6da509366e1cb3232692256cf680f13639f035894c07840cdd86f"
+    },
+    {
+      "label": "castle-1",
+      "fid": "2cd0e268-acbd-4d80-ac9c-879fb07cad7b",
+      "description": "A person speaking in Hindi, describing a process or a sequence of events.",
+      "bytes": 114565,
+      "sha256": "4f959ddbdba0d221fce64d37dcf4cf026a5523e09c03c6ac32d72f5fc74d3183"
+    },
+    {
+      "label": "castle-2",
+      "fid": "e8852538-ed14-415a-8f20-de3b4c6f10fe",
+      "description": "A woman speaks in Hindi, describing a sequence of elements including water, roots, and a crescent moon.",
+      "bytes": 94085,
+      "sha256": "caef8e5c8c56be8d8d435ec5336d7da6299a8616c7a8aefe774e0626b3c4a152"
+    },
+    {
+      "label": "castle-3",
+      "fid": "d2fae0ad-5ebc-43b9-a8c0-190828a91e32",
+      "description": "A woman speaks in Hindi, stating that this is the last riddle she is leaving for the listener, followed by the word 'samudra'.",
+      "bytes": 94085,
+      "sha256": "5838facc91130bd74a36ddf10a80c4deccca3a914998e11c55a7ce148a29ef7e"
+    },
+    {
+      "label": "ice-1",
+      "fid": "6baa0386-b4d2-4925-b836-88b942ee1123",
+      "description": "A woman speaks in Hindi, describing burying a sign in the snow.",
+      "bytes": 92831,
+      "sha256": "e12537ce4e1496843b925095393a1287697779646afeb810ec53f83b71852f3a"
+    },
+    {
+      "label": "ice-2",
+      "fid": "9105bc7a-3fad-406a-aeea-3789316ee18b",
+      "description": "A woman speaks in Hindi, mentioning ice and a wheel, with a calm and informative tone.",
+      "bytes": 69844,
+      "sha256": "e1c08dd79e14cf68bf55bd0c5f571a8aaa62cd8ee91e1995604843d20f15aee1"
+    },
+    {
+      "label": "radio-1",
+      "fid": "81e15106-13fb-487a-a43b-9157a93afbb1",
+      "description": "A person speaks in Hindi, saying they are leaving and instructing someone to listen if they come through the door after them.",
+      "bytes": 77367,
+      "sha256": "e225e85b7e5d45f08eaff8b055bb00d7a8b58f317f34a83348569fd9caf4aa89"
+    },
+    {
+      "label": "radio-2",
+      "fid": "deada713-d482-433a-9254-48e44ea8afb6",
+      "description": "A person speaks in Hindi about the need for a stamp on three plates, specifically for criminals.",
+      "bytes": 110804,
+      "sha256": "0133c0aa5c78e4add8e45a525f606771ecb2c3ebb7c90e3959da8dea426dc158"
+    },
+    {
+      "label": "radio-3",
+      "fid": "51f66b00-ec5f-467d-97f5-5e542b8335ab",
+      "description": "A person speaks in Hindi, requesting that their 'gola' (likely a ball or object) be taken back from the window.",
+      "bytes": 86562,
+      "sha256": "8d5fdfed2ab13963adf91f6a21ebbf35e80162e48dd594c36aca67ed10c327f1"
+    },
+    {
+      "label": "radio-4",
+      "fid": "d530d812-957d-40b4-9286-75bd4533cd26",
+      "description": "A woman speaks in Hindi about walking past a gate and towards a distant door, following the light.",
+      "bytes": 117073,
+      "sha256": "6d872176029d412a0407b05fd00427da4f20b10c06de8902b9c069e691184962"
+    },
+    {
+      "label": "reunion-1",
+      "fid": "76c7b143-c6c3-4d36-b6df-b1e4857be6cb",
+      "description": "A person says the name \"Naira\".",
+      "bytes": 17181,
+      "sha256": "dfe3fcc8884513c657e574b2e004f62768483614ce9d79971260116c08d7bbf6"
+    },
+    {
+      "label": "reunion-2",
+      "fid": "e66c939a-db1a-481e-a9d8-bd6fdf74a21c",
+      "description": "A woman speaks in Hindi, expressing that she knew someone would follow the light.",
+      "bytes": 86562,
+      "sha256": "8d5e1ae5abea799711fd3d83663f613fef7b8cf29ac7800f5d5f81d4439aa220"
+    },
+    {
+      "label": "reunion-3a",
+      "fid": "ebe3027e-0d8d-4125-8e09-5c1531dd9a85",
+      "description": "A woman speaks in Hindi, expressing a desire to bring a map and suggesting they choose their next journey together.",
+      "bytes": 78621,
+      "sha256": "de5960856b51be5223a173d1855e830a1d0e4d6a85d3922e49d0474f6419df51"
+    },
+    {
+      "label": "reunion-3b",
+      "fid": "73ce1579-a1fc-41eb-a9c8-b2011feac203",
+      "description": "A woman speaks in Hindi, expressing a desire for companionship during a journey.",
+      "bytes": 76113,
+      "sha256": "b922b9445217353e429e980ed585ab09e63406367fb5e4ac3c338761a0c0aece"
+    },
+    {
+      "label": "reunion-4",
+      "fid": "1722e246-5b1f-4ee3-949f-10d9c79259be",
+      "description": "A woman speaks in Hindi, saying there are more doors.",
+      "bytes": 28884,
+      "sha256": "ae92275c76e1746628d641a6c0fa6ac64e2cbf86f5411bb6b83b4f0cc8363553"
+    },
+    {
+      "label": "vault-arrival",
+      "fid": "6aa42a9b-34b9-49e9-b892-1a938eddb608",
+      "description": "A woman speaks in Hindi, explaining that her breath is held within and inviting someone named Naira to follow her.",
+      "bytes": 115819,
+      "sha256": "3b0500c76488d4a8c82383644abc72df6681d1cf7b50b353a654a5e9076355fa"
+    },
+    {
+      "label": "vault-bank-forest",
+      "fid": "07ace6e9-e4ee-455d-9b5e-fc22d8bad2ec",
+      "description": "A woman speaks in Hindi, saying that the bell will hold you, and then tells someone to go up.",
+      "bytes": 59395,
+      "sha256": "ff306be1e4376733b5ede240f62be8ca775bae4cef6ddff23856c0670fae3ee4"
+    },
+    {
+      "label": "vault-bay-checkpoint",
+      "fid": "dcdd1a8e-43d6-4b0e-9ac4-03622484d24b",
+      "description": "A person is reciting a poem in Hindi with a calm and steady tone.",
+      "bytes": 122089,
+      "sha256": "588fb23102c31827abd3e9f22cacf696ca63d3dc6d4a85c121057312b87ccd80"
+    },
+    {
+      "label": "vault-bay-court",
+      "fid": "80e9fd9d-3f05-4376-80d9-1f0ad775f3f4",
+      "description": "A woman recites a poetic text in Hindi, with a calm and reflective tone.",
+      "bytes": 108296,
+      "sha256": "ad2db087167b6ac67f3f9d1ebb00b34ca1167c2692d8bd770df2c8d3dcef1284"
+    },
+    {
+      "label": "vault-bay-forest",
+      "fid": "d505f5c7-2614-4fda-bde1-c05600d4085f",
+      "description": "A person is reciting a poem in Hindi, with a calm and reflective tone.",
+      "bytes": 69844,
+      "sha256": "b4aeeb3bfa3c6ebd21db994490da738b6aaac2fc80b4c6d6f81e163a87620214"
+    },
+    {
+      "label": "vault-bay-frost",
+      "fid": "014cda3b-1f82-4d62-a878-be9d3379a913",
+      "description": "A woman speaks in Hindi about ice and a plate, using a metaphor about pushing and pulling.",
+      "bytes": 130030,
+      "sha256": "4734933ca078a84bda11be6f5634d22853282d8d4ce663a79ff1d369f19b198e"
+    },
+    {
+      "label": "vault-bay-isles",
+      "fid": "2d9d4b79-44f4-4cde-9392-33795364576f",
+      "description": "A person is speaking in Hindi, describing a lens that is stuck.",
+      "bytes": 104534,
+      "sha256": "fe0c1526ee192bc1555473b474711094b138475e05bbe173865cda7f616c8a0e"
+    },
+    {
+      "label": "vault-bay-sea",
+      "fid": "95d41f11-2a00-490a-a759-d2fd8cb4a077",
+      "description": "A woman speaks in Hindi, describing a scene with a passage and water flowing out of it.",
+      "bytes": 110804,
+      "sha256": "1cf46fb8cf9f6bfd2385e0964f333a73e985eda292ee65394f402abe8552cd80"
+    },
+    {
+      "label": "vault-crossing",
+      "fid": "2c0a3679-047d-45af-8e01-c52b99eb64dc",
+      "description": "A person speaks in Hindi, saying \"Is baar saath saath\".",
+      "bytes": 30138,
+      "sha256": "094f9edda57e68d5c623bc16f6d68cdefcc48929ebe061a5b12ac0285a772f4b"
+    },
+    {
+      "label": "vault-done-checkpoint",
+      "fid": "e615fa39-5cab-41dc-b8e0-2ffd1896cec6",
+      "description": "A person speaks in Hindi, expressing that someone bowed their head before them, which they interpreted as approval.",
+      "bytes": 91578,
+      "sha256": "72aed869567ecdd67e30545963abfed6aa0910c1d7f473eed657b3bfa531bbbf"
+    },
+    {
+      "label": "vault-done-court",
+      "fid": "6db2237f-ec82-43db-b959-15c0d66d6f91",
+      "description": "A person speaks in Hindi, saying the number one and then a phrase about a lesson at the first door.",
+      "bytes": 43094,
+      "sha256": "b344d18d2f498f0d0a009b4e77101bf59fbc57d80e27813757895ccd6f10bb48"
+    },
+    {
+      "label": "vault-done-forest",
+      "fid": "d055b858-6823-4be2-99be-d71fb9af69ee",
+      "description": "A person counts in Hindi, saying 'paanch' and 'ek aur'.",
+      "bytes": 45602,
+      "sha256": "8e6b26a280fb328b899752228a863fb4f89f8d2d31c98a74f36b1619227ba6b1"
+    },
+    {
+      "label": "vault-done-frost",
+      "fid": "bedffa91-222f-4946-a96b-b232123ed307",
+      "description": "A person speaks in Hindi, counting and then saying 'badiya chadhai'.",
+      "bytes": 33899,
+      "sha256": "4158154318ed8cecebc2fc2f62c475d2467e906db2cb887e0b8ca98bf113007e"
+    },
+    {
+      "label": "vault-done-isles",
+      "fid": "969d938b-ceac-4b51-8858-79969e865e49",
+      "description": "A woman speaks in Hindi, reciting a poetic or dramatic script with a calm and steady tone.",
+      "bytes": 110804,
+      "sha256": "0b8d0f6e97ad48d0430cb2ecdfdb849337ab91b8d75dc58eac14bd350a9e62a0"
+    },
+    {
+      "label": "vault-done-sea",
+      "fid": "c863de4a-41b0-4577-a9e4-d290a01b707c",
+      "description": "A woman speaks in Hindi, saying that she has found out everything and asks someone to return to the door.",
+      "bytes": 60649,
+      "sha256": "588c9a5b651d0a21cfd9d6b6e52c2d66ca6841a745b3fe52d991ea6ab081b021"
+    },
+    {
+      "label": "vault-power-frost",
+      "fid": "0fb4e385-b5b6-451d-8841-d8efb20c9701",
+      "description": "A woman speaks in Hindi, mentioning that the seal has woken up and instructing someone to climb up on the ice, while noting that her axes are still with them.",
+      "bytes": 99101,
+      "sha256": "3c6e00eb45bd67d48d168adb04c42d10b0492e6330cb9589a05539abaecbff95"
+    },
+    {
+      "label": "vault-reveal-address",
+      "fid": "382263a5-925b-4ead-8c42-6e250d41f3f4",
+      "description": "A person speaks in Hindi, mentioning six worlds and one address, and stating that it knows us.",
+      "bytes": 55633,
+      "sha256": "4b8badbd515ecb049164b112dbff23e84d6d614d655b4fe6afcb87b335d371ad"
+    },
+    {
+      "label": "vault-reveal-doors",
+      "fid": "79c2b5ac-df82-4ceb-859a-ee714bda7a93",
+      "description": "A woman speaks in Hindi about opening doors and the people who were waiting behind them.",
+      "bytes": 110804,
+      "sha256": "50b062ab54d5a864f93d72c85268ed96961c3ca0bf0710c8f6b30fe5a6c416ff"
+    },
+    {
+      "label": "vault-reveal-fate",
+      "fid": "39c7a0e0-8514-4fd0-8fd9-14154f8e6e92",
+      "description": "A woman speaks in Hindi about the concept of souls and their transition after death.",
+      "bytes": 130030,
+      "sha256": "ad13e006ef7905f8c8469dff681c41b135da4c05c98467f9706c5413ff88a97e"
+    },
+    {
+      "label": "vault-reveal-next",
+      "fid": "3283445c-365e-4959-9dfe-ae3a64331d88",
+      "description": "A person is speaking in Hindi, narrating a story or reflection about a destination that could not be reached.",
+      "bytes": 96593,
+      "sha256": "61e34f5c59b20471f03bbe04fee448678dbdb340edc7b5f852bb61b4eb04bffa"
+    }
+  ],
+  "missing": []
+}

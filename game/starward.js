@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { spaceGate } from "./space-gate.js";
 import { prepareVisuals } from "./shader-preparation.js";
-import { miraVoice } from "./voice.js";
+import { miraVoice, paceFor, LINE_GAP } from "./voice.js";
 import { miraLine } from "./mira-scenes.js";
 import { t } from "./i18n.js";
 import {
@@ -322,10 +322,19 @@ export class Starward {
     const sound = world.services.sound;
     const voice = sound ? miraVoice(sound) : null;
     voice?.prepare(SAID.map(([, id]) => this.lineId(id)));
+    // A line longer than its place (another language's take) slows the finale until it ends.
+    let pace = 1;
+    let paceUntil = 0;
     const say = (id) => {
       const line = miraLine(this.lineId(id));
       if (voice) voice.say(line, hud);
       else hud?.subtitle(line.text, line.seconds + 0.4, t("Mira"));
+      const index = SAID.findIndex(([, said]) => said === id);
+      paceUntil = SAID[index + 1]?.[0] ?? T.part;
+      pace = paceFor(
+        paceUntil - SAID[index][0],
+        (voice ? voice.length(line) : line.seconds) + LINE_GAP,
+      );
     };
     const shot = {
       letterbox: true,
@@ -337,7 +346,8 @@ export class Starward {
         this.time = Math.max(this.time, END);
       },
       update: (dt, camera) => {
-        this.time += dt;
+        if (this.time >= paceUntil) pace = 1;
+        this.time += dt * pace;
         const t = this.time;
         source ||= { p: camera.position.clone(), q: camera.quaternion.clone() };
         hero.vel.x = hero.vel.y = hero.vel.z = 0;
