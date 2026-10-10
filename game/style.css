@@ -136,20 +136,22 @@ h1 {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #f3dfb8;
-  background: linear-gradient(
-    100deg,
-    #ffd08a 0%,
-    #f6e2b0 24%,
-    #dcf59e 44%,
-    #93efe2 62%,
-    #a3cdf3 80%,
-    #e6bdff 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 0 #7a4a28)
-    drop-shadow(0 18px 40px rgba(0, 0, 0, 0.45));
+  text-shadow:
+    0 2px 0 #7a4a28,
+    0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+h1 .logo {
+  display: block;
+  width: clamp(16rem, 36vw, 31rem);
+  height: auto;
+  filter: drop-shadow(0 0 22px rgba(10, 6, 4, 0.6));
+}
+
+.loading-card h1 .logo,
+#credits h1 .logo {
+  width: clamp(15rem, 34vw, 27rem);
+  margin: 0 auto;
 }
 
 /* --- screens ------------------------------------------------------------------------- */
@@ -172,14 +174,15 @@ h1 {
 #loading {
   place-items: center;
   overflow: hidden;
-  background:
-    radial-gradient(
-      ellipse at 50% 42%,
-      rgba(255, 214, 160, 0.06) 0%,
-      rgba(255, 214, 160, 0) 38%
-    ),
-    radial-gradient(ellipse at 50% 60%, #2e1d12 0%, #140c08 58%, #080504 100%);
+  background: #0b0706 url("./ui/worlds-landscape.webp") center 48% / cover
+    no-repeat;
   z-index: 40;
+}
+
+@media (orientation: portrait) {
+  #loading {
+    background-image: url("./ui/worlds-portrait.webp");
+  }
 }
 
 /* The title's kicker is warm like the logo's start; the builders' turquoise stays for play. */

@@ -1,0 +1,6 @@
+Farseek title and loading art
+
+logo.webp, worlds-landscape.webp and worlds-portrait.webp are composed in the browser from the
+game's own generated textures (see ../textures/NOTICE.txt) with SVG shapes, gradients and
+filters, then rendered and encoded with cwebp. The pages that draw them and the renders are in
+receipts/verification-art-direction/ in the source repository.

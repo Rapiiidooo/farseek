@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #0b0706;
+        overflow: hidden;
+      }
+      svg {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <svg id="art" xmlns="http://www.w3.org/2000/svg"></svg>
+    <script type="module">
+      // The loading screen's backdrop: every world around the gate, in the order of the journey,
+      // clockwise from the sunken court at the lower left to the vault at the lower right. The
+      // centre stays dark under the title and the bar.
+      const W = Number(new URLSearchParams(location.search).get("w") || 1920);
+      const H = Number(new URLSearchParams(location.search).get("h") || 1080);
+      const NS = "http://www.w3.org/2000/svg";
+      const svg = document.querySelector("#art");
+      svg.setAttribute("width", W);
+      svg.setAttribute("height", H);
+      svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+      const make = (tag, attrs = {}, parent = svg) => {
+        const el = document.createElementNS(NS, tag);
+        for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+        parent.appendChild(el);
+        return el;
+      };
+      let seed = 21;
+      const rand = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+      const cx = W / 2;
+      const cy = H * 0.48;
+      const R = Math.hypot(W, H) * 0.62;
+      const defs = make("defs");
+      const texture = (id, file, size) => {
+        const p = make("pattern", { id, patternUnits: "userSpaceOnUse", width: size, height: size }, defs);
+        make("image", { href: `../../../game/textures/${file}`, width: size, height: size }, p);
+      };
+      texture("sand", "sand-grain-albedo.webp", 260);
+      texture("sandstone", "court-sandstone-albedo.webp", 320);
+      texture("stone", "stone-mineral-albedo.webp", 360);
+      texture("masonry", "masonry-aged-albedo.webp", 380);
+      texture("strata", "rock-strata-albedo.webp", 340);
+      texture("snow", "snow-grain-albedo.webp", 300);
+      texture("bark", "bark-weathered-albedo.webp", 300);
+      texture("leaves", "beech-leaves-albedo.webp", 300);
+      texture("litter", "forest-litter-albedo.webp", 320);
+      const filter = (id, inner, extra = {}) => {
+        const f = make("filter", { id, x: "-20%", y: "-20%", width: "140%", height: "140%", "color-interpolation-filters": "sRGB", ...extra }, defs);
+        f.innerHTML = inner;
+        return f;
+      };
+      const tint = (id, m) => filter(id, `<feColorMatrix type="matrix" values="${m}" />`);
+      tint("warm", "0.95 0 0 0 0.02  0 0.78 0 0 0  0 0 0.55 0 0  0 0 0 1 0");
+      tint("violet", "0.34 0 0 0 0.06  0 0.26 0 0 0.03  0 0 0.46 0 0.12  0 0 0 1 0");
+      tint("gold", "1.05 0 0 0 0.05  0 0.9 0 0 0.02  0 0 0.62 0 0  0 0 0 1 0");
+      tint("cold", "0.62 0 0 0 0.12  0 0.78 0 0 0.18  0 0 0.9 0 0.26  0 0 0 1 0");
+      tint("green", "0.32 0 0 0 0  0 0.62 0 0 0.03  0 0 0.26 0 0  0 0 0 1 0");
+      tint("deep", "0.16 0 0 0 0  0 0.36 0 0 0.06  0 0 0.52 0 0.16  0 0 0 1 0");
+      tint("ember", "0.42 0 0 0 0.03  0 0.3 0 0 0.02  0 0 0.24 0 0.02  0 0 0 1 0");
+      filter("blur", `<feGaussianBlur stdDeviation="${Math.max(W, H) / 26}" />`, { x: "-50%", y: "-50%", width: "200%", height: "200%" });
+      filter("depth", `<feGaussianBlur stdDeviation="${Math.max(W, H) / 1100}" />`, { x: "-5%", y: "-5%", width: "110%", height: "110%" });
+      filter("haze", `<feGaussianBlur stdDeviation="${W / 240}" />`, { x: "-50%", y: "-50%", width: "200%", height: "200%" });
+      filter("glow", `<feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>`, { x: "-100%", y: "-100%", width: "300%", height: "300%" });
+      filter("caustics", `<feTurbulence type="turbulence" baseFrequency="0.012 0.03" numOctaves="2" seed="5" /><feColorMatrix type="matrix" values="0 0 0 0 0.45  0 0 0 0 0.85  0 0 0 0 1  2.6 0 0 0 -0.62" />`, { x: "0", y: "0", width: "100%", height: "100%" });
+      filter("aurora", `<feTurbulence type="fractalNoise" baseFrequency="0.004 0.03" numOctaves="2" seed="3" /><feColorMatrix type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.95  0 0 0 0 0.75  1.8 0 0 0 -0.75" />`, { x: "0", y: "0", width: "100%", height: "100%" });
+      // Seven wedges all around the centre, clockwise from the lower left, their edges blurred so
+      // one world melts into the next.
+      const start = 100;
+      const span = 360 / 7;
+      const worlds = ["court", "two", "three", "four", "five", "six", "vault"];
+      const wedge = (i) => {
+        const a0 = ((start + span * i - 4) * Math.PI) / 180;
+        const a1 = ((start + span * (i + 1) + 4) * Math.PI) / 180;
+        const pts = [[cx, cy]];
+        for (let k = 0; k <= 12; k++) {
+          const a = a0 + ((a1 - a0) * k) / 12;
+          pts.push([cx + Math.cos(a) * R, cy + Math.sin(a) * R]);
+        }
+        return `M${pts.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join(" L")}Z`;
+      };
+      const masks = worlds.map((id, i) => {
+        const m = make("mask", { id: `m-${id}`, maskUnits: "userSpaceOnUse", x: 0, y: 0, width: W, height: H }, defs);
+        make("path", { d: wedge(i), fill: "#fff", filter: "url(#blur)" }, m);
+        return `url(#m-${id})`;
+      });
+      // Where a wedge's middle points, on an ellipse that fits the frame: a world's own shapes go
+      // there, `distance` measured against the frame's shorter side.
+      const toward = (i, distance) => {
+        const a = ((start + span * (i + 0.5)) * Math.PI) / 180;
+        const share = (distance / reach) * 1.4;
+        return [cx + Math.cos(a) * share * W * 0.5, cy + Math.sin(a) * share * H * 0.5];
+      };
+      // Each world is seen through the dark, a little out of focus, like a glimpse through a door.
+      const scene = (i) => make("g", { filter: "url(#depth)" }, make("g", { mask: masks[i] }));
+      const full = (g, attrs) => make("rect", { x: 0, y: 0, width: W, height: H, ...attrs }, g);
+      const reach = Math.min(W, H);
+
+      // The sunken court: warm sandstone and the dunes against it.
+      {
+        const g = scene(0);
+        make("g", { filter: "url(#warm)" }, g).append(full(document.createElementNS(NS, "g"), { fill: "url(#sandstone)" }));
+        const [x, y] = toward(0, reach * 0.62);
+        for (let k = 0; k < 4; k++) {
+          const yy = y + k * reach * 0.07 - reach * 0.04;
+          make("path", { d: `M${x - reach * 0.9} ${yy + reach * 0.3} Q${x - reach * 0.3} ${yy - reach * 0.06} ${x + reach * 0.1} ${yy + reach * 0.04} T${x + reach * 0.9} ${yy + reach * 0.3}Z`, fill: "url(#sand)", opacity: 0.85 - k * 0.12 }, g);
+        }
+        full(g, { fill: "#ffb05a", opacity: 0.08 });
+      }
+      // The checkpoint: night basalt under a violet sky, its lilac flora glowing.
+      {
+        const g = scene(1);
+        full(g, { fill: "#2a2238" });
+        make("g", { filter: "url(#violet)" }, g).append(full(document.createElementNS(NS, "g"), { fill: "url(#stone)", opacity: 0.85 }));
+        for (let k = 0; k < 28; k++) {
+          const [x, y] = toward(1, reach * (0.38 + rand() * 0.55));
+          make("circle", { cx: x + (rand() - 0.5) * reach * 0.3, cy: y + (rand() - 0.5) * reach * 0.3, r: 2 + rand() * 5, fill: "#d98cff", filter: "url(#glow)", opacity: 0.55 + rand() * 0.4 }, g);
+        }
+      }
+      // The dawn isles: a golden sky, clouds below and floating isles.
+      {
+        const g = scene(2);
+        const sky = make("linearGradient", { id: "dawn", x1: 0, y1: 0, x2: 0, y2: 1 }, defs);
+        make("stop", { offset: 0, "stop-color": "#6d4a35" }, sky);
+        make("stop", { offset: 0.5, "stop-color": "#d99a55" }, sky);
+        make("stop", { offset: 1, "stop-color": "#f2d49a" }, sky);
+        full(g, { fill: "url(#dawn)" });
+        for (let k = 0; k < 24; k++) {
+          const [x, y] = toward(2, reach * (0.45 + rand() * 0.5));
+          make("circle", { cx: x + (rand() - 0.5) * reach * 0.5, cy: y + reach * 0.08 + rand() * reach * 0.1, r: reach * (0.03 + rand() * 0.05), fill: "#fff0d0", filter: "url(#haze)", opacity: 0.55 }, g);
+        }
+        for (const [d, s] of [[0.55, 0.09], [0.78, 0.06], [0.42, 0.05]]) {
+          const [x, y] = toward(2, reach * d);
+          const w = reach * s;
+          make("path", { d: `M${x - w} ${y} L${x + w} ${y} L${x + w * 0.5} ${y + w * 0.7} L${x - w * 0.3} ${y + w * 0.9}Z`, fill: "url(#strata)", opacity: 0.85 }, g);
+          make("rect", { x: x - w, y: y - w * 0.12, width: w * 2, height: w * 0.14, fill: "#eadcc0", opacity: 0.9 }, g);
+        }
+      }
+      // The frozen reach: snowy peaks under a cold sky and a ribbon of aurora.
+      {
+        const g = scene(3);
+        full(g, { fill: "#1d2a3a" });
+        full(g, { filter: "url(#aurora)", opacity: 0.85 });
+        const [x, y] = toward(3, reach * 0.62);
+        for (let k = 0; k < 6; k++) {
+          const px = x + (k - 2.5) * reach * 0.16 + (rand() - 0.5) * reach * 0.05;
+          const h = reach * (0.18 + rand() * 0.14);
+          const py = y + reach * 0.22;
+          make("g", { filter: "url(#cold)" }, g).append(make("path", { d: `M${px - h * 0.8} ${py} L${px} ${py - h} L${px + h * 0.8} ${py}Z`, fill: "url(#snow)" }));
+          make("path", { d: `M${px - h * 0.8} ${py} L${px} ${py - h} L${px + h * 0.2} ${py - h * 0.55} L${px - h * 0.1} ${py}Z`, fill: "#5b7fa0", opacity: 0.45 }, g);
+        }
+      }
+      // The wildwood: deep canopy, trunks and shafts of light, lime spores.
+      {
+        const g = scene(4);
+        make("g", { filter: "url(#green)" }, g).append(full(document.createElementNS(NS, "g"), { fill: "url(#litter)" }));
+        make("g", { filter: "url(#green)" }, g).append(full(document.createElementNS(NS, "g"), { fill: "url(#leaves)", opacity: 0.8 }));
+        const [x, y] = toward(4, reach * 0.62);
+        for (let k = 0; k < 5; k++) {
+          const tx = x + (k - 2) * reach * 0.13;
+          make("rect", { x: tx, y: y - reach * 0.6, width: reach * 0.035, height: reach * 1.2, fill: "url(#bark)", opacity: 0.75, transform: `rotate(${(rand() - 0.5) * 8} ${tx} ${y})` }, g);
+        }
+        for (let k = 0; k < 3; k++) {
+          const sx = x + (k - 1) * reach * 0.18;
+          make("path", { d: `M${sx} ${y - reach * 0.6} L${sx + reach * 0.06} ${y - reach * 0.6} L${sx + reach * 0.3} ${y + reach * 0.5} L${sx + reach * 0.18} ${y + reach * 0.5}Z`, fill: "#fff3c8", opacity: 0.1, filter: "url(#haze)" }, g);
+        }
+        for (let k = 0; k < 22; k++) {
+          const [px, py] = toward(4, reach * (0.4 + rand() * 0.55));
+          make("circle", { cx: px + (rand() - 0.5) * reach * 0.3, cy: py + (rand() - 0.5) * reach * 0.3, r: 1.5 + rand() * 3, fill: "#c3f25a", filter: "url(#glow)", opacity: 0.7 }, g);
+        }
+      }
+      // The drowned archive: deep water, caustic light and rising bubbles.
+      {
+        const g = scene(5);
+        const water = make("linearGradient", { id: "water", x1: 0, y1: 0, x2: 0, y2: 1 }, defs);
+        make("stop", { offset: 0, "stop-color": "#1b6f9a" }, water);
+        make("stop", { offset: 1, "stop-color": "#061a2a" }, water);
+        full(g, { fill: "url(#water)" });
+        make("g", { filter: "url(#deep)" }, g).append(full(document.createElementNS(NS, "g"), { fill: "url(#stone)", opacity: 0.45 }));
+        full(g, { filter: "url(#caustics)", opacity: 0.6 });
+        for (let k = 0; k < 26; k++) {
+          const [px, py] = toward(5, reach * (0.4 + rand() * 0.55));
+          make("circle", { cx: px + (rand() - 0.5) * reach * 0.3, cy: py + (rand() - 0.5) * reach * 0.3, r: 2 + rand() * 6, fill: "rgba(200,240,255,0.08)", stroke: "#bfeaff", "stroke-width": 1.4, opacity: 0.7 }, g);
+        }
+      }
+      // The builders' vault in space: dark stone, amber light and stars.
+      {
+        const g = scene(6);
+        full(g, { fill: "#120d14" });
+        make("g", { filter: "url(#ember)" }, g).append(full(document.createElementNS(NS, "g"), { fill: "url(#stone)", opacity: 0.55 }));
+        for (let k = 0; k < 90; k++) {
+          const [px, py] = toward(6, reach * (0.35 + rand() * 0.65));
+          make("circle", { cx: px + (rand() - 0.5) * reach * 0.45, cy: py + (rand() - 0.5) * reach * 0.45, r: 0.8 + rand() * 1.8, fill: "#fff5e6", opacity: 0.6 + rand() * 0.4 }, g);
+        }
+        const [x, y] = toward(6, reach * 0.6);
+        make("circle", { cx: x, cy: y, r: reach * 0.2, fill: "#ffb24a", opacity: 0.55, filter: "url(#blur)" }, g);
+        make("circle", { cx: x, cy: y, r: reach * 0.035, fill: "#ffd9a0", opacity: 0.9, filter: "url(#glow)" }, g);
+      }
+      // Dark under the title and the bar, the worlds brightening toward the edges, then a vignette.
+      full(svg, { fill: "#0d0806", opacity: 0.38 });
+      const centre = make("radialGradient", { id: "centre", gradientUnits: "userSpaceOnUse", cx, cy, r: reach * 0.62 }, defs);
+      make("stop", { offset: 0, "stop-color": "#0d0806", "stop-opacity": 0.97 }, centre);
+      make("stop", { offset: 0.42, "stop-color": "#0d0806", "stop-opacity": 0.92 }, centre);
+      make("stop", { offset: 0.7, "stop-color": "#0d0806", "stop-opacity": 0.5 }, centre);
+      make("stop", { offset: 1, "stop-color": "#0d0806", "stop-opacity": 0 }, centre);
+      full(svg, { fill: "url(#centre)" });
+      const edge = make("radialGradient", { id: "edge", cx: 0.5, cy: 0.48, r: 0.75 }, defs);
+      make("stop", { offset: 0.6, "stop-color": "#000", "stop-opacity": 0 }, edge);
+      make("stop", { offset: 1, "stop-color": "#000", "stop-opacity": 0.65 }, edge);
+      full(svg, { fill: "url(#edge)" });
+      await Promise.all([...svg.querySelectorAll("image")].map((img) => img.decode?.().catch(() => {})));
+      document.body.dataset.ready = "1";
+    </script>
+  </body>
+</html>
