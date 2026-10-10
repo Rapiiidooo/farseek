@@ -75,7 +75,9 @@ export function createCampaign(app) {
           const chapter = chapterById(id);
           const fromTitle = state.mode === "title";
           resetWorlds(chapter.level >= 4 || (continuing && progress.pistols));
-          app.ui.loadPlan(worlds.toPrepare(chapter.where));
+          app.ui.loadPlan(worlds.toPrepare(chapter.where), {
+            start: chapter.where,
+          });
           await worlds.ensure(chapter.where);
           worlds.solveBefore(chapter.where);
           // Whatever the title screen has not prepared yet finishes here, so play never competes with loading.

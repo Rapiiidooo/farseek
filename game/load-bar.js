@@ -1,5 +1,6 @@
-// The loading bar's fill. Each stage eases toward its end as a CSS transition, which the
-// compositor keeps playing while preparation blocks the page, and stops short until it is done.
+// The loading bar: the empty track (its span) slides right over the worlds' band as work is done.
+// Each stage eases toward its end as a CSS transition, which the compositor keeps playing while
+// preparation blocks the page, and stops short until it is done.
 const CREEP = 0.9;
 const STAGE = [0.3, 0.6, 0.4, 1];
 const REACH = [0.2, 0.7, 0.3, 1];
@@ -27,7 +28,7 @@ export function createLoadBar(bar) {
   function drawn() {
     const width = bar.getBoundingClientRect().width;
     const matrix = new DOMMatrixReadOnly(getComputedStyle(fill).transform);
-    const styled = width ? 1 + matrix.m41 / width : motion.from;
+    const styled = width ? matrix.m41 / width : motion.from;
     const { from, to, start, seconds, curve } = motion;
     const t = seconds
       ? Math.min(1, (performance.now() - start) / 1000 / seconds)
@@ -41,7 +42,7 @@ export function createLoadBar(bar) {
     fill.style.transition = seconds
       ? `transform ${seconds}s cubic-bezier(${curve})`
       : "none";
-    fill.style.transform = `translateX(${((to - 1) * 100).toFixed(3)}%)`;
+    fill.style.transform = `translateX(${(to * 100).toFixed(3)}%)`;
   }
 
   // Takes over at the fraction drawn, from the page's opening animation or a running stage.
@@ -63,7 +64,7 @@ export function createLoadBar(bar) {
       bar.classList.remove("failed");
       bar.classList.add("driven");
       fill.style.transition = "none";
-      fill.style.transform = "translateX(-100%)";
+      fill.style.transform = "translateX(0%)";
       fill.getBoundingClientRect();
       bar.setAttribute("aria-valuenow", "0");
     },

@@ -180,7 +180,7 @@ export default {
   "Amber warns of a surge. Wait for the water to fall, then run across the dark strip.":
     "L’ambre annonce une poussée. Attends que l’eau retombe, puis traverse la bande sombre en courant.",
   Ambience: "Ambiance",
-  "An expedition in seven worlds": "Une expédition en sept mondes",
+  "An expedition between worlds": "Une expédition entre les mondes",
   "An island of air": "Un îlot d’air",
   "An optional clean stamp review can release Mira's transit file.":
     "Un contrôle des tampons facultatif, réussi sans bavure, peut libérer le dossier de transit de Mira.",
@@ -913,6 +913,7 @@ export default {
   "Plates: {hits} of 3 · The first hit starts the clock":
     "Plaques : {hits} sur 3 · le premier impact lance le chrono",
   "Preparing {world}…": "Préparation : {world}…",
+  "Preparing the worlds ahead…": "Préparation des mondes à venir…",
   "press {key}": "appuie sur {key}",
   "Press {key}": "Appuie sur {key}",
   "Press {key} to raise a ward of the builders' light in front of you for a moment: it turns aside charges, spores and pressure, then gathers again.":

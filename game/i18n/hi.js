@@ -172,7 +172,7 @@ export default {
   "Amber warns of a surge. Wait for the water to fall, then run across the dark strip.":
     "पीली रोशनी उफान की चेतावनी है। पानी उतरने का इंतज़ार करो, फिर अँधेरी पट्टी के पार दौड़ो।",
   Ambience: "माहौल",
-  "An expedition in seven worlds": "सात दुनियाओं में एक अभियान",
+  "An expedition between worlds": "दुनियाओं के बीच एक अभियान",
   "An island of air": "हवा का एक टापू",
   "An optional clean stamp review can release Mira's transit file.":
     "एक वैकल्पिक साफ़ ठप्पा-जाँच मीरा की यात्रा-फ़ाइल दिला सकती है।",
@@ -887,6 +887,7 @@ export default {
   "Plates: {hits} of 3 · The first hit starts the clock":
     "प्लेटें: 3 में से {hits} · पहले निशाने से घड़ी चलेगी",
   "Preparing {world}…": "{world}: तैयारी चल रही है…",
+  "Preparing the worlds ahead…": "आगे की दुनियाएँ तैयार हो रही हैं…",
   "press {key}": "{key} दबाओ",
   "Press {key}": "{key} दबाओ",
   "Press {key} to raise a ward of the builders' light in front of you for a moment: it turns aside charges, spores and pressure, then gathers again.":

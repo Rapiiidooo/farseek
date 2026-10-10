@@ -163,7 +163,7 @@ export default {
   "Amber warns of a surge. Wait for the water to fall, then run across the dark strip.":
     "琥珀色光芒预示着即将喷涌。等水柱落下，再跑过暗色地带。",
   Ambience: "环境音",
-  "An expedition in seven worlds": "横跨七个世界的探险",
+  "An expedition between worlds": "穿行于世界之间的探险",
   "An island of air": "空气之岛",
   "An optional clean stamp review can release Mira's transit file.":
     "完成可选的印章审核，就能取得米拉的过境档案。",
@@ -856,6 +856,7 @@ export default {
   "Plates: {hits} of 3 · The first hit starts the clock":
     "靶板：{hits}/3 · 第一次命中后开始计时",
   "Preparing {world}…": "正在准备{world}……",
+  "Preparing the worlds ahead…": "正在准备前方的世界……",
   "press {key}": "按{key}",
   "Press {key}": "按{key}",
   "Press {key} to raise a ward of the builders' light in front of you for a moment: it turns aside charges, spores and pressure, then gathers again.":

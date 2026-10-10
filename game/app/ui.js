@@ -55,7 +55,9 @@ export function createUI(app) {
   const pips = new Map(
     WORLDS.map(({ id }) => {
       const pip = document.createElement("li");
+      pip.dataset.world = id;
       pip.dataset.state = id === "court" ? "active" : "later";
+      pip.hidden = id !== "court";
       return [id, pip];
     }),
   );
@@ -127,17 +129,30 @@ export function createUI(app) {
     loadTip.classList.add("shown");
   }
 
+  // A world the player has not reached keeps its name and its mark to itself, so the screen
+  // never tells how many doors lie ahead.
+  function known(id) {
+    return (
+      id === "court" ||
+      id === session.start ||
+      app.worlds.definition(id).starts.some((c) => progress.reached.has(c.id))
+    );
+  }
+
   function markWorlds(plan = new Map()) {
-    for (const [id, pip] of pips)
+    for (const [id, pip] of pips) {
+      pip.hidden = !known(id);
       pip.dataset.state = app.worlds.isResident(id)
         ? "ready"
         : plan.has(id)
           ? "queued"
           : "later";
+    }
   }
 
   // The worlds a start prepares before play; their preparation events then move the bar.
-  function loadPlan(worlds) {
+  function loadPlan(worlds, { start } = {}) {
+    session.start = start;
     const plan = new Map(
       worlds.map(({ id, restore }) => [
         id,
@@ -166,9 +181,11 @@ export function createUI(app) {
       pips.get(id).dataset.state = "active";
       loadBar.stage(planned(session.done + seconds), seconds * pace);
       say(
-        t("Preparing {world}…", {
-          world: named(app.worlds.definition(id).title),
-        }),
+        known(id)
+          ? t("Preparing {world}…", {
+              world: named(app.worlds.definition(id).title),
+            })
+          : t("Preparing the worlds ahead…"),
       );
     } else if (event === "prepared") {
       session.plan.delete(id);
