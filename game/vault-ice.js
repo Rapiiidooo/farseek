@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { glyphMaterial, makeGlyph } from "./glyphs.js";
 import { BAYS, buildSeal } from "./vault.js";
+import { t } from "./i18n.js";
 
 // The frozen reach's bay: a floor of ice in 2 m cells, spires that stop a sliding block, and a
 // plate the block must come to rest on. As at the frozen pond, one push sends the block on
@@ -379,7 +380,7 @@ export class IceTrial {
               kind: "use",
               box: this.seal.box,
               ref: this,
-              prompt: "relic:Wake the seal",
+              prompt: `relic:${t("Wake the seal")}`,
             },
           ];
     return b.state === "rest" ? [{ kind: "block", box: b.box, ref: b }] : [];
@@ -437,23 +438,27 @@ export class IceTrial {
     if (this.powered)
       return hero.feet > ICE.shelf.top - 0.3
         ? {
-            title: "Climb to the seal",
-            sub: "Press the seal on the shelf",
+            title: t("Climb to the seal"),
+            sub: t("Press the seal on the shelf"),
             point: this.seal.center,
           }
         : {
-            title: "Climb to the seal",
-            sub: "Mira's axes bite the scarred ice: jump at it and climb",
+            title: t("Climb to the seal"),
+            sub: t("Mira's axes bite the scarred ice: jump at it and climb"),
             point: V(ICE.wall.x, 2.2, ICE.shelf.face),
           };
     const home = b.x === ICE.home.x && b.z === ICE.home.z;
     return {
-      title: "Slide the ice onto the plate",
+      title: t("Slide the ice onto the plate"),
       sub: home
-        ? "No room to push it here: hold the orb's link on the ice to drag it towards you"
+        ? t(
+            "No room to push it here: hold the orb's link on the ice to drag it towards you",
+          )
         : onColumn
-          ? "Push it towards the plate: it slides until something stops it"
-          : "Bring it in line with the plate: push it, or drag it with the orb's link",
+          ? t("Push it towards the plate: it slides until something stops it")
+          : t(
+              "Bring it in line with the plate: push it, or drag it with the orb's link",
+            ),
       point: onColumn ? V(ICE.plate.x, 1.2, ICE.plate.z) : V(b.x, 2.4, b.z),
     };
   }
@@ -461,7 +466,14 @@ export class IceTrial {
   hint(hud) {
     return [
       BAY.title,
-      `Hold ${hud.k("interact")} against the block and push: it slides until something stops it. Hands cannot pull ice, but holding ${hud.k("throw")} on it with the orb drags it towards you. Then ${hud.k("jump")} at the scarred ice and climb to the seal.`,
+      t(
+        "Hold {interact} against the block and push: it slides until something stops it. Hands cannot pull ice, but holding {throw} on it with the orb drags it towards you. Then {jump} at the scarred ice and climb to the seal.",
+        {
+          interact: hud.k("interact"),
+          throw: hud.k("throw"),
+          jump: hud.k("jump"),
+        },
+      ),
     ];
   }
 

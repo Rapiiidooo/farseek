@@ -1,4 +1,5 @@
 import { chapterById } from "../worlds/catalog.js";
+import { t } from "../i18n.js";
 import { reach, finish as finishGame, progress, setPistols } from "../store.js";
 import * as COURT from "../court.js";
 
@@ -125,7 +126,11 @@ export function createCampaign(app) {
               return this.t > 7.4;
             };
           }
-          hud.chapter(`Level ${chapter.level}`, chapter.title, chapter.start);
+          hud.chapter(
+            t("Level {n}", { n: chapter.level }),
+            chapter.title,
+            chapter.start,
+          );
           setPistols(app.equipment.pistolsUnlocked);
           reach(chapter.id);
           state.programsAtStart ??= app.renderer.info.programs.length;
@@ -291,7 +296,11 @@ export function createCampaign(app) {
         const fresh = reach(chapter.id);
         if (fresh && (!crossing.opts.back || definition.level >= 5)) {
           const show = () =>
-            hud.chapter(`Level ${chapter.level}`, chapter.title, chapter.start);
+            hud.chapter(
+              t("Level {n}", { n: chapter.level }),
+              chapter.title,
+              chapter.start,
+            );
           if (definition.level < 5) chapterTimer = setTimeout(show, 900);
           else show();
         }

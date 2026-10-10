@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { prepareVisuals } from "./shader-preparation.js";
+import { t } from "./i18n.js";
 
 export const TIDE_RELIC = "tide-proof";
 const PLACEMENTS = [
@@ -120,7 +121,7 @@ export class TideSketch {
         kind: "use",
         box: this.stations[id].box,
         ref: { use: () => this.use(id) },
-        prompt: `relic:${this.ready ? "Take Mira's tide proof" : "Read Mira's tide sketch"}`,
+        prompt: `relic:${this.ready ? t("Take Mira's tide proof") : t("Read Mira's tide sketch")}`,
       },
     ];
   }
@@ -139,8 +140,10 @@ export class TideSketch {
     if (id !== 0 || this.archive.ready) return false;
     this.inspected = true;
     this.services.hud?.hint(
-      "Mira's tide sketch",
-      "Vent a cyan mark in each guardian phase, then recover her note after the fight.",
+      t("Mira's tide sketch"),
+      t(
+        "Vent a cyan mark in each guardian phase, then recover her note after the fight.",
+      ),
       8,
     );
     this.refresh();
@@ -172,7 +175,9 @@ export class TideSketch {
     this.completed = true;
     this.services.sound?.play("slide");
     this.services.hud?.subtitle(
-      "The stone beside the last door is moving. Mira left something underneath.",
+      t(
+        "The stone beside the last door is moving. Mira left something underneath.",
+      ),
       5,
     );
     this.refresh();

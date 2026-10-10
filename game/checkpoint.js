@@ -5,6 +5,7 @@ import { FaceBuilder, terrainMaterial } from "./terrain.js";
 import { Stamps, Telegraphs } from "./fx.js";
 import { draw } from "./glyph-icons.js";
 import { StampReview } from "./stamp-review.js";
+import { t } from "./i18n.js";
 
 // The checkpoint beyond the first door. A wall closes the plateau; the only way on is a
 // barrier beside a customs booth, and the clerk inside will not lift it without the
@@ -67,7 +68,9 @@ export const LAYOUT = {
 const pick = (list) => list[Math.floor(Math.random() * list.length)];
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 const MAX_HEALTH = 4;
-const PROPERTY = "And don't touch the confiscated property. That's an offence.";
+const PROPERTY = t(
+  "And don't touch the confiscated property. That's an offence.",
+);
 
 export class Checkpoint {
   constructor(
@@ -423,7 +426,9 @@ export class Checkpoint {
         kind: "use",
         box: this.windowBox || (this.windowBox = this.makeWindowBox()),
         ref: { use: () => this.talk() },
-        prompt: this.review?.ready ? "relic:Take Mira's transit file" : "talk",
+        prompt: this.review?.ready
+          ? `relic:${t("Take Mira's transit file")}`
+          : "talk",
       });
     return list;
   }
@@ -452,7 +457,7 @@ export class Checkpoint {
     if (this.phase === "arrive") this.brief();
     this.onTakeDisc?.();
     this.clerk.talking = 1.5;
-    this.interject("HEY! That's confiscated property!", "shout", 2.4);
+    this.interject(t("HEY! That's confiscated property!"), "shout", 2.4);
     this.sound?.play("alarm");
     // An offence in full view of every Warden on duty.
     if (early || this.phase === "stamps")
@@ -470,18 +475,18 @@ export class Checkpoint {
   talk() {
     if (this.review?.ready) return this.review.claim();
     const lines = {
-      briefing: ["One moment, please."],
+      briefing: [t("One moment, please.")],
       stamps: [
-        "Three plates, three Wardens. Each stamp has its own glyph.",
-        "Offend a Warden and it stamps you. Where you stand.",
-        "The glyph over a Warden's head is the glyph on its stamp.",
+        t("Three plates, three Wardens. Each stamp has its own glyph."),
+        t("Offend a Warden and it stamps you. Where you stand."),
+        t("The glyph over a Warden's head is the glyph on its stamp."),
       ],
       lamp: [
-        "The barrier opens when its lamp is lit.",
-        "Light. Lamp. Not my department.",
+        t("The barrier opens when its lamp is lit."),
+        t("Light. Lamp. Not my department."),
       ],
-      open: ["Have a nice eternity.", "Next!"],
-    }[this.phase] || ["Next!"];
+      open: [t("Have a nice eternity."), t("Next!")],
+    }[this.phase] || [t("Next!")];
     this.talkIndex = ((this.talkIndex ?? -1) + 1) % lines.length;
     this.interject(lines[this.talkIndex], "clerk", 3);
     return true;
@@ -504,11 +509,15 @@ export class Checkpoint {
 
   brief() {
     if (!this.tookDisc) {
-      this.say("Next!", "clerk", 1.6);
-      this.say("Destination? …No address stamp? Denied.", "clerk", 3);
+      this.say(t("Next!"), "clerk", 1.6);
+      this.say(t("Destination? …No address stamp? Denied."), "clerk", 3);
     }
-    this.say("The address goes on those three plates. Stamped.", "clerk", 3.2);
-    this.say("Stamps are applied by Wardens. To offenders.", "clerk", 3.2);
+    this.say(
+      t("The address goes on those three plates. Stamped."),
+      "clerk",
+      3.2,
+    );
+    this.say(t("Stamps are applied by Wardens. To offenders."), "clerk", 3.2);
     if (!this.tookDisc) this.say(PROPERTY, "clerk", 3.4);
   }
 
@@ -562,9 +571,9 @@ export class Checkpoint {
       this.sound?.play("void");
       this.voids = (this.voids || 0) + 1;
       if (this.voids === 1) {
-        this.interject("Wrong stamp for that plate. Void.", "clerk", 2.6);
+        this.interject(t("Wrong stamp for that plate. Void."), "clerk", 2.6);
         this.onVoid?.();
-      } else if (Math.random() < 0.4) this.interject("Void.", "clerk", 1.4);
+      } else if (Math.random() < 0.4) this.interject(t("Void."), "clerk", 1.4);
       return "void";
     }
     this.stamps.mark(x, plate ? plate.top : 0, z, warden.glyph, "ground");
@@ -580,9 +589,9 @@ export class Checkpoint {
     this.onApproved?.(plate);
     const n = this.plates.filter((p) => p.stamped).length;
     const said = [
-      "One stamp. Two to go.",
-      "Two stamps. One more.",
-      "Three stamps. …Approved.",
+      t("One stamp. Two to go."),
+      t("Two stamps. One more."),
+      t("Three stamps. …Approved."),
     ][n - 1];
     this.interject(said, "clerk", 2.6);
     if (n === 3) this.toLamp();
@@ -593,8 +602,8 @@ export class Checkpoint {
     this.phaseT = 0;
     // Paperwork complete: everyone goes back to their rounds.
     for (const g of this.guards) g.calm(null);
-    this.say("The barrier opens when its lamp is lit.", "clerk", 3);
-    this.say("…The lamp's out. Not my department.", "clerk", 3.2);
+    this.say(t("The barrier opens when its lamp is lit."), "clerk", 3);
+    this.say(t("…The lamp's out. Not my department."), "clerk", 3.2);
     this.sound?.setMusic?.("world2");
   }
 
@@ -609,14 +618,14 @@ export class Checkpoint {
           this.lampLit = true;
           this.sound?.play("lamp");
           this.clerk.talking = 2;
-          this.say("…Approved. Have a nice eternity.", "clerk", 3.4, true);
+          this.say(t("…Approved. Have a nice eternity."), "clerk", 3.4, true);
           setTimeout(() => this.sound?.play("barrier"), 1500);
           this.phase = "open";
           this.onOpen?.();
         } else {
           this.sound?.play("clink");
           this.interject(
-            "That signal has no charge. The lamp needs light.",
+            t("That signal has no charge. The lamp needs light."),
             "clerk",
             3,
           );
@@ -706,10 +715,15 @@ export class Checkpoint {
     let key = this.phase;
     if (this.phase === "stamps") {
       hud.objective(
-        "Get the destination address stamped",
+        t("Get the destination address stamped"),
         disc.state === "display"
-          ? `Plates stamped: ${n} of 3 · Wardens only stamp offenders`
-          : `Plates stamped: ${n} of 3 · lure the matching Warden onto each plate`,
+          ? t("Plates stamped: {stamped} of 3 · Wardens only stamp offenders", {
+              stamped: n,
+            })
+          : t(
+              "Plates stamped: {stamped} of 3 · lure the matching Warden onto each plate",
+              { stamped: n },
+            ),
       );
       key += disc.state === "display" ? ":bin" : ":lure";
       if (this.guideKey !== key)
@@ -719,7 +733,7 @@ export class Checkpoint {
             : plateMarks,
         );
     } else if (this.phase === "arrive" || this.phase === "briefing") {
-      hud.objective("Get through the checkpoint", "Report to the booth");
+      hud.objective(t("Get through the checkpoint"), t("Report to the booth"));
       if (this.guideKey !== key)
         hud.setMarkers(
           this.phase === "arrive"
@@ -729,12 +743,12 @@ export class Checkpoint {
     } else if (this.phase === "lamp") {
       const charged = disc.charged;
       hud.objective(
-        "Light the barrier lamp",
+        t("Light the barrier lamp"),
         disc.state === "display"
-          ? "Take the relay orb from the confiscation bin"
+          ? t("Take the relay orb from the confiscation bin")
           : charged
-            ? "The orb is charged: aim at the lamp and pulse"
-            : "Aim at the crystal and link to charge the orb",
+            ? t("The orb is charged: aim at the lamp and pulse")
+            : t("Aim at the crystal and link to charge the orb"),
       );
       key += disc.state === "display" ? ":bin" : charged ? ":lamp" : ":beam";
       if (this.guideKey !== key)
@@ -749,8 +763,8 @@ export class Checkpoint {
       const gate = this.exitGate;
       const open = !!gate?.isOpen;
       hud.objective(
-        "Go through the far door",
-        open ? "The door is open: step through it" : "The barrier is up",
+        t("Go through the far door"),
+        open ? t("The door is open: step through it") : t("The barrier is up"),
       );
       key += open ? ":through" : ":exit";
       if (this.guideKey !== key)

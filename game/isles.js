@@ -9,6 +9,7 @@ import { PistolCase } from "./pistol-case.js";
 import { DrapedRope } from "./isle-ropes.js";
 import { IsleSwings } from "./isle-swings.js";
 import { finishSteps, runSteps } from "./work-steps.js";
+import { t } from "./i18n.js";
 
 // The third level, the dawn isles. Mira's expedition crossed them on ropes while dawn drifted
 // the isles together, and the ropes hang snapped from the rims. The held Relay orb links to
@@ -780,46 +781,46 @@ export class Isles {
       key;
     if (this.read && !this.pistolsTaken) {
       key = "pistols";
-      objective = "Take Mira's pistols";
-      sub = "Her case lies open on the crate beside her journal";
+      objective = t("Take Mira's pistols");
+      sub = t("Her case lies open on the crate beside her journal");
       marks = [this.pistolMark()];
     } else if (this.read && !this.ring.isOpen) key = "opening";
     else if (this.read) {
       key = "through";
-      objective = "Follow Mira through her ring";
-      sub = "Given two glyphs of three, it opened halfway: onto ice";
+      objective = t("Follow Mira through her ring");
+      sub = t("Given two glyphs of three, it opened halfway: onto ice");
       marks = [this.ring.center.clone().add(V(0, -1.8, 0))];
     } else if (!past("well") && (this.on === "step2" || swinging)) {
       key = `swing:${swinging}`;
-      objective = "Swing across the gap";
+      objective = t("Swing across the gap");
       sub = swinging
-        ? "Let go at the front of the swing, over the far isle"
-        : "Run and jump to catch the rope";
+        ? t("Let go at the front of the swing, over the far isle")
+        : t("Run and jump to catch the rope");
       marks = [swinging ? landing("well") : this.swings.mark("first")];
     } else if (!past("well")) {
       key = `trail:${at}`;
-      objective = "Follow Mira's trail";
-      sub = "Take a run at each gap and jump";
+      objective = t("Follow Mira's trail");
+      sub = t("Take a run at each gap and jump");
       marks = [landing(ISLES[at + 1].id)];
     } else if (!past("gap")) {
       const b = P.first.bridge;
       key = `first:${b.on ? "cross" : charged ? "lens" : "well"}`;
-      objective = "Wake the pylon";
+      objective = t("Wake the pylon");
       sub = b.on
-        ? "Cross before the light fades"
+        ? t("Cross before the light fades")
         : charged
-          ? "The orb is charged: pulse the pylon's lens"
-          : "Aim at the crystal and link to charge the orb";
+          ? t("The orb is charged: pulse the pylon's lens")
+          : t("Aim at the crystal and link to charge the orb");
       marks = [b.on ? landing("gap") : charged ? lens(P.first) : well(W.well)];
     } else if (!past("pair")) {
       const b = P.across.bridge;
       key = `across:${b.on ? "cross" : charged ? "lens" : "well"}`;
-      objective = "Wake the pylon across the gap";
+      objective = t("Wake the pylon across the gap");
       sub = b.on
-        ? "Cross before the light fades"
+        ? t("Cross before the light fades")
         : charged
-          ? "Pulse the far pylon's lens with the charged orb"
-          : "Aim at the crystal and link to charge the orb";
+          ? t("Pulse the far pylon's lens with the charged orb")
+          : t("Aim at the crystal and link to charge the orb");
       marks = [b.on ? landing("pair") : charged ? lens(P.across) : well(W.gap)];
     } else if (!past("ledge")) {
       const a = P.twinA.bridge,
@@ -827,14 +828,14 @@ export class Isles {
       const dark = [P.twinA, P.twinB].filter((p) => !p.bridge.on);
       const stranded = this.on === "rock" && !charged && !b.on;
       key = `pair:${a.on}:${b.on}:${charged}:${stranded}`;
-      objective = "Two pylons, one charge";
+      objective = t("Two pylons, one charge");
       sub = stranded
-        ? "No light here: step off the rock to try again"
+        ? t("No light here: step off the rock to try again")
         : !dark.length
-          ? "Cross both bridges before they fade"
+          ? t("Cross both bridges before they fade")
           : charged
-            ? "Pulse both pylons before the orb's charge fades"
-            : "Aim at the crystal and link to charge the orb";
+            ? t("Pulse both pylons before the orb's charge fades")
+            : t("Aim at the crystal and link to charge the orb");
       marks = !dark.length
         ? [landing("ledge")]
         : charged
@@ -847,10 +848,10 @@ export class Isles {
       const ferry = this.isle("ferry");
       const aboard = this.on === "ferry";
       key = `ferry:${aboard}`;
-      objective = "Ride the drifting isle";
+      objective = t("Ride the drifting isle");
       sub = aboard
-        ? "Jump off when it reaches the far isle"
-        : "Wait for it to drift close, then jump aboard";
+        ? t("Jump off when it reaches the far isle")
+        : t("Wait for it to drift close, then jump aboard");
       this.ferryMark ??= V();
       this.ferryMark.set(
         ferry.collider.x,
@@ -860,8 +861,8 @@ export class Isles {
       marks = [aboard ? landing("far") : this.ferryMark];
     } else if (!past("landing")) {
       key = "stones";
-      objective = "Cross the crumbling stones";
-      sub = "They give way under your feet: keep running";
+      objective = t("Cross the crumbling stones");
+      sub = t("They give way under your feet: keep running");
       marks = [landing("landing")];
     } else if (!past("camp")) {
       const a = P.relay1.bridge,
@@ -872,39 +873,39 @@ export class Isles {
         this.on === "midway" &&
         isleAt(mid, hero.pos.x, hero.pos.z).rho < mid.r + 1;
       key = `relay:${a.on}:${b.on}:${charged}:${stranded}:${swinging}:${aboard}`;
-      objective = "Carry the light";
+      objective = t("Carry the light");
       if (swinging) {
-        sub = "Let go over the bridge of light";
+        sub = t("Let go over the bridge of light");
         marks = [V(P.relay2.x, P.relay2.emit.y + 0.8, P.relay2.to)];
       } else if (b.on && aboard) {
-        sub = "Swing from the rope onto the bridge before it fades";
+        sub = t("Swing from the rope onto the bridge before it fades");
         marks = [this.swings.mark("relay")];
       } else if (b.on) {
-        sub = "Cross before the light fades";
+        sub = t("Cross before the light fades");
         marks = [landing("camp")];
       } else if (stranded) {
-        sub = "Aim back at the crystal and link to recharge, or step off";
+        sub = t("Aim back at the crystal and link to recharge, or step off");
         marks = [well(W.landing)];
       } else if (this.on === "midway") {
-        sub = "Pulse the far pylon, then swing onto its bridge";
+        sub = t("Pulse the far pylon, then swing onto its bridge");
         marks = [lens(P.relay2)];
       } else if (a.on) {
         sub = charged
-          ? "Cross while the orb is still charged"
-          : "Link to the crystal to recharge the orb, then cross";
+          ? t("Cross while the orb is still charged")
+          : t("Link to the crystal to recharge the orb, then cross");
         marks = [charged ? landing("midway") : well(W.landing)];
       } else {
         sub = charged
-          ? "Pulse the pylon, then cross while the orb is charged"
-          : "Aim at the crystal and link to charge the orb";
+          ? t("Pulse the pylon, then cross while the orb is charged")
+          : t("Aim at the crystal and link to charge the orb");
         marks = [charged ? lens(P.relay1) : well(W.landing)];
       }
     } else {
       key = `camp:${this.pistolsTaken}`;
-      objective = "Search Mira's camp";
+      objective = t("Search Mira's camp");
       sub = this.pistolsTaken
-        ? "Her journal must be here"
-        : "Her journal and her open pistol case are by the crates";
+        ? t("Her journal must be here")
+        : t("Her journal and her open pistol case are by the crates");
       marks = [
         this.notePos.clone().add(V(0, 0.8, 0)),
         this.pistolsTaken ? null : this.pistolMark(),

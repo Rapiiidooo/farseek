@@ -1,8 +1,14 @@
 import * as THREE from "three";
 import { makeGlyph } from "./glyphs.js";
+import { t } from "./i18n.js";
 
 export const TRANSIT_FILE = "transit-file";
 const GLYPHS = ["crescent", "waves", "disc"];
+const GLYPH_NAMES = {
+  crescent: t("crescent"),
+  waves: t("waves"),
+  disc: t("disc"),
+};
 
 export class StampReview {
   constructor(checkpoint, services, layout) {
@@ -92,7 +98,7 @@ export class StampReview {
         kind: "use",
         box: this.useBox,
         ref: { use: () => this.use() },
-        prompt: `relic:${this.active ? "Pause stamp review" : this.stamped.size ? "Resume stamp review" : "Begin stamp review"}`,
+        prompt: `relic:${this.active ? t("Pause stamp review") : this.stamped.size ? t("Resume stamp review") : t("Begin stamp review")}`,
       },
     ];
   }
@@ -100,13 +106,16 @@ export class StampReview {
   use() {
     if (!this.available || this.ready) return false;
     if (this.active)
-      return this.cancel("The review is paused. Accepted stamps are kept.");
+      return this.cancel(t("The review is paused. Accepted stamps are kept."));
     const kind = GLYPHS.find((glyph) => !this.stamped.has(glyph));
     const guard = this.checkpoint.guards.find(
       (warden) => warden.glyph === kind,
     );
     if (!guard || guard.state === "break") {
-      this.services.hud?.subtitle("Wait for the Warden to return to duty.", 3);
+      this.services.hud?.subtitle(
+        t("Wait for the Warden to return to duty."),
+        3,
+      );
       return false;
     }
     this.active = true;
@@ -116,14 +125,16 @@ export class StampReview {
     this.checkpoint.guideKey = null;
     this.services.hud?.clearSubtitle?.();
     this.checkpoint.say(
-      "A copy requires three clean stamps. Regulations.",
+      t("A copy requires three clean stamps. Regulations."),
       "clerk",
       3,
       true,
     );
     this.services.hud?.hint(
-      "Stamp review",
-      "Stand on the small register, wait for the warning, then dodge before the stamp lands.",
+      t("Stamp review"),
+      t(
+        "Stand on the small register, wait for the warning, then dodge before the stamp lands.",
+      ),
       8,
     );
     return true;
@@ -164,7 +175,7 @@ export class StampReview {
       stamps.mark(x, this.top, z, warden.glyph, "void");
       sound?.play("void");
       this.services.hud?.subtitle(
-        "The register needs a clean stamp. Step clear of the warning.",
+        t("The register needs a clean stamp. Step clear of the warning."),
         3,
       );
       return "void";
@@ -178,13 +189,18 @@ export class StampReview {
       this.delay = 0;
       this.services.hud?.clearHint?.();
       this.checkpoint.say(
-        "The copy is approved. Collect it at the window.",
+        t("The copy is approved. Collect it at the window."),
         "clerk",
         3.4,
         true,
       );
     } else {
-      this.checkpoint.say("Accepted. Next Warden, please.", "clerk", 2.4, true);
+      this.checkpoint.say(
+        t("Accepted. Next Warden, please."),
+        "clerk",
+        2.4,
+        true,
+      );
     }
     return "plate";
   }
@@ -196,7 +212,7 @@ export class StampReview {
     this.claimed = true;
     this.checkpoint.guideKey = null;
     this.checkpoint.say(
-      "A duplicate. Don't make me stamp another.",
+      t("A duplicate. Don't make me stamp another."),
       "clerk",
       3,
       true,
@@ -208,7 +224,9 @@ export class StampReview {
     if (this.available && !this.notified) {
       this.notified = true;
       this.checkpoint.say(
-        "Mira left a transit file. Clean stamps at the small register authorise a copy.",
+        t(
+          "Mira left a transit file. Clean stamps at the small register authorise a copy.",
+        ),
         "clerk",
         4,
       );
@@ -226,25 +244,34 @@ export class StampReview {
     const guard = this.guard;
     if (!guard) return;
     if (guard.state === "break") {
-      this.cancel("The review is paused. Let that Warden recover.");
+      this.cancel(t("The review is paused. Let that Warden recover."));
       return;
     }
     this.responding = guard;
     if (guard.state === "patrol")
-      guard.provoke("Stamp review. Hold still, please.");
+      guard.provoke(t("Stamp review. Hold still, please."));
   }
 
   guide(hud) {
     if (!this.available || (!this.active && !this.ready)) return false;
     const guard = this.guard;
     const key = `${this.stamped.size}:${this.ready}:${guard?.glyph ?? "wait"}`;
+    const count = { stamped: this.stamped.size, total: GLYPHS.length };
     hud.objective(
       this.ready
-        ? "Collect Mira's transit file"
-        : "Complete the optional stamp review",
+        ? t("Collect Mira's transit file")
+        : t("Complete the optional stamp review"),
       this.ready
-        ? "The clerk has approved a copy; collect it at the window"
-        : `Clean stamps: ${this.stamped.size} of ${GLYPHS.length} · ${guard?.glyph ?? "next Warden arriving"}`,
+        ? t("The clerk has approved a copy; collect it at the window")
+        : guard
+          ? t("Clean stamps: {stamped} of {total} · {glyph}", {
+              ...count,
+              glyph: GLYPH_NAMES[guard.glyph],
+            })
+          : t(
+              "Clean stamps: {stamped} of {total} · next Warden arriving",
+              count,
+            ),
     );
     if (key !== this.guideKey) {
       hud.setMarkers(

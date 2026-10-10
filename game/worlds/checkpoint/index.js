@@ -14,6 +14,7 @@ import { prepareVisuals } from "../../shader-preparation.js";
 import { dressGate } from "../../gate-bases.js";
 import { radioScene } from "../../mira-scenes.js";
 import { damageAmount, recoverHealth } from "../../composure.js";
+import { t } from "../../i18n.js";
 
 // The second world: a black-sand valley under a violet sky, walled by basalt ridges, a ringed
 // giant low on the horizon. The first door's twin stands at the head of the valley; the
@@ -665,8 +666,11 @@ export class WorldTwo {
       this.disc.attach(this.hand(), this.palm);
       this.services.sound?.setMusic("fight");
       hud.hint(
-        "Relay orb",
-        `${hud.press("throw", true)} to pulse what you aim at: a pulse offends a Warden, a charged one stuns it. ${hud.press("roll", true)} to roll away.`,
+        t("Relay orb"),
+        t(
+          "{press} to pulse what you aim at: a pulse offends a Warden, a charged one stuns it. {press2} to roll away.",
+          { press: hud.press("throw", true), press2: hud.press("roll", true) },
+        ),
         10,
         { queue: true },
       );
@@ -675,23 +679,30 @@ export class WorldTwo {
       warden.onStunned = () => {
         if (this.saidStun) return;
         this.saidStun = true;
-        hud.subtitle("Stunned, not hurt. That buys me a few seconds.", 3.5);
+        hud.subtitle(t("Stunned, not hurt. That buys me a few seconds."), 3.5);
       };
     cp.onNearBin = () =>
-      hud.subtitle("Their gear, confiscated. And that is Mira's relay orb.", 4);
+      hud.subtitle(
+        t("Their gear, confiscated. And that is Mira's relay orb."),
+        4,
+      );
     cp.onBriefed = () => {
       hud.health(cp.health, 4);
       hud.hint(
-        "Stamps",
-        "A Warden stamps an offender where they stand, and a ring marks the spot. Stand on a plate, then step out of the ring before the stamp lands.",
+        t("Stamps"),
+        t(
+          "A Warden stamps an offender where they stand, and a ring marks the spot. Stand on a plate, then step out of the ring before the stamp lands.",
+        ),
         11,
         { queue: true },
       );
     };
     cp.onVoid = () =>
       hud.hint(
-        "Matching",
-        "Each Warden's stamp carries the glyph shown over its head. Lead the matching Warden onto each plate.",
+        t("Matching"),
+        t(
+          "Each Warden's stamp carries the glyph shown over its head. Lead the matching Warden onto each plate.",
+        ),
         10,
         { queue: true },
       );
@@ -701,8 +712,11 @@ export class WorldTwo {
     };
     cp.onLampMiss = () =>
       hud.hint(
-        "Light",
-        `Aim at the crystal and ${hud.press("throw")} to charge the orb, then pulse the lamp.`,
+        t("Light"),
+        t(
+          "Aim at the crystal and {press} to charge the orb, then pulse the lamp.",
+          { press: hud.press("throw") },
+        ),
         9,
         { queue: true },
       );
@@ -733,7 +747,7 @@ export class WorldTwo {
       this.hero.spawn(r.x, r.z, 0, r.yaw);
       cp.health = 4;
       this.services.hud.health(cp.health, 4);
-      cp.say("Back of the queue.", "clerk", 2.4, true);
+      cp.say(t("Back of the queue."), "clerk", 2.4, true);
       this.services.sound?.setMusic("world2");
     });
   }
@@ -813,7 +827,7 @@ export class WorldTwo {
     clearTimeout(this.arrivalLine);
     this.arrivalLine = setTimeout(() => {
       if (this.active && this.checkpoint.phase === "arrive")
-        this.services.hud.subtitle("So this is where they went.", 3.5);
+        this.services.hud.subtitle(t("So this is where they went."), 3.5);
     }, 1800);
   }
 
@@ -867,8 +881,10 @@ export class WorldTwo {
     ) {
       this.saidCharged = true;
       this.services.hud.hint(
-        "Charged",
-        `The orb is charged: aim at the lamp and ${this.services.hud.press("throw")}.`,
+        t("Charged"),
+        t("The orb is charged: aim at the lamp and {press}.", {
+          press: this.services.hud.press("throw"),
+        }),
         6,
         { queue: true },
       );

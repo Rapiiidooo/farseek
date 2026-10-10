@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { Shot } from "./story.js";
 import { BAYS, LIGHT } from "./vault.js";
+import { t } from "./i18n.js";
 
 // Behind the sealed door: the builders' memory. A round chamber under a dome on which the
 // network is drawn in points and threads of light, six masks with a single slit standing round
@@ -837,6 +838,13 @@ export class RevealShot {
   }
 }
 
+// The continuation card's lines, read here: inside CrossingShot.update(), `t` is its clock.
+const CARD = {
+  kicker: t("The next crossing"),
+  title: t("Farseek"),
+  sub: t("To be continued."),
+};
+
 // The last crossing, after the reveal: Nyra and Mira's light go through the new door; the
 // camera follows into the world beyond, the continuation card shows, then the credits roll over
 // a slow flight through that world.
@@ -908,9 +916,9 @@ export class CrossingShot {
       this.carded = true;
       const card = document.querySelector("#chapter-card");
       if (card) {
-        card.querySelector(".kicker").textContent = "The next crossing";
-        card.querySelector("h2").textContent = "Farseek";
-        card.querySelector(".sub").textContent = "To be continued.";
+        card.querySelector(".kicker").textContent = CARD.kicker;
+        card.querySelector("h2").textContent = CARD.title;
+        card.querySelector(".sub").textContent = CARD.sub;
         card.classList.add("on");
         setTimeout(() => card.classList.remove("on"), 5600);
       }

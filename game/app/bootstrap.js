@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { t } from "../i18n.js";
 import "../object-copy.js";
 import { AssetStore } from "../asset-store.js";
 import CourtWorld from "../worlds/court/index.js";
@@ -259,9 +260,9 @@ export function startGame() {
   }
 
   async function load() {
-    app.ui.loading(0.12, "Unpacking the expedition…", 0.3);
+    app.ui.loading(0.12, t("Unpacking the expedition…"), 0.3);
     app.characterReady = loadCharacter();
-    app.ui.loading(0.66, "Carving the sunken court…", 2.2);
+    app.ui.loading(0.66, t("Carving the sunken court…"), 2.2);
     await Promise.all([app.characterReady, app.worlds.ensure("court")]);
     hero.spawn(COURT.START.x, COURT.START.z, 8, COURT.START.yaw);
     follow.snap(hero);

@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { Beams } from "./beams.js";
 import { BAYS, buildSeal } from "./vault.js";
+import { t } from "./i18n.js";
 
 // The court's bay: starlight falls through a slot in the outer wall onto a catcher mirror and
 // runs east. A stone block stands in it; two bronze mirrors must relay it round to the seal.
@@ -289,13 +290,17 @@ export class LightTrial {
     const b = this.blocks[0];
     if (b.x === b.home.x && b.z === b.home.z && !this.done)
       return {
-        title: "Bring the starlight to the seal",
-        sub: "A stone block stands in the beam: push or pull it out of the way",
+        title: t("Bring the starlight to the seal"),
+        sub: t(
+          "A stone block stands in the beam: push or pull it out of the way",
+        ),
         point: V(b.x, 2.4, b.z),
       };
     return {
-      title: "Bring the starlight to the seal",
-      sub: "Turn the bronze mirrors to pass the light on to the seal's medallion",
+      title: t("Bring the starlight to the seal"),
+      sub: t(
+        "Turn the bronze mirrors to pass the light on to the seal's medallion",
+      ),
       point: this.lastMirror(),
     };
   }
@@ -303,7 +308,10 @@ export class LightTrial {
   hint(hud) {
     return [
       BAY.title,
-      `Stand against the block and hold ${hud.k("interact")} to push or pull it. Hold ${hud.k("interact")} at a mirror and steer ${hud.keys("KeyA", "KeyD")} to turn it.`,
+      t(
+        "Stand against the block and hold {interact} to push or pull it. Hold {interact} at a mirror and steer {sides} to turn it.",
+        { interact: hud.k("interact"), sides: hud.keys("KeyA", "KeyD") },
+      ),
     ];
   }
 

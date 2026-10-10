@@ -3,6 +3,7 @@ import { Breath } from "./breath.js";
 import { coldWaterMaterial, setColdWaterTime } from "./cold-water.js";
 import { BAYS, buildSeal } from "./vault.js";
 import { CurrentField } from "./sea-currents.js";
+import { t } from "./i18n.js";
 
 // The drowned archive's bay: a flooded well. Steps lead down into the water on its west side;
 // at the bottom a passage runs east to a small chamber whose seal must be pressed underwater,
@@ -228,7 +229,7 @@ export class WellTrial {
     this.breath.update(dt, this.headWater(hero) > 0.5, () => this.onDrown?.());
     if (this.done || !hero.swimming) return;
     if (this.near(hero)) {
-      hero.prompt = "relic:Press the seal";
+      hero.prompt = `relic:${t("Press the seal")}`;
       if (interact) {
         this.done = true;
         this.seal.light();
@@ -245,19 +246,21 @@ export class WellTrial {
   guide(hero) {
     if (hero.swimming && hero.feet < WELL.bottom + 3.5)
       return {
-        title: "The flooded well",
-        sub: "Swim east along the passage and press the seal",
+        title: t("The flooded well"),
+        sub: t("Swim east along the passage and press the seal"),
         point: this.seal.center,
       };
     if (hero.swimming)
       return {
-        title: "The flooded well",
-        sub: "Dive: look down and swim, or hold the dive key. Watch your breath",
+        title: t("The flooded well"),
+        sub: t(
+          "Dive: look down and swim, or hold the dive key. Watch your breath",
+        ),
         point: V(WELL.maxX - 1, WELL.bottom + 1.2, -52),
       };
     return {
-      title: "The flooded well",
-      sub: "Take the steps down into the water",
+      title: t("The flooded well"),
+      sub: t("Take the steps down into the water"),
       point: V(18.4, 0.4, -52),
     };
   }
@@ -265,7 +268,10 @@ export class WellTrial {
   hint(hud) {
     return [
       BAY.title,
-      `Swim toward the reticle; ${hud.k("drop")} dives and ${hud.k("jump")} rises. The seal is at the end of the passage below. Come back up for air before your breath runs out.`,
+      t(
+        "Swim toward the reticle; {drop} dives and {jump} rises. The seal is at the end of the passage below. Come back up for air before your breath runs out.",
+        { drop: hud.k("drop"), jump: hud.k("jump") },
+      ),
     ];
   }
 

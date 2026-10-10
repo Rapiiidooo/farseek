@@ -1,0 +1,2229 @@
+{
+  "tool": "farseek-nightly",
+  "date": "2026-10-10",
+  "started": "2026-10-10T17:07:10.622Z",
+  "mode": "full",
+  "root": "/Users/rapido/perso/bittensor/404/farseek",
+  "hitchMs": 50,
+  "sources": {
+    "hash": "8bbff6be6fc9b8342f93e58688c378517cb72247a728f42d3ed75d009d43c944",
+    "files": 479,
+    "git": "b0319b4317fc293bc569e10845d892eef5f7d33f"
+  },
+  "steps": [
+    {
+      "id": "modules",
+      "title": "Every game module parses (npm run check)",
+      "seconds": 9.8,
+      "load": [
+        8.8,
+        7.9
+      ],
+      "exit": 0,
+      "failures": [],
+      "tail": [
+        "every module parses, every path stays inside the folder",
+        "flagged, not failed: geometry should come from Three.js constructors, and a judge will read these:",
+        "  assets/explorer/body.js: base64 data",
+        "  assets/explorer/brows.js: base64 data",
+        "  assets/explorer/gloves-relaxed.js: base64 data",
+        "  assets/explorer/gloves.js: base64 data",
+        "  assets/explorer/hair.js: base64 data",
+        "  assets/explorer/head.js: base64 data",
+        "  assets/explorer/left-eye.js: base64 data",
+        "  assets/explorer/previous/body.js: base64 data",
+        "  assets/explorer/previous/shoulders.js: base64 data",
+        "  assets/explorer/right-eye.js: base64 data"
+      ],
+      "log": "modules/log.txt",
+      "status": "pass"
+    },
+    {
+      "id": "architecture",
+      "title": "World catalog, manager and background work contracts",
+      "seconds": 0.7,
+      "load": [
+        7.9,
+        7.9
+      ],
+      "exit": 0,
+      "failures": [],
+      "tail": [
+        "PASS Chapters, lab entries and runtime assets keep their identifiers",
+        "PASS Asset probes deduplicate requests, cache empty factories and record failures",
+        "PASS Worlds load once, keep their state on return and defer solved predecessors",
+        "PASS A failed world load clears its request and can retry",
+        "PASS Background preparation yields to foreground requests and crossing holds",
+        "PASS Settling finishes every queued world in the foreground",
+        "PASS A start's preparation list matches what settling prepares"
+      ],
+      "log": "architecture/log.txt",
+      "status": "pass"
+    },
+    {
+      "id": "save",
+      "title": "Save compatibility",
+      "seconds": 0.1,
+      "load": [
+        7.9,
+        7.4
+      ],
+      "exit": 0,
+      "failures": [],
+      "tail": [
+        "PASS legacy migration, six-level completion, vault access, return checkpoint, relic retention, reset, blocked storage, old settings and new options"
+      ],
+      "log": "save/log.txt",
+      "status": "pass"
+    },
+    {
+      "id": "animation",
+      "title": "Animation contracts",
+      "seconds": 97.4,
+      "load": [
+        7.4,
+        4
+      ],
+      "exit": 0,
+      "failures": [],
+      "tail": [
+        "  \"expression\": {",
+        "    \"peakBlink\": 1,",
+        "    \"peakEffort\": 0.39982601655111716,",
+        "    \"peakBreath\": 0.29911753658546236,",
+        "    \"peakGaze\": 0.08797583023524166,",
+        "    \"peakHair\": 0.8218778716293607,",
+        "    \"peakBag\": 0.06444505803949051,",
+        "    \"finalBlink\": 0",
+        "  },",
+        "  \"asset\": \"game/assets/hero_realistic.js\",",
+        "  \"reference\": \"receipts/verification-realism/baseline/hero-anim.js\"",
+        "}"
+      ],
+      "log": "animation/log.txt",
+      "status": "pass"
+    },
+    {
+      "id": "views",
+      "title": "Fixed camera views against baselines",
+      "seconds": 69.6,
+      "load": [
+        4,
+        3.7
+      ],
+      "exit": 0,
+      "failures": [],
+      "tail": [
+        "PASS checkpoint-overview ",
+        "PASS isles-arrival ",
+        "PASS isles-overview ",
+        "PASS frost-falls ",
+        "PASS frost-valley ",
+        "PASS frost-stela ",
+        "PASS forest-path ",
+        "PASS forest-overview ",
+        "PASS sea-causeway ",
+        "PASS sea-overview ",
+        "PASS vault-nave ",
+        "PASS vault-door "
+      ],
+      "log": "views/log.txt",
+      "monitor": {
+        "browsers": 1,
+        "pages": 8,
+        "errors": [],
+        "webgl": [],
+        "programEvents": 0,
+        "late": [],
+        "recorderErrors": []
+      },
+      "details": {
+        "base": "http://localhost:64112",
+        "update": false,
+        "views": [
+          {
+            "id": "court-stela",
+            "chapter": "court",
+            "ssim": 1,
+            "tileSsim": 1,
+            "tileDeltaE": 0,
+            "deltaE": 0,
+            "worstTile": [
+              0,
+              0
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          },
+          {
+            "id": "court-overview",
+            "chapter": "court",
+            "ssim": 1,
+            "tileSsim": 1,
+            "tileDeltaE": 0,
+            "deltaE": 0,
+            "worstTile": [
+              0,
+              0
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          },
+          {
+            "id": "court-mirror",
+            "chapter": "court",
+            "ssim": 1,
+            "tileSsim": 1,
+            "tileDeltaE": 0,
+            "deltaE": 0,
+            "worstTile": [
+              0,
+              0
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          },
+          {
+            "id": "checkpoint-valley",
+            "chapter": "checkpoint",
+            "ssim": 1,
+            "tileSsim": 1,
+            "tileDeltaE": 0,
+            "deltaE": 0,
+            "worstTile": [
+              0,
+              0
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          },
+          {
+            "id": "checkpoint-overview",
+            "chapter": "checkpoint",
+            "ssim": 1,
+            "tileSsim": 1,
+            "tileDeltaE": 0,
+            "deltaE": 0,
+            "worstTile": [
+              0,
+              0
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          },
+          {
+            "id": "isles-arrival",
+            "chapter": "isles",
+            "ssim": 1,
+            "tileSsim": 1,
+            "tileDeltaE": 0,
+            "deltaE": 0,
+            "worstTile": [
+              0,
+              0
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          },
+          {
+            "id": "isles-overview",
+            "chapter": "isles",
+            "ssim": 1,
+            "tileSsim": 1,
+            "tileDeltaE": 0,
+            "deltaE": 0,
+            "worstTile": [
+              0,
+              0
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          },
+          {
+            "id": "frost-falls",
+            "chapter": "frost",
+            "ssim": 1,
+            "tileSsim": 1,
+            "tileDeltaE": 0,
+            "deltaE": 0,
+            "worstTile": [
+              0,
+              0
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          },
+          {
+            "id": "frost-valley",
+            "chapter": "frost",
+            "ssim": 1,
+            "tileSsim": 1,
+            "tileDeltaE": 0,
+            "deltaE": 0,
+            "worstTile": [
+              0,
+              0
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          },
+          {
+            "id": "frost-stela",
+            "chapter": "frost",
+            "ssim": 1,
+            "tileSsim": 1,
+            "tileDeltaE": 0,
+            "deltaE": 0,
+            "worstTile": [
+              0,
+              0
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          },
+          {
+            "id": "forest-path",
+            "chapter": "forest",
+            "ssim": 0.99995,
+            "tileSsim": 0.99284,
+            "tileDeltaE": 0.237,
+            "deltaE": 0.002,
+            "worstTile": [
+              7,
+              4
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          },
+          {
+            "id": "forest-overview",
+            "chapter": "forest",
+            "ssim": 0.99999,
+            "tileSsim": 0.99901,
+            "tileDeltaE": 0.056,
+            "deltaE": 0.001,
+            "worstTile": [
+              7,
+              3
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          },
+          {
+            "id": "sea-causeway",
+            "chapter": "sea",
+            "ssim": 1,
+            "tileSsim": 1,
+            "tileDeltaE": 0,
+            "deltaE": 0,
+            "worstTile": [
+              0,
+              0
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          },
+          {
+            "id": "sea-overview",
+            "chapter": "sea",
+            "ssim": 1,
+            "tileSsim": 1,
+            "tileDeltaE": 0,
+            "deltaE": 0,
+            "worstTile": [
+              0,
+              0
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          },
+          {
+            "id": "vault-nave",
+            "chapter": "vault",
+            "ssim": 1,
+            "tileSsim": 1,
+            "tileDeltaE": 0,
+            "deltaE": 0,
+            "worstTile": [
+              0,
+              0
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          },
+          {
+            "id": "vault-door",
+            "chapter": "vault",
+            "ssim": 1,
+            "tileSsim": 1,
+            "tileDeltaE": 0,
+            "deltaE": 0,
+            "worstTile": [
+              0,
+              0
+            ],
+            "limits": {
+              "ssim": 0.95,
+              "tileSsim": 0.8,
+              "tileDeltaE": 6,
+              "noiseMargin": 0.1,
+              "noiseFactor": 2
+            },
+            "failed": [],
+            "passed": true
+          }
+        ],
+        "errors": [],
+        "passed": true,
+        "seconds": {
+          "court": 11.204,
+          "checkpoint": 8.939,
+          "isles": 9.01,
+          "frost": 9.848,
+          "forest": 9.374,
+          "sea": 8.772,
+          "vault": 8.998
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "id": "hitch",
+      "title": "Ten door crossings, no frame over 50 ms",
+      "attempt": "confirm",
+      "seconds": 122.1,
+      "load": [
+        7.1,
+        6.4
+      ],
+      "exit": 0,
+      "failures": [],
+      "tail": [
+        "SETTLE after-six {\"ms\":257.5,\"frames\":16,\"p50\":16.69999999999709,\"p95\":16.80000000000291,\"max\":16.80000000000291,\"over50\":0,\"over100\":0,\"longTasks\":0,\"longest\":[],\"resident\":{\"loaded\":[\"court\",\"two\",\"three\",\"four\",\"five\",\"six\",\"vault\"],\"pending\":[],\"resident\":[\"five\",\"six\",\"vault\"],\"released\":{\"worlds\":9,\"geometries\":0,\"textures\":0,\"targets\":16,\"instances\":0},\"residency\":{\"tier\":\"all\",\"budget\":8192,\"need\":{\"all\":875,\"neighbors\":375,\"next\":250}}}}",
+        "CROSS {\"from\":\"six\",\"to\":\"five\",\"back\":true,\"enterMs\":804.2000000476837,\"worst\":[[9,17],[26,17],[42,17],[59,17],[76,17],[92,17],[109,17],[126,17],[142,17],[159,17]],\"over50\":0,\"over100\":0,\"long\":[],\"callbacks\":[],\"programs\":982}",
+        "SETTLE back-five {\"ms\":8.699999988079071,\"frames\":0,\"over50\":0,\"over100\":0,\"longTasks\":0,\"longest\":[],\"resident\":{\"loaded\":[\"court\",\"two\",\"three\",\"four\",\"five\",\"six\",\"vault\"],\"pending\":[],\"resident\":[\"four\",\"five\",\"six\",\"vault\"],\"released\":{\"worlds\":9,\"geometries\":0,\"textures\":0,\"targets\":16,\"instances\":0},\"residency\":{\"tier\":\"all\",\"budget\":8192,\"need\":{\"all\":875,\"neighbors\":375,\"next\":250}}}}",
+        "CROSS {\"from\":\"five\",\"to\":\"four\",\"back\":true,\"enterMs\":780.5,\"worst\":[[5,17],[21,17],[38,17],[55,17],[71,17],[88,17],[105,17],[121,17],[138,17],[155,17]],\"over50\":0,\"over100\":0,\"long\":[],\"callbacks\":[],\"programs\":982}",
+        "SETTLE back-four {\"ms\":1.5,\"frames\":0,\"over50\":0,\"over100\":0,\"longTasks\":0,\"longest\":[],\"resident\":{\"loaded\":[\"court\",\"two\",\"three\",\"four\",\"five\",\"six\",\"vault\"],\"pending\":[],\"resident\":[\"three\",\"four\",\"five\"],\"released\":{\"worlds\":11,\"geometries\":0,\"textures\":0,\"targets\":19,\"instances\":0},\"residency\":{\"tier\":\"all\",\"budget\":8192,\"need\":{\"all\":875,\"neighbors\":375,\"next\":250}}}}",
+        "CROSS {\"from\":\"four\",\"to\":\"three\",\"back\":true,\"enterMs\":783.6999999880791,\"worst\":[[4,17],[20,17],[37,17],[54,17],[70,17],[87,17],[104,17],[120,17],[137,17],[154,17]],\"over50\":0,\"over100\":0,\"long\":[],\"callbacks\":[],\"programs\":982}",
+        "SETTLE back-three {\"ms\":1.399999976158142,\"frames\":0,\"over50\":0,\"over100\":0,\"longTasks\":0,\"longest\":[],\"resident\":{\"loaded\":[\"court\",\"two\",\"three\",\"four\",\"five\",\"six\",\"vault\"],\"pending\":[],\"resident\":[\"two\",\"three\",\"four\"],\"released\":{\"worlds\":12,\"geometries\":0,\"textures\":0,\"targets\":21,\"instances\":0},\"residency\":{\"tier\":\"all\",\"budget\":8192,\"need\":{\"all\":875,\"neighbors\":375,\"next\":250}}}}",
+        "CROSS {\"from\":\"three\",\"to\":\"two\",\"back\":true,\"enterMs\":784.4000000357628,\"worst\":[[7,17],[24,17],[40,17],[57,17],[74,17],[90,17],[107,17],[124,17],[140,17],[157,17]],\"over50\":0,\"over100\":0,\"long\":[],\"callbacks\":[],\"programs\":982}",
+        "SETTLE back-two {\"ms\":1.600000023841858,\"frames\":0,\"over50\":0,\"over100\":0,\"longTasks\":0,\"longest\":[],\"resident\":{\"loaded\":[\"court\",\"two\",\"three\",\"four\",\"five\",\"six\",\"vault\"],\"pending\":[],\"resident\":[\"court\",\"two\",\"three\"],\"released\":{\"worlds\":13,\"geometries\":0,\"textures\":0,\"targets\":23,\"instances\":0},\"residency\":{\"tier\":\"all\",\"budget\":8192,\"need\":{\"all\":875,\"neighbors\":375,\"next\":250}}}}",
+        "CROSS {\"from\":\"two\",\"to\":\"court\",\"back\":true,\"enterMs\":785.5,\"worst\":[[7,17],[24,17],[41,17],[57,17],[74,17],[91,17],[107,17],[124,17],[141,17],[157,17]],\"over50\":0,\"over100\":0,\"long\":[],\"callbacks\":[],\"programs\":982}",
+        "SETTLE back-court {\"ms\":0.9000000357627869,\"frames\":0,\"over50\":0,\"over100\":0,\"longTasks\":0,\"longest\":[],\"resident\":{\"loaded\":[\"court\",\"two\",\"three\",\"four\",\"five\",\"six\",\"vault\"],\"pending\":[],\"resident\":[\"court\",\"two\"],\"released\":{\"worlds\":14,\"geometries\":0,\"textures\":0,\"targets\":25,\"instances\":0},\"residency\":{\"tier\":\"all\",\"budget\":8192,\"need\":{\"all\":875,\"neighbors\":375,\"next\":250}}}}",
+        "ERRORS 0 "
+      ],
+      "log": "hitch/confirm/log.txt",
+      "monitor": {
+        "browsers": 1,
+        "pages": 2,
+        "errors": [],
+        "webgl": [],
+        "programEvents": 1,
+        "late": [],
+        "recorderErrors": []
+      },
+      "details": {
+        "crossings": [
+          {
+            "from": "court",
+            "to": "two",
+            "back": false,
+            "enterMs": 786.7000000476837,
+            "worst": [
+              [
+                6,
+                17
+              ],
+              [
+                23,
+                17
+              ],
+              [
+                40,
+                17
+              ],
+              [
+                56,
+                17
+              ],
+              [
+                73,
+                17
+              ],
+              [
+                90,
+                17
+              ],
+              [
+                106,
+                17
+              ],
+              [
+                123,
+                17
+              ],
+              [
+                140,
+                17
+              ],
+              [
+                156,
+                17
+              ]
+            ],
+            "over50": 0,
+            "over100": 0,
+            "long": [],
+            "callbacks": [],
+            "programs": 982
+          },
+          {
+            "from": "two",
+            "to": "three",
+            "back": false,
+            "enterMs": 786.7999999523163,
+            "worst": [
+              [
+                7,
+                17
+              ],
+              [
+                24,
+                17
+              ],
+              [
+                40,
+                17
+              ],
+              [
+                57,
+                17
+              ],
+              [
+                74,
+                17
+              ],
+              [
+                90,
+                17
+              ],
+              [
+                107,
+                17
+              ],
+              [
+                124,
+                17
+              ],
+              [
+                140,
+                17
+              ],
+              [
+                157,
+                17
+              ]
+            ],
+            "over50": 0,
+            "over100": 0,
+            "long": [],
+            "callbacks": [],
+            "programs": 982
+          },
+          {
+            "from": "three",
+            "to": "four",
+            "back": false,
+            "enterMs": 780.8999999761581,
+            "worst": [
+              [
+                1,
+                17
+              ],
+              [
+                17,
+                17
+              ],
+              [
+                34,
+                17
+              ],
+              [
+                51,
+                17
+              ],
+              [
+                67,
+                17
+              ],
+              [
+                84,
+                17
+              ],
+              [
+                100,
+                17
+              ],
+              [
+                117,
+                17
+              ],
+              [
+                134,
+                17
+              ],
+              [
+                150,
+                17
+              ]
+            ],
+            "over50": 0,
+            "over100": 0,
+            "long": [],
+            "callbacks": [],
+            "programs": 982
+          },
+          {
+            "from": "four",
+            "to": "five",
+            "back": false,
+            "enterMs": 784.3000000119209,
+            "worst": [
+              [
+                3,
+                17
+              ],
+              [
+                20,
+                17
+              ],
+              [
+                37,
+                17
+              ],
+              [
+                53,
+                17
+              ],
+              [
+                70,
+                17
+              ],
+              [
+                87,
+                17
+              ],
+              [
+                103,
+                17
+              ],
+              [
+                120,
+                17
+              ],
+              [
+                137,
+                17
+              ],
+              [
+                153,
+                17
+              ]
+            ],
+            "over50": 0,
+            "over100": 0,
+            "long": [],
+            "callbacks": [],
+            "programs": 982
+          },
+          {
+            "from": "five",
+            "to": "six",
+            "back": false,
+            "enterMs": 784.1999999880791,
+            "worst": [
+              [
+                5,
+                17
+              ],
+              [
+                22,
+                17
+              ],
+              [
+                39,
+                17
+              ],
+              [
+                55,
+                17
+              ],
+              [
+                72,
+                17
+              ],
+              [
+                89,
+                17
+              ],
+              [
+                105,
+                17
+              ],
+              [
+                122,
+                17
+              ],
+              [
+                139,
+                17
+              ],
+              [
+                155,
+                17
+              ]
+            ],
+            "over50": 0,
+            "over100": 0,
+            "long": [],
+            "callbacks": [
+              [
+                6,
+                23,
+                "five",
+                982
+              ]
+            ],
+            "programs": 982
+          },
+          {
+            "from": "six",
+            "to": "five",
+            "back": true,
+            "enterMs": 804.2000000476837,
+            "worst": [
+              [
+                9,
+                17
+              ],
+              [
+                26,
+                17
+              ],
+              [
+                42,
+                17
+              ],
+              [
+                59,
+                17
+              ],
+              [
+                76,
+                17
+              ],
+              [
+                92,
+                17
+              ],
+              [
+                109,
+                17
+              ],
+              [
+                126,
+                17
+              ],
+              [
+                142,
+                17
+              ],
+              [
+                159,
+                17
+              ]
+            ],
+            "over50": 0,
+            "over100": 0,
+            "long": [],
+            "callbacks": [],
+            "programs": 982
+          },
+          {
+            "from": "five",
+            "to": "four",
+            "back": true,
+            "enterMs": 780.5,
+            "worst": [
+              [
+                5,
+                17
+              ],
+              [
+                21,
+                17
+              ],
+              [
+                38,
+                17
+              ],
+              [
+                55,
+                17
+              ],
+              [
+                71,
+                17
+              ],
+              [
+                88,
+                17
+              ],
+              [
+                105,
+                17
+              ],
+              [
+                121,
+                17
+              ],
+              [
+                138,
+                17
+              ],
+              [
+                155,
+                17
+              ]
+            ],
+            "over50": 0,
+            "over100": 0,
+            "long": [],
+            "callbacks": [],
+            "programs": 982
+          },
+          {
+            "from": "four",
+            "to": "three",
+            "back": true,
+            "enterMs": 783.6999999880791,
+            "worst": [
+              [
+                4,
+                17
+              ],
+              [
+                20,
+                17
+              ],
+              [
+                37,
+                17
+              ],
+              [
+                54,
+                17
+              ],
+              [
+                70,
+                17
+              ],
+              [
+                87,
+                17
+              ],
+              [
+                104,
+                17
+              ],
+              [
+                120,
+                17
+              ],
+              [
+                137,
+                17
+              ],
+              [
+                154,
+                17
+              ]
+            ],
+            "over50": 0,
+            "over100": 0,
+            "long": [],
+            "callbacks": [],
+            "programs": 982
+          },
+          {
+            "from": "three",
+            "to": "two",
+            "back": true,
+            "enterMs": 784.4000000357628,
+            "worst": [
+              [
+                7,
+                17
+              ],
+              [
+                24,
+                17
+              ],
+              [
+                40,
+                17
+              ],
+              [
+                57,
+                17
+              ],
+              [
+                74,
+                17
+              ],
+              [
+                90,
+                17
+              ],
+              [
+                107,
+                17
+              ],
+              [
+                124,
+                17
+              ],
+              [
+                140,
+                17
+              ],
+              [
+                157,
+                17
+              ]
+            ],
+            "over50": 0,
+            "over100": 0,
+            "long": [],
+            "callbacks": [],
+            "programs": 982
+          },
+          {
+            "from": "two",
+            "to": "court",
+            "back": true,
+            "enterMs": 785.5,
+            "worst": [
+              [
+                7,
+                17
+              ],
+              [
+                24,
+                17
+              ],
+              [
+                41,
+                17
+              ],
+              [
+                57,
+                17
+              ],
+              [
+                74,
+                17
+              ],
+              [
+                91,
+                17
+              ],
+              [
+                107,
+                17
+              ],
+              [
+                124,
+                17
+              ],
+              [
+                141,
+                17
+              ],
+              [
+                157,
+                17
+              ]
+            ],
+            "over50": 0,
+            "over100": 0,
+            "long": [],
+            "callbacks": [],
+            "programs": 982
+          }
+        ],
+        "idle": [
+          {
+            "label": "start",
+            "ms": 1.199999988079071,
+            "frames": 0,
+            "over50": 0,
+            "over100": 0,
+            "longTasks": 0,
+            "longest": [],
+            "resident": {
+              "loaded": [
+                "court",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "vault"
+              ],
+              "pending": [],
+              "resident": [
+                "court",
+                "two"
+              ],
+              "released": {
+                "worlds": 5,
+                "geometries": 0,
+                "textures": 0,
+                "targets": 9,
+                "instances": 0
+              },
+              "residency": {
+                "tier": "all",
+                "budget": 8192,
+                "need": {
+                  "all": 875,
+                  "neighbors": 375,
+                  "next": 250
+                }
+              }
+            }
+          },
+          {
+            "label": "after-two",
+            "ms": 9.300000011920929,
+            "frames": 1,
+            "p50": 16.700000000000728,
+            "p95": 16.700000000000728,
+            "max": 16.700000000000728,
+            "over50": 0,
+            "over100": 0,
+            "longTasks": 0,
+            "longest": [],
+            "resident": {
+              "loaded": [
+                "court",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "vault"
+              ],
+              "pending": [],
+              "resident": [
+                "court",
+                "two",
+                "three"
+              ],
+              "released": {
+                "worlds": 5,
+                "geometries": 0,
+                "textures": 0,
+                "targets": 9,
+                "instances": 0
+              },
+              "residency": {
+                "tier": "all",
+                "budget": 8192,
+                "need": {
+                  "all": 875,
+                  "neighbors": 375,
+                  "next": 250
+                }
+              }
+            }
+          },
+          {
+            "label": "after-three",
+            "ms": 1.5,
+            "frames": 0,
+            "over50": 0,
+            "over100": 0,
+            "longTasks": 0,
+            "longest": [],
+            "resident": {
+              "loaded": [
+                "court",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "vault"
+              ],
+              "pending": [],
+              "resident": [
+                "court",
+                "two",
+                "three",
+                "four"
+              ],
+              "released": {
+                "worlds": 5,
+                "geometries": 0,
+                "textures": 0,
+                "targets": 9,
+                "instances": 0
+              },
+              "residency": {
+                "tier": "all",
+                "budget": 8192,
+                "need": {
+                  "all": 875,
+                  "neighbors": 375,
+                  "next": 250
+                }
+              }
+            }
+          },
+          {
+            "label": "after-four",
+            "ms": 9.300000011920929,
+            "frames": 0,
+            "over50": 0,
+            "over100": 0,
+            "longTasks": 0,
+            "longest": [],
+            "resident": {
+              "loaded": [
+                "court",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "vault"
+              ],
+              "pending": [
+                "five"
+              ],
+              "resident": [
+                "two",
+                "three",
+                "four"
+              ],
+              "released": {
+                "worlds": 6,
+                "geometries": 0,
+                "textures": 0,
+                "targets": 10,
+                "instances": 0
+              },
+              "residency": {
+                "tier": "all",
+                "budget": 8192,
+                "need": {
+                  "all": 875,
+                  "neighbors": 375,
+                  "next": 250
+                }
+              }
+            }
+          },
+          {
+            "label": "after-five",
+            "ms": 8.699999988079071,
+            "frames": 0,
+            "over50": 0,
+            "over100": 0,
+            "longTasks": 0,
+            "longest": [],
+            "resident": {
+              "loaded": [
+                "court",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "vault"
+              ],
+              "pending": [],
+              "resident": [
+                "four",
+                "five",
+                "six"
+              ],
+              "released": {
+                "worlds": 8,
+                "geometries": 0,
+                "textures": 0,
+                "targets": 14,
+                "instances": 0
+              },
+              "residency": {
+                "tier": "all",
+                "budget": 8192,
+                "need": {
+                  "all": 875,
+                  "neighbors": 375,
+                  "next": 250
+                }
+              }
+            }
+          },
+          {
+            "label": "after-six",
+            "ms": 257.5,
+            "frames": 16,
+            "p50": 16.69999999999709,
+            "p95": 16.80000000000291,
+            "max": 16.80000000000291,
+            "over50": 0,
+            "over100": 0,
+            "longTasks": 0,
+            "longest": [],
+            "resident": {
+              "loaded": [
+                "court",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "vault"
+              ],
+              "pending": [],
+              "resident": [
+                "five",
+                "six",
+                "vault"
+              ],
+              "released": {
+                "worlds": 9,
+                "geometries": 0,
+                "textures": 0,
+                "targets": 16,
+                "instances": 0
+              },
+              "residency": {
+                "tier": "all",
+                "budget": 8192,
+                "need": {
+                  "all": 875,
+                  "neighbors": 375,
+                  "next": 250
+                }
+              }
+            }
+          },
+          {
+            "label": "back-five",
+            "ms": 8.699999988079071,
+            "frames": 0,
+            "over50": 0,
+            "over100": 0,
+            "longTasks": 0,
+            "longest": [],
+            "resident": {
+              "loaded": [
+                "court",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "vault"
+              ],
+              "pending": [],
+              "resident": [
+                "four",
+                "five",
+                "six",
+                "vault"
+              ],
+              "released": {
+                "worlds": 9,
+                "geometries": 0,
+                "textures": 0,
+                "targets": 16,
+                "instances": 0
+              },
+              "residency": {
+                "tier": "all",
+                "budget": 8192,
+                "need": {
+                  "all": 875,
+                  "neighbors": 375,
+                  "next": 250
+                }
+              }
+            }
+          },
+          {
+            "label": "back-four",
+            "ms": 1.5,
+            "frames": 0,
+            "over50": 0,
+            "over100": 0,
+            "longTasks": 0,
+            "longest": [],
+            "resident": {
+              "loaded": [
+                "court",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "vault"
+              ],
+              "pending": [],
+              "resident": [
+                "three",
+                "four",
+                "five"
+              ],
+              "released": {
+                "worlds": 11,
+                "geometries": 0,
+                "textures": 0,
+                "targets": 19,
+                "instances": 0
+              },
+              "residency": {
+                "tier": "all",
+                "budget": 8192,
+                "need": {
+                  "all": 875,
+                  "neighbors": 375,
+                  "next": 250
+                }
+              }
+            }
+          },
+          {
+            "label": "back-three",
+            "ms": 1.399999976158142,
+            "frames": 0,
+            "over50": 0,
+            "over100": 0,
+            "longTasks": 0,
+            "longest": [],
+            "resident": {
+              "loaded": [
+                "court",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "vault"
+              ],
+              "pending": [],
+              "resident": [
+                "two",
+                "three",
+                "four"
+              ],
+              "released": {
+                "worlds": 12,
+                "geometries": 0,
+                "textures": 0,
+                "targets": 21,
+                "instances": 0
+              },
+              "residency": {
+                "tier": "all",
+                "budget": 8192,
+                "need": {
+                  "all": 875,
+                  "neighbors": 375,
+                  "next": 250
+                }
+              }
+            }
+          },
+          {
+            "label": "back-two",
+            "ms": 1.600000023841858,
+            "frames": 0,
+            "over50": 0,
+            "over100": 0,
+            "longTasks": 0,
+            "longest": [],
+            "resident": {
+              "loaded": [
+                "court",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "vault"
+              ],
+              "pending": [],
+              "resident": [
+                "court",
+                "two",
+                "three"
+              ],
+              "released": {
+                "worlds": 13,
+                "geometries": 0,
+                "textures": 0,
+                "targets": 23,
+                "instances": 0
+              },
+              "residency": {
+                "tier": "all",
+                "budget": 8192,
+                "need": {
+                  "all": 875,
+                  "neighbors": 375,
+                  "next": 250
+                }
+              }
+            }
+          },
+          {
+            "label": "back-court",
+            "ms": 0.9000000357627869,
+            "frames": 0,
+            "over50": 0,
+            "over100": 0,
+            "longTasks": 0,
+            "longest": [],
+            "resident": {
+              "loaded": [
+                "court",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "vault"
+              ],
+              "pending": [],
+              "resident": [
+                "court",
+                "two"
+              ],
+              "released": {
+                "worlds": 14,
+                "geometries": 0,
+                "textures": 0,
+                "targets": 25,
+                "instances": 0
+              },
+              "residency": {
+                "tier": "all",
+                "budget": 8192,
+                "need": {
+                  "all": 875,
+                  "neighbors": 375,
+                  "next": 250
+                }
+              }
+            }
+          }
+        ],
+        "readyMs": 7633,
+        "errors": []
+      },
+      "timing": false,
+      "status": "pass",
+      "first": {
+        "failures": [
+          "five to four (back): a 550 ms frame, 1 over 50 ms"
+        ],
+        "seconds": 60.7
+      }
+    },
+    {
+      "id": "markers",
+      "title": "Marker layout",
+      "seconds": 1.9,
+      "load": [
+        6.4,
+        6.1
+      ],
+      "exit": 0,
+      "failures": [],
+      "tail": [
+        "PASS: 16 marker layout checks"
+      ],
+      "log": "markers/log.txt",
+      "monitor": {
+        "browsers": 1,
+        "pages": 2,
+        "errors": [],
+        "webgl": [],
+        "programEvents": 0,
+        "late": [],
+        "recorderErrors": []
+      },
+      "status": "pass"
+    },
+    {
+      "id": "sea",
+      "title": "Sea, guardian, the reunion in space and the vault's arrival, with the flash detector",
+      "seconds": 105.6,
+      "load": [
+        6.1,
+        6.4
+      ],
+      "exit": 0,
+      "failures": [],
+      "tail": [
+        "HIT Guardian 5/6",
+        "HIT Guardian 4/6",
+        "HIT Guardian 3/6",
+        "HIT Guardian 2/6",
+        "HIT Guardian 1/6",
+        "HIT Guardian 0/6",
+        "PASS Guardian defeated through three phases [1,2,3]",
+        "PASS Charged orb cracks the core and only pistols wound it {\"cracks\":3,\"hits\":6}",
+        "PASS Victory restores hero health",
+        "PASS The reunion crosses into the vault's arrival without the credits {\"pos\":[0,4.6],\"credits\":false}",
+        "PASS No runtime errors []",
+        "PASS Shaders precompiled before sea play {\"load\":631,\"after\":631}"
+      ],
+      "log": "sea/log.txt",
+      "monitor": {
+        "browsers": 1,
+        "pages": 2,
+        "errors": [],
+        "webgl": [],
+        "programEvents": 1,
+        "late": [],
+        "recorderErrors": []
+      },
+      "flash": {
+        "captured": 5824,
+        "flagged": 1,
+        "black": 0,
+        "worlds": {
+          "six": {
+            "frames": 5680,
+            "maxZero": 0,
+            "black": 0,
+            "minL": 18.01,
+            "maxL": 155.65,
+            "cuts": 7,
+            "dtMedian": 16.7,
+            "dtP95": 17.5,
+            "dtMax": 28.6,
+            "costMedian": 1.9,
+            "costP95": 2.3
+          },
+          "vault": {
+            "frames": 144,
+            "maxZero": 0,
+            "black": 0,
+            "minL": 69.47,
+            "maxL": 71.43,
+            "cuts": 1,
+            "dtMedian": 16.7,
+            "dtP95": 17.6,
+            "dtMax": 27.1,
+            "costMedian": 1.6,
+            "costP95": 1.8
+          }
+        },
+        "events": [
+          {
+            "i": 1888,
+            "t": 38992,
+            "world": "six",
+            "mode": "play",
+            "kinds": [
+              "regional spike in 5 of 40 regions"
+            ],
+            "L": [
+              65.02,
+              66.09,
+              71.47
+            ],
+            "zero": [
+              0,
+              0,
+              0
+            ],
+            "images": [
+              "flash-01-before.png",
+              "flash-01-flagged.png",
+              "flash-01-after.png"
+            ],
+            "ready": true,
+            "target": 2
+          }
+        ]
+      },
+      "warnings": [
+        "six frame 1888: regional spike in 5 of 40 regions"
+      ],
+      "status": "pass"
+    },
+    {
+      "id": "vault",
+      "title": "The vault's six trials, the reveal and the credits, with the flash detector",
+      "seconds": 253.3,
+      "load": [
+        6.4,
+        5.5
+      ],
+      "exit": 0,
+      "failures": [],
+      "tail": [
+        "PASS Into the well's water, swimming",
+        "at the drowned seal: breath 15.62 s",
+        "PASS The drowned seal wakes on one breath {\"breath\":15.45}",
+        "PASS Out of the well with breath to spare {\"health\":4}",
+        "PASS All six seals awake",
+        "PASS The door opens on the whole address",
+        "PASS The reveal hands control back with the next door open",
+        "PASS Crossing the next door calls the completion callback",
+        "PASS The completion callback rolls the credits",
+        "PASS Mira speaks the vault's lines live from their clips {\"said\":20,\"sources\":[\"clip\"]}",
+        "PASS No page or WebGL errors []",
+        "PASS No shader compiled during the vault {\"load\":982,\"now\":982}"
+      ],
+      "log": "vault/log.txt",
+      "monitor": {
+        "browsers": 1,
+        "pages": 2,
+        "errors": [],
+        "webgl": [],
+        "programEvents": 1,
+        "late": [],
+        "recorderErrors": []
+      },
+      "flash": {
+        "captured": 14473,
+        "flagged": 1,
+        "black": 0,
+        "worlds": {
+          "vault": {
+            "frames": 14473,
+            "maxZero": 0,
+            "black": 0,
+            "minL": 18.33,
+            "maxL": 234.27,
+            "cuts": 15,
+            "dtMedian": 16.7,
+            "dtP95": 18,
+            "dtMax": 51.6,
+            "costMedian": 0.7,
+            "costP95": 1.7
+          }
+        },
+        "events": [
+          {
+            "i": 13241,
+            "t": 228640.5,
+            "world": "vault",
+            "mode": "play",
+            "kinds": [
+              "regional spike in 5 of 40 regions"
+            ],
+            "L": [
+              40.62,
+              39.23,
+              18.33
+            ],
+            "zero": [
+              0,
+              0,
+              0
+            ],
+            "images": [
+              "flash-01-before.png",
+              "flash-01-flagged.png",
+              "flash-01-after.png"
+            ],
+            "ready": true,
+            "target": 2
+          }
+        ]
+      },
+      "warnings": [
+        "vault frame 13241: regional spike in 5 of 40 regions"
+      ],
+      "status": "pass"
+    },
+    {
+      "id": "forest",
+      "title": "Whole forest, sea crossing and return, with the flash detector",
+      "seconds": 175.8,
+      "load": [
+        5.5,
+        12.5
+      ],
+      "exit": 0,
+      "failures": [],
+      "tail": [
+        "landed bog stone -0.25,-85.35 (ground → air → ground)",
+        "landed bog stone 0.2,-89.35 (ground → air → ground)",
+        "landed bog stone -0.15,-93.4 (ground → air → ground)",
+        "far bank (ground → air → ground)",
+        "spore bog crossed",
+        "grove guards and spiral seal passed",
+        "took hold of the outer wall's ivy, feet 24.33",
+        "over the outer wall at -24.34,-203.33",
+        "on the bastion at -24.49,-247.74, feet 38.88",
+        "castle guards and ordered address passed",
+        "forest to sea and return passed",
+        "retry resets all forest challenges"
+      ],
+      "log": "forest/log.txt",
+      "monitor": {
+        "browsers": 1,
+        "pages": 2,
+        "errors": [],
+        "webgl": [],
+        "programEvents": 1,
+        "late": [],
+        "recorderErrors": []
+      },
+      "flash": {
+        "captured": 9799,
+        "flagged": 0,
+        "black": 0,
+        "worlds": {
+          "five": {
+            "frames": 9646,
+            "maxZero": 0,
+            "black": 0,
+            "minL": 40.6,
+            "maxL": 143.03,
+            "cuts": 15,
+            "dtMedian": 16.7,
+            "dtP95": 18.5,
+            "dtMax": 299.9,
+            "costMedian": 1.4,
+            "costP95": 2.5
+          },
+          "six": {
+            "frames": 153,
+            "maxZero": 0,
+            "black": 0,
+            "minL": 94.83,
+            "maxL": 133.33,
+            "cuts": 1,
+            "dtMedian": 16.6,
+            "dtP95": 18.2,
+            "dtMax": 33,
+            "costMedian": 1.8,
+            "costP95": 2.1
+          }
+        },
+        "events": []
+      },
+      "warnings": [],
+      "status": "pass"
+    },
+    {
+      "id": "playthrough",
+      "title": "Levels 1 to 4 and the forest entry, with the flash detector",
+      "seconds": 366.2,
+      "load": [
+        12.5,
+        4.5
+      ],
+      "exit": 0,
+      "failures": [],
+      "tail": [
+        "crossed the lynx's plateau: 0 rolls, 0 pounces landed",
+        "ran the thin ice: gone, gone, sink, crack",
+        "rode the floes",
+        "on the island at 0.94,-134.83",
+        "sidestepped the ice falling down the shelf's fall",
+        "leapt to the upper ice, feet 3.59",
+        "on the prism's shelf at -9.34,-145.09",
+        "freed the third glyph from the ice",
+        "the great ring opened onto the forest",
+        "shader programs at the first start 982, after world preparation 982, at the forest 982",
+        "completed levels 1 through 4 and entered playable level 5",
+        "errors: none"
+      ],
+      "log": "playthrough/log.txt",
+      "monitor": {
+        "browsers": 1,
+        "pages": 2,
+        "errors": [],
+        "webgl": [],
+        "programEvents": 1,
+        "late": [],
+        "recorderErrors": []
+      },
+      "flash": {
+        "captured": 21377,
+        "flagged": 5,
+        "black": 0,
+        "worlds": {
+          "court": {
+            "frames": 4197,
+            "maxZero": 0,
+            "black": 0,
+            "minL": 56.93,
+            "maxL": 171.33,
+            "cuts": 9,
+            "dtMedian": 16.7,
+            "dtP95": 18.2,
+            "dtMax": 4724.7,
+            "costMedian": 0.7,
+            "costP95": 2.8
+          },
+          "two": {
+            "frames": 4352,
+            "maxZero": 0,
+            "black": 0,
+            "minL": 27.74,
+            "maxL": 191.1,
+            "cuts": 3,
+            "dtMedian": 16.7,
+            "dtP95": 18.4,
+            "dtMax": 26.3,
+            "costMedian": 0.8,
+            "costP95": 1.6
+          },
+          "three": {
+            "frames": 5586,
+            "maxZero": 0,
+            "black": 0,
+            "minL": 111.24,
+            "maxL": 217.85,
+            "cuts": 7,
+            "dtMedian": 16.6,
+            "dtP95": 18.4,
+            "dtMax": 27.3,
+            "costMedian": 0.7,
+            "costP95": 1.6
+          },
+          "four": {
+            "frames": 6996,
+            "maxZero": 0,
+            "black": 0,
+            "minL": 41.24,
+            "maxL": 184.56,
+            "cuts": 10,
+            "dtMedian": 16.7,
+            "dtP95": 17.6,
+            "dtMax": 22.1,
+            "costMedian": 0.7,
+            "costP95": 1.7
+          },
+          "five": {
+            "frames": 246,
+            "maxZero": 0,
+            "black": 0,
+            "minL": 56.04,
+            "maxL": 71.41,
+            "cuts": 1,
+            "dtMedian": 16.7,
+            "dtP95": 17.6,
+            "dtMax": 23,
+            "costMedian": 1.4,
+            "costP95": 1.7
+          }
+        },
+        "events": [
+          {
+            "i": 12228,
+            "t": 212747.3,
+            "world": "three",
+            "mode": "play",
+            "kinds": [
+              "regional spike in 5 of 40 regions"
+            ],
+            "L": [
+              112.02,
+              111.24,
+              124.91
+            ],
+            "zero": [
+              0,
+              0,
+              0
+            ],
+            "images": [
+              "flash-01-before.png",
+              "flash-01-flagged.png",
+              "flash-01-after.png"
+            ],
+            "ready": true,
+            "target": 2
+          },
+          {
+            "i": 12229,
+            "t": 212763.8,
+            "world": "three",
+            "mode": "play",
+            "kinds": [
+              "regional spike in 4 of 40 regions"
+            ],
+            "L": [
+              111.24,
+              124.91,
+              141.04
+            ],
+            "zero": [
+              0,
+              0,
+              0
+            ],
+            "images": [
+              "flash-02-before.png",
+              "flash-02-flagged.png",
+              "flash-02-after.png"
+            ],
+            "ready": true,
+            "target": 2
+          },
+          {
+            "i": 14557,
+            "t": 251563.2,
+            "world": "four",
+            "mode": "play",
+            "kinds": [
+              "regional spike in 4 of 40 regions"
+            ],
+            "L": [
+              68.5,
+              74.14,
+              61.17
+            ],
+            "zero": [
+              0,
+              0,
+              0
+            ],
+            "images": [
+              "flash-03-before.png",
+              "flash-03-flagged.png",
+              "flash-03-after.png"
+            ],
+            "ready": true,
+            "target": 2
+          },
+          {
+            "i": 15243,
+            "t": 262995.9,
+            "world": "four",
+            "mode": "play",
+            "kinds": [
+              "regional spike in 4 of 40 regions"
+            ],
+            "L": [
+              61.07,
+              58.19,
+              53.55
+            ],
+            "zero": [
+              0,
+              0,
+              0
+            ],
+            "images": [
+              "flash-04-before.png",
+              "flash-04-flagged.png",
+              "flash-04-after.png"
+            ],
+            "ready": true,
+            "target": 2
+          },
+          {
+            "i": 19128,
+            "t": 327742.1,
+            "world": "four",
+            "mode": "play",
+            "kinds": [
+              "regional spike in 4 of 40 regions"
+            ],
+            "L": [
+              78.11,
+              70.24,
+              78.78
+            ],
+            "zero": [
+              0,
+              0,
+              0
+            ],
+            "images": [
+              "flash-05-before.png",
+              "flash-05-flagged.png",
+              "flash-05-after.png"
+            ],
+            "ready": true,
+            "target": 2
+          }
+        ]
+      },
+      "warnings": [
+        "three frame 12228: regional spike in 5 of 40 regions",
+        "three frame 12229: regional spike in 4 of 40 regions",
+        "four frame 14557: regional spike in 4 of 40 regions",
+        "four frame 15243: regional spike in 4 of 40 regions",
+        "four frame 19128: regional spike in 4 of 40 regions"
+      ],
+      "status": "pass"
+    },
+    {
+      "id": "touch",
+      "title": "Touch layouts",
+      "seconds": 129.9,
+      "load": [
+        4.5,
+        4.8
+      ],
+      "exit": 0,
+      "failures": [],
+      "tail": [
+        "pass  swim route reaches the submerged beacon",
+        "pass  Use begins the visible shield transition",
+        "pass  shield restores grounded movement",
+        "pass  land controls return after swimming",
+        "pass  sea offers Link and Roll",
+        "pass  sea channels the orb with touch  0 to 1",
+        "pass  sea fits in portrait",
+        "pass  sea fits in landscape",
+        "pass  the credits say a tap skips them",
+        "pass  a tap skips the credits",
+        "pass  no page or console error",
+        "56/56 passed"
+      ],
+      "log": "touch/log.txt",
+      "monitor": {
+        "browsers": 1,
+        "pages": 2,
+        "errors": [],
+        "webgl": [],
+        "programEvents": 0,
+        "late": [],
+        "recorderErrors": []
+      },
+      "status": "pass"
+    },
+    {
+      "id": "menu",
+      "title": "Menus, notes, chapters and returns",
+      "seconds": 134.6,
+      "load": [
+        4.8,
+        5.4
+      ],
+      "exit": 0,
+      "failures": [],
+      "tail": [
+        "pass  levels from pause starts the court floor  floor feet 0",
+        "pass  restart keeps the level",
+        "pass  quit returns to a single title menu  1 panel(s) showing",
+        "pass  credits roll and skip",
+        "pass  a new game opens on the expedition's story  camp",
+        "pass  the expedition's notes open, close and move the story on  true true gap",
+        "pass  a knockout sends the explorer back to the queue",
+        "pass  the frozen reach leads back to Mira's camp, her ring open  open",
+        "pass  the isles lead back to the checkpoint, left open  open true",
+        "pass  return from forest preserves the previous puzzle",
+        "pass  return from sea preserves the previous puzzle",
+        "pass  no page errors"
+      ],
+      "log": "menu/log.txt",
+      "monitor": {
+        "browsers": 1,
+        "pages": 2,
+        "errors": [],
+        "webgl": [],
+        "programEvents": 0,
+        "late": [],
+        "recorderErrors": []
+      },
+      "status": "pass"
+    },
+    {
+      "id": "relic",
+      "title": "Relic collection, saves and reset",
+      "seconds": 158.2,
+      "load": [
+        5.4,
+        19.9
+      ],
+      "exit": 0,
+      "failures": [],
+      "tail": [
+        "pass  no relic waits in any world after the reload  (0)",
+        "pass  forgetting the progress restores relics in loaded worlds  ({\"found\":[],\"waiting\":[\"grove-map\",\"lantern\",\"page\",\"papyrus\",\"pressure-log\",\"radio\",\"scarf\"],\"loaded\":[\"court\",\"two\",\"three\",\"four\",\"five\",\"six\",\"vault\"]})",
+        "pass  the title's count is cleared  (Relics)",
+        "pass  the Relics screen shows every item still hidden  (13)",
+        "pass  floor: newly loaded relics return after forgetting progress  (papyrus)",
+        "pass  checkpoint: newly loaded relics return after forgetting progress  (radio)",
+        "pass  isles: newly loaded relics return after forgetting progress  (page)",
+        "pass  frost: newly loaded relics return after forgetting progress  (scarf, lantern)",
+        "pass  forest: newly loaded relics return after forgetting progress  (grove-map)",
+        "pass  sea: newly loaded relics return after forgetting progress  (pressure-log)",
+        "pass  no page or console error",
+        "48/48 passed"
+      ],
+      "log": "relic/log.txt",
+      "monitor": {
+        "browsers": 1,
+        "pages": 2,
+        "errors": [],
+        "webgl": [],
+        "programEvents": 0,
+        "late": [],
+        "recorderErrors": []
+      },
+      "status": "pass"
+    },
+    {
+      "id": "starts",
+      "title": "Title, every chapter start and the asset lab",
+      "seconds": 96.4,
+      "load": [
+        19.9,
+        10.3
+      ],
+      "exit": 0,
+      "failures": [],
+      "tail": [
+        "PASS title, worlds court, two, three, four, five, six, vault, 982 programs",
+        "PASS court, worlds court, two, three, four, five, six, vault, 982 programs",
+        "PASS checkpoint, worlds court, two, three, four, five, six, vault, 982 programs",
+        "PASS isles, worlds court, three, four, two, five, six, vault, 982 programs",
+        "PASS frost, worlds court, four, five, three, six, two, vault, 982 programs",
+        "PASS forest, worlds court, five, six, four, vault, three, two, 982 programs",
+        "PASS sea, worlds court, six, vault, five, four, three, two, 982 programs",
+        "PASS vault, worlds court, vault, six, five, four, three, two, 982 programs",
+        "PASS lab, 77 factories, 7 chapter links, archived and current animation and pistols"
+      ],
+      "log": "starts/log.txt",
+      "monitor": {
+        "browsers": 1,
+        "pages": 10,
+        "errors": [],
+        "webgl": [],
+        "programEvents": 126,
+        "late": [],
+        "recorderErrors": []
+      },
+      "status": "pass"
+    }
+  ],
+  "passed": true,
+  "base": "http://localhost:64112",
+  "seconds": 1722
+}

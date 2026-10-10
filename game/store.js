@@ -35,6 +35,7 @@ const DEFAULT_SETTINGS = {
   subtitleBacking: "none",
   contrast: false,
   difficulty: "standard",
+  language: "auto",
 };
 
 // A value of the wrong kind (an old build, a hand edit) falls back to its default.
@@ -42,6 +43,7 @@ const CHOICES = {
   aimMode: ["hold", "toggle"],
   subtitleSize: ["small", "medium", "large"],
   subtitleBacking: ["none", "soft", "solid"],
+  language: ["auto", "en", "fr", "es", "zh", "hi"],
 };
 function sanitize(saved) {
   const clean = {};

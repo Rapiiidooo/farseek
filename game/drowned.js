@@ -9,6 +9,7 @@ import { warningStripes } from "./hazard-marks.js";
 import { ArrivalCurrent } from "./arrival-current.js";
 import { FloodedStair, FLOODED } from "./flooded-stair.js";
 import { damageAmount, recoverHealth } from "./composure.js";
+import { t } from "./i18n.js";
 
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 export const SEA_ADDRESS = ["waves", "crescent", "disc"];
@@ -367,14 +368,14 @@ export class DrownedArchive {
           this.bridgeLeft = 12;
           this.setBridge(true);
           this.services.hud?.subtitle(
-            "The light holds the sea back. Cross while it lasts.",
+            t("The light holds the sea back. Cross while it lasts."),
             4,
           );
         } else {
           this.ward.visible = false;
           this.wardBox.solid = false;
           this.services.hud?.subtitle(
-            "Both pressure seals are awake. The archive is ahead.",
+            t("Both pressure seals are awake. The archive is ahead."),
             4,
           );
         }
@@ -432,7 +433,7 @@ export class DrownedArchive {
       hero.spawn(p.x, p.z, p.feet, p.yaw);
       this.services.sound?.play("respawn");
       this.services.hud?.blackout(
-        force ? "The pressure knocks you out." : "Out of air.",
+        force ? t("The pressure knocks you out.") : t("Out of air."),
       );
       this.breath.reset();
       hero.invulnerable = 2;
@@ -440,8 +441,10 @@ export class DrownedArchive {
       this.services.hud?.health(4, 4);
       this.services.hud?.subtitle(
         this.sanctuary.progress === 1
-          ? "Back inside the light. The restored seals still hold."
-          : "The current carries you back. Reach the control desk to make air.",
+          ? t("Back inside the light. The restored seals still hold.")
+          : t(
+              "The current carries you back. Reach the control desk to make air.",
+            ),
         4,
       );
       this.onRespawn?.();
@@ -533,7 +536,7 @@ export class DrownedArchive {
       ) {
         hero.spawn(this.checkpoint.x, this.checkpoint.z, 24, Math.PI);
         this.services.sound?.play("respawn");
-        this.services.hud?.blackout("No way out while the guardian stands.");
+        this.services.hud?.blackout(t("No way out while the guardian stands."));
         this.boss.reset();
         this.health = 4;
         this.breath.reset();
@@ -559,12 +562,18 @@ export class DrownedArchive {
         ? null
         : this.arrivalCurrent.next(hero);
       hud.objective(
-        this.sanctuary.active ? "An island of air" : "Wake the air shield",
         this.sanctuary.active
-          ? "The sea is retreating. Settle onto the console's stone landing"
+          ? t("An island of air")
+          : t("Wake the air shield"),
+        this.sanctuary.active
+          ? t("The sea is retreating. Settle onto the console's stone landing")
           : shelter
-            ? "The current sweeps the plaza: swim from pier to pier, in their still water"
-            : "Dive to the control desk on the right and activate its air shield",
+            ? t(
+                "The current sweeps the plaza: swim from pier to pier, in their still water",
+              )
+            : t(
+                "Dive to the control desk on the right and activate its air shield",
+              ),
       );
       const key = `shield:${shelter ? shelter.x : "desk"}`;
       if (key !== this.guideKey)
@@ -574,29 +583,31 @@ export class DrownedArchive {
     }
     let title, sub, point;
     if (this.tideSketch.ready && this.tideSketch.near(1, 7)) {
-      title = "Collect Mira's tide proof";
-      sub = "Optional: take her note before crossing the restored door";
+      title = t("Collect Mira's tide proof");
+      sub = t("Optional: take her note before crossing the restored door");
       point = this.tideSketch.stations[1].center;
     } else if (this.ready) {
-      title = "The way home";
+      title = t("The way home");
       sub = this.gate.isOpen
-        ? "Walk through the restored door with the archive's address"
-        : "The door is gathering light. Wait beside its ring";
+        ? t("Walk through the restored door with the archive's address")
+        : t("The door is gathering light. Wait beside its ring");
       point = this.gate.center;
     } else if (this.boss.active) {
       title =
         this.tideSketch.inspected && !this.tideSketch.claimed
-          ? `Free the last address · Tide marks ${this.tideSketch.marks}/3`
-          : "Free the last address";
+          ? t("Free the last address · Tide marks {marks}/3", {
+              marks: this.tideSketch.marks,
+            })
+          : t("Free the last address");
       sub =
         this.boss.state === "cracked"
-          ? "The core is cracked: shoot it with the pistols before it seals"
+          ? t("The core is cracked: shoot it with the pistols before it seals")
           : this.boss.state === "exposed"
             ? disc?.charged
-              ? "The core is open: pulse it with the charged orb to crack it"
-              : "Link to a crystal, then crack the open core with a pulse"
+              ? t("The core is open: pulse it with the charged orb to crack it")
+              : t("Link to a crystal, then crack the open core with a pulse")
             : ["waking", "recovering"].includes(this.boss.state)
-              ? "Link to a crystal while the guardian gathers pressure"
+              ? t("Link to a crystal while the guardian gathers pressure")
               : this.boss.advice;
       point =
         this.boss.state === "cracked"
@@ -610,31 +621,35 @@ export class DrownedArchive {
       !this.seals[0].lit ||
       (!this.bridgeSecured && this.bridgeLeft <= 0)
     ) {
-      title = "Restore the pressure causeway";
+      title = t("Restore the pressure causeway");
       sub = disc?.charged
-        ? "Pulse the first lens, then cross its temporary bridge"
-        : "Link to the crystal to charge the orb; cross the vents when they are dark";
+        ? t("Pulse the first lens, then cross its temporary bridge")
+        : t(
+            "Link to the crystal to charge the orb; cross the vents when they are dark",
+          );
       point = disc?.charged ? this.seals[0].center : this.wells[0].center;
     } else if (hero.pos.z > -37) {
-      title = "Cross the light bridge";
-      sub = `${Math.ceil(this.bridgeLeft)} seconds of light remain. Run across`;
+      title = t("Cross the light bridge");
+      sub = t("{n} seconds of light remain. Run across", {
+        n: Math.ceil(this.bridgeLeft),
+      });
       point = V(0, 29, -40);
     } else if (!this.seals[1].lit) {
-      title = "Release the archive seal";
+      title = t("Release the archive seal");
       sub = disc?.charged
-        ? "Pulse the second lens to lower the pressure barrier"
-        : "Link to the crystal beside the far landing to recharge";
+        ? t("Pulse the second lens to lower the pressure barrier")
+        : t("Link to the crystal beside the far landing to recharge");
       point = disc?.charged ? this.seals[1].center : this.wells[1].center;
     } else if (hero.pos.z > FLOODED.minZ - 0.6) {
-      title = "Swim the flooded stair";
+      title = t("Swim the flooded stair");
       sub =
         this.flooded.phase === "calm"
-          ? "Swim on while the vent is calm, then rise to the far landing"
-          : "The vent surges: shelter behind a fallen block";
+          ? t("Swim on while the vent is calm, then rise to the far landing")
+          : t("The vent surges: shelter behind a fallen block");
       point = this.flooded.next(hero);
     } else {
-      title = "Enter the drowned archive";
-      sub = "Descend into the guardian's court";
+      title = t("Enter the drowned archive");
+      sub = t("Descend into the guardian's court");
       point = V(0, 25, -69);
     }
     hud.objective(title, sub);

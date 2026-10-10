@@ -20,6 +20,7 @@ import {
   setIceFractureLoad,
 } from "./ice-fractures.js";
 import { runSteps } from "./work-steps.js";
+import { t } from "./i18n.js";
 
 // The fourth level, the frozen reach. Mira's ring, given two glyphs of three, opened halfway,
 // onto ice: the third glyph is carved here, in a stela the ice has swallowed. The explorer
@@ -1229,10 +1230,10 @@ export class Frozen {
       marks = [];
     } else if (section === "stream" && hero.pos.z < -46.5) {
       key = `fall:${!!hero.axes}`;
-      objective = "Climb the frozen fall";
+      objective = t("Climb the frozen fall");
       sub = hero.axes
-        ? "Jump at the scarred ice and climb with Mira's axes"
-        : "Take Mira's ice axes from its foot";
+        ? t("Jump at the scarred ice and climb with Mira's axes")
+        : t("Take Mira's ice axes from its foot");
       marks = [
         hero.axes
           ? V(POCKET.x, POCKET.top + 0.6, POCKET.face - 0.8)
@@ -1240,36 +1241,39 @@ export class Frozen {
       ];
     } else if (section === "stream") {
       key = "stream";
-      objective = "Follow Mira's tracks";
-      sub = "Run down the frozen stream, slide, and jump the crevasse";
+      objective = t("Follow Mira's tracks");
+      sub = t("Run down the frozen stream, slide, and jump the crevasse");
       marks = [V(0, 1.2, -48)];
     } else if (section === "pond") {
       const block = this.blocks[0];
       const stuck = block.state === "rest" && this.stuck(block);
       key = `pond:${stuck}`;
-      objective = "Climb out of the frozen pond";
+      objective = t("Climb out of the frozen pond");
       sub = stuck
-        ? "The block is stuck: pulse it to return it to its starting point"
-        : "Push the ice block under the low notch in the wall";
+        ? t("The block is stuck: pulse it to return it to its starting point")
+        : t("Push the ice block under the low notch in the wall");
       marks = [V(POND.notch.x, 4.8, POND.notch.z - 1)];
     } else if (section === "lake") {
       key = "lake";
-      objective = "Cross the frozen lake";
-      sub = "Thin ice cracks under your feet: keep moving";
+      objective = t("Cross the frozen lake");
+      sub = t("Thin ice cracks under your feet: keep moving");
       marks = [V(0, 1.4, -123)];
     } else if (section === "floes") {
       key = "floes";
-      objective = "Cross the channel on the floes";
-      sub = "Hop onto each floe as it drifts past";
+      objective = t("Cross the channel on the floes");
+      sub = t("Hop onto each floe as it drifts past");
       marks = [V(0, 1.8, -136.5)];
     } else {
       key = `island:${charged}:${this.broken}`;
-      objective = "Free the third glyph";
+      objective = t("Free the third glyph");
       sub = charged
-        ? `Pulse the ice with the charged orb (${this.broken} of ${this.layers.length})`
+        ? t("Pulse the ice with the charged orb ({done} of {total})", {
+            done: this.broken,
+            total: this.layers.length,
+          })
         : this.climbs.onShelf(hero)
-          ? "Aim at the prism and link to charge the orb"
-          : "Climb the scarred fall to the prism's shelf";
+          ? t("Aim at the prism and link to charge the orb")
+          : t("Climb the scarred fall to the prism's shelf");
       marks = [
         charged
           ? V(ISLAND.stela.x, ISLAND.top + 3.4, ISLAND.stela.z)

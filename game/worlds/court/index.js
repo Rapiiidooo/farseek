@@ -7,6 +7,7 @@ import { CourtStory } from "../../story.js";
 import { CourtMirrors } from "../../court-mirrors.js";
 import * as COURT from "../../court.js";
 import { reach } from "../../store.js";
+import { t } from "../../i18n.js";
 
 export default class CourtWorld {
   constructor(renderer, assets, services = {}) {
@@ -61,8 +62,10 @@ export default class CourtWorld {
       level.lightStela(stela);
       if (stela.memory) {
         hud.hint(
-          "The stone remembers",
-          "Read the awakened star to learn why the builders kept these doors open.",
+          t("The stone remembers"),
+          t(
+            "Read the awakened star to learn why the builders kept these doors open.",
+          ),
           7,
         );
         return;

@@ -10,6 +10,7 @@ import { glyphMaterial, makeGlyph } from "./glyphs.js";
 import { buildCliffs } from "./cliffs.js";
 import { plantGrass, clumps } from "./grass.js";
 import { buildCourtDetail, prepareCourtSurface } from "./court-detail.js";
+import { t } from "./i18n.js";
 
 // The court's grass, bleached to straw by the sun, darker where it roots in the sand.
 const DRY_GRASS = [0x6e5b37, 0xc4a86c];
@@ -770,7 +771,7 @@ export class Level {
           kind: "use",
           box: memory.box,
           ref: memory,
-          prompt: "relic:Read the stone memory",
+          prompt: `relic:${t("Read the stone memory")}`,
         });
     for (const m of this.mirrors)
       list.push({ kind: "mirror", box: m.box, ref: m });

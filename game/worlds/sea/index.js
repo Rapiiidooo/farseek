@@ -10,6 +10,7 @@ import { DrownedArchive, SEA_ADDRESS } from "../../drowned.js";
 import { Starward } from "../../starward.js";
 import { underwaterPass } from "../../underwater-view.js";
 import { equipmentFor } from "../../equipment.js";
+import { t } from "../../i18n.js";
 
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 
@@ -270,18 +271,21 @@ export class WorldSix {
     this.drowned.guide(this.services.hud, hero, this.disc);
     if (this.boss.active)
       this.services.hud?.boss?.(
-        "Tide Guardian",
+        t("Tide Guardian"),
         this.boss.health,
         this.boss.maxHealth,
         this.boss.state === "exposed"
-          ? `Phase ${this.boss.phase} · Open core`
-          : `Phase ${this.boss.phase} · ${this.boss.attackName}`,
+          ? t("Phase {n} · Open core", { n: this.boss.phase })
+          : t("Phase {n} · {attack}", {
+              n: this.boss.phase,
+              attack: this.boss.attackName,
+            }),
       );
     else this.services.hud?.hideBoss?.();
     this.storyT = (this.storyT ?? 0) + dt;
     this.once("trail", this.storyT > 2, () =>
       this.services.hud.subtitle(
-        "Mira's trail ends below the water. There must be a way down.",
+        t("Mira's trail ends below the water. There must be a way down."),
         3.5,
       ),
     );
@@ -290,8 +294,11 @@ export class WorldSix {
       this.storyT > 5.5 && !this.drowned.sanctuary.active,
       () => {
         this.services.hud.hint(
-          "The drowned archive",
-          `Look up or down and swim toward the reticle. Reach the control desk on the right and press ${this.services.hud.k("interact")} for air.`,
+          t("The drowned archive"),
+          t(
+            "Look up or down and swim toward the reticle. Reach the control desk on the right and press {interact} for air.",
+            { interact: this.services.hud.k("interact") },
+          ),
           9,
         );
       },
@@ -303,8 +310,10 @@ export class WorldSix {
         Math.abs(hero.pos.x) < 5,
       () =>
         this.services.hud.hint(
-          "Pressure vents",
-          "Amber warns of a surge. Wait for the water to fall, then run across the dark strip.",
+          t("Pressure vents"),
+          t(
+            "Amber warns of a surge. Wait for the water to fall, then run across the dark strip.",
+          ),
           9,
         ),
     );
@@ -318,15 +327,19 @@ export class WorldSix {
         ) > 0.3,
       () =>
         this.services.hud.hint(
-          "Currents",
-          "In open water the current carries you back. Rest in the still water behind each pier, then swim on to the next.",
+          t("Currents"),
+          t(
+            "In open water the current carries you back. Rest in the still water behind each pier, then swim on to the next.",
+          ),
           9,
         ),
     );
     this.once("gap", hero.pos.z < -46, () =>
       this.services.hud.hint(
-        "The flooded stair",
-        "A vent below surges through the flooded stair. Shelter behind a fallen block while it surges, swim on when it calms, then rise to the far landing.",
+        t("The flooded stair"),
+        t(
+          "A vent below surges through the flooded stair. Shelter behind a fallen block while it surges, swim on when it calms, then rise to the far landing.",
+        ),
         10,
       ),
     );

@@ -3,6 +3,7 @@ import { spaceGate } from "./space-gate.js";
 import { prepareVisuals } from "./shader-preparation.js";
 import { miraVoice } from "./voice.js";
 import { miraLine } from "./mira-scenes.js";
+import { t } from "./i18n.js";
 import {
   SPACE,
   asteroidField,
@@ -324,7 +325,7 @@ export class Starward {
     const say = (id) => {
       const line = miraLine(this.lineId(id));
       if (voice) voice.say(line, hud);
-      else hud?.subtitle(line.text, line.seconds + 0.4, "Mira");
+      else hud?.subtitle(line.text, line.seconds + 0.4, t("Mira"));
     };
     const shot = {
       letterbox: true,

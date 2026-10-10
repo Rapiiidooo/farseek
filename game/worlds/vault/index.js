@@ -33,6 +33,7 @@ import { miraVoice } from "../../voice.js";
 import { VaultClimbs } from "../../vault-climbs.js";
 import { syncAxes } from "../../ice-axes.js";
 import { equipmentFor } from "../../equipment.js";
+import { t } from "../../i18n.js";
 
 // The seventh world: the builders' vault, reached after the last door. See vault.js for the
 // layout. Six trials each wake a seal; the six medallions open the sealed door onto the
@@ -299,19 +300,24 @@ export class VaultWorld {
     this.bridge.onDark = (locked) =>
       this.once(locked ? "lens-locked" : "lens-dark", () =>
         hud?.hint(
-          locked ? "Locked lens" : "Light",
+          locked ? t("Locked lens") : t("Light"),
           locked
-            ? "A lock of light holds the lens. Break the crystal on the high shelf with the pistols."
-            : `Only a charged pulse wakes the pylon. Link to the crystal with ${hud.k("throw")} first.`,
+            ? t(
+                "A lock of light holds the lens. Break the crystal on the high shelf with the pistols.",
+              )
+            : t(
+                "Only a charged pulse wakes the pylon. Link to the crystal with {throw} first.",
+                { throw: hud.k("throw") },
+              ),
           7,
         ),
       );
     this.bridge.onUnlock = () =>
-      hud?.subtitle("The lock breaks. The lens is free.", 3);
+      hud?.subtitle(t("The lock breaks. The lens is free."), 3);
     this.ice.onPower = () => this.onBeat("power:frost");
     this.keeper.onStun = () =>
       this.once("keeper-quiet", () =>
-        hud?.subtitle("Its eye is dark. The seal, now.", 3),
+        hud?.subtitle(t("Its eye is dark. The seal, now."), 3),
       );
     this.bog.onBurn = (bank) => {
       if (this.burning) return;
@@ -320,7 +326,7 @@ export class VaultWorld {
       this.hero.spawn(bank.x, bank.z, 0, bank.yaw);
       this.follow.snap(this.hero);
       this.services.sound?.play("respawn");
-      hud?.blackout("The spore water burns. Back to the bank.");
+      hud?.blackout(t("The spore water burns. Back to the bank."));
       this.damage();
       setTimeout(() => (this.burning = false), 300);
     };
@@ -491,8 +497,8 @@ export class VaultWorld {
     this.services.sound?.play("respawn");
     this.services.hud?.blackout(
       bay?.id === "sea"
-        ? "Out of air. Back at the well's steps."
-        : "Knocked down. Back at the bay's door.",
+        ? t("Out of air. Back at the well's steps.")
+        : t("Knocked down. Back at the bay's door."),
     );
     this.follow.snap(hero);
     this.disc.charge = 0;
@@ -681,24 +687,27 @@ export class VaultWorld {
     const bay = bayAt(hero.pos.x, hero.pos.z);
     const trial = bay && this.trials[BAYS.indexOf(bay)];
     if (this.revealed) {
-      title = "The next crossing";
-      sub = "Walk through the new door with Mira";
+      title = t("The next crossing");
+      sub = t("Walk through the new door with Mira");
       point = this.memory.gate.center.clone();
     } else if (trial && !trial.done && Math.abs(hero.pos.x) > 9.4) {
       ({ title, sub, point } = trial.guide(hero, this.disc));
     } else if (trial?.done && trial.after?.(hero)) {
       ({ title, sub, point } = trial.after(hero));
     } else if (this.trials.every((t) => t.done)) {
-      title = "The sealed door";
+      title = t("The sealed door");
       sub = this.allAwake
-        ? "The address is whole: go back to the door"
-        : "The last channel is carrying its light to the door";
+        ? t("The address is whole: go back to the door")
+        : t("The last channel is carrying its light to the door");
       point = this.hall.doorCenter.clone();
     } else {
       const next = this.trials.find((t) => !t.done);
       const n = this.trials.filter((t) => t.done).length;
-      title = "Wake the six seals";
-      sub = `Seals awake: ${n} of 6 · follow Mira's light to ${next.bay.title.toLowerCase()}`;
+      title = t("Wake the six seals");
+      sub = t("Seals awake: {n} of 6 · follow Mira's light to {bay}", {
+        n,
+        bay: next.bay.title.toLowerCase(),
+      });
       point = V(
         next.bay.side * 9.2,
         1.6,

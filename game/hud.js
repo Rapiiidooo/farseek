@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { svg } from "./glyph-icons.js";
+import { t } from "./i18n.js";
 
 // Where the objective markers stood on the last frame, for the speech bubbles to keep clear of.
 export const markerSpots = [];
@@ -73,8 +74,10 @@ export class Hud {
   // "press E", or "tap Use" on a touch screen, so a key's label never reads as a word of the
   // sentence (an AZERTY roll key prints A).
   press(action, capital = false) {
-    const verb = this.input.usingTouch ? "tap" : "press";
-    return `${capital ? verb[0].toUpperCase() + verb.slice(1) : verb} ${this.k(action)}`;
+    const key = this.k(action);
+    if (this.input.usingTouch)
+      return capital ? t("Tap {key}", { key }) : t("tap {key}", { key });
+    return capital ? t("Press {key}", { key }) : t("press {key}", { key });
   }
 
   show() {
@@ -412,16 +415,41 @@ export class Hud {
 
   // The twin pistols' controls, worded for the device in use.
   pistolsHint() {
-    const k = (action) => this.k(action);
-    const aim = this.settings.aimMode === "toggle" ? "Press" : "Hold";
+    const keys = {
+      kit: this.k("inventory"),
+      pistols: this.k("pistols"),
+      aim: this.k("aim"),
+      fire: this.k("fire"),
+      reload: this.k("reload"),
+    };
+    const toggle = this.settings.aimMode === "toggle";
     const body = this.input.usingTouch
-      ? `Tap ${k("inventory")} and choose Twin pistols. Hold ${k("fire")} to aim and shoot; ${k("inventory")} also reloads.`
+      ? t(
+          "Tap {kit} and choose Twin pistols. Hold {fire} to aim and shoot; {kit} also reloads.",
+          keys,
+        )
       : this.input.usingPad
-        ? `Press ${k("inventory")} to open the kit and draw them. ${aim} ${k("aim")} to aim, then press ${k("fire")} to fire and ${k("reload")} to reload.`
-        : `Press ${k("pistols")} or ${k("inventory")} to draw them. ${aim} ${k("aim")} to aim, then press ${k("fire")} to fire and ${k("reload")} to reload.`;
+        ? toggle
+          ? t(
+              "Press {kit} to open the kit and draw them. Press {aim} to aim, then press {fire} to fire and {reload} to reload.",
+              keys,
+            )
+          : t(
+              "Press {kit} to open the kit and draw them. Hold {aim} to aim, then press {fire} to fire and {reload} to reload.",
+              keys,
+            )
+        : toggle
+          ? t(
+              "Press {pistols} or {kit} to draw them. Press {aim} to aim, then press {fire} to fire and {reload} to reload.",
+              keys,
+            )
+          : t(
+              "Press {pistols} or {kit} to draw them. Hold {aim} to aim, then press {fire} to fire and {reload} to reload.",
+              keys,
+            );
     this.hint(
-      "Mira's pistols",
-      `${body} Only bullets wound; the orb stuns.`,
+      t("Mira's pistols"),
+      t("{controls} Only bullets wound; the orb stuns.", { controls: body }),
       11,
     );
   }
@@ -430,8 +458,10 @@ export class Hud {
   // shown even with the control cards turned off.
   relic(name, line, count, total) {
     const el = this.el("relic-toast");
-    el.querySelector(".kicker").textContent =
-      `Relic found · ${count} of ${total}`;
+    el.querySelector(".kicker").textContent = t(
+      "Relic found · {count} of {total}",
+      { count, total },
+    );
     el.querySelector(".name").textContent = name;
     el.querySelector(".line").textContent = line;
     el.classList.remove("on");
@@ -495,31 +525,44 @@ export class Hud {
       key.textContent = key.dataset.control
         ? this.input.label(key.dataset.control)
         : this.input.keyLabel(key.dataset.key);
-    const k = (a) => this.k(a);
-    const side = this.keys("KeyA", "KeyD");
-    let text = {
-      turn: `Hold ${k("interact")} to turn the mirror`,
-      grab: `Hold ${k("interact")} to grab the block`,
-      block: `Push ${this.keys("KeyW")} or pull ${this.keys("KeyS")} while holding ${k("interact")}`,
-      turning: `Steer ${side} to turn · release ${k("interact")} to let go`,
-      hang: `${side} shimmy · ${this.keys("KeyW")} climb · ${k("drop")} to let go`,
-      wall: `${this.keys("KeyW", "KeyA", "KeyS", "KeyD")} climb · ${k("jump")} leap · ${k("drop")} let go`,
+    const keys = {
+      interact: this.k("interact"),
+      drop: this.k("drop"),
+      jump: this.k("jump"),
+      sides: this.keys("KeyA", "KeyD"),
+      forward: this.keys("KeyW"),
+      back: this.keys("KeyS"),
+      move: this.keys("KeyW", "KeyA", "KeyS", "KeyD"),
+      swing: this.keys("KeyW", "KeyS"),
+    };
+    const lines = {
+      turn: () => t("Hold {interact} to turn the mirror", keys),
+      grab: () => t("Hold {interact} to grab the block", keys),
+      block: () =>
+        t("Push {forward} or pull {back} while holding {interact}", keys),
+      turning: () =>
+        t("Steer {sides} to turn · release {interact} to let go", keys),
+      hang: () =>
+        t("{sides} shimmy · {forward} climb · {drop} to let go", keys),
+      wall: () => t("{move} climb · {jump} leap · {drop} let go", keys),
       // A touch screen's button is already called Hang.
-      edge: this.input.usingTouch
-        ? `${k("drop")} from the edge`
-        : `${k("drop")} Hang from the edge`,
-      take: `${k("interact")} Take Mira's relay orb`,
-      "take-pistols": `${k("interact")} Take Mira's pistols`,
-      read: `${k("interact")} Read the expedition's notes`,
-      "read-mira": `${k("interact")} Read Mira's journal`,
-      talk: `${k("interact")} Talk to the clerk`,
-      swim: `Look up or down, then swim toward the reticle`,
-      shield: `${k("interact")} Activate the air shield`,
-      swing: `${this.keys("KeyW", "KeyS")} swing higher · ${k("jump")} let go`,
-    }[code];
+      edge: () =>
+        this.input.usingTouch
+          ? t("{drop} from the edge", keys)
+          : t("{drop} Hang from the edge", keys),
+      take: () => t("{interact} Take Mira's relay orb", keys),
+      "take-pistols": () => t("{interact} Take Mira's pistols", keys),
+      read: () => t("{interact} Read the expedition's notes", keys),
+      "read-mira": () => t("{interact} Read Mira's journal", keys),
+      talk: () => t("{interact} Talk to the clerk", keys),
+      swim: () => t("Look up or down, then swim toward the reticle"),
+      shield: () => t("{interact} Activate the air shield", keys),
+      swing: () => t("{swing} swing higher · {jump} let go", keys),
+    };
+    let text = lines[code]?.();
     // A relic names itself: "relic:Take the radio".
     if (!text && code?.startsWith("relic:"))
-      text = `${k("interact")} ${code.slice(6)}`;
+      text = t("{interact} {action}", { ...keys, action: code.slice(6) });
     // A tutorial step can keep back a prompt that would contradict it.
     if (covered || this.quiet?.includes(code)) text = "";
     const p = this.el("prompt");
@@ -573,13 +616,15 @@ export class Hud {
       el.querySelectorAll("[data-glyph]").forEach(
         (g) => (g.innerHTML = svg(g.dataset.glyph)),
       );
-      const them = which === "mira" ? "it" : "them";
-      el.querySelectorAll("[data-help]").forEach(
-        (h) =>
-          (h.innerHTML = this.input.usingTouch
-            ? `Tap to put ${them} back`
-            : `${this.k("interact")} or <kbd>Esc</kbd> to put ${them} back`),
-      );
+      const key = this.k("interact");
+      const help = this.input.usingTouch
+        ? which === "mira"
+          ? t("Tap to put it back")
+          : t("Tap to put them back")
+        : which === "mira"
+          ? t("{key} or <kbd>Esc</kbd> to put it back", { key })
+          : t("{key} or <kbd>Esc</kbd> to put them back", { key });
+      el.querySelectorAll("[data-help]").forEach((h) => (h.innerHTML = help));
     }
     el.hidden = !on;
   }
@@ -612,7 +657,7 @@ export class Hud {
       pip.classList.add("refill");
     });
     el.setAttribute("role", "img");
-    el.setAttribute("aria-label", `${value} of ${max} health`);
+    el.setAttribute("aria-label", t("{value} of {max} health", { value, max }));
     if (hurt) this.damage();
   }
 
@@ -653,14 +698,17 @@ export class Hud {
     el.classList.toggle("low", submerged && ratio < 0.25);
     el.classList.toggle("recovering", !submerged);
     this.el("breath-label").textContent = submerged
-      ? "Breath"
-      : "Recovering breath";
-    this.el("breath-time").textContent = `${seconds} s`;
+      ? t("Breath")
+      : t("Recovering breath");
+    this.el("breath-time").textContent = t("{n} s", { n: seconds });
     this.el("breath-fill").style.transform = `scaleX(${ratio})`;
     const meter = this.el("breath-meter");
     meter.setAttribute("aria-valuemax", String(capacity));
     meter.setAttribute("aria-valuenow", String(seconds));
-    meter.setAttribute("aria-valuetext", `${seconds} seconds of breath`);
+    meter.setAttribute(
+      "aria-valuetext",
+      t("{n} seconds of breath", { n: seconds }),
+    );
   }
 
   boss(name, remaining, max, phase = "") {
@@ -686,8 +734,10 @@ export class Hud {
     this.el("hud").style.opacity = on ? 0 : 1;
     const skip = box.querySelector(".cine-skip");
     const text = this.input.usingTouch
-      ? "Tap to skip"
-      : `<kbd>${this.input.usingPad ? "A" : "Enter"}</kbd> skip`;
+      ? t("Tap to skip")
+      : this.input.usingPad
+        ? t("<kbd>A</kbd> skip")
+        : t("<kbd>Enter</kbd> skip");
     if (skip.dataset.text !== text) skip.innerHTML = skip.dataset.text = text;
     skip.classList.toggle("on", on && skippable);
   }

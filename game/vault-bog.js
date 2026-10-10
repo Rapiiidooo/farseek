@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { BOG, buildBog } from "./forest-bog.js";
 import { BAYS, buildSeal } from "./vault.js";
+import { t } from "./i18n.js";
 
 // The wildwood's bay: a pool of the forest's spore water from wall to wall, crossed on the
 // builders' stepping stones. A stone holds a moment, warns in amber, then sinks if it is stood
@@ -204,7 +205,7 @@ export class BogTrial {
         kind: "use",
         box: this.seal.box,
         ref: this,
-        prompt: "relic:Wake the seal",
+        prompt: `relic:${t("Wake the seal")}`,
       },
     ];
   }
@@ -284,18 +285,20 @@ export class BogTrial {
     if (hero.pos.x < POOL.minX)
       return hero.feet > POOL.ledge.top - 0.3
         ? {
-            title: "Climb to the seal",
-            sub: "Press the seal on the ledge",
+            title: t("Climb to the seal"),
+            sub: t("Press the seal on the ledge"),
             point: this.seal.center,
           }
         : {
-            title: "Climb to the seal",
-            sub: "Thick ivy holds bare hands: jump at it and climb",
+            title: t("Climb to the seal"),
+            sub: t("Thick ivy holds bare hands: jump at it and climb"),
             point: V(POOL.ivy.x, 2, POOL.ledge.face),
           };
     return {
-      title: "Cross the sinking stones",
-      sub: "Keep moving: a stone sinks into the spore water if you stand on it too long",
+      title: t("Cross the sinking stones"),
+      sub: t(
+        "Keep moving: a stone sinks into the spore water if you stand on it too long",
+      ),
       point: V(POOL.stones[0][0], 1.4, POOL.stones[0][1]),
     };
   }
@@ -303,7 +306,9 @@ export class BogTrial {
   hint() {
     return [
       BAY.title,
-      "The builders' stones hold for a moment, glow amber, then sink. Jump from stone to stone without stopping. On the far bank, jump at the ivy and climb to the seal.",
+      t(
+        "The builders' stones hold for a moment, glow amber, then sink. Jump from stone to stone without stopping. On the far bank, jump at the ivy and climb to the seal.",
+      ),
     ];
   }
 

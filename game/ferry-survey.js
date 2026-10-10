@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { t } from "./i18n.js";
 
 export const SURVEY_RELIC = "dawn-survey";
 export const SURVEY_LAYOUT = {
@@ -131,7 +132,7 @@ export class FerrySurvey {
         kind: "use",
         box: station.box,
         ref: { use: () => this.use() },
-        prompt: `relic:${this.ready ? "Collect Mira's route survey" : this.active ? "Pause ferry survey" : this.lit.size ? "Resume ferry survey" : "Begin ferry survey"}`,
+        prompt: `relic:${this.ready ? t("Collect Mira's route survey") : this.active ? t("Pause ferry survey") : this.lit.size ? t("Resume ferry survey") : t("Begin ferry survey")}`,
       },
     ];
   }
@@ -151,7 +152,7 @@ export class FerrySurvey {
     if (this.active) {
       this.pause();
       this.services.hud?.subtitle(
-        "The survey is paused. Its measurements are kept.",
+        t("The survey is paused. Its measurements are kept."),
         3,
       );
       return true;
@@ -161,8 +162,10 @@ export class FerrySurvey {
     this.isles.guideKey = null;
     this.services.hud?.clearSubtitle?.();
     this.services.hud?.hint(
-      "Ferry survey",
-      "Pulse both amber lenses from the drifting isle; link to this crystal to recharge.",
+      t("Ferry survey"),
+      t(
+        "Pulse both amber lenses from the drifting isle; link to this crystal to recharge.",
+      ),
       9,
     );
     this.refresh();
@@ -193,8 +196,10 @@ export class FerrySurvey {
         this.noticeAt = this.time;
         this.services.hud?.subtitle(
           aboard
-            ? "Link to the crystal for light, then pulse the amber lens."
-            : "The survey measures the moving route. Pulse its lenses from the ferry.",
+            ? t("Link to the crystal for light, then pulse the amber lens.")
+            : t(
+                "The survey measures the moving route. Pulse its lenses from the ferry.",
+              ),
           3,
         );
       }
@@ -206,7 +211,7 @@ export class FerrySurvey {
     if (this.ready) {
       this.services.hud?.clearHint?.();
       this.services.hud?.subtitle(
-        "Both stations answered. Mira's survey waits on the far bank.",
+        t("Both stations answered. Mira's survey waits on the far bank."),
         4,
       );
     }
@@ -237,13 +242,19 @@ export class FerrySurvey {
     this.boardMark.set(ferry.x, ferry.maxY + 1.2, ferry.z);
     hud.objective(
       this.ready
-        ? "Collect Mira's route survey"
-        : "Complete the optional ferry survey",
+        ? t("Collect Mira's route survey")
+        : t("Complete the optional ferry survey"),
       this.ready
-        ? "The far amber station holds the completed survey"
+        ? t("The far amber station holds the completed survey")
         : aboard
-          ? `Survey lenses: ${this.lit.size} of 2 · ${disc?.charged ? "Pulse an amber lens" : "Link to the crystal for light"}`
-          : "Board the drifting isle and pulse both amber lenses from it",
+          ? disc?.charged
+            ? t("Survey lenses: {lit} of 2 · Pulse an amber lens", {
+                lit: this.lit.size,
+              })
+            : t("Survey lenses: {lit} of 2 · Link to the crystal for light", {
+                lit: this.lit.size,
+              })
+          : t("Board the drifting isle and pulse both amber lenses from it"),
     );
     if (key !== this.guideKey) {
       hud.setMarkers(

@@ -1,3 +1,5 @@
+import { t } from "./i18n.js";
+
 export const FOREST_REFUGES = [
   [0, -12],
   [8, -64],
@@ -8,12 +10,12 @@ export const FOREST_REFUGES = [
 ];
 
 const LINES = [
-  "Mira left a light beside the trail. A place to catch your breath.",
-  "She stopped here before the spore beds. The light still holds.",
-  "Her sketch lies beside the grove. She was still heading for the castle.",
-  "Beyond the grove, another lantern keeps the trail marked.",
-  "A last shelter before the guards. Keep the light in sight.",
-  "Mira rested here before the sea. The archive was her next destination.",
+  t("Mira left a light beside the trail. A place to catch your breath."),
+  t("She stopped here before the spore beds. The light still holds."),
+  t("Her sketch lies beside the grove. She was still heading for the castle."),
+  t("Beyond the grove, another lantern keeps the trail marked."),
+  t("A last shelter before the guards. Keep the light in sight."),
+  t("Mira rested here before the sea. The archive was her next destination."),
 ];
 
 export class TrailRefuges {
@@ -99,7 +101,7 @@ export class TrailRefuges {
     return this.points.map((point) => ({
       kind: "use",
       box: point.box,
-      prompt: `relic:${threatened ? "Leave danger before resting" : "Rest at the trail lantern"}`,
+      prompt: `relic:${threatened ? t("Leave danger before resting") : t("Rest at the trail lantern")}`,
       ref: { use: () => this.rest(point.id) },
     }));
   }
@@ -131,8 +133,10 @@ export class TrailRefuges {
     this.active = id;
     this.refresh();
     this.level.services.hud?.hint(
-      "Trail refuge",
-      "Return here after a knockout. Rest at the lantern to recover strength.",
+      t("Trail refuge"),
+      t(
+        "Return here after a knockout. Rest at the lantern to recover strength.",
+      ),
       5,
     );
   }

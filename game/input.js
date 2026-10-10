@@ -2,6 +2,7 @@
 // physical position (event.code), so ZQSD on an AZERTY keyboard moves like WASD, and prompts
 // ask the layout map for the printed label. The on-screen stick and buttons (touch.js) feed
 // `touchMove`, `touchDown` and the `touch:` edges.
+import { t } from "./i18n.js";
 
 const MOVE = {
   forward: ["KeyW", "ArrowUp"],
@@ -80,35 +81,35 @@ const PAD_NAMES = [
   "RB",
   "LT",
   "RT",
-  "View",
-  "Start",
+  t("View"),
+  t("Start"),
   "L3",
   "R3",
-  "D-pad up",
-  "D-pad down",
-  "D-pad left",
-  "D-pad right",
-  "Home",
+  t("D-pad up"),
+  t("D-pad down"),
+  t("D-pad left"),
+  t("D-pad right"),
+  t("Home"),
 ];
 const NAMED = {
-  Space: "Space",
-  Tab: "Tab",
-  Escape: "Esc",
-  Enter: "Enter",
-  NumpadEnter: "Num Enter",
-  Backspace: "Backspace",
-  CapsLock: "Caps Lock",
+  Space: t("Space"),
+  Tab: t("Tab"),
+  Escape: t("Esc"),
+  Enter: t("Enter"),
+  NumpadEnter: t("Num Enter"),
+  Backspace: t("Backspace"),
+  CapsLock: t("Caps Lock"),
   ArrowUp: "↑",
   ArrowDown: "↓",
   ArrowLeft: "←",
   ArrowRight: "→",
-  Mouse0: "Click",
-  Mouse1: "Middle click",
-  Mouse2: "Right click",
-  Mouse3: "Mouse 4",
-  Mouse4: "Mouse 5",
+  Mouse0: t("Click"),
+  Mouse1: t("Middle click"),
+  Mouse2: t("Right click"),
+  Mouse3: t("Mouse 4"),
+  Mouse4: t("Mouse 5"),
 };
-const SIDED = { Shift: "Shift", Control: "Ctrl", Alt: "Alt" };
+const SIDED = { Shift: t("Shift"), Control: t("Ctrl"), Alt: t("Alt") };
 
 export class Input {
   constructor(canvas, settings) {
@@ -457,19 +458,19 @@ export class Input {
     if (this.usingTouch)
       return (
         {
-          jump: this.swimming ? "Rise" : "Jump",
-          interact: "Use",
-          drop: this.swimming ? "Dive" : "Hang",
-          walk: "Stick",
-          pace: "Pace",
-          throw: this.equipment === "pistols" ? "Fire" : "Link",
-          fire: "Fire",
-          inventory: "Kit",
-          reload: "Reload",
-          aim: "Aim",
-          roll: "Roll",
-          pause: "Pause",
-          shield: "Shield",
+          jump: this.swimming ? t("Rise") : t("Jump"),
+          interact: t("Use"),
+          drop: this.swimming ? t("Dive") : t("Hang"),
+          walk: t("Stick"),
+          pace: t("Pace"),
+          throw: this.equipment === "pistols" ? t("Fire") : t("Link"),
+          fire: t("Fire"),
+          inventory: t("Kit"),
+          reload: t("Reload"),
+          aim: t("Aim"),
+          roll: t("Roll"),
+          pause: t("Pause"),
+          shield: t("Shield"),
         }[action] || action
       );
     if (this.usingPad)
@@ -493,20 +494,27 @@ export class Input {
   }
 
   padName(index) {
-    return index === undefined ? "" : PAD_NAMES[index] || `Button ${index}`;
+    return index === undefined
+      ? ""
+      : PAD_NAMES[index] || t("Button {n}", { n: index });
   }
 
   // A key's printed name; `long` tells the left and right modifiers apart.
   codeLabel(code, long = false) {
     if (!code) return "";
     if (NAMED[code])
-      return long && code === "Mouse0" ? "Left click" : NAMED[code];
+      return long && code === "Mouse0" ? t("Left click") : NAMED[code];
     const sided = /^(Shift|Control|Alt)(Left|Right)$/.exec(code);
-    if (sided) return long ? `${sided[2]} ${SIDED[sided[1]]}` : SIDED[sided[1]];
+    if (sided && long)
+      return sided[2] === "Left"
+        ? t("Left {key}", { key: SIDED[sided[1]] })
+        : t("Right {key}", { key: SIDED[sided[1]] });
+    if (sided) return SIDED[sided[1]];
     // Digits read as digits on every layout, where AZERTY prints a symbol first.
     if (/^Digit\d$/.test(code)) return code.slice(5);
     if (this.labels.has(code)) return this.labels.get(code);
-    if (code.startsWith("Numpad")) return `Num ${code.slice(6)}`;
+    if (code.startsWith("Numpad"))
+      return t("Num {key}", { key: code.slice(6) });
     return code.replace(/^(Key|Digit)/, "");
   }
 
@@ -525,8 +533,8 @@ export class Input {
   }
 
   moveLabel() {
-    if (this.usingPad) return "Left stick";
-    if (this.usingTouch) return "Stick";
+    if (this.usingPad) return t("Left stick");
+    if (this.usingTouch) return t("Stick");
     return ["forward", "left", "back", "right"]
       .map((direction) => this.codeLabel(this.binding(direction)[0]))
       .join("");

@@ -12,16 +12,16 @@ Options: `--out=<dir>` (default `outputs/nightly`), `--keep=<runs>` (default 14,
 
 The command serves the checkout it runs in through `scripts/serve.mjs` on a free port, runs each step as its own process and writes `report.json` and `index.html` (thumbnails, flashes, crossings) in `outputs/nightly/<date>/`. It exits 1 when a step fails and 2 when the harness itself fails. Every browser step runs with its own `TMPDIR`; the monitor (`scripts/nightly/monitor.mjs`) finds the step's Chrome profile there and attaches a second DevTools client, so the check scripts stay unchanged.
 
-| Step                                   | Fails when                                                                                |
-| -------------------------------------- | ----------------------------------------------------------------------------------------- |
-| modules, architecture, save, animation | the file checks' own assertions fail                                                      |
-| views                                  | a fixed view drifts from its baseline (SSIM, worst tile SSIM, worst tile colour distance) |
-| hitch                                  | a crossing frame exceeds the limit in the measurement and again in its confirmation run   |
-| markers, touch, menu, relic, starts    | the check fails                                                                           |
-| sea, vault, forest, playthrough        | the route fails, or the flash detector sees a black or flashing frame, or too few frames  |
-| every browser step                     | a page error, a console error, a WebGL warning, or a shader program compiled during play  |
+| Step                                         | Fails when                                                                                |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| modules, architecture, save, i18n, animation | the file checks' own assertions fail                                                      |
+| views                                        | a fixed view drifts from its baseline (SSIM, worst tile SSIM, worst tile colour distance) |
+| hitch                                        | a crossing frame exceeds the limit in the measurement and again in its confirmation run   |
+| markers, touch, menu, relic, starts          | the check fails                                                                           |
+| sea, vault, forest, playthrough              | the route fails, or the flash detector sees a black or flashing frame, or too few frames  |
+| every browser step                           | a page error, a console error, a WebGL warning, or a shader program compiled during play  |
 
-`--quick` runs the four file checks, views, hitch, markers, sea, vault and forest.
+`--quick` runs the five file checks, views, hitch, markers, sea, vault and forest.
 
 ## Fixed views
 

@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { Shot } from "./story.js";
 import { miraVoice } from "./voice.js";
+import { t } from "./i18n.js";
 
 // Mira at each crossing: a short scene over what she left, once per expedition. `seconds` is
 // each clip's length, and how long a line's subtitle stays if its clip is missing.
@@ -8,83 +9,97 @@ export const MIRA_LINES = {
   "radio-1": {
     mode: "radio",
     seconds: 4.18,
-    text: "This is Mira. If you came through the door after us, listen.",
+    text: t("This is Mira. If you came through the door after us, listen."),
   },
   "radio-2": {
     mode: "radio",
     seconds: 5.72,
-    text: "The Wardens want an address stamped on their three plates, and they only stamp offenders.",
+    text: t(
+      "The Wardens want an address stamped on their three plates, and they only stamp offenders.",
+    ),
   },
   "radio-3": {
     mode: "radio",
     seconds: 4.26,
-    text: "They kept my orb at the window. Take it back if you can.",
+    text: t("They kept my orb at the window. Take it back if you can."),
   },
   "radio-4": {
     mode: "radio",
     seconds: 5.78,
-    text: "We're going on through the far door, past their barrier. Follow the light.",
+    text: t(
+      "We're going on through the far door, past their barrier. Follow the light.",
+    ),
   },
   "camp-1": {
     mode: "tape",
     seconds: 6.14,
-    text: "Day fifteen. At first light the isles drift together, and we rope across while they touch.",
+    text: t(
+      "Day fifteen. At first light the isles drift together, and we rope across while they touch.",
+    ),
   },
   "camp-2": {
     mode: "tape",
     seconds: 5.97,
-    text: "Every rope parts behind us. Whoever follows will need the builders' bridges.",
+    text: t(
+      "Every rope parts behind us. Whoever follows will need the builders' bridges.",
+    ),
   },
   "camp-3": {
     mode: "tape",
     seconds: 5.46,
-    text: "Camp on the last isle. Nyra would have checked every knot twice.",
+    text: t("Camp on the last isle. Nyra would have checked every knot twice."),
   },
   "ice-1": {
     mode: "tape",
     seconds: 3.7,
-    text: "I've cut our sign into the ice, where the snow can't bury it.",
+    text: t("I've cut our sign into the ice, where the snow can't bury it."),
   },
   "ice-2": {
     mode: "tape",
     seconds: 4.21,
-    text: "Don't stop on the thin ice. The arrow points to the ring.",
+    text: t("Don't stop on the thin ice. The arrow points to the ring."),
   },
   "castle-1": {
     mode: "tape",
     seconds: 5.56,
-    text: "I've left the castle's address for whoever follows. It only answers in order.",
+    text: t(
+      "I've left the castle's address for whoever follows. It only answers in order.",
+    ),
   },
   "castle-2": {
     mode: "tape",
     seconds: 5.85,
-    text: "Water first, then the spiral of roots, then the crescent above the trees.",
+    text: t(
+      "Water first, then the spiral of roots, then the crescent above the trees.",
+    ),
   },
   "castle-3": {
     mode: "tape",
     seconds: 4.36,
-    text: "It's the last puzzle I'll leave you. Beyond it, the sea.",
+    text: t("It's the last puzzle I'll leave you. Beyond it, the sea."),
   },
-  "reunion-1": { mode: "live", seconds: 1.45, text: "Nyra." },
+  "reunion-1": { mode: "live", seconds: 1.45, text: t("Nyra.") },
   "reunion-2": {
     mode: "live",
     seconds: 4.42,
-    text: "I knew you'd follow the light. I kept it burning at every door.",
+    text: t("I knew you'd follow the light. I kept it burning at every door."),
   },
   "reunion-3a": {
     mode: "live",
     seconds: 4.73,
-    text: "You brought our map. This time, we choose the next crossing together.",
+    text: t(
+      "You brought our map. This time, we choose the next crossing together.",
+    ),
   },
   "reunion-3b": {
     mode: "live",
     seconds: 4.13,
-    text: "The way home is open. Stay beside me for the next one.",
+    text: t("The way home is open. Stay beside me for the next one."),
   },
   "reunion-4": {
     mode: "live",
     seconds: 1.8,
-    text: "Come on. There are more doors.",
+    text: t("Come on. There are more doors."),
   },
 };
 

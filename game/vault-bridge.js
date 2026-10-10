@@ -3,6 +3,7 @@ import { Bridge } from "./isles.js";
 import { BAYS, buildSeal } from "./vault.js";
 import { crystalWell } from "./vault-crystal.js";
 import { SwingRope } from "./swing-rope.js";
+import { t } from "./i18n.js";
 
 // The isles' bay: a chasm over a memory of golden cloud, a builders' pylon on the near ledge
 // and the seal across it. A crystal on a high shelf beyond the chasm holds the pylon's lens shut
@@ -316,7 +317,7 @@ export class BridgeTrial {
         kind: "use",
         box: this.seal.box,
         ref: this,
-        prompt: "relic:Wake the seal",
+        prompt: `relic:${t("Wake the seal")}`,
       },
     ];
   }
@@ -360,8 +361,8 @@ export class BridgeTrial {
     if (hero.pos.z > BRIDGE.far + 0.2) return null;
     const [lo, hi] = this.rope.grip;
     return {
-      title: "Swing back",
-      sub: "The seal took the bridge's light: run, jump and catch the cable",
+      title: t("Swing back"),
+      sub: t("The seal took the bridge's light: run, jump and catch the cable"),
       point: this.rope.at((lo + hi) / 2),
     };
   }
@@ -369,31 +370,35 @@ export class BridgeTrial {
   guide(hero, disc) {
     if (hero.pos.z < BRIDGE.far + 0.2)
       return {
-        title: "Cross on the bridge of light",
-        sub: "Press the seal on the far ledge",
+        title: t("Cross on the bridge of light"),
+        sub: t("Press the seal on the far ledge"),
         point: this.seal.center,
       };
     if (this.locked)
       return {
-        title: "Wake the pylon",
-        sub: "A lock of light holds its lens: shoot the crystal on the high shelf",
+        title: t("Wake the pylon"),
+        sub: t(
+          "A lock of light holds its lens: shoot the crystal on the high shelf",
+        ),
         point: this.lockCenter,
       };
     if (this.bridge.on)
       return {
-        title: "Cross on the bridge of light",
-        sub: `${Math.max(0, Math.ceil(this.bridge.left))} seconds of light remain`,
+        title: t("Cross on the bridge of light"),
+        sub: t("{n} seconds of light remain", {
+          n: Math.max(0, Math.ceil(this.bridge.left)),
+        }),
         point: V(BRIDGE.x, 1, BRIDGE.far - 1),
       };
     return disc?.charged
       ? {
-          title: "Wake the pylon",
-          sub: "Pulse the pylon's lens with the charged orb",
+          title: t("Wake the pylon"),
+          sub: t("Pulse the pylon's lens with the charged orb"),
           point: this.lens,
         }
       : {
-          title: "Wake the pylon",
-          sub: "Link to the crystal to charge the orb",
+          title: t("Wake the pylon"),
+          sub: t("Link to the crystal to charge the orb"),
           point: this.well.center,
         };
   }
@@ -401,7 +406,10 @@ export class BridgeTrial {
   hint(hud) {
     return [
       BAY.title,
-      `Draw the pistols with <kbd>2</kbd> or ${hud.k("inventory")}, hold ${hud.k("aim")} and shoot the crystal that locks the lens. Then link to the crystal and pulse the pylon with the charged orb.`,
+      t(
+        "Draw the pistols with <kbd>2</kbd> or {inventory}, hold {aim} and shoot the crystal that locks the lens. Then link to the crystal and pulse the pylon with the charged orb.",
+        { inventory: hud.k("inventory"), aim: hud.k("aim") },
+      ),
     ];
   }
 

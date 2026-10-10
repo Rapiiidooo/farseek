@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
     />
-    <title>Farseek</title>
+    <title translate="no">Farseek</title>
     <meta
       name="description"
       content="Nyra Varen bends sunlight through a sunken ruin to open a gate onto another world."
@@ -207,7 +207,7 @@
       <div class="load-ring" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="loading-card">
         <p class="kicker">An expedition in seven worlds</p>
-        <h1>Farseek</h1>
+        <h1 translate="no">Farseek</h1>
         <div
           class="bar"
           role="progressbar"
@@ -230,7 +230,7 @@
     <section id="menu" class="screen" hidden>
       <div class="panel" data-screen="main">
         <p class="kicker">An expedition in seven worlds</p>
-        <h1>Farseek</h1>
+        <h1 translate="no">Farseek</h1>
         <p class="tagline">Every tomb hides an address.</p>
         <nav class="menu-list">
           <button type="button" data-action="continue">Continue</button>
@@ -344,6 +344,17 @@
           </section>
           <section class="settings-group" aria-labelledby="settings-display">
             <h3 id="settings-display">Display</h3>
+            <label class="row"
+              ><span>Language</span
+              ><select id="set-language">
+                <option value="auto">Automatic</option>
+                <option value="en" lang="en" translate="no">English</option>
+                <option value="fr" lang="fr" translate="no">Français</option>
+                <option value="es" lang="es" translate="no">Español</option>
+                <option value="zh" lang="zh-Hans" translate="no">中文</option>
+                <option value="hi" lang="hi" translate="no">हिन्दी</option>
+              </select></label
+            >
             <label class="row"
               ><span>Image quality</span
               ><select id="set-quality">
@@ -476,7 +487,7 @@
     <section id="credits" hidden aria-label="Credits">
       <div class="roll" id="credits-roll">
         <p class="kicker">An expedition in seven worlds</p>
-        <h1>Farseek</h1>
+        <h1 translate="no">Farseek</h1>
         <p class="line">Every door opens onto another beginning.</p>
         <div class="block">
           <h3>Made by</h3>

@@ -15,6 +15,7 @@ import { progress } from "../../store.js";
 import { castleScene } from "../../mira-scenes.js";
 import { syncAxes } from "../../ice-axes.js";
 import { equipmentFor } from "../../equipment.js";
+import { t } from "../../i18n.js";
 
 const V = (x = 0, y = 0, z = 0) => new THREE.Vector3(x, y, z);
 
@@ -182,35 +183,39 @@ export class WorldFive {
       this.gate.ignite(i);
       this.services.hud.subtitle(
         i === 0
-          ? "The first seal. A path through the sleeping grove."
+          ? t("The first seal. A path through the sleeping grove.")
           : i === 1
-            ? "The grove is free. The castle is listening."
+            ? t("The grove is free. The castle is listening.")
             : progress.relics.has("grove-map")
-              ? "The sea. Mira was searching for an archive beneath it."
-              : "The whole address. The sea waits on the other side.",
+              ? t("The sea. Mira was searching for an archive beneath it.")
+              : t("The whole address. The sea waits on the other side."),
         4,
       );
     };
     L.onSpore = (kind) =>
       this.once("spore-hit", () =>
         this.services.hud.hint(
-          "Spore pods",
+          t("Spore pods"),
           kind === "pistol"
-            ? "Bullets interrupt a pod briefly. Orb pulses keep it quiet longer."
-            : "An ordinary orb pulse silences a pod for six seconds; a charged pulse gives you longer.",
+            ? t(
+                "Bullets interrupt a pod briefly. Orb pulses keep it quiet longer.",
+              )
+            : t(
+                "An ordinary orb pulse silences a pod for six seconds; a charged pulse gives you longer.",
+              ),
           8,
         ),
       );
     L.onGuard = (_, guard) => {
       if (guard?.boss)
         this.services.hud.subtitle(
-          "Oldtusk yields. Mira's sea address is within reach.",
+          t("Oldtusk yields. Mira's sea address is within reach."),
           4,
         );
       else
         this.once("guard-down", () =>
           this.services.hud.subtitle(
-            "The tusks are still. Keep an eye on the undergrowth.",
+            t("The tusks are still. Keep an eye on the undergrowth."),
             3.5,
           ),
         );
@@ -222,13 +227,15 @@ export class WorldFive {
       this.services.sound?.play("respawn");
       this.services.hud.blackout(
         stone
-          ? "The spore water burns. Back to the last stone."
-          : "The spore water burns. Back to the bank.",
+          ? t("The spore water burns. Back to the last stone.")
+          : t("The spore water burns. Back to the bank."),
       );
     };
     L.onKeeperPhase = () =>
       this.services.hud.subtitle(
-        "Oldtusk twists its head before sweeping the tusks. Keep room to step back.",
+        t(
+          "Oldtusk twists its head before sweeping the tusks. Keep room to step back.",
+        ),
         4,
       );
     L.onReady = () => {
@@ -357,7 +364,7 @@ export class WorldFive {
     if (this.storyT > 2)
       this.once("arrive", () =>
         this.services.hud.subtitle(
-          "Warm air. A living forest, and a castle above the roots.",
+          t("Warm air. A living forest, and a castle above the roots."),
           4,
         ),
       );
@@ -368,15 +375,17 @@ export class WorldFive {
     )
       this.once("spores", () =>
         this.services.hud.hint(
-          "Watch the glow",
-          "Flashing pods warn before bursting. Bullets quiet them briefly; orb pulses last longer.",
+          t("Watch the glow"),
+          t(
+            "Flashing pods warn before bursting. Bullets quiet them briefly; orb pulses last longer.",
+          ),
           9,
         ),
       );
     if (bogEdge(hero.pos.x, hero.pos.z) < 7)
       this.once("bog", () =>
         this.services.hud.subtitle(
-          "Spore water floods the hollow. Only the stones cross it.",
+          t("Spore water floods the hollow. Only the stones cross it."),
           4.5,
         ),
       );
@@ -384,8 +393,15 @@ export class WorldFive {
     if (Math.hypot(hero.pos.x - ivy.o.x, hero.pos.z - ivy.o.z) < 7)
       this.once("ivy", () =>
         this.services.hud.hint(
-          "Thick ivy",
-          `Old ivy holds a climber's weight. ${this.services.hud.press("jump", true)} at it to take hold, then ${this.services.hud.keys("KeyW", "KeyA", "KeyS", "KeyD")} climb; ${this.services.hud.press("drop")} lets go.`,
+          t("Thick ivy"),
+          t(
+            "Old ivy holds a climber's weight. {jump} at it to take hold, then {move} climb; {drop} lets go.",
+            {
+              jump: this.services.hud.press("jump", true),
+              move: this.services.hud.keys("KeyW", "KeyA", "KeyS", "KeyD"),
+              drop: this.services.hud.press("drop"),
+            },
+          ),
           10,
           { queue: true },
         ),
@@ -399,8 +415,10 @@ export class WorldFive {
     )
       this.once("guards", () =>
         this.services.hud.hint(
-          "Wildwood boars",
-          "A lowered head warns of a straight charge. Dodge sideways, then counter its exposed flank.",
+          t("Wildwood boars"),
+          t(
+            "A lowered head warns of a straight charge. Dodge sideways, then counter its exposed flank.",
+          ),
           9,
         ),
       );

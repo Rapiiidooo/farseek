@@ -3,6 +3,7 @@ import { Warden, fallbackWarden } from "./wardens.js";
 import { Telegraphs } from "./fx.js";
 import { BAYS, buildSeal } from "./vault.js";
 import { crystalWell } from "./vault-crystal.js";
+import { t } from "./i18n.js";
 
 // The checkpoint's bay: an elder Warden of the builders keeps the seal and stamps anyone who
 // comes near. The seal answers only while its keeper's eye is dark: charge the orb at the
@@ -166,7 +167,7 @@ export class KeeperTrial {
         kind: "use",
         box: this.seal.box,
         ref: this,
-        prompt: "relic:Press the keeper's seal",
+        prompt: `relic:${t("Press the keeper's seal")}`,
       },
     ];
   }
@@ -176,7 +177,7 @@ export class KeeperTrial {
     if (!this.quiet) {
       this.vault.services.sound?.play("clink");
       this.vault.services.hud?.subtitle(
-        "It will not answer while the keeper's eye is on it.",
+        t("It will not answer while the keeper's eye is on it."),
         3,
       );
       this.keeper.provoke();
@@ -224,19 +225,21 @@ export class KeeperTrial {
   guide(hero, disc) {
     if (this.quiet)
       return {
-        title: "Quiet the keeper",
-        sub: "Its eye is dark: run to the seal and press it",
+        title: t("Quiet the keeper"),
+        sub: t("Its eye is dark: run to the seal and press it"),
         point: this.seal.center,
       };
     if (!disc?.charged)
       return {
-        title: "Quiet the keeper",
-        sub: "Turn its stamp aside with the shield, or charge the orb at the crystal",
+        title: t("Quiet the keeper"),
+        sub: t(
+          "Turn its stamp aside with the shield, or charge the orb at the crystal",
+        ),
         point: this.well.center,
       };
     return {
-      title: "Quiet the keeper",
-      sub: "Pulse the keeper with the charged orb to stun it",
+      title: t("Quiet the keeper"),
+      sub: t("Pulse the keeper with the charged orb to stun it"),
       point: V(this.keeper.pos.x, 2.6, this.keeper.pos.z),
     };
   }
@@ -244,7 +247,10 @@ export class KeeperTrial {
   hint(hud) {
     return [
       BAY.title,
-      `The seal answers only while its keeper is stunned. Raise the shield with ${hud.k("shield")} as it stamps and it reels, or link to the crystal with ${hud.k("throw")} and pulse it with the charged orb. Three pistol hits also send it on its break.`,
+      t(
+        "The seal answers only while its keeper is stunned. Raise the shield with {shield} as it stamps and it reels, or link to the crystal with {throw} and pulse it with the charged orb. Three pistol hits also send it on its break.",
+        { shield: hud.k("shield"), throw: hud.k("throw") },
+      ),
     ];
   }
 

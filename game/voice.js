@@ -1,8 +1,10 @@
+import { t } from "./i18n.js";
+
 // Mira's lines, each with its subtitle, through one gain under the master volume.
 // `sound.voiceActive` is true while a line is heard, so the mix can make room for it.
 
 const LEVEL = 0.85;
-const SPEAKER = "Mira";
+const SPEAKER = t("Mira");
 const voices = new WeakMap();
 
 export function miraVoice(sound) {

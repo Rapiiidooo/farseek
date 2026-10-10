@@ -12,6 +12,7 @@ import { equipmentFor } from "../../equipment.js";
 import { equipmentSound } from "../../equipment-sound.js";
 import { dressGate } from "../../gate-bases.js";
 import { campScene } from "../../mira-scenes.js";
+import { t } from "../../i18n.js";
 
 // The third world and the third level: a sky at dawn over a sea of golden cloud, pale isles
 // floating in it, and more rings of the network hanging in the distance. The checkpoint's far
@@ -331,10 +332,12 @@ export class WorldThree {
     this.isles.onWake = (pylon, fresh) => {
       if (!fresh) return;
       this.once("bridge", () => {
-        hud.subtitle("The builders' bridges still answer to light.", 3.5);
+        hud.subtitle(t("The builders' bridges still answer to light."), 3.5);
         hud.hint(
-          "Bridges of light",
-          "A bridge holds for a few seconds, then fades from the pylon's end. Cross before it does.",
+          t("Bridges of light"),
+          t(
+            "A bridge holds for a few seconds, then fades from the pylon's end. Cross before it does.",
+          ),
           8,
         );
       });
@@ -343,8 +346,11 @@ export class WorldThree {
       if (this.time - (this.darkAt ?? -99) < 12) return;
       this.darkAt = this.time;
       hud.hint(
-        "Light",
-        `Aim at a crystal and press ${hud.k("throw")} to charge the orb, then pulse the pylon's lens.`,
+        t("Light"),
+        t(
+          "Aim at a crystal and press {throw} to charge the orb, then pulse the pylon's lens.",
+          { throw: hud.k("throw") },
+        ),
         8,
       );
     };
@@ -438,11 +444,11 @@ export class WorldThree {
     hud.objective("");
     hud.setMarkers([]);
     if (I.pistolsTaken) {
-      hud.subtitle("Two glyphs of three. Then I'll find the third.", 4.2);
+      hud.subtitle(t("Two glyphs of three. Then I'll find the third."), 4.2);
       this.openRingSoon(2200);
     } else
       hud.subtitle(
-        "Two glyphs of three. And her pistols, still in their case.",
+        t("Two glyphs of three. And her pistols, still in their case."),
         4.2,
       );
   }
@@ -459,8 +465,8 @@ export class WorldThree {
     equipmentSound(sound, "reload-rack", { delay: 0.58, pan: -0.2 });
     this.services.hud.subtitle(
       this.isles.read
-        ? "Her pistols. Now, her ring."
-        : "Mira's pistols, as she left them. I'll keep them close.",
+        ? t("Her pistols. Now, her ring.")
+        : t("Mira's pistols, as she left them. I'll keep them close."),
       3.4,
     );
     if (this.isles.read) this.openRingSoon(1700);
@@ -549,13 +555,15 @@ export class WorldThree {
     this.storyT = (this.storyT ?? 0) + dt;
     if (arriving && this.storyT > 2)
       this.once("arrive", () =>
-        hud.subtitle("Their trail goes on, across the isles.", 3.5),
+        hud.subtitle(t("Their trail goes on, across the isles."), 3.5),
       );
     if (arriving && this.storyT > 6.5)
       this.once("jump", () =>
         hud.hint(
-          "The isles",
-          "Take a run at each gap and jump. A fall returns you to the last isle you stood on.",
+          t("The isles"),
+          t(
+            "Take a run at each gap and jump. A fall returns you to the last isle you stood on.",
+          ),
           8,
         ),
       );
@@ -564,17 +572,27 @@ export class WorldThree {
       Math.hypot(hero.pos.x - I.firstRope.x, hero.pos.z - I.firstRope.z) < 4.5
     )
       this.once("rope", () =>
-        hud.subtitle("A rope, snapped. They crossed these isles before me.", 4),
+        hud.subtitle(
+          t("A rope, snapped. They crossed these isles before me."),
+          4,
+        ),
       );
     if (at("step2"))
       this.once("swing", () => {
         hud.subtitle(
-          "Their swing rope still holds. That gap is too wide to jump.",
+          t("Their swing rope still holds. That gap is too wide to jump."),
           4,
         );
         hud.hint(
-          "Rope swing",
-          `Run and jump to catch the rope. Push ${hud.keys("KeyW")} as you swing forward and ${hud.keys("KeyS")} as you swing back to go higher, then ${hud.press("jump")} to let go over the far isle.`,
+          t("Rope swing"),
+          t(
+            "Run and jump to catch the rope. Push {forward} as you swing forward and {back} as you swing back to go higher, then {press} to let go over the far isle.",
+            {
+              forward: hud.keys("KeyW"),
+              back: hud.keys("KeyS"),
+              press: hud.press("jump"),
+            },
+          ),
           11,
           { queue: true },
         );
@@ -582,24 +600,32 @@ export class WorldThree {
     if (at("midway") && I.pylons.find((p) => p.id === "relay2")?.bridge.on)
       this.once("relay-swing", () =>
         hud.hint(
-          "Swing onto the light",
-          `The far bridge stops short of this isle. Swing from the rope and ${hud.press("jump")} to let go over the light.`,
+          t("Swing onto the light"),
+          t(
+            "The far bridge stops short of this isle. Swing from the rope and {press} to let go over the light.",
+            { press: hud.press("jump") },
+          ),
           9,
         ),
       );
     if (at("well", "gap"))
       this.once("pylons", () =>
         hud.hint(
-          "Pylons",
-          `Link to the crystal with ${hud.k("throw")} to charge the orb, then aim at the pylon's lens and pulse.`,
+          t("Pylons"),
+          t(
+            "Link to the crystal with {throw} to charge the orb, then aim at the pylon's lens and pulse.",
+            { throw: hud.k("throw") },
+          ),
           10,
         ),
       );
     if (at("pair", "rock"))
       this.once("pair", () =>
         hud.hint(
-          "One charge",
-          "The orb holds its charge for ten seconds: pulse both pylons, then cross both bridges.",
+          t("One charge"),
+          t(
+            "The orb holds its charge for ten seconds: pulse both pylons, then cross both bridges.",
+          ),
           9,
         ),
       );
@@ -607,35 +633,43 @@ export class WorldThree {
       this.once("drift", () => {
         hud.subtitle(
           progress.relics.has("page")
-            ? "Mira's loose page was right. This isle carries the way across."
-            : "A wandering isle. Their broken rope ends here.",
+            ? t(
+                "Mira's loose page was right. This isle carries the way across.",
+              )
+            : t("A wandering isle. Their broken rope ends here."),
           4,
         );
         hud.hint(
-          "Drifting isles",
-          "Wait for the isle to drift close, then jump aboard. Jump off when it reaches the far isle.",
+          t("Drifting isles"),
+          t(
+            "Wait for the isle to drift close, then jump aboard. Jump off when it reaches the far isle.",
+          ),
           9,
         );
       });
     if (at("far", "stone1", "stone2", "stone3"))
       this.once("stones", () =>
         hud.hint(
-          "Crumbling stones",
-          "Each stone gives way a moment after you land. Keep running and jump from one to the next.",
+          t("Crumbling stones"),
+          t(
+            "Each stone gives way a moment after you land. Keep running and jump from one to the next.",
+          ),
           9,
         ),
       );
     if (at("landing", "midway"))
       this.once("relay", () => {
-        hud.subtitle("One glow, two pylons, and a bridge between them.", 4);
+        hud.subtitle(t("One glow, two pylons, and a bridge between them."), 4);
         hud.hint(
-          "Carry the light",
-          "Charge the orb, pulse the pylon and cross at once; pulse the far lens before the glow fades.",
+          t("Carry the light"),
+          t(
+            "Charge the orb, pulse the pylon and cross at once; pulse the far lens before the glow fades.",
+          ),
           10,
         );
       });
     if (at("camp") && !I.read)
-      this.once("camp", () => hud.subtitle("A camp. Mira's.", 3));
+      this.once("camp", () => hud.subtitle(t("A camp. Mira's."), 3));
   }
 
   // On a rope the lens settles behind her and a little to the side, so the arc reads; a camera
@@ -693,7 +727,7 @@ export class WorldThree {
     if (R.phase !== "closed") return;
     R.onOpen = () =>
       this.services.hud.subtitle(
-        "Two glyphs of three, and still it opens. Onto ice.",
+        t("Two glyphs of three, and still it opens. Onto ice."),
         4,
       );
     R.ignite(2);

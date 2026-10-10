@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { t } from "./i18n.js";
 
 export const TRAIL_RELIC = "winter-crossing";
 const CAIRNS = [
@@ -79,7 +80,7 @@ export class IceTrail {
         kind: "use",
         box: this.stations[id].useBox,
         ref: { use: () => this.use(id) },
-        prompt: `relic:${this.ready ? "Collect Mira's winter crossing" : this.active ? "Stop cairn trail" : this.recovering ? "Cairn trail is refreezing" : "Begin cairn trail"}`,
+        prompt: `relic:${this.ready ? t("Collect Mira's winter crossing") : this.active ? t("Stop cairn trail") : this.recovering ? t("Cairn trail is refreezing") : t("Begin cairn trail")}`,
       },
     ];
   }
@@ -98,12 +99,12 @@ export class IceTrail {
     }
     if (id !== 0) return false;
     if (this.active) {
-      this.stop("The trail is stopped. Begin again at this cairn.");
+      this.stop(t("The trail is stopped. Begin again at this cairn."));
       return true;
     }
     if (this.recovering) {
       this.services.hud?.subtitle(
-        "Let every sheet freeze before beginning another crossing.",
+        t("Let every sheet freeze before beginning another crossing."),
         3,
       );
       return false;
@@ -112,7 +113,7 @@ export class IceTrail {
     this.passed = 0;
     this.frozen.guideKey = null;
     this.services.hud?.subtitle(
-      "Run each ice sheet, then jump both floes without falling.",
+      t("Run each ice sheet, then jump both floes without falling."),
       5,
     );
     this.refresh();
@@ -131,7 +132,7 @@ export class IceTrail {
 
   fail() {
     return this.stop(
-      "The crossing broke. Start another attempt at the shore cairn.",
+      t("The crossing broke. Start another attempt at the shore cairn."),
     );
   }
 
@@ -181,7 +182,9 @@ export class IceTrail {
       this.frozen.guideKey = null;
       this.services.sound?.play("chime");
       this.services.hud?.subtitle(
-        "A clean crossing. Mira's record waits at the red cairn on this shore.",
+        t(
+          "A clean crossing. Mira's record waits at the red cairn on this shore.",
+        ),
         4,
       );
     }
@@ -218,15 +221,21 @@ export class IceTrail {
     else this.marker.copy(this.stations[1].center);
     hud.objective(
       this.ready
-        ? "Collect Mira's winter crossing"
-        : "Follow the optional cairn trail",
+        ? t("Collect Mira's winter crossing")
+        : t("Follow the optional cairn trail"),
       this.ready
-        ? "Read the record at the island's red ribbon cairn"
+        ? t("Read the record at the island's red ribbon cairn")
         : this.passed < thin.length
-          ? `Ice sheets: ${this.passed} of ${thin.length} · Touch each sheet before it breaks`
+          ? t(
+              "Ice sheets: {done} of {total} · Touch each sheet before it breaks",
+              { done: this.passed, total: thin.length },
+            )
           : this.passed < thin.length + floes.length
-            ? `Floes: ${this.passed - thin.length} of ${floes.length} · Wait for safe jumps`
-            : "Land safely on the island to finish the crossing",
+            ? t("Floes: {done} of {total} · Wait for safe jumps", {
+                done: this.passed - thin.length,
+                total: floes.length,
+              })
+            : t("Land safely on the island to finish the crossing"),
     );
     hud.setMarkers([this.marker]);
     return true;

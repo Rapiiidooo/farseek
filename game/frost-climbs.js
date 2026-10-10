@@ -3,6 +3,7 @@ import { addClimbSurface } from "./wall-climb.js";
 import { ClimbChips } from "./climb-chips.js";
 import { iceAxes, syncAxes } from "./ice-axes.js";
 import { prepareVisuals } from "./shader-preparation.js";
+import { t } from "./i18n.js";
 
 // The frozen reach's climbs. A short fall closes the crevasse's landing, with Mira's axes at
 // its foot; on the island a taller fall, broken by a band of bare rock, leads to the prism's
@@ -180,7 +181,7 @@ export class FrostClimbs {
         kind: "use",
         box: this.useBox,
         ref: { use: () => this.take() },
-        prompt: "relic:Take Mira's ice axes",
+        prompt: `relic:${t("Take Mira's ice axes")}`,
       },
     ];
   }

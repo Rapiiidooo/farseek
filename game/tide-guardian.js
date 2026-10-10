@@ -2,6 +2,7 @@ import { mineralColor } from "./mineral-surface.js";
 import * as THREE from "three";
 import { warningTriangles } from "./hazard-marks.js";
 import { tuning } from "./combat-tuning.js";
+import { t } from "./i18n.js";
 
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 const GOLD = 0xffb24a;
@@ -10,26 +11,32 @@ const CRACKED = 0xbafff4;
 const CRACK_TIME = 5.5;
 const SEQUENCES = {
   "pressure-strike": {
-    name: "Pressure strike",
-    advice:
+    name: t("Pressure strike"),
+    advice: t(
       "Shoot the cyan vent twice or leave the amber mark before it bursts",
+    ),
   },
   "cross-pressure": {
-    name: "Cross pressure",
-    advice: "Vent the cyan columns or leave both marks; keep a clear way out",
+    name: t("Cross pressure"),
+    advice: t(
+      "Vent the cyan columns or leave both marks; keep a clear way out",
+    ),
   },
   undertow: {
-    name: "Undertow",
-    advice: "Vent the cyan column or leave its mark, then jump the low wave",
+    name: t("Undertow"),
+    advice: t("Vent the cyan column or leave its mark, then jump the low wave"),
   },
   "converging-tide": {
-    name: "Converging tide",
-    advice: "Vent the cyan columns or leave both marks, then jump the low wave",
+    name: t("Converging tide"),
+    advice: t(
+      "Vent the cyan columns or leave both marks, then jump the low wave",
+    ),
   },
   "pressure-chain": {
-    name: "Pressure chain",
-    advice:
+    name: t("Pressure chain"),
+    advice: t(
       "Vent the cyan columns or leave all three marks; strikes arrive in order",
+    ),
   },
 };
 
@@ -179,7 +186,7 @@ export class TideGuardian {
 
   get attackName() {
     return this.state === "cracked"
-      ? "Cracked core"
+      ? t("Cracked core")
       : SEQUENCES[this.sequence].name;
   }
 
@@ -189,8 +196,8 @@ export class TideGuardian {
       this.warnings.every((warning) => warning.wave || warning.vented)
     )
       return this.warnings.some((warning) => warning.wave)
-        ? "Pressure vented. Jump the expanding low wave"
-        : "Pressure vented. Charge the orb for the open core";
+        ? t("Pressure vented. Jump the expanding low wave")
+        : t("Pressure vented. Charge the orb for the open core");
     return SEQUENCES[this.sequence].advice;
   }
 
@@ -201,8 +208,10 @@ export class TideGuardian {
     if (!this.explained) {
       this.explained = true;
       this.services.hud?.hint(
-        "Tide Guardian",
-        "Leave amber marks or shoot each cyan vent twice, and jump low waves. When the core opens, a charged orb pulse cracks it; only bullets wound it.",
+        t("Tide Guardian"),
+        t(
+          "Leave amber marks or shoot each cyan vent twice, and jump low waves. When the core opens, a charged orb pulse cracks it; only bullets wound it.",
+        ),
         11,
       );
     }
@@ -342,7 +351,7 @@ export class TideGuardian {
       this.pressureTargets = [];
       this.clearAttacks();
       this.services.hud?.subtitle(
-        "It was keeping the way home alive. The address is ours.",
+        t("It was keeping the way home alive. The address is ours."),
         5,
       );
       this.services.sound?.setMusic("sea");
@@ -353,8 +362,8 @@ export class TideGuardian {
       this.services.hud?.clearHint?.();
       this.services.hud?.subtitle(
         this.phase === 2
-          ? "Pressure and tide. Leave the marks, then jump the low wave."
-          : "Three marks, or a wave. Watch the ground before you counter.",
+          ? t("Pressure and tide. Leave the marks, then jump the low wave.")
+          : t("Three marks, or a wave. Watch the ground before you counter."),
         4,
       );
     }
@@ -373,8 +382,10 @@ export class TideGuardian {
     if (!this.crackExplained) {
       this.crackExplained = true;
       this.services.hud?.hint(
-        "Cracked core",
-        "The light split the crystal open. Draw the pistols and shoot the core before it seals.",
+        t("Cracked core"),
+        t(
+          "The light split the crystal open. Draw the pistols and shoot the core before it seals.",
+        ),
         8,
       );
     }

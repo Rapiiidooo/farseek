@@ -1,17 +1,27 @@
 import { progress } from "./store.js";
+import { t } from "./i18n.js";
 
 export const CRAFT = Object.freeze({
   steady: {
-    name: "Steady hands",
-    effect: "Recoil settles sooner between shots.",
+    name: t("Steady hands"),
+    effect: t("Recoil settles sooner between shots."),
   },
-  reload: { name: "Fast reload", effect: "Both magazines change faster." },
-  trigger: { name: "Quick trigger", effect: "A shorter pause between shots." },
+  reload: {
+    name: t("Fast reload"),
+    effect: t("Both magazines change faster."),
+  },
+  trigger: {
+    name: t("Quick trigger"),
+    effect: t("A shorter pause between shots."),
+  },
   grouping: {
-    name: "Tight grouping",
-    effect: "Near misses still find the target, and the sight narrows.",
+    name: t("Tight grouping"),
+    effect: t("Near misses still find the target, and the sight narrows."),
   },
-  heavy: { name: "Heavy rounds", effect: "Hits stagger animals for longer." },
+  heavy: {
+    name: t("Heavy rounds"),
+    effect: t("Hits stagger animals for longer."),
+  },
 });
 
 // Each of Mira's relics teaches one habit with the pistols, two of each kind, so progress is
@@ -19,43 +29,53 @@ export const CRAFT = Object.freeze({
 export const MIRA_CRAFT = Object.freeze({
   "transit-file": {
     kind: "reload",
-    note: "In the margin she timed a magazine change against the clerk's stamp.",
+    note: t(
+      "In the margin she timed a magazine change against the clerk's stamp.",
+    ),
   },
   page: {
     kind: "trigger",
-    note: "A corner of the page counts the beat between two shots, shorter each time.",
+    note: t(
+      "A corner of the page counts the beat between two shots, shorter each time.",
+    ),
   },
   "dawn-survey": {
     kind: "grouping",
-    note: "Her survey marks how a sight settles on something that moves.",
+    note: t("Her survey marks how a sight settles on something that moves."),
   },
   "camp-drill": {
     kind: "steady",
-    note: "Three clear marks, then breathe: her drill steadies the hands.",
+    note: t("Three clear marks, then breathe: her drill steadies the hands."),
   },
   scarf: {
     kind: "heavy",
-    note: "Knotted into the scarf is a note on where a charging animal flinches.",
+    note: t(
+      "Knotted into the scarf is a note on where a charging animal flinches.",
+    ),
   },
   lantern: {
     kind: "reload",
-    note: "A spare loop of wick holds a magazine ready at the belt.",
+    note: t("A spare loop of wick holds a magazine ready at the belt."),
   },
   "winter-crossing": {
     kind: "grouping",
-    note: "She practised on the anchored ice until her sights stopped drifting.",
+    note: t(
+      "She practised on the anchored ice until her sights stopped drifting.",
+    ),
   },
   "grove-map": {
     kind: "heavy",
-    note: "Beside the boars she drew where a round turns a charge aside.",
+    note: t("Beside the boars she drew where a round turns a charge aside."),
   },
   "pressure-log": {
     kind: "steady",
-    note: "Her last dry page braces both arms against the recoil.",
+    note: t("Her last dry page braces both arms against the recoil."),
   },
   "tide-proof": {
     kind: "trigger",
-    note: "She shot the valves in pairs, faster than the pressure could answer.",
+    note: t(
+      "She shot the valves in pairs, faster than the pressure could answer.",
+    ),
   },
 });
 
@@ -84,5 +104,9 @@ export function craftLine(id) {
   const craft = MIRA_CRAFT[id];
   if (!craft) return null;
   const { name, effect } = CRAFT[craft.kind];
-  return `Pistol craft: ${name}. ${craft.note} ${effect}`;
+  return t("Pistol craft: {name}. {note} {effect}", {
+    name,
+    note: craft.note,
+    effect,
+  });
 }

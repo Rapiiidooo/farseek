@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { t } from "./i18n.js";
 
 export class AirSanctuary {
   constructor(archive, atlantis) {
@@ -130,7 +131,7 @@ export class AirSanctuary {
     this.archive.services.sound?.play("ignite");
     this.archive.services.hud?.clearHint?.();
     this.archive.services.hud?.subtitle(
-      "The shield is pushing the sea back. Air, at last.",
+      t("The shield is pushing the sea back. Air, at last."),
       4,
     );
     return true;

@@ -34,6 +34,35 @@
   --body: "DM Sans", "Segoe UI", "Helvetica Neue", sans-serif;
 }
 
+/* The game's faces carry Latin only: Chinese and Hindi glyphs fall back on the system's own
+   faces, while names and key labels in Latin letters keep the game's look. */
+:root:lang(zh) {
+  --display:
+    "Barlow Condensed", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans SC", sans-serif;
+  --body:
+    "DM Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans SC", sans-serif;
+}
+
+:root:lang(hi) {
+  --display:
+    "Barlow Condensed", "Kohinoor Devanagari", "Nirmala UI",
+    "Noto Sans Devanagari", "Mangal", sans-serif;
+  --body:
+    "DM Sans", "Kohinoor Devanagari", "Nirmala UI", "Noto Sans Devanagari",
+    "Mangal", sans-serif;
+}
+
+:root:lang(zh) .kicker {
+  letter-spacing: 0.12em;
+}
+
+/* Spacing letters apart breaks the headline that joins Devanagari letters into words. */
+:root:lang(hi) body *:not([translate="no"]) {
+  letter-spacing: 0 !important;
+}
+
 * {
   box-sizing: border-box;
 }

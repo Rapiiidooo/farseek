@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { prepareVisuals } from "./shader-preparation.js";
+import { t } from "./i18n.js";
 
 export const PRACTICE_RELIC = "camp-drill";
 export const PRACTICE_SECONDS = 12;
@@ -143,7 +144,7 @@ export class CampPractice {
         kind: "use",
         box: this.note.box,
         ref: { use: () => this.use() },
-        prompt: `relic:${this.ready ? "Collect Mira's camp record" : this.active ? "Stop pistol practice" : "Begin pistol practice"}`,
+        prompt: `relic:${this.ready ? t("Collect Mira's camp record") : this.active ? t("Stop pistol practice") : t("Begin pistol practice")}`,
       },
     ];
   }
@@ -161,7 +162,7 @@ export class CampPractice {
     if (this.active) return this.stop();
     if (this.hero.equipment !== "pistols" || !this.hero.weaponActive) {
       this.services.hud?.subtitle(
-        "Select Twin pistols in Kit, then begin the drill.",
+        t("Select Twin pistols in Kit, then begin the drill."),
         4,
       );
       return false;
@@ -174,8 +175,8 @@ export class CampPractice {
     this.isles.guideKey = null;
     this.services.hud?.clearSubtitle?.();
     this.services.hud?.hint(
-      "Pistol practice",
-      "Hit each amber plate once within twelve seconds of the first hit.",
+      t("Pistol practice"),
+      t("Hit each amber plate once within twelve seconds of the first hit."),
       8,
     );
     this.refresh();
@@ -231,7 +232,7 @@ export class CampPractice {
       this.active = false;
       this.services.hud?.clearHint?.();
       this.services.hud?.subtitle(
-        "Still steady. Mira left her camp record beside the plates.",
+        t("Still steady. Mira left her camp record beside the plates."),
         4,
       );
     }
@@ -253,7 +254,7 @@ export class CampPractice {
       if (this.left === 0) {
         this.stop();
         this.services.hud?.subtitle(
-          "Take your time to aim. Begin again at the camp record.",
+          t("Take your time to aim. Begin again at the camp record."),
           4,
         );
       }
@@ -270,11 +271,18 @@ export class CampPractice {
       return false;
     hud.objective(
       this.ready
-        ? "Collect Mira's camp record"
-        : "Complete the optional pistol drill",
+        ? t("Collect Mira's camp record")
+        : t("Complete the optional pistol drill"),
       this.ready
-        ? "The record waits beside the three amber plates"
-        : `Plates: ${this.hits.size} of 3 · ${this.hits.size ? `${Math.ceil(this.left)} seconds left` : "The first hit starts the clock"}`,
+        ? t("The record waits beside the three amber plates")
+        : this.hits.size
+          ? t("Plates: {hits} of 3 · {seconds} seconds left", {
+              hits: this.hits.size,
+              seconds: Math.ceil(this.left),
+            })
+          : t("Plates: {hits} of 3 · The first hit starts the clock", {
+              hits: this.hits.size,
+            }),
     );
     const key = `${this.ready}:${[...this.hits].join()}`;
     if (this.guideKey !== key) {

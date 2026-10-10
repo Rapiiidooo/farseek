@@ -75,6 +75,13 @@ export function plan({ base, check, hitchMs, update, baselines }) {
       args: () => ["scripts/save-check.mjs"],
     },
     {
+      id: "i18n",
+      title: "Every translation table is complete",
+      quick: true,
+      timeout: 10,
+      args: () => ["scripts/i18n-check.mjs"],
+    },
+    {
       id: "animation",
       title: "Animation contracts",
       quick: true,

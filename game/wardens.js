@@ -3,6 +3,7 @@ import { Spring } from "./hero-anim.js";
 import { glyphMaterial, makeGlyph } from "./glyphs.js";
 import { WardenPath, stampVisible } from "./warden-path.js";
 import { tuning } from "./combat-tuning.js";
+import { t } from "./i18n.js";
 
 // The Wardens: squat stone clerks of the gate network with an enormous customs stamp, each
 // stamp carved with one glyph. They patrol until someone offends them (stealing confiscated
@@ -15,26 +16,36 @@ import { tuning } from "./combat-tuning.js";
 
 export const LINES = {
   alert: [
-    "HALT!",
-    "Papers!",
-    "Unauthorised traveller!",
-    "Stop right there!",
-    "Offence noted!",
+    t("HALT!"),
+    t("Papers!"),
+    t("Unauthorised traveller!"),
+    t("Stop right there!"),
+    t("Offence noted!"),
   ],
-  slam: ["DENIED!", "REJECTED!", "VOID!", "RETURN TO SENDER!"],
+  slam: [t("DENIED!"), t("REJECTED!"), t("VOID!"), t("RETURN TO SENDER!")],
   hurt: [
-    "Ow!",
-    "Hey!",
-    "Rude!",
-    "I'm filing a complaint!",
-    "That's assault on an official!",
+    t("Ow!"),
+    t("Hey!"),
+    t("Rude!"),
+    t("I'm filing a complaint!"),
+    t("That's assault on an official!"),
   ],
-  calm: ["Paperwork complete.", "Case closed.", "Filed.", "…Carry on."],
-  dazed: ["Seeing stars…", "Form 27… B…", "Who stamped me?", "Wobbly…"],
-  tired: ["…I'll file it later.", "Not worth the form.", "Hmph."],
-  break: ["Break time!", "I'm on my break!", "Union rules!"],
-  back: ["Break's over.", "Right. Where was I?", "Back to work."],
-  patrol: ["Move along.", "Keep the queue tidy.", "Nothing to see."],
+  calm: [
+    t("Paperwork complete."),
+    t("Case closed."),
+    t("Filed."),
+    t("…Carry on."),
+  ],
+  dazed: [
+    t("Seeing stars…"),
+    t("Form 27… B…"),
+    t("Who stamped me?"),
+    t("Wobbly…"),
+  ],
+  tired: [t("…I'll file it later."), t("Not worth the form."), t("Hmph.")],
+  break: [t("Break time!"), t("I'm on my break!"), t("Union rules!")],
+  back: [t("Break's over."), t("Right. Where was I?"), t("Back to work.")],
+  patrol: [t("Move along."), t("Keep the queue tidy."), t("Nothing to see.")],
 };
 
 const JOINTS = [

@@ -3,6 +3,7 @@ import { FrostLynx } from "./frost-lynx.js";
 import { Blood } from "./fx.js";
 import { damageAmount, recoverHealth } from "./composure.js";
 import { equipmentFor } from "./equipment.js";
+import { t } from "./i18n.js";
 
 // Open snow above the frozen pond, between the notch and the stair down to the lake shore: away
 // from the frozen falls and the thin ice, and on the route every player crosses.
@@ -67,8 +68,11 @@ export class FrostHunt {
     L.onWindup = () =>
       this.once("windup", () =>
         this.services.hud?.hint(
-          "Frost lynx",
-          `It crouches and kicks up snow before it pounces. ${this.services.hud.press("roll", true)} to roll aside, then answer while it lands.`,
+          t("Frost lynx"),
+          t(
+            "It crouches and kicks up snow before it pounces. {roll} to roll aside, then answer while it lands.",
+            { roll: this.services.hud.press("roll", true) },
+          ),
           9,
           { queue: true },
         ),
@@ -76,19 +80,19 @@ export class FrostHunt {
     L.onPulled = (lynx, hidden) => {
       if (hidden)
         this.once("dragged", () =>
-          this.services.hud?.subtitle("Out of the snow with you.", 2.5),
+          this.services.hud?.subtitle(t("Out of the snow with you."), 2.5),
         );
     };
     L.onDazed = () =>
       this.once("dazed", () =>
         this.services.hud?.subtitle(
-          "Dazzled, not hurt. Now, while it blinks.",
+          t("Dazzled, not hurt. Now, while it blinks."),
           3,
         ),
       );
     L.onDefeat = () =>
       this.services.hud?.subtitle(
-        "It will not hunt this ledge again. On to the lake.",
+        t("It will not hunt this ledge again. On to the lake."),
         4,
       );
   }
@@ -121,7 +125,7 @@ export class FrostHunt {
     if (on && !this.met) {
       this.met = true;
       this.services.hud?.subtitle(
-        "Fresh tracks, and not Mira's. The orb tugs toward them.",
+        t("Fresh tracks, and not Mira's. The orb tugs toward them."),
         4,
       );
       if (this.heroModel) equipmentFor(this.heroModel)?.grant("pull");
@@ -169,7 +173,7 @@ export class FrostHunt {
     hero.spawn(RESPAWN.x, RESPAWN.z, PLATEAU.top, RESPAWN.yaw);
     hero.invulnerable = 2;
     this.services.sound?.play("respawn");
-    this.services.hud?.blackout("The lynx drives you back to the ledge.");
+    this.services.hud?.blackout(t("The lynx drives you back to the ledge."));
     this.health = MAX;
     this.services.hud?.health(MAX, MAX);
     this.lynx.ground(true);
@@ -191,13 +195,13 @@ export class FrostHunt {
     const s = L.state;
     const sub =
       s === "windup"
-        ? "It crouches and kicks up snow: roll aside before it leaps"
+        ? t("It crouches and kicks up snow: roll aside before it leaps")
         : s === "hidden" || s === "dash"
-          ? "Gone to ground. Hold the link on it to drag it into the open"
+          ? t("Gone to ground. Hold the link on it to drag it into the open")
           : ["land", "stagger", "sprawl", "pulled"].includes(s)
-            ? "Off balance: shoot it now"
-            : "It circles in the open snow. A pulse dazzles it";
-    hud.objective("Frost lynx", sub);
+            ? t("Off balance: shoot it now")
+            : t("It circles in the open snow. A pulse dazzles it");
+    hud.objective(t("Frost lynx"), sub);
     if (!this.guiding) {
       this.guiding = true;
       hud.setMarkers([() => this.mark.copy(L.head()).setY(L.head().y + 0.4)]);

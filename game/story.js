@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import * as COURT from "./court.js";
+import { t } from "./i18n.js";
 
 // The guide for the first level: which objective is current, where its marker points, and
 // the one-time control cards that teach each move the first time it is needed. Steps follow
@@ -108,68 +109,86 @@ export class CourtStory {
     return [
       {
         id: "camp",
-        objective: "Find the first expedition",
-        sub: "Their camp is on this terrace: search it",
+        objective: t("Find the first expedition"),
+        sub: t("Their camp is on this terrace: search it"),
         marker: V(COURT.NOTES.x, COURT.NOTES.y + 0.7, COURT.NOTES.z),
         done: () => this.notesRead,
       },
       {
         id: "gap",
-        objective: "Follow the expedition down into the court",
-        sub: "Jump the gap to the west platform",
+        objective: t("Follow the expedition down into the court"),
+        sub: t("Jump the gap to the west platform"),
         marker: V(4, 8.6, 39),
         done: () => on(8) && hero.pos.x < 6.2 && hero.pos.z > 35.8,
         // An offer to hang at the gap's lip would contradict the jump.
         quiet: ["edge"],
         hint: [
-          "Jumping",
-          `Run at the gap and ${press("jump")}, held for a full jump. ${k("pace")} switches between walking and running.`,
+          t("Jumping"),
+          t(
+            "Run at the gap and {press}, held for a full jump. {pace} switches between walking and running.",
+            { press: press("jump"), pace: k("pace") },
+          ),
         ],
       },
       {
         id: "drop",
-        objective: "Follow the expedition down into the court",
-        sub: "Hang from the platform's edge, then let go onto the ledge below",
+        objective: t("Follow the expedition down into the court"),
+        sub: t(
+          "Hang from the platform's edge, then let go onto the ledge below",
+        ),
         marker: V(4, 8.4, 36.1),
         done: () => on(5.5) && hero.pos.x < 6.2 && hero.pos.z > 34,
         hint: [
-          "Hanging",
-          `Walk to the edge and ${press("drop")} to hang from it. ${press("drop", true)} again to let go.`,
+          t("Hanging"),
+          t(
+            "Walk to the edge and {press} to hang from it. {press2} again to let go.",
+            { press: press("drop"), press2: press("drop", true) },
+          ),
         ],
       },
       {
         id: "crack",
-        objective: "Follow the expedition down into the court",
-        sub: "Jump across the chasm and grab the crack in the wall",
+        objective: t("Follow the expedition down into the court"),
+        sub: t("Jump across the chasm and grab the crack in the wall"),
         marker: V(5, 7.3, 32.1),
         done: () =>
           hero.state === "hang" &&
           near(hero.ledge?.top ?? 0, 7, 0.1) &&
           hero.pos.z > 32,
         hint: [
-          "Grabbing",
-          `Jump towards the crack with ${k("jump")}: the explorer catches any edge within reach. The rope marks the spot.`,
+          t("Grabbing"),
+          t(
+            "Jump towards the crack with {jump}: the explorer catches any edge within reach. The rope marks the spot.",
+            { jump: k("jump") },
+          ),
         ],
       },
       {
         id: "climb",
         hintPrompt: "hang",
-        objective: "Follow the expedition down into the court",
-        sub: "Shimmy right along the crack and climb up",
+        objective: t("Follow the expedition down into the court"),
+        sub: t("Shimmy right along the crack and climb up"),
         marker: V(9.6, 7.4, 31),
         done: () => on(7) && hero.pos.x > 8 && hero.pos.x < 10,
         hint: [
-          "Climbing",
-          `${keys("KeyA", "KeyD")} shimmy along the edge · ${keys("KeyW")} climb up · ${k("drop")} to let go.`,
+          t("Climbing"),
+          t(
+            "{sides} shimmy along the edge · {forward} climb up · {drop} to let go.",
+            {
+              sides: keys("KeyA", "KeyD"),
+              forward: keys("KeyW"),
+              drop: k("drop"),
+            },
+          ),
         ],
       },
       {
         id: "stair",
-        objective: "Follow the expedition down into the court",
+        objective: t("Follow the expedition down into the court"),
         sub: () =>
           hero.feet > 6.5
-            ? "Walk north to the head of the broken stair"
-            : "Take the broken stair down to the floor",
+            ? t("Walk north to the head of the broken stair")
+            : t("Take the broken stair down to the floor"),
         // Straight at the foot of the stair runs off the platform into the sand pit.
         marker: () =>
           hero.feet > 6.5 && hero.pos.z > 28.4
@@ -179,11 +198,13 @@ export class CourtStory {
       },
       {
         id: "block",
-        objective: "Bring the sunlight to the three stelae",
+        objective: t("Bring the sunlight to the three stelae"),
         sub: () =>
           moved()
-            ? "Still in the light: pull it clear from the marked side"
-            : "A stone block sits in the sunbeam: pull it out from the marked side",
+            ? t("Still in the light: pull it clear from the marked side")
+            : t(
+                "A stone block sits in the sunbeam: pull it out from the marked side",
+              ),
         // Its south side, where a pull clears the beam; along the beam it only slides in the light.
         marker: () => {
           const b = level.blocks[0];
@@ -192,33 +213,50 @@ export class CourtStory {
         done: () =>
           lit() > 0 || !!this.beams.segments?.some((s) => s.end === "mirror"),
         hint: [
-          "Blocks",
-          `Stand against the block and hold ${k("interact")}, then push ${keys("KeyW")} or pull ${keys("KeyS")}. It slides straight, so pick a side that moves it out of the light.`,
+          t("Blocks"),
+          t(
+            "Stand against the block and hold {interact}, then push {forward} or pull {back}. It slides straight, so pick a side that moves it out of the light.",
+            {
+              interact: k("interact"),
+              forward: keys("KeyW"),
+              back: keys("KeyS"),
+            },
+          ),
         ],
       },
       {
         id: "mirror",
-        objective: "Bring the sunlight to the three stelae",
-        sub: "Turn the bronze mirror to send the light onto a stela's crystal",
+        objective: t("Bring the sunlight to the three stelae"),
+        sub: t(
+          "Turn the bronze mirror to send the light onto a stela's crystal",
+        ),
         marker: () => this.route(this.lastMirror()),
         aim,
         done: () => lit() > 0,
         hint: [
-          "Mirrors",
-          `Hold ${k("interact")} at a mirror and steer ${keys("KeyA", "KeyD")} to turn it. It catches when the light lines up.`,
+          t("Mirrors"),
+          t(
+            "Hold {interact} at a mirror and steer {sides} to turn it. It catches when the light lines up.",
+            { interact: k("interact"), sides: keys("KeyA", "KeyD") },
+          ),
         ],
       },
       {
         id: "more",
-        objective: "Bring the sunlight to the three stelae",
+        objective: t("Bring the sunlight to the three stelae"),
         sub: () =>
-          `Stelae lit: ${lit()} of 3. Mirrors can pass the light to each other.`,
+          t(
+            "Stelae lit: {lit} of 3. Mirrors can pass the light to each other.",
+            { lit: lit() },
+          ),
         marker: () => this.route(this.lastMirror()),
         aim,
         done: () => lit() >= 3,
         hint: [
-          "Relaying light",
-          "A lit mirror can aim at another mirror. Turn the last mirror the light reaches towards a dark stela or the next mirror.",
+          t("Relaying light"),
+          t(
+            "A lit mirror can aim at another mirror. Turn the last mirror the light reaches towards a dark stela or the next mirror.",
+          ),
         ],
         hintAfter: 3,
       },
@@ -230,8 +268,8 @@ export class CourtStory {
       },
       {
         id: "enter",
-        objective: "The far door is open",
-        sub: "Step through it",
+        objective: t("The far door is open"),
+        sub: t("Step through it"),
         marker: () =>
           this.route(this.gate.center.clone().setY(this.gate.daisTop + 1.2)),
         done: () => false,
@@ -303,10 +341,16 @@ export class CourtStory {
       [
         [
           0.6,
-          "Mira's last signal came from this ravine. Three weeks of silence.",
+          t(
+            "Mira's last signal came from this ravine. Three weeks of silence.",
+          ),
           4.6,
         ],
-        [5.6, "The first expedition left a way down. Mira followed them.", 3.8],
+        [
+          5.6,
+          t("The first expedition left a way down. Mira followed them."),
+          3.8,
+        ],
       ],
       this.hud,
     );
@@ -392,8 +436,10 @@ export class CourtStory {
     ) {
       this.shown.add("memory");
       this.hud.hint(
-        "Stone memory",
-        "The star keeps an optional memory. Relay sunlight to its lens, then read the stone.",
+        t("Stone memory"),
+        t(
+          "The star keeps an optional memory. Relay sunlight to its lens, then read the stone.",
+        ),
         8,
       );
       this.holdHints(8);

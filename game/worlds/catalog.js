@@ -1,7 +1,9 @@
+import { t } from "../i18n.js";
+
 export const WORLDS = [
   {
     id: "court",
-    title: "The Sunken Court",
+    title: t("The Sunken Court"),
     place: "court",
     music: "court",
     dust: 0xd9b88a,
@@ -9,117 +11,125 @@ export const WORLDS = [
     starts: [
       {
         id: "court",
-        start: "From the terrace",
-        blurb:
+        start: t("From the terrace"),
+        blurb: t(
           "Climb down into the ruin and bend the sunlight onto the gate's address.",
+        ),
       },
       {
         id: "floor",
-        start: "From the court floor",
-        blurb: "Skip the descent: the mirrors and the stelae are waiting.",
+        start: t("From the court floor"),
+        blurb: t("Skip the descent: the mirrors and the stelae are waiting."),
       },
     ],
   },
   {
     id: "two",
-    title: "The Checkpoint",
+    title: t("The Checkpoint"),
     place: "two",
     music: "world2",
     dust: 0x6a5a78,
-    lockHint: "Open the first far door to reach it.",
+    lockHint: t("Open the first far door to reach it."),
     load: () => import("./checkpoint/index.js"),
     starts: [
       {
         id: "checkpoint",
-        start: "Beyond the first door",
-        blurb: "No address stamp, no passage. Get stamped, one way or another.",
+        start: t("Beyond the first door"),
+        blurb: t(
+          "No address stamp, no passage. Get stamped, one way or another.",
+        ),
       },
     ],
   },
   {
     id: "three",
-    title: "The Dawn Isles",
+    title: t("The Dawn Isles"),
     place: "three",
     music: "isles",
     dust: 0xe8dcc4,
-    lockHint: "Open the far door beyond the checkpoint to reach it.",
+    lockHint: t("Open the far door beyond the checkpoint to reach it."),
     load: () => import("./isles/index.js"),
     starts: [
       {
         id: "isles",
-        start: "Beyond the far door",
-        blurb:
+        start: t("Beyond the far door"),
+        blurb: t(
           "Follow Mira's trail across the floating isles on bridges of light.",
+        ),
       },
     ],
   },
   {
     id: "four",
-    title: "The Frozen Reach",
+    title: t("The Frozen Reach"),
     place: "four",
     music: "frost",
     dust: 0xeaf2f8,
-    lockHint: "Follow Mira through her ring on the isles to reach it.",
+    lockHint: t("Follow Mira through her ring on the isles to reach it."),
     load: () => import("./frost/index.js"),
     starts: [
       {
         id: "frost",
-        start: "Beyond Mira's ring",
-        blurb:
+        start: t("Beyond Mira's ring"),
+        blurb: t(
           "Slide the ice, push its blocks and cross the lake to the glyph it keeps.",
+        ),
       },
     ],
   },
   {
     id: "five",
-    title: "The Wildwood",
+    title: t("The Wildwood"),
     place: "forest",
     music: "forest",
     dust: 0x819663,
-    lockHint: "Free the frozen glyph and cross the great ring.",
+    lockHint: t("Free the frozen glyph and cross the great ring."),
     load: () => import("./forest/index.js"),
     starts: [
       {
         id: "forest",
-        start: "Through the great ring",
-        blurb:
+        start: t("Through the great ring"),
+        blurb: t(
           "Cross the spore groves and restore the castle's forgotten address.",
+        ),
       },
     ],
   },
   {
     id: "six",
-    title: "The Drowned Archive",
+    title: t("The Drowned Archive"),
     place: "sea",
     music: "sea",
     dust: 0x9dc6c2,
-    lockHint: "Restore the castle's address in the wildwood.",
+    lockHint: t("Restore the castle's address in the wildwood."),
     load: () => import("./sea/index.js"),
     starts: [
       {
         id: "sea",
-        start: "Beyond the castle door",
-        blurb:
+        start: t("Beyond the castle door"),
+        blurb: t(
           "Wake the drowned causeway and face the guardian of Mira's last message.",
+        ),
       },
     ],
   },
   {
     id: "vault",
-    title: "The Builders' Vault",
+    title: t("The Builders' Vault"),
     place: "vault",
     music: "vault",
     dust: 0xc9a77a,
-    lockHint: "Cross the last door and follow the light.",
+    lockHint: t("Cross the last door and follow the light."),
     // Reached from the previous world's finale, never through its exit door.
     entry: "finale",
     load: () => import("./vault/index.js"),
     starts: [
       {
         id: "vault",
-        start: "Beyond the last door",
-        blurb:
+        start: t("Beyond the last door"),
+        blurb: t(
           "Wake six medallions with what every world taught, and learn why the doors stayed open.",
+        ),
       },
     ],
   },

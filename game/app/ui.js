@@ -13,6 +13,7 @@ import { applyVoiceVolume } from "../voice.js";
 import { craftLine } from "../pistol-craft.js";
 import { recordLoadEvent, reportLoadFailure } from "../load-diagnostics.js";
 import { createLoadBar } from "../load-bar.js";
+import { t } from "../i18n.js";
 import {
   LOCAL_PREVIEW,
   LAB_SESSION,
@@ -59,12 +60,22 @@ export function createUI(app) {
     }),
   );
   document.querySelector("#load-worlds").replaceChildren(...pips.values());
+  // Tips open on "Press" or "Tap" so a key's label never reads as a word (AZERTY's roll is A).
   const tips = [
-    () => `${hud.k("pace")} switches between walking and running.`,
-    () => `${hud.k("inventory")} opens the expedition kit.`,
-    () => `${hud.k("roll")} rolls out of harm's way.`,
-    () => "Spent health pips swell back after a quiet spell out of a fight.",
-    () => "Difficulty, controls and subtitles can be changed in Settings.",
+    () =>
+      t("{press} to switch between walking and running.", {
+        press: hud.press("pace", true),
+      }),
+    () =>
+      t("{press} to open the expedition kit.", {
+        press: hud.press("inventory", true),
+      }),
+    () =>
+      t("{press} to roll out of harm's way.", {
+        press: hud.press("roll", true),
+      }),
+    () => t("Spent health pips swell back after a quiet spell out of a fight."),
+    () => t("Difficulty, controls and subtitles can be changed in Settings."),
   ];
   // Not Math.random: seeded captures expect the game's own draws to come first.
   let tipIndex = Math.floor(performance.timeOrigin / 1000);
@@ -154,7 +165,11 @@ export function createUI(app) {
       session.since = performance.now();
       pips.get(id).dataset.state = "active";
       loadBar.stage(planned(session.done + seconds), seconds * pace);
-      say(`Preparing ${named(app.worlds.definition(id).title)}…`);
+      say(
+        t("Preparing {world}…", {
+          world: named(app.worlds.definition(id).title),
+        }),
+      );
     } else if (event === "prepared") {
       session.plan.delete(id);
       session.done += seconds;
@@ -170,7 +185,13 @@ export function createUI(app) {
   // A world lit outside a planned start: the court of the first load.
   function lighting(id) {
     if (session.plan?.has(id)) return;
-    loading(0.94, `Lighting ${named(app.worlds.definition(id).title)}…`, 0.9);
+    loading(
+      0.94,
+      t("Lighting {world}…", {
+        world: named(app.worlds.definition(id).title),
+      }),
+      0.9,
+    );
   }
 
   function openNotes(which = "first") {
@@ -190,7 +211,7 @@ export function createUI(app) {
     input.clear();
     if (which === "first" && !app.court.story.notesRead) {
       app.court.story.notesRead = true;
-      hud.subtitle("They went through the door. Then so will I.", 4);
+      hud.subtitle(t("They went through the door. Then so will I."), 4);
       app.court.story.holdHints(4.3);
     }
     if (which === "mira") app.worlds.get("three").readJournal();
@@ -204,8 +225,13 @@ export function createUI(app) {
       inventory.close();
       hud.compactChapter();
       const chapter = CHAPTERS.find((c) => c.id === state.chapter);
-      document.querySelector("#pause-where").textContent =
-        `Level ${chapter?.level ?? 1} · ${chapter?.title ?? ""}`;
+      document.querySelector("#pause-where").textContent = t(
+        "Level {n} · {title}",
+        {
+          n: chapter?.level ?? 1,
+          title: chapter?.title ?? "",
+        },
+      );
       document.querySelector("#pause-objective").textContent =
         document.querySelector("#objective").textContent;
       menu.open("pause", { paused: true });
@@ -297,8 +323,9 @@ export function createUI(app) {
           relics.restore();
           refreshMainMenu();
         };
-        document.querySelector("#confirm-text").textContent =
-          "Forget every level reached and relic found in this browser?";
+        document.querySelector("#confirm-text").textContent = t(
+          "Forget every level reached and relic found in this browser?",
+        );
         return menu.push("confirm");
       case "confirm-yes":
         confirmAction?.();
@@ -313,21 +340,24 @@ export function createUI(app) {
     const found = RELICS.filter((r) => progress.relics.has(r.id)).length;
     for (const b of document.querySelectorAll('#menu [data-action="relics"]'))
       b.textContent = found
-        ? `Relics · ${found} of ${RELICS.length}`
-        : "Relics";
+        ? t("Relics · {found} of {total}", { found, total: RELICS.length })
+        : t("Relics");
     const cont = document.querySelector('#menu [data-action="continue"]');
     cont.hidden = !progress.last || progress.last === "court";
     const chapter = CHAPTERS.find((c) => c.id === progress.last);
-    if (chapter) cont.textContent = `Continue · ${chapter.title}`;
+    if (chapter)
+      cont.textContent = t("Continue · {title}", { title: chapter.title });
     document.querySelector('[data-help="menu"]').innerHTML = input.usingTouch
-      ? "Tap to choose"
-      : `${hud.keys("KeyW", "KeyS")} or mouse to choose · <kbd>Enter</kbd> to confirm`;
+      ? t("Tap to choose")
+      : t("{keys} or mouse to choose · <kbd>Enter</kbd> to confirm", {
+          keys: hud.keys("KeyW", "KeyS"),
+        });
   }
 
   function skipHelp() {
     document.querySelector('[data-help="skip"]').innerHTML = input.usingTouch
-      ? "Tap to skip"
-      : "<kbd>Esc</kbd> or <kbd>Enter</kbd> to skip";
+      ? t("Tap to skip")
+      : t("<kbd>Esc</kbd> or <kbd>Enter</kbd> to skip");
   }
 
   function refreshLevels() {
@@ -347,7 +377,7 @@ export function createUI(app) {
       );
       const card = document.createElement("div");
       card.className = `level-card${n === 1 ? "" : ` ${definition.id}`}${open.length ? "" : " locked"}`;
-      card.innerHTML = `<p class="num">Level ${n}</p><h3>${starts[0].title}</h3><p class="blurb">${starts[0].blurb}</p>`;
+      card.innerHTML = `<p class="num">${t("Level {n}", { n })}</p><h3>${starts[0].title}</h3><p class="blurb">${starts[0].blurb}</p>`;
       for (const c of starts) {
         const b = document.createElement("button");
         b.type = "button";
@@ -365,7 +395,7 @@ export function createUI(app) {
       } else if (n === finalLevel && progress.finished) {
         const p = document.createElement("p");
         p.className = "state";
-        p.textContent = "Completed.";
+        p.textContent = t("Completed.");
         card.appendChild(p);
       }
       list.appendChild(card);
@@ -380,8 +410,10 @@ export function createUI(app) {
     const all = relics.list().sort((a, b) => world(a) - world(b));
     const found = all.filter((r) => r.found).length;
     document.querySelector("#relic-count").textContent = found
-      ? `${found} of ${all.length} found.`
-      : `${all.length} relics lie hidden along the way. None found yet.`;
+      ? t("{found} of {total} found.", { found, total: all.length })
+      : t("{total} relics lie hidden along the way. None found yet.", {
+          total: all.length,
+        });
     for (const r of all) {
       const card = document.createElement("div");
       card.className = `level-card relic${r.found ? "" : " missing"}`;
@@ -393,15 +425,18 @@ export function createUI(app) {
         card.appendChild(el);
       };
       add("p", "num", r.world);
-      add("h3", "", r.found ? r.name : "Not found yet");
+      add("h3", "", r.found ? r.name : t("Not found yet"));
       add("p", "blurb", r.found ? r.line : r.hint);
       if (r.found && r.entry?.length) {
         const button = document.createElement("button");
         button.type = "button";
         button.dataset.action = "inspect-relic";
         button.dataset.relic = r.id;
-        button.textContent = "Inspect";
-        button.setAttribute("aria-label", `Inspect ${r.name}`);
+        button.textContent = t("Inspect");
+        button.setAttribute(
+          "aria-label",
+          t("Inspect {name}", { name: r.name }),
+        );
         card.appendChild(button);
       }
       list.appendChild(card);
@@ -465,6 +500,7 @@ export function createUI(app) {
     bind("set-effects", "effects");
     bind("set-voice", "voice");
     bind("set-quality", "quality", String);
+    bind("set-language", "language", String);
     bind("set-markers", "markers");
     bind("set-hints", "hints");
     bind("set-shake", "shake");
@@ -507,7 +543,21 @@ export function createUI(app) {
       sound.applyVolumes();
     if (key === "voice") applyVoiceVolume(sound);
     if (key === "quality") app.rendering.resize();
+    if (key === "language") relaunch();
     applyLook();
+  }
+
+  // The game's text is translated as its modules load, so another language needs a reload;
+  // a level in progress starts again from its own start.
+  function relaunch() {
+    const url = new URL(location.href);
+    for (const name of ["lang", "chapter", "level", "w2", "resume"])
+      url.searchParams.delete(name);
+    if (state.mode === "play" && state.chapter) {
+      url.searchParams.set("chapter", state.chapter);
+      url.searchParams.set("resume", "1");
+    }
+    location.replace(url);
   }
 
   function ready() {
@@ -519,7 +569,7 @@ export function createUI(app) {
     const id = session.id;
     markWorlds();
     loadBar.reach(1, 0.2);
-    say("Ready.");
+    say(t("Ready."));
     const overlay = document.querySelector("#loading");
     overlay.classList.add("leaving");
     setTimeout(() => {
@@ -541,7 +591,7 @@ export function createUI(app) {
     recovery = null;
     loadActions.hidden = true;
     showTip();
-    loading(0.05, "Opening a door to somewhere else…", 0.3);
+    loading(0.05, t("Opening a door to somewhere else…"), 0.3);
     // The screen paints before the first preparation step can hold the page; a frozen frame
     // loop in a capture falls back on the timer.
     await new Promise((resolve) => {
@@ -587,7 +637,7 @@ export function createUI(app) {
     loadBar.freeze();
     markWorlds();
     loadTip.hidden = true;
-    say("The expedition could not load. Try again to continue.");
+    say(t("The expedition could not load. Try again to continue."));
     const moduleFailure =
       app.assets.failedErrors.has(error) ||
       /dynamically imported module|module script/i.test(

@@ -3,6 +3,7 @@
 // and the pad (input.js). Several fingers at once: each pointer is tracked by its id. A touch
 // on the picture or the stick also skips what can be skipped (a shot, the notes, the credits).
 // The controls show while touch is the device in use: a key or a moving mouse hides them.
+import { t } from "./i18n.js";
 
 const DEAD = 0.12,
   WALK_ZONE = 0.75,
@@ -173,9 +174,9 @@ export class TouchControls {
       ward.classList.toggle("raised", !!shield.active);
     }
     for (const [action, label] of [
-      ["jump", swimming ? "Rise" : "Jump"],
-      ["drop", swimming ? "Dive" : "Hang"],
-      ["throw", this.input.equipment === "pistols" ? "Fire" : "Link"],
+      ["jump", swimming ? t("Rise") : t("Jump")],
+      ["drop", swimming ? t("Dive") : t("Hang")],
+      ["throw", this.input.equipment === "pistols" ? t("Fire") : t("Link")],
     ]) {
       const button = this.root.querySelector(`[data-touch="${action}"]`);
       if (button && button.textContent !== label) {

@@ -1,0 +1,5 @@
+en roll:Roll:48 | shield:Shield:48 | throw:Link:52 | throw:Fire:52 | drop:Hang:50 | drop:Dive:50 | interact:Use:58 | jump:Jump:74 | jump:Rise:74
+fr roll:Rouler:48 | shield:Bouclier:48 | throw:Lien:52 | throw:Tirer:52 | drop:Prise:50 | drop:Plonger:50 | interact:Utiliser:58 | jump:Sauter:74 | jump:Monter:74
+es roll:Rodar:48 | shield:Escudo:48 | throw:Enlace:52 | throw:Fuego:52 | drop:Colgar:50 | drop:Bucear:50 | interact:Usar:58 | jump:Saltar:74 | jump:Subir:74
+zh roll:翻滚:48 | shield:护盾:48 | throw:连接:52 | throw:射击:52 | drop:悬挂:50 | drop:下潜:50 | interact:使用:58 | jump:跳跃:74 | jump:上浮:74
+hi roll:लुढ़को:48 | shield:ढाल:48 | throw:लिंक:52 | throw:फ़ायर:52 | drop:लटको:50 | drop:गोता:50 | interact:इस्तेमाल:58 | jump:कूदो:74 | jump:ऊपर:74

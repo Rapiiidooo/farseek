@@ -22,6 +22,7 @@ import { TrailRefuges, FOREST_REFUGES } from "./trail-refuges.js";
 import { BoarPaths } from "./forest-paths.js";
 import { ForestClimbs, BASTION } from "./forest-climbs.js";
 import { damageAmount, recoverHealth, threatened } from "./composure.js";
+import { t } from "./i18n.js";
 
 const V = (x = 0, y = 0, z = 0) => new THREE.Vector3(x, y, z);
 export const FOREST_ADDRESS = ["waves", "spiral", "crescent"];
@@ -465,15 +466,15 @@ export class Wildwood {
   strike(p, disc) {
     if (!disc.charged)
       return this.onHint?.(
-        "Aim at a crystal and link to charge the orb first.",
+        t("Aim at a crystal and link to charge the orb first."),
       );
     if (p.index === 1 && !this.locked[0])
       return this.onHint?.(
-        "Wake the waves pylon at the forest entrance first.",
+        t("Wake the waves pylon at the forest entrance first."),
       );
     if (p.index === 1 && this.guards.some((g) => g.group === 0 && !g.defeated))
       return this.onHint?.(
-        "The grove boars hold this seal. Defeat both to wake it.",
+        t("The grove boars hold this seal. Defeat both to wake it."),
       );
     p.lit = true;
     this.locked[p.index] = true;
@@ -607,7 +608,9 @@ export class Wildwood {
     if (guard.boss) {
       guard.onBlocked = () =>
         this.onHint?.(
-          "Bullets glance off Oldtusk's hide until it tires. Dodge sideways, then shoot while it catches its breath.",
+          t(
+            "Bullets glance off Oldtusk's hide until it tires. Dodge sideways, then shoot while it catches its breath.",
+          ),
         );
       guard.onPhase = () => this.onKeeperPhase?.();
     }
@@ -619,8 +622,10 @@ export class Wildwood {
     this.explained.add(kind);
     this.onHint?.(
       kind === "shrug"
-        ? "A plain pulse only angers it. A charged pulse stuns it; bullets do the rest."
-        : "Stunned for a moment. Shoot it before it shakes it off.",
+        ? t(
+            "A plain pulse only angers it. A charged pulse stuns it; bullets do the rest.",
+          )
+        : t("Stunned for a moment. Shoot it before it shakes it off."),
     );
   }
 
@@ -652,26 +657,28 @@ export class Wildwood {
   strikeRelay(p, disc) {
     if (!this.locked[0] || !this.locked[1])
       return this.onHint?.(
-        "The two forest seals must be lit before the castle answers.",
+        t("The two forest seals must be lit before the castle answers."),
       );
     if (this.guards.some((g) => g.group === 1 && !g.defeated))
       return this.onHint?.(
-        "Defeat Oldtusk and the other boar before restoring the address.",
+        t("Defeat Oldtusk and the other boar before restoring the address."),
       );
     if (p.raised && !this.climbs.onBastion(this.hero))
       return this.onHint?.(
-        "The crescent seal answers only up close. Climb the ivy on the bastion.",
+        t(
+          "The crescent seal answers only up close. Climb the ivy on the bastion.",
+        ),
       );
     // Up close a plain pulse reaches the raised seal: the climb outlasts the stored light.
     if (!disc.charged && !p.raised)
       return this.onHint?.(
-        "Link to the crystal beside the steps to charge the orb.",
+        t("Link to the crystal beside the steps to charge the orb."),
       );
     if (p.index !== this.sequence) {
       this.sequence = 0;
       this.services.sound?.play("clink");
       return this.onHint?.(
-        "The address runs from waves to spiral to crescent. Begin again.",
+        t("The address runs from waves to spiral to crescent. Begin again."),
       );
     }
     this.sequence++;
@@ -909,7 +916,7 @@ export class Wildwood {
     hero.respawn();
     this.health = 4;
     this.onHint?.(
-      "Catch your breath. The forest seals you lit are still awake.",
+      t("Catch your breath. The forest seals you lit are still awake."),
     );
   }
 
@@ -924,20 +931,24 @@ export class Wildwood {
         Math.hypot(hero.pos.x - g.pos.x, hero.pos.z - g.pos.z) < 14,
     );
     if (keeper) {
-      title = "Defeat Oldtusk";
-      sub = `${keeper.hp}/${keeper.maxHp} · ${keeper.counterOpen ? (keeper.recoveryKind === "impact" ? "Dazed by the impact: shoot its exposed flank" : keeper.recoveryKind === "dazed" ? "Stunned by the orb: shoot its flank now" : "Winded: shoot its flank with the pistols") : keeper.state === "recover" ? "Catching its breath, prepare to dodge again" : ["sweep-windup", "sweep"].includes(keeper.state) ? "Step back from the twisting tusks" : ["windup", "charge"].includes(keeper.state) ? `Dodge sideways out of the charge (${keeper.attackIndex}/${keeper.combat.charges})` : charged ? "A charged orb pulse stuns it for a clean shot" : "Keep space to sidestep its tusks"}`;
+      title = t("Defeat Oldtusk");
+      sub = `${keeper.hp}/${keeper.maxHp} · ${keeper.counterOpen ? (keeper.recoveryKind === "impact" ? t("Dazed by the impact: shoot its exposed flank") : keeper.recoveryKind === "dazed" ? t("Stunned by the orb: shoot its flank now") : t("Winded: shoot its flank with the pistols")) : keeper.state === "recover" ? t("Catching its breath, prepare to dodge again") : ["sweep-windup", "sweep"].includes(keeper.state) ? t("Step back from the twisting tusks") : ["windup", "charge"].includes(keeper.state) ? t("Dodge sideways out of the charge ({n}/{total})", { n: keeper.attackIndex, total: keeper.combat.charges }) : charged ? t("A charged orb pulse stuns it for a clean shot") : t("Keep space to sidestep its tusks")}`;
       mark = keeper.head();
       key = "elder-boar";
     } else if (this.ready) {
-      title = "Enter the drowned city";
-      sub = "The castle door is open. Mira's trail continues beneath the sea.";
+      title = t("Enter the drowned city");
+      sub = t(
+        "The castle door is open. Mira's trail continues beneath the sea.",
+      );
       mark = this.forest.lastGate.center;
       key = "gate";
     } else if (!this.locked[0]) {
-      title = "Wake the waves seal";
+      title = t("Wake the waves seal");
       sub = charged
-        ? "Pulse the waves pylon with the charged orb"
-        : "Link to the crystal to charge the orb; pulse a spore pod to silence it";
+        ? t("Pulse the waves pylon with the charged orb")
+        : t(
+            "Link to the crystal to charge the orb; pulse a spore pod to silence it",
+          );
       mark = charged ? this.pylons[0].lens : this.wells[0].center;
       key = `waves:${charged}`;
     } else if (!this.locked[1]) {
@@ -946,8 +957,8 @@ export class Wildwood {
         let ahead = null;
         for (const s of this.stones)
           if (!ahead && s.z < hero.pos.z - 0.6) ahead = s;
-        title = "Cross the spore bog";
-        sub = "Its water burns; jump from stone to stone";
+        title = t("Cross the spore bog");
+        sub = t("Its water burns; jump from stone to stone");
         mark = this.bogMark ||= V();
         if (ahead) mark.set(ahead.x, ahead.top + 0.6, ahead.z);
         else
@@ -958,24 +969,25 @@ export class Wildwood {
           );
         key = "bog";
       } else if (guard) {
-        title = "Free the ancient grove";
-        sub =
-          "Boars lower their heads before charging; sidestep and shoot their broad flank";
+        title = t("Free the ancient grove");
+        sub = t(
+          "Boars lower their heads before charging; sidestep and shoot their broad flank",
+        );
         mark = guard.head();
         key = `grove:${this.guards.filter((g) => g.defeated).length}`;
       } else {
-        title = "Wake the spiral seal";
+        title = t("Wake the spiral seal");
         sub = charged
-          ? "Pulse the spiral pylon beside the giant tree"
-          : "Link to the grove crystal to charge the orb";
+          ? t("Pulse the spiral pylon beside the giant tree")
+          : t("Link to the grove crystal to charge the orb");
         mark = charged ? this.pylons[1].lens : this.wells[1].center;
         key = `spiral:${charged}`;
       }
     } else {
       const guard = this.guards.find((g) => g.group === 1 && !g.defeated);
       if (hero.pos.z > -204.4 && hero.pos.z < -190) {
-        title = "Climb to the castle";
-        sub = "Climb the thick ivy over the castle's outer wall";
+        title = t("Climb to the castle");
+        sub = t("Climb the thick ivy over the castle's outer wall");
         mark = this.wallMark ||= V(
           this.climbs.outer.o.x,
           this.climbs.outer.y1 + 0.8,
@@ -983,26 +995,31 @@ export class Wildwood {
         );
         key = "outer-wall";
       } else if (hero.pos.z > -212) {
-        title = "Climb to the castle";
-        sub = "Follow the pale trail and watch for the flashing spore pods";
+        title = t("Climb to the castle");
+        sub = t("Follow the pale trail and watch for the flashing spore pods");
         mark = V(-29, this.groundAt(-29, -219) + 1, -219);
         key = "climb";
       } else if (guard) {
-        title = "Clear the castle approach";
-        sub =
-          "Dodge the tusks; Oldtusk tires after its last charge: shoot its flank then";
+        title = t("Clear the castle approach");
+        sub = t(
+          "Dodge the tusks; Oldtusk tires after its last charge: shoot its flank then",
+        );
         mark = guard.head();
         key = `castle:${this.guards.filter((g) => g.defeated).length}`;
       } else {
-        title = "Restore the sea address";
+        title = t("Restore the sea address");
         sub =
           this.sequence === 2
             ? this.climbs.onBastion(hero)
-              ? "Pulse the crescent seal up close (2/3)"
-              : "Climb the ivy on the bastion to the crescent seal"
+              ? t("Pulse the crescent seal up close (2/3)")
+              : t("Climb the ivy on the bastion to the crescent seal")
             : charged
-              ? `Pulse waves, spiral, then crescent (${this.sequence}/3)`
-              : `Recharge the orb; each correct glyph stays lit (${this.sequence}/3)`;
+              ? t("Pulse waves, spiral, then crescent ({n}/3)", {
+                  n: this.sequence,
+                })
+              : t("Recharge the orb; each correct glyph stays lit ({n}/3)", {
+                  n: this.sequence,
+                });
         mark =
           charged || this.sequence === 2
             ? this.relays[this.sequence].lens

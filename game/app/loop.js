@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { t } from "../i18n.js";
 import { settings } from "../store.js";
 import { grassTime } from "../grass.js";
 import { CalmCamera } from "../calm-camera.js";
@@ -354,31 +355,35 @@ export function createLoop(app) {
     if (e === "strain" && state.where === "four" && !state.iceStrainHinted) {
       state.iceStrainHinted = true;
       hud.hint(
-        "Ice",
-        "A block of ice cannot be pulled, and it will not slide off the ice. Push it from another side.",
+        t("Ice"),
+        t(
+          "A block of ice cannot be pulled, and it will not slide off the ice. Push it from another side.",
+        ),
         7,
       );
     } else if (e === "strain" && !state.strainHinted) {
       state.strainHinted = true;
       hud.hint(
-        "Blocks",
-        "It will not budge that way: something is in the way, or the floor ends. Try another side.",
+        t("Blocks"),
+        t(
+          "It will not budge that way: something is in the way, or the floor ends. Try another side.",
+        ),
         7,
       );
     }
     if (e === "respawn")
       hud.blackout(
         hero.lastFall === "water"
-          ? "The cold water throws you back."
+          ? t("The cold water throws you back.")
           : state.where === "court"
-            ? "Fatal fall. Returned to the last safe ledge."
+            ? t("Fatal fall. Returned to the last safe ledge.")
             : hero.lastFall !== "deep"
-              ? "Too far to fall."
+              ? t("Too far to fall.")
               : state.where === "three"
-                ? "The clouds close over the fall."
+                ? t("The clouds close over the fall.")
                 : state.where === "four"
-                  ? "The ice swallows the fall."
-                  : "The dark swallows the fall.",
+                  ? t("The ice swallows the fall.")
+                  : t("The dark swallows the fall."),
       );
     sound.play(e);
   }

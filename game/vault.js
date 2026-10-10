@@ -4,6 +4,7 @@ import { glyphMaterial, makeGlyph } from "./glyphs.js";
 import { brightStars, planet, spaceSky } from "./space-vista.js";
 import { spaceGate } from "./space-gate.js";
 import { gateColliders } from "./gate.js";
+import { t } from "./i18n.js";
 
 // The builders' vault: a sealed hall of the network inside a hollow rock beside the drifting
 // last door. A nave runs north from the arrival ring to a round sealed door; six bays open off
@@ -35,7 +36,7 @@ export const BAYS = [
     entry: [-15, -9],
     refuge: { x: -11.5, z: -12, yaw: -Math.PI / 2 },
     hover: V(-23, 3.2, -12),
-    title: "Relayed light",
+    title: t("Relayed light"),
     slot: { z0: -17.7, z1: -16.3, y0: 4.6, y1: 8.2 },
   },
   {
@@ -48,7 +49,7 @@ export const BAYS = [
     entry: [-15, -9],
     refuge: { x: 11.5, z: -12, yaw: Math.PI / 2 },
     hover: V(14, 3.2, -9),
-    title: "The keeper",
+    title: t("The keeper"),
   },
   {
     id: "isles",
@@ -60,7 +61,7 @@ export const BAYS = [
     entry: [-30, -25],
     refuge: { x: -11.5, z: -27.5, yaw: -Math.PI / 2 },
     hover: V(-21, 4.2, -30),
-    title: "A bridge of light",
+    title: t("A bridge of light"),
   },
   {
     id: "frost",
@@ -72,7 +73,7 @@ export const BAYS = [
     entry: [-35, -29],
     refuge: { x: 11.2, z: -32, yaw: Math.PI / 2 },
     hover: V(20, 3.4, -33),
-    title: "Sliding ice",
+    title: t("Sliding ice"),
   },
   {
     id: "forest",
@@ -84,7 +85,7 @@ export const BAYS = [
     entry: [-55, -49],
     refuge: { x: -11, z: -52, yaw: -Math.PI / 2 },
     hover: V(-21, 2.6, -52),
-    title: "Sinking stones",
+    title: t("Sinking stones"),
   },
   {
     id: "sea",
@@ -96,7 +97,7 @@ export const BAYS = [
     entry: [-55, -49],
     refuge: { x: 12, z: -52, yaw: Math.PI / 2 },
     hover: V(21, 1.6, -52),
-    title: "The flooded well",
+    title: t("The flooded well"),
   },
 ];
 export const ADDRESS = BAYS.map((bay) => bay.glyph);

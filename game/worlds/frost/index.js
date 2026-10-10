@@ -13,6 +13,7 @@ import { buildMountainRanges } from "../../mountain-landscape.js";
 import { iceScene } from "../../mira-scenes.js";
 import { syncAxes } from "../../ice-axes.js";
 import { FrostHunt } from "../../frost-hunt.js";
+import { t } from "../../i18n.js";
 
 // Low and cold, off to the left and a little behind the way, so faces ahead are lit and the
 // ice catches it across.
@@ -287,10 +288,21 @@ export class WorldFour {
     const hud = this.services.hud;
     const k = (a) => hud.k(a);
     F.climbs.onTake = () => {
-      hud.subtitle("Her ice axes. The fall is scarred where she climbed.", 3.5);
+      hud.subtitle(
+        t("Her ice axes. The fall is scarred where she climbed."),
+        3.5,
+      );
       hud.hint(
-        "Ice axes",
-        `${hud.press("jump", true)} at scarred ice to strike in. ${hud.keys("KeyW", "KeyA", "KeyS", "KeyD")} climb, ${hud.press("jump")} leaps to the next hold, ${hud.press("drop")} lets go.`,
+        t("Ice axes"),
+        t(
+          "{jump} at scarred ice to strike in. {move} climb, {leap} leaps to the next hold, {drop} lets go.",
+          {
+            jump: hud.press("jump", true),
+            move: hud.keys("KeyW", "KeyA", "KeyS", "KeyD"),
+            leap: hud.press("jump"),
+            drop: hud.press("drop"),
+          },
+        ),
         11,
         { queue: true },
       );
@@ -298,8 +310,10 @@ export class WorldFour {
     F.onIceWarning = () =>
       this.once("falling-ice", () =>
         hud.hint(
-          "Falling ice",
-          "Cracking ledges warn before ice falls. Sidestep the amber circle.",
+          t("Falling ice"),
+          t(
+            "Cracking ledges warn before ice falls. Sidestep the amber circle.",
+          ),
           7,
         ),
       );
@@ -312,37 +326,42 @@ export class WorldFour {
       if (this.time - (this.darkAt ?? -99) < 12) return;
       this.darkAt = this.time;
       hud.hint(
-        "Light",
-        `Only a charged pulse cuts this ice: aim at the prism and press ${k("throw")} first.`,
+        t("Light"),
+        t(
+          "Only a charged pulse cuts this ice: aim at the prism and press {throw} first.",
+          { throw: k("throw") },
+        ),
         8,
       );
     };
     F.onCrack = (n, of) => {
-      if (n < of) hud.subtitle(n === 1 ? "It cracks." : "Once more.", 2);
+      if (n < of) hud.subtitle(n === 1 ? t("It cracks.") : t("Once more."), 2);
     };
     F.onHeal = () =>
       this.once("heal", () =>
         hud.hint(
-          "The ice heals",
-          "The ice closes again after a few seconds; keep pulsing it while the orb is charged.",
+          t("The ice heals"),
+          t(
+            "The ice closes again after a few seconds; keep pulsing it while the orb is charged.",
+          ),
           8,
         ),
       );
     F.onFree = () => {
       hud.light("star");
-      hud.subtitle("A star. The address is whole.", 3.5);
+      hud.subtitle(t("A star. The address is whole."), 3.5);
       hud.objective("", "");
       hud.setMarkers([]);
       this.opening = { t: 0 };
     };
     F.onShatter = () =>
       this.once("shatter", () =>
-        hud.subtitle("It shatters, and the pond freezes it again.", 3),
+        hud.subtitle(t("It shatters, and the pond freezes it again."), 3),
       );
     F.onRest = (b) => {
       if (Math.abs(b.x - 3) < 0.1 && Math.abs(b.z + 73) < 0.1)
         this.once("notch", () =>
-          hud.subtitle("Right under the notch. Up I go.", 3),
+          hud.subtitle(t("Right under the notch. Up I go."), 3),
         );
     };
   }
@@ -440,8 +459,8 @@ export class WorldFour {
       this.frozen.guide(this.services.hud, hero, this.disc);
     if (this.ring.isOpen && !this.frozen.trail?.guiding(hero)) {
       this.services.hud.objective(
-        "Follow Mira into the wildwood",
-        "Walk through the great ring",
+        t("Follow Mira into the wildwood"),
+        t("Walk through the great ring"),
       );
       this.services.hud.setMarkers([this.ring.center]);
     }
@@ -490,8 +509,8 @@ export class WorldFour {
       o.done = true;
       this.services.hud.subtitle(
         progress.relics.has("lantern")
-          ? "She left a light for me. I will carry it into the green."
-          : "Green. Somewhere green, and warm.",
+          ? t("She left a light for me. I will carry it into the green.")
+          : t("Green. Somewhere green, and warm."),
         3.5,
       );
     }
@@ -507,13 +526,15 @@ export class WorldFour {
     const at = (id) => section === id;
     if (this.storyT > 2 && at("stream"))
       this.once("arrive", () =>
-        hud.subtitle("Ice. She came through here before me.", 3.5),
+        hud.subtitle(t("Ice. She came through here before me."), 3.5),
       );
     if (this.storyT > 6.5 && at("stream"))
       this.once("ice", () =>
         hud.hint(
-          "Ice",
-          "On ice you gather speed slowly and slide a long way. Line up with the landing, run, and jump at the edge.",
+          t("Ice"),
+          t(
+            "On ice you gather speed slowly and slide a long way. Line up with the landing, run, and jump at the edge.",
+          ),
           9,
         ),
       );
@@ -522,34 +543,42 @@ export class WorldFour {
       F.fallingIce?.spots.some((s) => s.wall && s.state === "warning")
     )
       this.once("falling-ice-wall", () =>
-        hud.subtitle("Ice above me. Move aside!", 2.5),
+        hud.subtitle(t("Ice above me. Move aside!"), 2.5),
       );
     if (at("stream") && hero.pos.z < -46.9 && !hero.axes)
       this.once("axes", () =>
-        hud.subtitle("Mira's ice axes, left at the foot of the fall.", 3.5),
+        hud.subtitle(t("Mira's ice axes, left at the foot of the fall."), 3.5),
       );
     if (at("pond") && hero.pos.z < -55)
       this.once("pond", () => {
-        hud.subtitle("Blocks of ice. They will slide.", 3);
+        hud.subtitle(t("Blocks of ice. They will slide."), 3);
         hud.hint(
-          "Blocks of ice",
-          `Hold ${k("interact")} against a block and push: it slides until something stops it. It cannot be pulled.`,
+          t("Blocks of ice"),
+          t(
+            "Hold {interact} against a block and push: it slides until something stops it. It cannot be pulled.",
+            { interact: k("interact") },
+          ),
           10,
         );
       });
     if (at("pond") && F.guideKey === "pond:true")
       this.once("stuck", () =>
         hud.hint(
-          "Stuck",
-          `Aim at a stuck block and pulse ${k("throw")}: it shatters and forms again where it began.`,
+          t("Stuck"),
+          t(
+            "Aim at a stuck block and pulse {throw}: it shatters and forms again where it began.",
+            { throw: k("throw") },
+          ),
           9,
         ),
       );
     if (at("lake") && (this.mira.done || hero.pos.z < -103))
       this.once("lake", () =>
         hud.hint(
-          "Thin ice",
-          "Thin ice cracks a moment after you land on it, then breaks. Keep moving.",
+          t("Thin ice"),
+          t(
+            "Thin ice cracks a moment after you land on it, then breaks. Keep moving.",
+          ),
           8,
         ),
       );
@@ -563,24 +592,29 @@ export class WorldFour {
     )
       this.once("trail", () =>
         hud.subtitle(
-          "Mira left a record at the far red cairn. Follow her trail.",
+          t("Mira left a record at the far red cairn. Follow her trail."),
           4,
         ),
       );
     if (at("floes"))
       this.once("floes", () =>
         hud.hint(
-          "Floes",
-          "The floes drift across the channel and rest at each side. Hop on as one passes in front of you.",
+          t("Floes"),
+          t(
+            "The floes drift across the channel and rest at each side. Hop on as one passes in front of you.",
+          ),
           9,
         ),
       );
     if (at("island") && !F.freed)
       this.once("island", () => {
-        hud.subtitle("There. The third glyph, under the ice.", 3.5);
+        hud.subtitle(t("There. The third glyph, under the ice."), 3.5);
         hud.hint(
-          "Frozen stone",
-          `Climb the scarred fall to the prism and link to charge the orb, then pulse the ice ${k("throw")} three times before it heals.`,
+          t("Frozen stone"),
+          t(
+            "Climb the scarred fall to the prism and link to charge the orb, then pulse the ice {throw} three times before it heals.",
+            { throw: k("throw") },
+          ),
           10,
         );
       });
@@ -860,9 +894,11 @@ class FinaleShot {
     if (!this.titled && !this.skipped && this.t > SHOT.title) {
       this.titled = true;
       const card = document.querySelector("#chapter-card");
-      card.querySelector(".kicker").textContent = "The network has more doors";
-      card.querySelector("h2").textContent = "Farseek";
-      card.querySelector(".sub").textContent = "To be continued.";
+      card.querySelector(".kicker").textContent = t(
+        "The network has more doors",
+      );
+      card.querySelector("h2").textContent = t("Farseek");
+      card.querySelector(".sub").textContent = t("To be continued.");
       card.classList.add("on");
       setTimeout(() => card.classList.remove("on"), 5600);
     }

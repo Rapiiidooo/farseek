@@ -1,14 +1,21 @@
 import { PISTOL_CAPACITY } from "./weapon-reload.js";
 import { CRAFT } from "./pistol-craft.js";
+import { t } from "./i18n.js";
 
 const CARDS = {
   pull: (k) => [
-    "Relay pull",
-    `Hold ${k("throw")} on a creature to drag it toward you: out of cover, off its feet, out of a charge.`,
+    t("Relay pull"),
+    t(
+      "Hold {key} on a creature to drag it toward you: out of cover, off its feet, out of a charge.",
+      { key: k("throw") },
+    ),
   ],
   shield: (k) => [
-    "Relay shield",
-    `Press ${k("shield")} to raise a ward of the builders' light in front of you for a moment: it turns aside charges, spores and pressure, then gathers again.`,
+    t("Relay shield"),
+    t(
+      "Press {key} to raise a ward of the builders' light in front of you for a moment: it turns aside charges, spores and pressure, then gathers again.",
+      { key: k("shield") },
+    ),
   ],
 };
 
@@ -29,18 +36,18 @@ export class EquipmentUI {
     this.button = document.createElement("button");
     this.button.id = "equipment-status";
     this.button.type = "button";
-    this.button.setAttribute("aria-label", "Open equipment wheel");
-    this.button.innerHTML = `<span class="kit-charge" aria-hidden="true"><i></i></span><span class="kit-name">Expedition kit</span><span class="kit-state">Follow the expedition</span><kbd>Tab</kbd><span class="kit-relay" hidden><i aria-hidden="true"></i><span>Shield ready</span><kbd>V</kbd></span>`;
+    this.button.setAttribute("aria-label", t("Open equipment wheel"));
+    this.button.innerHTML = `<span class="kit-charge" aria-hidden="true"><i></i></span><span class="kit-name">${t("Expedition kit")}</span><span class="kit-state">${t("Follow the expedition")}</span><kbd>Tab</kbd><span class="kit-relay" hidden><i aria-hidden="true"></i><span>${t("Shield ready")}</span><kbd>V</kbd></span>`;
     document.querySelector("#hud").append(this.button);
     this.pace = document.createElement("button");
     this.pace.id = "pace-status";
     this.pace.type = "button";
-    this.pace.innerHTML = "<span>Walking</span><kbd>Shift</kbd>";
+    this.pace.innerHTML = `<span>${t("Walking")}</span><kbd>Shift</kbd>`;
     document.querySelector("#hud").append(this.pace);
     this.reticle = document.createElement("div");
     this.reticle.id = "equipment-reticle";
     this.reticle.setAttribute("aria-hidden", "true");
-    this.reticle.innerHTML = `<i class="sight-tick north"></i><i class="sight-tick east"></i><i class="sight-tick south"></i><i class="sight-tick west"></i><span class="sight-hit"></span><span class="sight-bore"></span><span class="sight-feedback">Target protected</span><span class="sight-pull"></span><svg class="sight-reload" viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" pathLength="1"/></svg><svg class="sight-charge" viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" pathLength="1"/></svg>`;
+    this.reticle.innerHTML = `<i class="sight-tick north"></i><i class="sight-tick east"></i><i class="sight-tick south"></i><i class="sight-tick west"></i><span class="sight-hit"></span><span class="sight-bore"></span><span class="sight-feedback">${t("Target protected")}</span><span class="sight-pull"></span><svg class="sight-reload" viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" pathLength="1"/></svg><svg class="sight-charge" viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" pathLength="1"/></svg>`;
     document.querySelector("#hud").append(this.reticle);
     this.hintCard = document.querySelector("#hint");
     this.chapterCard = document.querySelector("#chapter-card");
@@ -52,16 +59,16 @@ export class EquipmentUI {
     this.root.setAttribute("aria-modal", "true");
     this.root.setAttribute("aria-labelledby", "equipment-title");
     this.root.innerHTML = `<div class="kit-panel">
-      <p class="kit-kicker">Expedition equipment</p><h2 id="equipment-title">Choose your approach</h2>
+      <p class="kit-kicker">${t("Expedition equipment")}</p><h2 id="equipment-title">${t("Choose your approach")}</h2>
       <div class="kit-wheel">
-        <button type="button" data-equipment="orb"><span class="kit-icon orb-icon" aria-hidden="true"></span><kbd>1</kbd><strong>Relay orb</strong><span>Channel light into mechanisms</span></button>
-        <button type="button" data-equipment="pistols"><span class="kit-icon pistol-icon" aria-hidden="true">⌁</span><kbd>2</kbd><strong>Twin pistols</strong><span>Draw both weapons</span></button>
+        <button type="button" data-equipment="orb"><span class="kit-icon orb-icon" aria-hidden="true"></span><kbd>1</kbd><strong>${t("Relay orb")}</strong><span>${t("Channel light into mechanisms")}</span></button>
+        <button type="button" data-equipment="pistols"><span class="kit-icon pistol-icon" aria-hidden="true">⌁</span><kbd>2</kbd><strong>${t("Twin pistols")}</strong><span>${t("Draw both weapons")}</span></button>
         <div class="kit-hub" aria-hidden="true">F</div>
       </div>
       <p class="kit-detail" aria-live="polite"></p>
       <p class="kit-upgrades" hidden></p>
-      <p class="kit-controls">Click to equip · 1 / 2 select · Esc returns</p>
-      <div class="kit-buttons"><button type="button" data-reload>Reload pistols</button><button type="button" data-close>Return to game</button></div>
+      <p class="kit-controls">${t("Click to equip · 1 / 2 select · Esc returns")}</p>
+      <div class="kit-buttons"><button type="button" data-reload>${t("Reload pistols")}</button><button type="button" data-close>${t("Return to game")}</button></div>
     </div>`;
     document.body.append(this.root);
     const trackPointer = (event) => {
@@ -163,14 +170,20 @@ export class EquipmentUI {
       this.root.querySelector("[data-close]").focus({ preventScroll: true });
     this.root.querySelector(".kit-detail").textContent =
       value === "none"
-        ? "Follow the expedition. Mira's relay orb is at the checkpoint, and her field kit is beyond it."
+        ? t(
+            "Follow the expedition. Mira's relay orb is at the checkpoint, and her field kit is beyond it.",
+          )
         : value === "orb" && !this.orbAvailable
           ? this.orbUnlocked
-            ? "The relay orb is stowed beyond the gate."
-            : "Recover Mira's relay orb from the checkpoint confiscation bin."
+            ? t("The relay orb is stowed beyond the gate.")
+            : t(
+                "Recover Mira's relay orb from the checkpoint confiscation bin.",
+              )
           : value === "orb"
-            ? `Link to a crystal: for ten seconds the shell turns to glass round a bright core. A charged pulse wakes mechanisms and stuns creatures; it never wounds.${this.abilities?.has("pull") ? " Hold the link on a creature to pull it." : ""}${this.abilities?.has("shield") ? ` ${this.input.label("shield")} raises a shield.` : ""}`
-            : "Sixteen rounds per pistol. Only bullets wound; seals and cores still need the orb's light.";
+            ? `${t("Link to a crystal: for ten seconds the shell turns to glass round a bright core. A charged pulse wakes mechanisms and stuns creatures; it never wounds.")}${this.abilities?.has("pull") ? ` ${t("Hold the link on a creature to pull it.")}` : ""}${this.abilities?.has("shield") ? ` ${t("{key} raises a shield.", { key: this.input.label("shield") })}` : ""}`
+            : t(
+                "Sixteen rounds per pistol. Only bullets wound; seals and cores still need the orb's light.",
+              );
   }
 
   show() {
@@ -213,15 +226,17 @@ export class EquipmentUI {
     this.button.hidden = !playing;
     this.pace.hidden = !playing || this.open || this.input.swimming;
     this.pace.querySelector("span").textContent = this.input.running
-      ? "Running"
-      : "Walking";
+      ? t("Running")
+      : t("Walking");
     this.pace.querySelector("kbd").textContent = this.input.label("pace");
     this.pace.setAttribute("aria-pressed", String(this.input.running));
     this.pace.setAttribute(
       "aria-label",
-      this.input.running ? "Switch to walking" : "Switch to running",
+      this.input.running ? t("Switch to walking") : t("Switch to running"),
     );
-    this.pace.title = `${this.input.label("pace")} switches between walking and running.`;
+    this.pace.title = t("{key} switches between walking and running.", {
+      key: this.input.label("pace"),
+    });
     this.reticle.hidden =
       !playing ||
       (!canAct && !this.input.swimming) ||
@@ -236,55 +251,69 @@ export class EquipmentUI {
     const pistols = this.root.querySelector('[data-equipment="pistols"]');
     pistols.disabled = !this.pistolsUnlocked;
     pistols.querySelector("span:last-child").textContent = this.pistolsUnlocked
-      ? "Draw both weapons"
-      : "Find Mira's field kit";
+      ? t("Draw both weapons")
+      : t("Find Mira's field kit");
     const relay = this.root.querySelector('[data-equipment="orb"]');
     relay.disabled = !this.orbAvailable;
     relay.querySelector("span:last-child").textContent = this.orbAvailable
-      ? "Channel light into mechanisms"
+      ? t("Channel light into mechanisms")
       : this.orbUnlocked
-        ? "Stowed beyond the gate"
-        : "Find Mira's relay orb";
+        ? t("Stowed beyond the gate")
+        : t("Find Mira's relay orb");
     this.selected = equipment.selected;
     this.root.querySelector(".kit-controls").textContent = this.input.usingTouch
-      ? "Tap an item to equip"
+      ? t("Tap an item to equip")
       : this.input.usingPad
-        ? "Left stick selects · A equips · LB reloads · B returns"
-        : `Arrows select · Enter equips · ${this.input.label("reload")} reloads · Esc returns`;
+        ? t("Left stick selects · A equips · LB reloads · B returns")
+        : t("Arrows select · Enter equips · {key} reloads · Esc returns", {
+            key: this.input.label("reload"),
+          });
     for (const key of this.root.querySelectorAll(".kit-wheel kbd"))
       key.hidden = this.input.usingTouch || this.input.usingPad;
     this.button.querySelector(".kit-name").textContent =
       this.selected === "orb"
-        ? "Relay orb"
+        ? t("Relay orb")
         : this.selected === "pistols"
-          ? "Twin pistols"
-          : "Expedition kit";
+          ? t("Twin pistols")
+          : t("Expedition kit");
     const state = this.button.querySelector(".kit-state");
     state.textContent = this.input.swimming
-      ? "Stowed"
+      ? t("Stowed")
       : this.selected === "none"
-        ? "Follow the expedition"
+        ? t("Follow the expedition")
         : this.selected === "orb"
           ? orb?.ready
             ? orb.charged
-              ? `Charged · ${Math.ceil(orb.charge)} s`
-              : "Aim at a crystal to charge"
-            : "Awaiting Mira's relay orb"
+              ? t("Charged · {n} s", { n: Math.ceil(orb.charge) })
+              : t("Aim at a crystal to charge")
+            : t("Awaiting Mira's relay orb")
           : equipment.reloadLeft > 0
-            ? "Reloading…"
-            : `${equipment.ammo} / ${PISTOL_CAPACITY}${this.input.usingTouch ? "" : ` · ${this.input.label("reload")} reload`}`;
+            ? t("Reloading…")
+            : this.input.usingTouch
+              ? `${equipment.ammo} / ${PISTOL_CAPACITY}`
+              : t("{ammo} / {capacity} · {key} reload", {
+                  ammo: equipment.ammo,
+                  capacity: PISTOL_CAPACITY,
+                  key: this.input.label("reload"),
+                });
     // The touch badge is 64 px wide: a word or two.
     if (this.input.usingTouch && !this.input.swimming)
-      if (this.selected === "none") state.textContent = "Empty";
+      if (this.selected === "none") state.textContent = t("Empty");
       else if (this.selected === "orb")
         state.textContent = !orb?.ready
-          ? "No orb"
+          ? t("No orb")
           : orb.charged
-            ? `${Math.ceil(orb.charge)} s charged`
-            : "Relay orb";
+            ? t("{n} s charged", { n: Math.ceil(orb.charge) })
+            : t("Relay orb");
     this.button.setAttribute(
       "aria-label",
-      `Open equipment wheel, ${this.selected === "orb" ? "relay orb" : this.selected === "pistols" ? `twin pistols, ${equipment.ammo} rounds` : "no equipment recovered"}`,
+      this.selected === "orb"
+        ? t("Open equipment wheel, relay orb")
+        : this.selected === "pistols"
+          ? t("Open equipment wheel, twin pistols, {ammo} rounds", {
+              ammo: equipment.ammo,
+            })
+          : t("Open equipment wheel, no equipment recovered"),
     );
     this.button.querySelector("kbd").textContent =
       this.input.label("inventory");
@@ -364,10 +393,10 @@ export class EquipmentUI {
     row.hidden = !status?.unlocked || this.input.usingTouch;
     if (!row.hidden) {
       const text = status.active
-        ? "Shield up"
+        ? t("Shield up")
         : status.ready
-          ? "Shield ready"
-          : `Shield in ${Math.ceil(status.left)} s`;
+          ? t("Shield ready")
+          : t("Shield in {n} s", { n: Math.ceil(status.left) });
       const label = row.querySelector("span");
       if (label.textContent !== text) label.textContent = text;
       row.querySelector("kbd").textContent = this.input.label("shield");
@@ -378,11 +407,19 @@ export class EquipmentUI {
     const craft = equipment.craft?.learned ?? [];
     const lines = [];
     if (equipment.pistolsUnlocked && craft.length)
-      lines.push(`Mira's craft: ${craft.join(", ")}`);
+      lines.push(t("Mira's craft: {craft}", { craft: craft.join(t(", ")) }));
     const relay = ["pull", "shield"].filter((name) => equipment.has?.(name));
     if (relay.length)
       lines.push(
-        `Orb: ${relay.map((name) => (name === "pull" ? `hold ${this.input.label("throw")} to pull` : `${this.input.label("shield")} shield`)).join(", ")}`,
+        t("Orb: {abilities}", {
+          abilities: relay
+            .map((name) =>
+              name === "pull"
+                ? t("hold {key} to pull", { key: this.input.label("throw") })
+                : t("{key} shield", { key: this.input.label("shield") }),
+            )
+            .join(t(", ")),
+        }),
       );
     const upgrades = this.root.querySelector(".kit-upgrades");
     const text = lines.join(" · ");
@@ -400,8 +437,11 @@ export class EquipmentUI {
       );
       if (kind)
         equipment.pendingCards.push({
-          title: "Mira's pistol craft",
-          html: `${latest}: ${CRAFT[kind].effect}`,
+          title: t("Mira's pistol craft"),
+          html: t("{craft}: {effect}", {
+            craft: latest,
+            effect: CRAFT[kind].effect,
+          }),
         });
     }
   }
@@ -422,7 +462,7 @@ export class EquipmentUI {
       const ours =
         hint &&
         this.hintCard.querySelector(".hint-title")?.textContent ===
-          "Mira's pistols";
+          t("Mira's pistols");
       if (ours) this.briefCard.seen = true;
       else {
         if (

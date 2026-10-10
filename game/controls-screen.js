@@ -1,26 +1,30 @@
 // The Controls screen: every action with its two keys or mouse buttons and its gamepad
 // button. Choosing one listens for the next key, mouse button or gamepad button; a control
 // taken from another action goes back to it in exchange, and the status line says so.
+import { t } from "./i18n.js";
 
 const NAMES = {
-  forward: ["Move forward"],
-  back: ["Move back"],
-  left: ["Move left"],
-  right: ["Move right"],
-  jump: ["Jump", "Climb up, swim upward"],
-  interact: ["Use", "Grab, turn, talk, take; hold to keep hold"],
-  drop: ["Hang", "Hang from an edge, let go, dive"],
-  pace: ["Walk or run", "Walking stops at edges"],
-  walk: ["Careful walk", "Hold to walk while running is on"],
-  roll: ["Roll"],
-  throw: ["Act", "Link the orb, fire the pistols; hold to pull, once earned"],
-  shield: ["Shield", "Raise the relay shield, once earned"],
-  aim: ["Aim", "Aim the pistols"],
-  reload: ["Reload", "Reload the pistols"],
-  inventory: ["Equipment", "Open the equipment wheel"],
-  orb: ["Relay orb"],
-  pistols: ["Twin pistols"],
-  pause: ["Pause", "Esc always pauses"],
+  forward: [t("Move forward")],
+  back: [t("Move back")],
+  left: [t("Move left")],
+  right: [t("Move right")],
+  jump: [t("Jump"), t("Climb up, swim upward")],
+  interact: [t("Use"), t("Grab, turn, talk, take; hold to keep hold")],
+  drop: [t("Hang"), t("Hang from an edge, let go, dive")],
+  pace: [t("Walk or run"), t("Walking stops at edges")],
+  walk: [t("Careful walk"), t("Hold to walk while running is on")],
+  roll: [t("Roll")],
+  throw: [
+    t("Act"),
+    t("Link the orb, fire the pistols; hold to pull, once earned"),
+  ],
+  shield: [t("Shield"), t("Raise the relay shield, once earned")],
+  aim: [t("Aim"), t("Aim the pistols")],
+  reload: [t("Reload"), t("Reload the pistols")],
+  inventory: [t("Equipment"), t("Open the equipment wheel")],
+  orb: [t("Relay orb")],
+  pistols: [t("Twin pistols")],
+  pause: [t("Pause"), t("Esc always pauses")],
 };
 const MOVES = new Set(["forward", "back", "left", "right"]);
 const LISTEN_MS = 10000;
@@ -53,8 +57,9 @@ export function createControlsScreen({ input, saveSettings, menu, sound }) {
     say("");
     if (input.usingTouch) {
       head.innerHTML = "";
-      help.textContent =
-        "The on-screen controls, by the names their buttons carry.";
+      help.textContent = t(
+        "The on-screen controls, by the names their buttons carry.",
+      );
       reset.hidden = true;
       body.innerHTML = touchRows()
         .map(([a, b]) => `<tr><td>${a}</td><td>${b}</td></tr>`)
@@ -62,31 +67,31 @@ export function createControlsScreen({ input, saveSettings, menu, sound }) {
       return;
     }
     reset.hidden = false;
-    help.textContent =
-      "Choose a key, then press the new key or mouse button, or a gamepad button in the last column. Esc cancels; Backspace clears.";
-    head.innerHTML =
-      '<tr><th scope="col">Action</th><th scope="col">Key</th><th scope="col">Other key</th><th scope="col">Gamepad</th></tr>';
+    help.textContent = t(
+      "Choose a key, then press the new key or mouse button, or a gamepad button in the last column. Esc cancels; Backspace clears.",
+    );
+    head.innerHTML = `<tr><th scope="col">${t("Action")}</th><th scope="col">${t("Key")}</th><th scope="col">${t("Other key")}</th><th scope="col">${t("Gamepad")}</th></tr>`;
     const rows = [
-      `<tr><th scope="row">Look</th>${fixed("Mouse")}${fixed("")}${fixed("Right stick")}</tr>`,
+      `<tr><th scope="row">${t("Look")}</th>${fixed(t("Mouse"))}${fixed("")}${fixed(t("Right stick"))}</tr>`,
     ];
     for (const action of input.remappable()) {
       const [name, note] = NAMES[action] || [title(action)];
       const keys = keysOf(action);
       const slots = [];
       if (action === "pause") {
-        slots.push(fixed("Esc"));
+        slots.push(fixed(t("Esc")));
         slots.push(slot(action, 0, keys[0], name, 1));
       } else
         for (let i = 0; i < 2; i++)
           slots.push(slot(action, i, keys[i], name, i));
       const pad = MOVES.has(action)
-        ? fixed("Left stick")
+        ? fixed(t("Left stick"))
         : action === "pause"
-          ? fixed("Start")
+          ? fixed(t("Start"))
           : padSlot(action, name);
       const missing = !keys.length && input.defaults(action).keys.length > 0;
       rows.push(
-        `<tr class="bind-row${missing ? " unbound" : ""}" data-row="${action}"><th scope="row">${name}${note ? `<span class="note">${note}</span>` : ""}${missing ? '<span class="note warn">No key: choose one</span>' : ""}</th>${slots.join("")}${pad}</tr>`,
+        `<tr class="bind-row${missing ? " unbound" : ""}" data-row="${action}"><th scope="row">${name}${note ? `<span class="note">${note}</span>` : ""}${missing ? `<span class="note warn">${t("No key: choose one")}</span>` : ""}</th>${slots.join("")}${pad}</tr>`,
       );
     }
     body.innerHTML = rows.join("");
@@ -97,8 +102,10 @@ export function createControlsScreen({ input, saveSettings, menu, sound }) {
     return cell(
       action,
       index,
-      code ? `<kbd>${text}</kbd>` : '<span class="empty">None</span>',
-      `${name}: ${code ? text : "no key"}. Change`,
+      code ? `<kbd>${text}</kbd>` : `<span class="empty">${t("None")}</span>`,
+      code
+        ? t("{name}: {key}. Change", { name, key: text })
+        : t("{name}: no key. Change", { name }),
       col,
     );
   }
@@ -109,8 +116,10 @@ export function createControlsScreen({ input, saveSettings, menu, sound }) {
     return cell(
       action,
       "pad",
-      text ? `<kbd>${text}</kbd>` : '<span class="empty">None</span>',
-      `${name} on a gamepad: ${text || "no button"}. Change`,
+      text ? `<kbd>${text}</kbd>` : `<span class="empty">${t("None")}</span>`,
+      text
+        ? t("{name} on a gamepad: {button}. Change", { name, button: text })
+        : t("{name} on a gamepad: no button. Change", { name }),
       2,
     );
   }
@@ -118,21 +127,39 @@ export function createControlsScreen({ input, saveSettings, menu, sound }) {
   const padName = (index) => input.padName(index);
 
   function touchRows() {
+    const key = (label) => `<kbd>${label}</kbd>`;
     return [
-      ["Stick", "Move; a light push keeps your footing near edges"],
-      ["<kbd>Walking</kbd> / <kbd>Running</kbd>", "Switch walking / running"],
-      ["Drag the picture", "Look"],
-      ["Look + stick", "Swim toward the reticle, including depth"],
-      ["<kbd>Jump</kbd>", "Jump, climb up"],
-      ["<kbd>Use</kbd> hold", "Grab, turn, talk, take, activate"],
-      ["<kbd>Hang</kbd>", "Hang from an edge, let go"],
-      ["<kbd>Rise</kbd> / <kbd>Dive</kbd> hold", "Adjust swimming height"],
-      ["<kbd>Link</kbd> / <kbd>Fire</kbd>", "Use the selected equipment"],
-      ["<kbd>Kit</kbd>", "Choose equipment or reload pistols"],
-      ["<kbd>Link</kbd> hold", "Pull with the orb, once earned"],
-      ["<kbd>Shield</kbd>", "Raise the relay shield, once earned"],
-      ["<kbd>Roll</kbd>", "Roll away, from level 2 on"],
-      ["<kbd>II</kbd>", "Pause"],
+      [t("Stick"), t("Move; a light push keeps your footing near edges")],
+      [
+        `${key(t("Walking"))} / ${key(t("Running"))}`,
+        t("Switch walking / running"),
+      ],
+      [t("Drag the picture"), t("Look")],
+      [t("Look + stick"), t("Swim toward the reticle, including depth")],
+      [key(t("Jump")), t("Jump, climb up")],
+      [
+        t("{button} hold", { button: key(t("Use")) }),
+        t("Grab, turn, talk, take, activate"),
+      ],
+      [key(t("Hang")), t("Hang from an edge, let go")],
+      [
+        t("{buttons} hold", {
+          buttons: `${key(t("Rise"))} / ${key(t("Dive"))}`,
+        }),
+        t("Adjust swimming height"),
+      ],
+      [
+        `${key(t("Link"))} / ${key(t("Fire"))}`,
+        t("Use the selected equipment"),
+      ],
+      [key(t("Kit")), t("Choose equipment or reload pistols")],
+      [
+        t("{button} hold", { button: key(t("Link")) }),
+        t("Pull with the orb, once earned"),
+      ],
+      [key(t("Shield")), t("Raise the relay shield, once earned")],
+      [key(t("Roll")), t("Roll away, from level 2 on")],
+      [key("II"), t("Pause")],
     ];
   }
 
@@ -152,11 +179,16 @@ export function createControlsScreen({ input, saveSettings, menu, sound }) {
     };
     menu.locked = true;
     button.classList.add("listening");
-    button.innerHTML = `<kbd>${pad ? "Press a button" : "Press a key"}</kbd>`;
+    button.innerHTML = `<kbd>${pad ? t("Press a button") : t("Press a key")}</kbd>`;
     say(
       pad
-        ? `Press a gamepad button for ${title(action)}. Start or Esc cancels.`
-        : `Press a key or mouse button for ${title(action)}. Esc cancels, Backspace clears.`,
+        ? t("Press a gamepad button for {action}. Start or Esc cancels.", {
+            action: title(action),
+          })
+        : t(
+            "Press a key or mouse button for {action}. Esc cancels, Backspace clears.",
+            { action: title(action) },
+          ),
     );
     addEventListener("keydown", onKey, true);
     addEventListener("mousedown", onMouse, true);
@@ -199,18 +231,24 @@ export function createControlsScreen({ input, saveSettings, menu, sound }) {
     if (e.repeat) return;
     const { action, slot, pad } = listening;
     if (e.code === "Escape")
-      return stop(`${title(action)} keeps its controls.`);
+      return stop(t("{action} keeps its controls.", { action: title(action) }));
     if (pad) return;
     if (e.code === "Backspace" || e.code === "Delete") {
       input.assignKey(action, slotIndex(action, slot), null);
       saveSettings();
       return stop(
-        `${title(action)} lost that key.${keysOf(action).length ? "" : " It has none now: choose one."}`,
+        keysOf(action).length
+          ? t("{action} lost that key.", { action: title(action) })
+          : t("{action} lost that key. It has none now: choose one.", {
+              action: title(action),
+            }),
       );
     }
     if (!input.bindable(e.code))
       return say(
-        `${input.codeLabel(e.code)} stays with the browser. Choose another key.`,
+        t("{key} stays with the browser. Choose another key.", {
+          key: input.codeLabel(e.code),
+        }),
       );
     assign(e.code);
   }
@@ -246,12 +284,19 @@ export function createControlsScreen({ input, saveSettings, menu, sound }) {
   }
 
   function describe(action, label, moved, name) {
-    const parts = [`${title(action)} now uses ${label}.`];
+    const parts = [
+      t("{action} now uses {key}.", { action: title(action), key: label }),
+    ];
     for (const m of moved)
       parts.push(
         m.to === null || m.to === undefined
-          ? `${title(m.action)} gave it up and has no other control: choose one.`
-          : `${title(m.action)} moved to ${name(m.to)}.`,
+          ? t("{action} gave it up and has no other control: choose one.", {
+              action: title(m.action),
+            })
+          : t("{action} moved to {key}.", {
+              action: title(m.action),
+              key: name(m.to),
+            }),
       );
     return parts.join(" ");
   }
@@ -261,7 +306,9 @@ export function createControlsScreen({ input, saveSettings, menu, sound }) {
     if (!listening) return;
     if (performance.now() > listening.until)
       return stop(
-        `No control pressed: ${title(listening.action)} keeps its controls.`,
+        t("No control pressed: {action} keeps its controls.", {
+          action: title(listening.action),
+        }),
       );
     if (listening.pad) {
       const pad = [...(navigator.getGamepads?.() || [])].find(Boolean);
@@ -269,7 +316,11 @@ export function createControlsScreen({ input, saveSettings, menu, sound }) {
       if (pressed < 0) listening.released = true;
       else if (listening.released) {
         if (pressed === 8 || pressed === 9)
-          return stop(`${title(listening.action)} keeps its controls.`);
+          return stop(
+            t("{action} keeps its controls.", {
+              action: title(listening.action),
+            }),
+          );
         if (input.padBindable(pressed)) return assignPad(pressed);
       }
     }
@@ -280,7 +331,7 @@ export function createControlsScreen({ input, saveSettings, menu, sound }) {
     input.resetBindings();
     saveSettings();
     render();
-    say("Every key and button is back to its default.");
+    say(t("Every key and button is back to its default."));
   }
 
   return {

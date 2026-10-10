@@ -325,7 +325,7 @@
   margin: 0 0 8px;
 }
 .kit-panel h2 {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: var(--display);
   font-size: clamp(30px, 5vw, 44px);
   margin: 0 0 22px;
   font-weight: 700;
