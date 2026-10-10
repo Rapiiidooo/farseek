@@ -204,11 +204,23 @@
     <div id="warp" aria-hidden="true"></div>
 
     <section id="loading" class="screen">
+      <div class="load-ring" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="loading-card">
         <p class="kicker">An expedition in seven worlds</p>
         <h1>Farseek</h1>
-        <div class="bar"><span id="load-fill"></span></div>
+        <div
+          class="bar"
+          role="progressbar"
+          aria-label="Loading"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <span id="load-fill"></span>
+        </div>
         <p id="load-step">Unpacking the expedition…</p>
+        <ol id="load-worlds" aria-hidden="true"></ol>
+        <p id="load-tip"></p>
         <nav id="load-actions" class="menu-list compact" hidden>
           <button id="load-retry" type="button">Try again</button>
         </nav>

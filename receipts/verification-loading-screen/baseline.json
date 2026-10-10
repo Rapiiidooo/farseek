@@ -1,0 +1,194 @@
+{
+  "name": "baseline",
+  "url": "http://localhost:3012/?debug=1&nolock=1",
+  "phone": false,
+  "waitOnTitle": 0,
+  "navigationToReadyMs": 2401,
+  "newGameWaitMs": 5790,
+  "initial": {
+    "longestStillMs": 1540,
+    "backward": 0,
+    "biggest": 0.39,
+    "steps": [
+      {
+        "t": 18,
+        "text": "Unpacking the expedition…",
+        "fraction": 0
+      },
+      {
+        "t": 301,
+        "text": "Carving the sunken court…",
+        "fraction": 0
+      },
+      {
+        "t": 1778,
+        "text": "Lighting The Sunken Court…",
+        "fraction": 0.44
+      },
+      {
+        "t": 2387,
+        "text": "Ready.",
+        "fraction": 0.6936
+      }
+    ]
+  },
+  "newGame": {
+    "longestStillMs": 548,
+    "backward": 79,
+    "biggest": 0.19,
+    "steps": [
+      {
+        "t": 0,
+        "text": "Preparing the worlds ahead…",
+        "fraction": 0.9992
+      },
+      {
+        "t": 135,
+        "text": "Lighting The Checkpoint…",
+        "fraction": 0.7914
+      },
+      {
+        "t": 660,
+        "text": "Preparing the worlds ahead…",
+        "fraction": 0.7
+      },
+      {
+        "t": 941,
+        "text": "Lighting The Dawn Isles…",
+        "fraction": 0.79
+      },
+      {
+        "t": 1360,
+        "text": "Preparing the worlds ahead…",
+        "fraction": 0.7
+      },
+      {
+        "t": 1780,
+        "text": "Lighting The Frozen Reach…",
+        "fraction": 0.82
+      },
+      {
+        "t": 2364,
+        "text": "Preparing the worlds ahead…",
+        "fraction": 0.7
+      },
+      {
+        "t": 2932,
+        "text": "Lighting The Wildwood…",
+        "fraction": 0.86
+      },
+      {
+        "t": 3550,
+        "text": "Preparing the worlds ahead…",
+        "fraction": 0.7
+      },
+      {
+        "t": 3736,
+        "text": "Lighting The Drowned Archive…",
+        "fraction": 0.89
+      },
+      {
+        "t": 4260,
+        "text": "Preparing the worlds ahead…",
+        "fraction": 0.7
+      },
+      {
+        "t": 4390,
+        "text": "Lighting The Builders' Vault…",
+        "fraction": 0.8917
+      },
+      {
+        "t": 5079,
+        "text": "Ready.",
+        "fraction": 0.7
+      }
+    ],
+    "worldEvents": [
+      {
+        "t": 660,
+        "event": "prepared",
+        "id": "two"
+      },
+      {
+        "t": 660,
+        "event": "build",
+        "id": "three"
+      },
+      {
+        "t": 1360,
+        "event": "prepared",
+        "id": "three"
+      },
+      {
+        "t": 1360,
+        "event": "build",
+        "id": "four"
+      },
+      {
+        "t": 2364,
+        "event": "prepared",
+        "id": "four"
+      },
+      {
+        "t": 2364,
+        "event": "build",
+        "id": "five"
+      },
+      {
+        "t": 3550,
+        "event": "prepared",
+        "id": "five"
+      },
+      {
+        "t": 3550,
+        "event": "build",
+        "id": "six"
+      },
+      {
+        "t": 4260,
+        "event": "prepared",
+        "id": "six"
+      },
+      {
+        "t": 4260,
+        "event": "build",
+        "id": "vault"
+      },
+      {
+        "t": 5068,
+        "event": "prepared",
+        "id": "vault"
+      }
+    ],
+    "frameGapsOver100ms": 7,
+    "worstGapMs": 266
+  },
+  "shots": [
+    {
+      "t": 1383,
+      "file": "00-initial.png"
+    },
+    {
+      "t": 2402,
+      "file": "01-title.png"
+    },
+    {
+      "t": 3027,
+      "file": "02-newgame-400.png"
+    },
+    {
+      "t": 4754,
+      "file": "03-newgame-2000.png"
+    },
+    {
+      "t": 6432,
+      "file": "04-newgame-5000.png"
+    },
+    {
+      "t": 8415,
+      "file": "05-play.png"
+    }
+  ],
+  "errors": [],
+  "wallMs": 8573
+}

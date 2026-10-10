@@ -311,5 +311,42 @@ await check(
   },
 );
 
+await check(
+  "A start's preparation list matches what settling prepares",
+  async () => {
+    const events = [];
+    const gates = { q: Promise.withResolvers() };
+    const manager = new WorldManager({
+      definitions: fakeWorlds(["p", "q", "r", "s"], events, gates),
+      services: () => ({}),
+      retainAll: true,
+    });
+    await manager.ensure("p");
+    manager.enter("p");
+    manager.prefetch("p");
+    await new Promise((r) => setTimeout(r, 20));
+    const list = manager.toPrepare("p");
+    assert.deepEqual(
+      list.map(({ id }) => id).toSorted(),
+      ["q", "r", "s"],
+      "every unprepared world is listed once, the resident start left out",
+    );
+    assert.deepEqual(
+      list.filter(({ running }) => running).map(({ id }) => id),
+      ["q"],
+      "the world being prepared is marked as running",
+    );
+    assert.deepEqual(manager.toPrepare("p", { ahead: false }), []);
+    gates.q.resolve();
+    await manager.settle();
+    assert.deepEqual(
+      events.filter((event) => event !== "build:p").toSorted(),
+      list.map(({ id }) => `build:${id}`).toSorted(),
+    );
+    assert.deepEqual(manager.toPrepare("p"), []);
+    return { list };
+  },
+);
+
 await mkdir(out, { recursive: true });
 await writeFile(`${out}/checks.json`, JSON.stringify(checks, null, 2) + "\n");

@@ -12,6 +12,10 @@ async function boot() {
   } catch (error) {
     reportLoadFailure(error, stage, state, null);
     console.error(error?.stack || error);
+    const fill = document.querySelector("#load-fill");
+    fill.style.transform = getComputedStyle(fill).transform;
+    fill.parentElement.classList.add("driven", "failed");
+    document.querySelector("#load-tip").hidden = true;
     document.querySelector("#load-step").textContent =
       "The expedition could not load. Try again to continue.";
     document.querySelector("#load-actions").hidden = false;

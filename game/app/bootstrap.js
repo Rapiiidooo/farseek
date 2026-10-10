@@ -126,7 +126,10 @@ export function startGame() {
     beforeWire: () => app.characterReady,
     schedule: (work, job) => workBudget.run(work, job),
     yieldWork: () => workBudget.yield(),
-    onEvent: (event, detail) => recordLoadEvent(state, event, detail),
+    onEvent: (event, detail) => {
+      recordLoadEvent(state, event, detail);
+      app.ui?.worldEvent(event, detail);
+    },
     onRestore: async (id, instance) => {
       instance.resize(innerWidth, innerHeight);
       await app.rendering.precompile(id, instance);
@@ -162,8 +165,7 @@ export function startGame() {
       await workBudget.yield();
       addEarlyWorldDetail(instance, id);
       await finishWorldLandscape(instance, id);
-      if (!job.background)
-        app.ui.loading(0.7, `Lighting ${app.worlds.definition(id).title}…`);
+      if (!job.background) app.ui.lighting(id);
       const lift =
         id === "court" ? (x, z, y) => level.driftAt(x, z, y) : undefined;
       await relics.build({ [id]: { ...instance, lift } }, instance.isles);
@@ -257,9 +259,9 @@ export function startGame() {
   }
 
   async function load() {
-    app.ui.loading(0.02, "Unpacking the expedition…");
+    app.ui.loading(0.12, "Unpacking the expedition…", 0.3);
     app.characterReady = loadCharacter();
-    app.ui.loading(0.44, "Carving the sunken court…");
+    app.ui.loading(0.66, "Carving the sunken court…", 2.2);
     await Promise.all([app.characterReady, app.worlds.ensure("court")]);
     hero.spawn(COURT.START.x, COURT.START.z, 8, COURT.START.yaw);
     follow.snap(hero);

@@ -74,16 +74,12 @@ export function createCampaign(app) {
           const chapter = chapterById(id);
           const fromTitle = state.mode === "title";
           resetWorlds(chapter.level >= 4 || (continuing && progress.pistols));
+          app.ui.loadPlan(worlds.toPrepare(chapter.where));
           await worlds.ensure(chapter.where);
           worlds.solveBefore(chapter.where);
           // Whatever the title screen has not prepared yet finishes here, so play never competes with loading.
           worlds.prefetch(chapter.where);
-          await worlds.settle((done, total) =>
-            app.ui.loading(
-              0.75 + (0.25 * done) / Math.max(1, total),
-              "Preparing the worlds ahead…",
-            ),
-          );
+          await worlds.settle();
           state.chapter = chapter.id;
           state.paused = false;
           state.mode = "play";
@@ -166,6 +162,7 @@ export function createCampaign(app) {
       return app.ui
         .withLoading(
           async () => {
+            app.ui.loadPlan(worlds.toPrepare("court", { ahead: false }));
             await worlds.ensure("court");
             toTitle({ prefetch });
           },
@@ -223,6 +220,7 @@ export function createCampaign(app) {
           app.ui
             .withLoading(
               async () => {
+                app.ui.loadPlan(worlds.toPrepare(to, { ahead: false }));
                 await worlds.ensure(to);
                 state.crossing = null;
                 state.mode = "play";

@@ -1,0 +1,42 @@
+{
+  "code": {
+    "failed": {
+      "text": "The expedition could not load. Try again to continue.",
+      "failed": true,
+      "fraction": 0,
+      "retry": true,
+      "overlay": true,
+      "ready": false,
+      "mode": null
+    },
+    "recovered": {
+      "text": "Ready.",
+      "failed": false,
+      "fraction": null,
+      "retry": false,
+      "overlay": false,
+      "ready": true,
+      "mode": "title"
+    }
+  },
+  "world": {
+    "failed": {
+      "text": "The expedition could not load. Try again to continue.",
+      "failed": true,
+      "fraction": 0.002,
+      "retry": true,
+      "overlay": true,
+      "ready": true,
+      "mode": "loading"
+    },
+    "recovered": {
+      "text": "Ready.",
+      "failed": false,
+      "fraction": null,
+      "retry": false,
+      "overlay": false,
+      "ready": true,
+      "mode": "play"
+    }
+  }
+}

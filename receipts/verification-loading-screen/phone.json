@@ -1,0 +1,90 @@
+{
+  "name": "phone",
+  "url": "http://localhost:3012/?debug=1&nolock=1",
+  "phone": true,
+  "waitOnTitle": 0,
+  "navigationToReadyMs": 2659,
+  "newGameWaitMs": 4101,
+  "initial": {
+    "longestStillMs": 1046,
+    "backward": 0,
+    "biggest": 0.413,
+    "steps": [
+      {
+        "t": 11,
+        "text": "Unpacking the expedition…",
+        "fraction": 0
+      },
+      {
+        "t": 264,
+        "text": "Carving the sunken court…",
+        "fraction": 0.0001
+      },
+      {
+        "t": 1970,
+        "text": "Lighting the Sunken Court…",
+        "fraction": 0.5868
+      },
+      {
+        "t": 2631,
+        "text": "Ready.",
+        "fraction": 0.8938
+      }
+    ]
+  },
+  "newGame": {
+    "longestStillMs": 1778,
+    "backward": 0,
+    "biggest": 0.12,
+    "steps": [
+      {
+        "t": 7,
+        "text": "Opening a door to somewhere else…",
+        "fraction": 0
+      },
+      {
+        "t": 33,
+        "text": "Preparing the Checkpoint…",
+        "fraction": 0.0021
+      },
+      {
+        "t": 2269,
+        "text": "Ready.",
+        "fraction": 0.8767
+      }
+    ],
+    "worldEvents": [
+      {
+        "t": 2257,
+        "event": "prepared",
+        "id": "two"
+      }
+    ],
+    "frameGapsOver100ms": 1,
+    "worstGapMs": 1778
+  },
+  "shots": [
+    {
+      "t": 1493,
+      "file": "00-initial.png"
+    },
+    {
+      "t": 2662,
+      "file": "01-title.png"
+    },
+    {
+      "t": 3475,
+      "file": "02-newgame-400.png"
+    },
+    {
+      "t": 5380,
+      "file": "03-newgame-2000.png"
+    },
+    {
+      "t": 7173,
+      "file": "04-play.png"
+    }
+  ],
+  "errors": [],
+  "wallMs": 7437
+}

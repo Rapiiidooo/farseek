@@ -1,0 +1,164 @@
+{
+  "name": "after-2",
+  "url": "http://localhost:3012/?debug=1&nolock=1",
+  "phone": false,
+  "waitOnTitle": 0,
+  "navigationToReadyMs": 2175,
+  "newGameWaitMs": 5446,
+  "initial": {
+    "longestStillMs": 869,
+    "backward": 0,
+    "biggest": 0.388,
+    "steps": [
+      {
+        "t": 9,
+        "text": "Unpacking the expedition…",
+        "fraction": 0
+      },
+      {
+        "t": 237,
+        "text": "Carving the sunken court…",
+        "fraction": 0
+      },
+      {
+        "t": 1627,
+        "text": "Lighting the Sunken Court…",
+        "fraction": 0.5479
+      },
+      {
+        "t": 2168,
+        "text": "Ready.",
+        "fraction": 0.683
+      }
+    ]
+  },
+  "newGame": {
+    "longestStillMs": 706,
+    "backward": 0,
+    "biggest": 0.058,
+    "steps": [
+      {
+        "t": 7,
+        "text": "Preparing the Checkpoint…",
+        "fraction": 0
+      },
+      {
+        "t": 587,
+        "text": "Preparing the Dawn Isles…",
+        "fraction": 0.1536
+      },
+      {
+        "t": 1227,
+        "text": "Preparing the Frozen Reach…",
+        "fraction": 0.2902
+      },
+      {
+        "t": 2054,
+        "text": "Preparing the Wildwood…",
+        "fraction": 0.4592
+      },
+      {
+        "t": 3165,
+        "text": "Preparing the Drowned Archive…",
+        "fraction": 0.6696
+      },
+      {
+        "t": 3871,
+        "text": "Preparing the Builders' Vault…",
+        "fraction": 0.8039
+      },
+      {
+        "t": 4578,
+        "text": "Ready.",
+        "fraction": 0.9439
+      }
+    ],
+    "worldEvents": [
+      {
+        "t": 587,
+        "event": "prepared",
+        "id": "two"
+      },
+      {
+        "t": 587,
+        "event": "build",
+        "id": "three"
+      },
+      {
+        "t": 1227,
+        "event": "prepared",
+        "id": "three"
+      },
+      {
+        "t": 1227,
+        "event": "build",
+        "id": "four"
+      },
+      {
+        "t": 2053,
+        "event": "prepared",
+        "id": "four"
+      },
+      {
+        "t": 2054,
+        "event": "build",
+        "id": "five"
+      },
+      {
+        "t": 3165,
+        "event": "prepared",
+        "id": "five"
+      },
+      {
+        "t": 3165,
+        "event": "build",
+        "id": "six"
+      },
+      {
+        "t": 3850,
+        "event": "prepared",
+        "id": "six"
+      },
+      {
+        "t": 3851,
+        "event": "build",
+        "id": "vault"
+      },
+      {
+        "t": 4567,
+        "event": "prepared",
+        "id": "vault"
+      }
+    ],
+    "frameGapsOver100ms": 7,
+    "worstGapMs": 225
+  },
+  "shots": [
+    {
+      "t": 1258,
+      "file": "00-initial.png"
+    },
+    {
+      "t": 2181,
+      "file": "01-title.png"
+    },
+    {
+      "t": 2732,
+      "file": "02-newgame-400.png"
+    },
+    {
+      "t": 4490,
+      "file": "03-newgame-2000.png"
+    },
+    {
+      "t": 6241,
+      "file": "04-newgame-5000.png"
+    },
+    {
+      "t": 7775,
+      "file": "05-play.png"
+    }
+  ],
+  "errors": [],
+  "wallMs": 7963
+}

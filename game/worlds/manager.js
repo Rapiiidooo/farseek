@@ -104,11 +104,11 @@ export class WorldManager {
     return this.get(id);
   }
 
-  // Neighbors first, then (when every world stays resident) the rest by distance.
-  prefetch(id) {
-    this.desired = id;
+  // Neighbors first, then (when every world stays resident) the rest by distance; a far world
+  // already built is restored when needed rather than ahead.
+  ahead(id) {
     const index = this.definitions.indexOf(this.definition(id));
-    const order = this.definitions
+    return this.definitions
       .map((definition, at) => ({ definition, at }))
       .filter(({ at }) =>
         this.retainAll
@@ -118,17 +118,45 @@ export class WorldManager {
       .sort(
         (a, b) =>
           Math.abs(a.at - index) - Math.abs(b.at - index) || b.at - a.at,
-      );
-    for (const { definition, at } of order) {
+      )
+      .filter(
+        ({ definition, at }) =>
+          Math.abs(at - index) <= 1 || !this.get(definition.id),
+      )
+      .map(({ definition }) => definition);
+  }
+
+  prefetch(id) {
+    this.desired = id;
+    for (const definition of this.ahead(id)) {
       if (this.isResident(definition.id) || this.pending.has(definition.id))
         continue;
-      if (Math.abs(at - index) > 1 && this.get(definition.id)) continue;
       this.ensure(definition.id, { background: true }).catch((error) => {
         this.failures.set(definition.id, String(error.message || error));
         this.onBackgroundError(definition.id, error);
       });
     }
     this.scheduleTrim();
+  }
+
+  // What a start at `id` prepares before play: the world, every queued preparation and, `ahead`,
+  // what `prefetch` adds; settling runs them all.
+  toPrepare(id, { ahead = true } = {}) {
+    const ids = new Set([
+      id,
+      ...(ahead ? this.pending.keys() : []),
+      ...(ahead ? this.ahead(id).map((definition) => definition.id) : []),
+    ]);
+    const running = [...this.jobs].find(
+      ([, job]) => job === this.running?.job,
+    )?.[0];
+    return [...ids]
+      .filter((world) => !this.isResident(world))
+      .map((world) => ({
+        id: world,
+        restore: !!this.get(world),
+        running: world === running,
+      }));
   }
 
   ensure(id, { background = false } = {}) {

@@ -12,11 +12,26 @@ import { RELICS } from "../relics.js";
 import { applyVoiceVolume } from "../voice.js";
 import { craftLine } from "../pistol-craft.js";
 import { recordLoadEvent, reportLoadFailure } from "../load-diagnostics.js";
+import { createLoadBar } from "../load-bar.js";
 import {
   LOCAL_PREVIEW,
   LAB_SESSION,
   levelPreviewURL,
 } from "../local-preview.js";
+
+// Seconds each world takes to prepare on the reference desktop; restoring a released one takes half.
+const PREPARE_SECONDS = {
+  court: 1.6,
+  two: 0.7,
+  three: 0.7,
+  four: 1,
+  five: 1.2,
+  six: 0.7,
+  vault: 0.8,
+};
+const WORLD_SPAN = [0.06, 0.96];
+const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
+const named = (title) => title.replace(/^The /, "the ");
 
 export function createUI(app) {
   const {
@@ -33,8 +48,30 @@ export function createUI(app) {
   inventory.onBriefing = () => hud.pistolsHint();
   inventory.onCard = (title, html, seconds) =>
     hud.hint(title, html, seconds, { queue: true });
-  const loadBar = document.querySelector("#load-fill");
+  const loadBar = createLoadBar(document.querySelector("#loading .bar"));
   const loadStep = document.querySelector("#load-step");
+  const loadTip = document.querySelector("#load-tip");
+  const pips = new Map(
+    WORLDS.map(({ id }) => {
+      const pip = document.createElement("li");
+      pip.dataset.state = id === "court" ? "active" : "later";
+      return [id, pip];
+    }),
+  );
+  document.querySelector("#load-worlds").replaceChildren(...pips.values());
+  const tips = [
+    () => `${hud.k("pace")} switches between walking and running.`,
+    () => `${hud.k("inventory")} opens the expedition kit.`,
+    () => `${hud.k("roll")} rolls out of harm's way.`,
+    () => "Spent health pips swell back after a quiet spell out of a fight.",
+    () => "Difficulty, controls and subtitles can be changed in Settings.",
+  ];
+  // Not Math.random: seeded captures expect the game's own draws to come first.
+  let tipIndex = Math.floor(performance.timeOrigin / 1000);
+  // The first session times the court against the reference desktop to pace later stages.
+  let session = { id: 0, plan: null, calibrate: performance.now() };
+  let pace = 1;
+  setTimeout(() => session.id === 0 && state.loading && showTip(), 1200);
   const loadActions = document.querySelector("#load-actions");
   const loadRetry = document.querySelector("#load-retry");
   const loadFailures = new Map();
@@ -57,14 +94,83 @@ export function createUI(app) {
       fail(error, { retry });
     }
   });
-  function loading(fraction, text) {
-    loadBar.style.width = `${Math.round(fraction * 100)}%`;
-    if (text) {
-      recordLoadEvent(state, "loading", { fraction, text });
-      loadStep.textContent = text;
-      // Each loading step is a mark on the page's timeline, so a slow start can be taken apart.
-      performance.mark(text);
+  // Heads for `fraction` over about `seconds` on the reference desktop.
+  function loading(fraction, text, seconds = 0.4) {
+    loadBar.stage(fraction, seconds * pace);
+    if (text) say(text);
+  }
+
+  function say(text) {
+    if (loadStep.textContent === text) return;
+    recordLoadEvent(state, "loading", { fraction: loadBar.value, text });
+    loadStep.textContent = text;
+    // Each loading step is a mark on the page's timeline, so a slow start can be taken apart.
+    performance.mark(text);
+  }
+
+  function showTip() {
+    loadTip.innerHTML = tips[tipIndex++ % tips.length]();
+    loadTip.hidden = false;
+    loadTip.classList.remove("shown");
+    loadTip.getBoundingClientRect();
+    loadTip.classList.add("shown");
+  }
+
+  function markWorlds(plan = new Map()) {
+    for (const [id, pip] of pips)
+      pip.dataset.state = app.worlds.isResident(id)
+        ? "ready"
+        : plan.has(id)
+          ? "queued"
+          : "later";
+  }
+
+  // The worlds a start prepares before play; their preparation events then move the bar.
+  function loadPlan(worlds) {
+    const plan = new Map(
+      worlds.map(({ id, restore }) => [
+        id,
+        (PREPARE_SECONDS[id] ?? 1) * (restore ? 0.5 : 1),
+      ]),
+    );
+    let total = 0;
+    for (const seconds of plan.values()) total += seconds;
+    Object.assign(session, { plan, total, done: 0 });
+    markWorlds(plan);
+    if (!plan.size) loadBar.reach(WORLD_SPAN[1]);
+    const running = worlds.find((world) => world.running);
+    if (running) worldEvent("build", running);
+  }
+
+  function planned(done) {
+    const [from, to] = WORLD_SPAN;
+    return from + ((to - from) * done) / session.total;
+  }
+
+  function worldEvent(event, { id } = {}) {
+    const seconds = session.plan?.get(id);
+    if (seconds === undefined) return;
+    if (event === "build" || event === "restore") {
+      session.since = performance.now();
+      pips.get(id).dataset.state = "active";
+      loadBar.stage(planned(session.done + seconds), seconds * pace);
+      say(`Preparing ${named(app.worlds.definition(id).title)}…`);
+    } else if (event === "prepared") {
+      session.plan.delete(id);
+      session.done += seconds;
+      pips.get(id).dataset.state = "ready";
+      loadBar.reach(planned(session.done));
+      if (session.since) {
+        const took = (performance.now() - session.since) / 1000 / seconds;
+        pace = clamp((pace + took) / 2, 0.6, 8);
+      }
     }
+  }
+
+  // A world lit outside a planned start: the court of the first load.
+  function lighting(id) {
+    if (session.plan?.has(id)) return;
+    loading(0.94, `Lighting ${named(app.worlds.definition(id).title)}…`, 0.9);
   }
 
   function openNotes(which = "first") {
@@ -407,12 +513,18 @@ export function createUI(app) {
   function ready() {
     recovery = null;
     loadActions.hidden = true;
-    loading(1, "Ready.");
+    if (session.calibrate)
+      pace = clamp((performance.now() - session.calibrate) / 2100, 0.7, 6);
+    session = { id: session.id, plan: null };
+    const id = session.id;
+    markWorlds();
+    loadBar.reach(1, 0.2);
+    say("Ready.");
     const overlay = document.querySelector("#loading");
     overlay.classList.add("leaving");
     setTimeout(() => {
-      if (!state.loading) overlay.hidden = true;
-    }, 700);
+      if (session.id === id && !state.loading) overlay.hidden = true;
+    }, 850);
   }
 
   async function withLoading(
@@ -421,11 +533,21 @@ export function createUI(app) {
   ) {
     const overlay = document.querySelector("#loading");
     state.loading = true;
+    session = { id: session.id + 1, plan: null };
+    loadBar.reset();
+    markWorlds();
     overlay.hidden = false;
     overlay.classList.remove("leaving");
     recovery = null;
     loadActions.hidden = true;
-    loading(0.1, "Opening a door to somewhere else…");
+    showTip();
+    loading(0.05, "Opening a door to somewhere else…", 0.3);
+    // The screen paints before the first preparation step can hold the page; a frozen frame
+    // loop in a capture falls back on the timer.
+    await new Promise((resolve) => {
+      requestAnimationFrame(() => setTimeout(resolve));
+      setTimeout(resolve, 100);
+    });
     try {
       const result = await work();
       state.loading = false;
@@ -461,7 +583,11 @@ export function createUI(app) {
     const overlay = document.querySelector("#loading");
     overlay.hidden = false;
     overlay.classList.remove("leaving");
-    loading(1, "The expedition could not load. Try again to continue.");
+    session = { id: session.id + 1, plan: null };
+    loadBar.freeze();
+    markWorlds();
+    loadTip.hidden = true;
+    say("The expedition could not load. Try again to continue.");
     const moduleFailure =
       app.assets.failedErrors.has(error) ||
       /dynamically imported module|module script/i.test(
@@ -485,6 +611,10 @@ export function createUI(app) {
     skipHelp,
     wireMenu,
     loading,
+    loadPlan,
+    worldEvent,
+    lighting,
+    showTip,
     ready,
     withLoading,
     reportFailure,
