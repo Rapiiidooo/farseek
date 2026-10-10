@@ -8,6 +8,7 @@ import * as COURT from "./court.js";
 
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 const near = (a, b, e = 0.06) => Math.abs(a - b) < e;
+const litCount = (level) => level.stelae.filter((s) => s.lit).length;
 
 // A cinematic in world space: the camera eases between keyframes { at, eye, look } from
 // wherever it was, and lines of narration come up at their times. Enter or jump skips it.
@@ -73,6 +74,7 @@ export class CourtStory {
     this.hud = hud;
     this.shown = new Set();
     this.steps = this.makeSteps();
+    this.floorIndex = this.steps.findIndex((s) => s.id === "block");
     this.index = 0;
     this.time = 0;
     this.stepTime = 0;
@@ -85,8 +87,24 @@ export class CourtStory {
     const floor = () => on(0);
     const home = COURT.BLOCKS[0];
     const lit = () => level.stelae.filter((s) => s.lit).length;
+    const moved = () => {
+      const b = level.blocks[0];
+      return b.x !== home.x || b.z !== home.z;
+    };
     const k = (a) => this.hud.k(a);
+    const press = (a, capital) => this.hud.press(a, capital);
     const keys = (...c) => this.hud.keys(...c);
+    // A second mark on where the light should go next: a ring on a mirror, a stela's glyph.
+    const story = this;
+    const aim = {
+      at: () => story.relayTarget()?.at ?? null,
+      get glyph() {
+        return story.relayTarget()?.glyph || "";
+      },
+      get kind() {
+        return story.relayTarget()?.glyph ? "goal" : "use";
+      },
+    };
     return [
       {
         id: "camp",
@@ -101,9 +119,11 @@ export class CourtStory {
         sub: "Jump the gap to the west platform",
         marker: V(4, 8.6, 39),
         done: () => on(8) && hero.pos.x < 6.2 && hero.pos.z > 35.8,
+        // An offer to hang at the gap's lip would contradict the jump.
+        quiet: ["edge"],
         hint: [
           "Jumping",
-          `Run at the gap and press ${k("jump")}. Hold it for a full jump.`,
+          `Run at the gap and ${press("jump")}, held for a full jump. ${k("pace")} switches between walking and running.`,
         ],
       },
       {
@@ -114,7 +134,7 @@ export class CourtStory {
         done: () => on(5.5) && hero.pos.x < 6.2 && hero.pos.z > 34,
         hint: [
           "Hanging",
-          `Walk to the edge and press ${k("drop")} to hang from it. Press ${k("drop")} again to let go.`,
+          `Walk to the edge and ${press("drop")} to hang from it. ${press("drop", true)} again to let go.`,
         ],
       },
       {
@@ -128,49 +148,60 @@ export class CourtStory {
           hero.pos.z > 32,
         hint: [
           "Grabbing",
-          `Jump ${k("jump")} towards the crack: the explorer catches any edge within reach. The rope marks the spot.`,
+          `Jump towards the crack with ${k("jump")}: the explorer catches any edge within reach. The rope marks the spot.`,
         ],
       },
       {
         id: "climb",
+        hintPrompt: "hang",
         objective: "Follow the expedition down into the court",
         sub: "Shimmy right along the crack and climb up",
         marker: V(9.6, 7.4, 31),
         done: () => on(7) && hero.pos.x > 8 && hero.pos.x < 10,
         hint: [
           "Climbing",
-          `${keys("KeyA", "KeyD")} shimmy along the edge · ${keys("KeyW")} climb up · ${k("drop")} let go.`,
+          `${keys("KeyA", "KeyD")} shimmy along the edge · ${keys("KeyW")} climb up · ${k("drop")} to let go.`,
         ],
       },
       {
         id: "stair",
         objective: "Follow the expedition down into the court",
-        sub: "Take the broken stair down to the floor",
-        marker: V(17, 1.3, 27),
+        sub: () =>
+          hero.feet > 6.5
+            ? "Walk north to the head of the broken stair"
+            : "Take the broken stair down to the floor",
+        // Straight at the foot of the stair runs off the platform into the sand pit.
+        marker: () =>
+          hero.feet > 6.5 && hero.pos.z > 28.4
+            ? V(9.2, 7.7, 27.2)
+            : V(17, 1.3, 27),
         done: () => floor() && hero.pos.z < 34,
       },
       {
         id: "block",
         objective: "Bring the sunlight to the three stelae",
-        sub: "A stone block sits in the sunbeam: push it out of the way",
+        sub: () =>
+          moved()
+            ? "Still in the light: pull it clear from the marked side"
+            : "A stone block sits in the sunbeam: pull it out from the marked side",
+        // Its south side, where a pull clears the beam; along the beam it only slides in the light.
         marker: () => {
           const b = level.blocks[0];
-          return V(b.x, 2.4, b.z);
+          return this.route(V(b.x, 1.2, b.z + 0.95));
         },
-        done: () => {
-          const b = level.blocks[0];
-          return b.x !== home.x || b.z !== home.z || lit() > 0;
-        },
+        done: () =>
+          lit() > 0 || !!this.beams.segments?.some((s) => s.end === "mirror"),
         hint: [
           "Blocks",
-          `Stand against the block and hold ${k("interact")}, then push ${keys("KeyW")} or pull ${keys("KeyS")}.`,
+          `Stand against the block and hold ${k("interact")}, then push ${keys("KeyW")} or pull ${keys("KeyS")}. It slides straight, so pick a side that moves it out of the light.`,
         ],
       },
       {
         id: "mirror",
         objective: "Bring the sunlight to the three stelae",
         sub: "Turn the bronze mirror to send the light onto a stela's crystal",
-        marker: () => this.lastMirror(),
+        marker: () => this.route(this.lastMirror()),
+        aim,
         done: () => lit() > 0,
         hint: [
           "Mirrors",
@@ -182,7 +213,8 @@ export class CourtStory {
         objective: "Bring the sunlight to the three stelae",
         sub: () =>
           `Stelae lit: ${lit()} of 3. Mirrors can pass the light to each other.`,
-        marker: () => this.lastMirror(),
+        marker: () => this.route(this.lastMirror()),
+        aim,
         done: () => lit() >= 3,
         hint: [
           "Relaying light",
@@ -200,10 +232,51 @@ export class CourtStory {
         id: "enter",
         objective: "The far door is open",
         sub: "Step through it",
-        marker: () => this.gate.center.clone().setY(this.gate.daisTop + 1.2),
+        marker: () =>
+          this.route(this.gate.center.clone().setY(this.gate.daisTop + 1.2)),
         done: () => false,
       },
     ];
+  }
+
+  // Where the light should go next: each mirror it reaches first lights the nearest dark stela,
+  // then passes the light on to a mirror it has not reached. Nothing while a stela is charging.
+  relayTarget() {
+    const reached = this.beams.hitMirrors;
+    if (!reached?.size || this.beams.receiving?.lit === false) return null;
+    const from = this.lastMirror();
+    const dark = this.level.stelae
+      .filter((s) => !s.lit)
+      .sort(
+        (a, b) =>
+          Math.hypot(a.x - from.x, a.z - from.z) -
+          Math.hypot(b.x - from.x, b.z - from.z),
+      )[0];
+    const next = this.level.mirrors.find((m) => !reached.has(m));
+    if (dark && (litCount(this.level) < reached.size || !next))
+      return { at: V(dark.x, 2.9, dark.z), glyph: dark.glyph };
+    return next ? { at: V(next.x, 2.4, next.z) } : null;
+  }
+
+  // Marks never point across the sand pit. The third mirror stands on an island in it: a mark
+  // across the pit leads first to the floor east of it, where a short running jump crosses
+  // either way; from the floor east of the pit, marks to the west lead north round it first.
+  route(target) {
+    const h = this.hero;
+    const island = (x, z) => x > 14 && x < 18 && z > 30 && z < 32;
+    const on = island(h.pos.x, h.pos.z) && h.feet > -0.5;
+    if (on === island(target.x, target.z)) {
+      const east =
+        !on && h.pos.x > 18 && h.pos.z > 26.2 && Math.abs(h.feet) < 0.3;
+      return east && target.x < 18 ? V(20.5, 0.9, 24.6) : target;
+    }
+    const ready =
+      !on &&
+      h.pos.x > 19.4 &&
+      h.pos.z > 29.6 &&
+      h.pos.z < 32.4 &&
+      Math.abs(h.feet) < 0.3;
+    return ready ? target : V(21, 0.9, 31);
   }
 
   // The last mirror the sunlight reaches: the one to turn next.
@@ -224,16 +297,16 @@ export class CourtStory {
       [
         { at: 0, eye: [18, 12.5, 30], look: [15, 4.5, 11] },
         { at: 4.2, eye: [16, 7.8, 21], look: [15, 4.5, 11] },
-        { at: 7.4, eye: [26, 11.5, 34.5], look: [22.5, 8.4, 40.5] },
+        { at: 7.4, eye: [20.4, 10.1, 36.8], look: [24, 8.8, 40.2] },
         { at: 9.6, eye: [19.5, 10.2, 41.5], look: [19.4, 9.3, 34.3] },
       ],
       [
         [
           0.6,
-          "Three weeks ago, the first expedition sent word from this ravine: a sunken court, a stone ring, a door.",
+          "Mira's last signal came from this ravine. Three weeks of silence.",
           4.6,
         ],
-        [5.6, "Then nothing. Their camp is still here.", 3.8],
+        [5.6, "The first expedition left a way down. Mira followed them.", 3.8],
       ],
       this.hud,
     );
@@ -275,7 +348,10 @@ export class CourtStory {
     const s = this.step;
     const sub = typeof s.sub === "function" ? s.sub() : s.sub;
     this.hud.objective(s.objective, s.objective ? sub : "");
-    this.hud.setMarkers(s.marker ? [s.marker] : []);
+    this.hud.setMarkers(
+      s.marker ? [s.marker, ...(s.aim?.at() ? [s.aim] : [])] : [],
+    );
+    this.hud.quiet = s.quiet || null;
   }
 
   update(dt) {
@@ -290,7 +366,8 @@ export class CourtStory {
         break;
       }
     if (moved) this.enter();
-    else if (typeof this.step.sub === "function") this.refresh();
+    else if (typeof this.step.sub === "function" || this.step.aim)
+      this.refresh();
     if (
       this.hintDue !== null &&
       this.stepTime > this.hintDue &&
@@ -299,7 +376,27 @@ export class CourtStory {
       const s = this.step;
       this.shown.add(s.id);
       this.hintDue = null;
-      this.hud.hint(s.hint[0], s.hint[1], 9);
+      this.hud.hint(s.hint[0], s.hint[1], 9, {
+        replacesPrompt: s.hintPrompt,
+      });
+    }
+    const memory = this.level.memories[0];
+    if (
+      this.gate.isOpen &&
+      memory &&
+      !memory.lit &&
+      !memory.found?.() &&
+      !this.shown.has("memory") &&
+      this.hero.state === "ground" &&
+      Math.hypot(this.hero.pos.x - memory.x, this.hero.pos.z - memory.z) < 6
+    ) {
+      this.shown.add("memory");
+      this.hud.hint(
+        "Stone memory",
+        "The star keeps an optional memory. Relay sunlight to its lens, then read the stone.",
+        8,
+      );
+      this.holdHints(8);
     }
   }
 }

@@ -1,12 +1,31 @@
+import {
+  mineralColor,
+  mineralSurface,
+  mineralSurfaceReady,
+} from "./mineral-surface.js";
+import { snowSurface } from "./snow-surface.js";
 import * as THREE from "three";
+import { toCreasedNormals } from "three/addons/utils/BufferGeometryUtils.js";
 import { glyphMaterial, makeGlyph } from "./glyphs.js";
 import { surface } from "./surfaces.js";
+import { prepareVisuals } from "./shader-preparation.js";
+import { IceTrail } from "./ice-trail.js";
+import { FallingIce, ICE_FALLS } from "./falling-ice.js";
+import { FrostClimbs, POCKET, SHELF } from "./frost-climbs.js";
+import { coldWaterMaterial, setColdWaterTime } from "./cold-water.js";
+import {
+  iceFractureTexture,
+  iceFractureMaterial,
+  iceFractureUV,
+  setIceFractureLoad,
+} from "./ice-fractures.js";
+import { runSteps } from "./work-steps.js";
 
 // The fourth level, the frozen reach. Mira's ring, given two glyphs of three, opened halfway,
 // onto ice: the third glyph is carved here, in a stela the ice has swallowed. The explorer
 // slides down a frozen stream and jumps its crevasse, pushes blocks of ice across a frozen
 // pond to climb out of it, crosses a lake on thin ice and on drifting floes, and frees the
-// stela with the sun disc, charged in a prism's beam. With the address whole, the great ring
+// stela with orb pulses, charged by linking to a prism. With the address whole, the great ring
 // on the island opens onto the next world.
 //
 // Everything runs along -z from the arrival ring at the origin. Heights: the stream, the
@@ -38,10 +57,18 @@ const GROUND = [
   [-4.5, -30, -44, 4.5, 0, -14, "ice"],
   [-10, -30, -44, -4.5, 3.5, -14, "rock", false],
   [4.5, -30, -44, 10, 3.5, -14, "rock", false],
-  // Across the crevasse: a narrow landing between two walls, then a shelf.
+  [-5.6, 3.4, -27.9, -4.5, 5.5, -25.5, "rock", false],
+  [-5, 4.3, -27.9, 1.8, 5.5, -25.5, "rock", false],
+  [4.5, 3.4, -38.4, 5.6, 5.5, -36, "rock", false],
+  [-1.8, 4.3, -38.4, 5, 5.5, -36, "rock", false],
+  // Across the crevasse: a narrow landing between two walls, closed by a short frozen fall
+  // (frost-climbs.js) over rock that steps down to a shelf. Only its back can be hung from.
   [-2.5, -30, -50, 2.5, 0, -46.8, "snow"],
-  [-10, -30, -50, -2.5, 3, -46.8, "rock"],
-  [2.5, -30, -50, 10, 3, -46.8, "rock"],
+  [-10, -30, -50, -2.5, 3, -46.8, "rock", false],
+  [2.5, -30, -50, 10, 3, -46.8, "rock", false],
+  [-2.5, -30, -51, 2.5, 4, -50.15, "rock", false],
+  [-2.5, -30, -51.6, 2.5, 4, -51, "rock"],
+  [-2.5, -30, -53.2, 2.5, 2, -51.6, "rock"],
   [-8, -30, -56, 8, 0, -50, "snow"],
   // The frozen pond, its walls and the plateau above its north face.
   [-6, -30, -74, 6, 0, -56, "ice"],
@@ -57,9 +84,11 @@ const GROUND = [
   [-10, -30, -103, 10, 0.3, -99, "snow"],
   // The anchored floe between the thin ice and the channel.
   [-3, -2, -125, 3, 0.2, -121.2, "snow"],
-  // The island: a notch towards the channel, then its body.
+  // The island: a notch towards the channel, then its body, and the prism's shelf against its
+  // west cliff behind a scarred fall.
   [-2.2, -30, -137.6, 2.2, 0.6, -134.4, "snow"],
   [-12, -30, -163, 12, 0.6, -137.6, "snow"],
+  [-12, -30, -147.2, -9.05, 5.6, -140.8, "rock", false],
 ];
 
 // Cliffs that frame the way and stop the camera: [minX, minZ, maxX, maxZ, top].
@@ -113,9 +142,9 @@ export const POND = {
   notch: { x: 3, z: -73 },
 };
 
-// The island: the prism whose beam charges the disc, the stela under its ice and the ring.
+// The island: the prism that charges the linked orb, the stela under its ice and the ring.
 export const ISLAND = {
-  prism: { x: -5, z: -143 },
+  prism: { x: -10.5, z: -144.7, y: SHELF.top },
   stela: { x: 0, z: -147.5 },
   ring: { x: 0, z: -155 },
   top: 0.6,
@@ -214,11 +243,16 @@ const BOULDERS = [
   [-8.9, -101.2, 0.7, 0.9],
   [8.4, -100.6, 1.9, 1.05],
   [10.4, -140.2, 0.2, 1.1],
-  [-10.6, -146, 2.4, 1.2],
+  [-10.7, -155.6, 2.4, 1.2],
   [10.6, -162, 1.3, 1],
 ];
 // World-space texture scale on the rock: one tile of the stone surface every 2.4 m.
 const ROCK_TILE = 2.4;
+const ROCK_CREASE = THREE.MathUtils.degToRad(55);
+const SNOW_CREASE = THREE.MathUtils.degToRad(40);
+const SNOW_TILE = 0.65;
+const SNOW_STRENGTH = 0.4;
+const ROCK_STRENGTH = 0.78;
 
 const GROW = 0.6;
 
@@ -231,17 +265,37 @@ export class Frozen {
     this.blocks = [];
     this.thin = [];
     this.floes = [];
+    this.cairns = [];
     this.time = 0;
   }
 
   async build() {
     this.materials();
-    this.buildGround();
+    await runSteps(this.buildGroundSteps(), () => this.assets.yieldWork?.());
+    await mineralSurfaceReady(this.scene);
     await this.buildDressing();
     await this.buildRelief();
+    this.climbs = new FrostClimbs(this);
+    await this.climbs.build();
+    this.fallingIce = new FallingIce(this.scene, this.services.sound, {
+      onWarning: (spot) => this.onIceWarning?.(spot),
+      onContact: (spot, hero) => this.onIceContact?.(spot, hero),
+    });
+    for (const definition of ICE_FALLS) {
+      const model = await this.assets.make("icicle_cluster", {
+        keepHierarchy: true,
+        surfaces: false,
+      });
+      if (!model)
+        throw new Error("Falling ice requires its local cluster asset");
+      this.iceLook(model);
+      this.fallingIce.add(model, definition);
+    }
     await this.buildPond();
     this.buildLake();
     await this.buildIsland();
+    this.trail = new IceTrail(this);
+    this.trail.build();
     this.reset();
   }
 
@@ -250,11 +304,10 @@ export class Frozen {
       grain = grainTexture(),
       stone = surface(THREE, "stone");
     this.mat = {
-      // The recipe's stone, laid on in world space: grain, pits and a rough sheen.
       rock: new THREE.MeshStandardMaterial({
         color: 0x4a5566,
         roughness: 1,
-        flatShading: true,
+        flatShading: false,
         map: stone.map,
         roughnessMap: stone.roughnessMap,
         normalMap: stone.normalMap,
@@ -263,7 +316,7 @@ export class Frozen {
       snow: new THREE.MeshStandardMaterial({
         color: 0xe9f2f6,
         roughness: 0.85,
-        flatShading: true,
+        flatShading: false,
         map: grain,
       }),
       ice: new THREE.MeshStandardMaterial({
@@ -287,10 +340,15 @@ export class Frozen {
         flatShading: true,
       }),
     };
+    mineralSurface(THREE, this.mat.rock, { strength: ROCK_STRENGTH });
+    snowSurface(THREE, this.mat.snow, {
+      tile: SNOW_TILE,
+      strength: SNOW_STRENGTH,
+    });
   }
 
   // --- the ground ------------------------------------------------------------------------------
-  buildGround() {
+  *buildGroundSteps() {
     const rock = [],
       snow = [],
       ice = [];
@@ -311,24 +369,28 @@ export class Frozen {
         // Walls that are never climbed are layered and worn; a climbable lip stays clean.
         const worn =
           grab === false && maxX - minX >= 3 && maxZ - minZ >= 3 ? 0.5 : 0;
+        const overhang = minY > 4 && maxX - minX > 6 && maxZ - minZ < 3;
         rock.push(
-          mass(
-            minX,
-            Math.max(minY, -8),
-            minZ,
-            maxX,
-            maxY - 0.12,
-            maxZ,
-            rand,
-            0.5,
-            worn,
-          ),
+          overhang
+            ? cantilever(minX, minY, minZ, maxX, maxY - 0.12, maxZ)
+            : mass(
+                minX,
+                Math.max(minY, -8),
+                minZ,
+                maxX,
+                maxY - 0.12,
+                maxZ,
+                rand,
+                0.5,
+                worn,
+              ),
         );
-        if (maxY - minY > 0.3)
+        if (!overhang && maxY - minY > 0.3)
           snow.push(
             slab(minX, maxY - 0.14, minZ, maxX, maxY, maxZ, rand, 0.08),
           );
       }
+      yield;
     }
     for (const [minX, minZ, maxX, maxZ, top] of CLIFFS) {
       this.world.add(minX, -30, minZ, maxX, top, maxZ, "rock", null, {
@@ -338,16 +400,28 @@ export class Frozen {
       snow.push(
         slab(minX, top - 0.1, minZ, maxX, top + 0.35, maxZ, rand, 0.25),
       );
+      yield;
     }
     // Snow settles on every ledge the layers leave.
     const [walls, ledges] = splitLedges(rock);
+    yield;
     this.merged(walls, this.mat.rock, true, 1 / ROCK_TILE);
+    yield;
     this.merged([...snow, ...ledges], this.mat.snow, true);
+    yield;
     this.merged(ice, this.mat.ice, false);
   }
 
   merged(geos, material, cast, uvScale = 1) {
-    const mesh = new THREE.Mesh(mergeAll(geos, uvScale), material);
+    const geometry = mergeAll(geos, uvScale);
+    const crease =
+      material === this.mat.rock
+        ? ROCK_CREASE
+        : material === this.mat.snow
+          ? SNOW_CREASE
+          : 0;
+    if (crease) toCreasedNormals(geometry, crease);
+    const mesh = new THREE.Mesh(geometry, material);
     mesh.receiveShadow = true;
     mesh.castShadow = cast;
     this.scene.add(mesh);
@@ -375,12 +449,23 @@ export class Frozen {
         (await this.place("snow_pine", x, z, { yaw, s })) ||
         this.stand(fallbackPine(), x, z, yaw, s);
       o.traverse((m) => m.isMesh && (m.castShadow = true));
-      this.world.addRound(x, z, 0.5 * s, -10, 7 * s, "prop");
+      this.world.addRound(x, z, 0.5 * s, -10, o.position.y + 7 * s, "prop");
     }
     for (const [x, z, yaw] of CAIRNS) {
-      if (!(await this.place("frost_cairn", x, z, { yaw })))
+      const model =
+        (await this.place("frost_cairn", x, z, { yaw })) ||
         this.stand(fallbackCairn(), x, z, yaw, 1);
-      this.world.addRound(x, z, 0.35, -10, 1.1, "prop", null, { cam: false });
+      this.cairns.push({ x, z, model });
+      this.world.addRound(
+        x,
+        z,
+        0.35,
+        -10,
+        model.position.y + 1.1,
+        "prop",
+        null,
+        { cam: false },
+      );
     }
     for (const [x, z, yaw, s] of SPIRES) await this.spire(x, z, yaw, s);
   }
@@ -430,8 +515,9 @@ export class Frozen {
       "boulder_cluster",
       BOULDERS,
       (o, [x, z, yaw, k]) => {
-        this.world.addRound(x, z, 1.25 * k, -10, 2.2 * k, "prop");
-        return [x, this.groundAt(x, z), z, yaw, k];
+        const ground = this.groundAt(x, z);
+        this.world.addRound(x, z, 1.25 * k, -10, ground + 2.2 * k, "prop");
+        return [x, ground, z, yaw, k];
       },
       { snowcap: true },
     );
@@ -465,7 +551,7 @@ export class Frozen {
         material = m.material.clone();
       if (snowcap) {
         // Frost-slate stone, white wherever a face looks up.
-        material.color.set(0xffffff);
+        material.color.copy(mineralColor(material, 0xffffff));
         geometry = geometry.clone();
         const n = geometry.attributes.normal,
           col = new Float32Array(n.count * 3);
@@ -484,7 +570,13 @@ export class Frozen {
         material.vertexColors = true;
       } else {
         const hsl = material.color.getHSL({});
-        if (hsl.h > 0.45 && hsl.h < 0.65 && hsl.s > 0.2) {
+        // Glacier white is cyan enough to pass the hue test; its authored roughness keeps frost matte.
+        if (
+          hsl.h > 0.45 &&
+          hsl.h < 0.65 &&
+          hsl.s > 0.2 &&
+          material.roughness < 0.6
+        ) {
           material.roughness = 0.1;
           material.metalness = 0.15;
           material.envMapIntensity = 1.3;
@@ -514,7 +606,14 @@ export class Frozen {
         opts: { surfaces: false },
       })) || this.stand(fallbackSpire(), x, z, yaw, s);
     this.iceLook(o);
-    return this.world.addRound(x, z, 1.05 * s, -10, 4 * s, "prop");
+    return this.world.addRound(
+      x,
+      z,
+      1.05 * s,
+      -10,
+      o.position.y + 4 * s,
+      "prop",
+    );
   }
 
   // Ice assets are flat colour: here they gain gloss.
@@ -525,7 +624,12 @@ export class Frozen {
       const c = m.material.color;
       if (!c) return;
       const hsl = c.getHSL({});
-      if (hsl.h > 0.45 && hsl.h < 0.65 && hsl.s > 0.2) {
+      if (
+        hsl.h > 0.45 &&
+        hsl.h < 0.65 &&
+        hsl.s > 0.2 &&
+        m.material.roughness < 0.6
+      ) {
         m.material = m.material.clone();
         m.material.roughness = 0.1;
         m.material.metalness = 0.15;
@@ -560,7 +664,7 @@ export class Frozen {
     });
     this.blocks.push(block);
     this.settleBlock(block, block.x, block.z);
-    // Struck with the disc, a block shatters and forms again where it began.
+    // Pulsed by the orb, a block shatters and forms again where it began.
     block.target = {
       radius: 1.1,
       center: () => V(block.x, 0.95, block.z),
@@ -718,17 +822,13 @@ export class Frozen {
   buildLake() {
     const water = new THREE.Mesh(
       new THREE.PlaneGeometry(120, 60).rotateX(-Math.PI / 2),
-      new THREE.MeshStandardMaterial({
-        color: 0x0c2a3b,
-        roughness: 0.05,
-        metalness: 0.4,
-        envMapIntensity: 1.1,
-      }),
+      coldWaterMaterial(THREE),
     );
     water.position.set(0, WATER, -120);
     water.receiveShadow = true;
     this.scene.add(water);
     this.water = water;
+    const fractures = iceFractureTexture(THREE);
     const rand = seeded(19);
     for (const [minX, minZ, maxX, maxZ] of THIN) {
       const box = this.world.add(
@@ -744,8 +844,9 @@ export class Frozen {
       );
       const mesh = new THREE.Mesh(
         slab(minX, THIN_TOP - 0.18, minZ, maxX, THIN_TOP, maxZ, rand, 0.02),
-        this.mat.thin.clone(),
+        iceFractureMaterial(this.mat.thin, fractures),
       );
+      iceFractureUV(THREE, mesh.geometry, box, this.thin.length);
       mesh.receiveShadow = true;
       this.scene.add(mesh);
       this.thin.push({ box, mesh, phase: "still", t: 0 });
@@ -775,7 +876,7 @@ export class Frozen {
         null,
         { unsafe: true, grab: false },
       );
-      this.floes.push({ ...def, mesh, box, x: 0 });
+      this.floes.push({ ...def, mesh, box, x: 0, y: 0 });
     }
   }
 
@@ -810,13 +911,22 @@ export class Frozen {
     for (const f of this.floes) {
       const riding = this.onFloe(f, hero);
       const x = this.floeX(f, this.time);
-      const dx = x - f.x;
+      // The swell moves the standing surface too, or boots sink into the drawn floe.
+      const y = Math.sin(this.time * 1.3 + f.phase * 6) * 0.03;
+      const dx = x - f.x,
+        dy = y - f.y;
       f.x = x;
+      f.y = y;
       f.box.minX += dx;
       f.box.maxX += dx;
+      f.box.minY += dy;
+      f.box.maxY += dy;
       f.mesh.position.x = x;
-      f.mesh.position.y = Math.sin(this.time * 1.3 + f.phase * 6) * 0.03;
-      if (riding) hero.pos.x += dx;
+      f.mesh.position.y = y;
+      if (riding) {
+        hero.carry(dx, 0);
+        hero.feet += dy;
+      }
     }
     for (const t of this.thin) {
       t.t += dt;
@@ -833,6 +943,7 @@ export class Frozen {
         t.t = 0;
         sound?.play("crack");
       } else if (t.phase === "crack") {
+        setIceFractureLoad(t.mesh.material, t.t / CRACK);
         t.mesh.material.color
           .copy(THIN_ICE)
           .lerp(FROST, Math.min(1, t.t / CRACK) * 0.6);
@@ -857,6 +968,7 @@ export class Frozen {
         t.mesh.visible = true;
         t.mesh.position.y = 0;
         t.mesh.material.color.copy(THIN_ICE);
+        setIceFractureLoad(t.mesh.material, 0);
       } else if (t.phase === "freeze") {
         t.mesh.material.opacity = 0.86 * Math.min(1, t.t / 1.2);
         if (t.t >= 1.2) {
@@ -870,9 +982,9 @@ export class Frozen {
   // --- the island: the prism, the frozen stela and the great ring -------------------------------
   async buildIsland() {
     const I = ISLAND;
-    // The prism: a crystal whose light climbs straight up; fly the disc through it.
+    // The prism emits a vertical light column.
     const p = I.prism;
-    const y = I.top;
+    const y = p.y ?? I.top;
     const crystal = await this.assets.make("crystal_emitter", {
       keepHierarchy: true,
     });
@@ -889,17 +1001,19 @@ export class Frozen {
     }
     this.world.addRound(p.x, p.z, 0.62, y - 1, y + 2.1, "prop");
     const center = V(p.x + at[0], y + at[1], p.z + at[2]);
+    // Its light answers only on the shelf, so the climb is the way to the charge.
+    const reached = () => this.climbs.onShelf(this.climbs.hero);
     this.prism = {
       center,
       beam: {
         from: center.clone(),
         to: center.clone().add(V(0, 70, 0)),
-        active: () => true,
+        active: reached,
       },
       target: {
         radius: 0.4,
         center: () => center,
-        alive: () => true,
+        alive: reached,
         onHit: () => {},
       },
     };
@@ -1021,7 +1135,7 @@ export class Frozen {
     }
   }
 
-  // A charged disc knocks away one layer of the ice; a dark one only rings on it. Left alone
+  // A charged orb pulse knocks away one layer of the ice; a dark one only rings on it. Left alone
   // for too long, the ice heals a layer.
   strike(disc) {
     const sound = this.services.sound;
@@ -1078,24 +1192,33 @@ export class Frozen {
   // --- the frame ---------------------------------------------------------------------------------
   update(dt, hero) {
     this.time += dt;
+    setColdWaterTime(this.water.material, this.time);
     this.updateBlocks(dt, hero);
     this.updateLake(dt, hero);
     this.updateCasing(dt);
+    this.fallingIce?.update(dt, hero);
+    this.climbs?.update(dt, hero);
     const grounded = ["ground", "roll", "grab"].includes(hero.state);
     if (grounded && !this.world.unsafeAt(hero.pos.x, hero.pos.z, hero.feet)) {
       const k = SECTIONS.findLastIndex((s) => hero.pos.z <= s.z);
       this.reached = Math.max(this.reached, k);
     }
+    this.trail?.update(dt, hero);
   }
 
   interactables() {
-    return this.blocks
-      .filter((b) => b.state === "rest")
-      .map((b) => ({ kind: "block", box: b.box, ref: b }));
+    return [
+      ...(this.climbs?.interactables() ?? []),
+      ...(this.trail?.interactables() ?? []),
+      ...this.blocks
+        .filter((b) => b.state === "rest")
+        .map((b) => ({ kind: "block", box: b.box, ref: b })),
+    ];
   }
 
   // The HUD's part: the objective and its markers.
   guide(hud, hero, disc) {
+    if (this.trail?.guide(hud, hero)) return;
     const section = SECTIONS[this.reached]?.id;
     const charged = disc?.charged;
     let key, objective, sub, marks;
@@ -1104,6 +1227,17 @@ export class Frozen {
       objective = "";
       sub = "";
       marks = [];
+    } else if (section === "stream" && hero.pos.z < -46.5) {
+      key = `fall:${!!hero.axes}`;
+      objective = "Climb the frozen fall";
+      sub = hero.axes
+        ? "Jump at the scarred ice and climb with Mira's axes"
+        : "Take Mira's ice axes from its foot";
+      marks = [
+        hero.axes
+          ? V(POCKET.x, POCKET.top + 0.6, POCKET.face - 0.8)
+          : V(POCKET.axes.x, 1, POCKET.axes.z),
+      ];
     } else if (section === "stream") {
       key = "stream";
       objective = "Follow Mira's tracks";
@@ -1115,7 +1249,7 @@ export class Frozen {
       key = `pond:${stuck}`;
       objective = "Climb out of the frozen pond";
       sub = stuck
-        ? "The block is stuck: shatter it with the disc to start again"
+        ? "The block is stuck: pulse it to return it to its starting point"
         : "Push the ice block under the low notch in the wall";
       marks = [V(POND.notch.x, 4.8, POND.notch.z - 1)];
     } else if (section === "lake") {
@@ -1132,8 +1266,10 @@ export class Frozen {
       key = `island:${charged}:${this.broken}`;
       objective = "Free the third glyph";
       sub = charged
-        ? `Strike the ice with the glowing disc (${this.broken} of ${this.layers.length})`
-        : "Charge the disc in the prism's beam";
+        ? `Pulse the ice with the charged orb (${this.broken} of ${this.layers.length})`
+        : this.climbs.onShelf(hero)
+          ? "Aim at the prism and link to charge the orb"
+          : "Climb the scarred fall to the prism's shelf";
       marks = [
         charged
           ? V(ISLAND.stela.x, ISLAND.top + 3.4, ISLAND.stela.z)
@@ -1145,16 +1281,19 @@ export class Frozen {
     this.guideKey = key;
   }
 
-  // Everything this level can show, shown once for the shader compiler.
   prepareForCompile(on) {
-    for (const t of this.thin) t.mesh.visible = true;
-    for (const b of this.blocks) b.mesh.visible = true;
-    for (const l of this.layers) l.node.visible = true;
-    void on;
+    this.fallingIce?.prepareForCompile(on);
+    this.climbs?.prepareForCompile(on);
+    prepareVisuals(this, on, [
+      ...this.thin.map(({ mesh }) => [mesh, "visible", true]),
+      ...this.blocks.map(({ mesh }) => [mesh, "visible", true]),
+      ...this.layers.map(({ node }) => [node, "visible", true]),
+    ]);
   }
 
   reset() {
     this.time = 0;
+    setColdWaterTime(this.water.material, 0);
     this.reached = 0;
     this.broken = 0;
     this.lastStrike = 0;
@@ -1176,6 +1315,7 @@ export class Frozen {
       t.mesh.position.y = 0;
       t.mesh.material.opacity = 0.86;
       t.mesh.material.color.copy(THIN_ICE);
+      setIceFractureLoad(t.mesh.material, 0);
     }
     for (const f of this.floes) {
       const x = this.floeX(f, 0);
@@ -1193,6 +1333,9 @@ export class Frozen {
     if (this.casingBox) this.casingBox.solid = true;
     if (this.glyphMat) this.glyphMat.emissiveIntensity = 0;
     for (const m of this.stelaLens || []) m.emissiveIntensity = 0;
+    this.trail?.reset();
+    this.fallingIce?.reset();
+    this.climbs?.reset();
   }
 }
 
@@ -1340,6 +1483,53 @@ function mass(
   return g.toNonIndexed();
 }
 
+function cantilever(minX, minY, minZ, maxX, maxY, maxZ) {
+  const left = (minX + maxX) / 2 < 0;
+  const root = left ? minX : maxX;
+  const direction = left ? 1 : -1;
+  const width = maxX - minX;
+  const depth = maxZ - minZ;
+  const sections = [0, 0.16, 0.34, 0.53, 0.7, 0.86, 1];
+  const rings = sections.map((fraction, i) => {
+    const x = root + direction * width * fraction;
+    const taper = Math.max(0, (fraction - 0.72) / 0.28);
+    const front = maxZ - depth * (taper * 0.24 + (i % 3) * 0.027);
+    const back = minZ + depth * (taper * 0.31 + ((i + 1) % 3) * 0.024);
+    const bottom = minY + taper * taper * 0.44 + (i % 2) * 0.035;
+    const top = maxY - taper * 0.22 - (i % 3) * 0.045;
+    return [
+      [x, bottom + 0.055, front],
+      [x, bottom, back],
+      [x, top - 0.07, back],
+      [x, top, front],
+    ];
+  });
+  const vertices = [];
+  const triangle = (a, b, c) => {
+    if (left) vertices.push(...a, ...b, ...c);
+    else vertices.push(...c, ...b, ...a);
+  };
+  for (let i = 0; i < rings.length - 1; i++)
+    for (let edge = 0; edge < 4; edge++) {
+      const next = (edge + 1) % 4;
+      triangle(rings[i][edge], rings[i][next], rings[i + 1][next]);
+      triangle(rings[i][edge], rings[i + 1][next], rings[i + 1][edge]);
+    }
+  const first = rings[0];
+  const last = rings.at(-1);
+  triangle(first[0], first[2], first[1]);
+  triangle(first[0], first[3], first[2]);
+  triangle(last[0], last[1], last[2]);
+  triangle(last[0], last[2], last[3]);
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(vertices, 3),
+  );
+  geometry.computeVertexNormals();
+  return geometry;
+}
+
 // A thin slab with a slightly broken outline: snow on rock, a sheet of ice, a floe.
 function slab(minX, minY, minZ, maxX, maxY, maxZ, rand, rough) {
   const w = maxX - minX,
@@ -1392,7 +1582,7 @@ function splitLedges(geos) {
       b.fromArray(p, t + 3).sub(a);
       c.fromArray(p, t + 6).sub(a);
       const n = b.cross(c).normalize();
-      (n.y > 0.55 ? up : keep).push(...p.slice(t, t + 9));
+      (n.y > 0.82 ? up : keep).push(...p.slice(t, t + 9));
     }
     for (const [list, out] of [
       [keep, walls],

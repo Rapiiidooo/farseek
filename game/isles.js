@@ -2,10 +2,17 @@ import * as THREE from "three";
 import { isleAt } from "./world.js";
 import { PROP_SHAPES } from "./court.js";
 import { plantGrass, clumps } from "./grass.js";
+import { prepareVisuals } from "./shader-preparation.js";
+import { FerrySurvey } from "./ferry-survey.js";
+import { mineralBaseColor } from "./mineral-surface.js";
+import { PistolCase } from "./pistol-case.js";
+import { DrapedRope } from "./isle-ropes.js";
+import { IsleSwings } from "./isle-swings.js";
+import { finishSteps, runSteps } from "./work-steps.js";
 
 // The third level, the dawn isles. Mira's expedition crossed them on ropes while dawn drifted
-// the isles together, and the ropes hang snapped from the rims. The explorer carries her disc:
-// charged in a crystal's beam and thrown at a builders' pylon, it wakes the pylon, which throws
+// the isles together, and the ropes hang snapped from the rims. The held Relay orb links to
+// a crystal for charge, then pulses a builders' pylon to project
 // a stepped bridge of light to the next isle for a few seconds. Further on, one isle still
 // drifts between two others, a line of small stones gives way under the feet, and a last pair
 // of pylons must be woken on one charge with a bridge between them. Her last camp, her journal
@@ -23,9 +30,9 @@ const SAGE = [0x6b7852, 0xb8bb88];
 // moment after they are stood on and rise again a few seconds later. A yaw of -0.44 turns
 // the cap's two boulders to the sides, clear of a path along z.
 export const ISLES = [
-  { id: "arrival", x: 0, z: -2, top: 0, s: 1.3, yaw: 0.4 },
-  { id: "step1", x: 1.4, z: -14.6, top: 0.4, s: 0.35, yaw: 1.1 },
-  { id: "step2", x: 3.5, z: -21, top: 1.0, s: 0.35, yaw: 2.3 },
+  { id: "arrival", x: 0, z: 3, top: 0, s: 1.3, yaw: 0.4 },
+  { id: "step1", x: 1.4, z: -9.6, top: 0.4, s: 0.35, yaw: 1.1 },
+  { id: "step2", x: 3.6, z: -16.6, top: 1.0, s: 0.45, yaw: -0.44 },
   { id: "well", x: 4, z: -31, top: 1.6, s: 0.9, yaw: 0.9 },
   { id: "gap", x: 6, z: -52, top: 2.6, s: 1.0, yaw: 2.0 },
   { id: "pair", x: 10, z: -71, top: 3.8, s: 0.8, yaw: 3.1 },
@@ -84,10 +91,11 @@ export const PYLONS = [
   { id: "twinB", on: "rock", to: "ledge", x: 12, lasts: 10 },
   // The relay: one charge, a short bridge to a small isle, then the far pylon from there.
   { id: "relay1", on: "landing", to: "midway", x: 12, lasts: 7 },
-  { id: "relay2", on: "camp", to: "midway", x: 12, lasts: 9 },
+  // It ends short of the small isle: the last stretch is a swing from the expedition's rope.
+  { id: "relay2", on: "camp", to: "midway", x: 12, lasts: 12, gap: 6.2 },
 ];
 
-// The crystals whose beams charge the disc, one on each isle that has a pylon to wake, placed
+// The crystals that charge the linked orb, one on each isle that has a pylon to wake, placed
 // from the isle's centre.
 export const WELLS = [
   { on: "well", dx: -2.4, dz: -1.2 },
@@ -96,15 +104,16 @@ export const WELLS = [
   { on: "landing", dx: -2.6, dz: 1.2 },
 ];
 
-// Where the expedition roped across, a rope hangs snapped from the rim facing the next isle.
+// Where the expedition roped across, a rope hangs snapped from the rim facing the next isle,
+// [isle, toward, sideways offset in metres] clear of the pylons and bridges on that rim.
 export const ROPES = [
   ["arrival", "step1"],
-  ["well", "gap"],
-  ["gap", "pair"],
-  ["pair", "rock"],
+  ["well", "gap", -1.9],
+  ["gap", "pair", -1.8],
+  ["pair", "rock", -1.8],
   ["ledge", "ferry"],
   ["far", "stone1"],
-  ["landing", "midway"],
+  ["landing", "midway", 2],
 ];
 
 // What the expedition left on the way, and the builders' fallen masonry by their pylons:
@@ -125,6 +134,7 @@ const DRESSING = [
 export const CAMP = {
   tent: { dx: -3.6, dz: 1.5, yaw: 0.5 },
   crates: { dx: 3.2, dz: 2.6, yaw: -0.4 },
+  pistols: { dx: 1.96, dz: 3.1, yaw: -0.25 },
   banner: { dx: -1.6, dz: 5.2, yaw: 0.3 },
   ring: { dx: 0, dz: -3.8 },
   glyphs: ["peak", "waves", null],
@@ -150,18 +160,26 @@ export class Isles {
     this.isles = [];
     this.pylons = [];
     this.wells = [];
+    this.ropes = [];
     this.time = 0;
   }
 
   async build() {
     const proto = await this.assets.make("floating_isle");
-    this.shape = proto ? measureIsle(proto) : null;
+    this.shape = proto
+      ? await runSteps(measureIsleSteps(proto), () => this.assets.yieldWork?.())
+      : null;
     for (const def of ISLES) await this.addIsle(def);
     for (const def of WELLS) await this.addWell(def);
     for (const def of PYLONS) await this.addPylon(def);
-    for (const [on, toward] of ROPES) await this.addRope(on, toward);
+    for (const [on, toward, side] of ROPES)
+      await this.addRope(on, toward, side);
+    this.swings = new IsleSwings(this);
+    await this.swings.build(this.ropes[0]?.material);
     await this.buildCamp();
     for (const spot of DRESSING) await this.dress(...spot);
+    this.survey = new FerrySurvey(this);
+    await this.survey.build();
     await this.plantGrass();
     for (const i of this.isles) if (i.drift) this.measureDrift(i);
     this.reset();
@@ -336,7 +354,7 @@ export class Isles {
     } else this.scene.add(fallbackWell(def.x, y, def.z));
     this.world.addRound(def.x, def.z, 0.62, y - 1, y + 2.1, "prop");
     const center = V(def.x + at[0], y + at[1], def.z + at[2]);
-    // The crystal's light climbs straight up into the sky: fly the disc through it.
+    // The crystal's light climbs straight up into the sky.
     const beam = {
       from: center.clone(),
       to: center.clone().add(V(0, 70, 0)),
@@ -350,7 +368,6 @@ export class Isles {
       ...def,
       center,
       beam,
-      // Aimed at, the disc flies into the crystal and back, through the beam.
       target: {
         radius: 0.4,
         center: () => center,
@@ -402,7 +419,9 @@ export class Isles {
       ...spec,
       dir,
       z: emitZ - dir * reach,
-      to: this.rimAlong(far, spec.x, -dir) + dir * LANDING,
+      to:
+        this.rimAlong(far, spec.x, -dir) +
+        (spec.gap ? -dir * spec.gap : dir * LANDING),
     };
     const y = this.groundAt(def.x, emitZ);
     const yaw = def.dir < 0 ? Math.PI : 0;
@@ -449,7 +468,7 @@ export class Isles {
     this.pylons.push(pylon);
   }
 
-  // The disc on a lens: charged, the pylon wakes and its bridge runs out; otherwise it rings.
+  // An orb pulse on a lens: charged, the pylon wakes and its bridge runs out; otherwise it rings.
   strike(pylon, disc) {
     const sound = this.services.sound;
     if (!disc.charged) {
@@ -465,30 +484,20 @@ export class Isles {
     this.onWake?.(pylon, fresh);
   }
 
-  async addRope(on, toward) {
+  async addRope(on, toward, side = 0) {
     const isle = this.isle(on),
       next = this.isle(toward);
     if (!isle || !next) return;
-    const c = isle.collider;
-    const a = Math.atan2(next.collider.z - c.z, next.collider.x - c.x);
-    const p = isleAt(c, c.x + Math.cos(a) * 50, c.z + Math.sin(a) * 50);
-    const rim = p.rim - 0.08;
-    const x = c.x + Math.cos(a) * rim,
-      z = c.z + Math.sin(a) * rim;
-    const lip = isleAt(c, x, z).top;
     const o = await this.assets.make("expedition_rope", {
       keepHierarchy: true,
     });
     if (!o) return;
-    // Hung from the lip, turned so its face looks out over the drop.
-    const yaw = Math.atan2(Math.cos(a), Math.sin(a));
-    const [ax, ay, az] = o.userData.anchor || [0, 1.75, 0];
-    const cy = Math.cos(yaw),
-      sy = Math.sin(yaw);
-    o.position.set(x - (ax * cy + az * sy), lip - ay, z - (-ax * sy + az * cy));
-    o.rotation.y = yaw;
-    this.scene.add(o);
-    if (!this.firstRope) this.firstRope = V(x, lip, z);
+    const rope = new DrapedRope(isle, next, {
+      side,
+      seed: this.ropes.length + 1,
+    }).build(this.scene, o);
+    this.ropes.push(rope);
+    if (!this.firstRope) this.firstRope = rope.anchor.clone();
   }
 
   async dress(name, on, dx, dz, yaw, s) {
@@ -572,6 +581,10 @@ export class Isles {
       },
       use: () => this.onRead?.() ?? false,
     };
+    // Her field case, open on a crate beside the others, with both pistols inside.
+    const P = at(CAMP.pistols);
+    this.pistolCase = new PistolCase(this.scene, this.world);
+    this.pistolCase.build({ ...P, y: this.groundAt(P.x, P.z) });
     const R = at(CAMP.ring);
     const ringY = this.groundAt(R.x, R.z);
     const { Gate } = this.services;
@@ -585,7 +598,13 @@ export class Isles {
       sound: this.services.sound,
       assets: this.assets,
     });
-    await this.ring.build({ x: R.x, z: R.z, glyphs: CAMP.glyphs, model });
+    await this.ring.build({
+      x: R.x,
+      z: R.z,
+      glyphs: CAMP.glyphs,
+      model,
+      base: "isles",
+    });
   }
 
   // --- the frame ------------------------------------------------------------------------------
@@ -593,6 +612,8 @@ export class Isles {
     this.time += dt;
     this.drift(dt, hero);
     this.crumble(dt, hero);
+    for (const rope of this.ropes) rope.update(dt);
+    this.swings?.update(dt);
     for (const p of this.pylons) {
       p.bridge.update(dt);
       // A woken lens burns while its bridge holds and flickers as it starts to go.
@@ -615,6 +636,7 @@ export class Isles {
         ISLES.findIndex((d) => d.id === standing.id),
       );
     }
+    this.survey?.update(dt, hero);
   }
 
   standing(hero) {
@@ -640,7 +662,7 @@ export class Isles {
       if (!i.drift) continue;
       const riding = this.grounded(i, hero);
       const dz = this.placeFerry(i, this.driftT);
-      if (riding) hero.pos.z += dz;
+      if (riding) hero.carry(0, dz);
     }
   }
 
@@ -706,8 +728,18 @@ export class Isles {
     this.solid(isle, true);
   }
 
+  get pistolsTaken() {
+    return !this.pistolCase || this.pistolCase.taken;
+  }
+
+  pistolMark() {
+    return (this.pistolMarker ??= this.pistolCase.center
+      .clone()
+      .add(V(0, 0.55, 0)));
+  }
+
   interactables() {
-    return this.note
+    const items = this.note
       ? [
           {
             kind: "use",
@@ -717,10 +749,16 @@ export class Isles {
           },
         ]
       : [];
+    const pistols = this.pistolCase?.interactable(
+      () => this.onTakePistols?.() ?? false,
+    );
+    if (pistols) items.push(pistols);
+    return [...items, ...(this.survey?.interactables() ?? [])];
   }
 
   // The HUD's part: the objective and its markers, from how far the explorer has come.
   guide(hud, hero, disc) {
+    if (this.survey?.guide(hud, hero, disc)) return;
     const P = Object.fromEntries(this.pylons.map((p) => [p.id, p]));
     const W = Object.fromEntries(this.wells.map((w) => [w.on, w]));
     const landing = (id) => {
@@ -730,18 +768,34 @@ export class Isles {
     const lens = (p) => p.lens.clone().add(V(0, 0.5, 0));
     const well = (w) => w.center.clone().add(V(0, 0.9, 0));
     const charged = disc?.charged;
+    // From the catch to the landing, so the flight after letting go keeps the swing's guidance.
+    if (hero?.state === "swing") this.onRope = true;
+    else if (hero?.state !== "air") this.onRope = false;
+    const swinging = this.onRope;
     const at = this.reached;
     const past = (id) => at >= ISLES.findIndex((d) => d.id === id);
     let objective = "",
       sub = "",
       marks = [],
       key;
-    if (this.read && !this.ring.isOpen) key = "opening";
+    if (this.read && !this.pistolsTaken) {
+      key = "pistols";
+      objective = "Take Mira's pistols";
+      sub = "Her case lies open on the crate beside her journal";
+      marks = [this.pistolMark()];
+    } else if (this.read && !this.ring.isOpen) key = "opening";
     else if (this.read) {
       key = "through";
       objective = "Follow Mira through her ring";
       sub = "Given two glyphs of three, it opened halfway: onto ice";
       marks = [this.ring.center.clone().add(V(0, -1.8, 0))];
+    } else if (!past("well") && (this.on === "step2" || swinging)) {
+      key = `swing:${swinging}`;
+      objective = "Swing across the gap";
+      sub = swinging
+        ? "Let go at the front of the swing, over the far isle"
+        : "Run and jump to catch the rope";
+      marks = [swinging ? landing("well") : this.swings.mark("first")];
     } else if (!past("well")) {
       key = `trail:${at}`;
       objective = "Follow Mira's trail";
@@ -754,8 +808,8 @@ export class Isles {
       sub = b.on
         ? "Cross before the light fades"
         : charged
-          ? "The disc glows: throw it at the pylon's lens"
-          : "Throw the disc through the crystal's beam to charge it";
+          ? "The orb is charged: pulse the pylon's lens"
+          : "Aim at the crystal and link to charge the orb";
       marks = [b.on ? landing("gap") : charged ? lens(P.first) : well(W.well)];
     } else if (!past("pair")) {
       const b = P.across.bridge;
@@ -764,8 +818,8 @@ export class Isles {
       sub = b.on
         ? "Cross before the light fades"
         : charged
-          ? "Throw the glowing disc at the far pylon's lens"
-          : "Charge the disc in the crystal's beam";
+          ? "Pulse the far pylon's lens with the charged orb"
+          : "Aim at the crystal and link to charge the orb";
       marks = [b.on ? landing("pair") : charged ? lens(P.across) : well(W.gap)];
     } else if (!past("ledge")) {
       const a = P.twinA.bridge,
@@ -779,8 +833,8 @@ export class Isles {
         : !dark.length
           ? "Cross both bridges before they fade"
           : charged
-            ? "Wake both pylons before the disc's glow fades"
-            : "Charge the disc in the crystal's beam";
+            ? "Pulse both pylons before the orb's charge fades"
+            : "Aim at the crystal and link to charge the orb";
       marks = !dark.length
         ? [landing("ledge")]
         : charged
@@ -813,52 +867,71 @@ export class Isles {
       const a = P.relay1.bridge,
         b = P.relay2.bridge;
       const stranded = this.on === "midway" && !charged && !b.on && disc?.ready;
-      key = `relay:${a.on}:${b.on}:${charged}:${stranded}`;
+      const mid = this.isle("midway").collider;
+      const aboard =
+        this.on === "midway" &&
+        isleAt(mid, hero.pos.x, hero.pos.z).rho < mid.r + 1;
+      key = `relay:${a.on}:${b.on}:${charged}:${stranded}:${swinging}:${aboard}`;
       objective = "Carry the light";
-      if (b.on) {
+      if (swinging) {
+        sub = "Let go over the bridge of light";
+        marks = [V(P.relay2.x, P.relay2.emit.y + 0.8, P.relay2.to)];
+      } else if (b.on && aboard) {
+        sub = "Swing from the rope onto the bridge before it fades";
+        marks = [this.swings.mark("relay")];
+      } else if (b.on) {
         sub = "Cross before the light fades";
         marks = [landing("camp")];
       } else if (stranded) {
-        sub =
-          "No light here: throw back through the crystal's beam, or step off";
+        sub = "Aim back at the crystal and link to recharge, or step off";
         marks = [well(W.landing)];
       } else if (this.on === "midway") {
-        sub = "Wake the far pylon before the disc's glow fades";
+        sub = "Pulse the far pylon, then swing onto its bridge";
         marks = [lens(P.relay2)];
       } else if (a.on) {
         sub = charged
-          ? "Cross while the disc still glows"
-          : "Charge the disc again, then cross";
+          ? "Cross while the orb is still charged"
+          : "Link to the crystal to recharge the orb, then cross";
         marks = [charged ? landing("midway") : well(W.landing)];
       } else {
         sub = charged
-          ? "Wake the pylon, then cross while the disc still glows"
-          : "Charge the disc in the crystal's beam";
+          ? "Pulse the pylon, then cross while the orb is charged"
+          : "Aim at the crystal and link to charge the orb";
         marks = [charged ? lens(P.relay1) : well(W.landing)];
       }
     } else {
-      key = "camp";
-      objective = "Find Mira's camp";
-      sub = "Her journal must be here";
-      marks = [this.notePos.clone().add(V(0, 0.8, 0))];
+      key = `camp:${this.pistolsTaken}`;
+      objective = "Search Mira's camp";
+      sub = this.pistolsTaken
+        ? "Her journal must be here"
+        : "Her journal and her open pistol case are by the crates";
+      marks = [
+        this.notePos.clone().add(V(0, 0.8, 0)),
+        this.pistolsTaken ? null : this.pistolMark(),
+      ];
     }
     hud.objective(objective, sub);
     if (this.guideKey !== key) hud.setMarkers(marks.filter(Boolean));
     this.guideKey = key;
-    void hero;
   }
 
-  // Everything the isles can show during play, shown once for the shader compiler.
   prepareForCompile(on) {
-    const R = this.ring;
-    R.disc.visible = on || R.phase !== "closed";
-    R.uniforms.uClear.value = on ? 1 : R.isOpen ? 1.02 : 0;
-    for (const p of this.pylons) {
-      if (on) p.bridge.wake(p.lasts);
-      else p.bridge.off();
-      p.bridge.update(on ? 1 : 0);
-      for (const m of p.mats) m.emissiveIntensity = on ? 3 : 0;
-    }
+    prepareVisuals(this, on, [
+      [this.ring.disc, "visible", true],
+      [this.ring.uniforms.uClear, "value", 1],
+      ...this.pylons.flatMap(({ bridge, mats }) => [
+        [bridge.mesh, "visible", true],
+        [bridge.uniforms.uGrow, "value", 1],
+        [bridge.uniforms.uFade, "value", 0],
+        [bridge.uniforms.uWarn, "value", 0],
+        ...mats.map((material) => [material, "emissiveIntensity", 3]),
+      ]),
+      ...(this.pistolCase?.pistols ?? []).map((pistol) => [
+        pistol,
+        "visible",
+        true,
+      ]),
+    ]);
   }
 
   reset() {
@@ -868,6 +941,7 @@ export class Isles {
     this.on = "arrival";
     this.read = false;
     this.guideKey = null;
+    this.pistolCase?.setTaken(false);
     for (const i of this.isles) {
       if (i.crumble) this.settle(i);
       if (i.drift && i.run) this.placeFerry(i, 0);
@@ -878,12 +952,14 @@ export class Isles {
       for (const m of p.mats) m.emissiveIntensity = 0;
     }
     this.ring?.reset();
+    this.survey?.reset();
+    this.swings?.reset();
   }
 }
 
 // A stepped causeway of light along z, grown from the pylon's threshold. It holds, flickers,
 // then drains from the pylon's end, and each slab is ground only while it shows.
-class Bridge {
+export class Bridge {
   constructor(scene, world, { x, z0, z1, y0, y1, width = 1.9 }) {
     const len = Math.abs(z1 - z0),
       dir = Math.sign(z1 - z0);
@@ -1041,12 +1117,16 @@ const N = 48,
 // point, on the lathe's axis), the rim on each bearing where the gentle dome gives way to the
 // steep chamfer, the fall of the dome towards the rim, and the boulders that stand on it.
 export function measureIsle(proto) {
+  return finishSteps(measureIsleSteps(proto));
+}
+
+function* measureIsleSteps(proto) {
   proto.updateMatrixWorld(true);
   const caps = [],
     rocks = [];
   proto.traverse((o) => {
     if (!o.isMesh) return;
-    const hex = o.material.color?.getHex();
+    const hex = mineralBaseColor(o.material).getHex();
     if (hex === 0xeadcc0) caps.push(o);
     else if (hex === 0x9b7658) rocks.push(o);
   });
@@ -1090,6 +1170,7 @@ export function measureIsle(proto) {
       const y = capAt(pole.x + cx * r, pole.z + cz * r);
       drop[i * K + j] = y === null ? (j ? drop[i * K + j - 1] : 0) : pole.y - y;
     }
+    yield;
   }
   // Boulders on the cap: rock standing above the dome, gathered into round colliders. Only
   // the triangles of rock that reach above the cap's underside can be one.
@@ -1117,7 +1198,7 @@ export function measureIsle(proto) {
     ),
   ];
   const bumps = [];
-  for (let x = -8; x <= 8; x += 0.25)
+  for (let x = -8; x <= 8; x += 0.25) {
     for (let z = -8; z <= 8; z += 0.25) {
       const px = pole.x + x,
         pz = pole.z + z;
@@ -1126,6 +1207,8 @@ export function measureIsle(proto) {
       const rock = cast(boulders, px, pz);
       if (rock && rock.point.y > cap + 0.06) bumps.push([px, pz, rock.point.y]);
     }
+    yield;
+  }
   const groups = [];
   for (const [x, z, y] of bumps) {
     const g = groups.find((g) => Math.hypot(g.x - x, g.z - z) < 0.8);

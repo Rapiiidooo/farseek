@@ -1,0 +1,43 @@
+Stone mineral albedo
+
+Generated with the built-in image_gen tool for Farseek. The exact prompt, original PNG, candidate processing and test receipts are preserved in receipts/verification-render-quality/loop-04-stone-texture/.
+
+The runtime file is a local 1024 by 1024 WebP, encoded with cwebp -q 88. It requires no asset service at runtime. The original PNG remains preserved.
+
+Normal and roughness detail are derived locally from image luminance for cosmetic material detail; they are not measured physical height data. The material retains the original palette's mean linear response. Procedural maps remain available if this optional local image cannot load.
+
+Bark weathered albedo
+
+Generated with the built-in image_gen tool for Farseek. The exact prompt, original PNG, three surface candidates and test receipts are preserved in receipts/verification-render-quality/loop-08-bark-surface/.
+
+The local 1024 by 1024 WebP uses cwebp -q 88. Cosmetic normal and roughness detail use the same luminance derivative as mineral surfaces. The calibrated finish preserves the original mean linear palette response, texture coordinates and geometry. Optional image failures or bounded readiness waits retain procedural maps. Runtime and lab loaders await readiness before exposing models for material cloning.
+
+forest-litter-albedo.webp
+Generated woodland litter albedo, resized to 1024 pixels with cwebp quality 88.
+Original, prompt and provenance: receipts/verification-render-quality/loop-10-forest-litter/.
+Matching normal and roughness detail is cosmetic, derived locally from luminance.
+
+beech-leaves-albedo.webp
+Generated transparent beech branch cutout, resized to 1024 pixels with cwebp quality 90 and alpha quality 100.
+Original, prompt, geometry candidates and provenance: receipts/verification-render-quality/loop-11-canopy-leaves/.
+Matching normal and roughness detail is cosmetic. Palette calibration excludes transparent pixels.
+
+masonry-aged-albedo.webp
+Generated aged limestone masonry albedo, resized to 1024 pixels with cwebp quality 86.
+Original and exact prompt: receipts/verification-landscape-realism/masonry-original.png and masonry-prompt.txt.
+
+rock-strata-albedo.webp
+Generated stratified rock albedo, resized to 1024 pixels with cwebp quality 86.
+Original and exact prompt: receipts/verification-landscape-realism/rock-original.png and rock-prompt.txt.
+
+ivy-leaf-albedo.webp
+Generated ivy leaf surface albedo, resized to 512 pixels with cwebp quality 86.
+Original and exact prompt: receipts/verification-landscape-realism/ivy-original.png and ivy-prompt.txt.
+
+These three images were generated with the built-in image_gen tool. Processing, hashes, palette calibration and review evidence are preserved in receipts/verification-landscape-realism/image-provenance.json. Normal and roughness detail are cosmetic luminance derivatives, not measured physical height. Optional image failures retain procedural surfaces. All runtime files are local and require no asset service.
+
+court-sandstone-albedo.webp
+Generated warm worn sandstone albedo with the built-in image_gen tool, resized to 768 pixels with cwebp quality 76.
+Original and exact prompt: receipts/verification-court-refinement/surfaces/sandstone-source.png and sandstone-prompt.txt.
+Processing, hashes and browser review: receipts/verification-court-refinement/surfaces/provenance.json.
+Cosmetic normal and roughness detail derive from luminance. Original mean linear palette response is retained. Optional image failure keeps procedural maps. This image is local and used by Sunken Court terrain and gallery masonry.

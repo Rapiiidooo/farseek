@@ -1,3 +1,5 @@
+import { detailBatch } from "../prop-detail.js";
+
 // mira_scarf, candidate B (profiles): a rounded frost-slate boulder turned from a lathe profile
 // and pushed out of round by a few angular harmonics, with a long knitted scarf thrown over it
 // on the diagonal, from the front left to the back right. The scarf is one band swept along
@@ -238,6 +240,17 @@ export default function (THREE) {
     });
     if (pos.length) add(build(pos, uv), FROST);
   }
+
+
+  const details = detailBatch(THREE, g);
+  for (const edge of [-0.8, 0.8]) {
+    for (let k = 2; k < NR - 2; k += 2) {
+      const a = point(rings[k], edge, 1).addScaledVector(rings[k].n, 0.0007);
+      const b = point(rings[k + 1], edge, 1).addScaledVector(rings[k + 1].n, 0.0007);
+      details.line(OCHRE, [a.toArray(), b.toArray()], 0.00065);
+    }
+  }
+  details.finish();
 
   // --- the six lines -------------------------------------------------------------------------------
   const box = new THREE.Box3(), v = new THREE.Vector3(), m4 = new THREE.Matrix4(), im = new THREE.Matrix4();

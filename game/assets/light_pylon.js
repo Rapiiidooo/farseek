@@ -1,3 +1,5 @@
+import { detailBatch } from "../prop-detail.js";
+
 // light_pylon, arm A: primitives.
 // Every part is a stock Three.js primitive placed by hand. Stone: boxes and square
 // frustums (four-sided cylinders, flat shaded), each tier and the bone band capped
@@ -218,6 +220,19 @@ export default function (THREE) {
   g.add(slot);
 
   for (const [mat, geos] of buckets) g.add(new THREE.Mesh(merge(geos), mat));
+
+
+  const details = detailBatch(THREE, g);
+  for (let face = 0; face < 4; face++) {
+    const angle = face * Math.PI / 2;
+    for (const x of [-0.145, 0.145]) details.line(BRONZE, [[x * Math.cos(angle) + hw(0.62) * Math.sin(angle), 0.62, hw(0.62) * Math.cos(angle) - x * Math.sin(angle)], [x * Math.cos(angle) + hw(1.2) * Math.sin(angle), 1.2, hw(1.2) * Math.cos(angle) - x * Math.sin(angle)]], 0.004);
+  }
+  for (let i = 0; i < 24; i++) {
+    const a = i * Math.PI / 12;
+    details.line(SIENNA, [[Math.sin(a) * 0.325, RC + Math.cos(a) * 0.325, 0.029], [Math.sin(a) * (i % 3 ? 0.337 : 0.353), RC + Math.cos(a) * (i % 3 ? 0.337 : 0.353), 0.029]], 0.0014);
+  }
+  for (const x of [-0.46, 0.46]) for (const z of [0.64, 0.92]) details.bolt(SIENNA, 0.013, [x, PH + 0.001, z]);
+  details.finish();
 
   // ---- placement: base at y = 0, centred on x and z (measured on vertices) ---------
   const bb = new THREE.Box3(), v = new THREE.Vector3(), m = new THREE.Matrix4(), im = new THREE.Matrix4();

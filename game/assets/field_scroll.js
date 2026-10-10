@@ -1,3 +1,5 @@
+import { detailBatch } from "../prop-detail.js";
+
 // field_scroll, arm B: profiles.
 // The parchment is one profile swept 0.3 m along X: a spiral of four turns that is the roll,
 // running out from under it as the flat sheet towards +Z and curling up again at its free end,
@@ -276,6 +278,17 @@ export default function (THREE) {
     knot.scale.set(1, 1, 0.8);
     g.add(knot);
   }
+
+
+  const details = detailBatch(THREE, g);
+  for (let row = 0; row < 6; row++) details.line(INK, [[-0.025, T + 0.0006, 0.115 + row * 0.008], [0.012 + (row % 3) * 0.009, T + 0.0006, 0.115 + row * 0.008]], 0.00045);
+  for (let i = 0; i < 8; i++) {
+    const a = i * Math.PI / 4;
+    details.line(INK, [[0.094, T + 0.0008, 0.247], [0.094 + Math.cos(a) * (i % 2 ? 0.012 : 0.02), T + 0.0008, 0.247 + Math.sin(a) * (i % 2 ? 0.012 : 0.02)]], 0.00065);
+  }
+  details.ring(INK, 0.013, 0.0006, [0.094, T + 0.0008, 0.247]);
+  for (let row = 0; row < 3; row++) details.line(INK, Array.from({length: 10}, (_, i) => [0.012 + i * 0.012, T + 0.0005, 0.043 + row * 0.006 + Math.sin(i * 0.8 + row) * 0.006]), 0.00035);
+  details.finish();
 
   // --- placement: base on y = 0, centred on x and z -----------------------------------------------
   const box = new THREE.Box3(), v = new THREE.Vector3(), m = new THREE.Matrix4(), im = new THREE.Matrix4();

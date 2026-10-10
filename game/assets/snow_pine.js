@@ -1,3 +1,5 @@
+import { refineNature } from "../nature-detail.js";
+
 // snow_pine, candidate C (a second reading: boughs, not tiers): the tiers are six whorls
 // of separate boughs, hand-built lofts. Each bough is a wide spray of needles with a
 // deep keel that leaves the trunk rising a little, arcs over and hangs its tip down;
@@ -107,6 +109,16 @@ export default function (THREE) {
     const th = (t) => TH * lerpTable([[0, 1], [0.62, 0.85], [1, 0.4]], t);
     const rings = [0, 0.3, 0.62, 0.86].map((t) => ring(t, SPRAY, W * lerpTable(WIDTH, t), th(t)));
     loft([...rings, [frame(1)[0]]], needles);
+    for (const t of [0.36, 0.54, 0.72]) {
+      const [p, up] = frame(t), width = W * lerpTable(WIDTH, t) * 0.5;
+      for (const sign of [-1, 1]) {
+        const a = p.clone().addScaledVector(side, sign * width * 0.7);
+        const b = p.clone().addScaledVector(side, sign * width * 1.08).addScaledVector(out, L * 0.055);
+        const c = p.clone().addScaledVector(side, sign * width * 0.55).addScaledVector(out, L * 0.16);
+        const d = a.clone().lerp(c, 0.5).addScaledVector(up, TH * 0.12);
+        for (const q of [a, b, d, b, c, d]) needles.pos.push(q.x, q.y, q.z);
+      }
+    }
 
     // The slab: from near the trunk to `reach` along the bough, `deep` thick, on the
     // flat of the upper face and a little narrower than it.
@@ -227,5 +239,5 @@ export default function (THREE) {
 
   // The load pushes the crown's box off the trunk, so say where the trunk stands.
   g.userData.trunk = { base: [+(-c.x).toFixed(3), 0, +(-c.z).toFixed(3)], radius: TRUNK.r };
-  return g;
+  return refineNature(THREE, g, "snow_pine");
 }

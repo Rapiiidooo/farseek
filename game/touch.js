@@ -5,8 +5,6 @@
 // The controls show while touch is the device in use: a key or a moving mouse hides them.
 
 const DEAD = 0.12,
-  // Below this share of the stick's throw the explorer walks, and walking never steps off an
-  // edge, like holding Shift on a keyboard: a light push lines up a jump or a hang safely.
   WALK_ZONE = 0.75,
   // Radians of view per pixel dragged, before the sensitivity setting.
   LOOK = 0.0048;
@@ -115,9 +113,6 @@ export class TouchControls {
     this.input.edges.add("touch:skip");
   }
 
-  // The stick's vector runs from the centre of its base to the finger, up the screen forward,
-  // with a small dead zone rescaled out so a slight push still moves. Inside the walk zone the
-  // walk reaches its full pace at the zone's rim; past it the explorer runs.
   steer(e) {
     const r = this.stick.getBoundingClientRect();
     const radius = r.width / 2;
@@ -134,24 +129,59 @@ export class TouchControls {
     this.input.touchMove.y = -uy * pace;
     const k = Math.min(len, 1) * radius * 0.6;
     this.knob.style.transform = `translate(${ux * k}px, ${uy * k}px)`;
-    this.knob.classList.toggle("run", !walk);
+    this.knob.classList.toggle("run", this.input.running && !walk);
   }
 
   // Which controls show: none outside play, only the stick (to skip) during a shot, and the
   // actions that make sense where the explorer is.
-  update({ play, cinematic, holding, prompt, hanging, beyond }) {
+  update({
+    play,
+    cinematic,
+    holding,
+    prompt,
+    hanging,
+    swimming,
+    beyond,
+    shield,
+  }) {
     if (!this.enabled) return;
     const on = this.input.usingTouch;
     document.body.classList.toggle("touch", on);
     this.root.hidden = !(play && on);
     if (this.root.hidden) return;
+    this.knob.classList.toggle(
+      "run",
+      this.input.running && !this.input.touchWalk && this.stickId !== null,
+    );
     this.root.classList.toggle("cine", !!cinematic);
     const show = (action, on) =>
       this.root
         .querySelector(`[data-touch="${action}"]`)
         ?.classList.toggle("off", !on);
-    show("drop", prompt === "edge" || hanging);
-    show("throw", !!holding);
-    show("roll", !!beyond);
+    show("drop", swimming || prompt === "edge" || hanging);
+    show("throw", !!holding && !swimming);
+    show("roll", !!beyond && !swimming);
+    show("shield", !!shield?.unlocked && !!beyond && !swimming);
+    const ward = this.root.querySelector('[data-touch="shield"]');
+    if (ward && shield?.unlocked) {
+      const charge = shield.charge.toFixed(2);
+      if (ward.dataset.charge !== charge) {
+        ward.dataset.charge = charge;
+        ward.style.setProperty("--charge", charge);
+      }
+      ward.classList.toggle("cooling", !shield.ready && !shield.active);
+      ward.classList.toggle("raised", !!shield.active);
+    }
+    for (const [action, label] of [
+      ["jump", swimming ? "Rise" : "Jump"],
+      ["drop", swimming ? "Dive" : "Hang"],
+      ["throw", this.input.equipment === "pistols" ? "Fire" : "Link"],
+    ]) {
+      const button = this.root.querySelector(`[data-touch="${action}"]`);
+      if (button && button.textContent !== label) {
+        button.textContent = label;
+        button.setAttribute("aria-label", label);
+      }
+    }
   }
 }

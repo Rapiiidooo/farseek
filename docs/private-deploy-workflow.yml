@@ -1,0 +1,79 @@
+name: Deploy Farseek
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: Full public Farseek commit SHA
+        required: true
+        type: string
+      public_run_id:
+        description: Successful public validation run ID
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    if: >-
+      github.event.repository.private == true &&
+      github.event_name == 'workflow_dispatch' &&
+      github.ref == 'refs/heads/main'
+    runs-on: [self-hosted, linux, farseek-deploy]
+    timeout-minutes: 10
+    environment: production
+    concurrency:
+      group: farseek-production
+      cancel-in-progress: false
+    steps:
+      - name: Verify the public run and deploy its artifact
+        env:
+          RELEASE_COMMIT: ${{ inputs.commit }}
+          PUBLIC_RUN_ID: ${{ inputs.public_run_id }}
+          RELEASE_DIRECTORY: ${{ runner.temp }}/farseek-${{ github.run_id }}-${{ github.run_attempt }}
+          GH_TOKEN: ${{ secrets.FARSEEK_SOURCE_TOKEN }}
+        run: |
+          set -euo pipefail
+          [[ "$RELEASE_COMMIT" =~ ^[a-f0-9]{40}$ ]]
+          [[ "$PUBLIC_RUN_ID" =~ ^[0-9]+$ ]]
+          test -n "$GH_TOKEN"
+          mkdir -p "$RELEASE_DIRECTORY"
+          gh api "repos/Rapiiidooo/farseek/actions/runs/$PUBLIC_RUN_ID" > "$RELEASE_DIRECTORY/run.json"
+          gh api "repos/Rapiiidooo/farseek/actions/runs/$PUBLIC_RUN_ID/jobs?per_page=100" > "$RELEASE_DIRECTORY/jobs.json"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          folder = Path(os.environ["RELEASE_DIRECTORY"])
+          run = json.loads((folder / "run.json").read_text())
+          jobs = json.loads((folder / "jobs.json").read_text())["jobs"]
+          expected = os.environ["RELEASE_COMMIT"]
+          checks = [
+              (str(run["id"]) == os.environ["PUBLIC_RUN_ID"], "Run ID mismatch"),
+              (run["repository"]["full_name"] == "Rapiiidooo/farseek", "Repository mismatch"),
+              (run["head_repository"]["full_name"] == "Rapiiidooo/farseek", "Fork run refused"),
+              (run["event"] == "push" and run["head_branch"] == "main", "Only main pushes can deploy"),
+              (run["head_sha"] == expected, "Run SHA mismatch"),
+              (run["path"] == ".github/workflows/release.yml", "Workflow mismatch"),
+              (any(job["name"] == "validate" and job["status"] == "completed" and job["conclusion"] == "success" and job["head_sha"] == expected for job in jobs), "Validation did not pass"),
+          ]
+          for passed, message in checks:
+              if not passed:
+                  raise ValueError(message)
+          print("Verified the public main push and its successful validation job")
+          PY
+          current=$(gh api repos/Rapiiidooo/farseek/git/ref/heads/main --jq .object.sha)
+          if [[ "$current" != "$RELEASE_COMMIT" ]]; then
+            echo "A newer main commit exists; this release is skipped."
+            exit 0
+          fi
+          gh run download "$PUBLIC_RUN_ID" --repo Rapiiidooo/farseek \
+            --name "farseek-$RELEASE_COMMIT" --dir "$RELEASE_DIRECTORY/artifact"
+          test "$(gh api repos/Rapiiidooo/farseek/git/ref/heads/main --jq .object.sha)" = "$RELEASE_COMMIT"
+          /usr/local/bin/farseek-deploy "$RELEASE_DIRECTORY/artifact" "$RELEASE_COMMIT"
+      - name: Remove downloaded release
+        if: always()
+        env:
+          RELEASE_DIRECTORY: ${{ runner.temp }}/farseek-${{ github.run_id }}-${{ github.run_attempt }}
+        run: rm -rf -- "$RELEASE_DIRECTORY"

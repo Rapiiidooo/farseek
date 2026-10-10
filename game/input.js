@@ -13,11 +13,18 @@ const ACTIONS = {
   jump: ["Space"],
   interact: ["KeyE", "KeyF"],
   drop: ["KeyC", "ControlLeft"],
-  walk: ["ShiftLeft", "ShiftRight"],
+  walk: [],
+  pace: ["ShiftLeft", "ShiftRight"],
   throw: ["KeyR", "Mouse0"],
-  roll: ["KeyQ", "Mouse2"],
+  roll: ["KeyQ"],
+  aim: ["Mouse2"],
+  inventory: ["Tab", "KeyI"],
+  orb: ["Digit1"],
+  pistols: ["Digit2"],
+  reload: ["KeyR", "KeyX"],
   pause: ["Escape", "KeyP"],
   skip: ["Escape", "Enter", "Space"],
+  shield: ["KeyV"],
 };
 const PAD = {
   jump: 0,
@@ -26,9 +33,82 @@ const PAD = {
   roll: 5,
   walk: 6,
   throw: 7,
+  inventory: 3,
+  reload: 4,
+  aim: 10,
+  pace: 11,
   pause: 9,
   skip: 0,
+  shield: 12,
 };
+
+// The Controls screen lists these first, in this order; actions other modules add to ACTIONS
+// or PAD follow them. `skip` stays fixed: Escape, Enter and the jump keys always skip.
+const REMAPPABLE = [
+  "forward",
+  "back",
+  "left",
+  "right",
+  "jump",
+  "interact",
+  "drop",
+  "pace",
+  "walk",
+  "roll",
+  "throw",
+  "aim",
+  "reload",
+  "inventory",
+  "orb",
+  "pistols",
+  "pause",
+];
+const FIXED = new Set(["skip"]);
+// Escape always pauses and backs out of menus; the browser keeps the rest for itself.
+const RESERVED =
+  /^(Escape|Meta|OS|ContextMenu|F\d+|PrintScreen|Fn|Lang|Power|Audio|Media|Browser|Launch)/;
+// Back, Start and Home on a gamepad stay with the menus and the pause.
+const PAD_RESERVED = new Set([8, 9, 16]);
+// Actions that share a key on purpose: R links the orb and reloads the pistols.
+const SHARED = [["throw", "reload"]];
+const PAD_NAMES = [
+  "A",
+  "B",
+  "X",
+  "Y",
+  "LB",
+  "RB",
+  "LT",
+  "RT",
+  "View",
+  "Start",
+  "L3",
+  "R3",
+  "D-pad up",
+  "D-pad down",
+  "D-pad left",
+  "D-pad right",
+  "Home",
+];
+const NAMED = {
+  Space: "Space",
+  Tab: "Tab",
+  Escape: "Esc",
+  Enter: "Enter",
+  NumpadEnter: "Num Enter",
+  Backspace: "Backspace",
+  CapsLock: "Caps Lock",
+  ArrowUp: "↑",
+  ArrowDown: "↓",
+  ArrowLeft: "←",
+  ArrowRight: "→",
+  Mouse0: "Click",
+  Mouse1: "Middle click",
+  Mouse2: "Right click",
+  Mouse3: "Mouse 4",
+  Mouse4: "Mouse 5",
+};
+const SIDED = { Shift: "Shift", Control: "Ctrl", Alt: "Alt" };
 
 export class Input {
   constructor(canvas, settings) {
@@ -44,31 +124,47 @@ export class Input {
     this.touchMove = { x: 0, y: 0 };
     this.touchDown = new Set();
     this.touchWalk = false;
+    this.running = false;
     this.usingTouch = false;
     this.labels = new Map();
     this.dragging = false;
-    // Look sensitivity and inversion live in the shared settings (store.js).
+    this.aimLatch = false;
+    // Bumped whenever a binding changes, so prompts that cache their keys write them again.
+    this.version = 0;
+    // Look options and the player's bindings live in the shared settings (store.js).
     this.settings = settings;
     addEventListener("keydown", (e) => {
       if (e.repeat) return;
-      if (isGameKey(e.code)) e.preventDefault();
+      if (this.isGameKey(e.code)) e.preventDefault();
       this.down.add(e.code);
       this.edges.add(e.code);
       this.usingPad = false;
       this.usingTouch = false;
     });
     addEventListener("keyup", (e) => this.down.delete(e.code));
-    addEventListener("blur", () => this.down.clear());
-    // With the pointer locked, mouse buttons are actions; without it, the right button
-    // drags the view.
+    addEventListener("blur", () => this.clear());
+    canvas.addEventListener("pointerdown", (e) => {
+      this.pointerType = e.pointerType;
+    });
     canvas.addEventListener("mousedown", (e) => {
-      if (this.locked) {
+      if (
+        e.sourceCapabilities?.firesTouchEvents ||
+        this.pointerType === "touch"
+      )
+        return;
+      if (e.button >= 0 && e.button <= 4) {
+        if (e.button !== 0 && e.button !== 2) e.preventDefault();
         this.down.add("Mouse" + e.button);
         this.edges.add("Mouse" + e.button);
         this.usingPad = false;
-      } else if (e.button === 2) this.dragging = true;
+        this.usingTouch = false;
+      }
+      if (!this.locked && e.button === 2) this.dragging = true;
     });
     addEventListener("mouseup", (e) => {
+      // The side buttons would otherwise go back and forward in the history.
+      if (e.button >= 3 && this.isGameKey("Mouse" + e.button))
+        e.preventDefault();
       this.dragging = false;
       this.down.delete("Mouse" + e.button);
     });
@@ -89,18 +185,10 @@ export class Input {
     navigator.keyboard
       ?.getLayoutMap?.()
       .then((map) => {
-        for (const code of [
-          "KeyW",
-          "KeyA",
-          "KeyS",
-          "KeyD",
-          "KeyE",
-          "KeyC",
-          "KeyR",
-          "KeyQ",
-          "KeyP",
-        ])
-          if (map.get(code)) this.labels.set(code, map.get(code).toUpperCase());
+        map.forEach((key, code) => {
+          if (key) this.labels.set(code, key.toUpperCase());
+        });
+        this.version++;
       })
       .catch(() => {});
   }
@@ -118,34 +206,42 @@ export class Input {
     const before = new Set(this.padDown);
     this.padDown.clear();
     this.padMove.x = this.padMove.y = this.padLook.x = this.padLook.y = 0;
-    if (!pad) return;
-    const dead = (v) =>
-      Math.abs(v) < 0.18 ? 0 : (v - Math.sign(v) * 0.18) / 0.82;
-    this.padMove.x = dead(pad.axes[0] || 0);
-    this.padMove.y = -dead(pad.axes[1] || 0);
-    this.padLook.x = dead(pad.axes[2] || 0);
-    this.padLook.y = dead(pad.axes[3] || 0);
-    for (const [name, index] of Object.entries(PAD))
-      if (pad.buttons[index]?.pressed) this.padDown.add(name);
-    for (const name of this.padDown)
-      if (!before.has(name)) this.edges.add("pad:" + name);
-    if (this.padDown.size || Math.hypot(this.padMove.x, this.padMove.y) > 0.3) {
-      this.usingPad = true;
-      this.usingTouch = false;
+    if (pad) {
+      const dead = (v) =>
+        Math.abs(v) < 0.18 ? 0 : (v - Math.sign(v) * 0.18) / 0.82;
+      this.padMove.x = dead(pad.axes[0] || 0);
+      this.padMove.y = -dead(pad.axes[1] || 0);
+      this.padLook.x = dead(pad.axes[2] || 0);
+      this.padLook.y = dead(pad.axes[3] || 0);
+      for (const [name, index] of Object.entries(this.padTable()))
+        if (pad.buttons[index]?.pressed) this.padDown.add(name);
+      for (const name of this.padDown)
+        if (!before.has(name)) this.edges.add("pad:" + name);
+      if (
+        this.padDown.size ||
+        Math.hypot(this.padMove.x, this.padMove.y) > 0.3
+      ) {
+        this.usingPad = true;
+        this.usingTouch = false;
+      }
     }
+    // Aiming on a toggle flips at each press and lets go with the pistols.
+    if (this.settings?.aimMode !== "toggle" || this.equipment !== "pistols")
+      this.aimLatch = false;
+    else if (this.pressed("aim")) this.aimLatch = !this.aimLatch;
   }
 
   // Stick or keys, as x (right) and y (forward), length at most 1.
   get move() {
-    const key = (list) => list.some((c) => this.down.has(c));
+    const key = (action) => this.binding(action).some((c) => this.down.has(c));
     let x =
-      (key(MOVE.right) ? 1 : 0) -
-      (key(MOVE.left) ? 1 : 0) +
+      (key("right") ? 1 : 0) -
+      (key("left") ? 1 : 0) +
       this.padMove.x +
       this.touchMove.x;
     let y =
-      (key(MOVE.forward) ? 1 : 0) -
-      (key(MOVE.back) ? 1 : 0) +
+      (key("forward") ? 1 : 0) -
+      (key("back") ? 1 : 0) +
       this.padMove.y +
       this.touchMove.y;
     const len = Math.hypot(x, y);
@@ -157,16 +253,22 @@ export class Input {
   }
 
   held(action) {
+    if (action === "aim" && this.settings?.aimMode === "toggle")
+      return this.aimLatch || this.touchDown.has(action);
     return (
-      ACTIONS[action].some((c) => this.down.has(c)) ||
+      this.keys(action).some((c) => this.down.has(c)) ||
       this.padDown.has(action) ||
       this.touchDown.has(action)
     );
   }
 
+  get walking() {
+    return !this.running || this.held("walk") || this.touchWalk;
+  }
+
   pressed(action) {
     return (
-      ACTIONS[action].some((c) => this.edges.has(c)) ||
+      this.keys(action).some((c) => this.edges.has(c)) ||
       this.edges.has("pad:" + action) ||
       this.edges.has("touch:" + action)
     );
@@ -176,20 +278,170 @@ export class Input {
     return this.edges.size > 0;
   }
 
+  // The keys that act now: with the pistols drawn, a key shared with reload reloads instead
+  // of firing, and reload does nothing without them.
+  keys(action) {
+    if (action === "reload" && this.equipment !== "pistols") return [];
+    if (action === "throw" && this.equipment === "pistols") return this.fire();
+    return this.binding(action);
+  }
+
+  fire() {
+    const reload = this.binding("reload");
+    return this.binding("throw").filter((code) => !reload.includes(code));
+  }
+
+  // The keys and mouse buttons bound to an action: the player's own if saved, else the
+  // defaults. Pause always keeps Escape.
+  binding(action) {
+    const saved = this.settings?.bindings?.keys?.[action];
+    const list = Array.isArray(saved)
+      ? saved
+      : MOVE[action] || ACTIONS[action] || [];
+    return action === "pause" && !list.includes("Escape")
+      ? ["Escape", ...list]
+      : list;
+  }
+
+  // The gamepad button bound to an action, or undefined.
+  padButton(action) {
+    const saved = this.settings?.bindings?.pad;
+    const index = saved && action in saved ? saved[action] : PAD[action];
+    return Number.isInteger(index) ? index : undefined;
+  }
+
+  padTable() {
+    const table = {};
+    for (const action of new Set([
+      ...Object.keys(PAD),
+      ...Object.keys(this.settings?.bindings?.pad || {}),
+    ])) {
+      const index = this.padButton(action);
+      if (index !== undefined) table[action] = index;
+    }
+    return table;
+  }
+
+  // Every action the Controls screen offers, the known ones first.
+  remappable() {
+    const extra = [...Object.keys(ACTIONS), ...Object.keys(PAD)].filter(
+      (action) => !REMAPPABLE.includes(action) && !FIXED.has(action),
+    );
+    return [...REMAPPABLE, ...new Set(extra)];
+  }
+
+  defaults(action) {
+    return {
+      keys: [...(MOVE[action] || ACTIONS[action] || [])],
+      pad: PAD[action],
+    };
+  }
+
+  // Whether a key or button may be bound at all, and to which slot of which action.
+  bindable(code) {
+    return !RESERVED.test(code);
+  }
+
+  padBindable(index) {
+    return Number.isInteger(index) && !PAD_RESERVED.has(index);
+  }
+
+  // Binds `code` to `action` in `slot` (0 or 1). Another action holding the same code takes
+  // the code this slot held, so nothing is lost silently; returns what moved.
+  assignKey(action, slot, code) {
+    const keys = this.savedKeys();
+    const list = this.binding(action).filter((c) => c !== "Escape");
+    const previous = list[slot] ?? null;
+    const moved = [];
+    if (code && list.includes(code) && list[slot] !== code) {
+      list[list.indexOf(code)] = previous;
+    }
+    list[slot] = code;
+    keys[action] = list.filter(Boolean);
+    if (code)
+      for (const other of this.remappable()) {
+        if (other === action || this.shares(action, other)) continue;
+        const theirs = this.binding(other).filter((c) => c !== "Escape");
+        const at = theirs.indexOf(code);
+        if (at < 0) continue;
+        const swap = previous && !theirs.includes(previous) ? previous : null;
+        theirs[at] = swap;
+        keys[other] = theirs.filter(Boolean);
+        moved.push({ action: other, to: swap });
+      }
+    this.saveBindings({ keys });
+    return moved;
+  }
+
+  assignPad(action, index) {
+    const pad = { ...(this.settings?.bindings?.pad || {}) };
+    const previous = this.padButton(action) ?? null;
+    const moved = [];
+    pad[action] = index;
+    if (index !== null)
+      for (const other of this.remappable()) {
+        if (other === action || this.padButton(other) !== index) continue;
+        pad[other] = previous;
+        moved.push({ action: other, to: previous });
+      }
+    this.saveBindings({ pad });
+    return moved;
+  }
+
+  shares(a, b) {
+    return SHARED.some(
+      ([x, y]) => (a === x && b === y) || (a === y && b === x),
+    );
+  }
+
+  savedKeys() {
+    return { ...(this.settings?.bindings?.keys || {}) };
+  }
+
+  // Keeps only what differs from the defaults; no difference at all leaves no `bindings`.
+  saveBindings({ keys, pad }) {
+    const next = {
+      keys: keys ?? this.savedKeys(),
+      pad: pad ?? { ...(this.settings?.bindings?.pad || {}) },
+    };
+    for (const [action, list] of Object.entries(next.keys)) {
+      const base = this.defaults(action).keys.filter((c) => c !== "Escape");
+      if (JSON.stringify(list) === JSON.stringify(base))
+        delete next.keys[action];
+    }
+    for (const [action, index] of Object.entries(next.pad))
+      if (index === (PAD[action] ?? null)) delete next.pad[action];
+    if (!Object.keys(next.keys).length) delete next.keys;
+    if (!Object.keys(next.pad).length) delete next.pad;
+    if (Object.keys(next).length) this.settings.bindings = next;
+    else delete this.settings.bindings;
+    this.version++;
+  }
+
+  resetBindings() {
+    delete this.settings.bindings;
+    this.version++;
+  }
+
   // Forget everything held, after a menu or a cinematic took the controls.
   clear() {
     this.down.clear();
     this.edges.clear();
     this.touchDown.clear();
+    this.touchMove.x = this.touchMove.y = 0;
+    this.touchWalk = false;
+    this.dragging = false;
+    this.aimLatch = false;
     this.lookX = this.lookY = 0;
   }
 
   // Camera look in radians for this frame.
   takeLook(dt) {
     const k = this.settings.sensitivity,
-      inv = this.settings.invertY ? -1 : 1;
-    const x = (this.lookX * 0.0026 + this.padLook.x * 2.6 * dt) * k;
-    const y = (this.lookY * 0.0022 + this.padLook.y * 1.8 * dt) * k * inv;
+      invY = this.settings.invertY ? -1 : 1,
+      invX = this.settings.invertX ? -1 : 1;
+    const x = (this.lookX * 0.0026 + this.padLook.x * 2.6 * dt) * k * invX;
+    const y = (this.lookY * 0.0022 + this.padLook.y * 1.8 * dt) * k * invY;
     this.lookX = this.lookY = 0;
     return { x, y };
   }
@@ -198,67 +450,95 @@ export class Input {
     this.edges.clear();
   }
 
-  // Printed name of a control for prompts, following the current device and layout.
+  // Printed name of a control for prompts, following the current device, layout and bindings.
+  // `fire` names the pistols' trigger.
   label(action) {
     // The on-screen buttons carry these names.
     if (this.usingTouch)
       return (
         {
-          jump: "Jump",
+          jump: this.swimming ? "Rise" : "Jump",
           interact: "Use",
-          drop: "Hang",
+          drop: this.swimming ? "Dive" : "Hang",
           walk: "Stick",
-          throw: "Throw",
+          pace: "Pace",
+          throw: this.equipment === "pistols" ? "Fire" : "Link",
+          fire: "Fire",
+          inventory: "Kit",
+          reload: "Reload",
+          aim: "Aim",
           roll: "Roll",
           pause: "Pause",
+          shield: "Shield",
         }[action] || action
       );
     if (this.usingPad)
-      return (
-        {
-          jump: "A",
-          interact: "X",
-          drop: "B",
-          walk: "LT",
-          throw: "RT",
-          roll: "RB",
-          pause: "Start",
-        }[action] || action
+      return this.padName(this.padButton(action === "fire" ? "throw" : action));
+    if (action === "walk" && !this.binding("walk").length) action = "pace";
+    let codes =
+      action === "fire"
+        ? this.fire()
+        : action === "throw" && this.equipment === "pistols"
+          ? this.fire()
+          : this.binding(action);
+    if (action === "throw" && this.equipment !== "pistols")
+      codes = [...codes].sort(
+        (a, b) => b.startsWith("Mouse") - a.startsWith("Mouse"),
       );
-    if (action === "throw") return `Click / ${this.labels.get("KeyR") || "R"}`;
-    if (action === "roll")
-      return `Right click / ${this.labels.get("KeyQ") || "Q"}`;
-    if (action === "pause") return "Esc";
-    const code = {
-      jump: "Space",
-      interact: "KeyE",
-      drop: "KeyC",
-      walk: "ShiftLeft",
-    }[action];
-    if (code === "Space") return "Space";
-    if (code === "ShiftLeft") return "Shift";
-    return this.labels.get(code) || code.replace("Key", "");
+    else codes = codes.slice(0, 1);
+    return codes
+      .slice(0, 2)
+      .map((code) => this.codeLabel(code))
+      .join(" / ");
   }
 
-  // The printed label of a key on the current layout: KeyW reads Z on AZERTY.
+  padName(index) {
+    return index === undefined ? "" : PAD_NAMES[index] || `Button ${index}`;
+  }
+
+  // A key's printed name; `long` tells the left and right modifiers apart.
+  codeLabel(code, long = false) {
+    if (!code) return "";
+    if (NAMED[code])
+      return long && code === "Mouse0" ? "Left click" : NAMED[code];
+    const sided = /^(Shift|Control|Alt)(Left|Right)$/.exec(code);
+    if (sided) return long ? `${sided[2]} ${SIDED[sided[1]]}` : SIDED[sided[1]];
+    // Digits read as digits on every layout, where AZERTY prints a symbol first.
+    if (/^Digit\d$/.test(code)) return code.slice(5);
+    if (this.labels.has(code)) return this.labels.get(code);
+    if (code.startsWith("Numpad")) return `Num ${code.slice(6)}`;
+    return code.replace(/^(Key|Digit)/, "");
+  }
+
+  // The printed label of a movement key on the current layout and bindings: KeyW reads Z on
+  // AZERTY, and whatever key now moves forward once remapped.
   keyLabel(code) {
     if (this.usingPad || this.usingTouch)
       return { KeyW: "↑", KeyS: "↓", KeyA: "←", KeyD: "→" }[code] || code;
-    return this.labels.get(code) || code.replace("Key", "");
+    const direction = {
+      KeyW: "forward",
+      KeyS: "back",
+      KeyA: "left",
+      KeyD: "right",
+    }[code];
+    return this.codeLabel(direction ? this.binding(direction)[0] : code);
   }
 
   moveLabel() {
     if (this.usingPad) return "Left stick";
     if (this.usingTouch) return "Stick";
-    return ["KeyW", "KeyA", "KeyS", "KeyD"]
-      .map((c) => this.labels.get(c) || c.replace("Key", ""))
+    return ["forward", "left", "back", "right"]
+      .map((direction) => this.codeLabel(this.binding(direction)[0]))
       .join("");
   }
-}
 
-function isGameKey(code) {
-  return (
-    Object.values(MOVE).some((l) => l.includes(code)) ||
-    Object.values(ACTIONS).some((l) => l.includes(code))
-  );
+  isGameKey(code) {
+    return (
+      Object.values(MOVE).some((l) => l.includes(code)) ||
+      Object.values(ACTIONS).some((l) => l.includes(code)) ||
+      Object.values(this.settings?.bindings?.keys || {}).some(
+        (l) => Array.isArray(l) && l.includes(code),
+      )
+    );
+  }
 }

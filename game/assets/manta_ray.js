@@ -1,126 +1,243 @@
-// manta_ray, arm B: hub and panels.
-// A manta about 1m across, nose to +z, built from a different part breakdown than a single
-// swept planform: a round, domed hub (a LatheGeometry, thin and lens-shaped) for the head and
-// gill region, and two flat swept wing panels (THREE.Shape curves stood upright) attached at
-// its flanks, curved on the leading edge and straighter on the trailing edge, tapering to a
-// point at |x| = 0.5 and tilted up a few degrees for a shallow dihedral. Dark slate on top,
-// with a second, smaller pale hub and pair of under-wing panels beneath for the belly, two
-// cephalic fins rolled forward at the head, eyes at the sides and a thin whip tail behind. The
-// game's vertex shader flaps the wings by distance from the middle along x. The game never
-// recolours the manta (see atlantis.js `swimmers()`: only swimmers handed a colour are
-// tinted, and mantas are not), so both skin tones are used exactly as authored.
+// manta_ray: a metre across, nose to +Z, wings along ±X with the tips at 0.5 m for the
+// shader that flaps them by their distance from the middle.
 export default function (THREE) {
   const g = new THREE.Group();
-  const mat = (color, roughness, name, extra = {}) => {
-    const m = new THREE.MeshStandardMaterial({ color, roughness, metalness: 0, ...extra });
-    m.name = name;
-    return m;
-  };
   const glow = new THREE.Group();
   g.add(glow);
   g.userData.parts = { glow };
-
   const ray = new THREE.Group();
   g.add(ray);
-
-  const TOP = mat(0x2e4150, 0.55, 'skin', { side: THREE.DoubleSide });
-  const BELLY = mat(0xe6e8e4, 0.5, 'skinBelly', { side: THREE.DoubleSide });
-  const EYE = mat(0x0b0e12, 0.25, 'eye', { metalness: 0.1 });
-
-  const put = (geo, m, x, y, z, parent = ray) => {
-    const o = new THREE.Mesh(geo, m);
-    o.position.set(x, y, z);
-    parent.add(o);
-    return o;
+  const V = (x = 0, y = 0, z = 0) => new THREE.Vector3(x, y, z);
+  const material = (color, roughness, name, extra = {}) => {
+    const m = new THREE.MeshStandardMaterial({
+      color,
+      roughness,
+      side: THREE.DoubleSide,
+      ...extra,
+    });
+    m.name = name;
+    return m;
   };
-
-  // --- the hub: a thin, lens-shaped body of revolution for the head and gill region ---
-  const hubProfile = [
-    [0.0, -0.034],
-    [0.09, -0.03],
-    [0.15, -0.012],
-    [0.165, 0.01],
-    [0.15, 0.026],
-    [0.09, 0.033],
-    [0.0, 0.037],
-  ].map(([r, y]) => new THREE.Vector2(r, y));
-  const hubGeo = new THREE.LatheGeometry(hubProfile, 16);
-  put(hubGeo, TOP, 0, 0, 0.15);
-  const hubBellyGeo = new THREE.LatheGeometry(
-    hubProfile.map((p) => new THREE.Vector2(p.x * 0.86, p.y * 0.7 - 0.02)),
-    16,
-  );
-  put(hubBellyGeo, BELLY, 0, 0, 0.15);
-
-  // --- wing panels: flat swept shapes, drawn as if seen from above (x = span, y = "how far
-  // back", becomes world z once stood upright), attached along the hub's flank. ---
-  const shapeFrom = (pts) => {
-    const s = new THREE.Shape();
-    s.moveTo(pts[0][0], pts[0][1]);
-    for (let i = 1; i < pts.length; i++) {
-      const p = pts[i];
-      if (p.length === 4) s.quadraticCurveTo(p[0], p[1], p[2], p[3]);
-      else s.bezierCurveTo(p[0], p[1], p[2], p[3], p[4], p[5]);
-    }
-    s.closePath();
-    return s;
-  };
-  const scalePts = (pts, sx, sy) => pts.map((p) => p.map((n, i) => (i % 2 === 0 ? n * sx : n * sy)));
-  // The leading edge meets the trailing edge at the tip with sharply different tangents (a
-  // steep approach, then a near-flat departure) so it reads as an actual point; matched
-  // tangents there first rendered as a rounded oval with no visible wingtip.
-  const WING = [
-    [0.12, 0.32],
-    [0.33, 0.4, 0.5, 0.07],
-    [0.3, -0.02, 0.14, -0.24],
-    [0.18, 0.04, 0.12, 0.32],
-  ];
-  const wingMesh = (pts, m, curveSeg, s, y0, dihedral) => {
-    const geo = new THREE.ShapeGeometry(shapeFrom(scalePts(pts, s, 1)), curveSeg);
-    geo.rotateX(Math.PI / 2);
-    const o = new THREE.Mesh(geo, m);
-    o.position.set(0, y0, 0.02);
-    o.rotation.z = -s * dihedral;
-    ray.add(o);
-    return o;
-  };
-  // belly wings are a uniformly smaller copy (both span and length), well clear of the top
-  // wings, so a rotated tip cannot cross past the darker layer above it
-  for (const s of [-1, 1]) {
-    wingMesh(WING, TOP, 7, s, 0.012, 0.05);
-    wingMesh(scalePts(WING, 0.84, 0.84), BELLY, 6, s, -0.03, 0.05);
-  }
-
-  // cephalic fins: small curved tubes reaching forward from the front of the head, levelling
-  // out rather than rising, with only a slight downward curl at the tip
-  for (const s of [-1, 1]) {
-    const curve = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(s * 0.09, 0.008, 0.3),
-      new THREE.Vector3(s * 0.115, 0.02, 0.365),
-      new THREE.Vector3(s * 0.108, 0.006, 0.405),
-      new THREE.Vector3(s * 0.09, -0.012, 0.42),
-    ]);
-    put(new THREE.TubeGeometry(curve, 10, 0.011, 6, false), TOP, 0, 0, 0);
-  }
-
-  // eyes, at the sides of the head
-  for (const s of [-1, 1]) put(new THREE.SphereGeometry(0.02, 7, 5), EYE, s * 0.145, 0.0, 0.25);
-
-  // a thin whip tail trailing behind the hub
-  const tail = new THREE.CylinderGeometry(0.004, 0.016, 0.46, 6).rotateX(Math.PI / 2);
-  put(tail, TOP, 0, -0.004, -0.35);
-
-  // --- normalise: base at y=0, centred on x and z, per the asset contract ---
-  ray.updateMatrixWorld(true);
-  const box = new THREE.Box3();
-  const v = new THREE.Vector3();
-  ray.traverse((n) => {
-    if (!n.isMesh) return;
-    const p = n.geometry.attributes.position;
-    for (let i = 0; i < p.count; i++) box.expandByPoint(v.fromBufferAttribute(p, i).applyMatrix4(n.matrixWorld));
+  const TOP = material(0x2e4150, 0.62, "skin");
+  // Underwater light reaches the belly only from the water below, which the
+  // scene does not model; a faint glow keeps the pale underside readable.
+  const BELLY = material(0xe6e8e4, 0.7, "skinBelly", {
+    emissive: 0x9fb8bd,
+    emissiveIntensity: 0.22,
   });
+  const EYE = material(0x0b0e12, 0.28, "eye");
+  const put = (geo, mat) => {
+    const mesh = new THREE.Mesh(geo, mat);
+    ray.add(mesh);
+    return mesh;
+  };
+  // Catmull-Rom through evenly spaced samples of t in [0, 1].
+  const curve = (values) => (t) => {
+    const f = Math.min(Math.max(t, 0), 1) * (values.length - 1),
+      i = Math.min(values.length - 2, Math.floor(f)),
+      u = f - i,
+      p0 = values[Math.max(0, i - 1)],
+      p1 = values[i],
+      p2 = values[i + 1],
+      p3 = values[Math.min(values.length - 1, i + 2)];
+    return (
+      0.5 *
+      (2 * p1 +
+        (-p0 + p2) * u +
+        (2 * p0 - 5 * p1 + 4 * p2 - p3) * u * u +
+        (-p0 + 3 * p1 - 3 * p2 + p3) * u * u * u)
+    );
+  };
+  // Planform against t = |x| / 0.5, sampled every 0.1.
+  const leading = curve([
+    0.3, 0.297, 0.285, 0.258, 0.21, 0.15, 0.085, 0.02, -0.045, -0.105, -0.16,
+  ]);
+  const trailing = curve([
+    -0.215, -0.212, -0.19, -0.14, -0.09, -0.06, -0.05, -0.06, -0.085, -0.12,
+    -0.16,
+  ]);
+  const thickness = (x, v) => {
+    const t = Math.min(1, Math.abs(x) / 0.5);
+    const body = Math.exp(-((x / 0.12) ** 2));
+    const airfoil = Math.sin(Math.PI * v ** 1.35) ** 0.75;
+    return (0.006 + 0.044 * body) * Math.sqrt(1 - t) * airfoil;
+  };
+  const camber = (x) => 0.016 * (Math.abs(x) / 0.5) ** 2;
+  const surfaceY = (x, v, upper) =>
+    camber(x) + (upper ? 1 : -0.72) * thickness(x, v);
+  const surfaceZ = (x, v) => {
+    const t = Math.abs(x) / 0.5;
+    return THREE.MathUtils.lerp(trailing(t), leading(t), v);
+  };
+  const skin = (upper, rows = 44, cols = 16) => {
+    const positions = [],
+      uv = [],
+      index = [];
+    for (let i = 0; i <= rows; i++) {
+      const s = (i / rows) * 2 - 1,
+        x = 0.5 * Math.sign(s) * Math.abs(s) ** 0.92;
+      for (let j = 0; j <= cols; j++) {
+        const v = j / cols;
+        positions.push(x, surfaceY(x, v, upper), surfaceZ(x, v));
+        uv.push(i / rows, v);
+      }
+    }
+    for (let i = 0; i < rows; i++)
+      for (let j = 0; j < cols; j++) {
+        const a = i * (cols + 1) + j,
+          b = a + cols + 1;
+        if (upper) index.push(a, a + 1, b, a + 1, b + 1, b);
+        else index.push(a, b, a + 1, a + 1, b, b + 1);
+      }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(positions, 3),
+    );
+    geo.setAttribute("uv", new THREE.Float32BufferAttribute(uv, 2));
+    geo.setIndex(index);
+    geo.computeVertexNormals();
+    return geo;
+  };
+  put(skin(true), TOP);
+  put(skin(false), BELLY);
+  // A tapering sweep with an elliptical section [half width, half height] at t.
+  const sweep = (points, section, segments, sides, mat) => {
+    const path = new THREE.CatmullRomCurve3(points.map((p) => V(...p)));
+    const frames = path.computeFrenetFrames(segments, false);
+    const positions = [],
+      uv = [],
+      index = [];
+    for (let i = 0; i <= segments; i++) {
+      const t = i / segments,
+        c = path.getPointAt(t),
+        [w, h] = section(t);
+      const side = V(1, 0, 0)
+        .addScaledVector(frames.tangents[i], -frames.tangents[i].x)
+        .normalize();
+      const up = V().crossVectors(frames.tangents[i], side).normalize();
+      for (let k = 0; k <= sides; k++) {
+        const a = (k / sides) * Math.PI * 2;
+        const p = c
+          .clone()
+          .addScaledVector(side, Math.cos(a) * w)
+          .addScaledVector(up, Math.sin(a) * h);
+        positions.push(p.x, p.y, p.z);
+        uv.push(k / sides, t);
+      }
+    }
+    for (let i = 0; i < segments; i++)
+      for (let k = 0; k < sides; k++) {
+        const a = i * (sides + 1) + k,
+          b = a + sides + 1;
+        index.push(a, b, a + 1, a + 1, b, b + 1);
+      }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(positions, 3),
+    );
+    geo.setAttribute("uv", new THREE.Float32BufferAttribute(uv, 2));
+    geo.setIndex(index);
+    geo.computeVertexNormals();
+    return put(geo, mat);
+  };
+  const head = leading(0.17);
+  for (const s of [-1, 1]) {
+    sweep(
+      [
+        [s * 0.084, 0.006, head - 0.045],
+        [s * 0.094, 0.001, head + 0.018],
+        [s * 0.084, -0.008, head + 0.06],
+        [s * 0.063, -0.015, head + 0.078],
+      ],
+      (t) => [0.025 * (1 - 0.5 * t), 0.012 * (1 - 0.45 * t)],
+      14,
+      8,
+      TOP,
+    );
+    const eye = new THREE.SphereGeometry(0.0115, 10, 6).scale(0.8, 0.9, 1.1);
+    eye.translate(s * 0.104, surfaceY(0.104, 0.9, true) - 0.002, head - 0.03);
+    put(eye, EYE);
+    for (let i = 0; i < 5; i++) {
+      const z = 0.17 - i * 0.04,
+        points = [0.045, 0.075, 0.105].map((x) => {
+          const v =
+            (z - trailing(x / 0.5)) / (leading(x / 0.5) - trailing(x / 0.5));
+          return [
+            s * x,
+            surfaceY(x, v, false) - 0.0012,
+            z + (x - 0.075) * 0.25,
+          ];
+        });
+      sweep(points, () => [0.0024, 0.0009], 4, 4, EYE);
+    }
+  }
+  sweep(
+    [
+      [-0.064, -0.006, head - 0.008],
+      [0, -0.008, head + 0.006],
+      [0.064, -0.006, head - 0.008],
+    ],
+    () => [0.0045, 0.0028],
+    10,
+    5,
+    EYE,
+  );
+  const tailStart = trailing(0) + 0.015;
+  sweep(
+    [
+      [0, 0.002, tailStart],
+      [0.004, -0.002, tailStart - 0.12],
+      [0.011, -0.006, tailStart - 0.26],
+      [0.006, -0.005, -0.62],
+    ],
+    (t) => [0.011 * (1 - 0.93 * t), 0.009 * (1 - 0.93 * t)],
+    18,
+    6,
+    TOP,
+  );
+  ray.updateMatrixWorld(true);
+  for (const mat of [TOP, BELLY, EYE]) {
+    const positions = [],
+      normals = [],
+      uv = [];
+    for (const mesh of [...ray.children]) {
+      if (mesh.material !== mat) continue;
+      const geo = mesh.geometry.index
+        ? mesh.geometry.toNonIndexed()
+        : mesh.geometry.clone();
+      geo.applyMatrix4(mesh.matrix);
+      positions.push(...geo.attributes.position.array);
+      normals.push(...geo.attributes.normal.array);
+      uv.push(...geo.attributes.uv.array);
+      geo.dispose();
+      mesh.geometry.dispose();
+      ray.remove(mesh);
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(positions, 3),
+    );
+    geo.setAttribute("normal", new THREE.Float32BufferAttribute(normals, 3));
+    geo.setAttribute("uv", new THREE.Float32BufferAttribute(uv, 2));
+    put(geo, mat);
+  }
+  const box = new THREE.Box3().setFromObject(ray),
+    size = box.getSize(new THREE.Vector3());
   const c = box.getCenter(new THREE.Vector3());
-  ray.position.set(-c.x, -box.min.y, -c.z);
-
+  const scale = new THREE.Vector3(
+    0.9987502603949663 / size.x,
+    0.08799125091514412 / size.y,
+    1.008921703696251 / size.z,
+  );
+  for (const mesh of ray.children) {
+    mesh.geometry
+      .translate(-c.x, -box.min.y, -c.z)
+      .scale(scale.x, scale.y, scale.z);
+    mesh.geometry.computeBoundingBox();
+    mesh.geometry.computeBoundingSphere();
+  }
   return g;
 }

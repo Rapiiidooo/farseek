@@ -2,3 +2,4 @@ node_modules/
 outputs/
 game/assets/_verify/
 .DS_Store
+.env

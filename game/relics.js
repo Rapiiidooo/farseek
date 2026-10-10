@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { progress, findRelic } from "./store.js";
 import { clearGrass } from "./grass.js";
 
-// Five things the expeditions left behind, hidden along the way for the curious. Each is
+// Things the expeditions left behind, hidden along the way for the curious. Each is
 // found once and for good, like an achievement: taken, it leaves its world and is listed on
 // the Relics screen. `at` is [x, z] on the ground of its world, or offsets from an isle's
 // centre on the isles. `leave` names the materials that stay behind when it is taken.
@@ -14,6 +14,11 @@ export const RELICS = [
     hint: "Somewhere in the Sunken Court.",
     name: "The first papyrus",
     line: "The first expedition's survey of the court, rolled and tied, the mirrors drawn in.",
+    entry: [
+      "The survey follows a single sunbeam from the western cliff. Three crystal heads are circled, each beside a different glyph. The mirrors form a route between them, rather than three separate puzzles.",
+      "Mira has written in the margin: A door needs an address, not a key. If this ring answers, the ruins belong to a much larger map.",
+      "The last corner is folded around their departure bearing. They left believing they could find the way back.",
+    ],
     verb: "Pick up the papyrus",
     asset: "field_scroll",
     at: [26.25, 16.35],
@@ -24,9 +29,14 @@ export const RELICS = [
     id: "radio",
     where: "two",
     world: "The Checkpoint",
-    hint: "Somewhere at the Checkpoint.",
+    hint: "By a spire of the Checkpoint.",
     name: "The field radio",
     line: "Confiscated at the window and dropped by the spire. It still hisses, tuned to home.",
+    entry: [
+      "The home channel is still marked on the dial. Static answers every call. Someone scratched a second instruction into the case: No passage without three stamps.",
+      "A strip of expedition tape carries Mira's handwriting: Their rules are literal. A stamp on the right stone counts, whoever was meant to receive it.",
+      "I can almost hear her laughing at the window. She would have found a way through.",
+    ],
     verb: "Take the radio",
     asset: "field_radio",
     at: [-10.3, -36.4],
@@ -38,9 +48,14 @@ export const RELICS = [
     id: "page",
     where: "three",
     world: "The Dawn Isles",
-    hint: "Somewhere on the Dawn Isles.",
+    hint: "On a ledge of the Dawn Isles.",
     name: "Mira's lost page",
     line: "Torn from her journal: the isles drawn at first light, drifting together.",
+    entry: [
+      "Day 15. The isles move together at dawn, then drift apart again. We crossed with ropes while the gaps were narrow. Anyone following later will need the builders' light bridges.",
+      "One isle keeps wandering between the two banks. Wait for it to come close, jump aboard and let it carry you. The stones beyond it cannot bear a standing foot.",
+      "There is a little arrow beside the drawing: Camp ahead. Keep going. M.",
+    ],
     verb: "Pick up the page",
     asset: "field_scroll",
     tint: [0.95, 0.9, 0.8],
@@ -53,9 +68,14 @@ export const RELICS = [
     id: "scarf",
     where: "four",
     world: "The Frozen Reach",
-    hint: "Somewhere in the Frozen Reach.",
+    hint: "On a stone above the frozen pond.",
     name: "Mira's scarf",
     line: "Left on a stone above the pond. The frost has not yet taken the red.",
+    entry: [
+      "The scarf is tied around the stone with Mira's familiar double knot. She used it to mark the safe side of a crossing when the wind covered our tracks.",
+      "The pond lies below. A block can slide beneath the notch in its far wall, making a step where there was none.",
+      "She left the red where someone coming after her would see it. I refuse to read it as a farewell.",
+    ],
     verb: "Take Mira's scarf",
     asset: "mira_scarf",
     at: [-6.4, -78.6],
@@ -66,14 +86,135 @@ export const RELICS = [
     id: "lantern",
     where: "four",
     world: "The Frozen Reach",
-    hint: "Somewhere in the Frozen Reach.",
+    hint: "In the lee of the frozen island.",
     name: "Mira's lantern",
     line: "Still burning low in the lee of the island. She meant to come back for it.",
+    entry: [
+      "There is almost no oil left, but the glass has been cleaned. Mira used to leave a lamp at the beginning of a return trail and tell me to keep it in sight.",
+      "The island's last glyph is sealed under layers of ice. A nearby prism still catches the builders' light. The light must be carried faster than the ice can heal.",
+      "A wick folded into a spare loop. She expected someone else to use this lantern.",
+    ],
     verb: "Take Mira's lantern",
     asset: "mira_lantern",
     at: [-10.4, -160.6],
     yaw: 0.6,
     light: { intensity: 1.1, flame: true, reach: 7 },
+  },
+  {
+    id: "grove-map",
+    where: "five",
+    world: "The Wildwood",
+    hint: "A trace of the expedition beside the grove path.",
+    name: "Mira's grove sketch",
+    line: "A pressed leaf and a castle address, drawn beside a path through the roots.",
+    entry: [
+      "Day 23. The forest grew over the builders' road, but its crystals still answer. The spore pods grow quiet when a charged pulse reaches them. The boars paw the dirt before a straight charge. Step aside, then move while they catch their breath.",
+      "The castle's three stones form an address. Read the water first, then the spiral of roots, then the crescent above the canopy: waves, spiral, crescent.",
+      "There is an archive beneath the next sea. If it holds the old maps, it may tell us where all these doors lead. Nyra, I am leaving the path as clearly as I can. M.",
+    ],
+    verb: "Take Mira's grove sketch",
+    asset: "field_scroll",
+    at: [9, -117],
+    yaw: 1.7,
+    tint: [0.92, 0.88, 0.74],
+    scale: 0.95,
+  },
+  {
+    id: "pressure-log",
+    where: "six",
+    world: "The Drowned Archive",
+    hint: "A field note on the far pressure landing.",
+    name: "The archive field note",
+    line: "Mira's last dry page explains why the guardian keeps its vigil.",
+    entry: [
+      "Day 25. The sea covered the archive, but the control desk can still make an island of air. The first seal holds the causeway together long enough to cross. Once crossed, it remembers the route.",
+      "I thought the guardian was keeping us here. It has been keeping the last address alive. Its armour closes under pressure; wait for the surge to pass, gather light from a crystal, pulse the open core, then shoot it while it is cracked.",
+      "Nyra, if you find this, keep the door awake. I left my lantern behind because I knew you would bring the light the rest of the way. I will leave another on the far side. M.",
+    ],
+    verb: "Take the archive field note",
+    asset: "field_scroll",
+    at: [-4.7, -41.2],
+    yaw: 2.2,
+    tint: [0.86, 0.82, 0.73],
+    scale: 0.95,
+  },
+  {
+    id: "sun-memory",
+    where: "court",
+    world: "The Sunken Court",
+    hint: "A star outside the gate's address remembers the builders.",
+    name: "The builders' stone memory",
+    line: "Sunlight wakes an old record, with Mira's notes scratched along its edge.",
+    entry: [
+      "The star marks a record, rather than a destination. Its carvings show a road ending at one ring and continuing beneath another sky. The builders gave distant settlements a common route home.",
+      "A line of empty vessels follows the road. A flood swallowed one settlement, and those beyond its door kept sending light until the last travellers crossed. The archive was built to remember the addresses they lost.",
+      "Mira traced the final vessel with a pencil: They kept the way open for each other. If I can learn the last address, Nyra will have a way to follow. M.",
+    ],
+  },
+  {
+    id: "transit-file",
+    where: "two",
+    world: "The Checkpoint",
+    hint: "An optional clean stamp review can release Mira's transit file.",
+    name: "Mira's transit file",
+    line: "A copy from the clerk's ledger, with Mira's request kept in its margin.",
+    entry: [
+      "The ledger records Mira's passage towards the dawn isles. Her request for a return address is stamped VOID. The clerk kept a duplicate of the page she left behind.",
+      "Mira drew a ring beneath the refusal and traced three routes to it: a glyph buried in ice, a forest castle and the maps in a drowned archive. She was already searching for the way home when her radio fell silent.",
+      "A note in the margin is addressed to me: Nyra, I know you will follow. Find the way back, then find me. M.",
+    ],
+  },
+  {
+    id: "dawn-survey",
+    where: "three",
+    world: "The Dawn Isles",
+    hint: "Complete the optional light survey beside the drifting isle.",
+    name: "Mira's route survey",
+    line: "Two measuring stations preserve the route of the wandering isle.",
+    entry: [
+      "Day 15. The amber lenses are measuring stations. They answer only to light sent from the wandering isle, marking where its path touches the two banks. The builders wanted someone to keep this crossing usable.",
+      "I left a copy at the far station. Our ropes will not last, but the isle keeps returning. Whoever follows can take their time, bring light aboard and measure the route again.",
+      "Nyra, you used to draw the way home before we left camp. I have started doing the same. One crossing at a time, I am leaving a map you can follow. M.",
+    ],
+  },
+  {
+    id: "winter-crossing",
+    where: "four",
+    world: "The Frozen Reach",
+    hint: "Follow the optional cairn trail across every ice sheet and both floes.",
+    name: "Mira's winter crossing",
+    line: "A record kept between the two red cairns, for whoever follows her over the ice.",
+    entry: [
+      "Day 19. I waited on the anchored ice while the floes passed each other. Every crossing has somewhere to stop and watch. I tied red strips to the cairns on both shores so the next traveller would know where the route begins and ends.",
+      "The builders recorded safe landings and places to wait for the drifting ice. Their road was meant to bring people through, even when the world around it changed. The smallest marks survived longer than the stone bridges.",
+      "Nyra, I almost turned back here. Then I remembered how you check the far bank before we jump. I will find the last address. You will recognise the way I have left behind. M.",
+    ],
+  },
+  {
+    id: "tide-proof",
+    where: "six",
+    world: "The Drowned Archive",
+    hint: "Read the tide sketch, then vent a mark in every guardian phase.",
+    name: "Mira's tide proof",
+    line: "Three pressure marks release the page she sealed beside the last address.",
+    entry: [
+      "Day 27. Three lines feed the guardian. As the pressure rises, it closes one line and opens the next. I marked their valves in cyan. Vent each line before a strike and the dry pocket beneath the relief will open.",
+      "The guardian was keeping the last crossing alive. Its blows are the same pressure that holds back the sea. The builders left a way to relieve it, for someone patient enough to read the ground before answering with light.",
+      "Nyra, I have copied the address and left this page where the tide cannot take it. The door points home, but another road continues beyond it. Bring the map we drew together. I will be looking for your light. M.",
+    ],
+  },
+  {
+    id: "camp-drill",
+    where: "three",
+    world: "The Dawn Isles",
+    hint: "Recover the pistols at camp, then complete the optional amber plate drill.",
+    name: "Mira's camp record",
+    line: "Three practice plates guard a page she left beneath the spare ammunition.",
+    entry: [
+      "Day 16. Our last rope broke before camp. I set three old plates beside the crates and checked the pistols once more. The first shot starts the drill. Three clear marks, then breathe. Nyra always insisted that a steady hand mattered more than a quick one.",
+      "A scarred old boar holds the castle path. The locals call it Oldtusk. It charges again before it tires; watch the lowered head and keep room to step aside. I need both hands free to carry the lantern and read the last glyph, so I am leaving the pistols here with the spare magazines.",
+      "Nyra, I know what you will say about leaving camp alone. You were right. I should have waited. I have drawn the route on every page I can spare, and I am keeping a light for you at the next shelter. M.",
+    ],
   },
 ];
 
@@ -92,16 +233,18 @@ export class Relics {
   // `worlds` maps each place to its scene, its collision world and what lies on its ground
   // (the court's sand); `isles` finds an isle's centre.
   async build(worlds, isles) {
-    const glint = new THREE.SpriteMaterial({
+    const glint = (this.glint ??= new THREE.SpriteMaterial({
       map: glintTexture(),
       color: 0xfff1cf,
       transparent: true,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
       fog: false,
-    });
+    }));
     for (const def of RELICS) {
       const w = worlds[def.where];
+      if (!def.asset || !w || this.items.some((item) => item.def.id === def.id))
+        continue;
       let [x, z] = def.at;
       if (def.isle) {
         const c = isles.isle(def.isle).collider;
@@ -142,7 +285,7 @@ export class Relics {
         home: model.position.clone(),
         state: "gone",
         taking: 0,
-        seed: this.items.length * 1.7,
+        seed: RELICS.indexOf(def) * 1.7,
         box: {
           minX: x - 0.45,
           maxX: x + 0.45,
@@ -219,16 +362,22 @@ export class Relics {
     if (item.state !== "waiting") return false;
     item.state = "taking";
     item.taking = 0;
-    findRelic(item.def.id);
-    const count = progress.relics.size;
-    this.sound.play("relic");
-    this.hud.relic(item.def.name, item.def.line, count, RELICS.length);
+    this.discover(item.def.id);
     // What it was set down on stays; only the thing itself is lifted away.
     if (item.def.leave)
       item.model.traverse((m) => {
         if (m.isMesh && !this.stays(item, m)) m.visible = false;
       });
-    this.onFound?.(item.def, count);
+    return true;
+  }
+
+  discover(id) {
+    const def = RELICS.find((relic) => relic.id === id);
+    if (!def || !findRelic(id)) return false;
+    const count = progress.relics.size;
+    this.sound.play("relic");
+    this.hud.relic(def.name, def.line, count, RELICS.length);
+    this.onFound?.(def, count);
     return true;
   }
 

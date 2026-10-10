@@ -367,27 +367,32 @@ function discHits(x, z, r, b) {
   return dx * dx + dz * dz < r * r;
 }
 
-function rayBox(ox, oy, oz, dx, dy, dz, b, maxT) {
-  let t0 = 0,
-    t1 = maxT;
-  const axes = [
-    [ox, dx, b.minX, b.maxX],
-    [oy, dy, b.minY, b.maxY],
-    [oz, dz, b.minZ, b.maxZ],
-  ];
-  for (const [o, d, lo, hi] of axes) {
-    if (Math.abs(d) < 1e-9) {
-      if (o < lo || o > hi) return null;
-      continue;
-    }
-    let a = (lo - o) / d,
-      c = (hi - o) / d;
-    if (a > c) [a, c] = [c, a];
-    t0 = Math.max(t0, a);
-    t1 = Math.min(t1, c);
-    if (t0 > t1) return null;
+// Slab test without allocations: cameras and weapons cast many rays every frame.
+const span = { near: 0, far: 0 };
+function clipSlab(o, d, lo, hi) {
+  if (Math.abs(d) < 1e-9) return o >= lo && o <= hi;
+  let a = (lo - o) / d,
+    c = (hi - o) / d;
+  if (a > c) {
+    const swap = a;
+    a = c;
+    c = swap;
   }
-  return t0;
+  if (a > span.near) span.near = a;
+  if (c < span.far) span.far = c;
+  return span.near <= span.far;
+}
+
+function rayBox(ox, oy, oz, dx, dy, dz, b, maxT) {
+  span.near = 0;
+  span.far = maxT;
+  if (
+    !clipSlab(ox, dx, b.minX, b.maxX) ||
+    !clipSlab(oy, dy, b.minY, b.maxY) ||
+    !clipSlab(oz, dz, b.minZ, b.maxZ)
+  )
+    return null;
+  return span.near;
 }
 
 // A ray against a capped vertical cylinder: the side wall, then the top and bottom caps.

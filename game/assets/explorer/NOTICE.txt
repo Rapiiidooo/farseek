@@ -1,0 +1,37 @@
+Explorer anatomy and texture sources
+
+The anatomical head, technical top, bare arms and gloves derive from MakeHuman's
+hm08 base mesh, cropped and reshaped for Farseek. The head and upper body are
+subdivided. Skin, eyes, brows and ponytail textures and geometry
+come from the MakeHuman system asset pack. Eyelid, squint, brow and jaw targets
+come from Mika Suominen's faceunits01 pack. The modern outfit and animation
+are Farseek adaptations. No MakeHuman application code is included.
+
+These graphical source assets are released under CC0 1.0 Universal.
+The license text is included in LICENSE-CC0.txt.
+
+MakeHuman base revision: a8bc2d54ff0ac92e78ff71431b1023eda42bf482
+https://github.com/makehumancommunity/makehuman/blob/a8bc2d54ff0ac92e78ff71431b1023eda42bf482/LICENSE.md
+https://files2.makehumancommunity.org/asset_packs/makehuman_system_assets/makehuman_system_assets_cc0.zip
+
+Faceunits revision: 7eaba3453134385bb5ea9811ef0b33b85b4b556d
+https://github.com/makehumancommunity/extra-targets/tree/7eaba3453134385bb5ea9811ef0b33b85b4b556d/assets/faceunits01
+
+The system asset headers identify Data Collection AB, Joel Palmius and Jonas
+Hauquier. Faceunits01 metadata identifies Mika Suominen. Original source files,
+exact download URLs, hashes and transformation scripts are preserved in the
+repository's receipts/verification-realism directory and scripts/build-hero-head.py.
+
+The upper body uses default_weights.mhw from the same pinned MakeHuman revision,
+mapped to the existing torso and arm joints and intermediate shoulder supports.
+Source provenance, hashes and topology analysis are in
+receipts/verification-upper-body/source-study. scripts/build-hero-body.py
+creates the fitted upper body and common skin/cloth boundary. Revision eight's
+shirt and corrective shoulder data remain in previous/ for the review studio.
+No additional runtime library is required.
+The graphical base mesh and default rig weights are CC0.
+
+The gloves use the same CC0 base mesh, default rig and authored weights to
+produce two hand poses offline. scripts/build-hero-gloves.py records their
+transformation; receipts/verification-upper-body/gloves/build.json records
+source hashes. No MakeHuman rig code is shipped.

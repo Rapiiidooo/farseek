@@ -1,3 +1,5 @@
+import { refineNature } from "../nature-detail.js";
+
 // meadow_grass, candidate B (profiles): every blade is a hand-built strip swept along its
 // own arc. The arc integrates a lean angle that falls from nearly upright at the root to a
 // droop at the tip, slowly at first, so the inner blades stand and the outer ones bow out;
@@ -193,5 +195,5 @@ export default function (THREE) {
   });
   const c = box.getCenter(new THREE.Vector3());
   g.children.forEach((o) => { o.position.x -= c.x; o.position.y -= box.min.y; o.position.z -= c.z; });
-  return g;
+  return refineNature(THREE, g, "meadow_grass");
 }

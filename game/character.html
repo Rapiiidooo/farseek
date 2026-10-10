@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#11171b" />
+    <base href="/" />
+    <title>Farseek | Asset lab</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./character.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./vendor/three.module.js",
+          "three/addons/": "./vendor/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="masthead">
+      <a class="wordmark" href="./index.html">Farseek</a>
+      <span class="edition">Asset lab</span>
+      <a class="game-link" href="./index.html"
+        >Back to the game <span aria-hidden="true">→</span></a
+      >
+    </header>
+    <main>
+      <aside class="library" aria-label="Asset library">
+        <div class="library-heading">
+          <h2>Library</h2>
+          <span id="catalog-count"></span>
+        </div>
+        <label class="sr-only" for="asset-search">Search assets</label>
+        <input
+          id="asset-search"
+          type="search"
+          placeholder="Search assets…"
+          autocomplete="off"
+        />
+        <div class="category-picker">
+          <label class="sr-only" for="asset-category">Asset category</label>
+          <select id="asset-category" hidden>
+            <option value="all">All categories</option>
+          </select>
+          <button
+            id="category-trigger"
+            class="category-trigger"
+            type="button"
+            role="combobox"
+            aria-label="Asset category"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-controls="category-options"
+          >
+            <svg class="category-icon" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M2 4h12M4 8h8M6 12h4" />
+            </svg>
+            <span id="category-value">All categories</span>
+            <span
+              id="category-count"
+              class="category-count"
+              aria-hidden="true"
+            ></span>
+            <svg
+              class="category-chevron"
+              viewBox="0 0 16 16"
+              aria-hidden="true"
+            >
+              <path d="m4 6 4 4 4-4" />
+            </svg>
+          </button>
+          <div
+            id="category-options"
+            class="category-options"
+            role="listbox"
+            aria-label="Asset category"
+            hidden
+          ></div>
+        </div>
+        <nav id="asset-list" aria-label="Available assets"></nav>
+        <p id="catalog-empty" hidden>No matching assets. Try another name.</p>
+        <section id="level-launches" class="level-launches" hidden>
+          <h2>Level previews <span>Local</span></h2>
+          <nav id="level-links" aria-label="Launch a local level"></nav>
+          <p>Open a chapter in a separate preview session.</p>
+        </section>
+      </aside>
+      <section class="stage" aria-label="Interactive asset preview">
+        <canvas
+          id="character-view"
+          tabindex="0"
+          aria-label="3D asset. Use arrow keys to rotate, plus and minus to zoom."
+          aria-describedby="orbit-help"
+        ></canvas>
+        <div class="stage-heading" aria-hidden="true">
+          <span class="live-dot"></span>
+          <span id="version-label">Nyra Varen</span>
+        </div>
+        <div id="loading" class="loading" role="status" aria-live="polite">
+          <span class="loading-ring" aria-hidden="true"></span>
+          <p id="loading-message">Preparing the studio…</p>
+          <button id="retry-load" type="button" hidden>Try again</button>
+        </div>
+        <div class="stage-footer">
+          <p id="orbit-help">
+            Drag to orbit. Scroll to zoom. Click a part to inspect.
+          </p>
+          <div class="view-tools" role="group" aria-label="Camera controls">
+            <button type="button" id="zoom-out" aria-label="Zoom out">−</button>
+            <button type="button" id="zoom-in" aria-label="Zoom in">+</button>
+            <button type="button" id="reset-view">Reset view</button>
+          </div>
+        </div>
+      </section>
+      <aside class="controls" aria-label="Asset inspector">
+        <p id="asset-category-label" class="eyebrow">Characters</p>
+        <h1 id="asset-name">Nyra Varen</h1>
+        <p id="asset-description" class="intro">Current playable character</p>
+        <dl class="asset-stats">
+          <div>
+            <dt>Native size, W × H × D</dt>
+            <dd id="asset-size">Measuring…</dd>
+          </div>
+          <div>
+            <dt>Geometry</dt>
+            <dd id="asset-facts"></dd>
+          </div>
+        </dl>
+        <a
+          id="asset-source"
+          class="source-link"
+          href="./assets/hero_realistic.js"
+          target="_blank"
+          rel="noopener"
+          >hero_realistic.js →</a
+        >
+        <fieldset data-character-only>
+          <legend>Explorer</legend>
+          <div class="segments model-options">
+            <button type="button" data-model="original" aria-pressed="false">
+              Previous
+            </button>
+            <button type="button" data-model="refined" aria-pressed="true">
+              Nyra Varen
+            </button>
+          </div>
+        </fieldset>
+        <fieldset id="equipment-controls" data-character-only>
+          <legend>Equipment</legend>
+          <div class="movement-options">
+            <button type="button" data-equipment="off" aria-pressed="true">
+              Off
+            </button>
+            <button type="button" data-equipment="orb" aria-pressed="false">
+              Relay orb
+            </button>
+            <button type="button" data-equipment="pistols" aria-pressed="false">
+              Twin pistols
+            </button>
+          </div>
+          <div id="equipment-actions" hidden>
+            <div
+              class="movement-options"
+              role="group"
+              aria-label="Pistol position"
+            >
+              <button type="button" data-carry="holstered" aria-pressed="false">
+                Holstered
+              </button>
+              <button type="button" data-carry="held" aria-pressed="true">
+                In hand
+              </button>
+              <button
+                type="button"
+                data-carry="aim"
+                id="equipment-aim"
+                aria-pressed="false"
+              >
+                Aim
+              </button>
+            </div>
+            <button type="button" id="equipment-fire">Test shot</button>
+            <button type="button" id="equipment-reload">Reload (R)</button>
+          </div>
+          <p id="equipment-status" class="setting-note" aria-live="polite">
+            Choose a tool to inspect it on Nyra.
+          </p>
+        </fieldset>
+        <fieldset data-character-only>
+          <legend>View</legend>
+          <div class="segments">
+            <button type="button" data-framing="full" aria-pressed="true">
+              Full body
+            </button>
+            <button type="button" data-framing="portrait" aria-pressed="false">
+              Portrait
+            </button>
+            <button type="button" data-framing="upper" aria-pressed="false">
+              Upper body
+            </button>
+            <button type="button" data-framing="boots" aria-pressed="false">
+              Boots
+            </button>
+          </div>
+        </fieldset>
+        <fieldset data-character-only>
+          <legend>Movement</legend>
+          <div class="movement-options">
+            <button type="button" data-motion="idle" aria-pressed="true">
+              Idle
+            </button>
+            <button type="button" data-motion="walk" aria-pressed="false">
+              Walk
+            </button>
+            <button type="button" data-motion="run" aria-pressed="false">
+              Run
+            </button>
+            <button type="button" data-motion="swim" aria-pressed="false">
+              Swim
+            </button>
+            <button type="button" data-motion="rise" aria-pressed="false">
+              Rise
+            </button>
+            <button type="button" data-motion="dive" aria-pressed="false">
+              Dive
+            </button>
+            <button type="button" data-motion="rest" aria-pressed="false">
+              Rest
+            </button>
+            <button type="button" data-motion="hang" aria-pressed="false">
+              Hang
+            </button>
+            <button type="button" data-motion="climb" aria-pressed="false">
+              Climb
+            </button>
+          </div>
+        </fieldset>
+        <fieldset class="timeline" data-character-only>
+          <legend>Playback <output id="motion-time">0.00 s</output></legend>
+          <div class="movement-options">
+            <button
+              type="button"
+              id="stop-motion"
+              title="Return to idle to inspect deceleration."
+            >
+              Stop
+            </button>
+            <button type="button" id="step-frame">+1 frame</button>
+            <button type="button" id="step-tenth">+0.1 s</button>
+            <button type="button" id="restart-motion">Restart</button>
+          </div>
+        </fieldset>
+        <fieldset class="camera-views">
+          <legend>Camera</legend>
+          <div class="movement-options">
+            <button type="button" data-camera="front">Front</button>
+            <button type="button" data-camera="quarter">¾</button>
+            <button type="button" data-camera="side">Side</button>
+            <button type="button" data-camera="rear">Rear</button>
+          </div>
+        </fieldset>
+        <div class="lighting-row">
+          <label for="lighting">Light</label>
+          <select id="lighting">
+            <option value="studio">Studio</option>
+            <option value="dawn">Warm daylight</option>
+            <option value="forest">Forest shade</option>
+          </select>
+        </div>
+        <fieldset class="display-options">
+          <legend>Display</legend>
+          <div class="check-options">
+            <label
+              ><input type="checkbox" id="show-grid" checked /> Scale
+              grid</label
+            >
+            <label><input type="checkbox" id="show-bounds" /> Bounds</label>
+            <label
+              ><input type="checkbox" id="show-wireframe" /> Wireframe</label
+            >
+            <label><input type="checkbox" id="turntable" /> Turntable</label>
+            <label id="surface-option"
+              ><input type="checkbox" id="game-surfaces" checked /> Game
+              surfaces</label
+            >
+          </div>
+          <p id="grid-scale" class="setting-note">Grid spacing: 0.5 m</p>
+        </fieldset>
+        <button
+          type="button"
+          id="pause-motion"
+          class="pause"
+          aria-pressed="false"
+        >
+          Pause movement
+        </button>
+        <p id="picked-part" class="picked-part">
+          Click the model to inspect a mesh.
+        </p>
+        <details class="structure">
+          <summary>
+            Rig &amp; named parts <span id="parts-count"></span>
+          </summary>
+          <ul id="asset-parts"></ul>
+        </details>
+        <p class="studio-note">
+          Assets retain their native scale. Inspect Nyra’s equipment and compare
+          archived explorers under matching light.
+        </p>
+        <p
+          id="selection-status"
+          class="sr-only"
+          role="status"
+          aria-live="polite"
+        ></p>
+      </aside>
+    </main>
+    <script type="module">
+      import("./character-view.js").catch((error) => {
+        console.error(error);
+        document.querySelector("#loading").classList.add("failed");
+        document.querySelector("#loading-message").textContent =
+          "The studio could not load. Reload this page to try again.";
+      });
+    </script>
+  </body>
+</html>

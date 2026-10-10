@@ -1,5 +1,3 @@
-// The closing credits: a slow roll over the last shot that stops on its final line, holds,
-// and hands back. Escape, Enter or Space skips it.
 export class Credits {
   constructor(root, input) {
     this.root = root;
@@ -8,8 +6,11 @@ export class Credits {
     this.running = false;
   }
 
-  play(onDone) {
+  play(onDone, { speed = 52, linger = false } = {}) {
     this.onDone = onDone;
+    this.speed = speed;
+    this.linger = linger;
+    this.root.classList.toggle("space", linger);
     this.root.hidden = false;
     this.running = true;
     this.y = innerHeight;
@@ -33,8 +34,8 @@ export class Credits {
       return this.stop(true);
     const last = this.roll.querySelector(".end");
     const stop = innerHeight * 0.45 - last.offsetTop;
-    if (this.y > stop) this.y = Math.max(stop, this.y - dt * 52);
-    else if ((this.hold += dt) > 3.5) return this.stop(true);
+    if (this.y > stop) this.y = Math.max(stop, this.y - dt * this.speed);
+    else if (!this.linger && (this.hold += dt) > 3.5) return this.stop(true);
     this.place();
   }
 
@@ -42,6 +43,7 @@ export class Credits {
     if (!this.running) return;
     this.running = false;
     this.root.hidden = true;
+    this.root.classList.remove("space");
     const done = this.onDone;
     this.onDone = null;
     if (finished) done?.();

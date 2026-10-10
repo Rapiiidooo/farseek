@@ -1,127 +1,200 @@
 import * as THREE from "three";
+import createOrb from "./assets/relay_orb.js";
+import { traceAim } from "./targeting.js";
+import { equipmentSound } from "./equipment-sound.js";
+import { RelayTether } from "./relay-pull.js";
 
-// The sun disc: thrown, it flies straight for a moment, then curves home to the hand like a
-// returning blade. It strikes what it meets and turns back at once; flown through a beam of
-// light it drinks the light and glows for a while, and a glowing disc can light a lamp.
+const CHARGE_TIME = 10;
+const GLASS = new THREE.Color(0xa8f3e6);
+let haloMap = null;
 
-const OUT_TIME = 0.42,
-  OUT_SPEED = 23,
-  BACK_SPEED = 27,
-  CATCH = 0.7,
-  CHARGE_TIME = 10,
-  AIM_CONE = THREE.MathUtils.degToRad(26),
-  AIM_RANGE = 24;
+function haloTexture() {
+  if (haloMap) return haloMap;
+  const size = 64;
+  const pixels = new Uint8Array(size * size * 4);
+  for (let y = 0; y < size; y++)
+    for (let x = 0; x < size; x++) {
+      const r = Math.hypot(
+        (x + 0.5) / (size / 2) - 1,
+        (y + 0.5) / (size / 2) - 1,
+      );
+      const offset = (y * size + x) * 4;
+      pixels.fill(255, offset, offset + 3);
+      pixels[offset + 3] = Math.max(0, 1 - r) ** 2.2 * 255;
+    }
+  haloMap = new THREE.DataTexture(pixels, size, size);
+  haloMap.magFilter = haloMap.minFilter = THREE.LinearFilter;
+  haloMap.needsUpdate = true;
+  return haloMap;
+}
 
-const TURQUOISE = new THREE.Color(0x39e3d0);
+const own = (mesh) => {
+  const material = mesh.material.clone();
+  material.onBeforeCompile = mesh.material.onBeforeCompile;
+  material.customProgramCacheKey = mesh.material.customProgramCacheKey;
+  mesh.material = material;
+  return material;
+};
 
 export class SunDisc {
   constructor(mesh, world, sound) {
-    this.mesh = mesh;
-    this.world = world;
-    this.sound = sound;
+    Object.assign(this, { mesh, world, sound });
     this.state = "hidden";
     this.pos = new THREE.Vector3();
-    this.vel = new THREE.Vector3();
     this.prev = new THREE.Vector3();
     this.charge = 0;
-    this.t = 0;
+    this.cooldown = 0;
+    this.activations = 0;
+    this.pulse = 0;
     this.spin = 0;
+    this.time = 0;
+    this.glass = 0;
     this.targets = [];
     this.beams = [];
     this.hitThisThrow = new Set();
-    mesh.visible = false;
     this.lens = [];
-    mesh.traverse((o) => {
-      if (!o.isMesh) return;
-      o.castShadow = true;
-      if (mesh.userData.parts?.lens && isInside(o, mesh.userData.parts.lens)) {
-        o.material = o.material.clone();
-        this.lens.push(o.material);
-      }
+    this.center = new THREE.Vector3(...(mesh.userData.center || [0, 0.105, 0]));
+    mesh.visible = false;
+    const parts = mesh.userData.parts || {};
+    parts.lens?.traverse((o) => {
+      if (o.isMesh) this.lens.push(own(o));
     });
-    // A soft halo that shows the disc's charge from far away.
-    const c = document.createElement("canvas");
-    c.width = c.height = 64;
-    const ctx = c.getContext("2d");
-    const g = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    g.addColorStop(0, "rgba(255,255,255,1)");
-    g.addColorStop(0.3, "rgba(160,255,240,0.5)");
-    g.addColorStop(1, "rgba(60,220,200,0)");
-    ctx.fillStyle = g;
-    ctx.fillRect(0, 0, 64, 64);
-    const tex = new THREE.CanvasTexture(c);
-    tex.colorSpace = THREE.SRGBColorSpace;
+    // Every material the charged look animates exists from here on; charging only moves values.
+    this.shell = [];
+    parts.shell?.traverse((o) => {
+      if (!o.isMesh) return;
+      const material = own(o);
+      material.transparent = true;
+      o.renderOrder = 3;
+      this.shell.push({
+        material,
+        color: material.color.clone(),
+        metalness: material.metalness,
+        roughness: material.roughness,
+      });
+    });
+    this.crystal = [];
+    parts.core?.traverse((o) => {
+      if (!o.isMesh) return;
+      o.castShadow = false;
+      this.crystal.push(own(o));
+    });
+    this.strands = [];
+    parts.swirl?.traverse((o) => {
+      if (!o.isMesh) return;
+      o.castShadow = false;
+      o.renderOrder = 1;
+      this.strands.push(o);
+    });
+    if (this.strands.length) {
+      const material = own(this.strands[0]);
+      for (const strand of this.strands) strand.material = material;
+      this.strandLight = material;
+    }
+    this.lining = [];
+    parts.lining?.traverse((o) => {
+      if (!o.isMesh) return;
+      o.castShadow = false;
+      o.renderOrder = 2;
+      this.lining.push(own(o));
+    });
     this.halo = new THREE.Sprite(
       new THREE.SpriteMaterial({
-        map: tex,
-        color: new THREE.Color(0.8, 2.6, 2.4),
+        map: haloTexture(),
+        color: new THREE.Color(0.4, 1.6, 1.5),
+        transparent: true,
+        opacity: 0,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
         toneMapped: false,
-        transparent: true,
-        opacity: 0,
       }),
     );
-    this.halo.scale.setScalar(1.3);
+    this.halo.name = "Relay charge halo";
+    this.halo.position.copy(this.center);
+    this.halo.renderOrder = 4;
+    this.halo.visible = false;
     mesh.add(this.halo);
+    this.link = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.008, 0.014, 1, 8),
+      new THREE.MeshBasicMaterial({
+        color: 0x6effe8,
+        transparent: true,
+        opacity: 0,
+        depthWrite: false,
+        toneMapped: false,
+        blending: THREE.AdditiveBlending,
+      }),
+    );
+    this.link.frustumCulled = false;
+    this.link.name = "Relay connection";
+    mesh.add(this.link);
+    this.tether = new RelayTether();
+    mesh.add(this.tether.mesh);
+    this.destination = new THREE.Vector3();
+    this.kind = "orb";
   }
 
   get charged() {
     return this.charge > 0;
   }
-
+  get chargeLeft() {
+    return this.charge / CHARGE_TIME;
+  }
   get ready() {
     return this.state === "held";
   }
 
-  // Before the explorer takes it back: resting on the pile of confiscated things,
-  // turning slowly and glowing so it can be seen from the path.
-  // The light stays in the scene once made: adding or removing a light recompiles every
-  // material in view, so taking the disc only turns it down.
   display(scene, at) {
-    this.state = "display";
-    this.scene = scene;
+    Object.assign(this, { state: "display", scene, displayAt: at.clone() });
     this.mesh.visible = true;
     this.mesh.scale.setScalar(1);
     scene.add(this.mesh);
-    this.displayAt = at.clone();
-    this.mesh.position.copy(at);
+    this.mesh.position.copy(at).sub(this.center);
+    this.charge = this.pulse = this.cooldown = this.glass = 0;
+    this.link.material.opacity = 0;
     if (!this.displayLight) {
       this.displayLight = new THREE.PointLight(0x39e3d0, 4, 4, 1.8);
       scene.add(this.displayLight);
     }
-    this.displayLight.position.copy(at).add(new THREE.Vector3(0, 0.4, 0));
+    this.displayLight.position.copy(at).add(new THREE.Vector3(0, 0.25, 0));
     this.displayLight.intensity = 4;
-    this.charge = 0;
   }
 
-  // Back on the pile of confiscated things.
   reset() {
+    this.charge = this.pulse = this.cooldown = this.glass = 0;
+    this.hitThisThrow.clear();
     if (this.scene && this.displayAt) this.display(this.scene, this.displayAt);
   }
 
-  // Leaving this world: the disc waits, out of sight, for the explorer to come back.
   stow() {
     if (this.state === "display") return;
     this.scene?.attach(this.mesh);
     this.mesh.visible = false;
     this.state = "stowed";
+    this.pulse = 0;
+    this.link.material.opacity = 0;
+    this.tether.hide();
   }
 
-  // The disc rides in the right hand, lying flat under the palm. `grip` is the palm's
-  // position in the joint that carries it (a forearm when the model has no hand joint).
   attach(hand, grip = this.grip) {
     if (this.displayLight) this.displayLight.intensity = 0;
     this.hand = hand;
-    this.grip = grip || new THREE.Vector3(0, -0.36, 0.08);
+    this.grip = grip?.clone() || new THREE.Vector3(0, -0.36, 0.08);
     this.state = "held";
     this.mesh.visible = true;
     hand.add(this.mesh);
-    this.mesh.position.copy(this.grip).add(new THREE.Vector3(0, -0.035, 0.02));
-    this.mesh.rotation.set(0.15, 0, 0);
-    this.mesh.scale.setScalar(
-      1 / (hand.getWorldScale(new THREE.Vector3()).x || 1),
-    );
+    const scale = 1 / (hand.getWorldScale(new THREE.Vector3()).x || 1);
+    this.mesh.scale.setScalar(scale);
+    this.mesh.rotation.set(0, 0, 0);
+    this.mesh.position
+      .copy(this.grip)
+      .addScaledVector(
+        new THREE.Vector3(
+          ...(this.mesh.userData.gripOffset || [0, 0.015, 0.075]),
+        ),
+        scale,
+      )
+      .addScaledVector(this.center, -scale);
   }
 
   handPosition(out = new THREE.Vector3()) {
@@ -129,167 +202,127 @@ export class SunDisc {
     return out.copy(this.grip).applyMatrix4(this.hand.matrixWorld);
   }
 
-  // Throws along the camera's heading, bending the aim onto the best target near it.
   throw(scene, camera, fallbackYaw) {
-    if (this.state !== "held") return false;
-    const from = this.handPosition(new THREE.Vector3());
-    const fwd = new THREE.Vector3();
-    camera.getWorldDirection(fwd);
-    fwd.y = Math.max(-0.15, Math.min(0.35, fwd.y + 0.12));
-    if (fwd.lengthSq() < 1e-4)
-      fwd.set(Math.sin(fallbackYaw), 0, Math.cos(fallbackYaw));
-    fwd.normalize();
-    let best = null,
-      bestAngle = AIM_CONE;
-    for (const t of this.targets) {
-      if (!t.alive()) continue;
-      const to = t.center().clone().sub(from);
-      const dist = to.length();
-      if (dist > AIM_RANGE || dist < 0.3) continue;
-      const flat = new THREE.Vector3(to.x, 0, to.z).normalize();
-      const fflat = new THREE.Vector3(fwd.x, 0, fwd.z).normalize();
-      const angle = flat.angleTo(fflat);
-      if (angle < bestAngle) {
-        bestAngle = angle;
-        best = t;
-      }
-    }
-    const dir = best ? best.center().clone().sub(from).normalize() : fwd;
-    this.aimed = best;
-    // Flying at a target, the disc goes all the way to it; loosed freely it turns early.
-    this.outTime = best
-      ? Math.min(1.0, best.center().distanceTo(from) / OUT_SPEED + 0.08)
-      : OUT_TIME;
-    this.state = "out";
-    this.t = 0;
-    this.hitThisThrow.clear();
-    this.pos.copy(from);
+    if (!this.ready || this.cooldown > 0) return false;
+    const from = this.handPosition();
+    const forward = camera.getWorldDirection(new THREE.Vector3());
+    forward.y = THREE.MathUtils.clamp(forward.y + 0.12, -0.15, 0.35);
+    if (forward.lengthSq() < 1e-6)
+      forward.set(Math.sin(fallbackYaw), 0, Math.cos(fallbackYaw));
+    const crystals = this.beams.map((beam) => ({
+      radius: 0.45,
+      center: () => beam.from,
+      alive: () => beam.active(),
+      onHit: () => {
+        this.charge = CHARGE_TIME;
+        this.sound?.play("charge");
+      },
+    }));
+    const aim = traceAim(
+      this.world,
+      from,
+      forward,
+      [...crystals, ...this.targets],
+      { ignoreProps: true },
+    );
     this.prev.copy(from);
-    this.vel.copy(dir).multiplyScalar(OUT_SPEED);
-    scene.attach(this.mesh);
-    this.mesh.position.copy(from);
-    this.mesh.rotation.set(0, 0, 0);
-    this.sound?.play("throw");
+    this.pos.copy(aim.point);
+    this.destination.copy(aim.point);
+    this.hitThisThrow.clear();
+    this.chargeFromBeams();
+    if (aim.target) {
+      this.hitThisThrow.add(aim.target);
+      aim.target.onHit(this);
+    }
+    this.pulse = 1;
+    this.activations++;
+    this.cooldown = 0.48;
+    equipmentSound(this.sound, "relay");
     return true;
   }
 
-  update(dt, hero, onCatch) {
-    this.charge = Math.max(0, this.charge - dt);
-    const glow = Math.min(1, this.charge / 1.5);
-    this.halo.material.opacity =
-      glow * (0.75 + 0.25 * Math.sin(performance.now() * 0.02));
-    for (const m of this.lens) {
-      m.emissive = TURQUOISE;
-      m.emissiveIntensity = 0.4 + glow * 3;
-    }
-    if (this.state === "display") {
-      this.spin += dt * 1.2;
-      this.mesh.position.set(
-        this.displayAt.x,
-        this.displayAt.y + Math.sin(this.spin * 2) * 0.05,
-        this.displayAt.z,
-      );
-      this.mesh.rotation.set(0.9, this.spin, 0);
-      this.halo.material.opacity = 0.35 + Math.sin(this.spin * 3) * 0.1;
-      return;
-    }
-    if (
-      this.state === "held" ||
-      this.state === "hidden" ||
-      this.state === "stowed"
-    )
-      return;
-    this.t += dt;
-    this.spin += dt * 26;
-    this.prev.copy(this.pos);
-    if (this.state === "out") {
-      // A light pull towards the aimed target keeps a moving Warden in the path.
-      if (this.aimed?.alive()) {
-        const want = this.aimed
-          .center()
-          .clone()
-          .sub(this.pos)
-          .normalize()
-          .multiplyScalar(OUT_SPEED);
-        this.vel.lerp(want, Math.min(1, dt * 4));
-      }
-      this.pos.addScaledVector(this.vel, dt);
-      if (this.t > this.outTime) this.turnBack();
-      else this.collide();
-    } else {
-      const hand = this.handPosition(new THREE.Vector3());
-      const to = hand.sub(this.pos);
-      const d = to.length();
-      if (d < CATCH) {
-        this.state = "held";
-        this.attach(this.hand);
-        this.sound?.play("catch");
-        onCatch?.();
-        return;
-      }
-      this.vel.lerp(
-        to.normalize().multiplyScalar(BACK_SPEED),
-        Math.min(1, dt * 9),
-      );
-      this.pos.addScaledVector(this.vel, dt);
-    }
-    this.chargeFromBeams();
-    this.mesh.position.copy(this.pos);
-    this.mesh.rotation.set(0.15, this.spin, 0);
+  // A charged pulse that stuns a creature or cracks a core spends the stored light.
+  spend() {
+    this.charge = 0;
   }
 
-  turnBack() {
-    if (this.state !== "out") return;
-    this.state = "back";
-    this.t = 0;
-  }
-
-  // Walls send it home; targets take the blow and send it home too.
-  collide() {
-    const step = this.pos.clone().sub(this.prev);
-    const len = step.length();
-    if (len < 1e-5) return;
-    const dir = step.clone().divideScalar(len);
-    const hit = this.world.ray(
-      this.prev.x,
-      this.prev.y,
-      this.prev.z,
-      dir.x,
-      dir.y,
-      dir.z,
-      len,
-      (b) => b.kind !== "prop",
+  // Charged, the shell clears to glass round a bright swirling crystal and a halo; the last
+  // three seconds flicker faster and faster. Dormant, it is opaque bronze over a dark crystal.
+  shine(dt) {
+    this.time += dt;
+    const charged = this.charge > 0;
+    this.glass +=
+      ((charged ? 1 : 0) - this.glass) * Math.min(1, dt * (charged ? 7 : 2.4));
+    if (this.glass < 0.002) this.glass = 0;
+    const left = this.charge / CHARGE_TIME;
+    const rate = 9 + Math.max(0, 3 - this.charge) * 7;
+    const flicker =
+      charged && this.charge < 3
+        ? Math.sin(this.time * rate) > 0
+          ? 1
+          : 0.3
+        : 1;
+    const power = this.glass * (0.4 + 0.6 * left) * flicker;
+    for (const material of this.lens)
+      material.emissiveIntensity = 0.16 + power * 2.2 + this.pulse * 1.4;
+    for (const { material, color, metalness, roughness } of this.shell) {
+      material.opacity = 1 - this.glass * 0.76;
+      material.metalness = metalness + (0.1 - metalness) * this.glass;
+      material.roughness = roughness + (0.05 - roughness) * this.glass;
+      material.color.copy(color).lerp(GLASS, this.glass * 0.6);
+    }
+    for (const material of this.crystal)
+      material.emissiveIntensity = 0.2 + power * 2.3 + this.pulse * this.glass;
+    for (const material of this.lining)
+      material.opacity = 1 - this.glass * 0.94;
+    if (this.strandLight) {
+      this.strandLight.opacity = Math.min(1, power * 1.1);
+      this.strands[0].parent.rotation.y += dt * (0.4 + power * 1.6);
+      for (let i = 0; i < this.strands.length; i++)
+        this.strands[i].rotation.y +=
+          dt * (i % 2 ? -1 : 1) * (1.4 + power * 4.2);
+    }
+    const halo = power * 0.55 + this.pulse * 0.3 * this.glass;
+    this.halo.visible = halo > 0.01;
+    this.halo.material.opacity = Math.min(1, halo);
+    this.halo.scale.setScalar(
+      0.12 + power * 0.06 + Math.sin(this.time * 5.3) * 0.008 * power,
     );
-    for (const t of this.targets) {
-      if (!t.alive() || this.hitThisThrow.has(t)) continue;
-      const c = t.center();
-      const closest = this.prev
-        .clone()
-        .addScaledVector(
-          dir,
-          THREE.MathUtils.clamp(c.clone().sub(this.prev).dot(dir), 0, len),
-        );
-      if (closest.distanceTo(c) < t.radius + 0.22) {
-        this.hitThisThrow.add(t);
-        t.onHit(this);
-        this.pos.copy(closest);
-        this.turnBack();
-        return;
-      }
-    }
-    if (hit) {
-      this.pos.copy(this.prev).addScaledVector(dir, Math.max(0, hit.t - 0.1));
-      this.sound?.play("clink");
-      this.turnBack();
-    }
   }
 
-  // Passing through a beam of light charges the disc.
+  update(dt, hero) {
+    this.charge = Math.max(0, this.charge - dt);
+    this.cooldown = Math.max(0, this.cooldown - dt);
+    this.pulse = Math.max(0, this.pulse - dt * 3.8);
+    this.shine(dt);
+    if (this.state === "display") {
+      this.spin += dt * 0.8;
+      this.mesh.position.copy(this.displayAt).sub(this.center);
+      this.mesh.position.y += Math.sin(this.spin * 2) * 0.035;
+      this.mesh.rotation.y = this.spin;
+      return;
+    }
+    this.link.material.opacity = this.ready ? this.pulse * 0.8 : 0;
+    if (this.ready && this.pulse > 0) {
+      this.mesh.updateWorldMatrix(true, false);
+      const end = this.mesh.worldToLocal(this.destination.clone());
+      const delta = end.clone().sub(this.center);
+      this.link.position.copy(this.center).addScaledVector(delta, 0.5);
+      this.link.scale.y = delta.length();
+      this.link.quaternion.setFromUnitVectors(
+        new THREE.Vector3(0, 1, 0),
+        delta.normalize(),
+      );
+    }
+    if (hero && this.ready) hero.orbPulse = this.pulse;
+  }
+
   chargeFromBeams() {
-    for (const b of this.beams) {
-      if (!b.active()) continue;
-      const d = segmentDistance(this.prev, this.pos, b.from, b.to);
-      if (d < 0.45) {
+    for (const beam of this.beams) {
+      if (
+        beam.active() &&
+        segmentDistance(this.prev, this.pos, beam.from, beam.to) < 0.45
+      ) {
         if (this.charge < CHARGE_TIME - 0.5) this.sound?.play("charge");
         this.charge = CHARGE_TIME;
       }
@@ -297,12 +330,6 @@ export class SunDisc {
   }
 }
 
-function isInside(node, root) {
-  for (let n = node; n; n = n.parent) if (n === root) return true;
-  return false;
-}
-
-// Closest distance between two segments in 3D.
 function segmentDistance(p1, q1, p2, q2) {
   const d1 = q1.clone().sub(p1),
     d2 = q2.clone().sub(p2),
@@ -337,29 +364,6 @@ function segmentDistance(p1, q1, p2, q2) {
   return c1.distanceTo(c2);
 }
 
-// Until the generated disc arrives: a bronze disc with a turquoise lens.
 export function fallbackDisc() {
-  const g = new THREE.Group();
-  const bronze = new THREE.MeshStandardMaterial({
-    color: 0xb98442,
-    metalness: 0.85,
-    roughness: 0.35,
-  });
-  const body = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.225, 0.225, 0.05, 24),
-    bronze,
-  );
-  body.position.y = 0.025;
-  const lens = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.06, 0.06, 0.06, 16),
-    new THREE.MeshStandardMaterial({
-      color: 0x1d5f63,
-      emissive: 0x39e3d0,
-      emissiveIntensity: 0.4,
-    }),
-  );
-  lens.position.y = 0.03;
-  g.add(body, lens);
-  g.userData.parts = { lens };
-  return g;
+  return createOrb(THREE);
 }

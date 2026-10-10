@@ -159,8 +159,38 @@ function skin(loop, closed, material, top, base) {
       return [p[0] + out[0] * d, yy, p[1] + out[1] * d];
     }),
   );
+  const normalGrid = P.map((column, i) =>
+    column.map((_, row) => {
+      const a = P[closed ? (i - 1 + cols) % cols : Math.max(0, i - 1)][row];
+      const b = P[closed ? (i + 1) % cols : Math.min(cols - 1, i + 1)][row];
+      const lower = column[Math.max(0, row - 1)];
+      const upper = column[Math.min(column.length - 1, row + 1)];
+      return new THREE.Vector3(b[0] - a[0], b[1] - a[1], b[2] - a[2])
+        .cross(
+          new THREE.Vector3(
+            upper[0] - lower[0],
+            upper[1] - lower[1],
+            upper[2] - lower[2],
+          ),
+        )
+        .normalize()
+        .toArray();
+    }),
+  );
+  const profileDistances = P.map((column) => {
+    const distances = [column[0][1]];
+    for (let row = 1; row < column.length; row++) {
+      const a = column[row - 1],
+        b = column[row];
+      distances.push(
+        distances[row - 1] + Math.hypot(b[0] - a[0], b[1] - a[1], b[2] - a[2]),
+      );
+    }
+    return distances;
+  });
   const pos = [],
-    uvs = [];
+    uvs = [],
+    normals = [];
   const tile = material.userData.tileMeters || 2;
   for (let i = 0; i < (closed ? cols : cols - 1); i++) {
     const A = P[i],
@@ -172,23 +202,28 @@ function skin(loop, closed, material, top, base) {
         b1 = B[k + 1];
       const u0 = along[i] / tile,
         u1 = along[i + 1] / tile;
-      for (const [p, u] of [
-        [a0, u0],
-        [b0, u1],
-        [b1, u1],
-        [a0, u0],
-        [b1, u1],
-        [a1, u0],
+      const N = normalGrid[i],
+        M = normalGrid[(i + 1) % cols];
+      const vA = profileDistances[i],
+        vB = profileDistances[(i + 1) % cols];
+      for (const [p, u, v, n] of [
+        [a0, u0, vA[k] / tile, N[k]],
+        [b0, u1, vB[k] / tile, M[k]],
+        [b1, u1, vB[k + 1] / tile, M[k + 1]],
+        [a0, u0, vA[k] / tile, N[k]],
+        [b1, u1, vB[k + 1] / tile, M[k + 1]],
+        [a1, u0, vA[k + 1] / tile, N[k + 1]],
       ]) {
         pos.push(p[0], p[1], p[2]);
-        uvs.push(u, p[1] / tile);
+        uvs.push(u, v);
+        normals.push(...n);
       }
     }
   }
   const g = new THREE.BufferGeometry();
   g.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
   g.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2));
-  g.computeVertexNormals();
+  g.setAttribute("normal", new THREE.Float32BufferAttribute(normals, 3));
   const mesh = new THREE.Mesh(g, material);
   mesh.castShadow = true;
   mesh.receiveShadow = true;

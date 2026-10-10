@@ -9,6 +9,7 @@ import {
 import { glyphMaterial, makeGlyph } from "./glyphs.js";
 import { buildCliffs } from "./cliffs.js";
 import { plantGrass, clumps } from "./grass.js";
+import { buildCourtDetail, prepareCourtSurface } from "./court-detail.js";
 
 // The court's grass, bleached to straw by the sun, darker where it roots in the sand.
 const DRY_GRASS = [0x6e5b37, 0xc4a86c];
@@ -55,7 +56,12 @@ export class Level {
     this.blocks = [];
     this.mirrors = [];
     this.stelae = [];
+    this.memories = [];
     this.moving = [];
+  }
+
+  get receivers() {
+    return [...this.stelae, ...this.memories];
   }
 
   async build() {
@@ -64,8 +70,11 @@ export class Level {
       floor = terrainMaterial("floor", 0xc4935f),
       sand = terrainMaterial("sand", 0xd4a373, 0.98),
       dark = terrainMaterial("rock", 0x8a5433),
-      masonry = terrainMaterial("masonry", 0xbd8a58);
-    this.materials = { rock, floor, sand, dark, masonry };
+      masonry = terrainMaterial("masonry", 0xbd8a58),
+      dressed = terrainMaterial("dressed", 0xbd8a58);
+    this.materials = { rock, floor, sand, dark, masonry, dressed };
+    prepareCourtSurface(floor);
+    for (const material of Object.values(this.materials)) shadeRavine(material);
     this.buildOcclusion();
     // Faces on the outer rim of the map are never seen.
     const faces = new FaceBuilder({
@@ -99,7 +108,11 @@ export class Level {
               : built
                 ? masonry
                 : rock;
-      faces.box(x0, base, z0, x1, r.h, z1, built ? masonry : rock, top);
+      if (built)
+        faces.masonryBox(x0, base, z0, x1, r.h, z1, dressed, top, {
+          roundedTop: false,
+        });
+      else faces.box(x0, base, z0, x1, r.h, z1, rock, top);
     }
     // Cliff heights follow a smooth noise around the rim, in 1.5 m steps, and runs of equal
     // height merge into broad slabs so the rim reads as rock rather than a row of pillars.
@@ -151,7 +164,11 @@ export class Level {
     for (const [x0, y0, z0, x1, y1, z1, kind, look, flags] of COURT.EXTRA) {
       this.world.add(x0, y0, z0, x1, y1, z1, kind, null, flags);
       const mat = look === "masonry" ? masonry : rock;
-      faces.box(x0, y0, z0, x1, y1, z1, mat);
+      if (look === "masonry")
+        faces.masonryBox(x0, y0, z0, x1, y1, z1, dressed, dressed, {
+          roundedTop: flags?.grab === false,
+        });
+      else faces.box(x0, y0, z0, x1, y1, z1, mat);
     }
     this.buildDrifts(sand);
     faces.build(this.root);
@@ -160,8 +177,10 @@ export class Level {
     for (const b of COURT.BLOCKS) await this.addBlock(b);
     for (const m of COURT.MIRRORS) await this.addMirror(m);
     for (const s of COURT.STELAE) await this.addStela(s);
+    for (const s of COURT.MEMORIES) await this.addStela(s);
     await this.addCatcher(COURT.LIGHT.source);
     await this.dress();
+    this.scenery = await buildCourtDetail(this);
   }
 
   // Scenery that frames the court: the carved facade, the two seated guardians, fallen
@@ -373,7 +392,9 @@ export class Level {
         const v = Math.round(255 * (1 - 0.55 * occ));
         const k = (pz * w + px) * 4;
         data[k] = data[k + 1] = data[k + 2] = v;
-        data[k + 3] = 255;
+        data[k + 3] = Math.round(
+          255 * Math.min(1, COURT.chasmDistance(x, z) / 1.4),
+        );
       }
     const tex = new THREE.DataTexture(data, w, d);
     tex.magFilter = tex.minFilter = THREE.LinearFilter;
@@ -622,18 +643,22 @@ export class Level {
   }
 
   // --- stelae ---------------------------------------------------------------
-  async addStela({ id, x, z, yaw, glyph }) {
+  async addStela({ id, x, z, yaw, glyph, memory = false, relic }) {
     const mesh = (await this.assets.make("glyph_stela")) || fallbackStela();
     mesh.position.set(x, 0, z);
     mesh.rotation.y = yaw;
     this.root.add(mesh);
+    const halfX =
+      Math.abs(Math.cos(yaw)) * 0.62 + Math.abs(Math.sin(yaw)) * 0.34;
+    const halfZ =
+      Math.abs(Math.sin(yaw)) * 0.62 + Math.abs(Math.cos(yaw)) * 0.34;
     const box = this.world.add(
-      x - 0.62,
+      x - halfX,
       -10,
-      z - 0.34,
-      x + 0.62,
+      z - halfZ,
+      x + halfX,
       2.4,
-      z + 0.34,
+      z + halfZ,
       "stela",
     );
     const f = { x: Math.sin(yaw), z: Math.cos(yaw) };
@@ -656,7 +681,7 @@ export class Level {
       o.material.emissiveIntensity = 0;
       lensMats.push(o.material);
     });
-    this.stelae.push({
+    (memory ? this.memories : this.stelae).push({
       id,
       x,
       z,
@@ -669,6 +694,8 @@ export class Level {
       lit: false,
       glyphMat,
       lensMats,
+      memory,
+      relic,
     });
   }
 
@@ -704,7 +731,7 @@ export class Level {
       });
       mirror.mesh.rotation.y = m.yaw;
     });
-    for (const s of this.stelae) {
+    for (const s of this.receivers) {
       s.lit = false;
       s.charge = 0;
       s.glyphMat.emissiveIntensity = 0;
@@ -719,6 +746,7 @@ export class Level {
     mesh.rotation.y = Math.PI / 2;
     mesh.scale.setScalar(1.15);
     this.root.add(mesh);
+    this.catcher = mesh;
     this.world.addRound(x, z, 0.72, -10, 2.1, "mirror", null, { cam: false });
   }
 
@@ -736,6 +764,14 @@ export class Level {
         ref: this.notes,
         prompt: "read",
       });
+    for (const memory of this.memories)
+      if (memory.lit && !memory.found?.())
+        list.push({
+          kind: "use",
+          box: memory.box,
+          ref: memory,
+          prompt: "relic:Read the stone memory",
+        });
     for (const m of this.mirrors)
       list.push({ kind: "mirror", box: m.box, ref: m });
     for (const b of this.blocks)
@@ -761,7 +797,7 @@ export class Level {
     this.moving = this.moving.filter((mv) => mv.t < 1);
     for (const m of this.mirrors) m.mesh.rotation.y = m.yaw;
     this.time = (this.time || 0) + dt;
-    for (const s of this.stelae) {
+    for (const s of this.receivers) {
       if (s.lit) continue;
       const k = Math.min(1, s.charge / 0.45);
       const idle = 0.12 + 0.08 * Math.sin(this.time * 2.2 + s.x);
@@ -784,6 +820,36 @@ export class Level {
       });
     }
   }
+}
+
+function shadeRavine(material) {
+  const compile = material.onBeforeCompile;
+  const key = material.customProgramCacheKey;
+  const strength = { value: 0.9 };
+  material.userData.ravineShade = strength;
+  material.onBeforeCompile = (shader, renderer) => {
+    compile.call(material, shader, renderer);
+    shader.uniforms.uRavineShade = strength;
+    shader.fragmentShader = shader.fragmentShader
+      .replace(
+        "#include <common>",
+        "#include <common>\nuniform float uRavineShade;",
+      )
+      .replace(
+        "#include <opaque_fragment>",
+        `
+        float ravine = 1.0 - texture2D(uAO, (vFDWorld.xz - uAOBox.xy) / uAOBox.zw).a;
+        float depth = pow(1.0 - smoothstep(-8.0, 5.5, vFDWorld.y), 1.4);
+        float wall = 1.0 - smoothstep(0.45, 0.85, abs(normalize(vFDNormal).y));
+        float bottom = 1.0 - smoothstep(-7.0, -5.0, vFDWorld.y);
+        outgoingLight *= mix(vec3(1.0), vec3(0.07, 0.053, 0.04),
+          ravine * depth * max(wall, bottom) * uRavineShade);
+        #include <opaque_fragment>
+      `,
+      );
+  };
+  material.customProgramCacheKey = () =>
+    key.call(material) + "|fd-court-depth-1";
 }
 
 // Procedural metal surfaces rust and dent everything metallic; a polished mirror face must

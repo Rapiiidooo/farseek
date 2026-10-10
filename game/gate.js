@@ -1,12 +1,6 @@
 import * as THREE from "three";
 import { glyphMaterial, makeGlyph } from "./glyphs.js";
-
-// A far door: the carved ring, its three address medallions, and the opening set piece.
-// The medallions ignite one by one; with all three lit the ring charges (energy runs round
-// its grooves from the medallions, dust shakes loose, the ground rumbles), then ignites: a
-// flash, a shockwave across the floor, a membrane of pure light that fills the ring and
-// clears from the centre onto a live view of the world beyond, rendered each frame from
-// the matching point behind its twin gate.
+import { dressGate } from "./gate-bases.js";
 
 const TURQUOISE = new THREE.Color(0x39e3d0);
 // From the far_gate asset: groove radii and the medallions' clock positions.
@@ -18,16 +12,32 @@ const MEDALLIONS = [
 ];
 const CHARGE = 3.4,
   REVEAL = 3.2;
+const SKY = new THREE.Color(0.55, 0.62, 0.66);
+// Portal views in progress, and the explorer the doors keep in sight.
+let nested = 0;
+let watched = null;
 
 export class Gate {
-  // `view: false` for a ring that never shows another world: its membrane is plain light,
-  // and it spares a screen-sized render target.
-  constructor({ scene, world, renderer, sound, assets, view = true }) {
+  static watch(hero) {
+    watched = hero;
+  }
+
+  // Rings without a destination keep their liquid surface and a single-pixel target.
+  constructor({ scene, world, renderer, sound, assets, view = true, hero }) {
+    if (hero) watched = hero;
     this.scene = scene;
     this.hasView = view;
+    this.renderScale = 1;
+    this.viewInterval = 0;
+    this.lastViewAt = -Infinity;
+    this.cropView = false;
+    this.projected = new THREE.Vector3();
+    this.viewPosition = new THREE.Vector3();
+    this.viewQuaternion = new THREE.Quaternion();
     this.world = world;
     this.renderer = renderer;
     this.sound = sound;
+    sound?.addGate?.(this);
     this.assets = assets;
     this.channels = new Map();
     this.time = 0;
@@ -50,8 +60,20 @@ export class Gate {
 
   // `glyphs` are the address in medallion order (left, top, right). `model` may be passed
   // already built (the second world recolours its own); otherwise the asset is loaded.
-  async build({ x, z, yaw = 0, glyphs, model, colliders = true }) {
+  // `base` names the world whose ground the door stands on (see gate-bases.js); `depth`, when
+  // given, is how far below its floor the base stays solid, for a door on a raised platform.
+  async build({
+    x,
+    z,
+    yaw = 0,
+    glyphs,
+    model,
+    colliders = true,
+    base = "court",
+    depth,
+  }) {
     model = model || (await this.assets.make("far_gate")) || fallbackGate();
+    await dressGate(model, base, this.assets);
     model.position.set(x, model.position.y, z);
     model.rotation.y = yaw;
     this.scene.add(model);
@@ -80,7 +102,14 @@ export class Gate {
         o.material.emissiveIntensity = 0;
         this.litMaterials.set(o, { name, glow: 0 });
       });
-    if (colliders) gateColliders(this.world, x, z, this.daisTop);
+    if (colliders)
+      gateColliders(
+        this.world,
+        x,
+        z,
+        this.daisTop,
+        depth === undefined ? undefined : this.daisTop - depth,
+      );
     // Each medallion carries one glyph of the address.
     this.medallionGlyphs = [];
     model.updateMatrixWorld(true);
@@ -110,23 +139,24 @@ export class Gate {
     this.uniforms = {
       uView: { value: this.target.texture },
       uRes: { value: size },
+      uViewBounds: { value: new THREE.Vector4(0, 0, 1, 1) },
       uFill: { value: 0 },
       uClear: { value: 0 },
       uTime: { value: 0 },
       uHasView: { value: 1 },
+      uFlip: { value: 0 },
+      uBack: { value: 1 },
+      uSky: { value: SKY.clone() },
     };
-    // Seen from its front only: from behind, a door shows its own back, not the world beyond.
-    const mat = new THREE.ShaderMaterial({
-      uniforms: this.uniforms,
-      transparent: true,
-      depthWrite: false,
-      side: THREE.FrontSide,
-      vertexShader: /* glsl */ `
-        varying vec2 vUv;
-        void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
-      fragmentShader: PORTAL_FS,
+    const mat = liquidMaterial(this.uniforms);
+    // A world that turns a door round assigns BackSide: the membrane stays two-sided and
+    // the face it names becomes the entrance, so no other program is ever compiled.
+    Object.defineProperty(mat, "side", {
+      get: () => THREE.DoubleSide,
+      set: (side) => {
+        this.uniforms.uFlip.value = side === THREE.BackSide ? 1 : 0;
+      },
     });
-    mat.toneMapped = true;
     const disc = new THREE.Mesh(
       new THREE.CircleGeometry(this.radius - 0.02, 96),
       mat,
@@ -136,6 +166,17 @@ export class Gate {
     disc.renderOrder = 4;
     this.scene.add(disc);
     this.disc = disc;
+    this.back = 1;
+    this.backAt = 0;
+    disc.onBeforeRender = (renderer, scene, camera) => {
+      const target = renderer.getRenderTarget();
+      if (target) this.uniforms.uRes.value.set(target.width, target.height);
+      else renderer.getDrawingBufferSize(this.uniforms.uRes.value);
+      this.uniforms.uRes.value.floor();
+      const sky = scene.fog?.color ?? scene.background;
+      this.uniforms.uSky.value.copy(sky?.isColor ? sky : SKY);
+      this.uniforms.uBack.value = nested ? 0 : this.backFade(camera);
+    };
     this.light = new THREE.PointLight(TURQUOISE, 0, 30, 1.5);
     this.light.position.copy(this.center).add(new THREE.Vector3(0, 0, 1.5));
     this.scene.add(this.light);
@@ -159,7 +200,7 @@ export class Gate {
         void main() { vP = position.xy; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
       fragmentShader: /* glsl */ `
         uniform float uFill; uniform float uPower; uniform float uTime; varying vec2 vP;
-        float band(float r, float c) { return exp(-pow((r - c) * 26.0, 2.0)); }
+        float band(float r, float c) { float x = (r - c) * 26.0; return exp(-x * x); }
         void main() {
           float r = length(vP);
           float a = degrees(atan(vP.y, vP.x));
@@ -171,7 +212,8 @@ export class Gate {
           }
           float reach = uFill * 62.0;
           float lit = smoothstep(reach + 4.0, reach - 4.0, d);
-          float head = exp(-pow((d - reach) / 3.0, 2.0)) * step(0.02, uFill) * (1.0 - step(0.999, uFill));
+          float ahead = (d - reach) / 3.0;
+          float head = exp(-ahead * ahead) * step(0.02, uFill) * (1.0 - step(0.999, uFill));
           float bands = band(r, ${GROOVES[0].toFixed(3)}) + band(r, ${GROOVES[1].toFixed(3)}) + band(r, ${GROOVES[2].toFixed(3)});
           float flow = 0.65 + 0.35 * sin(radians(a) * 24.0 - uTime * 7.0 + r * 3.0);
           vec3 col = vec3(0.35, 1.6, 1.45) * bands * (lit * flow * 1.4 + head * 5.0) * uPower;
@@ -192,16 +234,14 @@ export class Gate {
     }
   }
 
-  // The ignition: a flash at the heart of the ring, a ring of light blown out of the opening
-  // and a shockwave across the floor.
   buildBlast() {
     const flare = document.createElement("canvas");
     flare.width = flare.height = 128;
     const ctx = flare.getContext("2d");
     const g = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
-    g.addColorStop(0, "rgba(255,255,255,1)");
-    g.addColorStop(0.2, "rgba(210,255,248,0.85)");
-    g.addColorStop(0.5, "rgba(80,230,210,0.3)");
+    g.addColorStop(0, "rgba(160,236,226,0.5)");
+    g.addColorStop(0.2, "rgba(90,224,209,0.3)");
+    g.addColorStop(0.5, "rgba(60,206,192,0.12)");
     g.addColorStop(1, "rgba(40,200,190,0)");
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, 128, 128);
@@ -210,7 +250,7 @@ export class Gate {
     this.flash = new THREE.Sprite(
       new THREE.SpriteMaterial({
         map: tex,
-        color: new THREE.Color(3, 3.4, 3.3),
+        color: new THREE.Color(0.5, 0.85, 0.78),
         blending: THREE.AdditiveBlending,
         depthWrite: false,
         transparent: true,
@@ -242,14 +282,23 @@ export class Gate {
           uniform float uRadius; uniform float uAge; uniform float uWidth; varying vec2 vP;
           void main() {
             float r = length(vP);
-            float band = exp(-pow((r - uRadius * 0.92) / uWidth, 2.0)) + 0.3 * exp(-pow((r - uRadius * 0.8) / (uWidth * 2.5), 2.0));
-            float fade = (1.0 - uAge) * (1.0 - uAge);
-            gl_FragColor = vec4(vec3(0.7, 2.4, 2.2) * band * fade, 1.0);
+            float a = atan(vP.y, vP.x + 1e-6);
+            float drift = sin(a * 5.0 + uAge * 9.0) * 0.55
+              + sin(a * 9.0 - uAge * 13.0) * 0.25;
+            float crest = r - uRadius * 0.9 + drift * uWidth * 0.6;
+            float lead = crest / uWidth;
+            float trail = (crest + uWidth * 1.8) / (uWidth * 0.7);
+            float band = exp(-lead * lead)
+              * (0.58 + 0.42 * sin(a * 7.0 + uAge * 6.0))
+              + 0.18 * exp(-trail * trail);
+            float fade = smoothstep(0.0, 0.12, uAge)
+              * (1.0 - smoothstep(0.2, 1.0, uAge));
+            gl_FragColor = vec4(vec3(0.08, 0.62, 0.54) * band * fade, 1.0);
           }`,
       });
     this.ground = new THREE.Mesh(
       new THREE.CircleGeometry(1, 128),
-      waveMat(0.9),
+      waveMat(0.24),
     );
     this.ground.rotation.x = -Math.PI / 2;
     this.ground.position.set(
@@ -261,7 +310,7 @@ export class Gate {
     this.ground.renderOrder = 6;
     this.ground.frustumCulled = false;
     this.scene.add(this.ground);
-    this.ring = new THREE.Mesh(new THREE.CircleGeometry(1, 128), waveMat(0.35));
+    this.ring = new THREE.Mesh(new THREE.CircleGeometry(1, 128), waveMat(0.16));
     this.ring.position.copy(this.center);
     this.ring.visible = false;
     this.ring.renderOrder = 6;
@@ -299,11 +348,14 @@ export class Gate {
         void main() {
           float life = fract(seed.x + uTime * (0.08 + seed.y * 0.1));
           float ang = seed.z * 6.2832 + life * (0.6 + seed.y);
-          float r = uRadius * (0.92 + 0.14 * seed.y) + life * 0.8 + uBurst * (2.0 + seed.x * 9.0);
-          vec3 p = vec3(cos(ang) * r, sin(ang) * r, life * (1.5 + seed.x * 3.0) + uBurst * seed.y * 6.0);
-          vA = max(uOpen, uBurst * 1.5) * sin(life * 3.1416) * (0.5 + 0.5 * seed.z);
+          float r = uRadius * (0.92 + 0.14 * seed.y) + life * 0.8 + uBurst * (0.1 + seed.x * 0.38);
+          vec3 p = vec3(cos(ang) * r, sin(ang) * r, life * (1.5 + seed.x * 3.0) + uBurst * (0.25 + seed.y * 0.4));
           vec4 mv = modelViewMatrix * vec4(p, 1.0);
-          gl_PointSize = (0.06 + seed.x * 0.08) * uScale / -mv.z;
+          float depth = max(-mv.z, 0.05);
+          // Motes brushing the lens would be bright blotches: capped, and gone up close.
+          vA = uOpen * sin(life * 3.1416) * (0.5 + 0.5 * seed.z) * (1.0 + uBurst * 0.2)
+            * smoothstep(0.4, 2.0, depth);
+          gl_PointSize = min(24.0, (0.06 + seed.x * 0.08) * uScale / depth);
           gl_Position = projectionMatrix * mv;
         }`,
       fragmentShader: /* glsl */ `
@@ -351,9 +403,10 @@ export class Gate {
           vec3 p = vec3(cos(ang) * r * (0.7 + seed.x * 0.3), sin(ang) * r, (seed.y - 0.5) * 1.2);
           p.y -= 9.0 * t * t;
           p.x += (seed.x - 0.5) * t * 1.4;
-          vA = uAmount * (1.0 - t) * step(uFloor, p.y);
           vec4 mv = modelViewMatrix * vec4(p, 1.0);
-          gl_PointSize = (0.05 + seed.x * 0.06) * uScale / -mv.z;
+          float depth = max(-mv.z, 0.05);
+          vA = uAmount * (1.0 - t) * step(uFloor, p.y) * smoothstep(0.4, 2.0, depth);
+          gl_PointSize = min(24.0, (0.05 + seed.x * 0.06) * uScale / depth);
           gl_Position = projectionMatrix * mv;
         }`,
       fragmentShader: /* glsl */ `
@@ -399,8 +452,9 @@ export class Gate {
             void main() {
               float along = 1.0 - vUv.y;
               float lit = step(along, uProgress);
-              float head = exp(-pow((along - uProgress) * 18.0, 2.0)) * step(uProgress, 0.999);
-              float core = exp(-pow((vUv.x - 0.5) * 7.0, 2.0));
+              float ahead = (along - uProgress) * 18.0, across = (vUv.x - 0.5) * 7.0;
+              float head = exp(-ahead * ahead) * step(uProgress, 0.999);
+              float core = exp(-across * across);
               float pulse = 0.75 + 0.25 * sin(along * 40.0 - uTime * 6.0);
               vec3 c = vec3(0.22, 0.89, 0.82) * core * (lit * pulse * 1.6 + head * 6.0);
               gl_FragColor = vec4(c, 1.0);
@@ -471,8 +525,11 @@ export class Gate {
     this.blastT = undefined;
     this.rumble = 0;
     this.disc.visible = true;
+    this.uniforms.uFill.value = 1;
+    this.uniforms.uClear.value = 1.02;
     this.ground.visible = this.ring.visible = false;
     this.flash.material.opacity = 0;
+    this.sparkU.uBurst.value = 0;
   }
 
   get isOpen() {
@@ -533,7 +590,7 @@ export class Gate {
       dust = Math.max(0, 1 - t / 1.2);
       u.uFill.value = 1;
       u.uClear.value = smooth(0.12, 1, k) * 1.02;
-      light = 30 + 60 * Math.max(0, 1 - t / 0.6);
+      light = 30 + 18 * Math.max(0, 1 - t / 0.6);
       if (t >= REVEAL) {
         this.phase = "open";
         this.phaseT = 0;
@@ -547,30 +604,34 @@ export class Gate {
       light = 30 + Math.sin(this.time * 2.3) * 3;
     }
     this.energyU.uFill.value = fill;
+    u.uFill.value = fill;
     this.energyU.uPower.value = power;
     this.dustU.uAmount.value = dust;
     this.light.intensity = (light + this.pulse * 25) * (this.lightScale ?? 1);
     this.sparkU.uOpen.value = phase === "open" || phase === "reveal" ? 1 : 0;
 
-    // The ignition's blast: the flash sprite, the floor shockwave and the ring of light.
+    this.sparkU.uBurst.value = 0;
     if (this.blastT !== undefined) {
       this.blastT += dt;
       const b = this.blastT;
-      this.flash.material.opacity = Math.max(0, 1 - b / 0.7);
-      this.flash.scale.setScalar(2 + 22 * Math.sqrt(Math.min(1, b / 0.35)));
-      const g = Math.min(1, b / 1.6);
+      this.flash.material.opacity =
+        smooth(0, 0.06, b) * (1 - smooth(0.08, 0.45, b)) * 0.06;
+      this.flash.scale.setScalar(1.5 + 2.8 * smooth(0, 0.3, b));
+      const g = Math.min(1, b / 0.85);
       this.ground.visible = g < 1;
       this.ground.material.uniforms.uRadius.value =
-        5 + 45 * (1 - Math.pow(1 - g, 2.2));
+        this.radius * (1 + 0.9 * smooth(0, 1, g));
       this.ground.material.uniforms.uAge.value = g;
-      const r = Math.min(1, b / 1.1);
+      const r = Math.min(1, b / 0.9);
       this.ring.visible = r < 1;
       this.ring.material.uniforms.uRadius.value =
-        this.radius * (1 + 2.2 * (1 - Math.pow(1 - r, 2)));
+        this.radius * (1.02 + 0.33 * smooth(0, 0.85, r));
       this.ring.material.uniforms.uAge.value = r;
+      this.ring.position.z =
+        this.center.z + 0.12 + Math.sin(r * Math.PI) * 0.55;
       this.sparkU.uBurst.value =
-        Math.max(0, 1 - b / 1.4) * Math.min(1, b / 0.1);
-      if (b > 2) this.blastT = undefined;
+        smooth(0, 0.08, b) * (1 - smooth(0.14, 0.65, b));
+      if (b >= 0.9) this.blastT = undefined;
     }
 
     for (const [mesh, v] of this.litMaterials) {
@@ -597,8 +658,33 @@ export class Gate {
     this.onIgnition?.();
   }
 
+  // The far face of the membrane clears only while it stands between the camera and the
+  // explorer, as when the camera trails her through the ring; it hides at once, returns softly.
+  backFade(camera) {
+    const now = performance.now();
+    const elapsed = Math.min(0.1, (now - this.backAt) / 1000);
+    this.backAt = now;
+    let shown = 1;
+    if (watched) {
+      const c = this.center,
+        eye = camera.position;
+      const near = eye.z - c.z,
+        far = watched.pos.z - c.z;
+      if (near * far < 0) {
+        const k = near / (near - far);
+        const x = eye.x + (watched.pos.x - eye.x) * k - c.x,
+          y = eye.y + (watched.feet + 1.1 - eye.y) * k - c.y;
+        if (x * x + y * y < (this.radius + 0.5) ** 2) shown = 0;
+      }
+    }
+    this.back =
+      shown < this.back ? shown : Math.min(shown, this.back + elapsed * 2.5);
+    return this.back;
+  }
+
   // Crossing the ring plane inside the opening, going through it towards -Z.
   crossed(hero) {
+    watched = hero;
     if (!this.isOpen) return false;
     const inside =
       Math.abs(hero.pos.x - this.center.x) < this.radius - 0.9 &&
@@ -610,7 +696,7 @@ export class Gate {
   }
 
   renderPortal(camera) {
-    if (!this.destination || !this.disc.visible) return;
+    if (!this.hasView || !this.destination || !this.disc.visible) return;
     if (this.uniforms.uClear.value <= 0) return;
     // Only draw the far world when the window is on screen and seen from its front.
     camera.updateMatrixWorld();
@@ -626,7 +712,52 @@ export class Gate {
       camera.position.z < this.center.z - 0.5
     )
       return;
+    if (
+      this.phase === "open" &&
+      !this.viewPose &&
+      this.lastDestination === this.destination &&
+      camera.position.distanceToSquared(this.center) >
+        (this.radius * 2.5) ** 2 &&
+      camera.position.distanceToSquared(this.viewPosition) < 0.09 &&
+      Math.abs(camera.quaternion.dot(this.viewQuaternion)) > 0.9998 &&
+      performance.now() - this.lastViewAt < this.viewInterval
+    )
+      return;
     this.renderView(camera);
+  }
+
+  viewRegion(camera) {
+    const { width, height } = this.target;
+    if (width < 8 || height < 8) return null;
+    camera.updateMatrixWorld();
+    let minX = Infinity,
+      minY = Infinity,
+      maxX = -Infinity,
+      maxY = -Infinity;
+    for (const x of [-1, 1])
+      for (const y of [-1, 1])
+        for (const z of [-1, 1]) {
+          const point = this.projected.set(
+            this.center.x + x * this.radius,
+            this.center.y + y * this.radius,
+            this.center.z + z * this.radius,
+          );
+          point.applyMatrix4(camera.matrixWorldInverse);
+          if (point.z >= -camera.near) return null;
+          point.applyMatrix4(camera.projectionMatrix);
+          minX = Math.min(minX, point.x);
+          minY = Math.min(minY, point.y);
+          maxX = Math.max(maxX, point.x);
+          maxY = Math.max(maxY, point.y);
+        }
+    const padX = Math.ceil(width * 0.04 + 3),
+      padY = Math.ceil(height * 0.04 + 3);
+    const left = Math.max(0, Math.floor((minX + 1) * width * 0.5) - padX),
+      bottom = Math.max(0, Math.floor((minY + 1) * height * 0.5) - padY),
+      right = Math.min(width, Math.ceil((maxX + 1) * width * 0.5) + padX),
+      top = Math.min(height, Math.ceil((maxY + 1) * height * 0.5) + padY);
+    if (right <= left || top <= bottom) return null;
+    return new THREE.Vector4(left, bottom, right - left, top - bottom);
   }
 
   // Draws the destination from the matching viewpoint into the portal's target. Also used at
@@ -635,30 +766,81 @@ export class Gate {
   // frame, the camera then travels on through the world beyond.
   renderView(camera) {
     const d = this.destination;
+    if (!d || d.gpuResident === false) return;
     const cam = this.portalCam;
     cam.copy(camera);
+    if (cam.view?.enabled) cam.clearViewOffset();
+    const region =
+      this.cropView && !this.viewPose ? this.viewRegion(cam) : null;
     if (this.viewPose) {
       cam.position.copy(this.viewPose.position);
       cam.quaternion.copy(this.viewPose.quaternion);
     } else cam.position.sub(this.center).add(d.gateCenter);
+    if (region)
+      cam.setViewOffset(
+        this.target.width,
+        this.target.height,
+        region.x,
+        this.target.height - region.y - region.w,
+        region.z,
+        region.w,
+      );
     cam.updateMatrixWorld();
+    d.beforeRender?.(cam);
     const r = this.renderer;
     const prevTarget = r.getRenderTarget(),
       prevPlanes = r.clippingPlanes;
+    const viewport = this.target.viewport.clone();
+    if (region)
+      this.uniforms.uViewBounds.value.set(
+        region.x / this.target.width,
+        region.y / this.target.height,
+        (region.x + region.z) / this.target.width,
+        (region.y + region.w) / this.target.height,
+      );
+    else this.uniforms.uViewBounds.value.set(0, 0, 1, 1);
+    if (region) this.target.viewport.copy(region);
     r.setRenderTarget(this.target);
     r.clippingPlanes = [d.clipPlane];
-    d.renderInto(r, cam);
-    r.clippingPlanes = prevPlanes;
-    r.setRenderTarget(prevTarget);
+    nested++;
+    try {
+      d.renderInto(r, cam);
+      this.lastDestination = d;
+      this.lastViewAt = performance.now();
+      this.viewPosition.copy(camera.position);
+      this.viewQuaternion.copy(camera.quaternion);
+    } finally {
+      nested--;
+      this.target.viewport.copy(viewport);
+      r.clippingPlanes = prevPlanes;
+      r.setRenderTarget(prevTarget);
+    }
+  }
+
+  setQuality(scale, samples, interval = 0) {
+    this.cropView = scale < 1;
+    this.renderScale = scale;
+    this.viewInterval = interval;
+    if (this.target.samples !== samples) {
+      this.target.samples = samples;
+      this.target.dispose();
+    }
+    this.resize();
   }
 
   resize() {
+    this.lastViewAt = -Infinity;
     const size = this.renderer.getDrawingBufferSize(new THREE.Vector2());
-    if (this.hasView) this.target.setSize(size.x, size.y);
+    if (this.hasView)
+      this.target.setSize(
+        Math.max(1, Math.round(size.x * this.renderScale)),
+        Math.max(1, Math.round(size.y * this.renderScale)),
+      );
     this.uniforms.uRes.value.copy(size);
   }
 
   reset() {
+    this.lastViewAt = -Infinity;
     this.phase = "closed";
     this.phaseT = 0;
     this.viewPose = null;
@@ -679,6 +861,7 @@ export class Gate {
     for (const m of this.medallionGlyphs) if (m) m.emissiveIntensity = 0;
     this.uniforms.uFill.value = 0;
     this.uniforms.uClear.value = 0;
+    this.uniforms.uViewBounds.value.set(0, 0, 1, 1);
     this.sequence = false;
     this.disc.visible = false;
     this.flash.material.opacity = 0;
@@ -689,37 +872,153 @@ export class Gate {
 }
 
 const PORTAL_FS = /* glsl */ `
-  uniform sampler2D uView; uniform vec2 uRes; uniform float uFill; uniform float uClear; uniform float uTime; uniform float uHasView;
-  varying vec2 vUv;
-  float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
-  float noise(vec2 p) {
-    vec2 i = floor(p), f = fract(p);
-    vec2 u = f * f * (3.0 - 2.0 * f);
-    return mix(mix(hash(i), hash(i + vec2(1, 0)), u.x), mix(hash(i + vec2(0, 1)), hash(i + vec2(1, 1)), u.x), u.y);
+  uniform sampler2D uView; uniform vec2 uRes; uniform vec4 uViewBounds;
+  uniform float uFill; uniform float uClear; uniform float uTime; uniform float uHasView;
+  uniform float uFlip; uniform float uBack; uniform vec3 uSky; uniform float uGlow;
+  varying vec2 vUv; varying vec3 vEye;
+  // Thin bright filaments where three drifting waves cancel, like light focused by ripples.
+  float caustic(vec2 q, float t) {
+    vec2 w = q + vec2(sin(q.y * 1.3 + t * 0.7), sin(q.x * 1.1 - t * 0.6)) * 0.55;
+    float v = sin(w.x * 1.9 + t * 0.8) + sin(w.y * 2.3 - t * 0.65)
+      + sin((w.x - w.y) * 1.4 + t * 0.45);
+    return pow(max(0.0, 1.0 - abs(v) * 0.42), 7.0);
   }
   void main() {
-    vec2 c = vUv - 0.5;
-    float r = length(c) * 2.0;
+    vec2 p = (vUv - 0.5) * 2.0;
+    float r = length(p);
     if (r > 1.0) discard;
-    // The membrane of light fills the ring from its rim inwards...
-    float membrane = smoothstep(1.0 - uFill - 0.06, 1.0 - uFill + 0.02, r);
-    float n = noise(c * 7.0 + vec2(uTime * 0.25, -uTime * 0.18)) * 0.6 + noise(c * 19.0 - uTime * 0.4) * 0.4;
-    vec3 light = mix(vec3(0.85, 1.0, 0.98), vec3(0.3, 0.95, 0.88), clamp(r * 0.7 + n * 0.4, 0.0, 1.0)) * (1.5 + n * 0.9);
-    // ...then clears from the centre onto the world beyond.
+    vec2 bend = vec2(p.y * 3.0 + uTime * 0.18, p.x * 2.7 - uTime * 0.15);
+    vec2 q = p + sin(bend) * 0.13;
+    vec4 waves = vec4(
+      dot(q, vec2(0.94, 0.34)) * 9.0 - uTime * 1.7,
+      dot(q, vec2(-0.48, 0.87)) * 13.5 + uTime * 1.35,
+      dot(q, vec2(0.22, -0.97)) * 23.0 - uTime * 2.3,
+      dot(q, vec2(0.76, 0.65)) * 35.0 + uTime * 2.65
+    );
+    vec4 slopes = cos(waves) * vec4(0.243, 0.2565, 0.207, 0.1575);
+    float height = dot(sin(waves), vec4(0.027, 0.019, 0.009, 0.0045));
+    vec2 slope = vec2(0.94, 0.34) * slopes.x
+      + vec2(-0.48, 0.87) * slopes.y
+      + vec2(0.22, -0.97) * slopes.z
+      + vec2(0.76, 0.65) * slopes.w;
+    slope = vec2(slope.x + slope.y * cos(bend.y) * 0.351,
+      slope.y + slope.x * cos(bend.x) * 0.39);
+    float radial = sqrt(dot(p, p) + 0.025);
+    float ringWave = radial * 18.0 - uTime * 3.6;
+    height += sin(ringWave) * 0.01;
+    slope += p / radial * cos(ringWave) * 0.18;
+    vec3 normal = normalize(vec3(-slope * 0.8, 1.0));
+    if (!gl_FrontFacing) normal = -normal;
+    vec3 eye = normalize(vEye);
+    float membrane = smoothstep(1.0 - uFill - 0.045, 1.0 - uFill + 0.04, r + height * 0.7);
+    // Water against the lens would fill the frame: it thins out within reach of the camera.
+    float lens = smoothstep(0.3, 1.6, length(vEye));
+    float facing = clamp(dot(normal, eye), 0.0, 1.0);
+    if (gl_FrontFacing == (uFlip > 0.5)) {
+      // The far face: the same water held in the ring, lit from within, never a window.
+      vec3 light = normalize(vec3(-0.45, 0.7, 0.62 * sign(vEye.z)));
+      float sheet = 0.15 + 0.6 * pow(1.0 - facing, 3.0);
+      vec3 bounce = reflect(-eye, normal);
+      vec3 sky = mix(uSky * 0.16 + vec3(0.0, 0.02, 0.025), uSky + 0.05,
+        smoothstep(-0.3, 0.7, bounce.y + bounce.x * 0.2));
+      vec2 drift = eye.xy / max(abs(eye.z), 0.3);
+      float swirl = uTime * 0.06 + (1.0 - r) * 1.1;
+      mat2 turn = mat2(cos(swirl), sin(swirl), -sin(swirl), cos(swirl));
+      vec2 near = turn * (p - drift * 0.07 + normal.xy * 0.04);
+      vec2 deeper = turn * turn * (p - drift * 0.2 + normal.xy * 0.06);
+      float core = exp(-r * r * 2.2);
+      vec3 depth = mix(vec3(0.003, 0.018, 0.026), vec3(0.012, 0.085, 0.095), core);
+      vec3 inner = depth
+        + vec3(0.04, 0.22, 0.21) * caustic(near * 3.2, uTime * 0.9) * (0.25 + 0.75 * core)
+        + vec3(0.015, 0.08, 0.1) * caustic(deeper * 2.1 + 3.7, uTime * 0.6);
+      inner *= 0.75 + 0.5 * max(dot(normal, light), 0.0);
+      vec3 far = mix(inner * uGlow, sky, sheet);
+      far += vec3(0.8, 0.95, 0.9) * pow(max(dot(normal, normalize(light + eye)), 0.0), 220.0) * 0.18;
+      far *= mix(1.0, 0.5, smoothstep(0.86, 0.985, r));
+      float lip = (r - 0.978) * 60.0;
+      far += vec3(0.1, 0.55, 0.5) * exp(-lip * lip) * 0.6 * uFill;
+      float shown = membrane * uBack * lens;
+      if (shown < 0.003) discard;
+      gl_FragColor = vec4(far, shown);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
+      return;
+    }
+    vec3 sun = normalize(vec3(-0.45, 0.7, 0.85));
+    float fresnel = 0.055 + 0.62 * pow(1.0 - facing, 4.0);
+    float specular = pow(max(dot(normal, normalize(sun + eye)), 0.0), 45.0);
+    float diffuse = 0.45 + 0.55 * max(dot(normal, sun), 0.0);
+    float rim = smoothstep(0.78, 1.0, r);
+    float tilt = (normal.y + 0.1) * 6.0;
+    float sheen = exp(-tilt * tilt);
+    vec3 water = vec3(0.014, 0.075, 0.08)
+      + vec3(0.06, 0.23, 0.2) * diffuse
+      + vec3(0.12, 0.42, 0.36) * fresnel;
     float front = uClear * 1.1;
-    float cleared = (1.0 - smoothstep(front - 0.14, front, r)) * uHasView;
+    float cleared = (1.0 - smoothstep(front - 0.16, front + 0.015, r + height * 0.9)) * uHasView;
+    cleared *= smoothstep(0.025, 0.16, uClear);
+    float settled = smoothstep(0.0, 1.0, uClear);
     vec2 suv = gl_FragCoord.xy / uRes;
-    float rim = smoothstep(0.8, 1.0, r);
-    suv += c * 0.015 * sin(r * 34.0 - uTime * 3.0) * rim;
-    vec3 view = texture2D(uView, suv).rgb * 0.92;
-    float edge = smoothstep(front - 0.22, front - 0.02, r) * (1.0 - smoothstep(front - 0.02, front + 0.04, r)) * step(0.001, uClear) * (1.0 - step(1.0, uClear));
-    vec3 col = mix(light * membrane, view, cleared);
-    col += vec3(0.22, 0.89, 0.82) * (pow(rim, 4.0) * 1.2 * max(uFill, cleared) + edge * 5.0);
-    float alpha = max(membrane, cleared);
+    suv += normal.xy * vec2(uRes.y / uRes.x, 1.0)
+      * mix(0.019, 0.0065, settled) * (1.0 - rim * 0.7);
+    suv = clamp(suv, uViewBounds.xy + 0.002, uViewBounds.zw - 0.002);
+    vec3 view = texture2D(uView, suv).rgb;
+    float wave = (r + height * 0.9 - front) * 21.0;
+    float edge = exp(-wave * wave)
+      * step(0.001, uClear) * (1.0 - step(1.0, uClear));
+    // The window onto the far world stays whole at the lens; only its water thins, so the
+    // camera passes through into a clear view.
+    vec3 col = mix(water * membrane, view, cleared * mix(1.0, 0.92 - fresnel * 0.22, lens));
+    col += vec3(0.42, 0.81, 0.76) * specular * mix(0.72, 0.13, cleared) * lens;
+    col += vec3(0.13, 0.48, 0.43) * sheen * mix(0.22, 0.035, cleared) * lens;
+    col += vec3(0.15, 0.75, 0.66) * (pow(rim, 4.0) * 0.45 + edge * 0.48) * max(uFill, cleared) * lens;
+    float alpha = max(membrane * lens, cleared);
     gl_FragColor = vec4(col, alpha);
     #include <tonemapping_fragment>
     #include <colorspace_fragment>
   }`;
+
+const BLANK = new THREE.DataTexture(new Uint8Array([0, 0, 0, 255]), 1, 1);
+BLANK.needsUpdate = true;
+
+// Uniforms for a membrane that shows no destination, such as the drifting door in space.
+export function liquidUniforms({ sky = SKY, glow = 1, flip = 0 } = {}) {
+  return {
+    uView: { value: BLANK },
+    uRes: { value: new THREE.Vector2(1, 1) },
+    uViewBounds: { value: new THREE.Vector4(0, 0, 1, 1) },
+    uFill: { value: 1 },
+    uClear: { value: 0 },
+    uTime: { value: 0 },
+    uHasView: { value: 0 },
+    uFlip: { value: flip },
+    uBack: { value: 1 },
+    uSky: { value: new THREE.Color(sky) },
+    uGlow: { value: glow },
+  };
+}
+
+// One two-sided program for every door: the entrance shows the far world through the
+// water, the other face shows the water alone.
+export function liquidMaterial(uniforms) {
+  uniforms.uGlow ??= { value: 1 };
+  return new THREE.ShaderMaterial({
+    uniforms,
+    transparent: true,
+    depthWrite: false,
+    side: THREE.DoubleSide,
+    forceSinglePass: true,
+    toneMapped: true,
+    vertexShader: /* glsl */ `
+      varying vec2 vUv; varying vec3 vEye;
+      void main() {
+        vUv = uv;
+        vEye = cameraPosition - (modelMatrix * vec4(position, 1.0)).xyz;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }`,
+    fragmentShader: PORTAL_FS,
+  });
+}
 
 function smooth(a, b, x) {
   const t = Math.min(1, Math.max(0, (x - a) / (b - a)));
@@ -798,12 +1097,12 @@ class OpeningShot {
 // opening is a circle whose lowest point touches the upper tier, so the ring's lower arc
 // rises from the floor on either side of the centre line: it is built as low steps the
 // feet climb onto, then the ring is solid beside the opening at body height.
-export function gateColliders(world, x, z, daisTop) {
+export function gateColliders(world, x, z, daisTop, bottom = -10) {
   const top = daisTop + 0.02;
   const R = 3.5;
   const arc = (d) => R - Math.sqrt(Math.max(0, R * R - d * d));
-  world.add(x - 6, -10, z - 3, x + 6, top - 0.5, z + 3, "gate");
-  world.add(x - 5.5, -10, z - 2.2, x + 5.5, top, z + 2.2, "gate");
+  world.add(x - 6, bottom, z - 3, x + 6, top - 0.5, z + 3, "gate");
+  world.add(x - 5.5, bottom, z - 2.2, x + 5.5, top, z + 2.2, "gate");
   for (const side of [-1, 1]) {
     for (const [a, b] of [
       [0.7, 1.1],

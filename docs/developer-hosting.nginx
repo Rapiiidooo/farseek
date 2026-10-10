@@ -1,0 +1,29 @@
+root /srv/farseek-dev/current;
+index index.html;
+auth_basic "Farseek developer review";
+auth_basic_user_file /etc/nginx/farseek-dev-users;
+add_header X-Robots-Tag "noindex, nofollow" always;
+
+location = /gallery {
+    return 308 /gallery/$is_args$args;
+}
+
+location = /labs/ {
+    return 308 /labs$is_args$args;
+}
+
+location = /character.html {
+    return 308 /labs$is_args$args;
+}
+
+location = /labs {
+    try_files /character.html =404;
+}
+
+location ~ ^/labs/[a-z][a-z0-9_]*\/?$ {
+    try_files /character.html =404;
+}
+
+location / {
+    try_files $uri $uri/ =404;
+}

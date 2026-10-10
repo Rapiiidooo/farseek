@@ -312,7 +312,7 @@ export class Beams {
           target = m;
         }
       }
-      for (const s of this.level.stelae) {
+      for (const s of this.level.receivers) {
         const t = rayBox2(px, pz, dx, dz, s.box);
         if (t !== null && t < best) {
           best = t;
@@ -418,7 +418,7 @@ export class Beams {
     const list = [];
     for (const m of this.level.mirrors)
       if (m !== mirror) list.push({ x: m.x, z: m.z, ref: m });
-    for (const s of this.level.stelae)
+    for (const s of this.level.receivers)
       list.push({
         x: s.x + s.facing.x * 0.3,
         z: s.z + s.facing.z * 0.3,
@@ -461,7 +461,7 @@ export class Beams {
       p.core.visible = p.glow.visible = p.flare.visible = false;
     }
     this.updateMotes(dt);
-    for (const s of this.level.stelae) {
+    for (const s of this.level.receivers) {
       if (s.lit) continue;
       s.charge =
         s === this.receiving ? s.charge + dt : Math.max(0, s.charge - dt * 2);

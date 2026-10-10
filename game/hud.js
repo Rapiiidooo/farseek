@@ -1,6 +1,29 @@
 import * as THREE from "three";
 import { svg } from "./glyph-icons.js";
 
+// Where the objective markers stood on the last frame, for the speech bubbles to keep clear of.
+export const markerSpots = [];
+
+// Prompts that offer something to use; they carry the ring that marks such things.
+const USES = new Set([
+  "turn",
+  "grab",
+  "take",
+  "take-pistols",
+  "read",
+  "read-mira",
+  "talk",
+  "shield",
+]);
+
+// Shapes that tell the kinds of mark apart without their colours.
+const KINDS = {
+  goal: "",
+  danger:
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 22 20H2Z"/><path class="cut" d="M12 9v5M12 16.5v.5"/></svg>',
+  use: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle class="cut" cx="12" cy="12" r="2.5"/></svg>',
+};
+
 // Everything drawn over the game: the objective, the gate address, a marker on the next thing
 // to reach, one-time control cards, the context prompt, composure pips, and the cinematic
 // overlays. Controls are named for the device in use, with the printed key labels of the
@@ -12,20 +35,46 @@ export class Hud {
     this.settings = settings;
     this.el = (id) => document.getElementById(id);
     this.lastPrompt = null;
+    this.promptCode = "";
+    this.hintPrompt = null;
     this.markerEls = [];
+    this.markerSpots = markerSpots;
     this.targets = [];
     this.v = new THREE.Vector3();
     this.hintTimer = null;
+    this.hintQueue = [];
+    this.queueTimer = null;
+    this.hintShown = 0;
     this.address = [];
+    this.markerPanels = [
+      "objective-box",
+      "address",
+      "health",
+      "breath",
+      "boss",
+      "relic-toast",
+      "prompt",
+      "hint",
+      "subtitle",
+    ].map(this.el);
   }
 
   // A control named for the device in use: <kbd>E</kbd>, <kbd>X</kbd> on a gamepad.
   k(action) {
-    return `<kbd>${this.input.label(action)}</kbd>`;
+    return `<kbd data-control="${action}">${this.input.label(action)}</kbd>`;
   }
 
   keys(...codes) {
-    return codes.map((c) => `<kbd>${this.input.keyLabel(c)}</kbd>`).join("");
+    return codes
+      .map((c) => `<kbd data-key="${c}">${this.input.keyLabel(c)}</kbd>`)
+      .join("");
+  }
+
+  // "press E", or "tap Use" on a touch screen, so a key's label never reads as a word of the
+  // sentence (an AZERTY roll key prints A).
+  press(action, capital = false) {
+    const verb = this.input.usingTouch ? "tap" : "press";
+    return `${capital ? verb[0].toUpperCase() + verb.slice(1) : verb} ${this.k(action)}`;
   }
 
   show() {
@@ -34,8 +83,10 @@ export class Hud {
 
   hide() {
     this.el("hud").hidden = true;
+    this.clearDamage();
     this.clearHint();
     this.setMarkers([]);
+    this.clearChapter();
   }
 
   // --- objective ------------------------------------------------------------------------
@@ -74,7 +125,10 @@ export class Hud {
   }
 
   // --- markers ------------------------------------------------------------------------------
-  // `targets` are world positions (Vector3 or functions returning one).
+  // `targets` are world positions (Vector3 or functions returning one), or `{ at, glyph, kind }`
+  // for a marker that wears the glyph of what it points at. The kind gives the shape as well as
+  // the colour: a diamond for a goal (the default), a triangle for danger, a ring for something
+  // to use.
   setMarkers(targets) {
     this.targets = targets || [];
     while (this.markerEls.length < this.targets.length) {
@@ -84,22 +138,105 @@ export class Hud {
         '<span class="arrow"></span><span class="diamond"></span><span class="dist"></span>';
       this.el("markers").appendChild(m);
       this.markerEls.push(m);
+      this.markerSpots.push({
+        x: 0,
+        y: 0,
+        on: false,
+        near: false,
+        edge: false,
+      });
     }
-    this.markerEls.forEach((m, i) => (m.hidden = i >= this.targets.length));
+    this.markerEls.forEach((m, i) => {
+      m.hidden = i >= this.targets.length;
+      this.markerSpots[i].on = false;
+      const glyph = this.targets[i]?.glyph || "";
+      const kind = KINDS[this.targets[i]?.kind] ? this.targets[i].kind : "goal";
+      if (m.dataset.glyph === glyph && m.dataset.kind === kind) return;
+      m.dataset.glyph = glyph;
+      m.dataset.kind = kind;
+      m.classList.toggle("glyph", !!glyph);
+      m.children[1].innerHTML = glyph
+        ? `<span class="glyph-mark">${svg(glyph)}</span>`
+        : KINDS[kind];
+    });
   }
 
-  updateMarkers(camera, from) {
+  // The kit and pace buttons come from the equipment UI, built after the HUD: a control card
+  // above them pushes marks down, which must not land on them either.
+  obstaclePanels() {
+    if (this.allPanels) return this.allPanels;
+    const kit = ["pace-status", "equipment-status"].map(this.el);
+    if (!kit.every(Boolean)) return this.markerPanels;
+    return (this.allPanels = [...this.markerPanels, ...kit]);
+  }
+
+  markerObstacles(w, h) {
+    const panels = this.obstaclePanels();
+    const key = [
+      w,
+      h,
+      document.body.className,
+      document.fonts.status,
+      this.el("hud").hidden,
+      this.el("pace-status")?.hidden,
+      ...panels.map(
+        (el) =>
+          `${el.hidden}:${el.className}:${el.textContent}:${el.children.length}:${el.style.bottom}`,
+      ),
+    ].join("|");
+    if (key === this.markerBoundsKey) return this.markerBounds;
+    this.markerBoundsKey = key;
+    this.markerBounds = panels
+      .flatMap((el) => {
+        if (
+          el.hidden ||
+          el.classList.contains("empty") ||
+          (["relic-toast", "prompt", "hint", "subtitle"].includes(el.id) &&
+            !el.classList.contains("on"))
+        )
+          return [];
+        const style = getComputedStyle(el);
+        if (style.display === "none" || style.visibility === "hidden")
+          return [];
+        const r = el.getBoundingClientRect();
+        if (!r.width || !r.height) return [];
+        const dx =
+          el.id === "objective-box" && style.transform !== "none"
+            ? new DOMMatrixReadOnly(style.transform).m41
+            : 0;
+        return [
+          {
+            left: r.left - dx - 36,
+            right: r.right - dx + 36,
+            top: r.top - 36,
+            bottom: r.bottom + 36,
+          },
+        ];
+      })
+      .sort((a, b) => a.top - b.top);
+    return this.markerBounds;
+  }
+
+  updateMarkers(camera, from, height) {
     const w = innerWidth,
       h = innerHeight;
     const on = this.settings.markers;
+    const obstacles =
+      on && this.targets.length ? this.markerObstacles(w, h) : [];
+    const spots = this.markerSpots;
     this.targets.forEach((t, i) => {
-      const m = this.markerEls[i];
-      const p = typeof t === "function" ? t() : t;
-      if (!on || !p) {
-        m.style.opacity = 0;
-        return;
-      }
-      const dist = from ? Math.hypot(p.x - from.x, p.z - from.z) : 99;
+      const spot = spots[i];
+      const at = t?.at ?? t;
+      const p = typeof at === "function" ? at() : at;
+      spot.on = !!(on && p);
+      if (!spot.on) return;
+      const dist = from
+        ? Math.hypot(
+            p.x - from.x,
+            p.z - from.z,
+            Number.isFinite(height) ? p.y - height : 0,
+          )
+        : 99;
       const v = this.v.copy(p).project(camera);
       let x = v.x,
         y = v.y;
@@ -116,30 +253,177 @@ export class Hud {
         if (behind && Math.abs(y) < 0.82 && Math.abs(x) < 0.9) y = -0.82;
       }
       const sx = (x * 0.5 + 0.5) * w,
-        sy = (-y * 0.5 + 0.5) * h;
-      m.classList.toggle("edge", edge);
-      m.style.transform = `translate(${sx.toFixed(1)}px, ${sy.toFixed(1)}px) translate(-50%, -50%)`;
-      const arrow = m.firstChild;
-      if (edge)
-        arrow.style.transform = `rotate(${(-Math.atan2(y, x) * 180) / Math.PI + 90}deg) translateY(-18px)`;
-      m.lastChild.textContent = dist < 99 ? `${Math.round(dist)} m` : "";
-      m.style.opacity = dist < 2.2 && !edge ? 0 : 1;
+        projectedY = (-y * 0.5 + 0.5) * h;
+      let sy = projectedY;
+      const blockers = obstacles.filter((r) => sx > r.left && sx < r.right);
+      if (blockers.some((r) => sy > r.top && sy < r.bottom)) {
+        const candidates = blockers
+          .flatMap((r) => [r.top, r.bottom])
+          .filter(
+            (candidate) =>
+              candidate >= 36 &&
+              candidate <= h - 36 &&
+              blockers.every(
+                (r) => candidate <= r.top || candidate >= r.bottom,
+              ),
+          );
+        if (candidates.length)
+          sy = candidates.reduce((best, candidate) =>
+            Math.abs(candidate - projectedY) < Math.abs(best - projectedY)
+              ? candidate
+              : best,
+          );
+      }
+      spot.x = sx;
+      spot.y = sy;
+      spot.edge = edge;
+      spot.pointed = edge || sy !== projectedY;
+      spot.angle = edge
+        ? (-Math.atan2(y, x) * 180) / Math.PI + 90
+        : sy < projectedY
+          ? 180
+          : 0;
+      spot.dist = dist;
+      spot.near = dist < 2.2 && !edge;
+    });
+    this.separateMarkers(w, h);
+    this.targets.forEach((t, i) => {
+      const m = this.markerEls[i],
+        spot = spots[i];
+      if (!spot.on) {
+        m.style.opacity = 0;
+        return;
+      }
+      m.classList.toggle("edge", spot.pointed);
+      m.style.transform = `translate(${spot.x.toFixed(1)}px, ${spot.y.toFixed(1)}px) translate(-50%, -50%)`;
+      // An arrow pointing down would sit on the distance, which then moves above the mark; the
+      // arrow tucks in so the mark still reaches no further below than the panels allow for.
+      const down =
+        spot.pointed && Math.cos((spot.angle * Math.PI) / 180) < -0.2;
+      m.classList.toggle("flip", down);
+      if (spot.pointed)
+        m.firstChild.style.transform = `rotate(${spot.angle}deg) translateY(-${(m.classList.contains("glyph") ? 22 : 18) - (down ? 4 : 0)}px)`;
+      const text = spot.dist < 99 ? `${Math.round(spot.dist)} m` : "";
+      if (m.lastChild.textContent !== text) m.lastChild.textContent = text;
+      m.style.opacity = spot.near ? 0 : 1;
     });
   }
 
+  // Marks that land on one another, at a screen edge most often, spread apart: along the edge
+  // they are pinned to, otherwise the shorter way.
+  separateMarkers(w, h) {
+    const spots = this.markerSpots,
+      n = this.targets.length;
+    for (let pass = 0; pass < 3; pass++)
+      for (let i = 0; i < n; i++)
+        for (let j = i + 1; j < n; j++) {
+          const a = spots[i],
+            b = spots[j];
+          if (!a.on || !b.on || a.near || b.near) continue;
+          const dx = b.x - a.x,
+            dy = b.y - a.y;
+          const px = 44 - Math.abs(dx),
+            py = 50 - Math.abs(dy);
+          if (px <= 0 || py <= 0) continue;
+          const pinned = a.edge && b.edge;
+          const sides =
+            pinned &&
+            (Math.min(a.x, b.x) < w * 0.1 || Math.max(a.x, b.x) > w * 0.9);
+          const ends =
+            pinned &&
+            (Math.min(a.y, b.y) < h * 0.13 || Math.max(a.y, b.y) > h * 0.87);
+          // Spread evenly, unless one of the pair would be pushed into a panel: then the other
+          // goes the whole way.
+          if (sides || (!ends && py <= px)) {
+            const s = (dy < 0 ? -py : py) / 2;
+            if (this.blockedAt(b.x, b.y + s)) a.y -= 2 * s;
+            else if (this.blockedAt(a.x, a.y - s)) b.y += 2 * s;
+            else {
+              a.y -= s;
+              b.y += s;
+            }
+          } else {
+            const s = (dx < 0 ? -px : px) / 2;
+            if (this.blockedAt(b.x + s, b.y)) a.x -= 2 * s;
+            else if (this.blockedAt(a.x - s, a.y)) b.x += 2 * s;
+            else {
+              a.x -= s;
+              b.x += s;
+            }
+          }
+        }
+    for (let i = 0; i < n; i++) {
+      const s = spots[i];
+      s.x = Math.min(w - 24, Math.max(24, s.x));
+      s.y = Math.min(h - 30, Math.max(30, s.y));
+    }
+  }
+
+  blockedAt(x, y) {
+    const list = this.markerBounds || [];
+    for (let i = 0; i < list.length; i++) {
+      const r = list[i];
+      if (x > r.left && x < r.right && y > r.top && y < r.bottom) return true;
+    }
+    return false;
+  }
+
   // --- control cards --------------------------------------------------------------------------
-  hint(title, html, duration = 8) {
+  // With `queue`, a card waits until the one showing has had six seconds to be read.
+  hint(
+    title,
+    html,
+    duration = 8,
+    { replacesPrompt = null, queue = false } = {},
+  ) {
     if (!this.settings.hints) return;
+    const card = { title, html, duration, replacesPrompt };
+    if (queue && this.el("hint").classList.contains("on")) {
+      this.hintQueue.push(card);
+      this.nextHint();
+    } else this.showHint(card);
+  }
+
+  showHint({ title, html, duration, replacesPrompt }) {
     const el = this.el("hint");
     el.querySelector(".hint-title").textContent = title;
     el.querySelector(".hint-body").innerHTML = html;
     el.classList.add("on");
-    this.liftSubtitle(true);
+    this.hintShown = performance.now();
+    this.hintPrompt = replacesPrompt;
+    this.lastPrompt = null;
+    this.prompt(this.promptCode);
     clearTimeout(this.hintTimer);
-    this.hintTimer = setTimeout(() => {
-      el.classList.remove("on");
-      this.liftSubtitle(false);
-    }, duration * 1000);
+    this.hintTimer = setTimeout(() => this.clearHint(false), duration * 1000);
+  }
+
+  nextHint() {
+    if (this.queueTimer || !this.hintQueue.length) return;
+    this.queueTimer = setTimeout(
+      () => {
+        this.queueTimer = null;
+        const card = this.hintQueue.shift();
+        if (card) this.showHint(card);
+        this.nextHint();
+      },
+      Math.max(0, this.hintShown + 6000 - performance.now()),
+    );
+  }
+
+  // The twin pistols' controls, worded for the device in use.
+  pistolsHint() {
+    const k = (action) => this.k(action);
+    const aim = this.settings.aimMode === "toggle" ? "Press" : "Hold";
+    const body = this.input.usingTouch
+      ? `Tap ${k("inventory")} and choose Twin pistols. Hold ${k("fire")} to aim and shoot; ${k("inventory")} also reloads.`
+      : this.input.usingPad
+        ? `Press ${k("inventory")} to open the kit and draw them. ${aim} ${k("aim")} to aim, then press ${k("fire")} to fire and ${k("reload")} to reload.`
+        : `Press ${k("pistols")} or ${k("inventory")} to draw them. ${aim} ${k("aim")} to aim, then press ${k("fire")} to fire and ${k("reload")} to reload.`;
+    this.hint(
+      "Mira's pistols",
+      `${body} Only bullets wound; the orb stuns.`,
+      11,
+    );
   }
 
   // A relic found: a card of its own, so neither it nor a control card hides the other, and
@@ -157,24 +441,60 @@ export class Hud {
     this.relicTimer = setTimeout(() => el.classList.remove("on"), 7000);
   }
 
-  clearHint() {
+  // A card's own time running out lets a queued one follow; any other clearing drops the queue.
+  clearHint(flush = true) {
     clearTimeout(this.hintTimer);
+    if (flush) {
+      clearTimeout(this.queueTimer);
+      this.queueTimer = null;
+      this.hintQueue.length = 0;
+      this.quiet = null;
+    }
     this.el("hint").classList.remove("on");
+    this.hintPrompt = null;
+    this.prompt(this.promptCode);
     this.liftSubtitle(false);
   }
 
-  // A line of narration climbs above a control card instead of printing over it.
+  // A line of narration climbs above a control card only where the card would cover it. Layout
+  // boxes, not transforms: the card may still be sliding in.
   liftSubtitle(on) {
-    const hint = this.el("hint");
-    this.el("subtitle").style.bottom = on
-      ? `${parseFloat(getComputedStyle(hint).bottom) + hint.offsetHeight + 14}px`
-      : "";
+    const line = this.el("subtitle");
+    line.style.bottom = "";
+    if (!on) return;
+    const card = this.el("hint");
+    const bottom = line.offsetTop + line.offsetHeight;
+    if (
+      card.offsetLeft < line.offsetLeft + line.offsetWidth &&
+      card.offsetLeft + card.offsetWidth > line.offsetLeft &&
+      card.offsetTop + card.offsetHeight > bottom - 60
+    )
+      line.style.bottom = `${innerHeight - card.offsetTop + 14}px`;
   }
 
   // --- the context prompt ----------------------------------------------------------------------
   prompt(code) {
-    if (code === this.lastPrompt) return;
-    this.lastPrompt = code;
+    this.promptCode = code;
+    const hint = this.el("hint");
+    const covered = this.hintPrompt === code && hint.classList.contains("on");
+    const context = [
+      code,
+      covered,
+      this.quiet,
+      innerWidth,
+      innerHeight,
+      this.input.version,
+      this.input.label("jump"),
+      this.input.label("interact"),
+      this.input.label("drop"),
+      this.input.moveLabel(),
+    ].join("|");
+    if (context === this.lastPrompt) return;
+    this.lastPrompt = context;
+    for (const key of hint.querySelectorAll("kbd[data-control], kbd[data-key]"))
+      key.textContent = key.dataset.control
+        ? this.input.label(key.dataset.control)
+        : this.input.keyLabel(key.dataset.key);
     const k = (a) => this.k(a);
     const side = this.keys("KeyA", "KeyD");
     let text = {
@@ -182,27 +502,53 @@ export class Hud {
       grab: `Hold ${k("interact")} to grab the block`,
       block: `Push ${this.keys("KeyW")} or pull ${this.keys("KeyS")} while holding ${k("interact")}`,
       turning: `Steer ${side} to turn · release ${k("interact")} to let go`,
-      hang: `${side} shimmy · ${this.keys("KeyW")} climb · ${k("drop")} let go`,
-      edge: `${k("drop")} hang from the edge`,
-      take: `${k("interact")} Take Mira's sun disc`,
+      hang: `${side} shimmy · ${this.keys("KeyW")} climb · ${k("drop")} to let go`,
+      wall: `${this.keys("KeyW", "KeyA", "KeyS", "KeyD")} climb · ${k("jump")} leap · ${k("drop")} let go`,
+      // A touch screen's button is already called Hang.
+      edge: this.input.usingTouch
+        ? `${k("drop")} from the edge`
+        : `${k("drop")} Hang from the edge`,
+      take: `${k("interact")} Take Mira's relay orb`,
+      "take-pistols": `${k("interact")} Take Mira's pistols`,
       read: `${k("interact")} Read the expedition's notes`,
       "read-mira": `${k("interact")} Read Mira's journal`,
       talk: `${k("interact")} Talk to the clerk`,
-      charge: `${k("throw")} throw through the beam to charge the disc`,
+      swim: `Look up or down, then swim toward the reticle`,
+      shield: `${k("interact")} Activate the air shield`,
+      swing: `${this.keys("KeyW", "KeyS")} swing higher · ${k("jump")} let go`,
     }[code];
     // A relic names itself: "relic:Take the radio".
     if (!text && code?.startsWith("relic:"))
       text = `${k("interact")} ${code.slice(6)}`;
+    // A tutorial step can keep back a prompt that would contradict it.
+    if (covered || this.quiet?.includes(code)) text = "";
     const p = this.el("prompt");
     if (text) p.innerHTML = text;
     p.classList.toggle("on", !!text);
+    p.classList.toggle(
+      "use",
+      !!text && (USES.has(code) || code.startsWith("relic:")),
+    );
+    document.body.style.setProperty(
+      "--prompt-height",
+      `${text ? p.offsetHeight : 0}px`,
+    );
+    this.liftSubtitle(hint.classList.contains("on"));
   }
 
   // --- the story's own voice ---------------------------------------------------------------------
-  // A line of narration under the picture, over cinematics as well as play.
-  subtitle(text, seconds = 4) {
+  // A line of narration under the picture, over cinematics as well as play. A `speaker`
+  // labels a voiced line; the explorer's own thoughts carry none.
+  subtitle(text, seconds = 4, speaker = "") {
     const el = this.el("subtitle");
     el.textContent = text;
+    if (speaker) {
+      const label = document.createElement("span");
+      label.className = "speaker";
+      label.textContent = speaker;
+      el.prepend(label);
+    }
+    el.classList.toggle("voiced", !!speaker);
     el.classList.add("on");
     clearTimeout(this.subtitleTimer);
     this.subtitleTimer = setTimeout(
@@ -214,6 +560,7 @@ export class Hud {
   clearSubtitle() {
     clearTimeout(this.subtitleTimer);
     this.el("subtitle").classList.remove("on");
+    this.el("subtitle").textContent = "";
   }
 
   // A sheet over the game: the first expedition's field notes, or Mira's journal.
@@ -238,43 +585,135 @@ export class Hud {
   }
 
   // --- composure --------------------------------------------------------------------------------
+  // A pip can be half spent; pips that come back fill one after another.
   health(value, max) {
     const el = this.el("health");
     el.hidden = false;
+    if (this.lastHealth === value && el.children.length === max) return;
+    const before = this.lastHealth;
+    const hurt = before !== undefined && value < before;
+    this.lastHealth = value;
     if (el.children.length !== max) {
       el.innerHTML = "";
       for (let i = 0; i < max; i++)
         el.appendChild(document.createElement("span"));
     }
-    [...el.children].forEach((pip, i) =>
-      pip.classList.toggle("spent", i >= value),
-    );
-    el.classList.remove("hit");
-    void el.offsetWidth;
-    el.classList.add("hit");
+    let order = 0;
+    [...el.children].forEach((pip, i) => {
+      if (hurt) pip.classList.remove("refill");
+      const fill = Math.max(0, Math.min(1, value - i));
+      pip.classList.toggle("spent", fill <= 0);
+      pip.classList.toggle("half", fill > 0 && fill < 1);
+      if (before === undefined || fill <= Math.max(0, Math.min(1, before - i)))
+        return;
+      pip.classList.remove("refill");
+      void pip.offsetWidth;
+      pip.style.animationDelay = `${order++ * 0.16}s`;
+      pip.classList.add("refill");
+    });
+    el.setAttribute("role", "img");
+    el.setAttribute("aria-label", `${value} of ${max} health`);
+    if (hurt) this.damage();
+  }
+
+  damage() {
+    const now = performance.now();
+    if (now - (this.lastDamage ?? -Infinity) < 100) return;
+    this.lastDamage = now;
+    clearTimeout(this.damageTimer);
+    const hud = this.el("hud"),
+      health = this.el("health");
+    hud.classList.remove("hurt");
+    health.classList.remove("hit");
+    void health.offsetWidth;
+    hud.classList.add("hurt");
+    health.classList.add("hit");
+    this.damageTimer = setTimeout(() => this.clearDamage(), 800);
+  }
+
+  clearDamage() {
+    clearTimeout(this.damageTimer);
+    this.el("hud").classList.remove("hurt");
+    this.el("health").classList.remove("hit");
   }
 
   hideHealth() {
     this.el("health").hidden = true;
+    this.lastHealth = undefined;
+    this.clearDamage();
+  }
+
+  breath(remaining, capacity, submerged) {
+    const el = this.el("breath");
+    const ratio =
+      capacity > 0 ? Math.max(0, Math.min(1, remaining / capacity)) : 1;
+    el.hidden = capacity <= 0 || (!submerged && ratio >= 1);
+    if (el.hidden) return;
+    const seconds = Math.ceil(remaining);
+    el.classList.toggle("low", submerged && ratio < 0.25);
+    el.classList.toggle("recovering", !submerged);
+    this.el("breath-label").textContent = submerged
+      ? "Breath"
+      : "Recovering breath";
+    this.el("breath-time").textContent = `${seconds} s`;
+    this.el("breath-fill").style.transform = `scaleX(${ratio})`;
+    const meter = this.el("breath-meter");
+    meter.setAttribute("aria-valuemax", String(capacity));
+    meter.setAttribute("aria-valuenow", String(seconds));
+    meter.setAttribute("aria-valuetext", `${seconds} seconds of breath`);
+  }
+
+  boss(name, remaining, max, phase = "") {
+    const el = this.el("boss");
+    el.hidden = false;
+    this.el("boss-name").textContent = name;
+    this.el("boss-phase").textContent = phase;
+    const meter = this.el("boss-meter");
+    meter.setAttribute("aria-valuemax", String(max));
+    meter.setAttribute("aria-valuenow", String(remaining));
+    this.el("boss-fill").style.transform =
+      `scaleX(${Math.max(0, Math.min(1, remaining / max))})`;
+  }
+
+  hideBoss() {
+    this.el("boss").hidden = true;
   }
 
   // --- cinematic overlays -------------------------------------------------------------------------
-  letterbox(on) {
-    this.el("letterbox").classList.toggle("on", on);
+  letterbox(on, skippable = false) {
+    const box = this.el("letterbox");
+    box.classList.toggle("on", on);
     this.el("hud").style.opacity = on ? 0 : 1;
+    const skip = box.querySelector(".cine-skip");
+    const text = this.input.usingTouch
+      ? "Tap to skip"
+      : `<kbd>${this.input.usingPad ? "A" : "Enter"}</kbd> skip`;
+    if (skip.dataset.text !== text) skip.innerHTML = skip.dataset.text = text;
+    skip.classList.toggle("on", on && skippable);
   }
 
   chapter(kicker, title, sub = "", seconds = 4.5) {
     const c = this.el("chapter-card");
+    this.el("chapter-name").textContent = `${kicker} · ${title}`;
+    this.el("chapter-name").hidden = true;
+    this.el("objective-box").classList.remove("chapter-compact");
+    c.classList.remove("compact");
+    c.setAttribute("aria-hidden", "false");
     c.querySelector(".kicker").textContent = kicker;
     c.querySelector("h2").textContent = title;
     c.querySelector(".sub").textContent = sub;
     c.classList.add("on");
     clearTimeout(this.chapterTimer);
-    this.chapterTimer = setTimeout(
-      () => c.classList.remove("on"),
-      seconds * 1000,
-    );
+    this.chapterTimer = setTimeout(() => this.clearChapter(), seconds * 1000);
+  }
+
+  compactChapter() {
+    const c = this.el("chapter-card");
+    if (!c.classList.contains("on") || c.classList.contains("compact")) return;
+    c.classList.add("compact");
+    c.setAttribute("aria-hidden", "true");
+    this.el("chapter-name").hidden = false;
+    this.el("objective-box").classList.add("chapter-compact");
   }
 
   // At once, without the fade: the card must not linger behind the title menu.
@@ -283,6 +722,10 @@ export class Hud {
     const c = this.el("chapter-card");
     c.style.transition = "none";
     c.classList.remove("on");
+    c.classList.remove("compact");
+    c.setAttribute("aria-hidden", "true");
+    this.el("chapter-name").hidden = true;
+    this.el("objective-box").classList.remove("chapter-compact");
     void c.offsetWidth;
     c.style.transition = "";
   }
@@ -322,7 +765,8 @@ export class Hud {
   flash(strength = 0.6) {
     const f = this.el("fade");
     f.classList.remove("dark");
-    f.style.opacity = strength;
+    // With reduced motion a flash is a soft glow.
+    f.style.opacity = this.settings.reduceMotion ? strength * 0.35 : strength;
     setTimeout(() => (f.style.opacity = 0), 120);
   }
 

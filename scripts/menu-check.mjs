@@ -48,7 +48,11 @@ const focused = () =>
 // Moves the menu focus to the item whose text starts with `label`.
 async function choose(label) {
   for (let i = 0; i < 12; i++) {
-    if ((await focused())?.startsWith(label)) return press("Enter");
+    if (
+      (await focused())?.startsWith(label) ||
+      (label === "Levels" && (await focused()) === "Test levels")
+    )
+      return press("Enter");
     await press("ArrowDown");
   }
   throw new Error(`no menu item "${label}" (focus: ${await focused()})`);
@@ -75,7 +79,15 @@ try {
       localStorage.setItem(
         "far-door-progress",
         JSON.stringify({
-          reached: ["court", "floor", "checkpoint", "isles", "frost"],
+          reached: [
+            "court",
+            "floor",
+            "checkpoint",
+            "isles",
+            "frost",
+            "forest",
+            "sea",
+          ],
           last: "checkpoint",
         }),
       );
@@ -106,7 +118,7 @@ try {
   check(
     "levels screen lists every start",
     g.menu === "levels" &&
-      buttons.length === 5 &&
+      buttons.length === 8 &&
       buttons.every((b) => b.endsWith("open")),
     buttons.join(", "),
   );
@@ -115,6 +127,11 @@ try {
   check("back returns to the title menu", (await game()).menu === "main");
 
   await choose("Settings");
+  // The key bindings and aim come first; sensitivity opens the camera's group.
+  for (let i = 0; i < 6; i++) {
+    if ((await focused())?.startsWith("Look sensitivity")) break;
+    await press("ArrowDown");
+  }
   const before = await page.evaluate(
     () =>
       JSON.parse(localStorage.getItem("far-door-settings") || "{}")
@@ -175,6 +192,10 @@ try {
   // From the court floor is the second start.
   await press("ArrowDown");
   await press("Enter");
+  await page.waitForFunction(
+    () => window.__READY__ && window.__GAME__?.chapter === "floor",
+    { timeout: 90000 },
+  );
   g = await until(
     (g) => g.mode === "play" && !g.paused,
     6000,
@@ -366,6 +387,36 @@ try {
     !(g instanceof Error) && g.checkpoint === "open" && g.exitOpen,
     g instanceof Error ? g.message : `${g.checkpoint} ${g.exitOpen}`,
   );
+  for (const [chapter, where, previous, solved] of [
+    [
+      "forest",
+      "five",
+      "four",
+      (g) => g.frozen.freed && g.frozen.ring === "open",
+    ],
+    ["sea", "six", "five", (g) => !!g.forest?.ready],
+  ]) {
+    await page.goto(`${url}&chapter=${chapter}`, { waitUntil: "load" });
+    await page.waitForFunction(() => window.__READY__ === true, {
+      timeout: 90000,
+    });
+    await until((g) => g.where === where, 6000, chapter);
+    await sleep(1600);
+    await page.keyboard.down("KeyS");
+    g = await until(
+      (g) => g.where === previous,
+      12000,
+      `return from ${chapter}`,
+    ).catch((error) => error);
+    await page.keyboard.up("KeyS");
+    check(
+      `return from ${chapter} preserves the previous puzzle`,
+      !(g instanceof Error) && solved(g) && !g.swimming && g.state !== "swim",
+      g instanceof Error ? g.message : "",
+    );
+    await sleep(1200);
+    await shot(`return-from-${chapter}`);
+  }
 } catch (e) {
   check("run", false, e.message);
   await shot("failure");

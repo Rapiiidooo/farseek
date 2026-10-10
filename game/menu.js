@@ -1,7 +1,8 @@
 // The title, pause, levels, settings, controls and confirm screens. One panel shows at a time
 // and the rest stack behind it for Back. Keyboard, mouse and gamepad all drive the same
-// virtual focus: up and down move it, left and right change a setting, Enter or A activates,
-// Escape or B goes back.
+// virtual focus: up and down move it, left and right change a setting or move along a row of
+// key bindings, Enter or A activates, Escape or B goes back. The movement keys, as the player
+// has bound them, move the focus as the arrows do.
 
 const NAV_KEYS = new Set([
   "ArrowUp",
@@ -18,6 +19,23 @@ const NAV_KEYS = new Set([
   "Escape",
   "Backspace",
 ]);
+const FIXED_KEYS = new Set([
+  "ArrowUp",
+  "ArrowDown",
+  "ArrowLeft",
+  "ArrowRight",
+  "Enter",
+  "NumpadEnter",
+  "Space",
+  "Escape",
+  "Backspace",
+]);
+const ARROWS = {
+  forward: "ArrowUp",
+  back: "ArrowDown",
+  left: "ArrowLeft",
+  right: "ArrowRight",
+};
 
 export class Menu {
   constructor(root, { onAction, onChange } = {}) {
@@ -44,13 +62,24 @@ export class Menu {
     addEventListener(
       "keydown",
       (e) => {
-        if (!this.isOpen || !NAV_KEYS.has(e.code) || e.repeat) return;
+        const code = this.isOpen && !e.repeat ? this.navigation(e.code) : null;
+        if (!code) return;
         e.preventDefault();
         e.stopPropagation();
-        this.key(e.code);
+        this.key(code);
       },
       true,
     );
+  }
+
+  // The menu key a pressed key stands for: the fixed ones, then the movement keys as bound
+  // (`moveKeys`, from the input), or WASD when nothing says otherwise.
+  navigation(code) {
+    if (FIXED_KEYS.has(code)) return code;
+    if (!this.moveKeys) return NAV_KEYS.has(code) ? code : null;
+    for (const [direction, arrow] of Object.entries(ARROWS))
+      if (this.moveKeys(direction).includes(code)) return arrow;
+    return null;
   }
 
   get isOpen() {
@@ -164,16 +193,54 @@ export class Menu {
 
   key(code) {
     if (this.locked) return;
-    if (code === "ArrowUp" || code === "KeyW") this.focus(this.index - 1);
-    else if (code === "ArrowDown" || code === "KeyS")
-      this.focus(this.index + 1);
-    else if (code === "ArrowLeft" || code === "KeyA") this.adjust(-1);
-    else if (code === "ArrowRight" || code === "KeyD") this.adjust(1);
+    const up = code === "ArrowUp" || code === "KeyW",
+      down = code === "ArrowDown" || code === "KeyS",
+      left = code === "ArrowLeft" || code === "KeyA",
+      right = code === "ArrowRight" || code === "KeyD";
+    if ((up || down || left || right) && this.grid(up, down, left, right))
+      return;
+    if (up) this.focus(this.index - 1);
+    else if (down) this.focus(this.index + 1);
+    else if (left) this.adjust(-1);
+    else if (right) this.adjust(1);
     else if (code === "Escape" || code === "Backspace") this.back();
     else {
       const el = this.items()[this.index];
       if (el) this.activate(el);
     }
+  }
+
+  // In a table of rows (the key bindings), left and right move along the row and up and down
+  // keep the column.
+  grid(up, down, left, right) {
+    const items = this.items();
+    const el = items[this.index];
+    const row = el?.closest("[data-row]");
+    if (!row) return false;
+    const rows = [
+      ...new Set(items.map((item) => item.closest("[data-row]"))),
+    ].filter(Boolean);
+    const at = rows.indexOf(row);
+    const inRow = (r) =>
+      items.filter((item) => item.closest("[data-row]") === r);
+    if (left || right) {
+      const cells = inRow(row);
+      const next = cells[cells.indexOf(el) + (right ? 1 : -1)];
+      if (next) this.focus(items.indexOf(next));
+      return true;
+    }
+    const target = rows[at + (down ? 1 : -1)];
+    if (!target) return false;
+    const column = Number(el.dataset.col ?? 0);
+    const cells = inRow(target);
+    const best = cells.reduce((a, b) =>
+      Math.abs(Number(b.dataset.col ?? 0) - column) <
+      Math.abs(Number(a.dataset.col ?? 0) - column)
+        ? b
+        : a,
+    );
+    this.focus(items.indexOf(best));
+    return true;
   }
 
   // Gamepad navigation, polled every frame while the menu is open.

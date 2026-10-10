@@ -1,4 +1,8 @@
 import { clamp } from "./world.js";
+import { swinging } from "./hero-swing.js";
+import { wallClimbing } from "./wall-climb.js";
+
+export const RUN_SPEED = 5.6;
 
 // The explorer's movement. Every traversal verb is a state: ground, air, hang, climb, vault,
 // grab (a block held), shove (a block moving) and use (turning a mirror). Distances are
@@ -7,7 +11,10 @@ import { clamp } from "./world.js";
 const R = 0.32,
   HEIGHT = 1.75,
   STEP = 0.55,
-  RUN = 5.6,
+  // A careful walk still hops down a drop this low after pressing on at the lip briefly.
+  HOP = 1.6,
+  HOP_PUSH = 0.35,
+  RUN = RUN_SPEED,
   WALK = 2.1,
   GRAVITY = 21,
   JUMP = 7.4,
@@ -44,6 +51,7 @@ export class Hero {
     this.backHold = 0;
     this.landing = 0;
     this.fallStart = 0;
+    this.waterLanding = false;
     this.prompt = "";
     this.safe = { x: 0, z: 0, feet: 0, yaw: Math.PI };
     this.events = [];
@@ -51,10 +59,15 @@ export class Hero {
     // Positional snaps (squaring up to a block, catching a ledge) are absorbed here and
     // eased out by the renderer, so the body glides instead of teleporting.
     this.snap = { x: 0, z: 0 };
+    this.carried = { x: 0, z: 0 };
+    this.lipPush = 0;
     this.sinceJump = 9;
     this.stun = 0;
     this.invulnerable = 0;
     this.canRoll = true;
+    this.swimming = false;
+    this.swimSpeed = 0;
+    this.swimVertical = 0;
   }
 
   spawn(x, z, feet, yaw) {
@@ -63,7 +76,20 @@ export class Hero {
     this.yaw = yaw;
     this.vel.x = this.vel.y = this.vel.z = 0;
     this.state = "ground";
+    this.swimming = false;
+    this.waterLanding = false;
+    this.swimSpeed = this.swimVertical = 0;
+    this.carried.x = this.carried.z = 0;
     this.safe = { x, z, feet, yaw };
+  }
+
+  // Moved by the ground underfoot. The animator consumes `carried` to keep planted feet on
+  // that ground instead of in the world.
+  carry(dx, dz) {
+    this.pos.x += dx;
+    this.pos.z += dz;
+    this.carried.x += dx;
+    this.carried.z += dz;
   }
 
   get facing() {
@@ -76,7 +102,13 @@ export class Hero {
 
   // input: { move: {x, y} camera relative, camYaw, jump, interact, interactHeld, drop, walk }
   update(dt, input) {
-    this.t += dt;
+    this.t +=
+      dt /
+      (this.state === "climb"
+        ? CLIMB_TIME
+        : this.state === "vault"
+          ? VAULT_TIME
+          : 1);
     // `t` restarts with each state; this clock never does.
     this.clock = (this.clock ?? 0) + dt;
     this.regrab = Math.max(0, this.regrab - dt);
@@ -93,11 +125,124 @@ export class Hero {
     const wish = worldWish(input.move, input.camYaw);
     this.wish = wish;
     this.prompt = "";
+    const water = this.swimVolume?.active();
+    if (water && this.state !== "swim") {
+      this.state = "swim";
+      this.vel.y = 0;
+      this.buffer = this.coyote = 0;
+    } else if (!water && this.state === "swim") {
+      this.state = "air";
+      this.waterLanding = true;
+      this.fallStart = this.feet;
+      this.vel.y = 0;
+      this.regrab = 0.5;
+    }
+    this.swimming = this.state === "swim";
+    if (!this.swimming) this.swimSpeed = this.swimVertical = 0;
+    if (this.state === "air") this.catchRope(dt, input);
+    if (this.wallStart(dt, input, wish)) return;
     this[this.state](dt, input, wish);
     if (this.feet < -5 && this.state === "air") {
       this.lastFall = "deep";
       this.respawn();
     }
+  }
+
+  swim(dt, input, wish) {
+    if (dt <= 0) return;
+    const water = this.swimVolume;
+    const drive = (input.jumpHeld ? 1 : 0) - (input.dropHeld ? 1 : 0);
+    const current = water.current(this.clock, this.pos, this.feet);
+    const stream = Math.hypot(current.x, current.z);
+    if (stream > 1.5 && !(this.stream > 1.5)) this.events.push("current");
+    this.stream = stream;
+    const heading = input.swimDirection;
+    const direction = heading
+      ? {
+          x: heading.x * input.move.y - Math.cos(input.camYaw) * input.move.x,
+          y: heading.y * input.move.y + drive * 0.75,
+          z: heading.z * input.move.y + Math.sin(input.camYaw) * input.move.x,
+        }
+      : { x: wish.x, y: drive * 0.75, z: wish.z };
+    const length = Math.max(
+      1,
+      Math.hypot(direction.x, direction.y, direction.z),
+    );
+    const target = {
+      x: (direction.x * 3.2) / length + current.x,
+      y: (direction.y * 3.2) / length + Math.sin(this.clock * 1.4) * 0.035,
+      z: (direction.z * 3.2) / length + current.z,
+    };
+    const horizontal = Math.hypot(direction.x, direction.z);
+    const horizontalRate = horizontal > 0.05 ? 6.4 : 8;
+    const verticalRate =
+      Math.abs(direction.y) < 0.01
+        ? 12
+        : direction.y * this.vel.y < 0
+          ? 10.5
+          : 7.5;
+    const previous = { x: this.pos.x, y: this.feet, z: this.pos.z };
+    const step = {};
+    for (const axis of ["x", "y", "z"]) {
+      const rate = axis === "y" ? verticalRate : horizontalRate;
+      const blend = 1 - Math.exp(-rate * dt);
+      step[axis] =
+        target[axis] * dt + ((this.vel[axis] - target[axis]) * blend) / rate;
+      this.vel[axis] += (target[axis] - this.vel[axis]) * blend;
+    }
+    this.pos.x = clamp(previous.x + step.x, water.minX, water.maxX);
+    this.pos.z = clamp(previous.z + step.z, water.minZ, water.maxZ);
+    const previousFeet = this.feet;
+    this.feet = clamp(previousFeet + step.y, water.bottom, water.top);
+    if (this.feet !== previousFeet + step.y) this.vel.y = 0;
+    const floor = this.world.ground(
+      this.pos.x,
+      this.pos.z,
+      R,
+      previousFeet,
+      0.02,
+    );
+    if (this.feet < floor + 0.2) {
+      this.feet = floor + 0.2;
+      this.vel.y = Math.max(0, this.vel.y);
+    }
+    const ceiling = this.world.ceiling(
+      this.pos.x,
+      this.pos.z,
+      R,
+      previousFeet,
+      HEIGHT,
+    );
+    if (this.feet + HEIGHT > ceiling) {
+      this.feet = ceiling - HEIGHT;
+      this.vel.y = Math.min(0, this.vel.y);
+    }
+    const wall = this.world.resolve(this.pos, R, this.feet, HEIGHT, 0.02);
+    if (wall) {
+      const into = this.vel.x * wall.x + this.vel.z * wall.z;
+      if (into < 0) {
+        this.vel.x -= wall.x * into;
+        this.vel.z -= wall.z * into;
+      }
+    }
+    this.pos.x = clamp(this.pos.x, water.minX, water.maxX);
+    this.pos.z = clamp(this.pos.z, water.minZ, water.maxZ);
+    for (const axis of ["x", "z"]) {
+      const low = axis === "x" ? water.minX : water.minZ;
+      const high = axis === "x" ? water.maxX : water.maxZ;
+      if (
+        (this.pos[axis] === low && this.vel[axis] < 0) ||
+        (this.pos[axis] === high && this.vel[axis] > 0)
+      )
+        this.vel[axis] = 0;
+    }
+    if (horizontal > 0.05)
+      this.turnTowards(Math.atan2(direction.x, direction.z), dt, 3.5);
+    this.swimSpeed =
+      Math.hypot(this.pos.x - previous.x, this.pos.z - previous.z) / dt;
+    this.swimVertical = this.vel.y;
+    this.prompt = "swim";
+    this.buffer = this.coyote = 0;
   }
 
   // --- ground ---------------------------------------------------------------
@@ -116,15 +261,21 @@ export class Hero {
     const blend = 1 - Math.exp(-k * dt);
     this.vel.x += (wish.x * target - this.vel.x) * blend;
     this.vel.z += (wish.z * target - this.vel.z) * blend;
-    if (wish.len > 0.05) this.turnTowards(Math.atan2(wish.x, wish.z), dt, 13);
+    if (Number.isFinite(input.aimYaw)) this.turnTowards(input.aimYaw, dt, 14);
+    else if (wish.len > 0.05)
+      this.turnTowards(Math.atan2(wish.x, wish.z), dt, 13);
 
     const nx = this.pos.x + this.vel.x * dt,
       nz = this.pos.z + this.vel.z * dt;
     // Walking never steps off an edge, as a deliberate way to line up a jump.
-    if (
-      input.walk &&
-      w.ground(nx, nz, R * 0.6, this.feet, STEP) < this.feet - STEP
-    ) {
+    const below = input.walk
+      ? w.ground(nx, nz, R * 0.6, this.feet, STEP)
+      : this.feet;
+    if (below < this.feet - STEP) {
+      this.lipPush =
+        this.feet - below <= HOP && wish.len > 0.5 ? this.lipPush + dt : 0;
+    } else this.lipPush = 0;
+    if (below < this.feet - STEP && this.lipPush < HOP_PUSH) {
       this.vel.x = this.vel.z = 0;
     } else {
       this.pos.x = nx;
@@ -210,14 +361,16 @@ export class Hero {
   }
 
   roll(dt, input, wish) {
+    if (dt <= 0) return;
     const w = this.world;
-    this.t += dt;
-    const k = Math.min(1, this.t / 0.52);
-    const speed = 8.2 * (1 - k) + 1.2;
-    this.vel.x = this.rollDir.x * speed;
-    this.vel.z = this.rollDir.z * speed;
-    this.pos.x += this.vel.x * dt;
-    this.pos.z += this.vel.z * dt;
+    const k = Math.min(1, this.t / 0.72);
+    const previous = Math.max(0, this.t - dt) / 0.72;
+    const distance = (t) => 2.756 * (2 * t - t * t);
+    const step = distance(k) - distance(Math.min(1, previous));
+    this.vel.x = (this.rollDir.x * step) / dt;
+    this.vel.z = (this.rollDir.z * step) / dt;
+    this.pos.x += this.rollDir.x * step;
+    this.pos.z += this.rollDir.z * step;
     w.resolve(this.pos, R, this.feet, 1.0, STEP);
     const g = w.ground(this.pos.x, this.pos.z, R * 0.6, this.feet, STEP);
     if (g < this.feet - 0.6) {
@@ -240,6 +393,12 @@ export class Hero {
 
   // Knocked back by a blow: a short hop away from it with the controls taken for a beat.
   takeHit(fromX, fromZ, force = 5) {
+    if (
+      force > 0 &&
+      !(this.invulnerable > 0) &&
+      this.shield?.deflect(fromX, fromZ, this)
+    )
+      return false;
     if (
       this.invulnerable > 0 ||
       this.state === "hang" ||
@@ -280,8 +439,11 @@ export class Hero {
     if (wish.len > 0.05 && this.stun <= 0) {
       this.vel.x += (wish.x * RUN - this.vel.x) * air * 0.5;
       this.vel.z += (wish.z * RUN - this.vel.z) * air * 0.5;
-      this.turnTowards(Math.atan2(wish.x, wish.z), dt, 4);
+      if (!Number.isFinite(input.aimYaw))
+        this.turnTowards(Math.atan2(wish.x, wish.z), dt, 4);
     }
+    if (Number.isFinite(input.aimYaw) && this.stun <= 0)
+      this.turnTowards(input.aimYaw, dt, 14);
     // Late jump just after running off an edge.
     if (this.buffer > 0 && this.coyote > 0) {
       this.buffer = 0;
@@ -294,7 +456,14 @@ export class Hero {
     this.coyote -= dt;
     this.pos.x += this.vel.x * dt;
     this.pos.z += this.vel.z * dt;
+    const before = this.feet;
     this.feet += this.vel.y * dt;
+    // A fast step must not sink below a top it crossed, or resolve takes that floor for a wall.
+    if (this.vel.y < 0)
+      this.feet = Math.max(
+        this.feet,
+        w.ground(this.pos.x, this.pos.z, R * 0.6, before, 0.25),
+      );
     w.resolve(this.pos, R, this.feet, HEIGHT, 0.2);
     if (this.vel.y > 0) {
       const c = w.ceiling(this.pos.x, this.pos.z, R * 0.8, this.feet, HEIGHT);
@@ -315,7 +484,7 @@ export class Hero {
       if (this.feet <= g + 1e-3) {
         const drop = this.fallStart - g;
         // A fall of more than two storeys ends the attempt, as it would on real stone.
-        if (drop > 6.5) {
+        if (drop > 6.5 && !this.waterLanding) {
           this.lastFall = "high";
           return this.respawn();
         }
@@ -323,6 +492,7 @@ export class Hero {
         this.landing = clamp(-this.vel.y / 14, 0.15, 1);
         this.vel.y = 0;
         this.state = "ground";
+        this.waterLanding = false;
         this.coyote = COYOTE;
         this.events.push(drop > 3.5 ? "land-hard" : "land");
       }
@@ -332,6 +502,7 @@ export class Hero {
   // --- hang -----------------------------------------------------------------
   beginHang(ledge) {
     this.state = "hang";
+    this.waterLanding = false;
     this.ledge = ledge;
     this.vel.x = this.vel.y = this.vel.z = 0;
     this.yaw = Math.atan2(-ledge.n.x, -ledge.n.z);
@@ -399,6 +570,7 @@ export class Hero {
       if (spot) {
         this.state = "climb";
         this.t = 0;
+        this.climbCue = 0;
         this.from = { x: this.pos.x, z: this.pos.z, feet: this.feet };
         this.to = { x: spot.x, z: spot.z, feet: top };
         this.events.push("climb");
@@ -435,13 +607,19 @@ export class Hero {
   }
 
   climb(dt) {
-    this.t += dt / CLIMB_TIME;
     const k = Math.min(1, this.t);
-    const up = smooth(Math.min(1, k / 0.55)),
-      over = smooth(clamp((k - 0.45) / 0.55, 0, 1));
+    const { up, over } = climbProgress(k);
     this.feet = this.from.feet + (this.to.feet - this.from.feet) * up;
     this.pos.x = this.from.x + (this.to.x - this.from.x) * over;
     this.pos.z = this.from.z + (this.to.z - this.from.z) * over;
+    if (k >= 0.34 && this.climbCue === 0) {
+      this.climbCue = 1;
+      this.events.push("climb-pull");
+    }
+    if (k >= 0.7 && this.climbCue === 1) {
+      this.climbCue = 2;
+      this.events.push("climb-step");
+    }
     if (k >= 1) this.land();
   }
 
@@ -461,7 +639,6 @@ export class Hero {
   }
 
   vault(dt) {
-    this.t += dt / VAULT_TIME;
     const k = Math.min(1, this.t);
     const up = smooth(Math.min(1, k / 0.6)),
       over = smooth(clamp((k - 0.25) / 0.75, 0, 1));
@@ -473,6 +650,7 @@ export class Hero {
 
   land() {
     this.state = "ground";
+    this.waterLanding = false;
     this.t = 0;
     this.vel.x = this.vel.y = this.vel.z = 0;
     this.coyote = COYOTE;
@@ -540,7 +718,6 @@ export class Hero {
   // Holding a mirror's handles: left and right turn it, releasing lets go.
   turn(dt, input) {
     this.prompt = "turning";
-    this.t += dt;
     if (!input.interactHeld) return this.land();
     const spin = input.move.x;
     this.turning = spin;
@@ -723,6 +900,21 @@ export class Hero {
     this.spawn(s.x, s.z, s.feet, s.yaw);
     this.events.push("respawn");
   }
+}
+
+Object.assign(Hero.prototype, swinging);
+Object.assign(Hero.prototype, wallClimbing);
+
+export function climbProgress(t) {
+  const k = clamp(t, 0, 1);
+  return {
+    up:
+      0.56 * smooth(Math.min(1, k / 0.5)) +
+      0.44 * smooth(clamp((k - 0.58) / 0.4, 0, 1)),
+    over:
+      0.18 * smooth(clamp((k - 0.35) / 0.25, 0, 1)) +
+      0.82 * smooth(clamp((k - 0.6) / 0.4, 0, 1)),
+  };
 }
 
 function smooth(t) {

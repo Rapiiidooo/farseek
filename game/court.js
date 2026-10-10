@@ -35,6 +35,22 @@ export const MAP = [
   "###############",
 ];
 
+const CHASMS = MAP.flatMap((row, j) =>
+  [...row].flatMap((cell, i) =>
+    cell === "~" ? [[i * CELL, j * CELL, (i + 1) * CELL, (j + 1) * CELL]] : [],
+  ),
+);
+
+export function chasmDistance(x, z) {
+  let distance = Infinity;
+  for (const [x0, z0, x1, z1] of CHASMS)
+    distance = Math.min(
+      distance,
+      Math.hypot(Math.max(x0 - x, 0, x - x1), Math.max(z0 - z, 0, z - z1)),
+    );
+  return distance;
+}
+
 export function heightOf(ch) {
   if (ch === ".") return 0;
   if (ch === "_") return -3;
@@ -88,6 +104,18 @@ export const STELAE = [
   { id: "right", x: 21, z: 17, yaw: 0, glyph: "peak" },
 ];
 
+export const MEMORIES = [
+  {
+    id: "memory",
+    x: 23.6,
+    z: 31.6,
+    yaw: Math.atan2(-6.6, -0.6),
+    glyph: "star",
+    memory: true,
+    relic: "sun-memory",
+  },
+];
+
 export const BLOCKS = [{ id: "b1", x: 5, z: 21 }];
 
 // The previous expedition's field notes: the map rolled up in their open crate on the
@@ -98,8 +126,8 @@ export const NOTES = { x: 22.08, y: 8.9, z: 40.5 };
 // hang from. [x, lip height, z of the face, yaw]; yaw 0 hangs down a face turned to +Z.
 export const ROPES = [
   [4.1, 8, 36, Math.PI],
-  [5.2, 7, 32, 0],
-  [9.6, 7, 32, 0],
+  [5.2, 7, 32.35, 0],
+  [9.6, 7, 32.35, 0],
 ];
 
 export const GATE = { x: 15, z: 11, yaw: 0 };

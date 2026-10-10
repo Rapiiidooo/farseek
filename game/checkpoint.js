@@ -4,15 +4,16 @@ import { glyphMaterial, makeGlyph } from "./glyphs.js";
 import { FaceBuilder, terrainMaterial } from "./terrain.js";
 import { Stamps, Telegraphs } from "./fx.js";
 import { draw } from "./glyph-icons.js";
+import { StampReview } from "./stamp-review.js";
 
 // The checkpoint beyond the first door. A wall closes the plateau; the only way on is a
 // barrier beside a customs booth, and the clerk inside will not lift it without the
 // destination address stamped on three plates set in the plaza. Stamps are applied by the
 // Wardens, three of them, each stamp carved with one glyph of that address, and a Warden only
-// stamps offenders, on the spot they stood. So the explorer offends (the confiscated sun disc
+// stamps offenders, on the spot they stood. So the explorer offends (the confiscated Relay orb
 // is right there), stands on a plate, and steps out from under the stamp; the matching Warden
 // on the matching plate approves it. With the address complete, the barrier's lamp still has
-// to be lit, and only a disc charged in the crystal's beam can do that.
+// to be lit, and only an orb charged by linking to the crystal can do that.
 
 export const LAYOUT = {
   booth: { x: -4, z: -31.4 },
@@ -60,20 +61,28 @@ export const LAYOUT = {
     [-25.4, -26.8, -28.2].map((z) => [x, z]),
   ),
   respawn: { x: 0, z: -12, yaw: Math.PI },
+  review: { x: -9.4, z: -12.8, scale: 0.82 },
 };
 
 const pick = (list) => list[Math.floor(Math.random() * list.length)];
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 const MAX_HEALTH = 4;
+const PROPERTY = "And don't touch the confiscated property. That's an offence.";
 
 export class Checkpoint {
-  constructor(scene, world, assets, { bubbles, sound, hud }) {
+  constructor(
+    scene,
+    world,
+    assets,
+    { bubbles, sound, hud, discoverRelic, relicFound },
+  ) {
     this.scene = scene;
     this.world = world;
     this.assets = assets;
     this.bubbles = bubbles;
     this.sound = sound;
     this.hud = hud;
+    this.reviewServices = { sound, hud, discoverRelic, relicFound };
     this.guards = [];
     this.plates = [];
     this.time = 0;
@@ -243,6 +252,8 @@ export class Checkpoint {
 
     this.stamps = new Stamps(this.scene, ["crescent", "waves", "disc"], draw);
     this.telegraphs = new Telegraphs(this.scene, 3);
+    this.review = new StampReview(this, this.reviewServices, LAYOUT.review);
+    await this.review.build();
   }
 
   // The checkpoint wall: basalt coursed like the court's masonry, a chalk coping and a stamp
@@ -335,27 +346,57 @@ export class Checkpoint {
     }
   }
 
+  // The beam crosses the plaza at chest height, right in front of the bin: where it passes
+  // between the lens and the explorer it dims, or its glow and the bloom wash her out.
   buildBeam() {
     const { from, to } = this.beam;
     const len = from.distanceTo(to);
     const dir = to.clone().sub(from).normalize();
     const q = new THREE.Quaternion().setFromUnitVectors(V(0, 1, 0), dir);
+    this.sight = V(0, -100, 0);
     const mk = (radius, color, opacity) => {
+      const material = new THREE.MeshBasicMaterial({
+        color,
+        transparent: true,
+        opacity,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        toneMapped: false,
+        fog: false,
+      });
+      material.onBeforeCompile = (shader) => {
+        shader.uniforms.uSight = { value: this.sight };
+        shader.vertexShader = shader.vertexShader
+          .replace(
+            "#include <common>",
+            "#include <common>\nvarying vec3 vBeamWorld;",
+          )
+          .replace(
+            "#include <project_vertex>",
+            "#include <project_vertex>\nvBeamWorld = (modelMatrix * vec4(transformed, 1.0)).xyz;",
+          );
+        shader.fragmentShader = shader.fragmentShader
+          .replace(
+            "#include <common>",
+            "#include <common>\nuniform vec3 uSight;\nvarying vec3 vBeamWorld;",
+          )
+          .replace(
+            "#include <opaque_fragment>",
+            `vec3 sightRay = uSight - cameraPosition;
+            float sightT = dot(vBeamWorld - cameraPosition, sightRay) / max(dot(sightRay, sightRay), 1e-4);
+            float sightGap = length(vBeamWorld - cameraPosition - sightRay * clamp(sightT, 0.0, 1.0));
+            diffuseColor.a *= mix(0.12, 1.0, max(smoothstep(0.3, 0.9, sightGap), step(1.0, sightT)));
+            #include <opaque_fragment>`,
+          );
+      };
+      material.customProgramCacheKey = () => "fd-beam-sight";
       const m = new THREE.Mesh(
         new THREE.CylinderGeometry(radius, radius, len, 10, 1, true).translate(
           0,
           len / 2,
           0,
         ),
-        new THREE.MeshBasicMaterial({
-          color,
-          transparent: true,
-          opacity,
-          blending: THREE.AdditiveBlending,
-          depthWrite: false,
-          toneMapped: false,
-          fog: false,
-        }),
+        material,
       );
       m.position.copy(from);
       m.quaternion.copy(q);
@@ -369,7 +410,7 @@ export class Checkpoint {
 
   // --- what the explorer can use here -------------------------------------------------------
   interactables() {
-    const list = [];
+    const list = [...(this.review?.interactables() ?? [])];
     if (this.disc?.state === "display")
       list.push({
         kind: "use",
@@ -382,7 +423,7 @@ export class Checkpoint {
         kind: "use",
         box: this.windowBox || (this.windowBox = this.makeWindowBox()),
         ref: { use: () => this.talk() },
-        prompt: "talk",
+        prompt: this.review?.ready ? "relic:Take Mira's transit file" : "talk",
       });
     return list;
   }
@@ -400,27 +441,34 @@ export class Checkpoint {
     };
   }
 
+  // Taken before the clerk is done, the briefing goes on after the shout, and the fight starts
+  // at once: the objective, the health beads and the card about the stamps.
   takeDisc() {
     if (this.disc?.state !== "display") return false;
     this.lidKick = 1;
+    this.tookDisc = true;
+    this.lines = this.lines.filter((l) => l.text !== PROPERTY);
+    const early = this.phase === "arrive" || this.phase === "briefing";
+    if (this.phase === "arrive") this.brief();
     this.onTakeDisc?.();
     this.clerk.talking = 1.5;
-    this.say("HEY! That's confiscated property!", "shout", 2.4, true);
+    this.interject("HEY! That's confiscated property!", "shout", 2.4);
     this.sound?.play("alarm");
     // An offence in full view of every Warden on duty.
-    if (
-      this.phase === "stamps" ||
-      this.phase === "arrive" ||
-      this.phase === "briefing"
-    )
+    if (early || this.phase === "stamps")
       setTimeout(() => {
         for (const g of this.guards) if (g.state === "patrol") g.provoke();
       }, 700);
-    this.tookDisc = true;
+    if (early) {
+      this.phase = "stamps";
+      this.phaseT = 0;
+      this.onBriefed?.();
+    }
     return true;
   }
 
   talk() {
+    if (this.review?.ready) return this.review.claim();
     const lines = {
       briefing: ["One moment, please."],
       stamps: [
@@ -435,21 +483,40 @@ export class Checkpoint {
       open: ["Have a nice eternity.", "Next!"],
     }[this.phase] || ["Next!"];
     this.talkIndex = ((this.talkIndex ?? -1) + 1) % lines.length;
-    this.say(lines[this.talkIndex], "clerk", 3, true);
+    this.interject(lines[this.talkIndex], "clerk", 3);
     return true;
   }
 
-  // --- the clerk's lines: queued, one at a time, dropped if the situation moves on --------------
+  // --- the clerk's lines: queued, one at a time --------------------------------------------------
   say(text, kind = "clerk", duration = 2.8, now = false) {
     if (now) this.lines = [];
     this.lines.push({ text, kind, duration, phase: this.phase });
     if (now) this.lineT = 0;
   }
 
+  // A line that cannot wait cuts in; the queue goes on after it, the line it cut off first.
+  interject(text, kind = "clerk", duration = 2.8) {
+    if (this.lineT > 0.5 && this.current && !this.current.cut)
+      this.lines.unshift(this.current);
+    this.lines.unshift({ text, kind, duration, phase: this.phase, cut: true });
+    this.lineT = 0;
+  }
+
+  brief() {
+    if (!this.tookDisc) {
+      this.say("Next!", "clerk", 1.6);
+      this.say("Destination? …No address stamp? Denied.", "clerk", 3);
+    }
+    this.say("The address goes on those three plates. Stamped.", "clerk", 3.2);
+    this.say("Stamps are applied by Wardens. To offenders.", "clerk", 3.2);
+    if (!this.tookDisc) this.say(PROPERTY, "clerk", 3.4);
+  }
+
   speak(dt) {
     this.lineT -= dt;
     if (this.lineT > 0 || !this.lines.length) return;
     const l = this.lines.shift();
+    this.current = l;
     this.clerk.talking = Math.min(2, l.duration * 0.6);
     this.clerk.say(l.text, l.kind, l.duration);
     this.sound?.play("clerk");
@@ -467,18 +534,24 @@ export class Checkpoint {
     if (!at) return this.telegraphs.hide(warden);
     const plate = this.plateAt(at.x, at.z);
     const tone =
-      !plate || plate.stamped
+      this.review?.tone(warden, at) ??
+      (!plate || plate.stamped
         ? "ground"
         : plate.glyph === warden.glyph
           ? "plate"
-          : "void";
-    this.telegraphs.show(warden, at.x, plate ? plate.top : 0, at.z, tone);
+          : "void");
+    const top = this.review?.contains(at.x, at.z)
+      ? this.review.top
+      : (plate?.top ?? 0);
+    this.telegraphs.show(warden, at.x, top, at.z, tone, warden.windupDuration);
   }
 
   // A stamp has come down: on the explorer, on a plate, or on the ground.
   slam(warden, x, z, hit) {
     const plate = this.plateAt(x, z);
     this.onStrike?.(warden, x, z, hit);
+    const reviewed = this.review?.slam(warden, x, z, hit);
+    if (reviewed) return reviewed;
     if (plate && !plate.stamped) {
       if (plate.glyph === warden.glyph) {
         this.approve(plate);
@@ -489,9 +562,9 @@ export class Checkpoint {
       this.sound?.play("void");
       this.voids = (this.voids || 0) + 1;
       if (this.voids === 1) {
-        this.say("Wrong stamp for that plate. Void.", "clerk", 2.6, true);
+        this.interject("Wrong stamp for that plate. Void.", "clerk", 2.6);
         this.onVoid?.();
-      } else if (Math.random() < 0.4) this.say("Void.", "clerk", 1.4, true);
+      } else if (Math.random() < 0.4) this.interject("Void.", "clerk", 1.4);
       return "void";
     }
     this.stamps.mark(x, plate ? plate.top : 0, z, warden.glyph, "ground");
@@ -511,7 +584,7 @@ export class Checkpoint {
       "Two stamps. One more.",
       "Three stamps. …Approved.",
     ][n - 1];
-    this.say(said, "clerk", 2.6, true);
+    this.interject(said, "clerk", 2.6);
     if (n === 3) this.toLamp();
   }
 
@@ -525,7 +598,7 @@ export class Checkpoint {
     this.sound?.setMusic?.("world2");
   }
 
-  // The disc on the lamp: charged, the barrier lifts; otherwise a complaint.
+  // An orb pulse on the lamp: charged, the barrier lifts; otherwise a complaint.
   lampTarget() {
     return {
       radius: 0.5,
@@ -542,11 +615,10 @@ export class Checkpoint {
           this.onOpen?.();
         } else {
           this.sound?.play("clink");
-          this.say(
-            "Please do not throw things at the lamp. It needs light.",
+          this.interject(
+            "That signal has no charge. The lamp needs light.",
             "clerk",
             3,
-            true,
           );
           this.onLampMiss?.();
         }
@@ -563,20 +635,9 @@ export class Checkpoint {
     if (this.phase === "arrive" && (toWindow < 7.5 || this.phaseT > 45)) {
       this.phase = "briefing";
       this.phaseT = 0;
-      this.say("Next!", "clerk", 1.6);
-      this.say("Destination? …No address stamp? Denied.", "clerk", 3);
-      this.say(
-        "The address goes on those three plates. Stamped.",
-        "clerk",
-        3.2,
-      );
-      this.say("Stamps are applied by Wardens. To offenders.", "clerk", 3.2);
-      this.say(
-        "And don't touch the confiscated property. That's an offence.",
-        "clerk",
-        3.4,
-      );
+      this.brief();
     }
+    this.sight.set(hero.pos.x, hero.feet + 1.3, hero.pos.z);
     if (this.phase === "briefing" && !this.lines.length && this.lineT <= 0) {
       this.phase = "stamps";
       this.phaseT = 0;
@@ -606,7 +667,7 @@ export class Checkpoint {
     }
     const k = this.barrierOpen * this.barrierOpen * (3 - 2 * this.barrierOpen);
     if (this.barrier) this.barrier.rotation.z = k * 1.35;
-    // The bin's lid jumps when the disc is snatched out of it, then settles.
+    // The bin's lid jumps when the orb is snatched out of it, then settles.
     const lid = this.bin?.userData.joints?.lid;
     if (lid) {
       if (this.lidRest === undefined) this.lidRest = lid.rotation.x;
@@ -624,11 +685,11 @@ export class Checkpoint {
         p.glyphMat.emissiveIntensity = 0.25 + b;
       }
     this.clerk.update(dt, hero, [], {});
+    this.review?.update(dt, hero);
     const onSlam = (w, x, z, hit) => this.slam(w, x, z, hit);
     for (const g of this.guards) {
-      // Nobody is hunted during the briefing, and nobody after the address is approved.
       if (this.phase === "lamp" || this.phase === "open")
-        if (g.hostile) g.calm(null);
+        if (g.hostile && g !== this.review?.guard) g.calm(null);
       g.update(dt, hero, this.guards, { onSlam, camera });
     }
     this.telegraphs.update(dt);
@@ -637,9 +698,10 @@ export class Checkpoint {
 
   // The HUD's part: the objective, its markers and the one-time cards, from the phase.
   guide(hud, hero, disc) {
+    if (this.review?.guide(hud)) return;
     const plateMarks = this.plates
       .filter((p) => !p.stamped)
-      .map((p) => V(p.x, 1.2, p.z));
+      .map((p) => ({ at: V(p.x, 1.2, p.z), glyph: p.glyph }));
     const n = this.plates.filter((p) => p.stamped).length;
     let key = this.phase;
     if (this.phase === "stamps") {
@@ -669,10 +731,10 @@ export class Checkpoint {
       hud.objective(
         "Light the barrier lamp",
         disc.state === "display"
-          ? "Take the sun disc from the confiscation bin"
+          ? "Take the relay orb from the confiscation bin"
           : charged
-            ? "The disc is charged: throw it at the lamp"
-            : "Throw the disc through the crystal's beam to charge it",
+            ? "The orb is charged: aim at the lamp and pulse"
+            : "Aim at the crystal and link to charge the orb",
       );
       key += disc.state === "display" ? ":bin" : charged ? ":lamp" : ":beam";
       if (this.guideKey !== key)
@@ -684,9 +746,17 @@ export class Checkpoint {
               : this.emitterPos.clone().add(V(0, 0.8, 0)),
         ]);
     } else if (this.phase === "open") {
-      hud.objective("Go through the far door", "The barrier is up");
-      key += ":exit";
-      if (this.guideKey !== key) hud.setMarkers([this.exitMarker]);
+      const gate = this.exitGate;
+      const open = !!gate?.isOpen;
+      hud.objective(
+        "Go through the far door",
+        open ? "The door is open: step through it" : "The barrier is up",
+      );
+      key += open ? ":through" : ":exit";
+      if (this.guideKey !== key)
+        hud.setMarkers([
+          open ? gate.center.clone().setY(gate.daisTop + 1.2) : this.exitMarker,
+        ]);
     }
     this.guideKey = key;
     void hero;
@@ -694,6 +764,7 @@ export class Checkpoint {
 
   // After a knockout: the case is closed, every Warden goes back to its rounds.
   calmAll() {
+    this.review?.cancel();
     for (const g of this.guards) g.calm(null);
     this.telegraphs.clear();
   }
@@ -703,6 +774,7 @@ export class Checkpoint {
     this.phaseT = 0;
     this.lines = [];
     this.lineT = 0;
+    this.current = null;
     this.lampLit = false;
     this.barrierOpen = 0;
     this.voids = 0;
@@ -711,6 +783,7 @@ export class Checkpoint {
     this.talkIndex = -1;
     this.guideKey = null;
     this.health = MAX_HEALTH;
+    this.review?.reset();
     if (!built) return;
     this.gateWall.solid = true;
     if (this.barrier) this.barrier.rotation.z = 0;

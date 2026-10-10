@@ -9,12 +9,13 @@
     <title>Farseek</title>
     <meta
       name="description"
-      content="An explorer bends sunlight through a sunken ruin to open a gate onto another world."
+      content="Nyra Varen bends sunlight through a sunken ruin to open a gate onto another world."
     />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <meta name="theme-color" content="#140e0a" />
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./equipment.css" />
     <script type="importmap">
       {
         "imports": {
@@ -31,6 +32,7 @@
 
     <div id="hud" hidden>
       <div id="objective-box" aria-live="polite">
+        <p id="chapter-name" hidden></p>
         <p class="label">Objective</p>
         <p id="objective"></p>
         <p id="objective-sub"></p>
@@ -44,6 +46,35 @@
         </div>
       </div>
       <div id="health" hidden aria-label="Composure"></div>
+      <div id="breath" hidden>
+        <div class="breath-caption">
+          <span id="breath-label">Breath</span><span id="breath-time"></span>
+        </div>
+        <div
+          id="breath-meter"
+          role="progressbar"
+          aria-label="Remaining breath"
+          aria-valuemin="0"
+          aria-valuemax="45"
+          aria-valuenow="45"
+        >
+          <span id="breath-fill"></span>
+        </div>
+      </div>
+      <div id="boss" hidden>
+        <p id="boss-name"></p>
+        <div
+          id="boss-meter"
+          role="progressbar"
+          aria-label="Guardian strength"
+          aria-valuemin="0"
+          aria-valuemax="6"
+          aria-valuenow="6"
+        >
+          <span id="boss-fill"></span>
+        </div>
+        <p id="boss-phase"></p>
+      </div>
       <div id="markers" aria-hidden="true"></div>
       <div id="hint" role="status">
         <p class="hint-title"></p>
@@ -62,7 +93,10 @@
       <div id="stick" aria-label="Move"><div class="knob"></div></div>
       <div class="touch-actions">
         <button type="button" data-touch="roll" class="small">Roll</button>
-        <button type="button" data-touch="throw" class="small">Throw</button>
+        <button type="button" data-touch="shield" class="small off">
+          Shield
+        </button>
+        <button type="button" data-touch="throw" class="small">Link</button>
         <button type="button" data-touch="drop" class="small">Hang</button>
         <button type="button" data-touch="interact">Use</button>
         <button type="button" data-touch="jump" class="big">Jump</button>
@@ -74,7 +108,7 @@
 
     <div id="letterbox" aria-hidden="true">
       <div class="bar top"></div>
-      <div class="bar bottom"></div>
+      <div class="bar bottom"><p class="cine-skip"></p></div>
     </div>
 
     <div id="chapter-card" aria-live="polite">
@@ -84,6 +118,12 @@
     </div>
 
     <p id="subtitle" aria-live="polite"></p>
+
+    <section id="starward-card" hidden aria-live="polite">
+      <p class="kicker">Beyond the last door</p>
+      <h2>To be continued</h2>
+      <p>Nyra Varen will return.</p>
+    </section>
 
     <section id="notes" hidden aria-label="Field notes">
       <article class="sheet" data-note="first">
@@ -104,12 +144,14 @@
           when the light strikes its crystal head on.
         </p>
         <p>
-          <b>Day 11.</b> Mira found a bronze disc in the rubble. It drinks light
-          and glows for a while after. She wears it on her belt.
+          <b>Day 11.</b> Mira found a bronze orb in the rubble. It draws light
+          from crystals and channels it into distant mechanisms. She wears it on
+          her belt.
         </p>
         <p>
           <b>Day 12.</b> All three glyphs lit. The ring is a door, with a whole
-          sky behind it. We are going through.
+          sky behind it. Mira calls the network a map with no last page. We are
+          going through.
         </p>
         <p class="ps">
           If you follow us: jump to the west platform, hang from its edge, then
@@ -120,7 +162,7 @@
       <article class="sheet" data-note="mira" hidden>
         <p class="kicker">Mira's journal · the dawn isles</p>
         <p>
-          <b>Day 14.</b> The Wardens kept my disc at the checkpoint. We came
+          <b>Day 14.</b> The Wardens kept my orb at the checkpoint. We came
           through the far door with empty hands.
         </p>
         <p>
@@ -142,8 +184,12 @@
           The third must be carved on the far side. We go through.
         </p>
         <p class="ps">
-          If you are reading this with my disc in your hand, keep it. Follow the
-          light. M.
+          Nyra, if you are reading this with my orb in your hand, keep it.
+          Follow the light. My field pistols are in the open case on the crate
+          beside this one: take them. The orb never wounds, it only stuns;
+          whatever bites needs a bullet, and the builders' seals still need
+          light. You always said a map could not end at its edge. I am going to
+          find out. M.
         </p>
         <p class="close" data-help="notes"></p>
       </article>
@@ -159,16 +205,19 @@
 
     <section id="loading" class="screen">
       <div class="loading-card">
-        <p class="kicker">An expedition in four worlds</p>
+        <p class="kicker">An expedition in seven worlds</p>
         <h1>Farseek</h1>
         <div class="bar"><span id="load-fill"></span></div>
         <p id="load-step">Unpacking the expedition…</p>
+        <nav id="load-actions" class="menu-list compact" hidden>
+          <button id="load-retry" type="button">Try again</button>
+        </nav>
       </div>
     </section>
 
     <section id="menu" class="screen" hidden>
       <div class="panel" data-screen="main">
-        <p class="kicker">An expedition in four worlds</p>
+        <p class="kicker">An expedition in seven worlds</p>
         <h1>Farseek</h1>
         <p class="tagline">Every tomb hides an address.</p>
         <nav class="menu-list">
@@ -219,53 +268,157 @@
         </nav>
       </div>
 
+      <div
+        class="panel wide"
+        data-screen="relic-note"
+        aria-labelledby="relic-note-title"
+        hidden
+      >
+        <p class="kicker" id="relic-note-world"></p>
+        <h2 class="panel-title" id="relic-note-title"></h2>
+        <nav class="menu-list compact">
+          <button type="button" data-action="back">Back</button>
+        </nav>
+        <article class="level-card relic" id="relic-note-text"></article>
+      </div>
+
       <div class="panel wide" data-screen="settings" hidden>
         <p class="kicker">Settings</p>
         <h2 class="panel-title">Settings</h2>
         <div class="settings">
-          <label class="row"
-            ><span>Look sensitivity</span
-            ><input
-              id="set-sensitivity"
-              type="range"
-              min="0.4"
-              max="2"
-              step="0.1"
-          /></label>
-          <label class="row"
-            ><span>Invert vertical look</span
-            ><input id="set-invert" type="checkbox"
-          /></label>
-          <label class="row"
-            ><span>Master volume</span
-            ><input id="set-volume" type="range" min="0" max="1" step="0.05"
-          /></label>
-          <label class="row"
-            ><span>Music</span
-            ><input id="set-music" type="range" min="0" max="1" step="0.05"
-          /></label>
-          <label class="row"
-            ><span>Effects</span
-            ><input id="set-effects" type="range" min="0" max="1" step="0.05"
-          /></label>
-          <label class="row"
-            ><span>Image quality</span
-            ><select id="set-quality">
-              <option value="high">High</option>
-              <option value="balanced">Balanced</option>
-              <option value="fast">Fast</option>
-            </select></label
+          <section class="settings-group" aria-labelledby="settings-controls">
+            <h3 id="settings-controls">Controls</h3>
+            <button type="button" class="row-button" data-action="controls">
+              <span>Keys and buttons</span><span class="value">Change</span>
+            </button>
+            <label class="row"
+              ><span>Aim</span
+              ><select id="set-aim">
+                <option value="hold">Hold</option>
+                <option value="toggle">Toggle</option>
+              </select></label
+            >
+          </section>
+          <section class="settings-group" aria-labelledby="settings-camera">
+            <h3 id="settings-camera">Camera</h3>
+            <label class="row"
+              ><span>Look sensitivity</span
+              ><input
+                id="set-sensitivity"
+                type="range"
+                min="0.4"
+                max="2"
+                step="0.1"
+            /></label>
+            <label class="row"
+              ><span>Invert vertical look</span
+              ><input id="set-invert" type="checkbox"
+            /></label>
+            <label class="row"
+              ><span>Invert horizontal look</span
+              ><input id="set-invert-x" type="checkbox"
+            /></label>
+            <label class="row"
+              ><span>Field of view <output id="fov-value"></output></span
+              ><input id="set-fov" type="range" min="50" max="90" step="2"
+            /></label>
+            <label class="row"
+              ><span>Recenter behind Nyra</span
+              ><input id="set-recenter" type="checkbox"
+            /></label>
+            <label class="row"
+              ><span>Camera shake</span><input id="set-shake" type="checkbox"
+            /></label>
+          </section>
+          <section class="settings-group" aria-labelledby="settings-display">
+            <h3 id="settings-display">Display</h3>
+            <label class="row"
+              ><span>Image quality</span
+              ><select id="set-quality">
+                <option value="high">High</option>
+                <option value="balanced">Balanced</option>
+                <option value="fast">Fast</option>
+              </select></label
+            >
+          </section>
+          <section class="settings-group" aria-labelledby="settings-audio">
+            <h3 id="settings-audio">Audio</h3>
+            <label class="row"
+              ><span>Master volume</span
+              ><input id="set-volume" type="range" min="0" max="1" step="0.05"
+            /></label>
+            <label class="row"
+              ><span>Music</span
+              ><input id="set-music" type="range" min="0" max="1" step="0.05"
+            /></label>
+            <label class="row"
+              ><span>Ambience</span
+              ><input
+                id="set-ambience"
+                type="range"
+                min="0"
+                max="1"
+                step="0.05"
+            /></label>
+            <label class="row"
+              ><span>Effects</span
+              ><input id="set-effects" type="range" min="0" max="1" step="0.05"
+            /></label>
+            <label class="row"
+              ><span>Voice</span
+              ><input id="set-voice" type="range" min="0" max="1" step="0.05"
+            /></label>
+          </section>
+          <section
+            class="settings-group"
+            aria-labelledby="settings-accessibility"
           >
-          <label class="row"
-            ><span>Objective marker</span
-            ><input id="set-markers" type="checkbox"
-          /></label>
-          <label class="row"
-            ><span>Control hints</span><input id="set-hints" type="checkbox"
-          /></label>
-          <label class="row"
-            ><span>Camera shake</span><input id="set-shake" type="checkbox"
-          /></label>
+            <h3 id="settings-accessibility">Accessibility</h3>
+            <label class="row"
+              ><span>Subtitle size</span
+              ><select id="set-subtitle-size">
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+              </select></label
+            >
+            <label class="row"
+              ><span>Subtitle backing</span
+              ><select id="set-subtitle-backing">
+                <option value="none">None</option>
+                <option value="soft">Soft</option>
+                <option value="solid">Solid</option>
+              </select></label
+            >
+            <label class="row"
+              ><span>High contrast</span
+              ><input id="set-contrast" type="checkbox"
+            /></label>
+            <label class="row"
+              ><span>Reduce motion</span
+              ><input id="set-reduce-motion" type="checkbox"
+            /></label>
+          </section>
+          <section class="settings-group" aria-labelledby="settings-gameplay">
+            <h3 id="settings-gameplay">Gameplay</h3>
+            <label class="row"
+              ><span>Objective marker</span
+              ><input id="set-markers" type="checkbox"
+            /></label>
+            <label class="row"
+              ><span>Control hints</span><input id="set-hints" type="checkbox"
+            /></label>
+            <label
+              class="row"
+              title="Story softens hits and lengthens warnings; Hard shortens them and slows recovery."
+              ><span>Difficulty</span
+              ><select id="set-difficulty">
+                <option value="story">Story</option>
+                <option value="standard">Standard</option>
+                <option value="hard">Hard</option>
+              </select></label
+            >
+          </section>
         </div>
         <nav class="menu-list compact">
           <button type="button" data-action="reset-progress">
@@ -278,58 +431,22 @@
       <div class="panel wide" data-screen="controls" hidden>
         <p class="kicker">Controls</p>
         <h2 class="panel-title">Controls</h2>
+        <p class="controls-help" id="controls-help"></p>
         <div class="controls-grid">
-          <table>
-            <caption>
-              Keyboard and mouse
-            </caption>
+          <table class="bindings">
+            <thead id="controls-head"></thead>
             <tbody id="controls-keys"></tbody>
           </table>
-          <table>
-            <caption>
-              Gamepad
-            </caption>
-            <tbody>
-              <tr>
-                <td>Left stick</td>
-                <td>Move</td>
-              </tr>
-              <tr>
-                <td>Right stick</td>
-                <td>Look</td>
-              </tr>
-              <tr>
-                <td>A</td>
-                <td>Jump, climb</td>
-              </tr>
-              <tr>
-                <td>X (hold)</td>
-                <td>Grab a block, turn a mirror</td>
-              </tr>
-              <tr>
-                <td>B</td>
-                <td>Hang from an edge, let go</td>
-              </tr>
-              <tr>
-                <td>RB</td>
-                <td>Roll</td>
-              </tr>
-              <tr>
-                <td>RT</td>
-                <td>Throw the disc</td>
-              </tr>
-              <tr>
-                <td>LT (hold)</td>
-                <td>Walk without falling</td>
-              </tr>
-              <tr>
-                <td>Start</td>
-                <td>Pause</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
+        <p class="bind-status" id="bind-status" role="status"></p>
         <nav class="menu-list compact">
+          <button
+            type="button"
+            data-action="reset-bindings"
+            id="reset-bindings"
+          >
+            Reset to defaults
+          </button>
           <button type="button" data-action="back">Back</button>
         </nav>
       </div>
@@ -346,9 +463,9 @@
 
     <section id="credits" hidden aria-label="Credits">
       <div class="roll" id="credits-roll">
-        <p class="kicker">An expedition in four worlds</p>
+        <p class="kicker">An expedition in seven worlds</p>
         <h1>Farseek</h1>
-        <p class="line">To be continued.</p>
+        <p class="line">Every door opens onto another beginning.</p>
         <div class="block">
           <h3>Made by</h3>
           <p>Rapido</p>
@@ -356,24 +473,38 @@
         <div class="block">
           <h3>Built with</h3>
           <p>Claude Code</p>
+          <p>Codex</p>
         </div>
         <div class="block">
-          <h3>Every 3D object</h3>
+          <h3>Worlds and expedition gear</h3>
           <p>Generated as code through the 404 game recipe:</p>
           <p>a written brief, candidates, a four-sided check,</p>
           <p>and a choice made by eye</p>
         </div>
         <div class="block">
+          <h3>Explorer anatomy and textures</h3>
+          <p>MakeHuman community assets, CC0</p>
+          <p>Data Collection AB, Joel Palmius and Jonas Hauquier</p>
+          <p>Facial targets by Mika Suominen, CC0</p>
+        </div>
+        <div class="block">
           <h3>Starring</h3>
-          <p>The Explorer</p>
+          <p>Nyra Varen</p>
           <p>The Clerk, window one</p>
           <p>Warden Crescent, Warden Wave and Warden Disc</p>
+          <p>The Tide Guardian</p>
+          <p>The Keeper of the vault</p>
           <p>The previous expedition, in absentia</p>
           <p>Mira, always one door ahead</p>
         </div>
         <div class="block">
+          <h3>Mira's voice</h3>
+          <p>Generated with Atlas and ElevenLabs Eleven v3</p>
+        </div>
+        <div class="block">
           <h3>Sound and music</h3>
-          <p>Synthesised live in the browser, no recordings</p>
+          <p>Original score and ambience synthesised in the browser</p>
+          <p>Pistol effect generated with Atlas and ElevenLabs SFX v2</p>
         </div>
         <div class="block">
           <h3>Engine</h3>

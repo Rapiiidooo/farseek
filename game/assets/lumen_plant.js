@@ -1,3 +1,5 @@
+import { refineNature } from "../nature-detail.js";
+
 // lumen_plant, arm C: a second reading, one strand per stalk.
 // Each stalk is a single swept tube that starts as a root tip on the ground,
 // climbs the mound winding round the centre, so the five strands braid into the
@@ -51,7 +53,19 @@ export default function (THREE) {
     out.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
     return out;
   };
-  const lathe = (pts, seg) => new THREE.LatheGeometry(pts.map(([r, y]) => new THREE.Vector2(r, y)), seg);
+  const lathe = (pts, seg) => {
+    const geo = new THREE.LatheGeometry(pts.map(([r, y]) => new THREE.Vector2(r, y)), seg);
+    if (seg === 10) {
+      const p = geo.attributes.position, height = Math.max(...pts.map(([, y]) => y));
+      for (let i = 0; i < p.count; i++) {
+        const a = Math.atan2(p.getX(i), p.getZ(i)), t = p.getY(i) / height;
+        const flute = 1 - 0.075 * Math.sin(a * 2.5) ** 2 * Math.sin(t * Math.PI);
+        p.setX(i, p.getX(i) * flute); p.setZ(i, p.getZ(i) * flute);
+      }
+      geo.computeVertexNormals();
+    }
+    return geo;
+  };
   const UP = new THREE.Vector3(0, 1, 0);
   const orient = (geo, p, dir) => geo.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(UP, dir.clone().normalize())).translate(p.x, p.y, p.z);
   // a tube along a curve whose radius follows rad(t)
@@ -165,5 +179,5 @@ export default function (THREE) {
   g.children.forEach((o) => { o.position.x -= c.x; o.position.y -= box3.min.y; o.position.z -= c.z; });
 
   g.userData.parts = { pods: podMesh, buds: budMesh };
-  return g;
+  return refineNature(THREE, g, "lumen_plant");
 }

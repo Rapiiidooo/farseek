@@ -1,0 +1,4 @@
+[mcp_servers.atlas]
+url = "https://mcp.prod-market.atlas.design/mcp"
+http_headers_helper = "/bin/zsh /Users/rapido/perso/bittensor/404/farseek/scripts/atlas-headers.zsh"
+tool_timeout_sec = 240

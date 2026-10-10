@@ -1,0 +1,100 @@
+{
+  "width": 1280,
+  "height": 720,
+  "quality": "high",
+  "storeScale": 2,
+  "time": 12,
+  "playFrames": 90,
+  "clocks": {
+    "court": ["level"]
+  },
+  "limits": {
+    "ssim": 0.95,
+    "tileSsim": 0.8,
+    "tileDeltaE": 6,
+    "noiseMargin": 0.1,
+    "noiseFactor": 2
+  },
+  "views": [
+    {
+      "id": "court-stela",
+      "chapter": "court",
+      "cam": [15, 1.0, 18.7, 15, 0.9, 17.2]
+    },
+    {
+      "id": "court-overview",
+      "chapter": "court",
+      "cam": [19.5, 11.5, 42, 15.2, 7.6, 24]
+    },
+    {
+      "id": "court-mirror",
+      "chapter": "court",
+      "cam": [11.7, 3.6, 26, 9, 1.3, 21]
+    },
+    {
+      "id": "checkpoint-valley",
+      "chapter": "checkpoint",
+      "cam": [0, 1.7, -3.6, 0, 1.2, -13.6]
+    },
+    {
+      "id": "checkpoint-overview",
+      "chapter": "checkpoint",
+      "cam": [0, 25, 21.4, 0, 0, -13.6]
+    },
+    {
+      "id": "isles-arrival",
+      "chapter": "isles",
+      "cam": [0, 1.63, -4.4, 0, 1.13, -14.4]
+    },
+    {
+      "id": "isles-overview",
+      "chapter": "isles",
+      "cam": [0, 24.93, 20.6, 0, -0.07, -14.4]
+    },
+    {
+      "id": "frost-falls",
+      "chapter": "frost",
+      "cam": [0, 1.7, -4.4, 7.07, 1.2, -11.47]
+    },
+    {
+      "id": "frost-valley",
+      "chapter": "frost",
+      "cam": [0, 1.7, -4.4, 0, 1.2, -14.4]
+    },
+    {
+      "id": "frost-stela",
+      "chapter": "frost",
+      "cam": [0, 2.2, -143.5, 0, 1.3, -147.5]
+    },
+    {
+      "id": "forest-path",
+      "chapter": "forest",
+      "cam": [0, 1.92, -4.5, 0, 1.42, -14.5]
+    },
+    {
+      "id": "forest-overview",
+      "chapter": "forest",
+      "cam": [0, 25.2, 20.5, 0, 0.2, -14.5]
+    },
+    {
+      "id": "sea-causeway",
+      "chapter": "sea",
+      "cam": [0, 33.2, -4.46, 0, 32.7, -14.46]
+    },
+    {
+      "id": "sea-overview",
+      "chapter": "sea",
+      "cam": [0, 56.5, 20.5, 0, 31.5, -14.5]
+    },
+    {
+      "id": "vault-nave",
+      "chapter": "vault",
+      "cam": [0, 1.8, 3.6, 0, 2.6, -40]
+    },
+    {
+      "id": "vault-door",
+      "chapter": "vault",
+      "cam": [0, 3.2, -56, 0, 3.4, -67]
+    }
+  ]
+}

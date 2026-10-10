@@ -1,3 +1,5 @@
+import { detailBatch } from "../prop-detail.js";
+
 // stamp_plate, arm C: a second reading, as carved masonry.
 // A hand-built faceted mesh, flat shaded: a forty-sided night-basalt ring stone with
 // two chamfered tiers, a separate field stone of the builders' warmer basalt set
@@ -149,6 +151,20 @@ export default function (THREE) {
   g.add(inlay);
 
   for (const [mat, arr] of SOUP) g.add(new THREE.Mesh(build(arr), mat));
+
+
+  const details = detailBatch(THREE, g);
+  for (let i = 0; i < 48; i++) {
+    const a = i * Math.PI / 24;
+    if (i % 6 === 0) continue;
+    const p = (r) => [Math.sin(a) * r, 0.136, Math.cos(a) * r];
+    details.line(NIGHT, [p(0.748), p(i % 3 ? 0.768 : 0.791)], 0.0016);
+  }
+  for (let i = 0; i < 8; i++) {
+    const a = i * Math.PI / 4;
+    details.bolt(NIGHT, 0.01, [Math.sin(a) * 0.84, 0.107, Math.cos(a) * 0.84]);
+  }
+  details.finish();
 
   // ---- placement: base at y = 0, centred on x and z (measured on vertices) ---------
   const box = new THREE.Box3(), v = new THREE.Vector3(), m = new THREE.Matrix4(), im = new THREE.Matrix4();

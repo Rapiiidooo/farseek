@@ -247,9 +247,14 @@ await page.evaluateOnNewDocument((last) => {
   );
   localStorage.setItem(
     "far-door-progress",
+    // A save without the flag counts as an old one that already holds Mira's pistols.
     JSON.stringify(
       last
-        ? { reached: ["court", "floor", "checkpoint", "isles", "frost"], last }
+        ? {
+            reached: ["court", "floor", "checkpoint", "isles", "frost"],
+            last,
+            pistols: last === "frost",
+          }
         : {},
     ),
   );
@@ -357,6 +362,23 @@ async function still(name) {
 const state = () => page.evaluate(() => window.__GAME__);
 const held = new Set();
 async function hold(keys) {
+  if (["KeyW", "KeyA", "KeyS", "KeyD"].some((key) => keys.has(key))) {
+    const current = await state();
+    const pace = keys.has("ShiftLeft") ? "walk" : "run";
+    if (
+      current?.mode === "play" &&
+      !current.paused &&
+      !current.cinematic &&
+      !current.crossing &&
+      current.pace !== pace
+    ) {
+      await page.keyboard.press("ShiftLeft");
+      await frame();
+      if ((await state()).pace !== pace)
+        throw new Error(`Pace switch to ${pace} was not consumed`);
+    }
+  }
+  keys = new Set([...keys].filter((key) => key !== "ShiftLeft"));
   for (const k of [...held])
     if (!keys.has(k)) (await page.keyboard.up(k), held.delete(k));
   for (const k of keys)
@@ -517,17 +539,13 @@ async function orbit(deg, seconds, { tilt = 0, stillsAt = [] } = {}) {
   }
   await drag.end();
 }
-// Plays a scripted shot through to its end, with stills along the way. The closing shot never
-// ends as a shot: it turns on under the credits.
-async function watch(
-  label,
-  { every = 0, max = 90000, end = (s) => !s.cinematic } = {},
-) {
+// Plays a scripted shot through to its end, with stills along the way.
+async function watch(label, { every = 0, max = 90000 } = {}) {
   await until((s) => s.cinematic, 8000, `${label} starts`);
   note(`${label} starts`);
   const t0 = now();
   let next = every;
-  while (!end(await state())) {
+  while ((await state()).cinematic) {
     if (now() - t0 > max) throw new Error(`${label} never ends`);
     await frame();
     if (every && now() - t0 >= next) {
@@ -559,6 +577,16 @@ async function begin() {
       ? 'button[data-action="new"]'
       : 'button[data-action="continue"]',
   );
+  // The chapter's worlds are prepared behind the loading screen before play starts.
+  for (let i = 0; i < FPS * 180; i++) {
+    const ready = await page.evaluate(
+      () =>
+        document.querySelector("#loading")?.hidden &&
+        window.__GAME__?.mode === "play",
+    );
+    if (ready) break;
+    await frame();
+  }
 }
 
 const started = Date.now();
@@ -1067,6 +1095,24 @@ async function isles() {
   if (!reading) throw new Error("Mira's journal did not open");
   note("reading Mira's journal");
   await tap(["KeyE"], 120);
+  // Her ring opens once her pistols are taken too, from the open case 1.96 m and 3.1 m off the
+  // camp isle's centre (CAMP.pistols).
+  s = await until((s) => s.isles.read, 3000, "the journal read");
+  const camp = s.isles.isles.find((i) => i.id === "camp").at;
+  const box = [camp[0] + 1.96, camp[1] + 3.1];
+  for (let k = 0; k < 8 && !/pistols/.test(await prompt()); k++) {
+    const a = (k / 8) * Math.PI * 2 + Math.PI / 2;
+    await go(box[0] + Math.sin(a) * 1.1, box[1] + Math.cos(a) * 1.1, {
+      tol: 0.3,
+      timeout: 4000,
+    }).catch(() => {});
+    await turnTo(box[0], box[1]);
+    await tap(["KeyW"], 120);
+    await sleep(200);
+  }
+  await tap(["KeyE"], 120);
+  await until((s) => s.equipment.pistolsUnlocked, 3000, "Mira's pistols taken");
+  note("took Mira's pistols from her case");
   await watch("mira-ring", { every: 1000 });
   s = await until(
     (s) => !s.cinematic && s.isles.ring.phase === "open",
@@ -1075,6 +1121,7 @@ async function isles() {
   );
   note("Mira's ring is open");
   const r = s.isles.ring;
+  await go(box[0] - 1.1, box[1], { tol: 0.4, walk: false });
   await go(r.x, r.z + 2.6, { tol: 0.4, walk: false });
   await turnTo(r.x, r.z - 10);
   await hold(new Set(["KeyW"]));
@@ -1155,8 +1202,8 @@ async function leap(edge, target, id) {
   return s;
 }
 
-// Level 4: the slide, the pond's block, the thin ice and floes, the glyph in the ice, the
-// great ring, the closing shot through the forest to the drowned city, and the credits.
+// Level 4: the slide, the pond's block, the thin ice and floes, the glyph in the ice, and the
+// great ring opening onto the wildwood, walked through to its arrival.
 async function frost() {
   let s = await until(
     (s) => s.where === "four" && s.frozen,
@@ -1293,8 +1340,13 @@ async function frost() {
   await watch("great-ring", { every: 1000 });
   s = await until((s) => s.frozen.ring === "open", 20000, "the ring open");
   note("the great ring is open onto the forest");
-  await watch("finale", { every: 1500, max: 120000, end: (s) => s.credits });
-  await sleep(6000);
-  await still("credits");
-  await sleep(6000);
+  await go(0, -151.5, { tol: 0.5, walk: false });
+  await turnTo(0, -170);
+  await hold(new Set(["KeyW"]));
+  await until((s) => s.where === "five", 10000, "through the great ring");
+  await hold(new Set());
+  note("through the great ring into the wildwood");
+  await sleep(2500);
+  await still("wildwood");
+  await sleep(3000);
 }

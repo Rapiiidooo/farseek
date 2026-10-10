@@ -1,0 +1,121 @@
+Farseek pistol-shot.wav
+
+Original output generated through Atlas with ElevenLabs SFX v2.
+Atlas project: 09b37fa7-57d7-4a6c-98ea-775a60c7c33c
+Output asset: d6537378-e240-4ea8-b41a-58ecf9e229e8
+
+Prompt: Original realistic compact semi-automatic pistol: three isolated single shots separated by 1 second of silence. Crisp broadband crack, tight bass body, subtle slide, dry outdoor tail below 300ms, no music, voices or background.
+
+The output contains one isolated shot. The game uses its first 0.46 seconds, a 55 Hz highpass, a 100 ms tail fade and a peak of -3 dBFS. Slight playback-rate variation avoids identical repetitions.
+
+Generation and export receipts: receipts/verification-playfeel/audio/ in the source repository. Provider terms govern generated output; this file does not assert a separate CC0 or public-domain license.
+
+Farseek dual pistol reload
+
+Five original isolated effects generated through Atlas with ElevenLabs SFX v2.
+Atlas project: 09b37fa7-57d7-4a6c-98ea-775a60c7c33c
+
+pistol-reload-release.wav: 5c6d8c7c-a5a7-43ad-b61b-24fb45f675e6, magazine button and extraction.
+pistol-reload-belt.wav: a451db25-1b26-49e9-8089-289615a5b76a, cloth pouch and metal pickup.
+pistol-reload-seat.wav: 11b192e4-f880-4e06-9190-59dbf0bcb5c4, magazine seating clack.
+pistol-reload-rack.wav: f061f47c-f171-45a4-b4f0-0e7e3697c28a, slide pull and release.
+pistol-magazine-land.wav: 1718aeff-4991-4928-92f5-556e02c23e1d, magazine landing on stone.
+
+Processing retains each isolated event, trims leading silence, applies a 90 Hz highpass and 9 kHz lowpass, fades the first 2 ms and final 24 ms, and normalizes the peak to -4 dBFS. The shipped files are 48 kHz mono PCM WAV. Runtime stereo placement, slight playback-rate variation and the effects volume apply during playback. Each action is scheduled by animation or the physical first floor impact, rather than a fixed composite clip.
+
+Exact prompts, node statuses, source downloads, processing and Web Audio receipts: receipts/verification-dual-reload/audio/. Provider terms govern generated output; no separate CC0 or public-domain license is asserted.
+
+Farseek ledge traversal
+
+Three original isolated effects generated through Atlas with ElevenLabs SFX v2.
+Atlas project: 09b37fa7-57d7-4a6c-98ea-775a60c7c33c
+
+climb-grip.wav: 7359e6fd-251c-48d0-8ca6-f0a24946bfb2, gloved palm and grit on a stone ledge.
+climb-pull.wav: 9013bd16-cfed-4c88-9f3e-444f4d6409b9, weighted cloth and leather during the pull.
+climb-step.wav: b11c3e96-d305-4e4e-823c-312bc2bee09d, boot sole settling onto stone.
+
+Processing trims leading silence, applies highpass/lowpass filters (90 Hz/6 kHz for grip, 60 Hz/6 kHz for pull and 45 Hz/4.5 kHz for step), fades the first 2 ms and final 24 ms, and normalizes the peak to -4 dBFS. The shipped files are 48 kHz mono PCM WAV. Grip follows the real ledge catch; pull and step follow mantle physics at normalized progress 0.34 and 0.7. The effects and master volume apply to local clips and their procedural fallbacks.
+
+Exact prompts, node statuses, source downloads, spectral measurements, processing and Web Audio receipts: receipts/verification-control-world-polish/audio/. Provider terms govern generated output; no separate CC0 or public-domain license is asserted.
+
+Farseek woodland and frost encounters
+
+Four original isolated effects generated through Atlas with ElevenLabs SFX v2.
+Atlas project: 6d1a3786-441c-4530-97a7-383b95f2b615
+
+boar-alert.wav: 2e867d56-6c20-4a9f-99d2-ec6844da70dc, wild boar warning grunt.
+boar-charge.wav: 3ffa1512-9700-4cba-b33d-c1053ecb597c, hoof steps and forceful exhale.
+boar-hurt.wav: 5e2fc924-365b-41a4-a58d-6ceb8e9f95ab, brief low pain grunt.
+ice-fall.wav: 89e4a3e1-f39c-4bff-ba1c-ff5ddb5af2a2, ice fracture, fall and shatter.
+
+Local mono 48 kHz PCM WAV files retain the isolated events, with 45 Hz highpass, 9.5 kHz lowpass, bounded normalization, 2 ms attack fade and 18 ms tail fade. The game loads only the current biome's clips. The ice clip follows the physical floor impact; a procedural whistle follows the actual fall and stops at contact. Effects and master volume apply to both the clips and procedural fallbacks.
+
+Exact prompts, node statuses, downloads, waveform measurements and processing: receipts/verification-campaign-autonomy/loop-34-biome-encounters/audio/. Provider terms govern generated output; no separate CC0 or public-domain license is asserted.
+
+Farseek Mira's voice
+
+Seventeen original spoken lines generated through Atlas with ElevenLabs Text to Speech, model Eleven v3, one catalog voice for every line (Nikki, warm and measured; stability 0.5, similarity 0.75, normal speed). Mira is an original character; the voice imitates no real person or character.
+Atlas project: e103d3ee-c65c-4d89-a66f-80a7b7322a15
+
+voice/radio-1.mp3: 2df7735c-7a7c-4779-b15f-505fca258f48, "This is Mira. If you came through the door after us, listen."
+voice/radio-2.mp3: 5c96d0f0-3c74-4270-ac00-bacfc9cd1bc4, "The Wardens want an address stamped on their three plates, and they only stamp offenders."
+voice/radio-3.mp3: c979e60e-6b52-41d4-a566-387c4ad3efd0, "They kept my orb at the window. Take it back if you can."
+voice/radio-4.mp3: 52beea42-a68b-4ff5-ac02-331162788007, "We're going on through the far door, past their barrier. Follow the light."
+voice/camp-1.mp3: 44202ebf-9f0b-4f13-b0c0-8efd21ecedef, "Day fifteen. At first light the isles drift together, and we rope across while they touch."
+voice/camp-2.mp3: 4d732d3d-1c9f-430e-bb51-f01df6418175, "Every rope parts behind us. Whoever follows will need the builders' bridges."
+voice/camp-3.mp3: dfb333c8-d546-4fc8-9587-67791471a16b, "Camp on the last isle. Nyra would have checked every knot twice."
+voice/ice-1.mp3: ca97624e-776c-4f55-b0e0-50c56df318c9, "I've cut our sign into the ice, where the snow can't bury it."
+voice/ice-2.mp3: 47a4604f-86cb-464e-89bb-a82747161ed9, "Don't stop on the thin ice. The arrow points to the ring."
+voice/castle-1.mp3: bd3a779b-2d2b-4f8b-929c-c62189274467, "I've left the castle's address for whoever follows. It only answers in order."
+voice/castle-2.mp3: ca42ce83-a90e-431a-85d7-426cd01658fa, "Water first, then the spiral of roots, then the crescent above the trees."
+voice/castle-3.mp3: 1a101835-7abe-4bc8-a718-738e55de61f5, "It's the last puzzle I'll leave you. Beyond it, the sea."
+voice/reunion-1.mp3: 3a954af4-2446-42ed-977f-4406711a955f, "Nyra."
+voice/reunion-2.mp3: 49511509-ddad-4d2e-8ad6-24cf80c51bd1, "I knew you'd follow the light. I kept it burning at every door."
+voice/reunion-3a.mp3: 81f50aa4-f357-47e6-950e-e3a0f8c54ef6, "You brought our map. This time, we choose the next crossing together."
+voice/reunion-3b.mp3: fa0ce803-a582-4578-8285-7e39308c169f, "The way home is open. Stay beside me for the next one."
+voice/reunion-4.mp3: ee7fa0c0-4ca4-4508-acdc-05192361dd74, "Come on. There are more doors."
+
+Processing trims leading silence to 30 ms and keeps a 200 ms tail, applies a 75 Hz highpass, matches every line to -18 LUFS integrated with peaks under -1.5 dBFS, fades the first 4 ms and final 40 ms, and encodes 44.1 kHz mono MP3 at 64 kbps (631 kB in all). In the game the recordings pass through a field radio or tape colour in Web Audio and the reunion stays clear; the voice volume setting and the master volume apply, and a line whose clip fails keeps its subtitle with a soft procedural chirp.
+
+Exact prompts, node ids, costs, downloads, transcripts and processing: receipts/verification-mira-voice/atlas/. Provider terms govern generated output; no separate CC0 or public-domain license is asserted.
+
+Farseek Mira's voice in the vault
+
+Twenty further lines for the builders' vault, generated the same way in the same Atlas project, in a frame of their own ("Vault lines"): ElevenLabs Text to Speech, model Eleven v3, the same catalog voice and settings (Nikki; stability 0.5, similarity 0.75, normal speed). In the vault Mira speaks live and clear from her light.
+
+voice/vault-arrival.mp3: 16e9bde5-9eaf-4bc0-9553-2f00377ab606, "Their air holds in here, Nyra. You can walk. I'm only light for now, so follow me."
+voice/vault-bay-court.mp3: bf57af1d-5b92-42fb-8caa-35d777ce38bb, "Starlight through a slit, like the sun in the court. The mirrors still turn."
+voice/vault-bay-checkpoint.mp3: 40e47674-ffa2-41e7-b939-2cc3e11a9c8a, "A keeper of the builders, older than the clerks. Turn its stamp aside with your shield."
+voice/vault-bay-isles.mp3: 862ad149-d2da-402f-b248-a3b54225c39d, "The pylon's lens is held shut. Something up on that shelf is doing it."
+voice/vault-bay-frost.mp3: b632a3cb-3f6a-41b4-b32d-0e79f2cdbdd8, "Ice and a plate again. You can't push it from there, but the orb's tether can drag it."
+voice/vault-power-frost.mp3: eb218688-0005-4498-a31d-fe8d48353d6a, "That woke the seal. Up the ice now. You still have my axes."
+voice/vault-bay-forest.mp3: 19be7171-1a29-4a27-a9f7-7d281f971f84, "Spore water. Don't stand still on those stones."
+voice/vault-bank-forest.mp3: ff1fdaca-3d14-4147-9712-8ca2bc5b69a3, "That ivy will hold you. Up you go."
+voice/vault-bay-sea.mp3: 3bd3fe0b-cc89-4f0d-8864-335d54cdb5f0, "The seal is at the end of that passage, and the water pours out of it. One breath, Nyra."
+voice/vault-done-court.mp3: f74587e2-4502-4cfc-ab87-be847414a3b4, "One. The first door's lesson."
+voice/vault-done-checkpoint.mp3: 374194d3-3500-4fec-8179-b2818979cf65, "Two. It bowed to you. I think that was approval."
+voice/vault-done-isles.mp3: c0ef9c1a-b7ef-4048-9545-13d9e4167e5d, "Three. The seal drank the bridge's light. Swing back on the builders' cable."
+voice/vault-done-frost.mp3: 9a591ce3-50c0-49e8-9094-39107d6ef742, "Four. Nice climb."
+voice/vault-done-forest.mp3: a01c7d19-b49c-4ced-a3ca-57a55b6dbe87, "Five. One more."
+voice/vault-done-sea.mp3: 54b40c61-9ebc-4764-9bd7-ff8f5ad3a8e2, "Six. That's the whole address. Come back to the door."
+voice/vault-reveal-address.mp3: 97a0586e-d73a-4420-a2fd-6cb8e700768a, "Six worlds, one address. It knows us."
+voice/vault-reveal-fate.mp3: aa17e8f4-7bfc-4971-ba98-0f13198294aa, "They never died out, Nyra. When their worlds failed, they let their bodies go and became light."
+voice/vault-reveal-doors.mp3: 51e0def2-368d-4132-a171-c669a623d6bc, "Every door we opened was kept awake by one of them, for whoever came after."
+voice/vault-reveal-next.mp3: 5195c6f2-cf80-42fa-be3b-9c81990be564, "And one address they never reached. They left it open for us."
+voice/vault-crossing.mp3: a0f478de-4c9d-4978-8857-fb98803f7911, "Together, this time."
+
+Processing is the same as for Mira's other lines, with an 80 ms lead kept before the first loud window so a soft first word stays whole (731 kB in all).
+
+Exact prompt, node ids, cost, downloads, transcripts and processing: receipts/verification-builders-vault/atlas/. Provider terms govern generated output; no separate CC0 or public-domain license is asserted.
+
+Farseek Nyra voice
+
+nyra-voice.wav holds Nyra's non-verbal efforts and breaths, cut from two original takes generated through Atlas with ElevenLabs SFX v2.
+Atlas project: 4b015ea8-89d2-4bc8-a71f-9ceb7049162c (Farseek sound direction)
+
+Nyra efforts: node 1c944983-1cc7-472e-b912-24256931a7fb, output 2448df8a-f461-4740-83b2-317ca4485e9c, 20 s. Prompt: One adult woman's non-verbal efforts, same voice throughout, close dry recording, no words, no music, no reverb. Nine short separate sounds, one second of silence between each: a sharp jump grunt; a second jump grunt; a strained grunt climbing a ledge; a longer climbing strain; a winded oof from a hard landing; a sharp pained cry; a shorter pained grunt; a quick breathy roll exhale; a deep desperate gasp for air after surfacing.
+Nyra breathing: node 07d6b0d1-3390-40b6-82a1-1eefe8129e07, output 048b5e96-12bf-49ce-a343-650a68c35923, 12 s. Prompt: An athletic adult woman breathing hard through her mouth after running, steady rhythm of clearly separate inhales and exhales, close and dry, no voice, no words, no music, no background, no reverb.
+
+Processing keeps nine efforts (two jumps, two climbing strains, one landing, two pained sounds, one roll exhale and one surfacing gasp) and four exhales and four inhales, chosen by pitch contour, voicing and envelope. It applies a 70 Hz highpass and 12 kHz lowpass, trims each sound, fades 4 ms in and 30 ms out, peaks each effort at -2 dBFS and gives the breaths one shared gain, so inhales stay quieter. The sprite is 48 kHz mono PCM WAV, 7.8 s long; its offsets live in body-sound.js. Breathing follows exertion at a variable rate; efforts follow the hero's state changes. A procedural formant voice and noise breaths stand in when the file cannot load.
+
+Prompts, node statuses, costs, downloads, segment measurements and processing: receipts/verification-sound-direction/atlas/ in the source repository. Provider terms govern generated output; no separate CC0 or public-domain license is asserted.

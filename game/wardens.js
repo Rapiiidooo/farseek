@@ -1,14 +1,17 @@
 import * as THREE from "three";
 import { Spring } from "./hero-anim.js";
 import { glyphMaterial, makeGlyph } from "./glyphs.js";
+import { WardenPath, stampVisible } from "./warden-path.js";
+import { tuning } from "./combat-tuning.js";
 
 // The Wardens: squat stone clerks of the gate network with an enormous customs stamp, each
 // stamp carved with one glyph. They patrol until someone offends them (stealing confiscated
 // property, or a disc to the mask), then waddle after the offender, plant their feet, and
 // bring the stamp down on the exact spot the offender stood when they wound up: a ring on
 // the ground shows it, so a nimble explorer can leave something else under the stamp. After
-// a stamp lands on anything but the ground, the paperwork is done and they calm down. Three
-// hits with the disc send one on its break; nobody is ever defeated for good.
+// a stamp lands on anything but the ground, the paperwork is done and they calm down. The orb
+// never wounds: a pulse offends or staggers, a charged pulse stuns for a few seconds. Three
+// pistol hits send one on its break; nobody is ever defeated for good.
 
 export const LINES = {
   alert: [
@@ -27,6 +30,7 @@ export const LINES = {
     "That's assault on an official!",
   ],
   calm: ["Paperwork complete.", "Case closed.", "Filed.", "…Carry on."],
+  dazed: ["Seeing stars…", "Form 27… B…", "Who stamped me?", "Wobbly…"],
   tired: ["…I'll file it later.", "Not worth the form.", "Hmph."],
   break: ["Break time!", "I'm on my break!", "Union rules!"],
   back: ["Break's over.", "Right. Where was I?", "Back to work."],
@@ -47,8 +51,39 @@ const R = 0.45,
   PATROL = 1.1,
   REACH = 1.6,
   WINDUP = 0.85,
-  BREAK = 9;
+  BREAK = 9,
+  STUN = 5;
 export const STAMP_RADIUS = 0.9;
+
+const COMBAT = {
+  guard: {
+    speed: SPEED,
+    reach: REACH,
+    radius: STAMP_RADIUS,
+    windup: WINDUP,
+    followup: WINDUP,
+    recovery: 0.85,
+    stamps: 1,
+  },
+  runner: {
+    speed: 3.1,
+    reach: 1.6,
+    radius: 0.82,
+    windup: 0.8,
+    followup: 0.75,
+    recovery: 1.1,
+    stamps: 2,
+  },
+  keeper: {
+    speed: 1.8,
+    reach: 2.05,
+    radius: 1.45,
+    windup: 1.25,
+    followup: 1.25,
+    recovery: 1.4,
+    stamps: 1,
+  },
+};
 
 const pick = (list) => list[Math.floor(Math.random() * list.length)];
 const smooth = (a, b, x) => {
@@ -61,14 +96,32 @@ export class Warden {
     scene,
     world,
     model,
-    { x, z, yaw = 0, bubbles, sound, role = "guard", glyph, route },
+    {
+      x,
+      z,
+      yaw = 0,
+      bubbles,
+      sound,
+      role = "guard",
+      combatStyle = "guard",
+      glyph,
+      route,
+    },
   ) {
     this.scene = scene;
     this.world = world;
+    this.navigation = new WardenPath(world);
     this.model = model;
     this.bubbles = bubbles;
     this.sound = sound;
     this.role = role;
+    this.combatStyle = Object.hasOwn(COMBAT, combatStyle)
+      ? combatStyle
+      : "guard";
+    this.combat = COMBAT[this.combatStyle];
+    this.attacksRemaining = 0;
+    this.attackIndex = 0;
+    this.windupDuration = this.combat.windup;
     this.glyph = glyph;
     this.route = route || [[x, z]];
     this.leg = 0;
@@ -131,6 +184,10 @@ export class Warden {
     return 0.62;
   }
 
+  get stampRadius() {
+    return this.combat.radius;
+  }
+
   center() {
     return new THREE.Vector3(this.pos.x, this.feet + 0.62, this.pos.z);
   }
@@ -148,9 +205,15 @@ export class Warden {
   }
 
   get hostile() {
-    return ["alert", "chase", "windup", "slam", "recover", "stagger"].includes(
-      this.state,
-    );
+    return [
+      "alert",
+      "chase",
+      "windup",
+      "slam",
+      "recover",
+      "stagger",
+      "pulled",
+    ].includes(this.state);
   }
 
   say(text, kind = "warden", duration = 2.2) {
@@ -159,7 +222,11 @@ export class Warden {
 
   // Offended: it announces itself, then gives chase.
   provoke(line = pick(LINES.alert)) {
-    if (this.role !== "guard" || this.hostile || this.state === "break")
+    if (
+      this.role !== "guard" ||
+      this.hostile ||
+      ["break", "stun"].includes(this.state)
+    )
       return false;
     this.state = "alert";
     this.t = 0;
@@ -171,23 +238,106 @@ export class Warden {
 
   // The paperwork is done: back to the patrol route.
   calm(line = pick(LINES.calm)) {
-    if (!this.hostile) return;
+    if (!this.hostile && this.state !== "stun") return;
     this.state = "patrol";
     this.t = 0;
     this.target = null;
+    this.attacksRemaining = 0;
     this.onTelegraph?.(this, null);
+    this.navigation.reset();
     if (line) this.say(line, "warden", 1.8);
   }
 
-  onHit(disc) {
-    if (!this.alive()) return;
-    const dx = this.pos.x - disc.pos.x,
-      dz = this.pos.z - disc.pos.z;
-    const d = Math.hypot(dx, dz) || 1;
-    this.vel.x = (dx / d) * 4.5;
-    this.vel.z = (dz / d) * 4.5;
+  onHit(hit) {
+    if (!this.alive()) return false;
+    if (hit?.kind === "orb") return this.pulse(hit);
+    if (hit?.kind !== "pistol") return false;
+    this.attacksRemaining = 0;
+    this.knockBack(hit.pos, 3);
     this.sound?.play("warden-hit");
-    this.hp -= disc.charged ? 3 : 1;
+    this.hp -= 1;
+    this.wound();
+    return true;
+  }
+
+  knockBack(from, speed) {
+    const dx = this.pos.x - from.x,
+      dz = this.pos.z - from.z;
+    const d = Math.hypot(dx, dz) || 1;
+    this.vel.x = (dx / d) * speed;
+    this.vel.z = (dz / d) * speed;
+  }
+
+  // The relay offends and jolts; charged, it stuns. It never takes a Warden off duty.
+  pulse(orb) {
+    if (this.state === "stun") return false;
+    this.attacksRemaining = 0;
+    if (orb.charged) {
+      orb.spend?.();
+      this.knockBack(orb.prev, 2.2);
+      this.state = "stun";
+      this.stunTime = STUN * tuning().stun;
+      this.t = 0;
+      this.target = null;
+      this.onTelegraph?.(this, null);
+      this.say(pick(LINES.dazed), "warden", 2);
+      this.sound?.play("warden-hit");
+      this.onStunned?.(this);
+      return true;
+    }
+    if (!this.hostile) {
+      this.knockBack(orb.prev, 3.5);
+      this.sound?.play("warden-hit");
+      this.provoke(pick(LINES.hurt));
+      this.onProvoked?.(this);
+      return true;
+    }
+    if (this.staggerGuard > 0) return false;
+    this.knockBack(orb.prev, 4.5);
+    this.sound?.play("warden-hit");
+    this.staggerGuard = 1.6;
+    this.state = "stagger";
+    this.t = 0;
+    this.target = null;
+    this.onTelegraph?.(this, null);
+    if (Math.random() < 0.7) this.say(pick(LINES.hurt), "warden", 1.4);
+    return true;
+  }
+
+  pull({ phase, from }) {
+    if (phase === "release") {
+      if (this.state === "pulled") {
+        this.state = "stagger";
+        this.t = 0;
+      }
+      return true;
+    }
+    if (!this.alive() || ["stun", "clerk"].includes(this.state)) return false;
+    if (phase === "start") {
+      if (!this.hostile) {
+        this.say(pick(LINES.hurt), "shout", 1.4);
+        this.sound?.play("warden-alert");
+        this.onProvoked?.(this);
+      }
+      this.attacksRemaining = 0;
+      this.target = null;
+      this.onTelegraph?.(this, null);
+      this.misses = 0;
+      this.state = "pulled";
+      this.t = 0;
+      this.sound?.play("warden-hit");
+      return true;
+    }
+    const dx = from.x - this.pos.x,
+      dz = from.z - this.pos.z,
+      d = Math.hypot(dx, dz);
+    if (d < 1.7) return false;
+    this.vel.x = (dx / d) * 3.4;
+    this.vel.z = (dz / d) * 3.4;
+    return true;
+  }
+
+  wound() {
     if (this.hp <= 0) {
       this.state = "break";
       this.t = 0;
@@ -198,6 +348,7 @@ export class Warden {
       this.onBreak?.(this);
       return;
     }
+    if (this.state === "stun") return;
     if (!this.hostile) {
       this.provoke(pick(LINES.hurt));
       this.onProvoked?.(this);
@@ -210,9 +361,25 @@ export class Warden {
     if (Math.random() < 0.7) this.say(pick(LINES.hurt), "warden", 1.4);
   }
 
+  windUp(hero, followup = false) {
+    if (!followup) this.attacksRemaining = this.combat.stamps;
+    this.attacksRemaining--;
+    this.attackIndex = this.combat.stamps - this.attacksRemaining;
+    this.windupDuration =
+      (followup ? this.combat.followup : this.combat.windup) * tuning().windup;
+    this.state = "windup";
+    this.t = 0;
+    this.target = { x: hero.pos.x, z: hero.pos.z };
+    this.onTelegraph?.(this, this.target);
+    this.sound?.play("warden-windup");
+  }
+
   update(dt, hero, others, { onSlam, camera } = {}) {
+    if (dt <= 0) return;
+    const previous = { ...this.pos };
     this.t += dt;
     this.time += dt;
+    this.staggerGuard = Math.max(0, (this.staggerGuard || 0) - dt);
     const toX = hero.pos.x - this.pos.x,
       toZ = hero.pos.z - this.pos.z;
     const dist = Math.hypot(toX, toZ);
@@ -224,10 +391,21 @@ export class Warden {
       );
       this.yaw += THREE.MathUtils.clamp(d, -rate * dt, rate * dt);
     };
-    const steer = (x, z, speed) => {
-      const dx = x - this.pos.x,
-        dz = z - this.pos.z;
+    const steer = (x, z, speed, reach = 0) => {
+      const goalDistance = Math.hypot(x - this.pos.x, z - this.pos.z);
+      const next = this.navigation.next(
+        dt,
+        this.pos,
+        this.feet,
+        { x, z },
+        reach,
+      );
+      const dx = next.x - this.pos.x,
+        dz = next.z - this.pos.z;
       const d = Math.hypot(dx, dz);
+      if (d > 0.001 && ["patrol", "chase"].includes(this.state))
+        face(next.x, next.z, this.state === "patrol" ? 4 : 5);
+      speed = Math.min(speed, d / dt);
       let vx = d > 1e-3 ? (dx / d) * speed : 0,
         vz = d > 1e-3 ? (dz / d) * speed : 0;
       // Keep a little space between colleagues so they do not stack.
@@ -243,7 +421,7 @@ export class Warden {
       }
       this.vel.x += (vx - this.vel.x) * Math.min(1, dt * 6);
       this.vel.z += (vz - this.vel.z) * Math.min(1, dt * 6);
-      return d;
+      return goalDistance;
     };
     let moving = 0;
     switch (this.state) {
@@ -264,7 +442,6 @@ export class Warden {
           this.idle -= dt;
           face(hero.pos.x, hero.pos.z, dist < 6 ? 2 : 0.6);
         } else {
-          face(px, pz, 4);
           if (steer(px, pz, PATROL) < 0.4) {
             this.leg++;
             this.idle = 1.2 + Math.random() * 1.6;
@@ -283,23 +460,29 @@ export class Warden {
         if (this.t > 0.7) this.state = "chase";
         break;
       case "chase": {
-        face(hero.pos.x, hero.pos.z, 5);
         // Out of reach for long enough, it gives up.
         this.lost = dist > 15 ? (this.lost || 0) + dt : 0;
         if (this.lost > 3) {
           this.calm(pick(LINES.tired));
           break;
         }
-        if (dist < REACH && hero.state !== "hang" && hero.state !== "climb") {
+        if (
+          dist < this.combat.reach &&
+          hero.state !== "hang" &&
+          hero.state !== "climb" &&
+          stampVisible(this.world, this.pos, this.feet, hero)
+        ) {
           // It marks the spot the offender stands on, and that spot is where the stamp lands.
-          this.state = "windup";
-          this.t = 0;
-          this.target = { x: hero.pos.x, z: hero.pos.z };
-          this.onTelegraph?.(this, this.target);
-          this.sound?.play("warden-windup");
+          face(hero.pos.x, hero.pos.z, 5);
+          this.windUp(hero);
           break;
         }
-        steer(hero.pos.x, hero.pos.z, SPEED * (dist > 6 ? 1.15 : 1));
+        steer(
+          hero.pos.x,
+          hero.pos.z,
+          this.combat.speed * (dist > 6 ? 1.15 : 1) * tuning().speed,
+          this.combat.reach,
+        );
         moving = 1;
         break;
       }
@@ -313,7 +496,7 @@ export class Warden {
           this.vel.x *= Math.exp(-dt * 10);
           this.vel.z *= Math.exp(-dt * 10);
         }
-        if (this.t > WINDUP) {
+        if (this.t > this.windupDuration) {
           this.state = "slam";
           this.t = 0;
           this.struck = false;
@@ -326,8 +509,9 @@ export class Warden {
           const T = this.target;
           // The same radius as the ring painted on the ground.
           const hit =
-            Math.hypot(hero.pos.x - T.x, hero.pos.z - T.z) < STAMP_RADIUS &&
-            Math.abs(hero.feet - this.feet) < 1.2;
+            Math.hypot(hero.pos.x - T.x, hero.pos.z - T.z) < this.stampRadius &&
+            Math.abs(hero.feet - this.feet) < 1.2 &&
+            stampVisible(this.world, this.pos, this.feet, hero);
           const outcome =
             onSlam?.(this, T.x, T.z, hit) || (hit ? "hit" : "ground");
           this.onTelegraph?.(this, null);
@@ -338,12 +522,24 @@ export class Warden {
             this.say(pick(LINES.slam), "shout", 1.2);
         }
         if (this.t > 0.25) {
+          if (
+            this.attacksRemaining > 0 &&
+            !this.stampedSomething &&
+            dist < this.combat.reach + 1.5 &&
+            !["hang", "climb"].includes(hero.state) &&
+            stampVisible(this.world, this.pos, this.feet, hero)
+          ) {
+            this.windUp(hero, true);
+            break;
+          }
+          this.attacksRemaining = 0;
           this.state = "recover";
+          this.recoveryTime = this.combat.recovery * tuning().opening;
           this.t = 0;
         }
         break;
       case "recover":
-        if (this.t > 0.85) {
+        if (this.t > (this.recoveryTime ?? this.combat.recovery)) {
           if (this.stampedSomething) {
             this.stampedSomething = false;
             this.calm();
@@ -353,6 +549,21 @@ export class Warden {
         break;
       case "stagger":
         if (this.t > 0.5) this.state = "chase";
+        break;
+      case "pulled":
+        if (this.t > 1.6) {
+          this.state = "stagger";
+          this.t = 0;
+        }
+        break;
+      case "stun":
+        if (this.t > (this.stunTime ?? STUN)) {
+          this.state = "chase";
+          this.t = 0;
+          this.lost = 0;
+          this.say(pick(LINES.alert), "shout", 1.4);
+          this.sound?.play("warden-alert");
+        }
         break;
       case "break":
         if (this.t > BREAK) {
@@ -379,9 +590,16 @@ export class Warden {
       this.pos.z += this.vel.z * dt;
       this.world.resolve(this.pos, R, this.feet, 1.1, 0.3);
       const g = this.world.ground(this.pos.x, this.pos.z, 0.2, this.feet, 0.5);
-      if (Number.isFinite(g)) this.feet = g;
+      if (Number.isFinite(g) && g >= this.feet - 0.5) this.feet = g;
+      else {
+        Object.assign(this.pos, previous);
+        this.vel.x = this.vel.z = 0;
+      }
     }
-    this.animate(dt, Math.hypot(this.vel.x, this.vel.z));
+    this.animate(
+      dt,
+      Math.hypot(this.pos.x - previous.x, this.pos.z - previous.z) / dt,
+    );
     this.place();
     // The floating glyph faces the camera, bright while the Warden is on the hunt.
     if (this.tag) {
@@ -392,7 +610,11 @@ export class Warden {
         this.pos.z,
       );
       if (camera) this.tag.quaternion.copy(camera.quaternion);
-      const glow = this.hostile ? 3.2 : this.state === "break" ? 0.25 : 1.1;
+      const glow = this.hostile
+        ? 3.2
+        : ["break", "stun"].includes(this.state)
+          ? 0.25
+          : 1.1;
       this.tagMat.emissiveIntensity +=
         (glow - this.tagMat.emissiveIntensity) * Math.min(1, dt * 6);
       this.glyphMat.emissiveIntensity = this.state === "windup" ? 3.5 : 1.2;
@@ -445,7 +667,10 @@ export class Warden {
         -0.12 * s,
       );
       root.roll = 0.16 * s;
-      root.bob = Math.abs(Math.cos(this.phase)) * 0.07 * Math.min(1, speed);
+      // A swung flat sole tips its edge down; lift the body so it stays above the ground.
+      root.bob =
+        Math.abs(Math.cos(this.phase)) * 0.07 * Math.min(1, speed) +
+        Math.abs(s) * 0.035;
     } else if (st === "windup") {
       const k = smooth(0, 0.35, this.t);
       const quiver = Math.sin(t * 60) * 0.05 * k;
@@ -458,7 +683,9 @@ export class Warden {
       set("rightLeg", 0.2, 0, -0.18);
       root.bob = 0.04 * k;
     } else if (st === "slam" || st === "recover") {
-      const up = st === "recover" ? smooth(0.4, 0.85, this.t) : 0;
+      const recovery = this.recoveryTime ?? this.combat.recovery;
+      const up =
+        st === "recover" ? smooth(recovery - 0.45, recovery, this.t) : 0;
       set("rightArm", -0.35 - 1.2 * up, 0, -0.1);
       set("leftArm", -0.5, 0, 0.5);
       set("stamp", 0.6);
@@ -467,14 +694,28 @@ export class Warden {
       set("leftLeg", -0.35, 0, 0.2);
       set("rightLeg", 0.3, 0, -0.2);
       root.bob = -0.08 * (1 - up);
-    } else if (st === "stagger") {
-      const k = 1 - smooth(0.1, 0.5, this.t);
+    } else if (st === "stagger" || st === "pulled") {
+      const k = st === "pulled" ? 1 : 1 - smooth(0.1, 0.5, this.t);
       set("body", -0.55 * k);
       set("head", 0.3 * k, 0, 0.2 * k);
       set("leftArm", -1.2 * k, 0, 0.9 * k);
       set("rightArm", -1.6 * k, 0, -0.7 * k);
       set("leftLeg", -0.4 * k);
       root.pitch = -0.2 * k;
+    } else if (st === "stun") {
+      // Dazed on its feet: the mask lolls, the stamp hangs, the whole body sways.
+      const stun = this.stunTime ?? STUN;
+      const k = smooth(0, 0.3, this.t) * (1 - smooth(stun - 0.4, stun, this.t));
+      const sway = Math.sin(t * 3.1);
+      set("body", (-0.22 + 0.1 * sway) * k, 0, 0.16 * Math.sin(t * 2.3) * k);
+      set("head", 0.32 * k, 0.45 * Math.sin(t * 1.9) * k, 0.26 * sway * k);
+      set("leftArm", -0.15 * k, 0, 0.55 * k);
+      set("rightArm", 0.2 * k, 0, -0.5 * k);
+      set("stamp", 0.7 * k);
+      set("leftLeg", -0.3 * k, 0, 0.12 * k);
+      set("rightLeg", -0.2 * k, 0, -0.14 * k);
+      root.roll = 0.12 * Math.sin(t * 2.3) * k;
+      root.bob = -0.06 * k;
     } else if (st === "break") {
       // Sat down on the spot, arms folded, the stamp laid in the lap.
       const k = smooth(0, 0.5, this.t);
@@ -521,7 +762,15 @@ export class Warden {
     this.root.roll.step(root.roll, dt, 6, 0.6);
     this.root.bob.step(root.bob, dt, 8, 0.7);
     const glow =
-      st === "windup" ? 3.2 : st === "break" ? 0.2 : this.hostile ? 2 : 1.2;
+      st === "windup"
+        ? 3.2
+        : st === "break"
+          ? 0.2
+          : st === "stun"
+            ? 0.25 + 0.5 * Math.max(0, Math.sin(t * 9))
+            : this.hostile
+              ? 2
+              : 1.2;
     for (const m of this.eye)
       m.emissiveIntensity += (glow - m.emissiveIntensity) * Math.min(1, dt * 8);
     if (this.talking > 0) this.talking -= dt;
@@ -537,7 +786,17 @@ export class Warden {
     this.leg = 0;
     this.idle = 0;
     this.misses = 0;
+    this.t = 0;
+    this.lost = 0;
+    this.staggerGuard = 0;
+    this.struck = false;
+    this.stampedSomething = false;
+    this.attacksRemaining = 0;
+    this.attackIndex = 0;
+    this.windupDuration = this.combat.windup;
     this.target = null;
+    this.navigation.reset();
+    this.onTelegraph?.(this, null);
     this.state = this.role === "clerk" ? "clerk" : "patrol";
     this.model.visible = true;
     this.place();

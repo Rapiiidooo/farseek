@@ -14,6 +14,7 @@ const base =
   process.argv.find((a) => a.startsWith("--url="))?.slice(6) ||
   "http://localhost:3002/";
 const effects = process.argv.includes("--effects");
+const expansion = process.argv.includes("--expansion");
 const part = process.argv.find((a) => a.startsWith("--part="))?.slice(7) || "";
 await mkdir(out, { recursive: true });
 
@@ -25,18 +26,27 @@ const PLAN = effects
       [24, "three"],
       [36, "four"],
       [48, "forest"],
+      [60, "sea"],
     ]
-  : [
-      [0, "court"],
-      [70, "court-open"],
-      [100, "world2"],
-      [150, "fight"],
-      [165, "world2"],
-      [185, "isles"],
-      [260, "frost"],
-      [345, "finale"],
-    ];
-const SECONDS = effects ? 60 : 400;
+  : expansion
+    ? [
+        [0, "forest"],
+        [45, "sea"],
+        [90, "guardian"],
+        [120, "sea"],
+        [145, "finale"],
+      ]
+    : [
+        [0, "court"],
+        [70, "court-open"],
+        [100, "world2"],
+        [150, "fight"],
+        [165, "world2"],
+        [185, "isles"],
+        [260, "frost"],
+        [345, "finale"],
+      ];
+const SECONDS = effects ? 72 : expansion ? 180 : 400;
 
 const browser = await puppeteer.launch({
   executablePath:
@@ -46,7 +56,10 @@ const browser = await puppeteer.launch({
 const page = await browser.newPage();
 const errors = [];
 page.on("pageerror", (e) => errors.push(e.message));
-page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+page.on("console", (m) => {
+  if (m.type() === "error" && m.location().url !== `${base}favicon.ico`)
+    errors.push(m.text());
+});
 await page.goto(`${base}favicon.svg`);
 const result = await page.evaluate(
   async (PLAN, SECONDS, effects, part) => {

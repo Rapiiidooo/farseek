@@ -1,5 +1,8 @@
 import * as THREE from "three";
 import { surface } from "./surfaces.js";
+import { finishMaterial } from "./asset-finish.js";
+import { mineralSurface } from "./mineral-surface.js";
+import { weatherStone } from "./stone-weather.js";
 
 // The ruin's rock, floors and sand, built from the height map as merged box faces with
 // world-space UVs. Materials carry a small shader patch: strata and a dark foot on rock,
@@ -21,13 +24,20 @@ float fdNoise(vec2 p) {
 `;
 
 const TINTS = {
+  dressed: /* glsl */ `{
+    vec3 p = vFDWorld;
+    float grain = fdNoise(p.xz * 11.0 + p.y * 7.0);
+    float mineral = fdNoise(p.xy * 1.4 + p.z * 0.35);
+    vec3 tint = mix(vec3(0.91, 0.87, 0.82), vec3(1.04, 1.01, 0.96), mineral);
+    diffuseColor.rgb *= tint * mix(0.97, 1.02, grain);
+  }`,
   rock: /* glsl */ `{
     vec3 p = vFDWorld;
     float warp = fdNoise(p.xz * 0.13) * 1.8 + fdNoise(p.zx * 0.41) * 0.5;
     float band = sin(p.y * 1.7 + warp) * 0.5 + 0.5;
     float fine = sin(p.y * 6.1 + warp * 2.3) * 0.5 + 0.5;
     float n = fdNoise(p.xz * 0.8 + vec2(p.y * 0.6));
-    vec3 tint = mix(vec3(0.78, 0.66, 0.58), vec3(1.1, 1.02, 0.93), band * 0.6 + fine * 0.22 + n * 0.18);
+    vec3 tint = mix(vec3(0.9, 0.87, 0.83), vec3(1.04, 1.02, 0.98), band * 0.6 + fine * 0.22 + n * 0.18);
     tint *= mix(0.7, 1.0, smoothstep(-1.5, 2.4, p.y));
     diffuseColor.rgb *= tint;
   }`,
@@ -136,14 +146,27 @@ export function terrainMaterial(
         "#include <map_fragment>\n" + TINTS[kind],
       );
   };
-  m.customProgramCacheKey = () => "fd-terrain-" + kind;
-  return m;
+  m.customProgramCacheKey = () =>
+    "fd-terrain-" + kind + (kind === "rock" ? "-mineral-1" : "");
+  const material = finishMaterial(
+    THREE,
+    m,
+    kind === "sand" ? "paper" : "stone",
+  );
+  if (kind !== "rock") return material;
+  mineralSurface(THREE, material, {
+    source: new URL("./textures/rock-strata-albedo.webp", import.meta.url).href,
+    tile: 3.2 / m.userData.tileMeters,
+    strength: 1.15,
+  });
+  return weatherStone(material, { strength: 0.65 });
 }
 
 // Collects box faces per material and builds one mesh for each.
 export class FaceBuilder {
   constructor(bounds = null) {
     this.buckets = new Map();
+    this.mortar = new Map();
     this.bounds = bounds;
   }
 
@@ -153,9 +176,149 @@ export class FaceBuilder {
     return this.buckets.get(material);
   }
 
-  // A box, with a separate material for its top face. Bottom faces are never seen.
+  masonryBox(
+    minX,
+    minY,
+    minZ,
+    maxX,
+    maxY,
+    maxZ,
+    side,
+    top = side,
+    { bevel = 0.065, roundedTop = true } = {},
+  ) {
+    const rowHeight = 0.48;
+    const first = Math.max(
+      minY,
+      Math.floor(Math.min(0, maxY - rowHeight) / rowHeight) * rowHeight,
+    );
+    if (!this.mortar.has(side)) {
+      const mortar = side.clone();
+      mortar.color.multiplyScalar(0.66);
+      mortar.onBeforeCompile = side.onBeforeCompile;
+      mortar.customProgramCacheKey = side.customProgramCacheKey;
+      this.mortar.set(side, mortar);
+    }
+    const inset = roundedTop ? bevel : 0.03;
+    this.box(
+      minX + inset,
+      minY,
+      minZ + inset,
+      maxX - inset,
+      maxY - (roundedTop ? bevel : 0.02),
+      maxZ - inset,
+      this.mortar.get(side),
+      top,
+      true,
+    );
+    for (let y = first, row = 0; y < maxY - 0.001; y += rowHeight, row++) {
+      const y1 = Math.min(y + rowHeight, maxY),
+        last = y1 === maxY;
+      const horizontal = maxX - minX >= maxZ - minZ;
+      const length = horizontal ? maxX - minX : maxZ - minZ;
+      const start = horizontal ? minX : minZ;
+      let along = start;
+      while (along < start + length - 0.001) {
+        const blockLength = 0.85 + hash3(along + row * 0.3, y, minZ) * 0.42;
+        const candidate = Math.min(start + length, along + blockLength);
+        const end =
+          start + length - candidate < 0.18 ? start + length : candidate;
+        const x0 = horizontal ? along : minX,
+          x1 = horizontal ? end : maxX,
+          z0 = horizontal ? minZ : along,
+          z1 = horizontal ? maxZ : end;
+        const gap = 0.008,
+          cap = last && roundedTop;
+        const wear = bevel * (0.75 + hash3(along, y + 3, minZ) * 0.5);
+        this.chamferedBox(
+          x0 + (horizontal && along > start ? gap : 0),
+          y + (row ? gap : 0),
+          z0 + (!horizontal && along > start ? gap : 0),
+          x1 - (horizontal && end < start + length ? gap : 0),
+          y1 - (last ? 0 : gap),
+          z1 - (!horizontal && end < start + length ? gap : 0),
+          side,
+          last ? top : side,
+          wear,
+          cap,
+          last,
+        );
+        along = end;
+      }
+    }
+  }
+
+  chamferedBox(
+    x0,
+    y0,
+    z0,
+    x1,
+    y1,
+    z1,
+    side,
+    top,
+    bevel,
+    roundedTop,
+    exposedTop = true,
+  ) {
+    const cut = Math.min(
+      bevel,
+      (x1 - x0) * 0.2,
+      (z1 - z0) * 0.2,
+      (y1 - y0) * 0.3,
+    );
+    const ring = (inset, y) => {
+      const a = x0 + inset,
+        b = x1 - inset,
+        c = z0 + inset,
+        d = z1 - inset;
+      const r = Math.max(0.001, cut - inset * 0.5);
+      return [
+        [a + r, y, c],
+        [b - r, y, c],
+        [b, y, c + r],
+        [b, y, d - r],
+        [b - r, y, d],
+        [a + r, y, d],
+        [a, y, d - r],
+        [a, y, c + r],
+      ];
+    };
+    const low = ring(0, y0),
+      high = ring(0, y1 - (roundedTop ? cut : 0)),
+      cap = ring(roundedTop ? cut * 0.6 : 0, y1);
+    for (let i = 0; i < 8; i++) {
+      const j = (i + 1) % 8;
+      const face = [low[j], low[i], high[i], high[j]];
+      this.quad(side, faceNormal(face), face);
+      if (roundedTop) {
+        const rim = [high[j], high[i], cap[i], cap[j]];
+        this.quad(top, faceNormal(rim), rim);
+      }
+    }
+    if (!exposedTop) return;
+    const bucket = this.bucket(top),
+      tile = top.userData.tileMeters || 1.7;
+    for (let i = 1; i < 7; i++)
+      for (const point of [cap[0], cap[i + 1], cap[i]]) {
+        bucket.pos.push(...point);
+        bucket.nor.push(0, 1, 0);
+        bucket.uv.push(point[0] / tile, -point[2] / tile);
+      }
+  }
+
   box(minX, minY, minZ, maxX, maxY, maxZ, side, top = side, skipTop = false) {
     const faces = [
+      [
+        side,
+        [0, -1, 0],
+        [
+          [minX, minY, minZ],
+          [maxX, minY, minZ],
+          [maxX, minY, maxZ],
+          [minX, minY, maxZ],
+        ],
+      ],
       [
         side,
         [1, 0, 0],
@@ -271,6 +434,27 @@ export class FaceBuilder {
         grid.push([x - n[0] * d, y, z - n[2] * d]);
       }
     const at = (i, j) => grid[j * (nu + 1) + i];
+    const normalGrid = new Map();
+    for (let j = 0; j <= nv; j++)
+      for (let i = 0; i <= nu; i++) {
+        const a = at(Math.max(0, i - 1), j),
+          b = at(Math.min(nu, i + 1), j);
+        const c = at(i, Math.max(0, j - 1)),
+          d = at(i, Math.min(nv, j + 1));
+        const normal = new THREE.Vector3(b[0] - a[0], b[1] - a[1], b[2] - a[2])
+          .cross(new THREE.Vector3(d[0] - c[0], d[1] - c[1], d[2] - c[2]))
+          .normalize();
+        const edge = Math.min(
+          (i / nu) * width,
+          ((nu - i) / nu) * width,
+          (j / nv) * height,
+          ((nv - j) / nv) * height,
+        );
+        normal
+          .lerp(new THREE.Vector3(...n), 1 - smoothstep(0, 0.7, edge))
+          .normalize();
+        normalGrid.set(at(i, j), normal);
+      }
     for (let j = 0; j < nv; j++)
       for (let i = 0; i < nu; i++) {
         const q = [at(i, j), at(i + 1, j), at(i + 1, j + 1), at(i, j + 1)];
@@ -278,10 +462,9 @@ export class FaceBuilder {
           [q[0], q[1], q[2]],
           [q[0], q[2], q[3]],
         ]) {
-          const nrm = faceNormal(tri);
           for (const pt of tri) {
             b.pos.push(...pt);
-            b.nor.push(...nrm);
+            b.nor.push(...normalGrid.get(pt).toArray());
             b.uv.push(...uvOf(pt));
           }
         }

@@ -1,14 +1,36 @@
 import * as THREE from "three";
+import { poseBirdFlight } from "./bird-flight.js";
+import { DeerGait } from "./deer-gait.js";
 import { plantGrass, clumps } from "./grass.js";
-import { AtlantisView } from "./atlantis.js";
+import { surface } from "./surfaces.js";
+import { forestRoute, forestBorders } from "./forest-route.js";
+import { forestBankGeometry } from "./forest-bank.js";
+import {
+  BOG,
+  BOG_STONES,
+  bogDepression,
+  bogEdge,
+  buildBog,
+} from "./forest-bog.js";
+import { finishMaterial } from "./asset-finish.js";
+import { mineralSurface, mineralColor } from "./mineral-surface.js";
+import { forestFloor, forestFloorNoise } from "./forest-floor.js";
+import { forestLitter } from "./forest-litter.js";
+import { buildMountainRanges } from "./mountain-landscape.js";
+import { installCastleGrowth } from "./castle-growth.js";
+import { weatherStone } from "./stone-weather.js";
+import { projectStone } from "./stone-projection.js";
+import { prepareVisuals } from "./shader-preparation.js";
+import { buildForestLight } from "./forest-light.js";
+import {
+  wildlifeTarget,
+  fallenWildlife,
+  resetWildlife,
+} from "./forest-wildlife.js";
+import { runSteps } from "./work-steps.js";
 
-// The fifth world, only glimpsed: through the great ring at the end of the frozen reach, a wild
-// forest of huge old trees, ferns and mushrooms whose gills glow in the shade, under warm
-// shafts of light. It is drawn into the ring's portal and nowhere else, as the promise of what
-// comes next. Its own door stands at the origin, facing +z; the forest opens towards -z along
-// an avenue that keeps the view open, past a stag grazing in the clearing, to a giant tree
-// ringed with fairy lights and, on a hill in the haze, a castle. The closing shot flies on
-// through it, up the castle's hill, to a last door at the castle's gate that opens on the sea.
+// WorldFive shares this scene with the frozen gate's view, so crossing preserves the forest.
+// The original flight still uses the same giant tree, hill castle and door onto the sea.
 
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 
@@ -55,14 +77,41 @@ const FAR_TREES = [
   [-70, -262, 0.9, 1.5],
   [28, -270, 1.6, 1.55],
 ];
+// Mossy boulder clusters beside the avenue: [x, z, yaw, scale].
+const BOULDERS = [
+  [-5, -19, 0.8, 1.1],
+  [6.5, -23, 2.3, 0.9],
+  [-7.5, -40, 1.6, 1.3],
+  [9, -70, 0.4, 1.4],
+  [-10, -92, 2.8, 1.5],
+];
 // The giant tree to the right of the avenue, and the castle on its hill to the left.
 // The giant's hollow faces the door; both are set a little into the ground, so no root tip or
 // wall stands clear of it.
 const GIANT = { x: 26, z: -150, yaw: -0.17, scale: 1.1, sink: 1.2 };
+// Trees collide as drawn below their vines and where the giant's roots lift off the ground,
+// so its hollow stays open; higher up, their trunks stand as cylinders that keep the camera
+// out. In each tree's own units.
+const TREE_SOLID = {
+  kind: "prop",
+  stand: () => false,
+  step: 0.1,
+  ceiling: 4,
+  trunk: [1.15, 10],
+};
+// Measured up to 6.5: the fitted bands above it, as wide as the roots there, stay out of reach
+// of a jump from the highest ground round the tree.
+const GIANT_SOLID = {
+  ...TREE_SOLID,
+  ceiling: 6.5,
+  trunk: [4.6, 29],
+  fit: [6.5, 8, 10, 12, 14, 18, 22, 26, 29],
+  cell: 0.06,
+};
 const CASTLE = { x: -40, z: -285, yaw: 0.28, scale: 1.45, sink: 1.5 };
 // Hills of the far country: [x, z, height, radius, flat]. A flat hill has a plateau on top.
 const HILLS = [
-  [CASTLE.x, CASTLE.z, 44, 66, true],
+  [CASTLE.x, CASTLE.z, 10, 100, true],
   [60, -300, 30, 80],
   [-150, -320, 36, 90],
   [150, -250, 24, 70],
@@ -101,26 +150,33 @@ export class ForestView {
     this.clipPlane = new THREE.Plane(V(0, 0, -1), this.gateCenter.z - 0.05);
     this.time = 0;
     this.glow = [];
+    // Drawn meshes the explorer collides with as drawn, measured by the wildwood's world.
+    this.solidMeshes = [];
   }
 
   async build() {
     const s = this.scene;
-    s.background = new THREE.Color(0x6a8750);
+    s.background = new THREE.Color(0xadb5a6);
     // Light enough to see the far country: the giant tree clear, the castle in the haze.
-    s.fog = new THREE.FogExp2(0x6a8750, 0.0046);
+    s.fog = new THREE.FogExp2(0xadb5a6, 0.0032);
     this.sky = this.buildSky();
     s.add(this.sky);
-    const sun = new THREE.DirectionalLight(0xffe2a0, 2.4);
+    const sun = new THREE.DirectionalLight(0xfff6e8, 2.4);
     sun.position.set(-18, 40, -30);
     s.add(sun, sun.target);
-    s.add(new THREE.HemisphereLight(0xd8eab0, 0x2f3d1c, 1.15));
-    this.buildGround();
+    s.add(new THREE.HemisphereLight(0xccd8d3, 0x999c85, 1.6));
+    await runSteps(this.buildGroundSteps(), () => this.assets.yieldWork?.());
+    this.bog = buildBog(THREE, s);
+    await this.assets.yieldWork?.();
     this.buildRanges();
     const rand = seeded(11);
-    await this.instance("wild_tree", [...TREES, ...FAR_TREES], {
-      root: 2.2,
-      sink: 0.35,
-    });
+    this.addTrees(
+      await this.instance("wild_tree", [...TREES, ...FAR_TREES], {
+        root: 2.2,
+        sink: 0.35,
+      }),
+    );
+    await this.buildBorders();
     const ferns = [];
     for (let i = 0; i < FERNS; i++) {
       const a = rand() * Math.PI * 2,
@@ -138,7 +194,11 @@ export class ForestView {
       const x = flightX(z) + (i % 2 ? 1 : -1) * (3 + way() * 18);
       ferns.push([x, z, way() * 6.3, 0.9 + way() * 0.9]);
     }
-    await this.instance("fern_cluster", ferns, { root: 0.6 });
+    await this.instance(
+      "fern_cluster",
+      ferns.filter(([x, z]) => !this.flooded(x, z)),
+      { root: 0.6 },
+    );
     await this.buildMeadow();
     const shrooms = [];
     for (let i = 0; i < MUSHROOMS; i++) {
@@ -156,17 +216,13 @@ export class ForestView {
       intensity: 1.8,
       root: 0.4,
     });
-    await this.instance(
-      "boulder_cluster",
-      [
-        [-5, -19, 0.8, 1.1],
-        [6.5, -23, 2.3, 0.9],
-        [-7.5, -40, 1.6, 1.3],
-        [9, -70, 0.4, 1.4],
-        [-10, -92, 2.8, 1.5],
-      ],
-      { moss: 0x4f7a3a, root: 1.2 },
-    );
+    this.solidMeshes.push({
+      meshes: await this.instance("boulder_cluster", BOULDERS, {
+        moss: 0x4f7a3a,
+        root: 1.2,
+      }),
+      stand: () => true,
+    });
     await this.buildGiant();
     await this.buildCastle();
     await this.buildLastDoor();
@@ -177,46 +233,83 @@ export class ForestView {
     this.buildFairies(rand);
   }
 
-  // Many copies of one asset in a draw call per material: each mesh of one instance becomes an
-  // InstancedMesh placed at every spot. `glow` relights the asset's glowing part; `moss`
-  // greens its stone.
   async instance(name, spots, opts = {}) {
     const o = await this.assets.make(name, { keepHierarchy: !!opts.glow });
-    if (!o || !spots.length) return;
+    const made = [];
+    if (!o || !spots.length) return made;
     o.updateMatrixWorld(true);
     const glowing = new Set();
     o.userData.parts?.glow?.traverse((m) => m.isMesh && glowing.add(m));
     const place = new THREE.Matrix4(),
       q = new THREE.Quaternion(),
       up = V(0, 1, 0);
+    const batches = new Map();
+    for (const spot of spots) {
+      const key = name === "wild_tree" ? Math.floor(spot[1] / 64) : 0;
+      if (!batches.has(key)) batches.set(key, []);
+      batches.get(key).push(spot);
+    }
     o.traverse((m) => {
       if (!m.isMesh) return;
       let material = m.material;
       if (glowing.has(m)) {
-        material = material.clone();
+        material = copyMaterial(material);
         material.emissive = new THREE.Color(opts.glow);
         material.emissiveIntensity = opts.intensity;
         this.glow.push(material);
       } else if (opts.moss) {
-        material = material.clone();
-        material.color.lerp(new THREE.Color(opts.moss), 0.55);
+        material = copyMaterial(material);
+        material.color.lerp(mineralColor(material, opts.moss), 0.55);
       }
-      const inst = new THREE.InstancedMesh(m.geometry, material, spots.length);
-      spots.forEach(([x, z, yaw, k], i) => {
-        place.compose(
-          V(
-            x,
-            this.groundUnder(x, z, (opts.root ?? 0) * k) - (opts.sink ?? 0) * k,
-            z,
-          ),
-          q.setFromAxisAngle(up, yaw),
-          V(k, k, k),
+      for (const batch of batches.values()) {
+        const inst = new THREE.InstancedMesh(
+          m.geometry,
+          material,
+          batch.length,
         );
-        inst.setMatrixAt(i, place.clone().multiply(m.matrixWorld));
-      });
-      inst.computeBoundingSphere();
-      this.scene.add(inst);
+        inst.name = `forest-${name}-instances`;
+        inst.receiveShadow = true;
+        if (name === "wild_tree" || name === "boulder_cluster") {
+          inst.castShadow = true;
+          inst.customDepthMaterial = new THREE.MeshDepthMaterial({
+            depthPacking: THREE.RGBADepthPacking,
+            map: material.map,
+            alphaTest: material.alphaTest,
+            side: material.shadowSide ?? material.side,
+          });
+        }
+        batch.forEach(([x, z, yaw, k], i) => {
+          place.compose(
+            V(
+              x,
+              this.groundUnder(x, z, (opts.root ?? 0) * k) -
+                (opts.sink ?? 0) * k,
+              z,
+            ),
+            q.setFromAxisAngle(up, yaw),
+            V(k, k, k),
+          );
+          inst.setMatrixAt(i, place.clone().multiply(m.matrixWorld));
+        });
+        inst.computeBoundingSphere();
+        inst.userData.spots = batch;
+        this.scene.add(inst);
+        made.push(inst);
+      }
     });
+    return made;
+  }
+
+  // Each batch of tree instances collides as one group of meshes.
+  addTrees(meshes) {
+    const batches = new Map();
+    for (const mesh of meshes) {
+      if (!batches.has(mesh.userData.spots))
+        batches.set(mesh.userData.spots, []);
+      batches.get(mesh.userData.spots).push(mesh);
+    }
+    for (const group of batches.values())
+      this.solidMeshes.push({ meshes: group, ...TREE_SOLID });
   }
 
   // Grass over the whole floor in clumps, thickest by the door and widening with the avenue,
@@ -230,10 +323,11 @@ export class ForestView {
       centres.push([x, z, 1.2 + rand() * 1.6, 4 + Math.floor(rand() * 5)]);
     }
     const ground = (x, z) => {
-      if (z > -0.4 || (z > -72 && Math.abs(x - pathX(z)) < 1.7)) return null;
+      if (z > -0.4 || Math.abs(x - forestRoute(z).x) < 2.1) return null;
+      if (this.flooded(x, z)) return null;
       for (const [tx, tz, , k] of [...TREES, ...FAR_TREES])
         if ((x - tx) ** 2 + (z - tz) ** 2 < (2.4 * k) ** 2) return null;
-      return this.heightAt(x, z);
+      return this.surfaceAt(x, z);
     };
     // And either side of the closing shot's way, as far as the castle's hill.
     const way = seeded(31);
@@ -264,6 +358,12 @@ export class ForestView {
   // Gentle rolls in the forest floor, rising slowly into the far country and its hills. A flat
   // hill sets its plateau level over whatever rolls beneath it.
   heightAt(x, z) {
+    const h = this.naturalHeight(x, z);
+    return h - bogDepression(x, z, h);
+  }
+
+  // The floor before the spore bog's hollow sinks it.
+  naturalHeight(x, z) {
     let h = this.rolling(x, z);
     for (const [hx, hz, height, r, flat] of HILLS) {
       const d2 = ((x - hx) ** 2 + (z - hz) ** 2) / r ** 2;
@@ -274,6 +374,23 @@ export class ForestView {
       }
     }
     return h;
+  }
+
+  naturalUnder(x, z, r) {
+    let h = this.naturalHeight(x, z);
+    for (let i = 0; i < 8; i++) {
+      const a = (i / 8) * Math.PI * 2;
+      h = Math.min(
+        h,
+        this.naturalHeight(x + Math.cos(a) * r, z + Math.sin(a) * r),
+      );
+    }
+    return h;
+  }
+
+  // Under the spore bog's water, or on its wet rim, where nothing grows.
+  flooded(x, z) {
+    return bogEdge(x, z) < 2.2 && this.heightAt(x, z) < BOG.level + 0.15;
   }
 
   // The lowest ground as drawn under a footprint of radius r, for trunks and rocks: set there,
@@ -287,22 +404,39 @@ export class ForestView {
     return h;
   }
 
-  // The ground as drawn. The far country's coarse floor (cells of about 7 m) runs under the
-  // true heights over every rise, so there the lowest corner of the cell counts too.
   drawnAt(x, z) {
-    const h = this.heightAt(x, z);
-    if (Math.abs(x) < 88 && z > -128) return h;
-    const cw = 760 / 110,
-      cd = 620 / 90;
-    const gx = Math.floor((x + 380) / cw) * cw - 380,
-      gz = Math.floor((z + 560) / cd) * cd - 560;
-    return Math.min(
-      h,
-      this.heightAt(gx, gz),
-      this.heightAt(gx + cw, gz),
-      this.heightAt(gx, gz + cd),
-      this.heightAt(gx + cw, gz + cd),
-    );
+    return this.surfaceAt(x, z);
+  }
+
+  surfaceAt(x, z) {
+    let top = -Infinity;
+    for (const mesh of this.groundMeshes || []) {
+      const {
+        width,
+        height,
+        widthSegments: nx,
+        heightSegments: nz,
+      } = mesh.geometry.parameters;
+      const gx = (x + width / 2) / (width / nx);
+      const gz = (z - mesh.position.z + height / 2) / (height / nz);
+      if (gx < 0 || gx >= nx || gz < 0 || gz >= nz) continue;
+      const ix = Math.floor(gx),
+        iz = Math.floor(gz),
+        u = gx - ix,
+        v = gz - iz;
+      const p = mesh.geometry.attributes.position;
+      const a = p.getY(ix + iz * (nx + 1));
+      const b = p.getY(ix + 1 + iz * (nx + 1));
+      const c = p.getY(ix + (iz + 1) * (nx + 1));
+      const d = p.getY(ix + 1 + (iz + 1) * (nx + 1));
+      top = Math.max(
+        top,
+        u + v <= 1
+          ? a + (b - a) * u + (c - a) * v
+          : d + (c - d) * (1 - u) + (b - d) * (1 - v),
+      );
+    }
+    return Number.isFinite(top) ? top : this.heightAt(x, z);
   }
 
   rolling(x, z) {
@@ -328,7 +462,7 @@ export class ForestView {
           varying vec3 vDir;
           void main() {
             float h = normalize(vDir).y;
-            vec3 low = vec3(0.4, 0.52, 0.31), high = vec3(0.72, 0.8, 0.52);
+            vec3 low = vec3(0.5, 0.58, 0.47), high = vec3(0.63, 0.71, 0.77);
             vec3 col = mix(low, high, smoothstep(0.0, 0.6, h));
             col += vec3(1.0, 0.86, 0.5) * pow(max(0.0, dot(normalize(vDir), normalize(vec3(-0.4, 0.7, -0.6)))), 12.0) * 0.5;
             gl_FragColor = vec4(col, 1.0);
@@ -340,87 +474,177 @@ export class ForestView {
     return g;
   }
 
-  buildGround() {
+  *buildGroundSteps() {
+    const detail = forestFloor(THREE);
     const mat = new THREE.MeshStandardMaterial({
-      color: 0x4a6b33,
-      roughness: 0.95,
-      flatShading: true,
+      color: 0xffffff,
+      roughness: 0.98,
+      vertexColors: true,
+      map: detail.map,
+      normalMap: detail.normalMap,
+      roughnessMap: detail.roughnessMap,
+      normalScale: new THREE.Vector2(0.45, 0.45),
     });
-    // A fine floor where the forest is near, and a coarse one for the far country, sunk a
-    // little under the fine one wherever both lie.
-    const near = (x, z) => Math.abs(x) < 88 && z > -128;
+    forestLitter(THREE, mat);
+    const moss = new THREE.Color(0x4a6b33),
+      soil = new THREE.Color(0x827354),
+      mud = new THREE.Color(0x2b2b19),
+      shade = new THREE.Color();
+    this.groundMeshes = [];
     for (const [w, d, nx, nz, cz, fine] of [
-      [180, 160, 90, 80, -50, true],
+      [240, 304, 240, 304, -142, true],
       [760, 620, 110, 90, -250, false],
     ]) {
       const geo = new THREE.PlaneGeometry(w, d, nx, nz).rotateX(-Math.PI / 2);
-      const p = geo.attributes.position;
+      const p = geo.attributes.position,
+        uv = geo.attributes.uv,
+        colors = [];
       for (let i = 0; i < p.count; i++) {
+        if (i % 8192 === 8191) yield;
         const x = p.getX(i),
           z = p.getZ(i) + cz;
-        p.setY(i, this.heightAt(x, z) - (!fine && near(x, z) ? 0.6 : 0));
+        p.setY(
+          i,
+          this.heightAt(x, z) -
+            (!fine && Math.abs(x) < 127 && z > -302 && z < 18 ? 2 : 0),
+        );
+        const route = forestRoute(z);
+        const variation =
+          Math.sin(z * 0.73) * 0.18 + Math.sin(z * 2.1 + x) * 0.12;
+        const wear =
+          1 - smooth(1.2 + variation, 2.7 + variation, Math.abs(x - route.x));
+        const trail = z < -1 && z > -275 ? wear : 0;
+        shade.copy(moss).lerp(soil, trail * 0.9);
+        shade.multiplyScalar(0.95 + 0.05 * Math.sin(x * 1.7 + z * 0.8));
+        const offPath = Math.abs(x - route.x) > 2.1 ? 1 : 0;
+        shade.lerp(
+          soil,
+          Math.max(0, forestFloorNoise(x / 6, z / 6) - 0.28) * 0.56 * offPath,
+        );
+        shade.multiplyScalar(0.86 + forestFloorNoise(x / 2.1, z / 2.1) * 0.32);
+        if (bogEdge(x, z) < 2.6)
+          shade.lerp(
+            mud,
+            0.85 * (1 - smooth(BOG.level - 0.1, BOG.level + 0.75, p.getY(i))),
+          );
+        colors.push(shade.r, shade.g, shade.b);
+        uv.setXY(i, x / detail.tile, -z / detail.tile);
       }
+      geo.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
       geo.computeVertexNormals();
       const ground = new THREE.Mesh(geo, mat);
+      ground.name = fine ? "forest-playable-ground" : "forest-distant-ground";
       ground.position.z = cz;
+      ground.receiveShadow = true;
+      this.groundMeshes.push(ground);
       this.scene.add(ground);
     }
-    // A worn path of paler moss runs from the door down the avenue.
-    const path = new THREE.Mesh(
-      new THREE.PlaneGeometry(2.6, 70, 1, 140).rotateX(-Math.PI / 2),
-      new THREE.MeshStandardMaterial({ color: 0x7d8c55, roughness: 1 }),
+  }
+
+  async buildBorders() {
+    this.borders = forestBorders();
+    // The giant's trunk swallows the bank where they meet, and its hollow can be entered.
+    const outside = (x, z, reach) =>
+      Math.hypot(x - GIANT.x, z - GIANT.z) > reach;
+    this.borders.rocks = this.borders.rocks.filter((r) =>
+      outside(r.x, r.z, 5.2),
     );
-    const pp = path.geometry.attributes.position;
-    for (let i = 0; i < pp.count; i++) {
-      const z = pp.getZ(i) - 37;
-      pp.setX(i, pp.getX(i) + pathX(z));
-      pp.setY(i, this.heightAt(pp.getX(i), z) + 0.1);
-      pp.setZ(i, z);
+    this.borders.trees = this.borders.trees.filter(([x, z]) =>
+      outside(x, z, 6),
+    );
+    const geometry = forestBankGeometry(THREE).translate(0, -0.5, 0);
+    const material = new THREE.MeshStandardMaterial({
+      color: 0xffffff,
+      roughness: 1,
+    });
+    if (typeof document !== "undefined") {
+      const detail = surface(THREE, "stone");
+      material.map = detail.map;
+      material.roughnessMap = detail.roughnessMap;
+      material.normalMap = detail.normalMap;
+      material.normalScale.set(0.75, 0.75);
     }
-    path.geometry.computeVertexNormals();
-    this.scene.add(path);
+    const finished = mineralSurface(
+      THREE,
+      finishMaterial(THREE, material, "stone"),
+      {
+        source: new URL("./textures/rock-strata-albedo.webp", import.meta.url)
+          .href,
+        tile: 3.1 / 2.4,
+        strength: 0.9,
+      },
+    );
+    weatherStone(finished, { strength: 0.7, moss: 0.35 });
+    projectStone(finished, 3.1);
+    const rocks = new THREE.InstancedMesh(
+      geometry,
+      finished,
+      this.borders.rocks.length + BOG_STONES.length,
+    );
+    const matrix = new THREE.Matrix4(),
+      rotation = new THREE.Quaternion();
+    for (const [i, rock] of this.borders.rocks.entries()) {
+      rock.base = this.groundUnder(rock.x, rock.z, rock.radius) - 0.4;
+      // Where the bog's hollow digs under a bank rock, its foot follows the hollow down and
+      // its top stays where the forest floor set it, so the bank keeps its height.
+      if (bogEdge(rock.x, rock.z) < rock.radius + 2.2)
+        rock.height +=
+          Math.max(
+            0,
+            this.naturalUnder(rock.x, rock.z, rock.radius) - 0.4 - rock.base,
+          ) / 0.94;
+      matrix.compose(
+        V(rock.x, rock.base + rock.height / 2, rock.z),
+        rotation.setFromAxisAngle(V(0, 1, 0), rock.yaw),
+        V(rock.radius, rock.height, rock.radius),
+      );
+      rocks.setMatrixAt(i, matrix);
+      rocks.setColorAt(
+        i,
+        new THREE.Color(0x8d9275).multiplyScalar(0.85 + (i % 5) * 0.04),
+      );
+    }
+    // The bog's stepping stones share the bank shape, whose top facet stands at 0.88 of its
+    // height; their feet stay hidden in the water.
+    BOG_STONES.forEach(([x, z, radius, above, yaw], j) => {
+      const i = this.borders.rocks.length + j,
+        base = BOG.level - 0.45,
+        height = (above + 0.45) / 0.88;
+      matrix.compose(
+        V(x, base + height / 2, z),
+        rotation.setFromAxisAngle(V(0, 1, 0), yaw),
+        V(radius, height, radius),
+      );
+      rocks.setMatrixAt(i, matrix);
+      rocks.setColorAt(i, new THREE.Color(0x737c5c).multiplyScalar(0.9));
+    });
+    rocks.name = "forest-rocky-banks";
+    rocks.castShadow = rocks.receiveShadow = true;
+    rocks.customDepthMaterial = new THREE.MeshDepthMaterial();
+    rocks.computeBoundingSphere();
+    this.scene.add(rocks);
+    // The banks are walls; only the bog's stones are footing.
+    this.solidMeshes.push({
+      meshes: [rocks],
+      stand: (i) => i >= this.borders.rocks.length,
+    });
+    this.addTrees(
+      await this.instance("wild_tree", this.borders.trees, {
+        root: 2.2,
+        sink: 0.35,
+      }),
+    );
+    await this.instance(
+      "fern_cluster",
+      this.borders.ferns.filter(([x, z]) => !this.flooded(x, z)),
+      { root: 0.6 },
+    );
   }
 
   // Two ranges of mountains on the horizon, in the haze's own colours, so the far country ends
   // in peaks rather than in fog.
   buildRanges() {
-    for (const [r, top, color, seed] of [
-      [470, 95, 0x93ab86, 3],
-      [360, 60, 0x7d9870, 7],
-    ]) {
-      const rand = seeded(seed);
-      const pos = [];
-      const n = 64,
-        from = -1.25,
-        to = 1.25;
-      let prev = null;
-      for (let i = 0; i <= n; i++) {
-        const a = from + ((to - from) * i) / n;
-        const h =
-          top * (0.45 + 0.55 * Math.abs(Math.sin(a * 5.3 + seed))) +
-          rand() * top * 0.25;
-        const x = Math.sin(a) * r,
-          z = -Math.cos(a) * r;
-        const cur = [x, h, z];
-        if (prev) {
-          pos.push(prev[0], -20, prev[2], x, -20, z, x, h, z);
-          pos.push(prev[0], -20, prev[2], x, h, z, prev[0], prev[1], prev[2]);
-        }
-        prev = cur;
-      }
-      const g = new THREE.BufferGeometry();
-      g.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
-      const m = new THREE.Mesh(
-        g,
-        new THREE.MeshBasicMaterial({
-          color,
-          fog: false,
-          side: THREE.DoubleSide,
-        }),
-      );
-      m.renderOrder = -5;
-      this.scene.add(m);
-    }
+    this.ranges = buildMountainRanges(this.scene, "five");
   }
 
   // The giant: taller than anything in the forest, its pods glowing, fairies about its crown.
@@ -435,9 +659,13 @@ export class ForestView {
       GIANT.sink,
       6,
     );
-    o?.userData.parts?.glow?.traverse((m) => {
+    if (!o) return;
+    const meshes = [];
+    o.traverse((m) => m.isMesh && meshes.push(m));
+    this.solidMeshes.push({ object: o, meshes, ...GIANT_SOLID });
+    o.userData.parts?.glow?.traverse((m) => {
       if (!m.isMesh) return;
-      m.material = m.material.clone();
+      m.material = copyMaterial(m.material);
       m.material.emissive = new THREE.Color(0xc3f25a);
       m.material.emissiveIntensity = 2.2;
       this.glow.push(m.material);
@@ -454,15 +682,17 @@ export class ForestView {
       { keepHierarchy: true },
       CASTLE.sink,
     );
+    this.castle = o;
+    this.castleGrowth = await installCastleGrowth(this.assets, o);
     this.windows = [];
     this.castleMats = [];
     const lit = new Set();
     o?.userData.parts?.windows?.traverse((m) => {
       if (!m.isMesh) return;
       lit.add(m);
-      m.material = m.material.clone();
+      m.material = copyMaterial(m.material);
       m.material.emissive = new THREE.Color(0xffb24a);
-      m.material.emissiveIntensity = 2.4;
+      m.material.emissiveIntensity = 1.4;
       m.material.fog = false;
       this.windows.push(m.material);
     });
@@ -470,7 +700,7 @@ export class ForestView {
     // a pale castle on its hill, its windows lit.
     o?.traverse((m) => {
       if (!m.isMesh || lit.has(m)) return;
-      m.material = m.material.clone();
+      m.material = copyMaterial(m.material);
       m.material.fog = false;
       this.castleMats.push({
         material: m.material,
@@ -484,11 +714,16 @@ export class ForestView {
   // past what keeps it in sight, so it clears as the closing shot flies up to it.
   hazeCastle(eye) {
     const d = Math.hypot(eye.x - CASTLE.x, eye.z - CASTLE.z);
-    const haze = Math.min(0.62, 1 - Math.exp(-((0.0046 * d) ** 2)));
+    const haze = Math.min(
+      0.62,
+      1 - Math.exp(-((this.scene.fog.density * d) ** 2)),
+    );
     if (Math.abs(haze - (this.haze ?? -1)) < 0.004) return;
     this.haze = haze;
     for (const { material, base } of this.castleMats)
-      material.color.copy(base).lerp(this.scene.fog.color, haze);
+      material.color
+        .copy(base)
+        .lerp(mineralColor(material, this.scene.fog.color), haze);
   }
 
   // The last door and the sea beyond it. Its view needs a screen-sized target only once the
@@ -496,8 +731,6 @@ export class ForestView {
   async buildLastDoor() {
     const { Gate, renderer, sound } = this.services;
     if (!Gate || !renderer) return;
-    this.atlantis = new AtlantisView(this.assets);
-    await this.atlantis.build();
     const gate = new Gate({
       scene: this.scene,
       world: null,
@@ -513,8 +746,8 @@ export class ForestView {
       glyphs: LAST.glyphs,
       model,
       colliders: false,
+      base: "forest",
     });
-    gate.destination = this.atlantis;
     gate.lightScale = 0.6;
     gate.target.setSize(1, 1);
     this.lastGate = gate;
@@ -565,13 +798,26 @@ export class ForestView {
     this.awake = false;
   }
 
-  // Everything the last door can show, shown once for the shader compiler.
   prepareForCompile(on) {
     const G = this.lastGate;
     if (!G) return;
-    G.disc.visible = on || G.phase !== "closed";
-    G.uniforms.uClear.value = on ? 1 : G.isOpen ? 1.02 : 0;
-    G.ground.visible = G.ring.visible = on;
+    const changes = [
+      [G.disc, "visible", true],
+      [G.uniforms.uClear, "value", 1],
+      [G.ground, "visible", true],
+      [G.ring, "visible", true],
+      [this, "haze", undefined],
+      ...(this.castleMats || []).map(({ material }) => [
+        material,
+        "color",
+        material.color.clone(),
+      ]),
+    ];
+    this.scene.traverse((mesh) => {
+      if (mesh.isMesh && mesh.material?.userData.canopyLeaf)
+        changes.push([mesh, "frustumCulled", false]);
+    });
+    prepareVisuals(this, on, changes);
   }
 
   // A stag in the clearing: it walks from one grazing spot to the next along the avenue,
@@ -584,10 +830,10 @@ export class ForestView {
       o,
       parts: o.userData.parts || {},
       spots: [
-        [-12, -24],
+        [-7, -24],
         [-2.5, -26],
         [4, -30],
-        [11, -35],
+        [7, -35],
         [2.5, -40],
         [-6, -35],
       ],
@@ -601,14 +847,22 @@ export class ForestView {
       yaw: 0,
       stride: 0,
     };
+    wildlifeTarget(this.deer, "deer", 1.05, 0.68, 2);
+    this.deer.locomotion = new DeerGait(this.deer, (x, z) =>
+      this.surfaceAt(x, z),
+    );
     this.placeDeer(0);
   }
 
   placeDeer(dt) {
     const d = this.deer;
     if (!d) return;
+    if (d.hp <= 0 && d.locomotion.active) d.locomotion.reset();
+    if (fallenWildlife(d, dt, (x, z) => this.surfaceAt(x, z))) return;
     d.t += dt;
-    const P = d.parts;
+    const P = d.parts,
+      previousX = d.pos.x,
+      previousZ = d.pos.z;
     let walking = false;
     if (d.phase === "graze") {
       // Head down to the grass, then up to look around before the next spot.
@@ -641,19 +895,15 @@ export class ForestView {
       }
       if (P.head) P.head.rotation.x *= 1 - Math.min(1, dt * 3);
     }
-    // A walk: diagonal legs together, the body dipping as they swing.
     d.stride += walking ? dt * 5.2 : 0;
-    const swing = walking ? Math.sin(d.stride) * 0.38 : 0;
-    const settle = (g, a) => {
-      if (g) g.rotation.x += (a - g.rotation.x) * Math.min(1, dt * 8);
-    };
-    settle(P.frontLeft, swing);
-    settle(P.backRight, swing);
-    settle(P.frontRight, -swing);
-    settle(P.backLeft, -swing);
-    const dip = (1 - Math.cos(swing)) * 1.0;
-    d.o.position.set(d.pos.x, this.heightAt(d.pos.x, d.pos.z) - dip, d.pos.z);
+    d.o.position.set(d.pos.x, this.surfaceAt(d.pos.x, d.pos.z), d.pos.z);
     d.o.rotation.y = d.yaw;
+    d.o.rotation.z = Math.sin((d.struck / 0.32) * Math.PI) * 0.14;
+    d.locomotion.update(
+      dt,
+      Math.hypot(d.pos.x - previousX, d.pos.z - previousZ),
+      walking,
+    );
   }
 
   // Birds: a flight about the giant's crown, and a pair that crosses the avenue.
@@ -680,57 +930,59 @@ export class ForestView {
           dr: i * 3,
           seed: i * 1.9 + f.r,
         });
+        wildlifeTarget(this.birds.at(-1), "bird", 0.13, 0.5, 1);
       }
+    this.placeBirds(0);
   }
 
   placeBirds(dt) {
     for (const b of this.birds || []) {
+      if (fallenWildlife(b, dt, (x, z) => this.surfaceAt(x, z))) continue;
       const { f } = b;
       b.a += dt * f.speed;
-      const r = f.r + b.dr;
-      const x = f.cx + Math.cos(b.a) * r,
-        z = f.cz + Math.sin(b.a) * r * 0.7;
-      const y = f.cy + b.dy + Math.sin(b.a * 3 + b.seed) * 2;
-      b.o.position.set(x, y, z);
-      // Facing along the circle, banked into the turn.
-      b.o.rotation.set(0, Math.atan2(-Math.sin(b.a), Math.cos(b.a) * 0.7), 0.2);
-      // Flapping in bursts, gliding between.
-      const cycle = (this.time + b.seed) % 3.2;
-      const flap = cycle < 1.3 ? Math.sin(cycle * 14) * 0.7 : 0.08;
-      if (b.parts.leftWing) b.parts.leftWing.rotation.z = flap;
-      if (b.parts.rightWing) b.parts.rightWing.rotation.z = -flap;
+      poseBirdFlight(b, this.time);
     }
   }
 
-  // Warm shafts of light slanting down through gaps in the canopy.
-  buildShafts() {
-    const mat = (this.shaftMat = new THREE.MeshBasicMaterial({
-      color: new THREE.Color(1.0, 0.86, 0.5),
-      transparent: true,
-      opacity: 0.05,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-      side: THREE.DoubleSide,
-      fog: false,
-    }));
-    this.shafts = [];
-    // Deep in the trees and slender, so they light the forest without veiling the view in.
-    for (const [x, z, w] of [
-      [-8, -30, 1.4],
-      [9, -38, 1.8],
-      [-14, -46, 1.6],
-      [15, -55, 2],
-      [-20, -70, 2.2],
-    ]) {
-      const shaft = new THREE.Mesh(
-        new THREE.CylinderGeometry(w * 0.45, w, 26, 12, 1, true),
-        mat,
-      );
-      shaft.position.set(x - 3, 12, z);
-      this.shafts.push(shaft.position);
-      shaft.rotation.set(0.22, 0, -0.18);
-      this.scene.add(shaft);
+  wildlifeTargets() {
+    return [this.deer, ...(this.birds || [])]
+      .filter(Boolean)
+      .map((animal) => animal.target);
+  }
+
+  resetWildlife() {
+    this.deer?.locomotion.reset();
+    for (const animal of [this.deer, ...(this.birds || [])].filter(Boolean))
+      resetWildlife(animal);
+    if (this.deer) {
+      Object.assign(this.deer, {
+        at: 1,
+        next: 2,
+        phase: "graze",
+        t: 0,
+        wait: 3,
+        yaw: 0,
+        stride: 0,
+      });
+      this.deer.pos.set(-2.5, 0, -26);
+      this.placeDeer(0);
     }
+    this.placeBirds(0);
+  }
+
+  wildlifeTelemetry() {
+    return [this.deer, ...(this.birds || [])].filter(Boolean).map((animal) => ({
+      species: animal.species,
+      hp: animal.hp,
+      alive: animal.hp > 0,
+      resting: !!animal.resting,
+      at: animal.target.center().toArray(),
+    }));
+  }
+
+  // Warm shafts of light slanting down through gaps in the canopy, with motes in them.
+  buildShafts() {
+    this.light = buildForestLight(this, this.services);
   }
 
   // Motes of spore drifting in the light.
@@ -759,7 +1011,7 @@ export class ForestView {
             p.x += sin(uTime * 0.4 + k) * 0.6;
             p.y += sin(uTime * 0.3 + k * 1.3) * 0.5;
             vec4 mv = modelViewMatrix * vec4(p, 1.0);
-            gl_PointSize = 70.0 / -mv.z;
+            gl_PointSize = 42.0 / -mv.z;
             gl_Position = projectionMatrix * mv;
           }`,
         fragmentShader: /* glsl */ `
@@ -817,7 +1069,7 @@ export class ForestView {
             p += vec3(sin(t * 1.3), sin(t * 2.1) * 0.6, cos(t * 1.1)) * (0.8 + dart * 2.5);
             vBlink = 0.55 + 0.45 * sin(uTime * (3.0 + seed * 4.0) + seed * 12.0);
             vec4 mv = modelViewMatrix * vec4(p, 1.0);
-            gl_PointSize = (150.0 + seed * 90.0) / -mv.z;
+            gl_PointSize = (105.0 + seed * 60.0) / -mv.z;
             gl_Position = projectionMatrix * mv;
           }`,
         fragmentShader: /* glsl */ `
@@ -839,12 +1091,13 @@ export class ForestView {
     this.time += dt;
     if (this.sporeU) this.sporeU.uTime.value = this.time;
     if (this.fairyU) this.fairyU.uTime.value = this.time;
+    this.bog?.update(this.time, this.bogSurge ?? 0);
     for (const m of this.glow)
       m.emissiveIntensity = 1.6 + Math.sin(this.time * 1.4) * 0.3;
     (this.windows || []).forEach(
       (m, i) =>
         (m.emissiveIntensity =
-          2.3 +
+          1.4 +
           Math.sin(this.time * 5.1 + i) * 0.12 +
           Math.sin(this.time * 1.3) * 0.1),
     );
@@ -858,14 +1111,6 @@ export class ForestView {
   // The last door's view of the sea is drawn first, into its own target.
   renderInto(renderer, camera) {
     this.hazeCastle(camera.position);
-    // A shaft seen from inside or right by it is a pale pane: it fades as the camera nears.
-    let near = Infinity;
-    for (const p of this.shafts || [])
-      near = Math.min(
-        near,
-        Math.hypot(camera.position.x - p.x, camera.position.z - p.z),
-      );
-    if (this.shaftMat) this.shaftMat.opacity = 0.05 * smooth(4, 12, near);
     this.lastGate?.renderPortal(camera);
     this.sky.position.copy(camera.position);
     renderer.render(this.scene, camera);
@@ -890,15 +1135,17 @@ function smooth(a, b, x) {
   return t * t * (3 - 2 * t);
 }
 
-// Where the path's middle runs at depth z: it wanders, then bears right towards the giant.
-function pathX(z) {
-  return Math.sin(z * 0.09) * 2.2 + Math.max(0, -z - 30) * 0.08;
-}
-
 function seeded(seed) {
   let s = seed >>> 0;
   return () => {
     s = (s * 1664525 + 1013904223) >>> 0;
     return s / 4294967296;
   };
+}
+
+function copyMaterial(material) {
+  const copy = material.clone();
+  copy.onBeforeCompile = material.onBeforeCompile;
+  copy.customProgramCacheKey = material.customProgramCacheKey;
+  return copy;
 }

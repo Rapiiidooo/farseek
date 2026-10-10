@@ -1,3 +1,5 @@
+import { refineNature } from "../nature-detail.js";
+
 // desert_agave, candidate C (hand-built lofts): eighteen leaves on a golden-angle
 // spiral, each lofted through a channelled, keeled section along a centreline that
 // arcs outward and curls down, tapering to a point; the last fifth of every leaf is a
@@ -109,7 +111,7 @@ export default function (THREE) {
       const T = out.clone().multiplyScalar(Math.cos(a)).add(V(0, Math.sin(a), 0));
       const up = new THREE.Vector3().crossVectors(side, T).normalize().applyAxisAngle(T, twist * t);
       const s2 = side.clone().applyAxisAngle(T, twist * t);
-      const w = w0 * along(t), th = t0 * along(t);
+      const w = w0 * along(t) * (i % 2 ? 0.94 : 1.04), th = t0 * along(t);
       rings.push({ t, ring: SECTION.map(([sx, sy]) => p.clone().addScaledVector(s2, sx * w).addScaledVector(up, sy * th)) });
       if (i === Math.round(TIPAT * STEPS)) rings[rings.length - 1].split = true;
       p = p.clone().addScaledVector(T, L / STEPS);
@@ -180,5 +182,5 @@ export default function (THREE) {
   });
   const c = box.getCenter(new THREE.Vector3());
   g.children.forEach((o) => { o.position.x -= c.x; o.position.y -= box.min.y; o.position.z -= c.z; });
-  return g;
+  return refineNature(THREE, g, "desert_agave");
 }

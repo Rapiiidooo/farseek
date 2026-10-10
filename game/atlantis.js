@@ -1,15 +1,11 @@
 import * as THREE from "three";
+import { mineralAsset } from "./asset-finish.js";
+import { mineralColor, mineralSurfaceReady } from "./mineral-surface.js";
+import { sandSurface } from "./sand-surface.js";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
+import { ARRIVAL_CURRENT } from "./arrival-current.js";
 
-// The sixth world, only glimpsed: through the last door, at the castle's gate, a city under the
-// sea. Its door opens in open water at the origin, facing +z, thirty metres over a plain of pale
-// sand; ahead and below lie the ruins of a city in three broken rings round a temple whose dome
-// has caved in, where crystals still glow, the builders' guardians lean drowned at the mouth of
-// its avenue, shoals turn in the blue, mantas glide over it, kelp sways and light falls in
-// shafts from the surface. It is drawn into the door's portal and nowhere else. The ruins, the
-// creatures and the plants are recipe assets (receipts/candidates/ruins/, sea-creatures/ and
-// sea/, and pieces of the sunken court washed by the sea); the sand, the water and the light
-// are drawn here.
+// The portal and playable archive share this scene so fish and caustics keep their phase.
 
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 export const CITY = V(0, 0, -125);
@@ -22,7 +18,7 @@ const GAPS = [
 // Shoals: [centre, orbit radius, ellipse, turns a second, count, length, colours]. The first
 // turns just beyond the door, so the view has depth from its first frame.
 const SHOALS = [
-  [V(0, 26, -21), 8, 0.5, 0.34, 90, 0.75, [0xffc857, 0xffe28a, 0xff9f43]],
+  [V(0, 36, -21), 8, 0.5, 0.34, 90, 0.75, [0xffc857, 0xffe28a, 0xff9f43]],
   [V(0, 40, -125), 22, 1, -0.2, 70, 0.8, [0x9fc8e8, 0xd6e8f5, 0x6fa8dc]],
   [V(0, 15, -95), 55, 0.45, 0.07, 60, 1.3, [0x3a6fd8, 0xff7a5c, 0x5fe0e0]],
 ];
@@ -32,6 +28,19 @@ const MANTAS = [
   [V(25, 30, -150), 30, 0.8, -0.1, 5],
 ];
 const CORALS = [0xff6f91, 0xff9a3c, 0x9b6bff, 0xffd45c, 0x4fd1c5, 0xe84a5f];
+// Kelp rooted under the arrival current, its stalks bent with the flow: [x, z, height].
+const CURRENT_KELP = [
+  [-19, -9.2, 17],
+  [-14.5, -13.8, 19],
+  [-10, -9.8, 16],
+  [-6.5, -14.6, 20],
+  [-2.5, -10.8, 18],
+  [2.4, -13.6, 17],
+  [4.4, -8.4, 15],
+  [14.6, -9.6, 18],
+  [16.8, -13.9, 20],
+  [21, -11, 16],
+];
 const KELP = 110,
   CORAL = 140,
   SNOW = 260,
@@ -60,7 +69,12 @@ export class AtlantisView {
     this.glideEnd = V(0, 21, -52);
     this.temple = V(CITY.x, 24, CITY.z);
     this.time = 0;
-    this.u = { uTime: { value: 0 } };
+    this.u = {
+      uTime: { value: 0 },
+      uAir: { value: 0 },
+      uAirCenter: { value: V(0, 29, -50) },
+      uAirRadii: { value: V(0.02, 0.02, 0.02) },
+    };
     this.crystals = [];
   }
 
@@ -83,6 +97,7 @@ export class AtlantisView {
     await this.buildShoals(rand);
     this.buildShafts();
     this.buildMotes(rand);
+    await mineralSurfaceReady(this.scene);
   }
 
   // Sand in slow dunes, levelled under the city.
@@ -127,6 +142,7 @@ export class AtlantisView {
       .rotateX(-Math.PI / 2)
       .translate(0, 0, -200);
     const p = geo.attributes.position;
+    const uv = geo.attributes.uv;
     const colors = new Float32Array(p.count * 3);
     const sand = new THREE.Color(0xcdb98a),
       dark = new THREE.Color(0x8f8a70),
@@ -135,6 +151,7 @@ export class AtlantisView {
       const x = p.getX(i),
         z = p.getZ(i);
       p.setY(i, this.floorAt(x, z));
+      uv.setXY(i, x, -z);
       const patch = 0.5 + 0.5 * Math.sin(x * 0.11) * Math.cos(z * 0.13 + 1.7);
       c.copy(sand)
         .lerp(dark, patch * 0.35)
@@ -145,16 +162,21 @@ export class AtlantisView {
     const mat = new THREE.MeshStandardMaterial({
       vertexColors: true,
       roughness: 0.95,
-      flatShading: true,
+      flatShading: false,
     });
-    this.scene.add(new THREE.Mesh(geo, caustic(mat, this.u)));
+    this.floor = new THREE.Mesh(geo, caustic(sandSurface(THREE, mat), this.u));
+    this.floor.name = "archive-sand";
+    this.scene.add(this.floor);
   }
 
   // Copies of a recipe asset at many placements, [x, y, z, width, height, depth, yaw, tilt,
   // roll] from `origin`, one draw call per material: each merged mesh of the asset becomes an
   // InstancedMesh, and `look` gives its material its part in the sea.
   async instances(name, list, look, origin = CITY) {
-    const o = await this.assets?.make(name, { surfaces: false });
+    const o = await this.assets?.make(name, {
+      surfaces: false,
+      mineral: mineralAsset(name),
+    });
     if (!o || !list.length) return [];
     o.updateMatrixWorld(true);
     const m = new THREE.Matrix4(),
@@ -203,7 +225,7 @@ export class AtlantisView {
       }
       return this.stone(material);
     }
-    material.color.lerp(WASH, 0.4);
+    material.color.lerp(mineralColor(material, WASH), 0.4);
     return caustic(material, this.u);
   }
 
@@ -378,7 +400,7 @@ export class AtlantisView {
     for (let i = 0; i < KELP; i++) {
       let x, z;
       if (i < 70) {
-        x = (i % 2 ? 1 : -1) * (9 + rand() * 34);
+        x = (i % 2 ? 1 : -1) * (26 + rand() * 24);
         z = -6 - rand() * 60;
       } else {
         const a = rand() * Math.PI * 2,
@@ -397,6 +419,8 @@ export class AtlantisView {
         rand() * 6.3,
       ]);
     }
+    for (const [x, z, h] of CURRENT_KELP)
+      list.push([x, this.floorAt(x, z) - 0.3, z, 2, h, 2, (x * 7.3) % 6.3]);
     await this.instances(
       "sea_kelp",
       list,
@@ -570,6 +594,9 @@ export class AtlantisView {
         }`,
       fragmentShader: /* glsl */ `
         uniform float uTime;
+        uniform float uAir;
+        uniform vec3 uAirCenter;
+        uniform vec3 uAirRadii;
         varying float vFade;
         varying float vSeed;
         varying vec3 vWorld;
@@ -579,7 +606,8 @@ export class AtlantisView {
           float edge = pow(abs(dot(normalize(vNormalW), normalize(toEye))), 2.0);
           float flicker = 0.65 + 0.35 * sin(uTime * 0.5 + vSeed * 1.7) * sin(uTime * 0.23 + vSeed);
           float far = exp(-length(toEye) * 0.005);
-          gl_FragColor = vec4(0.55, 0.9, 1.0, edge * smoothstep(0.0, 0.7, vFade) * flicker * far * 0.14);
+          float wet = 1.0-uAir*(1.0-smoothstep(0.96,1.04,length((vWorld-uAirCenter)/uAirRadii)));
+          gl_FragColor = vec4(0.55, 0.9, 1.0, edge * smoothstep(0.0, 0.7, vFade) * flicker * far * 0.09 * wet);
         }`,
     });
     this.scene.add(new THREE.Mesh(mergeGeometries(parts), mat));
@@ -615,8 +643,12 @@ export class AtlantisView {
         blending: THREE.AdditiveBlending,
         vertexShader: /* glsl */ `
           uniform float uTime;
+          uniform float uAir;
+          uniform vec3 uAirCenter;
+          uniform vec3 uAirRadii;
           attribute vec2 info;
           varying float vKind;
+          varying float vWet;
           void main() {
             vec3 p = position;
             float s = info.y;
@@ -630,18 +662,22 @@ export class AtlantisView {
               p.x += sin(uTime * 0.25 + s * 17.0) * 1.5;
               p.z += cos(uTime * 0.2 + s * 11.0);
             }
+            float inside = 1.0 - smoothstep(0.96, 1.04, length((p-uAirCenter)/uAirRadii));
+            vWet = 1.0 - uAir * inside;
             vec4 mv = modelViewMatrix * vec4(p, 1.0);
-            gl_PointSize = (info.x > 0.5 ? 60.0 + s * 40.0 : 26.0) / -mv.z;
+            float pointSize = (info.x > 0.5 ? 60.0 + s * 40.0 : 26.0) / max(0.2,-mv.z);
+            gl_PointSize = min(info.x > 0.5 ? 18.0 : 4.0,pointSize);
             gl_Position = projectionMatrix * mv;
           }`,
         fragmentShader: /* glsl */ `
           varying float vKind;
+          varying float vWet;
           void main() {
             float d = length(gl_PointCoord - 0.5);
             float a = vKind > 0.5
-              ? smoothstep(0.5, 0.4, d) * (0.25 + 0.75 * smoothstep(0.2, 0.42, d))
-              : smoothstep(0.5, 0.0, d) * 0.45;
-            gl_FragColor = vec4(0.8, 0.96, 1.0, a);
+              ? (1.0-smoothstep(0.4,0.5,d)) * (0.25 + 0.75 * smoothstep(0.2, 0.42, d))
+              : (1.0-smoothstep(0.0,0.5,d)) * 0.45;
+            gl_FragColor = vec4(0.8, 0.96, 1.0, a * vWet);
           }`,
       }),
     );
@@ -668,6 +704,9 @@ export class AtlantisView {
 function caustic(material, u) {
   material.onBeforeCompile = (shader) => {
     shader.uniforms.uTime = u.uTime;
+    shader.uniforms.uAir = u.uAir;
+    shader.uniforms.uAirCenter = u.uAirCenter;
+    shader.uniforms.uAirRadii = u.uAirRadii;
     shader.vertexShader = shader.vertexShader
       .replace("#include <common>", "#include <common>\nvarying vec3 vSeaPos;")
       .replace(
@@ -684,22 +723,26 @@ function caustic(material, u) {
         "#include <common>",
         `#include <common>
 uniform float uTime;
+uniform float uAir;
+uniform vec3 uAirCenter;
+uniform vec3 uAirRadii;
 varying vec3 vSeaPos;
 float seaCaustic(vec2 p) {
   p *= 0.2;
   float a = sin(p.x * 3.1 + sin(p.y * 2.3 + uTime * 0.9)) + sin(p.y * 2.7 + sin(p.x * 1.9 - uTime * 0.7));
   float b = sin(p.x * 1.7 - p.y * 2.9 + uTime * 0.5 + sin(p.y * 1.1));
-  return pow(1.0 - abs(a) * 0.5, 7.0) * (0.75 + 0.25 * b);
+  return pow(max(0.0, 1.0 - abs(a) * 0.5), 7.0) * (0.75 + 0.25 * b);
 }`,
       )
       .replace(
         "#include <emissivemap_fragment>",
         `#include <emissivemap_fragment>
   float seaUp = dot(normal, normalize((viewMatrix * vec4(0.0, 1.0, 0.0, 0.0)).xyz));
-  totalEmissiveRadiance += diffuseColor.rgb * vec3(0.5, 0.85, 1.0) * seaCaustic(vSeaPos.xz) * smoothstep(0.1, 0.8, seaUp) * 1.1;`,
+  float seaWet = 1.0 - uAir * (1.0 - smoothstep(0.96, 1.04, length((vSeaPos-uAirCenter)/uAirRadii)));
+  totalEmissiveRadiance += diffuseColor.rgb * vec3(0.5, 0.85, 1.0) * seaCaustic(vSeaPos.xz) * smoothstep(0.1, 0.8, seaUp) * 1.1 * seaWet;`,
       );
   };
-  material.customProgramCacheKey = () => "fd-caustic";
+  material.customProgramCacheKey = () => "fd-caustic-volume";
   return material;
 }
 
@@ -712,10 +755,38 @@ const KELP_SWAY = /* glsl */ `#include <begin_vertex>
 #endif
   float kelpW = uTime * 0.7 - dot(kelpRoot, vec2(0.05, 0.03)) + kelpH * 2.4;
   transformed.x += sin(kelpW) * kelpH * kelpH * 0.8;
-  transformed.z += cos(kelpW * 0.8 + 1.1) * kelpH * kelpH * 0.55;`;
+  transformed.z += cos(kelpW * 0.8 + 1.1) * kelpH * kelpH * 0.55;
+#ifdef USE_INSTANCING
+  float kelpBand = smoothstep(${(ARRIVAL_CURRENT.box.minZ - 1.5).toFixed(2)}, ${ARRIVAL_CURRENT.box.minZ.toFixed(2)}, kelpRoot.y) * (1.0 - smoothstep(${ARRIVAL_CURRENT.box.maxZ.toFixed(2)}, ${(ARRIVAL_CURRENT.box.maxZ + 1.5).toFixed(2)}, kelpRoot.y));
+  mat3 kelpFrame = mat3(instanceMatrix);
+  vec3 kelpLean = transpose(kelpFrame) * vec3(${ARRIVAL_CURRENT.flow.x.toFixed(2)}, 0.0, ${ARRIVAL_CURRENT.flow.z.toFixed(2)});
+  kelpLean /= vec3(dot(kelpFrame[0], kelpFrame[0]), dot(kelpFrame[1], kelpFrame[1]), dot(kelpFrame[2], kelpFrame[2]));
+  transformed += kelpLean * kelpBand * kelpH * kelpH * (3.2 + 0.7 * sin(uTime * 1.3 + kelpRoot.x));
+#endif`;
+
+const KELP_NORMAL = /* glsl */ `#include <beginnormal_vertex>
+  float kelpNormalH = position.y;
+#ifdef USE_INSTANCING
+  vec2 kelpNormalRoot = instanceMatrix[3].xz;
+#else
+  vec2 kelpNormalRoot = vec2(0.0);
+#endif
+  float kelpNormalW = uTime * 0.7 - dot(kelpNormalRoot, vec2(0.05, 0.03)) + kelpNormalH * 2.4;
+  vec2 kelpSlope = vec2(
+    0.8 * (2.0 * kelpNormalH * sin(kelpNormalW) + 2.4 * kelpNormalH * kelpNormalH * cos(kelpNormalW)),
+    0.55 * (2.0 * kelpNormalH * cos(kelpNormalW * 0.8 + 1.1) - 1.92 * kelpNormalH * kelpNormalH * sin(kelpNormalW * 0.8 + 1.1))
+  );
+  objectNormal = normalize(vec3(objectNormal.x, objectNormal.y - dot(kelpSlope, objectNormal.xz), objectNormal.z));
+#ifdef USE_TANGENT
+  objectTangent.xz += kelpSlope * objectTangent.y;
+  objectTangent = normalize(objectTangent);
+#endif`;
 
 const SWIM_PARS = /* glsl */ `#include <common>
 uniform float uTime;
+uniform float uAir;
+uniform vec3 uAirCenter;
+uniform vec3 uAirRadii;
 attribute vec4 aOrbit;
 attribute vec4 aSwim;
 attribute vec2 aMotion;
@@ -729,18 +800,31 @@ const SWIM_FRAME = /* glsl */ `
   float swimSeed = aSwim.y * 7.13 + aOrbit.w;
   swimAt = aOrbit.xyz + vec3(cos(swimA) * aOrbit.w, sin(swimA * 2.0 + swimSeed) * 1.2, sin(swimA) * aOrbit.w * aSwim.z);
   swimAt += vec3(sin(uTime * 0.9 + swimSeed), sin(uTime * 1.3 + swimSeed * 1.7) * 0.5, cos(uTime * 0.7 + swimSeed * 2.3)) * 0.6;
+  vec3 airRadii = uAirRadii + max(vec3(aSwim.w + 1.0),uAirRadii * ((aSwim.w + 1.0) / 16.0));
+  vec2 airXZ = (swimAt.xz-uAirCenter.xz)/airRadii.xz;
+  float airCap = uAirCenter.y + airRadii.y * sqrt(max(0.0, 1.0 - dot(airXZ, airXZ)));
+  if (dot(airXZ, airXZ) < 1.0 && swimAt.y > uAirCenter.y-airRadii.y)
+    swimAt.y = mix(swimAt.y, max(swimAt.y, airCap), uAir);
   vec3 swimDir = normalize(vec3(-sin(swimA) * aOrbit.w, 0.0, cos(swimA) * aOrbit.w * aSwim.z) * sign(aSwim.x));
   vec3 swimSide = normalize(cross(vec3(0.0, 1.0, 0.0), swimDir));
   swimFrame = mat3(swimSide, cross(swimDir, swimSide), swimDir);
-  vec3 objectNormal = swimFrame * normal;
+  float swimTailPhase = uTime * 10.0 + swimSeed * 3.0 - position.z * 5.0;
+  float swimTailT = clamp((position.z + 0.55) / 0.75, 0.0, 1.0);
+  float swimTailWeight = 1.0 - smoothstep(-0.55, 0.2, position.z);
+  float swimTailSlope = 0.12 * (-5.0 * cos(swimTailPhase) * swimTailWeight - sin(swimTailPhase) * 6.0 * swimTailT * (1.0 - swimTailT) / 0.75) * aMotion.x;
+  float swimWingSlope = sin(uTime * 1.5 + swimSeed) * 0.525 * sqrt(abs(position.x)) * sign(position.x) * aMotion.y;
+  vec3 swimNormal = normal;
+  swimNormal.x -= swimWingSlope * swimNormal.y;
+  swimNormal.z -= swimTailSlope * swimNormal.x;
+  vec3 objectNormal = swimFrame * normalize(swimNormal);
 #ifdef USE_TANGENT
-  vec3 objectTangent = vec3(tangent.xyz);
+  vec3 objectTangent = swimFrame * normalize(vec3(tangent.x + swimTailSlope * tangent.z, tangent.y + swimWingSlope * tangent.x, tangent.z));
 #endif`;
 
 // A fish's tail beats and a manta's wings flap (aMotion), then the body is set on its way.
 const SWIM_MOVE = /* glsl */ `
   vec3 transformed = vec3(position);
-  transformed.x += sin(uTime * 10.0 + swimSeed * 3.0 - position.z * 5.0) * 0.12 * smoothstep(0.2, -0.55, position.z) * aMotion.x;
+  transformed.x += sin(uTime * 10.0 + swimSeed * 3.0 - position.z * 5.0) * 0.12 * (1.0-smoothstep(-0.55,0.2,position.z)) * aMotion.x;
   transformed.y += sin(uTime * 1.5 + swimSeed) * 0.35 * pow(abs(position.x), 1.5) * aMotion.y;
   transformed = swimFrame * (transformed * aSwim.w) + swimAt;`;
 
@@ -749,21 +833,25 @@ function swaying(material, u) {
     shader.uniforms.uTime = u.uTime;
     shader.vertexShader = shader.vertexShader
       .replace("#include <common>", "#include <common>\nuniform float uTime;")
+      .replace("#include <beginnormal_vertex>", KELP_NORMAL)
       .replace("#include <begin_vertex>", KELP_SWAY);
   };
-  material.customProgramCacheKey = () => "fd-kelp";
+  material.customProgramCacheKey = () => "fd-kelp-normal";
   return material;
 }
 
 function swimming(material, u) {
   material.onBeforeCompile = (shader) => {
     shader.uniforms.uTime = u.uTime;
+    shader.uniforms.uAir = u.uAir;
+    shader.uniforms.uAirCenter = u.uAirCenter;
+    shader.uniforms.uAirRadii = u.uAirRadii;
     shader.vertexShader = shader.vertexShader
       .replace("#include <common>", SWIM_PARS)
       .replace("#include <beginnormal_vertex>", SWIM_FRAME)
       .replace("#include <begin_vertex>", SWIM_MOVE);
   };
-  material.customProgramCacheKey = () => "fd-swim";
+  material.customProgramCacheKey = () => "fd-swim-volume-normal";
   return material;
 }
 

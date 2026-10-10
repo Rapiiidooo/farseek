@@ -1,0 +1,84 @@
+name: Validate and release
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          path: farseek
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: 404-Repo/404-game-recipe
+          ref: 4effad311c5e137bca316257259fe5bffd6737de
+          path: 404-game-recipe
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: "24"
+          package-manager-cache: false
+      - name: Install development dependencies
+        working-directory: farseek
+        run: npm ci --ignore-scripts
+      - name: Validate runtime and save compatibility
+        working-directory: farseek
+        run: |
+          npm run check
+          node scripts/save-check.mjs
+          python3 scripts/release-check.py
+      - name: Package the exact checked commit
+        working-directory: farseek
+        env:
+          RELEASE_COMMIT: ${{ github.sha }}
+        run: |
+          node scripts/build-release.mjs "$RELEASE_COMMIT" outputs/release
+          python3 scripts/deploy-release.py outputs/release "$RELEASE_COMMIT" --verify-only
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: farseek-${{ github.sha }}
+          path: farseek/outputs/release/
+          if-no-files-found: error
+          retention-days: 14
+          overwrite: true
+
+  deploy:
+    name: Request deployment
+    needs: validate
+    if: >-
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/main' &&
+      github.repository == 'Rapiiidooo/farseek' &&
+      vars.FARSEEK_AUTO_DEPLOY == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment:
+      name: production
+      url: https://farseek.rapidoai.dev/
+    concurrency:
+      group: farseek-production
+      cancel-in-progress: false
+    steps:
+      - name: Dispatch the verified release to private operations
+        env:
+          RELEASE_COMMIT: ${{ github.sha }}
+          PUBLIC_RUN_ID: ${{ github.run_id }}
+          PRIVATE_REPOSITORY: ${{ vars.FARSEEK_DEPLOY_REPOSITORY }}
+          GH_TOKEN: ${{ secrets.FARSEEK_DEPLOY_TOKEN }}
+        run: |
+          set -euo pipefail
+          [[ "$PRIVATE_REPOSITORY" =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ ]]
+          test -n "$GH_TOKEN"
+          gh workflow run farseek-deploy.yml --repo "$PRIVATE_REPOSITORY" --ref main \
+            -f commit="$RELEASE_COMMIT" -f public_run_id="$PUBLIC_RUN_ID"

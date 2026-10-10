@@ -1,20 +1,103 @@
-// Procedural sound, no files: each world's wind and footfalls, stone, bells for the glyphs, a
-// rising drone for the gate and a small tune per place. The context starts on the first
-// click, as browsers require.
+import { equipmentSound } from "./equipment-sound.js";
+import { WaterSound } from "./water-sound.js";
+import { encounterSound, prepareEncounterAudio } from "./encounter-sound.js";
+import { MusicStems } from "./music-stems.js";
+import { Ambience } from "./ambience.js";
+import { BodySound } from "./body-sound.js";
+import { actionSound } from "./action-sound.js";
+import { readScene } from "./sound-scene.js";
+
+// Mix calibration, measured with the receipt's BS.1770 capture at default settings.
+const MIX = {
+  makeup: 3.6,
+  voice: 1.6,
+  limit: -5.5,
+  voiceMusic: 0.3,
+  voiceAmbience: 0.5,
+};
+
+// Effects that mark a discovery, and the music's answer to each.
+const DISCOVERY = {
+  relic: "relic",
+  ignite: "door",
+  chime: "solve",
+  medallion: "solve",
+  plate: "solve",
+  lamp: "solve",
+  pylon: "solve",
+};
+const ALERTS = {
+  "boar-alert": 0.72,
+  "warden-alert": 0.7,
+  alarm: 0.75,
+  provoke: 0.6,
+};
 
 export class Sound {
   constructor(settings = {}) {
     this.ctx = null;
-    this.stepClock = 0;
     this.settings = settings;
     this.ducked = false;
     this.place = "court";
-    this.birdClock = 0;
+    this.app = null;
+    this.gates = new Set();
+    this.voice = false;
+    this.alertLevel = 0;
+    this.alertUntil = 0;
+    this.lastHurt = -1;
   }
 
-  // Where the explorer is, for the wind and the footfalls; "forest" once the last door is open.
+  // The running game, read for danger, cinematics, the camera and the air reserve.
+  bind(app) {
+    this.app = app;
+  }
+
+  // Doors register themselves so an open one can hum near the explorer.
+  addGate(gate) {
+    this.gates.add(gate);
+  }
+
+  // Set by the voice player while a line plays; music and ambience step back under it.
+  get voiceActive() {
+    return this.voice;
+  }
+
+  set voiceActive(on) {
+    if (this.voice === !!on) return;
+    this.voice = !!on;
+    this.applyDucking();
+  }
+
+  // Danger heard before it is seen: an alert or a growl holds the tension for a few seconds.
+  alerted(level = 0.7) {
+    if (!this.ctx) return;
+    this.alertLevel = Math.max(
+      this.ctx.currentTime < this.alertUntil ? this.alertLevel : 0,
+      level,
+    );
+    this.alertUntil = this.ctx.currentTime + 6;
+  }
+
+  // The current music's key as a frequency near C5, and whether it is minor.
+  musicKey() {
+    const M = this.music;
+    const cue = M && CUES[M.mode];
+    if (!cue?.root) return { root: 523.25, minor: false };
+    let midi = 72 + (cue.root % 12);
+    if (midi > 77) midi -= 12;
+    return { root: hz(midi), minor: cue.scale === MINOR };
+  }
+
+  musicRoot() {
+    return this.musicKey().root;
+  }
+
+  // Where the explorer is, for the air and the footfalls; "forest" once the last door is open.
   setPlace(where) {
     this.place = where;
+    prepareEncounterAudio(this, where);
+    if (where !== "sea") this.water?.update(0, { swimming: false }, 0);
+    this.ambience?.setPlace(where);
   }
 
   start() {
@@ -25,29 +108,54 @@ export class Sound {
     const AC = window.AudioContext || window.webkitAudioContext;
     if (!AC) return;
     const ctx = (this.ctx = new AC());
+    // The game's own buses meet at `mix`; voices from other modules join at `master`. Both carry
+    // the master volume and a loudness trim into a limiter, whose overshoots a soft ceiling rounds off.
+    this.mix = ctx.createGain();
+    this.loud = ctx.createGain();
+    this.loud.gain.value = MIX.makeup;
     this.master = ctx.createGain();
-    this.master.connect(ctx.destination);
-    // Effects and music have their own levels under the master.
+    this.voiceTrim = ctx.createGain();
+    this.voiceTrim.gain.value = MIX.voice;
+    this.limiter = ctx.createDynamicsCompressor();
+    this.limiter.threshold.value = MIX.limit;
+    this.limiter.knee.value = 0;
+    this.limiter.ratio.value = 20;
+    this.limiter.attack.value = 0.002;
+    this.limiter.release.value = 0.16;
+    this.output = ctx.createWaveShaper();
+    this.output.curve = ceiling(0.8, 0.87);
+    this.output.oversample = "4x";
+    this.mix.connect(this.loud).connect(this.limiter);
+    this.master.connect(this.voiceTrim).connect(this.limiter);
+    this.limiter.connect(this.output).connect(ctx.destination);
+    // A door's membrane darkens everything but the voice for a moment.
+    this.membrane = ctx.createBiquadFilter();
+    this.membrane.type = "lowpass";
+    this.membrane.frequency.value = 20000;
+    this.membrane.Q.value = 0.5;
+    this.membrane.connect(this.mix);
+    // Effects and the ambience are heard in the world, so water closes over both.
+    this.diegetic = ctx.createGain();
     this.fx = ctx.createGain();
-    this.fx.connect(this.master);
+    this.fx.connect(this.diegetic);
+    this.ambienceBus = ctx.createGain();
+    this.ambienceDuck = ctx.createGain();
+    this.ambienceBus.connect(this.ambienceDuck).connect(this.diegetic);
     this.applyVolumes();
     const len = ctx.sampleRate * 2;
     this.noise = ctx.createBuffer(1, len, ctx.sampleRate);
     const d = this.noise.getChannelData(0);
     for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
-    // Wind: looping noise through a wandering band-pass.
-    const src = ctx.createBufferSource();
-    src.buffer = this.noise;
-    src.loop = true;
-    const band = ctx.createBiquadFilter();
-    band.type = "bandpass";
-    band.frequency.value = 420;
-    band.Q.value = 0.7;
-    const gain = ctx.createGain();
-    gain.gain.value = 0.09;
-    src.connect(band).connect(gain).connect(this.fx);
-    src.start();
-    this.wind = { band, gain };
+    this.water = new WaterSound(
+      ctx,
+      this.diegetic,
+      this.membrane,
+      this.fx,
+      this.noise,
+    );
+    this.ambience = new Ambience(this);
+    this.ambience.setPlace(this.place);
+    this.body = new BodySound(this);
     // The beam's hum, louder near the light.
     const hum = ctx.createOscillator();
     hum.type = "sine";
@@ -62,16 +170,36 @@ export class Sound {
     hum.start();
     hum2.start();
     this.hum = humGain;
+    prepareEncounterAudio(this);
   }
 
   applyVolumes() {
     if (!this.ctx) return;
     const s = this.settings;
     const t = this.ctx.currentTime;
-    const duck = this.ducked ? 0.35 : 1;
-    this.master.gain.setTargetAtTime(0.75 * (s.volume ?? 0.8) * duck, t, 0.05);
-    this.fx.gain.setTargetAtTime(s.effects ?? 0.9, t, 0.05);
-    this.music?.bus.gain.setTargetAtTime(0.9 * (s.music ?? 0.7), t, 0.05);
+    const volume = 0.75 * level(s.volume, 0.8) * (this.ducked ? 0.35 : 1);
+    this.mix.gain.setTargetAtTime(volume, t, 0.05);
+    this.master.gain.setTargetAtTime(volume, t, 0.05);
+    this.fx.gain.setTargetAtTime(level(s.effects, 0.9), t, 0.05);
+    this.ambienceBus.gain.setTargetAtTime(level(s.ambience, 0.8), t, 0.05);
+    this.music?.bus.gain.setTargetAtTime(0.9 * level(s.music, 0.7), t, 0.05);
+    this.applyDucking();
+  }
+
+  applyDucking() {
+    if (!this.ctx) return;
+    const t = this.ctx.currentTime;
+    const on = this.voice;
+    this.music?.duck.gain.setTargetAtTime(
+      on ? MIX.voiceMusic : 1,
+      t,
+      on ? 0.12 : 0.7,
+    );
+    this.ambienceDuck.gain.setTargetAtTime(
+      on ? MIX.voiceAmbience : 1,
+      t,
+      on ? 0.15 : 0.9,
+    );
   }
 
   // Quieter under the pause menu.
@@ -87,8 +215,15 @@ export class Sound {
     if (!this.ctx || this.music) return;
     const ctx = this.ctx;
     const bus = ctx.createGain();
-    bus.gain.value = 0.9 * (this.settings.music ?? 0.7);
-    bus.connect(this.master);
+    bus.gain.value = 0.9 * level(this.settings.music, 0.7);
+    const duck = ctx.createGain();
+    duck.gain.value = this.voice ? MIX.voiceMusic : 1;
+    // Under water the music is muffled less than the world around her.
+    const muffle = ctx.createBiquadFilter();
+    muffle.type = "lowpass";
+    muffle.frequency.value = 20000;
+    muffle.Q.value = 0.5;
+    bus.connect(duck).connect(muffle).connect(this.membrane);
     const tone = ctx.createBiquadFilter();
     tone.type = "lowpass";
     tone.frequency.value = 4200;
@@ -97,7 +232,8 @@ export class Sound {
     const hall = ctx.createConvolver();
     hall.buffer = hallTail(ctx, 3.2);
     hall.connect(tone);
-    this.music = { mode: null, bus, tone, hall, layers: {} };
+    this.music = { mode: null, bus, duck, muffle, tone, hall, layers: {} };
+    this.stems = new MusicStems(this);
     this.musicTimer = setInterval(() => this.tickMusic(), 100);
   }
 
@@ -105,7 +241,9 @@ export class Sound {
     const M = this.music;
     if (!M || M.mode === mode) return;
     const t = this.ctx.currentTime;
-    const quick = mode === "fight" || M.mode === "fight";
+    const quick =
+      ["fight", "guardian"].includes(mode) ||
+      ["fight", "guardian"].includes(M.mode);
     const old = M.layers[M.mode];
     if (old) {
       old.on = false;
@@ -118,6 +256,7 @@ export class Sound {
     const at = t + (M.mode === null || quick ? 0.05 : 1.6);
     M.mode = mode;
     const L = (M.layers[mode] ??= this.musicLayer(CUES[mode] || CUES.court));
+    L.mode = mode;
     L.out.gain.cancelScheduledValues(t);
     L.out.gain.setValueAtTime(L.out.gain.value, t);
     L.out.gain.setTargetAtTime(1, at, quick ? 0.35 : 2.4);
@@ -125,23 +264,35 @@ export class Sound {
     if (!(L.until > t)) {
       L.next = at;
       L.bar = 0;
+      L.stepNext = at;
+      L.step = 0;
+      L.timeline = [];
+      L.droneUntil = 0;
     }
     L.on = true;
     L.until = Infinity;
   }
 
-  // A place's music: its own level, a send into the shared room and, for the airy voices, an
-  // echo that darkens as it repeats.
+  // A place's music: its own level and loudness trim, a send into the shared room, the lift and
+  // tension stems and, for the airy voices, an echo that darkens as it repeats.
   musicLayer(cue) {
     const ctx = this.ctx;
     const out = ctx.createGain();
     out.gain.value = 0;
-    out.connect(this.music.tone);
+    const trim = ctx.createGain();
+    trim.gain.value = 10 ** ((cue.trim || 0) / 20);
+    out.connect(trim).connect(this.music.tone);
     const send = ctx.createGain();
     send.gain.value = cue.hall;
-    out.connect(send).connect(this.music.hall);
+    trim.connect(send).connect(this.music.hall);
     const lead = ctx.createGain();
     lead.connect(out);
+    const lift = ctx.createGain();
+    lift.gain.value = 0;
+    lift.connect(out);
+    const tension = ctx.createGain();
+    tension.gain.value = 0;
+    tension.connect(out);
     if (cue.echo) {
       const delay = ctx.createDelay(3);
       delay.delayTime.value = (cue.echo * cue.bar) / 8;
@@ -159,6 +310,9 @@ export class Sound {
       cue,
       out,
       lead,
+      lift,
+      tension,
+      timeline: [],
       on: false,
       bar: 0,
       next: 0,
@@ -175,6 +329,7 @@ export class Sound {
 
   // Everything due in the next half second, for every place still audible.
   scheduleMusic(t) {
+    this.stems?.apply(t);
     for (const L of Object.values(this.music.layers)) {
       if (!L.on && !(L.until > t)) continue;
       // Back from a hidden tab: skip what was missed rather than play it all at once.
@@ -185,6 +340,7 @@ export class Sound {
         L.bar++;
       }
       if (L.cue.pulse) this.musicPulse(L, t);
+      this.stems?.schedule(L, t);
     }
   }
 
@@ -193,6 +349,7 @@ export class Sound {
     const cue = L.cue,
       i = L.bar;
     const chord = cue.chords[i % cue.chords.length];
+    L.timeline = [...(L.timeline || []).slice(-2), { at, chord }];
     for (const [k, n] of chord.entries())
       this.pad(
         hz(n),
@@ -252,8 +409,8 @@ export class Sound {
 
   // The chase: a plucked bass bouncing at 132 beats a minute, and a tick off the beat.
   musicPulse(L, t) {
-    const step = 60 / 132 / 2;
-    const bass = [45, 45, 52, 45, 57, 45, 52, 50];
+    const step = 60 / (L.cue.bpm || 132) / 2;
+    const bass = L.cue.bass || [45, 45, 52, 45, 57, 45, 52, 50];
     if (L.nextBeat < t) L.nextBeat = t + 0.05;
     while (L.nextBeat < t + 0.35) {
       const b = L.beat++;
@@ -304,6 +461,7 @@ export class Sound {
         const end = at + len,
           hold = Math.max(at + 0.15, end - 0.1);
         const g = ctx.createGain();
+        g.gain.value = 0;
         g.gain.setValueAtTime(0, at);
         g.gain.linearRampToValueAtTime(vel, at + 0.14);
         g.gain.setValueAtTime(vel, hold);
@@ -312,6 +470,7 @@ export class Sound {
         const lfo = ctx.createOscillator();
         lfo.frequency.value = 5.1;
         const depth = ctx.createGain();
+        depth.gain.value = 0;
         depth.gain.setValueAtTime(0, at);
         depth.gain.linearRampToValueAtTime(f * 0.005, at + 0.6);
         lfo.connect(depth);
@@ -339,6 +498,7 @@ export class Sound {
         bp.frequency.value = f * 2;
         bp.Q.value = 2.5;
         const ag = ctx.createGain();
+        ag.gain.value = 0;
         ag.gain.setValueAtTime(0, at);
         ag.gain.linearRampToValueAtTime(vel * 0.9, at + 0.04);
         ag.gain.setTargetAtTime(vel * 0.15, at + 0.05, 0.08);
@@ -385,6 +545,7 @@ export class Sound {
     o.type = type;
     o.frequency.value = f;
     const g = ctx.createGain();
+    g.gain.value = 0;
     g.gain.setValueAtTime(0.0001, at);
     g.gain.exponentialRampToValueAtTime(level, at + attack);
     g.gain.exponentialRampToValueAtTime(0.0001, at + length);
@@ -397,6 +558,7 @@ export class Sound {
   pad(freq, at, length, level, into) {
     const ctx = this.ctx;
     const g = ctx.createGain();
+    g.gain.value = 0;
     g.gain.setValueAtTime(0, at);
     g.gain.setTargetAtTime(level, at, 0.7);
     g.gain.setTargetAtTime(0, at + length, 0.8);
@@ -425,6 +587,7 @@ export class Sound {
     lp.frequency.setValueAtTime(900, at);
     lp.frequency.exponentialRampToValueAtTime(200, at + length);
     const g = ctx.createGain();
+    g.gain.value = 0;
     g.gain.setValueAtTime(level, at);
     g.gain.exponentialRampToValueAtTime(0.0001, at + length);
     o.connect(lp).connect(g).connect(into);
@@ -440,88 +603,108 @@ export class Sound {
     hp.type = "highpass";
     hp.frequency.value = 6000;
     const g = ctx.createGain();
+    g.gain.value = 0;
     g.gain.setValueAtTime(level, at);
     g.gain.exponentialRampToValueAtTime(0.0001, at + 0.05);
     src.connect(hp).connect(g).connect(into);
     src.start(at, Math.random(), 0.06);
   }
 
-  update(dt, hero, beams) {
-    if (!this.ctx) return;
+  update(dt, hero, beams, water) {
+    if (!this.ctx || !hero) return;
     const t = this.ctx.currentTime;
-    const air = AIR[this.place] || AIR.court;
-    this.wind.band.frequency.setTargetAtTime(
-      air.band +
-        Math.sin(t * 0.21) * air.swing +
-        Math.sin(t * 0.73) * air.swing * 0.4,
-      t,
-      0.5,
-    );
-    this.wind.band.Q.setTargetAtTime(air.q, t, 0.5);
-    this.wind.gain.gain.setTargetAtTime(
-      air.gain * (1 + Math.sin(t * 0.13) * 0.4),
-      t,
-      0.8,
-    );
+    this.hero = hero;
+    this.water.update(dt, hero, water?.immersion, water?.phase);
+    const immersion = this.water.immersion || 0;
+    const scene = readScene(this.app, hero, this.gates);
+    let danger = scene.danger;
+    const mode = this.music?.mode;
+    if (mode === "fight") danger = Math.max(danger, 0.65);
+    if (mode === "guardian") danger = Math.max(danger, 0.74);
+    if (t < this.alertUntil)
+      danger = Math.max(
+        danger,
+        this.alertLevel * Math.min(1, (this.alertUntil - t) / 2),
+      );
+    if (scene.cinematic) danger *= 0.2;
+    if (scene.crossing || this.place === "space") danger = 0;
+    this.scene = scene;
+    this.stems?.setDanger(danger, scene.phase);
+    if (this.music && Math.abs((this.muffled ?? 0) - immersion) > 0.01) {
+      this.muffled = immersion;
+      this.music.muffle.frequency.setTargetAtTime(
+        20000 - 17000 * immersion,
+        t,
+        0.16,
+      );
+    }
+    this.body.update(dt, hero, {
+      immersion,
+      breath: scene.breath,
+      place: this.place,
+    });
+    const camera = this.app?.camera;
+    this.ambience.update(dt, {
+      hero,
+      immersion,
+      gates: scene.gates,
+      vents: scene.vents,
+      camera: camera?.position,
+      cameraMatrix: camera?.matrixWorld?.elements,
+    });
     let near = 99;
     for (const s of beams?.segments || [])
       near = Math.min(near, distToSegment(hero.pos, s));
     this.hum.gain.setTargetAtTime(Math.max(0, 1 - near / 7) * 0.035, t, 0.2);
-    if (hero.state === "ground" && hero.speed > 1) {
-      this.stepClock += dt * hero.speed;
-      if (this.stepClock > 1.75) {
-        this.stepClock = 0;
-        this.footfall();
-      }
-    }
-    // Beyond the last door, birds somewhere in the trees.
-    if (this.place === "forest" && (this.birdClock -= dt) < 0) {
-      this.birdClock = 1.2 + Math.random() * 3.5;
-      this.birdsong();
-    }
   }
 
-  footfall() {
+  telemetry() {
+    if (!this.ctx) return null;
+    return {
+      state: this.ctx.state,
+      time: +this.ctx.currentTime.toFixed(2),
+      place: this.place,
+      music: this.music?.mode ?? null,
+      voiceActive: this.voice,
+      danger: this.scene?.danger ?? 0,
+      hostile: this.scene?.hostile ?? 0,
+      stems: this.stems?.telemetry() ?? null,
+      ambience: this.ambience?.telemetry() ?? null,
+      body: this.body?.telemetry() ?? null,
+      crossingAt: this.crossingAt ?? null,
+    };
+  }
+
+  footfall(strength = 1) {
+    if (!this.ctx) return;
     switch (this.place) {
       // Grit on basalt.
       case "two":
-        return this.burst(0.04, 1500, 0.05, 1.1);
+        return this.burst(0.04, 1500, 0.05 * strength, 1.1);
       // Worn limestone.
       case "three":
-        return this.burst(0.05, 1150, 0.06, 0.9);
+        return this.burst(0.05, 1150, 0.06 * strength, 0.9);
       // Snow: a crunch, then the pack settling.
       case "four":
-        this.burst(0.07, 2300, 0.05, 0.5);
-        return this.burst(0.1, 700, 0.05, 0.8);
+        this.burst(0.07, 2300, 0.05 * strength, 0.5);
+        return this.burst(0.1, 700, 0.05 * strength, 0.8);
+      case "forest":
+        return this.burst(0.08, 1300, 0.04 * strength, 0.5);
+      case "sea":
+        this.tone(95, 0.08, 0.04 * strength, "sine");
+        return this.burst(0.07, 650, 0.05 * strength, 0.9);
       // Sand.
       default:
-        return this.burst(0.05, 900, 0.07, 0.6);
-    }
-  }
-
-  // A few quick rising whistles.
-  birdsong() {
-    const ctx = this.ctx;
-    const base = 2300 + Math.random() * 1700;
-    let at = ctx.currentTime + 0.02;
-    for (let i = 0, n = 2 + Math.floor(Math.random() * 4); i < n; i++) {
-      const f = base * (0.9 + Math.random() * 0.25);
-      const o = ctx.createOscillator();
-      o.frequency.setValueAtTime(f, at);
-      o.frequency.exponentialRampToValueAtTime(f * 1.4, at + 0.06);
-      const g = ctx.createGain();
-      g.gain.setValueAtTime(0.0001, at);
-      g.gain.exponentialRampToValueAtTime(0.022, at + 0.01);
-      g.gain.exponentialRampToValueAtTime(0.0001, at + 0.08);
-      o.connect(g).connect(this.fx);
-      o.start(at);
-      o.stop(at + 0.1);
-      at += 0.09 + Math.random() * 0.07;
+        return this.burst(0.05, 900, 0.07 * strength, 0.6);
     }
   }
 
   play(name, arg) {
-    if (!this.ctx) return;
+    if (!this.ctx || typeof name !== "string") return;
+    if (DISCOVERY[name]) this.stems?.discover(DISCOVERY[name]);
+    if (ALERTS[name]) this.alerted(ALERTS[name]);
+    if (encounterSound(this, name, arg)) return;
+    if (actionSound(this, name, arg)) return;
     switch (name) {
       case "jump":
         return this.burst(0.12, 700, 0.05, 1.5);
@@ -532,13 +715,22 @@ export class Sound {
         this.tone(55, 0.35, 0.3, "sine");
         return this.burst(0.2, 300, 0.2, 0.6);
       case "grab":
+        return equipmentSound(this, "climb-grip");
+      case "climb-pull":
+      case "climb-step":
+        return equipmentSound(this, name);
       case "grip":
         return this.burst(0.06, 1600, 0.08, 2);
       case "climb":
+        return;
       case "vault":
         return this.burst(0.3, 800, 0.06, 1);
-      case "push":
+      // The hero's block pull, or else the orb drawing something in.
       case "pull":
+        if (!["shove", "grab"].includes(this.hero?.state))
+          return actionSound(this, "tether", arg);
+        return this.burst(1.0, 240, 0.16, 0.6);
+      case "push":
         return this.burst(1.0, 240, 0.16, 0.6);
       case "lock":
         return this.tone(1320, 0.08, 0.05, "triangle");
@@ -552,14 +744,14 @@ export class Sound {
       case "gate":
         return this.drone();
       case "cross":
-        this.sweep(200, 1600, 0.9, 0.08, "sine");
-        this.burst(1.6, 1200, 0.3, 0.4);
-        return this.bell(261.6, 3);
+        return this.crossDoor();
       case "respawn":
         return this.burst(0.4, 400, 0.1, 0.7);
       case "roll":
         return this.burst(0.35, 500, 0.08, 0.9);
       case "hurt":
+        if (this.ctx.currentTime - this.lastHurt < 0.08) return;
+        this.lastHurt = this.ctx.currentTime;
         this.tone(140, 0.2, 0.12, "square");
         return this.burst(0.2, 700, 0.12, 1.2);
       case "throw":
@@ -590,6 +782,7 @@ export class Sound {
         return this.bell(1046.5, 0.6);
       case "stamp":
         this.tone(60, 0.3, 0.3, "sine");
+        if (this.place === "two") this.ambience.stampEcho();
         return this.burst(0.18, 350, 0.25, 0.7);
       case "alarm":
         for (let i = 0; i < 4; i++)
@@ -643,32 +836,37 @@ export class Sound {
         return this.tone(880, 0.05, 0.03, "triangle");
       case "rumble":
         return this.rumble(3.4);
-      case "ignite":
-        this.tone(48, 1.6, 0.4, "sine");
-        this.sweep(160, 40, 1.2, 0.2, "sawtooth");
-        this.burst(1.8, 300, 0.45, 0.5);
-        this.burst(2.4, 2400, 0.12, 0.3);
-        for (const [f, d] of [
-          [392, 0],
-          [523.25, 90],
-          [659.25, 180],
-          [783.99, 300],
+      // The door's bells rise in the music's key, always major: an opening brightens.
+      case "ignite": {
+        this.tone(48, 1.6, 0.24, "sine");
+        this.sweep(160, 40, 1.2, 0.12, "sawtooth");
+        this.burst(1.8, 300, 0.27, 0.5);
+        this.burst(2.4, 2400, 0.07, 0.3);
+        const { root } = this.musicKey();
+        for (const [step, d] of [
+          [-5, 0],
+          [0, 90],
+          [4, 180],
+          [7, 300],
         ])
-          setTimeout(() => this.bell(f, 4.5), d);
+          setTimeout(() => this.bell(root * 2 ** (step / 12), 4.5), d);
         return;
-      // A relic found: a rising arpeggio, lighter than a door's.
-      case "relic":
+      }
+      // A relic found: a rising arpeggio in the music's key, lighter than a door's.
+      case "relic": {
         this.burst(0.25, 2800, 0.05, 1.4);
-        for (const [f, d] of [
-          [523.25, 0],
-          [659.25, 110],
-          [783.99, 220],
-          [1046.5, 380],
+        const { root, minor } = this.musicKey();
+        for (const [step, d] of [
+          [0, 0],
+          [minor ? 3 : 4, 110],
+          [7, 220],
+          [12, 380],
         ])
-          setTimeout(() => this.bell(f, 2.4), d);
+          setTimeout(() => this.bell(root * 2 ** (step / 12), 2.4), d);
         return;
+      }
       case "plate":
-        this.tone(70, 0.3, 0.3, "sine");
+        this.tone(70, 0.3, 0.2, "sine");
         this.bell(523.25, 2.2);
         return setTimeout(() => this.bell(783.99, 2.2), 140);
       case "void":
@@ -676,8 +874,71 @@ export class Sound {
         return this.burst(0.25, 500, 0.15, 0.8);
       case "provoke":
         return this.sweep(500, 900, 0.18, 0.06, "square");
+      case "hiss":
+        return this.burst(0.45, 2600, 0.07, 0.6);
+      case "spore-warn":
+        return this.burst(0.7, 2100, 0.035 * (arg ?? 1), 0.8);
+      case "spore-burst":
+        return this.burst(0.8, 1100, 0.07 * (arg ?? 1), 0.65);
       default:
     }
+  }
+
+  // Through a door: a wide whoosh, the world pressed dark at the membrane, a low thump and the
+  // door's bell as the other side opens.
+  crossDoor() {
+    const ctx = this.ctx,
+      t = ctx.currentTime;
+    this.crossingAt = t;
+    this.ambience.crossing();
+    for (const side of [-0.6, 0.6]) {
+      const src = ctx.createBufferSource();
+      src.buffer = this.noise;
+      src.loop = true;
+      const band = ctx.createBiquadFilter();
+      band.type = "bandpass";
+      band.Q.value = 0.9;
+      band.frequency.setValueAtTime(240 * (1 + side * 0.1), t);
+      band.frequency.exponentialRampToValueAtTime(
+        1900 * (1 - side * 0.08),
+        t + 0.42,
+      );
+      band.frequency.exponentialRampToValueAtTime(420, t + 1.25);
+      const g = ctx.createGain();
+      g.gain.value = 0;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.16, t + 0.38);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 1.3);
+      const pan = ctx.createStereoPanner();
+      pan.pan.value = side;
+      src.connect(band).connect(g).connect(pan).connect(this.fx);
+      src.start(t, Math.random(), 1.35);
+    }
+    const f = this.membrane.frequency;
+    f.cancelScheduledValues(t);
+    f.setValueAtTime(Math.max(400, f.value), t);
+    f.exponentialRampToValueAtTime(360, t + 0.4);
+    f.setValueAtTime(360, t + 0.52);
+    f.exponentialRampToValueAtTime(20000, t + 1.5);
+    const thump = ctx.createOscillator();
+    thump.frequency.setValueAtTime(70, t + 0.38);
+    thump.frequency.exponentialRampToValueAtTime(38, t + 0.75);
+    const tg = ctx.createGain();
+    tg.gain.value = 0;
+    tg.gain.setValueAtTime(0.0001, t + 0.38);
+    tg.gain.exponentialRampToValueAtTime(0.3, t + 0.41);
+    tg.gain.exponentialRampToValueAtTime(0.0001, t + 0.85);
+    thump.connect(tg).connect(this.fx);
+    thump.start(t + 0.38);
+    thump.stop(t + 0.9);
+    setTimeout(() => {
+      for (const [ratio, level, decay] of [
+        [1, 0.07, 1],
+        [2.01, 0.035, 0.7],
+        [2.76, 0.025, 0.5],
+      ])
+        this.tone(261.6 * ratio, 2.6 * decay, level, "sine");
+    }, 420);
   }
 
   burst(duration, freq, level, q) {
@@ -690,10 +951,14 @@ export class Sound {
     f.frequency.value = freq;
     f.Q.value = q;
     const g = ctx.createGain();
+    g.gain.value = 0;
     g.gain.setValueAtTime(level, t);
     g.gain.exponentialRampToValueAtTime(0.0001, t + duration);
     src.connect(f).connect(g).connect(this.fx);
-    src.start(t, Math.random() * 1.5, duration + 0.05);
+    const length = duration + 0.05;
+    src.loop = length > this.noise.duration;
+    const offset = Math.random() * Math.max(0, this.noise.duration - length);
+    src.start(t, offset, length);
   }
 
   tone(freq, duration, level, type = "sine") {
@@ -703,6 +968,7 @@ export class Sound {
     o.type = type;
     o.frequency.value = freq;
     const g = ctx.createGain();
+    g.gain.value = 0;
     g.gain.setValueAtTime(level, t);
     g.gain.exponentialRampToValueAtTime(0.0001, t + duration);
     o.connect(g).connect(this.fx);
@@ -722,6 +988,7 @@ export class Sound {
     f.type = "lowpass";
     f.frequency.value = 2600;
     const g = ctx.createGain();
+    g.gain.value = 0;
     g.gain.setValueAtTime(level, t);
     g.gain.exponentialRampToValueAtTime(0.0001, t + duration);
     o.connect(f).connect(g).connect(this.fx);
@@ -732,10 +999,10 @@ export class Sound {
   // A struck bronze bell: inharmonic partials decaying at different rates.
   bell(base, length = 3.2) {
     for (const [ratio, level, decay] of [
-      [1, 0.16, 1],
-      [2.01, 0.08, 0.7],
-      [2.76, 0.06, 0.5],
-      [5.4, 0.03, 0.25],
+      [1, 0.1, 1],
+      [2.01, 0.05, 0.7],
+      [2.76, 0.036, 0.5],
+      [5.4, 0.018, 0.25],
     ])
       this.tone(base * ratio, length * decay, level, "sine");
   }
@@ -745,8 +1012,9 @@ export class Sound {
     const ctx = this.ctx,
       t = ctx.currentTime;
     const g = ctx.createGain();
+    g.gain.value = 0;
     g.gain.setValueAtTime(0.0001, t);
-    g.gain.exponentialRampToValueAtTime(0.5, t + length);
+    g.gain.exponentialRampToValueAtTime(0.32, t + length);
     g.gain.exponentialRampToValueAtTime(0.0001, t + length + 0.4);
     g.connect(this.fx);
     const o = ctx.createOscillator();
@@ -780,6 +1048,7 @@ export class Sound {
     const ctx = this.ctx,
       t = ctx.currentTime;
     const g = ctx.createGain();
+    g.gain.value = 0;
     g.gain.setValueAtTime(0.0001, t);
     g.gain.exponentialRampToValueAtTime(0.22, t + 3);
     g.gain.exponentialRampToValueAtTime(0.06, t + 9);
@@ -811,21 +1080,26 @@ function distToSegment(p, s) {
   return Math.hypot(p.x - (s.x0 + vx * t), p.z - (s.z0 + vz * t));
 }
 
-// Each world's wind: the band it blows in, how far that wanders, how narrow it is and how loud.
-const AIR = {
-  // Hot desert wind.
-  court: { band: 380, swing: 160, q: 0.7, gain: 0.07 },
-  // A low night wind over basalt.
-  two: { band: 240, swing: 70, q: 0.9, gain: 0.09 },
-  // Open sky, gusting.
-  three: { band: 620, swing: 240, q: 0.55, gain: 0.09 },
-  // A thin, whistling cold.
-  four: { band: 950, swing: 320, q: 2.2, gain: 0.1 },
-  // Leaves stirring.
-  forest: { band: 1600, swing: 400, q: 0.5, gain: 0.035 },
-  // The city under the sea, heard through the last door: a low, slow swell.
-  sea: { band: 210, swing: 90, q: 0.8, gain: 0.08 },
-};
+// Linear up to `knee`, then easing towards `top`: the limiter's brief overshoots stay under -1 dBTP.
+function ceiling(knee, top) {
+  const curve = new Float32Array(2049);
+  for (let i = 0; i < curve.length; i++) {
+    const x = (i / (curve.length - 1)) * 2 - 1,
+      a = Math.abs(x);
+    curve[i] =
+      Math.sign(x) *
+      (a <= knee
+        ? a
+        : knee + (top - knee) * Math.tanh((a - knee) / (top - knee)));
+  }
+  return curve;
+}
+
+// A volume setting, falling back when absent or malformed in an older save.
+function level(value, fallback) {
+  const v = Number(value ?? fallback);
+  return Number.isFinite(v) ? Math.max(0, Math.min(1, v)) : fallback;
+}
 
 const hz = (m) => 440 * Math.pow(2, (m - 69) / 12);
 const MAJOR = [0, 2, 4, 5, 7, 9, 11];
@@ -897,8 +1171,8 @@ const TUNE = {
 const BOX = [0, 1, 2, 3, 2, 3, 1, 2];
 
 // Each place's music: the root and scale the tune is played in, the length of a bar in
-// seconds, the voice, its level, how much of it goes into the room, an echo in beats, the
-// order of its lines and rests, and the pads' chords, one a bar.
+// seconds, the voice, its level, how much of it goes into the room, its loudness trim in dB,
+// an echo in beats, the order of its lines and rests, and the pads' chords, one a bar.
 const CUES = {
   // The sunken court: D minor on a plucked harp, patient.
   court: {
@@ -908,6 +1182,7 @@ const CUES = {
     lead: "harp",
     level: 0.14,
     hall: 0.3,
+    trim: 4.1,
     song: ["theme", "rest", "answer", "rest"],
     chords: [
       [50, 57, 60, 65, 69],
@@ -924,6 +1199,7 @@ const CUES = {
     lead: "harp",
     level: 0.14,
     hall: 0.3,
+    trim: 2.6,
     song: ["theme", "answer", "rest"],
     chords: [
       [50, 57, 62, 66, 69],
@@ -940,6 +1216,7 @@ const CUES = {
     lead: "vibes",
     level: 0.12,
     hall: 0.35,
+    trim: 3.9,
     box: true,
     song: ["theme", "rest", "answer", "rest"],
     chords: [
@@ -955,6 +1232,7 @@ const CUES = {
     pad: 4.4,
     pulse: true,
     hall: 0.2,
+    trim: 3.7,
     song: ["rest"],
     chords: [
       [45, 52, 57, 60, 64],
@@ -969,6 +1247,7 @@ const CUES = {
     lead: "flute",
     level: 0.06,
     hall: 0.45,
+    trim: 0.6,
     echo: 0.75,
     song: ["theme", "rest", "answer", "rest"],
     chords: [
@@ -986,6 +1265,7 @@ const CUES = {
     lead: "celesta",
     level: 0.11,
     hall: 0.6,
+    trim: 2.7,
     echo: 1,
     song: ["theme", "rest", "answer", "rest"],
     chords: [
@@ -995,7 +1275,24 @@ const CUES = {
       [40, 47, 55, 62, 67],
     ],
   },
-  // A door opening onto dawn, and the credits: the whole tune in C, the flute doubled by glass.
+  forest: {
+    root: 64,
+    scale: MINOR,
+    bar: 7.6,
+    lead: "flute",
+    double: "harp",
+    level: 0.06,
+    hall: 0.38,
+    trim: 0.9,
+    echo: 0.5,
+    song: ["theme", "rest", "answer", "rest"],
+    chords: [
+      [40, 47, 55, 59, 64],
+      [36, 43, 52, 55, 62],
+      [45, 52, 57, 60, 64],
+      [47, 54, 57, 62, 66],
+    ],
+  },
   // Through the last door: the vibraphone in F, the slowest of all and deep in its echo.
   sea: {
     root: 65,
@@ -1004,6 +1301,7 @@ const CUES = {
     lead: "vibes",
     level: 0.1,
     hall: 0.7,
+    trim: 3.7,
     echo: 1,
     song: ["theme", "rest", "answer", "rest"],
     chords: [
@@ -1011,6 +1309,42 @@ const CUES = {
       [38, 45, 53, 60, 64],
       [46, 53, 57, 62, 65],
       [43, 50, 58, 65, 69],
+    ],
+  },
+  guardian: {
+    root: 57,
+    scale: MINOR,
+    bar: 5,
+    lead: "celesta",
+    level: 0.065,
+    hall: 0.55,
+    trim: 2.7,
+    pulse: true,
+    bpm: 96,
+    bass: [33, 33, 40, 33, 36, 33, 40, 43],
+    song: ["theme", "rest"],
+    chords: [
+      [33, 40, 45, 48, 52],
+      [29, 36, 41, 45, 48],
+    ],
+  },
+  // The builders' vault: a celesta and a harp in C minor, slow, in a stone hall's long echo.
+  vault: {
+    root: 60,
+    scale: MINOR,
+    bar: 9.5,
+    lead: "celesta",
+    double: "harp",
+    level: 0.08,
+    hall: 0.65,
+    trim: 2.5,
+    echo: 0.75,
+    song: ["theme", "rest", "answer", "rest"],
+    chords: [
+      [48, 55, 60, 63, 67],
+      [44, 51, 56, 60, 63],
+      [39, 46, 55, 58, 63],
+      [46, 53, 58, 62, 65],
     ],
   },
   finale: {
@@ -1021,6 +1355,7 @@ const CUES = {
     double: "celesta",
     level: 0.06,
     hall: 0.45,
+    trim: -4.9,
     echo: 0.75,
     song: ["theme", "answer"],
     chords: [

@@ -122,9 +122,12 @@ async function clashes() {
       "#chapter-card.on",
       "#health",
       "#address",
+      "#boss",
     ];
     const controls = [
       "#stick",
+      "#equipment-status",
+      "#pace-status",
       ...[...document.querySelectorAll("#touch button")].map(
         (b) => `#touch button[data-touch="${b.dataset.touch}"]`,
       ),
@@ -170,17 +173,19 @@ async function crowded() {
       t.style.bottom,
       r.innerHTML,
       r.className,
+      document.querySelector("body").style.getPropertyValue("--prompt-height"),
     ];
     r.innerHTML =
       '<p class="kicker">Relic found · 5 of 5</p><p class="name">Mira\'s lantern</p><p class="line">Still burning low in the lee of the island. She meant to come back for it.</p>';
     r.classList.add("on");
     p.innerHTML = "<kbd>Use</kbd> Talk to the clerk at the booth";
     p.classList.add("on");
+    document
+      .querySelector("body")
+      .style.setProperty("--prompt-height", `${p.offsetHeight}px`);
     h.innerHTML =
-      '<p class="hint-title">Throwing</p><p class="hint-body">Press <kbd>Throw</kbd> to throw the disc at a guard, then catch it as it comes back.</p>';
+      '<p class="hint-title">Relay orb</p><p class="hint-body">Press <kbd>Link</kbd> to channel the orb toward a guard or a mechanism in view.</p>';
     h.classList.add("on");
-    // As the game's hint() does: the lines of narration step up above the card.
-    t.style.bottom = `${parseFloat(getComputedStyle(h).bottom) + h.offsetHeight + 14}px`;
   });
   await sleep(450);
   const found = await clashes();
@@ -198,6 +203,9 @@ async function crowded() {
       r.innerHTML,
       r.className,
     ] = window.__saved;
+    document
+      .querySelector("body")
+      .style.setProperty("--prompt-height", window.__saved[7]);
   });
   return found;
 }
@@ -237,6 +245,107 @@ async function walkTo(x, z, { tol = 0.4, run = false, stop, ms = 12000 } = {}) {
   }
   await lift();
   return game();
+}
+
+async function holdTouch(action, duration) {
+  const b = await box(`#touch [data-touch="${action}"]`);
+  if (!b) throw new Error(`${action} touch control is hidden`);
+  const contact = await page.touchscreen.touchStart(b.x, b.y);
+  try {
+    await sleep(duration);
+  } finally {
+    await contact.end();
+  }
+  await sleep(200);
+}
+
+async function openAirShield() {
+  let g = await game();
+  check("sea begins with buoyant swimming", g.swimming && g.state === "swim");
+  check(
+    "swimming offers Rise and Dive with no land combat controls",
+    (await text('#touch [data-touch="jump"]')) === "Rise" &&
+      (await text('#touch [data-touch="drop"]')) === "Dive" &&
+      (await visible('#touch [data-touch="drop"]')) &&
+      !(await visible('#touch [data-touch="throw"]')) &&
+      !(await visible('#touch [data-touch="roll"]')),
+  );
+  const lower = g.feet;
+  await holdTouch("jump", 700);
+  const raised = (await game()).feet;
+  check(
+    "holding Rise swims upward",
+    raised > lower + 0.6,
+    `${lower} to ${raised}`,
+  );
+  await holdTouch("drop", 700);
+  check("holding Dive swims downward", (await game()).feet < raised - 0.6);
+  await shot("sea-swimming-portrait");
+  let overlaps = await clashes();
+  check("swimming fits in portrait", !overlaps.length, overlaps.join(", "));
+  await page.setViewport(LANDSCAPE);
+  await sleep(600);
+  await shot("sea-swimming-landscape");
+  overlaps = await clashes();
+  check("swimming fits in landscape", !overlaps.length, overlaps.join(", "));
+  await page.setViewport(PORTRAIT);
+  // The arrival current: from the still water behind one pier to the next.
+  const { shelters, lees } = g.sea.currents.arrival;
+  for (const [i, [x, , z]] of shelters.entries()) {
+    if (i > 0)
+      await walkTo(
+        Math.min(x, lees[i - 1].maxX - 0.7),
+        Math.min(z, lees[i - 1].minZ - 0.7),
+        { tol: 0.5, run: true },
+      );
+    await walkTo(x, z, { tol: 0.8, run: true });
+  }
+  await walkTo(9.5, -18, { tol: 0.8, run: true });
+  const diveBox = await box('#touch [data-touch="drop"]');
+  const dive = await page.touchscreen.touchStart(diveBox.x, diveBox.y);
+  try {
+    g = await until(
+      (s) => s.sea?.intro?.near,
+      8000,
+      "dive to the shield beacon",
+    );
+  } finally {
+    await dive.end();
+  }
+  await sleep(250);
+  check(
+    "swim route reaches the submerged beacon",
+    g.sea.intro.near && !g.sea.intro.active,
+  );
+  await shot("sea-beacon");
+  await tap('#touch [data-touch="interact"]');
+  g = await until(
+    (s) => s.sea?.intro?.active,
+    2500,
+    "Use activates the air shield",
+  );
+  check(
+    "Use begins the visible shield transition",
+    g.sea.intro.progress > 0 && g.sea.intro.progress < 1,
+  );
+  await shot("sea-shield-forming");
+  g = await until(
+    (s) => s.sea?.intro?.ready && s.state === "ground",
+    6000,
+    "shield drains the landing",
+  );
+  check(
+    "shield restores grounded movement",
+    !g.swimming && Math.abs(g.feet - 25) < 0.1,
+  );
+  check(
+    "land controls return after swimming",
+    (await text('#touch [data-touch="jump"]')) === "Jump" &&
+      (await text('#touch [data-touch="drop"]')) === "Hang" &&
+      (await visible('#touch [data-touch="throw"]')) &&
+      (await visible('#touch [data-touch="roll"]')),
+  );
+  await shot("sea-shield-ready");
 }
 
 try {
@@ -314,9 +423,14 @@ try {
       .map((b) => b.dataset.touch),
   );
   check(
-    "the court shows jump, use and pause only",
-    buttons.sort().join() === "interact,jump,pause",
-    buttons.join(),
+    "the expedition begins unarmed before equipment is recovered",
+    buttons.sort().join() === "interact,jump,pause" &&
+      g.equipment.selected === "none" &&
+      !g.equipment.pistolsUnlocked &&
+      g.equipment.ammo === 0 &&
+      !g.equipment.orbAvailable &&
+      !g.equipment.orbUnlocked,
+    { buttons, equipment: g.equipment },
   );
   check(
     "nothing covers the play text",
@@ -473,6 +587,56 @@ try {
   full = [...(await clashes()), ...(await crowded())];
   check("the frozen reach fits in landscape", !full.length, full.join(", "));
   await page.setViewport(PORTRAIT);
+
+  for (const chapter of ["forest", "sea"]) {
+    await open(`?chapter=${chapter}`);
+    await sleep(2500);
+    const start = (await game()).pos;
+    await stick(0, 0.9);
+    await sleep(800);
+    await lift();
+    const moved = (await game()).pos;
+    check(
+      `${chapter} moves with the touch stick`,
+      Math.hypot(moved[0] - start[0], moved[1] - start[1]) > 1,
+    );
+    if (chapter === "sea") await openAirShield();
+    check(
+      `${chapter} offers Link and Roll`,
+      (await visible('#touch [data-touch="throw"]')) &&
+        (await visible('#touch [data-touch="roll"]')),
+    );
+    const held = await until(
+      (g) =>
+        g[chapter]?.disc?.state === "held" &&
+        typeof g[chapter].disc.charged === "boolean",
+      3000,
+      `${chapter} has valid held-orb telemetry before touch`,
+    );
+    await tap('#touch [data-touch="throw"]');
+    const linked = await until(
+      (g) =>
+        g[chapter]?.disc?.state === "held" &&
+        g[chapter].disc.activations > held[chapter].disc.activations,
+      3000,
+      `${chapter} channels the held orb after touch`,
+    );
+    check(
+      `${chapter} channels the orb with touch`,
+      linked[chapter].disc.activations === held[chapter].disc.activations + 1 &&
+        linked[chapter].disc.kind === "orb",
+      `${held[chapter].disc.activations} to ${linked[chapter].disc.activations}`,
+    );
+    await shot(`${chapter}-portrait`);
+    full = await clashes();
+    check(`${chapter} fits in portrait`, !full.length, full.join(", "));
+    await page.setViewport(LANDSCAPE);
+    await sleep(800);
+    await shot(`${chapter}-landscape`);
+    full = await clashes();
+    check(`${chapter} fits in landscape`, !full.length, full.join(", "));
+    await page.setViewport(PORTRAIT);
+  }
 
   // The credits skip at a tap.
   await open();

@@ -1,6 +1,6 @@
 // The relics: in each world the explorer is set down on the way nearby, walks to the relic
 // with real key events, takes it with E, and the check reads the card, the count and the
-// telemetry. Then the title's Relics screen lists all five, a reload keeps them, and
+// telemetry. Then the title's Relics screen lists them, a reload keeps them, and
 // forgetting the progress in Settings puts every relic back where it was left.
 //   node scripts/relic-check.mjs [outDir] [--url=http://localhost:3002/]
 import puppeteer from "puppeteer-core";
@@ -38,6 +38,25 @@ const check = (name, ok, detail = "") => {
 const state = () => page.evaluate(() => window.__GAME__);
 const held = new Set();
 async function hold(keys) {
+  if (["KeyW", "KeyA", "KeyS", "KeyD"].some((key) => keys.has(key))) {
+    const current = await state();
+    const pace = keys.has("ShiftLeft") ? "walk" : "run";
+    if (
+      current?.mode === "play" &&
+      !current.paused &&
+      !current.cinematic &&
+      !current.crossing &&
+      current.pace !== pace
+    ) {
+      await page.keyboard.press("ShiftLeft");
+      await page.waitForFunction(
+        (pace) => window.__GAME__?.pace === pace,
+        { timeout: 3000 },
+        pace,
+      );
+    }
+  }
+  keys = new Set([...keys].filter((key) => key !== "ShiftLeft"));
   for (const k of [...held])
     if (!keys.has(k)) (await page.keyboard.up(k), held.delete(k));
   for (const k of keys)
@@ -93,7 +112,11 @@ const HUNTS = [
     from: [-5, 0.6, -152],
     to: [-9.6, -159.8],
   },
+  { id: "grove-map", chapter: "forest", from: "near", to: [8, -117] },
+  { id: "pressure-log", chapter: "sea", from: [0, 28, -40], to: [-3.6, -41.3] },
 ];
+
+let catalogue;
 
 try {
   for (const [i, h] of HUNTS.entries()) {
@@ -106,16 +129,34 @@ try {
     await page.waitForFunction(() => window.__GAME__?.mode === "play", {
       timeout: 20000,
     });
+    await page.waitForFunction(() => !window.__GAME__.worlds.pending.length, {
+      timeout: 120000,
+    });
     await sleep(1200);
+    catalogue ??= await page.evaluate(async () =>
+      (await import("./relics.js")).RELICS.map((def) => ({
+        id: def.id,
+        physical: !!def.asset,
+      })),
+    );
     // Set down on the way: the start of the relic's world is far off, the walk is real.
-    await page.evaluate((from) => {
-      const { hero, follow, worldThree } = window.__FD__;
+    await page.evaluate(({ from, id, chapter }) => {
+      const { hero, follow, worldThree, worldSix, worlds } = window.__FD__;
+      if (chapter === "sea") {
+        worldSix.drowned.sanctuary.reset(true);
+        worldSix.drowned.breath.reset();
+      }
       if (from === "ledge") {
         const c = worldThree.isles.isle("ledge").collider;
         hero.spawn(c.x, c.z, worldThree.isles.groundAt(c.x, c.z), Math.PI);
+      } else if (from === "near") {
+        const spot = window.__GAME__.relicSpots.find((item) => item.id === id);
+        const x = spot.at[0] - 3,
+          z = spot.at[2] + 1.5;
+        hero.spawn(x, z, worlds.current.level.groundAt(x, z), Math.PI);
       } else hero.spawn(from[0], from[2], from[1], Math.PI);
       follow.snap(hero);
-    }, h.from);
+    }, h);
     await sleep(600);
     const before = await state();
     const spot = before.relicSpots.find((r) => r.id === h.id);
@@ -140,7 +181,8 @@ try {
     }));
     check(
       `${h.id}: taken, with its card`,
-      card.on && card.text.toLowerCase().includes(`${i + 1} of 5`),
+      card.on &&
+        card.text.toLowerCase().includes(`${i + 1} of ${catalogue.length}`),
       card.text,
     );
     await page.screenshot({
@@ -173,7 +215,7 @@ try {
   );
   check(
     "the title counts the relics after a reload",
-    button === "Relics · 5 of 5",
+    button === `Relics · ${HUNTS.length} of ${catalogue.length}`,
     button,
   );
   await page.click('#menu [data-screen="main"] [data-action="relics"]');
@@ -182,14 +224,21 @@ try {
     count: document.querySelector("#relic-count").textContent,
     cards: [...document.querySelectorAll("#relic-list .level-card")].map(
       (c) => ({
+        id: c.dataset.relic,
         missing: c.classList.contains("missing"),
         name: c.querySelector("h3").textContent,
       }),
     ),
   }));
   check(
-    "the Relics screen lists all five by name",
-    screen.cards.length === 5 && screen.cards.every((c) => !c.missing),
+    "the Relics screen lists found pickups and retains earned records as hidden",
+    screen.cards.length === catalogue.length &&
+      screen.cards.filter((c) => !c.missing).length === HUNTS.length &&
+      catalogue.every((def) =>
+        screen.cards.some(
+          (card) => card.id === def.id && card.missing === !def.physical,
+        ),
+      ),
     screen.cards.map((c) => c.name).join(" / "),
   );
   await page.screenshot({ path: `${out}/06-relics-screen.png` });
@@ -200,7 +249,14 @@ try {
     String(kept.relicSpots.length),
   );
 
-  // Forgetting the progress puts them back.
+  // Forgetting the progress puts them back. The title prepares every world in the background,
+  // and a world's relics appear as it builds, so the comparison waits for that to finish.
+  await page.waitForFunction(
+    () =>
+      !window.__GAME__.worlds.pending.length &&
+      !window.__GAME__.streaming.jobs.length,
+    { timeout: 240000, polling: 250 },
+  );
   await page.keyboard.press("Escape");
   await sleep(300);
   await page.click('#menu [data-screen="main"] [data-action="settings"]');
@@ -210,26 +266,69 @@ try {
   await page.click('#menu [data-action="confirm-yes"]');
   await sleep(500);
   const reset = await state();
+  const huntWorld = {
+    floor: "court",
+    checkpoint: "two",
+    isles: "three",
+    frost: "four",
+    forest: "five",
+    sea: "six",
+  };
+  const expectedWaiting = HUNTS.filter((hunt) =>
+    reset.worlds.loaded.includes(huntWorld[hunt.chapter]),
+  )
+    .map((hunt) => hunt.id)
+    .sort();
+  const waiting = reset.relicSpots.map((spot) => spot.id).sort();
   check(
-    "forgetting the progress puts every relic back",
-    reset.relics.length === 0 && reset.relicSpots.length === 5,
-    `${reset.relics.length} found, ${reset.relicSpots.length} waiting`,
+    "forgetting the progress restores relics in loaded worlds",
+    reset.relics.length === 0 &&
+      waiting.includes("papyrus") &&
+      waiting.join() === expectedWaiting.join(),
+    JSON.stringify({
+      found: reset.relics,
+      waiting,
+      loaded: reset.worlds.loaded,
+    }),
   );
   const cleared = await page.$eval(
     '#menu [data-screen="main"] [data-action="relics"]',
     (b) => b.textContent.trim(),
   );
   check("the title's count is cleared", cleared === "Relics", cleared);
-  await page
-    .click('#menu [data-screen="main"] [data-action="relics"]')
-    .catch(() => {});
+  // Confirming returns to Settings.
+  await page.keyboard.press("Escape");
+  await sleep(300);
+  await page.click('#menu [data-screen="main"] [data-action="relics"]');
   await sleep(400);
   const none = await page.evaluate(
     () =>
       [...document.querySelectorAll("#relic-list .level-card.missing")].length,
   );
-  check("the Relics screen shows five still hidden", none === 5, String(none));
+  check(
+    "the Relics screen shows every item still hidden",
+    none === catalogue.length,
+    String(none),
+  );
   await page.screenshot({ path: `${out}/07-relics-hidden.png` });
+  for (const chapter of new Set(HUNTS.map((hunt) => hunt.chapter))) {
+    await page.goto(`${base}?nolock=1&chapter=${chapter}`, {
+      waitUntil: "load",
+    });
+    await page.waitForFunction(() => window.__READY__ === true, {
+      timeout: 90000,
+    });
+    const restored = await state();
+    const ids = HUNTS.filter((hunt) => hunt.chapter === chapter).map(
+      (hunt) => hunt.id,
+    );
+    check(
+      `${chapter}: newly loaded relics return after forgetting progress`,
+      restored.relics.length === 0 &&
+        ids.every((id) => restored.relicSpots.some((spot) => spot.id === id)),
+      ids.join(", "),
+    );
+  }
 } catch (e) {
   check("the run finished", false, e.message);
 }
