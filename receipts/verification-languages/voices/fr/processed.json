@@ -13,6 +13,7 @@
       "duration": 7.967,
       "sourceLufs": -15.9,
       "gainDb": -2.1,
+      "limited": false,
       "lufs": -18.4,
       "peak": 0.7788,
       "bytes": 64199,
@@ -29,6 +30,7 @@
       "duration": 6.269,
       "sourceLufs": -15.8,
       "gainDb": -2.2,
+      "limited": false,
       "lufs": -18.3,
       "peak": 0.7452,
       "bytes": 50616,
@@ -45,6 +47,7 @@
       "duration": 5.191,
       "sourceLufs": -13.7,
       "gainDb": -4.3,
+      "limited": false,
       "lufs": -18.5,
       "peak": 0.6621,
       "bytes": 42047,
@@ -61,6 +64,7 @@
       "duration": 4.833,
       "sourceLufs": -14.1,
       "gainDb": -3.9,
+      "limited": false,
       "lufs": -18.4,
       "peak": 0.6467,
       "bytes": 39122,
@@ -68,19 +72,20 @@
     },
     {
       "name": "castle-2",
-      "source": "originals/castle-2.mp3",
+      "source": "originals/castle-2.wav",
       "output": "game/audio/voice/fr/castle-2.mp3",
       "trim": [
-        0.06,
-        6.531
+        0.0,
+        4.18
       ],
-      "duration": 6.471,
-      "sourceLufs": -14.9,
-      "gainDb": -3.1,
-      "lufs": -18.2,
-      "peak": 0.7298,
-      "bytes": 52287,
-      "sha256": "a52e53729ff9e6a00744a54835e53aab9576664ddeb7850f07e2c70a68dfa944"
+      "duration": 4.181,
+      "sourceLufs": -16.5,
+      "gainDb": -1.56,
+      "limited": false,
+      "lufs": -18.4,
+      "peak": 0.8211,
+      "bytes": 34106,
+      "sha256": "760cc75b7713036f4c3f0207cddf466a8dd115c8492b175ae8c3b45c7c76d52b"
     },
     {
       "name": "castle-3",
@@ -93,6 +98,7 @@
       "duration": 4.833,
       "sourceLufs": -15.1,
       "gainDb": -2.9,
+      "limited": false,
       "lufs": -18.4,
       "peak": 0.741,
       "bytes": 39122,
@@ -100,19 +106,20 @@
     },
     {
       "name": "ice-1",
-      "source": "originals/ice-1.mp3",
+      "source": "originals/ice-1.wav",
       "output": "game/audio/voice/fr/ice-1.mp3",
       "trim": [
-        0.01,
-        5.564
+        0.0,
+        4.57
       ],
-      "duration": 5.554,
-      "sourceLufs": -15.0,
-      "gainDb": -3.0,
-      "lufs": -18.3,
-      "peak": 0.7306,
-      "bytes": 44973,
-      "sha256": "a701839c10fb9a25859007b2327b4a90559832ce741a2b7c5a3c68d6beb6030f"
+      "duration": 4.57,
+      "sourceLufs": -14.2,
+      "gainDb": -3.8,
+      "limited": false,
+      "lufs": -18.4,
+      "peak": 0.6703,
+      "bytes": 37032,
+      "sha256": "8fd15d80c3cf8fcc743d294d71bb153c8946e962d57def1c246cbd0002a28950"
     },
     {
       "name": "ice-2",
@@ -125,6 +132,7 @@
       "duration": 5.27,
       "sourceLufs": -15.7,
       "gainDb": -2.3,
+      "limited": false,
       "lufs": -18.3,
       "peak": 0.7756,
       "bytes": 42674,
@@ -132,19 +140,20 @@
     },
     {
       "name": "radio-1",
-      "source": "originals/radio-1.mp3",
+      "source": "originals/radio-1.wav",
       "output": "game/audio/voice/fr/radio-1.mp3",
       "trim": [
         0.0,
-        4.284
+        4.08
       ],
-      "duration": 4.284,
+      "duration": 4.08,
       "sourceLufs": -16.0,
       "gainDb": -2.0,
-      "lufs": -18.3,
-      "peak": 0.7345,
-      "bytes": 34733,
-      "sha256": "a7dc64c0e9241e13e137593d8586509308659c827d80613378c049c2a46aadde"
+      "limited": false,
+      "lufs": -18.4,
+      "peak": 0.7477,
+      "bytes": 33270,
+      "sha256": "c8c5c386a38760d4052893492d321d2c67bed25cc5b5f57b68a8f02507da6df5"
     },
     {
       "name": "radio-2",
@@ -157,6 +166,7 @@
       "duration": 6.426,
       "sourceLufs": -14.9,
       "gainDb": -3.1,
+      "limited": false,
       "lufs": -18.4,
       "peak": 0.7667,
       "bytes": 51869,
@@ -173,6 +183,7 @@
       "duration": 3.971,
       "sourceLufs": -11.8,
       "gainDb": -6.2,
+      "limited": false,
       "lufs": -18.4,
       "peak": 0.5163,
       "bytes": 32225,
@@ -189,6 +200,7 @@
       "duration": 5.544,
       "sourceLufs": -15.1,
       "gainDb": -2.9,
+      "limited": false,
       "lufs": -18.4,
       "peak": 0.6676,
       "bytes": 44973,
@@ -196,35 +208,37 @@
     },
     {
       "name": "reunion-1",
-      "source": "originals/reunion-1.mp3",
+      "source": "originals/reunion-1.wav",
       "output": "game/audio/voice/fr/reunion-1.mp3",
       "trim": [
         0.0,
-        1.489
+        0.7
       ],
-      "duration": 1.489,
-      "sourceLufs": -16.0,
-      "gainDb": -2.0,
+      "duration": 0.7,
+      "sourceLufs": -21.8,
+      "gainDb": 3.8,
+      "limited": false,
       "lufs": -18.5,
-      "peak": 0.7452,
-      "bytes": 12372,
-      "sha256": "f9e3c7dd173681ee11255f846971f7c7f60eff5b7fed8802a70da551e14cc6ea"
+      "peak": 0.5401,
+      "bytes": 6103,
+      "sha256": "5ed0723c00027596379b63e2b699f6ea25de4e538baaa3949303388210a5245e"
     },
     {
       "name": "reunion-2",
-      "source": "originals/reunion-2.mp3",
+      "source": "originals/reunion-2.wav",
       "output": "game/audio/voice/fr/reunion-2.mp3",
       "trim": [
         0.0,
-        5.486
+        4.08
       ],
-      "duration": 5.486,
-      "sourceLufs": -15.1,
-      "gainDb": -2.9,
+      "duration": 4.08,
+      "sourceLufs": -15.9,
+      "gainDb": -2.1,
+      "limited": false,
       "lufs": -18.4,
-      "peak": 0.7623,
-      "bytes": 44346,
-      "sha256": "7046bb94a992f15d29a2cbeac724c90b89ecfc4dea4f92ab669d68b335280726"
+      "peak": 0.7539,
+      "bytes": 33270,
+      "sha256": "71ce7c6270121cbdd32f9fdcac3dafaa94c80d29a11830de29b4fdec26366e5e"
     },
     {
       "name": "reunion-3a",
@@ -237,6 +251,7 @@
       "duration": 5.146,
       "sourceLufs": -14.2,
       "gainDb": -3.8,
+      "limited": false,
       "lufs": -18.4,
       "peak": 0.6806,
       "bytes": 41629,
@@ -253,6 +268,7 @@
       "duration": 4.519,
       "sourceLufs": -16.4,
       "gainDb": -1.6,
+      "limited": false,
       "lufs": -18.4,
       "peak": 0.77,
       "bytes": 36614,
@@ -269,6 +285,7 @@
       "duration": 2.194,
       "sourceLufs": -14.5,
       "gainDb": -3.5,
+      "limited": false,
       "lufs": -18.5,
       "peak": 0.6804,
       "bytes": 18015,
@@ -276,35 +293,37 @@
     },
     {
       "name": "vault-arrival",
-      "source": "originals/vault-arrival.mp3",
+      "source": "originals/vault-arrival.wav",
       "output": "game/audio/voice/fr/vault-arrival.mp3",
       "trim": [
-        0.0,
-        7.471
+        0.01,
+        5.26
       ],
-      "duration": 7.471,
-      "sourceLufs": -14.8,
-      "gainDb": -3.2,
-      "lufs": -18.3,
-      "peak": 0.6817,
-      "bytes": 60229,
-      "sha256": "a37efe469cd715a65db975ffaa2767a4cd3576aca78a8e7e01f7ea1fa2abc917"
+      "duration": 5.25,
+      "sourceLufs": -17.5,
+      "gainDb": -0.5,
+      "limited": true,
+      "lufs": -18.5,
+      "peak": 0.8138,
+      "bytes": 42465,
+      "sha256": "1dbaa494fb50674d934a8d98dcda2a9ecde3a55d4bdaf6a6959105d773abf53f"
     },
     {
       "name": "vault-bank-forest",
-      "source": "originals/vault-bank-forest.mp3",
+      "source": "originals/vault-bank-forest.wav",
       "output": "game/audio/voice/fr/vault-bank-forest.mp3",
       "trim": [
-        0.01,
-        3.396
+        0.0,
+        2.85
       ],
-      "duration": 3.386,
-      "sourceLufs": -16.3,
-      "gainDb": -1.7,
-      "lufs": -18.5,
-      "peak": 0.7686,
-      "bytes": 27628,
-      "sha256": "a625b5f148fafbbc091bc0257fef1111559a494b829e16df62180239898996a8"
+      "duration": 2.85,
+      "sourceLufs": -19.7,
+      "gainDb": 1.7,
+      "limited": true,
+      "lufs": -18.7,
+      "peak": 0.8152,
+      "bytes": 23448,
+      "sha256": "d68107c5d2644915788b925b27136cee80d13d699849965b3126e9844264eb66"
     },
     {
       "name": "vault-bay-checkpoint",
@@ -317,6 +336,7 @@
       "duration": 8.046,
       "sourceLufs": -16.8,
       "gainDb": -1.22,
+      "limited": false,
       "lufs": -18.3,
       "peak": 0.8399,
       "bytes": 64826,
@@ -324,19 +344,20 @@
     },
     {
       "name": "vault-bay-court",
-      "source": "originals/vault-bay-court.mp3",
+      "source": "originals/vault-bay-court.wav",
       "output": "game/audio/voice/fr/vault-bay-court.mp3",
       "trim": [
         0.0,
-        7.393
+        5.35
       ],
-      "duration": 7.393,
-      "sourceLufs": -15.4,
-      "gainDb": -2.6,
-      "lufs": -18.4,
-      "peak": 0.7043,
-      "bytes": 59602,
-      "sha256": "55369bd6fb9b59dc6705e9257289c55361d7420c4f168e8aca0ff7afcba5422b"
+      "duration": 5.35,
+      "sourceLufs": -17.6,
+      "gainDb": -0.4,
+      "limited": true,
+      "lufs": -18.5,
+      "peak": 0.8292,
+      "bytes": 43301,
+      "sha256": "a18a026b7888f86467e6ad516f0d985eae396c0bf50050e6d14ecb17c55ec16b"
     },
     {
       "name": "vault-bay-forest",
@@ -349,6 +370,7 @@
       "duration": 4.911,
       "sourceLufs": -15.8,
       "gainDb": -2.2,
+      "limited": false,
       "lufs": -18.3,
       "peak": 0.6717,
       "bytes": 39749,
@@ -365,6 +387,7 @@
       "duration": 8.202,
       "sourceLufs": -14.3,
       "gainDb": -3.7,
+      "limited": false,
       "lufs": -18.4,
       "peak": 0.7182,
       "bytes": 66080,
@@ -381,6 +404,7 @@
       "duration": 7.079,
       "sourceLufs": -14.6,
       "gainDb": -3.4,
+      "limited": false,
       "lufs": -18.3,
       "peak": 0.7296,
       "bytes": 57094,
@@ -397,6 +421,7 @@
       "duration": 6.191,
       "sourceLufs": -14.5,
       "gainDb": -3.5,
+      "limited": false,
       "lufs": -18.4,
       "peak": 0.6026,
       "bytes": 49989,
@@ -413,6 +438,7 @@
       "duration": 1.228,
       "sourceLufs": -15.5,
       "gainDb": -2.5,
+      "limited": false,
       "lufs": -18.1,
       "peak": 0.6754,
       "bytes": 10283,
@@ -420,19 +446,20 @@
     },
     {
       "name": "vault-done-checkpoint",
-      "source": "originals/vault-done-checkpoint.mp3",
+      "source": "originals/vault-done-checkpoint.wav",
       "output": "game/audio/voice/fr/vault-done-checkpoint.mp3",
       "trim": [
         0.0,
-        6.609
+        3.92
       ],
-      "duration": 6.609,
-      "sourceLufs": -15.4,
-      "gainDb": -2.6,
-      "lufs": -18.3,
-      "peak": 0.8408,
-      "bytes": 53332,
-      "sha256": "ee450840dfdebc5793634e72f4c1b5f90cdab18e8327b0b0971d49d50937b63e"
+      "duration": 3.92,
+      "sourceLufs": -19.1,
+      "gainDb": 1.1,
+      "limited": true,
+      "lufs": -18.8,
+      "peak": 0.83,
+      "bytes": 32016,
+      "sha256": "99e677622a1f66a2793e88de2754348463a089b7af4f6eac660baf0d135726a2"
     },
     {
       "name": "vault-done-court",
@@ -445,6 +472,7 @@
       "duration": 3.082,
       "sourceLufs": -15.4,
       "gainDb": -2.6,
+      "limited": false,
       "lufs": -18.4,
       "peak": 0.7067,
       "bytes": 25120,
@@ -452,19 +480,20 @@
     },
     {
       "name": "vault-done-forest",
-      "source": "originals/vault-done-forest.mp3",
+      "source": "originals/vault-done-forest.wav",
       "output": "game/audio/voice/fr/vault-done-forest.mp3",
       "trim": [
         0.0,
-        1.802
+        1.26
       ],
-      "duration": 1.802,
-      "sourceLufs": -16.0,
-      "gainDb": -2.0,
-      "lufs": -18.2,
-      "peak": 0.6765,
-      "bytes": 14880,
-      "sha256": "4db94685db3412b3fcc48d5030a899c132325aa4faf728830bfdac3289fd60c7"
+      "duration": 1.26,
+      "sourceLufs": -23.3,
+      "gainDb": 5.3,
+      "limited": true,
+      "lufs": -18.7,
+      "peak": 0.8042,
+      "bytes": 10700,
+      "sha256": "99780bb86c55f61c49bbd3fc8a8182c6a2152f7a8f136cdff9c7f6f1f35d0a72"
     },
     {
       "name": "vault-done-frost",
@@ -477,6 +506,7 @@
       "duration": 2.194,
       "sourceLufs": -14.2,
       "gainDb": -3.8,
+      "limited": false,
       "lufs": -18.4,
       "peak": 0.6508,
       "bytes": 18015,
@@ -493,6 +523,7 @@
       "duration": 7.079,
       "sourceLufs": -14.8,
       "gainDb": -3.2,
+      "limited": false,
       "lufs": -18.3,
       "peak": 0.7451,
       "bytes": 57094,
@@ -509,6 +540,7 @@
       "duration": 4.127,
       "sourceLufs": -15.8,
       "gainDb": -2.2,
+      "limited": false,
       "lufs": -18.2,
       "peak": 0.7668,
       "bytes": 33479,
@@ -516,19 +548,20 @@
     },
     {
       "name": "vault-power-frost",
-      "source": "originals/vault-power-frost.mp3",
+      "source": "originals/vault-power-frost.wav",
       "output": "game/audio/voice/fr/vault-power-frost.mp3",
       "trim": [
         0.0,
-        5.37
+        4.1
       ],
-      "duration": 5.37,
-      "sourceLufs": -14.0,
-      "gainDb": -4.0,
+      "duration": 4.1,
+      "sourceLufs": -18.1,
+      "gainDb": 0.1,
+      "limited": true,
       "lufs": -18.4,
-      "peak": 0.625,
-      "bytes": 43510,
-      "sha256": "9dbd9124bd7101244537eabc2d69e67ec7feb5ab31211210917a821b3616d288"
+      "peak": 0.7904,
+      "bytes": 33270,
+      "sha256": "ede99bdf0fff11ce62312a6d7c4cb709ec7510506d5a082b2ea64685a7a627f0"
     },
     {
       "name": "vault-reveal-address",
@@ -541,6 +574,7 @@
       "duration": 3.239,
       "sourceLufs": -15.4,
       "gainDb": -2.6,
+      "limited": false,
       "lufs": -18.3,
       "peak": 0.762,
       "bytes": 26374,
@@ -557,6 +591,7 @@
       "duration": 6.348,
       "sourceLufs": -15.1,
       "gainDb": -2.9,
+      "limited": false,
       "lufs": -18.4,
       "peak": 0.7651,
       "bytes": 51243,
@@ -573,6 +608,7 @@
       "duration": 7.471,
       "sourceLufs": -15.7,
       "gainDb": -2.3,
+      "limited": false,
       "lufs": -18.4,
       "peak": 0.7755,
       "bytes": 60229,
@@ -580,19 +616,20 @@
     },
     {
       "name": "vault-reveal-next",
-      "source": "originals/vault-reveal-next.mp3",
+      "source": "originals/vault-reveal-next.wav",
       "output": "game/audio/voice/fr/vault-reveal-next.mp3",
       "trim": [
-        0.03,
-        5.146
+        0.02,
+        3.59
       ],
-      "duration": 5.116,
-      "sourceLufs": -15.4,
-      "gainDb": -2.6,
+      "duration": 3.57,
+      "sourceLufs": -18.0,
+      "gainDb": 0.0,
+      "limited": false,
       "lufs": -18.4,
-      "peak": 0.7088,
-      "bytes": 41420,
-      "sha256": "7b2b9baacbb717c077425a5d67e5e447dbb5607c2a10881d6ced8e759c4fedaf"
+      "peak": 0.6473,
+      "bytes": 29091,
+      "sha256": "09d137c8cbd907aa3f8d59baef87d03acedcd500aaf4d63af963cba3b7b85c93"
     }
   ]
 }

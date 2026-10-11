@@ -1,24 +1,54 @@
 PASS Vault shaders are prepared before play {"load":982,"now":982}
 PASS The vault starts at its arrival with the orb and pistols
+--- court
 PASS The block leaves the starlight {"x":-27,"z":-15,"moving":false}
 PASS Relayed starlight wakes the court's seal
-PASS A stamp turned aside by the shield leaves the keeper reeling {"state":"stun","hostile":false,"hp":3,"pos":[18.32,-11.79],"center":[18.31604641359605,0.62,-11.793766062370738]}
+--- checkpoint
+shield: parried 1, keeper stun
+PASS A stamp turned aside by the shield leaves the keeper reeling {"state":"stun","hostile":false,"hp":3,"pos":[18.32,-11.66],"center":[18.317602787966525,0.62,-11.663641378441874]}
 PASS The seal answers while its keeper is stunned
+--- isles
 PASS Pistol shots break the crystal lock
 PASS The isles crystal charges the orb
 PASS A charged pulse wakes the pylon
 PASS The bridge of light carries Nyra to the seal
-PASS The cable carries Nyra back over the chasm {"pos":[-25.11931920071852,-26.463052636844424]}
+caught the cable
+PASS The cable carries Nyra back over the chasm {"pos":[-25.11282415229442,-26.430399995347347]}
+--- frost
+tethered the ice to 22, -37
 PASS The orb's tether drags the ice out of its corner {"x":22,"z":-37,"state":"rest"}
 PASS The sliding ice wakes the plate
 PASS Mira's axes carry Nyra up the scarred ice {"feet":3.4,"climb":{"axes":true,"wall":null,"leaping":false}}
 PASS The frost seal wakes on its shelf
+--- forest
+stone 0: takeoff at -12.97,-52.02 speed 2.1
+stone 0: landed at -15.25,-52.01 feet 0.15
+stone 1: takeoff at -17.00,-52.01 speed 2.1, stone held 0.8
+stone 1: landed at -19.22,-51.84 feet 0.15
+stone 2: takeoff at -21.05,-51.78 speed 1.9, stone held 0.83
+stone 2: landed at -22.72,-53.12 feet 0.15
+stone 3: takeoff at -25.06,-52.63 speed 2.0, stone held 1.2
+stone 3: landed at -27.36,-52.36 feet 0.15
+far bank: takeoff at -28.33,-52.23 speed 2.1, stone held 0.45
+far bank: landed at -30.68,-52.12 feet 0.00
 PASS The sinking stones are crossed without a fall
 PASS Thick ivy carries Nyra to the ledge {"feet":3.2}
 PASS The forest seal wakes across the bog
+stone back 0: takeoff at -30.11,-52.12 speed 2.1
+stone back 0: landed at -27.83,-51.99 feet 0.15
+stone back 1: takeoff at -26.06,-51.90 speed 1.9, stone held 0.82
+stone back 1: landed at -24.27,-53.18 feet 0.15
+stone back 2: takeoff at -22.00,-52.44 speed 2.1, stone held 1.23
+stone back 2: landed at -20.44,-50.96 feet 0.15
+stone back 3: takeoff at -18.10,-51.51 speed 2.0, stone held 1.23
+stone back 3: landed at -15.78,-51.57 feet 0.15
+near bank: takeoff at -13.97,-51.57 speed 0.0, stone held 0.98
+near bank: landed at -11.65,-51.67 feet 0.00
 PASS Back over the bog unharmed
+--- sea
 PASS Into the well's water, swimming
-PASS The drowned seal wakes on one breath {"breath":15.53}
+at the drowned seal: breath 15.65 s
+PASS The drowned seal wakes on one breath {"breath":15.5}
 PASS Out of the well with breath to spare {"health":4}
 PASS All six seals awake
 PASS The door opens on the whole address

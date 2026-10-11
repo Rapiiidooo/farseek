@@ -1,0 +1,286 @@
+{
+  "seconds": 22.743,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"success\": true,\n  \"response_text\": \"\\nAgent credit budget exhausted. Send a new prompt to refresh the budget.\",\n  \"budget_credits\": 100,\n  \"graph_identifiers\": {\n    \"nodes\": [\n      {\n        \"short_id\": \"06fbcffb\",\n        \"node_id\": \"06fbcffb-71e8-4b1c-8904-bebf32b62671\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"11750d76\",\n        \"node_id\": \"11750d76-8fa3-4e6d-a160-a30163fdfdb7\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"131756f1\",\n        \"node_id\": \"131756f1-55e1-44f5-98a5-5d493451a27f\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"1b1c7559\",\n        \"node_id\": \"1b1c7559-59e7-4094-afef-cd67460dfa65\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"1cbe3191\",\n        \"node_id\": \"1cbe3191-00b4-49ef-9425-39e5966ffb89\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"1e130936\",\n        \"node_id\": \"1e130936-974e-46b3-aae9-77227c7139c3\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"22df06d6\",\n        \"node_id\": \"22df06d6-d19b-4925-8c13-afaa92a05523\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"29f138aa\",\n        \"node_id\": \"29f138aa-db0e-4133-a88f-32eb9e543ff7\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"2d6317aa\",\n        \"node_id\": \"2d6317aa-5c4c-46a9-af09-cb93c2ccfdf1\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"2fe87413\",\n        \"node_id\": \"2fe87413-03ff-4b6e-8132-0f5a71867a39\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"341ddf0c\",\n        \"node_id\": \"341ddf0c-140e-4f38-ad44-19f6d3fdb8de\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"3aa80183\",\n        \"node_id\": \"3aa80183-8689-4407-9729-ba4679ce1baa\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"3e30a615\",\n        \"node_id\": \"3e30a615-40fa-486d-bd5b-b01da7aedbfc\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"50c02961\",\n        \"node_id\": \"50c02961-0e50-44a3-bd19-eaa3152f6363\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"565ff16e\",\n        \"node_id\": \"565ff16e-e2fb-40ad-84b9-26d0fd67a1e3\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"5940c37f\",\n        \"node_id\": \"5940c37f-23e9-440a-b586-5e9b0c1c21cb\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"5ab94628\",\n        \"node_id\": \"5ab94628-9c53-41be-b639-e1a7c061859b\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"5ec35b20\",\n        \"node_id\": \"5ec35b20-ba36-47f6-bbb0-b6f63c46927c\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"68921bef\",\n        \"node_id\": \"68921bef-e255-4595-8ef9-62675a28a01c\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"731ebd28\",\n        \"node_id\": \"731ebd28-dea7-4073-89ba-18320a9bc108\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"74f53072\",\n        \"node_id\": \"74f53072-386a-4d1d-9f49-b3cd98ae0942\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"75e6b6c2\",\n        \"node_id\": \"75e6b6c2-fa31-4cf1-85d6-b551de6c8f10\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"764d503a\",\n        \"node_id\": \"764d503a-09a8-4425-b6e7-b8dbf05c5f9b\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"7a5c23e2\",\n        \"node_id\": \"7a5c23e2-65a2-4a10-a012-37d55ffd584a\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"7ce6c864\",\n        \"node_id\": \"7ce6c864-0fd7-48a4-9650-f0870f10af55\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"8053b8ce\",\n        \"node_id\": \"8053b8ce-1b7f-488f-8646-deb5893cec0d\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"92cd8e46\",\n        \"node_id\": \"92cd8e46-b9a6-4732-9914-1718b9183e31\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"96e13f05\",\n        \"node_id\": \"96e13f05-0d57-4e21-ab81-6fa3fe00064f\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"9c558ccd\",\n        \"node_id\": \"9c558ccd-d9ce-4604-b419-a0596d63fa2c\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"a30c597f\",\n        \"node_id\": \"a30c597f-fe0c-44d9-bc42-783dd9f98f4f\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"a62607ea\",\n        \"node_id\": \"a62607ea-e597-4175-b568-7a666999d0c0\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"a6601a80\",\n        \"node_id\": \"a6601a80-304e-45a3-8da8-731c00a23171\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"ab57c956\",\n        \"node_id\": \"ab57c956-77b2-4a8f-aacd-6552a5bca69a\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"abbc86cc\",\n        \"node_id\": \"abbc86cc-5df9-46c4-a3ad-c89724a91a55\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"b1d47720\",\n        \"node_id\": \"b1d47720-a999-4b76-9f53-3681947fdd70\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"b5d84927\",\n        \"node_id\": \"b5d84927-8dd2-4e89-83cd-9598a6505098\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"bafee49b\",\n        \"node_id\": \"bafee49b-4ffb-4cc3-ac97-ee777dd338e8\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"bef8de6a\",\n        \"node_id\": \"bef8de6a-b8cc-4237-aa6c-c0d03f94c96e\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"c13f87ba\",\n        \"node_id\": \"c13f87ba-c7d9-4422-bc05-112490b99289\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"cd84ea11\",\n        \"node_id\": \"cd84ea11-3d10-4b6f-b887-af5f53681e69\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"d1d63fcf\",\n        \"node_id\": \"d1d63fcf-5065-437e-b25a-e93a228ac5de\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"d291ffc5\",\n        \"node_id\": \"d291ffc5-37ed-4ef0-b3f0-ada7778dd9a8\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"d90315a5\",\n        \"node_id\": \"d90315a5-6bdc-4b36-804b-b77e7f3884a5\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"d991854c\",\n        \"node_id\": \"d991854c-27cb-44a6-8dfd-dcc2ddc2f304\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"da1dba1d\",\n        \"node_id\": \"da1dba1d-1a08-4882-96be-5ba76aa144d9\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"def62b52\",\n        \"node_id\": \"def62b52-8ae1-4a4e-b719-6c186c2dc476\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"e2958607\",\n        \"node_id\": \"e2958607-0fbd-426c-9576-b082ed55156f\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"e34e35c3\",\n        \"node_id\": \"e34e35c3-b2d8-4dc3-83f5-99b389d99a16\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"edae6962\",\n        \"node_id\": \"edae6962-9628-4ad8-908b-e9e3d458a82d\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"f62bed2d\",\n        \"node_id\": \"f62bed2d-7bbf-45df-b000-e91ac56c9e73\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"f664f47f\",\n        \"node_id\": \"f664f47f-6c02-45e0-80ff-dc5f2cc8c751\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      },\n      {\n        \"short_id\": \"fda151ad\",\n        \"node_id\": \"fda151ad-7944-40a1-be29-d6cbfb152927\",\n        \"node_type\": \"text_to_speech_elevenlabs\"\n      }\n    ],\n    \"connections\": []\n  },\n  \"cost_usd\": 0.034557975,\n  \"cost_credits\": 4,\n  \"remaining_budget_credits\": 96,\n  \"budget_exhausted\": true\n}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "response_text": "\nAgent credit budget exhausted. Send a new prompt to refresh the budget.",
+      "budget_credits": 100,
+      "graph_identifiers": {
+        "nodes": [
+          {
+            "short_id": "06fbcffb",
+            "node_id": "06fbcffb-71e8-4b1c-8904-bebf32b62671",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "11750d76",
+            "node_id": "11750d76-8fa3-4e6d-a160-a30163fdfdb7",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "131756f1",
+            "node_id": "131756f1-55e1-44f5-98a5-5d493451a27f",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "1b1c7559",
+            "node_id": "1b1c7559-59e7-4094-afef-cd67460dfa65",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "1cbe3191",
+            "node_id": "1cbe3191-00b4-49ef-9425-39e5966ffb89",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "1e130936",
+            "node_id": "1e130936-974e-46b3-aae9-77227c7139c3",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "22df06d6",
+            "node_id": "22df06d6-d19b-4925-8c13-afaa92a05523",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "29f138aa",
+            "node_id": "29f138aa-db0e-4133-a88f-32eb9e543ff7",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "2d6317aa",
+            "node_id": "2d6317aa-5c4c-46a9-af09-cb93c2ccfdf1",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "2fe87413",
+            "node_id": "2fe87413-03ff-4b6e-8132-0f5a71867a39",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "341ddf0c",
+            "node_id": "341ddf0c-140e-4f38-ad44-19f6d3fdb8de",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "3aa80183",
+            "node_id": "3aa80183-8689-4407-9729-ba4679ce1baa",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "3e30a615",
+            "node_id": "3e30a615-40fa-486d-bd5b-b01da7aedbfc",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "50c02961",
+            "node_id": "50c02961-0e50-44a3-bd19-eaa3152f6363",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "565ff16e",
+            "node_id": "565ff16e-e2fb-40ad-84b9-26d0fd67a1e3",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "5940c37f",
+            "node_id": "5940c37f-23e9-440a-b586-5e9b0c1c21cb",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "5ab94628",
+            "node_id": "5ab94628-9c53-41be-b639-e1a7c061859b",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "5ec35b20",
+            "node_id": "5ec35b20-ba36-47f6-bbb0-b6f63c46927c",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "68921bef",
+            "node_id": "68921bef-e255-4595-8ef9-62675a28a01c",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "731ebd28",
+            "node_id": "731ebd28-dea7-4073-89ba-18320a9bc108",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "74f53072",
+            "node_id": "74f53072-386a-4d1d-9f49-b3cd98ae0942",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "75e6b6c2",
+            "node_id": "75e6b6c2-fa31-4cf1-85d6-b551de6c8f10",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "764d503a",
+            "node_id": "764d503a-09a8-4425-b6e7-b8dbf05c5f9b",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "7a5c23e2",
+            "node_id": "7a5c23e2-65a2-4a10-a012-37d55ffd584a",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "7ce6c864",
+            "node_id": "7ce6c864-0fd7-48a4-9650-f0870f10af55",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "8053b8ce",
+            "node_id": "8053b8ce-1b7f-488f-8646-deb5893cec0d",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "92cd8e46",
+            "node_id": "92cd8e46-b9a6-4732-9914-1718b9183e31",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "96e13f05",
+            "node_id": "96e13f05-0d57-4e21-ab81-6fa3fe00064f",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "9c558ccd",
+            "node_id": "9c558ccd-d9ce-4604-b419-a0596d63fa2c",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "a30c597f",
+            "node_id": "a30c597f-fe0c-44d9-bc42-783dd9f98f4f",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "a62607ea",
+            "node_id": "a62607ea-e597-4175-b568-7a666999d0c0",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "a6601a80",
+            "node_id": "a6601a80-304e-45a3-8da8-731c00a23171",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "ab57c956",
+            "node_id": "ab57c956-77b2-4a8f-aacd-6552a5bca69a",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "abbc86cc",
+            "node_id": "abbc86cc-5df9-46c4-a3ad-c89724a91a55",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "b1d47720",
+            "node_id": "b1d47720-a999-4b76-9f53-3681947fdd70",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "b5d84927",
+            "node_id": "b5d84927-8dd2-4e89-83cd-9598a6505098",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "bafee49b",
+            "node_id": "bafee49b-4ffb-4cc3-ac97-ee777dd338e8",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "bef8de6a",
+            "node_id": "bef8de6a-b8cc-4237-aa6c-c0d03f94c96e",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "c13f87ba",
+            "node_id": "c13f87ba-c7d9-4422-bc05-112490b99289",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "cd84ea11",
+            "node_id": "cd84ea11-3d10-4b6f-b887-af5f53681e69",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "d1d63fcf",
+            "node_id": "d1d63fcf-5065-437e-b25a-e93a228ac5de",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "d291ffc5",
+            "node_id": "d291ffc5-37ed-4ef0-b3f0-ada7778dd9a8",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "d90315a5",
+            "node_id": "d90315a5-6bdc-4b36-804b-b77e7f3884a5",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "d991854c",
+            "node_id": "d991854c-27cb-44a6-8dfd-dcc2ddc2f304",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "da1dba1d",
+            "node_id": "da1dba1d-1a08-4882-96be-5ba76aa144d9",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "def62b52",
+            "node_id": "def62b52-8ae1-4a4e-b719-6c186c2dc476",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "e2958607",
+            "node_id": "e2958607-0fbd-426c-9576-b082ed55156f",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "e34e35c3",
+            "node_id": "e34e35c3-b2d8-4dc3-83f5-99b389d99a16",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "edae6962",
+            "node_id": "edae6962-9628-4ad8-908b-e9e3d458a82d",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "f62bed2d",
+            "node_id": "f62bed2d-7bbf-45df-b000-e91ac56c9e73",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "f664f47f",
+            "node_id": "f664f47f-6c02-45e0-80ff-dc5f2cc8c751",
+            "node_type": "text_to_speech_elevenlabs"
+          },
+          {
+            "short_id": "fda151ad",
+            "node_id": "fda151ad-7944-40a1-be29-d6cbfb152927",
+            "node_type": "text_to_speech_elevenlabs"
+          }
+        ],
+        "connections": []
+      },
+      "cost_usd": 0.034557975,
+      "cost_credits": 4,
+      "remaining_budget_credits": 96,
+      "budget_exhausted": true
+    },
+    "isError": false
+  }
+}

@@ -59,7 +59,7 @@ def speech_bounds(samples):
 
 
 results = []
-for source in sorted(SOURCE.glob("*.mp3")):
+for source in sorted([*SOURCE.glob("*.mp3"), *SOURCE.glob("*.wav")], key=lambda path: path.stem):
     name = source.stem
     raw = decode(source)
     start, end = speech_bounds(raw)
@@ -73,14 +73,20 @@ for source in sorted(SOURCE.glob("*.mp3")):
     gain_db = TARGET_LUFS - integrated
     trimmed = decode(staging)
     peak = max(abs(v) for v in trimmed)
-    if peak * 10 ** (gain_db / 20) > PEAK_LIMIT:
-        gain_db = 20 * math.log10(PEAK_LIMIT / peak)
+    # A peaky take that would lose over 0.25 dB to the peak cap reaches the target through a lookahead
+    # limiter instead; a smaller cap keeps the plain gain, and with it the earlier takes' bytes.
+    limit = ""
+    capped = 20 * math.log10(PEAK_LIMIT / peak)
+    if gain_db - capped > 0.25:
+        limit = f",alimiter=limit={PEAK_LIMIT:.4f}:level=disabled:latency=enabled"
+    elif capped < gain_db:
+        gain_db = capped
     duration = len(trimmed) / RATE
     output = OUTPUT / f"{name}.mp3"
     subprocess.run(
         [
             "ffmpeg", "-y", "-v", "error", "-i", str(staging),
-            "-af", f"volume={gain_db:.4f}dB,afade=t=in:d=0.004,afade=t=out:st={max(0, duration - 0.04):.4f}:d=0.04",
+            "-af", f"volume={gain_db:.4f}dB{limit},afade=t=in:d=0.004,afade=t=out:st={max(0, duration - 0.04):.4f}:d=0.04",
             "-ac", "1", "-ar", str(RATE), "-c:a", "libmp3lame", "-b:a", "64k", str(output),
         ],
         check=True,
@@ -99,6 +105,7 @@ for source in sorted(SOURCE.glob("*.mp3")):
             "duration": round(len(final) / RATE, 3),
             "sourceLufs": integrated,
             "gainDb": round(gain_db, 2),
+            "limited": bool(limit),
             "lufs": final_lufs,
             "peak": round(final_peak, 4),
             "bytes": output.stat().st_size,

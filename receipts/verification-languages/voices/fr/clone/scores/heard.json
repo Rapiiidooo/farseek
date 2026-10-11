@@ -1,0 +1,578 @@
+[
+  {
+    "file": "outputs/voice-l10n/clone/fr/castle-2-t1.wav",
+    "clip": "castle-2",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 5.96,
+    "heard": "D'abord l'eau, puis la spirale de racines, puis le croissant au-dessus des arbres."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/castle-2-t2.wav",
+    "clip": "castle-2",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 4.92,
+    "heard": "D'abord l'eau, puis la spirale de racines, puis le croissant au-dessus des arbres."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/castle-2-t3.wav",
+    "clip": "castle-2",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 5.08,
+    "heard": "D'abord l'eau, puis la spirale de racines, puis le croissant au-dessus des arbres."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/castle-2-t4.wav",
+    "clip": "castle-2",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 4.24,
+    "heard": "D'abord l'eau, puis la spirale de racines, puis le croissant au-dessus des arbres."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/ice-1-t1.wav",
+    "clip": "ice-1",
+    "detected": "fr",
+    "match": 0.973,
+    "seconds": 4.64,
+    "heard": "J'ai gravé notre cygne dans la glace, là où la neige ne peut pas l'ensevelir."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/ice-1-t2.wav",
+    "clip": "ice-1",
+    "detected": "fr",
+    "match": 0.942,
+    "seconds": 5.32,
+    "heard": "J'ai gravé notre signe dans la glace, là où la neige ne peut pas l'ensevelir. Exybille."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/ice-1-t3.wav",
+    "clip": "ice-1",
+    "detected": "fr",
+    "match": 0.947,
+    "seconds": 4.8,
+    "heard": "J'ai gravé notre signe dans la glace, là où la neige ne peut pas long se relire."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/ice-1-t4.wav",
+    "clip": "ice-1",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 4.88,
+    "heard": "J'ai gravé notre signe dans la glace, là où la neige ne peut pas l'ensevelir."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/radio-1-t1.wav",
+    "clip": "radio-1",
+    "detected": "fr",
+    "match": 0.982,
+    "seconds": 4.08,
+    "heard": "Ici Myra. Si vous avez franchi la porte après nous, écoutez."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/radio-1-t2.wav",
+    "clip": "radio-1",
+    "detected": "fr",
+    "match": 0.948,
+    "seconds": 3.56,
+    "heard": "Ici Myra, si vous allez franchir la porte après nous, écoutez."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/radio-1-t3.wav",
+    "clip": "radio-1",
+    "detected": "fr",
+    "match": 0.982,
+    "seconds": 3.88,
+    "heard": "Ici Myra, si vous avez franchi la porte après nous, écoutez."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/radio-1-t4.wav",
+    "clip": "radio-1",
+    "detected": "fr",
+    "match": 0.982,
+    "seconds": 3.76,
+    "heard": "Ici Myra. Si vous avez franchi la porte après nous, écoutez."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-1-t1.wav",
+    "clip": "reunion-1",
+    "detected": "en",
+    "match": 0.4,
+    "seconds": 2.4,
+    "heard": "Ni hao."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-1-t10.wav",
+    "clip": "reunion-1",
+    "detected": "ru",
+    "match": 0.0,
+    "seconds": 0.84,
+    "heard": "Ниха."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-1-t11.wav",
+    "clip": "reunion-1",
+    "detected": "ru",
+    "match": 0.0,
+    "seconds": 1.08,
+    "heard": "Ни-ха."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-1-t12.wav",
+    "clip": "reunion-1",
+    "detected": "zh",
+    "match": 0.0,
+    "seconds": 0.8,
+    "heard": "你好"
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-1-t2.wav",
+    "clip": "reunion-1",
+    "detected": "ru",
+    "match": 0.0,
+    "seconds": 2.2,
+    "heard": "Ниха."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-1-t3.wav",
+    "clip": "reunion-1",
+    "detected": "ru",
+    "match": 0.0,
+    "seconds": 0.88,
+    "heard": "Ни-ра."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-1-t4.wav",
+    "clip": "reunion-1",
+    "detected": "en",
+    "match": 0.4,
+    "seconds": 0.84,
+    "heard": "Ni hao."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-1-t5.wav",
+    "clip": "reunion-1",
+    "detected": "zh",
+    "match": 0.0,
+    "seconds": 0.76,
+    "heard": "你好"
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-1-t6.wav",
+    "clip": "reunion-1",
+    "detected": "ru",
+    "match": 0.0,
+    "seconds": 2.24,
+    "heard": "Ни-ха!"
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-1-t7.wav",
+    "clip": "reunion-1",
+    "detected": "ru",
+    "match": 0.0,
+    "seconds": 0.84,
+    "heard": "НИРА"
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-1-t8.wav",
+    "clip": "reunion-1",
+    "detected": "ru",
+    "match": 0.0,
+    "seconds": 1.16,
+    "heard": "Нера."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-1-t9.wav",
+    "clip": "reunion-1",
+    "detected": "ru",
+    "match": 0.0,
+    "seconds": 0.8,
+    "heard": "Ниха."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-2-t1.wav",
+    "clip": "reunion-2",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 4.0,
+    "heard": "Je savais que tu suivrais la lumière. Je l'ai gardée allumée à chaque porte."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-2-t2.wav",
+    "clip": "reunion-2",
+    "detected": "fr",
+    "match": 0.925,
+    "seconds": 3.88,
+    "heard": "Je savais que tu suivrais la lumière. Je les gardais allumés à chaque porte."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-2-t3.wav",
+    "clip": "reunion-2",
+    "detected": "fr",
+    "match": 0.986,
+    "seconds": 4.04,
+    "heard": "Je savais que tu suivrais la lumière. Je l'ai gardé allumé à chaque porte."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/reunion-2-t4.wav",
+    "clip": "reunion-2",
+    "detected": "fr",
+    "match": 0.986,
+    "seconds": 4.08,
+    "heard": "Je savais que tu suivrais la lumière, je l'ai gardé allumé à chaque porte."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-arrival-t1.wav",
+    "clip": "vault-arrival",
+    "detected": "fr",
+    "match": 0.968,
+    "seconds": 5.4,
+    "heard": "Ici le R tient encore Nira, tu peux marcher, je ne suis que lumière pour l'instant, alors suis-moi."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-arrival-t2.wav",
+    "clip": "vault-arrival",
+    "detected": "fr",
+    "match": 0.959,
+    "seconds": 7.48,
+    "heard": "Ici, l'heure retient encore, Nira, tu peux marcher, je ne suis que lumière pour l'instant, alors suis-moi."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-arrival-t3.wav",
+    "clip": "vault-arrival",
+    "detected": "fr",
+    "match": 0.959,
+    "seconds": 6.24,
+    "heard": "Ici, l'heure retient encore, Nira, tu peux marcher, je ne suis que lumière pour l'instant, alors suis-moi."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-arrival-t4.wav",
+    "clip": "vault-arrival",
+    "detected": "fr",
+    "match": 0.959,
+    "seconds": 5.84,
+    "heard": "Ici, l'heure retient encore, Nira, tu peux marcher, je ne suis que lumière pour l'instant, alors suis-moi."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t1.wav",
+    "clip": "vault-bank-forest",
+    "detected": "fr",
+    "match": 0.862,
+    "seconds": 2.64,
+    "heard": "Soliaire te portera. Allez, grimpe !"
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t2.wav",
+    "clip": "vault-bank-forest",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 2.92,
+    "heard": "Ce lierre te portera. Allez, grimpe !"
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t3.wav",
+    "clip": "vault-bank-forest",
+    "detected": "fr",
+    "match": 0.875,
+    "seconds": 2.48,
+    "heard": "Celui-là te portera. Allez, grimpe !"
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t4.wav",
+    "clip": "vault-bank-forest",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 2.52,
+    "heard": "Ce lierre te portera. Allez, grimpe !"
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t1.wav",
+    "clip": "vault-bay-court",
+    "detected": "fr",
+    "match": 0.995,
+    "seconds": 5.48,
+    "heard": "La lumière des étoiles part une fente, comme le soleil dans la cour, les miroirs tournent encore."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t2.wav",
+    "clip": "vault-bay-court",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 5.48,
+    "heard": "La lumière des étoiles par une fente, comme le soleil dans la cour, les miroirs tournent encore."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t3.wav",
+    "clip": "vault-bay-court",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 5.6,
+    "heard": "La lumière des étoiles par une fente, comme le soleil dans la cour. Les miroirs tournent encore."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t4.wav",
+    "clip": "vault-bay-court",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 5.96,
+    "heard": "La lumière des étoiles par une fente, comme le soleil dans la cour, les miroirs tournent encore."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t1.wav",
+    "clip": "vault-done-checkpoint",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 4.12,
+    "heard": "2. Il s'est incliné devant toi. Je crois que c'était une approbation."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t2.wav",
+    "clip": "vault-done-checkpoint",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 3.6,
+    "heard": "2. Il s'est incliné devant toi. Je crois que c'était une approbation."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t3.wav",
+    "clip": "vault-done-checkpoint",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 3.92,
+    "heard": "2. Il s'est incliné devant toi. Je crois que c'était une approbation."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t4.wav",
+    "clip": "vault-done-checkpoint",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 3.96,
+    "heard": "2. Il s'est incliné devant toi. Je crois que c'était une approbation."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t1.wav",
+    "clip": "vault-done-forest",
+    "detected": "fr",
+    "match": 0.923,
+    "seconds": 1.72,
+    "heard": "5 plus 1"
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t10.wav",
+    "clip": "vault-done-forest",
+    "detected": "en",
+    "match": 0.923,
+    "seconds": 1.36,
+    "heard": "5 plus 1"
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t11.wav",
+    "clip": "vault-done-forest",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 1.44,
+    "heard": "Cinq plus qu'un."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t12.wav",
+    "clip": "vault-done-forest",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 1.48,
+    "heard": "Cinq plus qu'un."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t2.wav",
+    "clip": "vault-done-forest",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 1.56,
+    "heard": "Cinq plus qu'un."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t3.wav",
+    "clip": "vault-done-forest",
+    "detected": "fr",
+    "match": 0.714,
+    "seconds": 1.44,
+    "heard": "Cinq, plus tard."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t4.wav",
+    "clip": "vault-done-forest",
+    "detected": "fr",
+    "match": 0.923,
+    "seconds": 1.48,
+    "heard": "5 plus 1"
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t5.wav",
+    "clip": "vault-done-forest",
+    "detected": "fr",
+    "match": 0.923,
+    "seconds": 1.28,
+    "heard": "5 plus 1."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t6.wav",
+    "clip": "vault-done-forest",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 2.64,
+    "heard": "Cinq, plus qu'un."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t7.wav",
+    "clip": "vault-done-forest",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 2.48,
+    "heard": "Cinq plus qu'un."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t8.wav",
+    "clip": "vault-done-forest",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 1.32,
+    "heard": "5. Plus qu'un."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t9.wav",
+    "clip": "vault-done-forest",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 1.64,
+    "heard": "Cinq, plus qu'un."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t1.wav",
+    "clip": "vault-power-frost",
+    "detected": "fr",
+    "match": 0.974,
+    "seconds": 4.16,
+    "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mes pioulets."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t10.wav",
+    "clip": "vault-power-frost",
+    "detected": "fr",
+    "match": 0.98,
+    "seconds": 4.24,
+    "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mes piolets."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t11.wav",
+    "clip": "vault-power-frost",
+    "detected": "fr",
+    "match": 0.947,
+    "seconds": 4.24,
+    "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mis Pioley."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t12.wav",
+    "clip": "vault-power-frost",
+    "detected": "fr",
+    "match": 0.91,
+    "seconds": 4.48,
+    "heard": "C'est à réveiller le saut, monte sur la glace maintenant, tu as encore mes piolets."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t2.wav",
+    "clip": "vault-power-frost",
+    "detected": "fr",
+    "match": 0.926,
+    "seconds": 4.28,
+    "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu es encore mépiole."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t3.wav",
+    "clip": "vault-power-frost",
+    "detected": "fr",
+    "match": 0.98,
+    "seconds": 4.24,
+    "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mes piolets."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t4.wav",
+    "clip": "vault-power-frost",
+    "detected": "fr",
+    "match": 0.98,
+    "seconds": 4.2,
+    "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mes piolets."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t5.wav",
+    "clip": "vault-power-frost",
+    "detected": "fr",
+    "match": 0.967,
+    "seconds": 4.28,
+    "heard": "Ça a réveillé le saut. Monde sur la glace maintenant, tu as encore mes piolets."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t6.wav",
+    "clip": "vault-power-frost",
+    "detected": "fr",
+    "match": 0.98,
+    "seconds": 4.48,
+    "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mes piolets."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t7.wav",
+    "clip": "vault-power-frost",
+    "detected": "fr",
+    "match": 0.921,
+    "seconds": 4.08,
+    "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore à m'épioler."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t8.wav",
+    "clip": "vault-power-frost",
+    "detected": "fr",
+    "match": 0.98,
+    "seconds": 4.0,
+    "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mes piolets."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t9.wav",
+    "clip": "vault-power-frost",
+    "detected": "fr",
+    "match": 0.98,
+    "seconds": 4.08,
+    "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mes piolets."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t1.wav",
+    "clip": "vault-reveal-next",
+    "detected": "fr",
+    "match": 0.98,
+    "seconds": 4.12,
+    "heard": "Une adresse qu'ils n'ont jamais atteinte. Ils l'ont laissée ouverte pour nous."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t2.wav",
+    "clip": "vault-reveal-next",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 4.28,
+    "heard": "et une adresse qu'ils n'ont jamais atteinte. Ils l'ont laissée ouverte pour nous."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t3.wav",
+    "clip": "vault-reveal-next",
+    "detected": "fr",
+    "match": 0.973,
+    "seconds": 4.04,
+    "heard": "Une adresse qu'ils n'ont jamais attente. Ils l'ont laissée ouverte pour nous."
+  },
+  {
+    "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t4.wav",
+    "clip": "vault-reveal-next",
+    "detected": "fr",
+    "match": 1.0,
+    "seconds": 4.6,
+    "heard": "et une adresse qu'ils n'ont jamais atteinte. Ils l'ont laissée ouverte pour nous."
+  }
+]

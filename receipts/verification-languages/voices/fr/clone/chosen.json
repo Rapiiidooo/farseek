@@ -1,0 +1,138 @@
+{
+  "model": "Chatterbox Multilingual (chatterbox-tts 0.1.7, ChatterboxMultilingualTTS)",
+  "weights": "ResembleAI/chatterbox@5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+  "license": "MIT",
+  "watermark": "Perth implicit watermark, applied by the model",
+  "refs": {
+    "recorded.wav": [
+      "radio-2",
+      "ice-2"
+    ],
+    "live.wav": [
+      "reunion-3b",
+      "reunion-3a"
+    ]
+  },
+  "takes": [
+    {
+      "clip": "castle-2",
+      "take": 4,
+      "seed": 4,
+      "ref": "recorded.wav",
+      "cfg": 0.5,
+      "exaggeration": 0.5,
+      "seconds": 4.24,
+      "sha256": "9225cb4b92a56ab22a4fadd6084d3a9be970ffc25b9eab83c2216e5ce9b0f585"
+    },
+    {
+      "clip": "ice-1",
+      "take": 1,
+      "seed": 1,
+      "ref": "recorded.wav",
+      "cfg": 0.5,
+      "exaggeration": 0.5,
+      "seconds": 4.64,
+      "sha256": "a17bccf2e39f0e976c9f176c240155b9496bbeb59054dc2fc72c9dc56d5f82ad"
+    },
+    {
+      "clip": "radio-1",
+      "take": 1,
+      "seed": 1,
+      "ref": "recorded.wav",
+      "cfg": 0.5,
+      "exaggeration": 0.5,
+      "seconds": 4.08,
+      "sha256": "57e74e90cf531b7c8334c744688e7bd862604c301d49f7f895a90ae06dd82a65"
+    },
+    {
+      "clip": "reunion-1",
+      "take": 9,
+      "seed": 9,
+      "ref": "live.wav",
+      "cfg": 0.5,
+      "exaggeration": 0.5,
+      "seconds": 0.8,
+      "sha256": "6aea46e7c6ba9ac832ce28032da758d8814c73e2d7f3b47ef72995894897d3bb"
+    },
+    {
+      "clip": "reunion-2",
+      "take": 4,
+      "seed": 4,
+      "ref": "live.wav",
+      "cfg": 0.5,
+      "exaggeration": 0.5,
+      "seconds": 4.08,
+      "sha256": "eadeefda29523bf3104bf11357c8100fbd89f36f550790a684aaf4d89e0da9a2"
+    },
+    {
+      "clip": "vault-arrival",
+      "take": 1,
+      "seed": 1,
+      "ref": "live.wav",
+      "cfg": 0.5,
+      "exaggeration": 0.5,
+      "seconds": 5.4,
+      "sha256": "eb9e0e78aa5d38fa69f0185f667b31b3a85e2e36eca35e984dc4697ceeb7049e"
+    },
+    {
+      "clip": "vault-bank-forest",
+      "take": 2,
+      "seed": 2,
+      "ref": "live.wav",
+      "cfg": 0.5,
+      "exaggeration": 0.5,
+      "seconds": 2.92,
+      "sha256": "ad4abd0c00e61fa646a373be431c5b70b9f064803f291ec279f87398e8d48934"
+    },
+    {
+      "clip": "vault-bay-court",
+      "take": 1,
+      "seed": 1,
+      "ref": "live.wav",
+      "cfg": 0.5,
+      "exaggeration": 0.5,
+      "seconds": 5.48,
+      "sha256": "8ee47e5b43d989303436d07fe7cd56d82551c273f662a2632232c9cef5e74ef8"
+    },
+    {
+      "clip": "vault-done-checkpoint",
+      "take": 3,
+      "seed": 3,
+      "ref": "live.wav",
+      "cfg": 0.5,
+      "exaggeration": 0.5,
+      "seconds": 3.92,
+      "sha256": "c7d2ea24ce285a679f8cf4330ed84620d6aa5391dfe0d209481c46bf54159771"
+    },
+    {
+      "clip": "vault-done-forest",
+      "take": 8,
+      "seed": 8,
+      "ref": "live.wav",
+      "cfg": 0.5,
+      "exaggeration": 0.5,
+      "seconds": 1.32,
+      "sha256": "a3ff6d1a1521193ff13039919320496f831f44ceb0b2898f31c999ec6d23e1df"
+    },
+    {
+      "clip": "vault-power-frost",
+      "take": 10,
+      "seed": 10,
+      "ref": "live.wav",
+      "cfg": 0.5,
+      "exaggeration": 0.5,
+      "seconds": 4.24,
+      "sha256": "1427f3686e684497d16baaa1a913cf7ecb7fac949d9b84a0d22d3e76c6c6c19a"
+    },
+    {
+      "clip": "vault-reveal-next",
+      "take": 4,
+      "seed": 4,
+      "ref": "live.wav",
+      "cfg": 0.5,
+      "exaggeration": 0.5,
+      "seconds": 4.6,
+      "sha256": "b0cc59e890b44f34ce11befb8427370bfc9db2731cd675a152fac4dba4594133"
+    }
+  ]
+}

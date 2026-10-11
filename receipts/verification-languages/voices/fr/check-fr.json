@@ -2,13 +2,13 @@
   {
     "clip": "radio-1",
     "detected": "fr",
-    "match": 1.0,
-    "seconds": 4.284,
+    "match": 0.982,
+    "seconds": 4.08,
     "english": 4.176,
     "slot": 4.25,
-    "pace": 0.948,
+    "pace": 0.993,
     "text": "Ici Mira. Si vous avez franchi la porte après nous, écoutez.",
-    "heard": "Ici Mira, si vous avez franchi la porte après nous, écoutez."
+    "heard": "Ici Myra. Si vous avez franchi la porte après nous, écoutez."
   },
   {
     "clip": "radio-2",
@@ -52,7 +52,7 @@
     "slot": 6.25,
     "pace": 0.765,
     "text": "Jour quinze. Aux premières lueurs, les îles se rapprochent, et nous passons à la corde pendant qu’elles se touchent.",
-    "heard": "jour 15. Au premier lueur, les îles se rapprochent et nous passons à la corde pendant qu'elles se touchent."
+    "heard": "Jour 15. Au premier lueur, les îles se rapprochent et nous passons à la corde pendant qu'elles se touchent."
   },
   {
     "clip": "camp-2",
@@ -74,18 +74,18 @@
     "slot": 5.75,
     "pace": 1.0,
     "text": "Camp sur la dernière île. Nyra aurait vérifié chaque nœud deux fois.",
-    "heard": "Campe sur la dernière île Nira aurait vérifié chaque noeud deux fois."
+    "heard": "Campe sur la dernière île Nira aurait vérifié chaque noeud deux fois"
   },
   {
     "clip": "ice-1",
     "detected": "fr",
-    "match": 1.0,
-    "seconds": 5.554,
+    "match": 0.973,
+    "seconds": 4.57,
     "english": 3.698,
     "slot": 4.15,
-    "pace": 0.721,
+    "pace": 0.87,
     "text": "J’ai gravé notre signe dans la glace, là où la neige ne peut pas l’ensevelir.",
-    "heard": "J'ai gravé notre signe dans la glace, là où la neige ne peut pas l'ensevelir."
+    "heard": "J'ai gravé notre cygne dans la glace, là où la neige ne peut pas l'ensevelir."
   },
   {
     "clip": "ice-2",
@@ -96,7 +96,7 @@
     "slot": 5.55,
     "pace": 1.0,
     "text": "Ne vous arrêtez pas sur la glace fine. La flèche indique l’anneau.",
-    "heard": "Ne vous arrêtez pas sur la glace fine. La flèche indique l'anneau."
+    "heard": "Ne vous arrêtez pas sur la glace fine, la flèche indique l'anneau."
   },
   {
     "clip": "castle-1",
@@ -112,46 +112,46 @@
   {
     "clip": "castle-2",
     "detected": "fr",
-    "match": 0.993,
-    "seconds": 6.471,
+    "match": 1.0,
+    "seconds": 4.181,
     "english": 5.848,
     "slot": 6.05,
-    "pace": 0.907,
+    "pace": 1.0,
     "text": "D’abord l’eau, puis la spirale de racines, puis le croissant au-dessus des arbres.",
-    "heard": "D'abord l'eau, puis la spirale de racine, puis le croissant au-dessus des arbres."
+    "heard": "D'abord l'eau, puis la spirale de racines, puis le croissant au-dessus des arbres."
   },
   {
     "clip": "castle-3",
     "detected": "fr",
-    "match": 0.973,
+    "match": 1.0,
     "seconds": 4.833,
     "english": 4.362,
     "slot": 4.85,
     "pace": 0.964,
     "text": "C’est la dernière énigme que je vous laisse. Au-delà, la mer.",
-    "heard": "C'est la dernière énigme que je vous laisse, au-delà la mère."
+    "heard": "C'est la dernière énigme que je vous laisse. Au-delà, la mer."
   },
   {
     "clip": "reunion-1",
-    "detected": "en",
-    "match": 0.667,
-    "seconds": 1.489,
+    "detected": "ru",
+    "match": 0.0,
+    "seconds": 0.7,
     "english": 1.449,
     "slot": 1.95,
     "pace": 1.0,
     "text": "Nyra.",
-    "heard": "Naira"
+    "heard": "Ниха!"
   },
   {
     "clip": "reunion-2",
     "detected": "fr",
-    "match": 0.939,
-    "seconds": 5.486,
+    "match": 0.986,
+    "seconds": 4.08,
     "english": 4.421,
     "slot": 4.75,
-    "pace": 0.835,
+    "pace": 1.0,
     "text": "Je savais que tu suivrais la lumière. Je l’ai gardée allumée à chaque porte.",
-    "heard": "Je savais que tu suivrais la lumière, j'ai les gardé allumées à chaque porte."
+    "heard": "Je savais que tu suivrais la lumière, je l'ai gardé allumé à chaque porte."
   },
   {
     "clip": "reunion-3a",
@@ -189,19 +189,19 @@
   {
     "clip": "vault-arrival",
     "detected": "fr",
-    "match": 0.959,
-    "seconds": 7.471,
+    "match": 0.968,
+    "seconds": 5.25,
     "english": 4.901,
     "slot": 6.37,
-    "pace": 0.83,
+    "pace": 1.0,
     "text": "Ici, leur air tient encore, Nyra. Tu peux marcher. Je ne suis que lumière pour l’instant, alors suis-moi.",
-    "heard": "Ici, l'horaire tient encore Nira. Tu peux marcher. Je ne suis que lumière pour l'instant. Alors suis-moi."
+    "heard": "Ici le R tient encore Nira, tu peux marcher, je ne suis que lumière pour l'instant, alors suis-moi."
   },
   {
     "clip": "vault-bay-court",
     "detected": "fr",
     "match": 1.0,
-    "seconds": 7.393,
+    "seconds": 5.35,
     "english": 6.034,
     "slot": 7.84,
     "pace": 1.0,
@@ -233,57 +233,57 @@
   {
     "clip": "vault-bay-frost",
     "detected": "fr",
-    "match": 1.0,
+    "match": 0.99,
     "seconds": 8.202,
     "english": 6.19,
     "slot": 8.05,
     "pace": 0.958,
     "text": "De la glace et une dalle, encore. Tu ne peux pas la pousser de là, mais le lien de l’orbe peut la tirer.",
-    "heard": "De la glace et une dalle, encore. Tu ne peux pas la pousser de là, mais le lien de l'orbe peut la tirer."
+    "heard": "De la glace et une dalle encore, tu ne peux pas la pousser de là, mais le lien de l'orbe peut l'attirer."
   },
   {
     "clip": "vault-power-frost",
     "detected": "fr",
-    "match": 0.948,
-    "seconds": 5.37,
+    "match": 0.98,
+    "seconds": 4.1,
     "english": 4.548,
     "slot": 5.91,
     "pace": 1.0,
     "text": "Ça a réveillé le sceau. Monte sur la glace, maintenant. Tu as encore mes piolets.",
-    "heard": "Ça a réveilli le sous, monte sur la glace maintenant, tu as encore mes piollets."
+    "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mes piolets."
   },
   {
     "clip": "vault-bay-forest",
     "detected": "fr",
-    "match": 0.954,
+    "match": 0.972,
     "seconds": 4.911,
     "english": 3.631,
     "slot": 4.72,
     "pace": 0.923,
     "text": "De l’eau de spores. Ne reste pas immobile sur ces pierres.",
-    "heard": "de l'eau de sport ne reste pas immobile sur ses pierres."
+    "heard": "De l'eau de sport. Ne reste pas immobile sur ces pierres."
   },
   {
     "clip": "vault-bank-forest",
     "detected": "fr",
-    "match": 0.954,
-    "seconds": 3.386,
+    "match": 1.0,
+    "seconds": 2.85,
     "english": 3.082,
     "slot": 4.01,
     "pace": 1.0,
     "text": "Ce lierre te portera. Allez, grimpe.",
-    "heard": "Ce lière te portera. Allez, grimpe !"
+    "heard": "Ce lierre te portera. Allez, grimpe !"
   },
   {
     "clip": "vault-bay-sea",
     "detected": "fr",
-    "match": 0.962,
+    "match": 0.981,
     "seconds": 6.191,
     "english": 6.609,
     "slot": 8.59,
     "pace": 1.0,
     "text": "Le sceau est au bout de ce passage, et l’eau en jaillit. Une seule inspiration, Nyra.",
-    "heard": "Le saut est au bout de ce passage et l'eau enjaillit. Une seule inspiration n'ira."
+    "heard": "Le sceau est au bout de ce passage et l'eau enjaillit, une seule inspiration n'ira."
   },
   {
     "clip": "vault-done-court",
@@ -299,24 +299,24 @@
   {
     "clip": "vault-done-checkpoint",
     "detected": "fr",
-    "match": 0.931,
-    "seconds": 6.609,
+    "match": 0.962,
+    "seconds": 3.92,
     "english": 4.284,
     "slot": 5.57,
-    "pace": 0.818,
+    "pace": 1.0,
     "text": "Deux. Il s’est incliné devant toi. Je crois que c’était une approbation.",
-    "heard": "2. Il s'est inquiné devant toi. Je crois que c'était une approbation."
+    "heard": "2. Il s'est incliné devant toi. Je crois que c'était une approbation."
   },
   {
     "clip": "vault-done-isles",
     "detected": "fr",
-    "match": 0.922,
+    "match": 0.952,
     "seconds": 7.079,
     "english": 5.721,
     "slot": 7.44,
     "pace": 1.0,
     "text": "Trois. Le sceau a bu la lumière du pont. Reviens en te balançant au câble des bâtisseurs.",
-    "heard": "3. Le saut abut la lumière du pont, revient en te balançant au câble des bâtisseurs."
+    "heard": "3. Le sceau abut la lumière du pont, reviens en te balançant au câble des bâtisseurs."
   },
   {
     "clip": "vault-done-frost",
@@ -327,18 +327,18 @@
     "slot": 2.95,
     "pace": 1.0,
     "text": "Quatre. Belle escalade.",
-    "heard": "4. Belle escalade."
+    "heard": "4. Belle escalade"
   },
   {
     "clip": "vault-done-forest",
-    "detected": "en",
-    "match": 0.545,
-    "seconds": 1.802,
+    "detected": "fr",
+    "match": 0.8,
+    "seconds": 1.26,
     "english": 2.429,
     "slot": 3.16,
     "pace": 1.0,
     "text": "Cinq. Plus qu’un.",
-    "heard": "5 plus 1"
+    "heard": "5. Plus qu'un."
   },
   {
     "clip": "vault-done-sea",
@@ -354,46 +354,46 @@
   {
     "clip": "vault-reveal-address",
     "detected": "fr",
-    "match": 0.974,
+    "match": 0.961,
     "seconds": 3.239,
     "english": 3.631,
     "slot": 4.35,
     "pace": 1.0,
     "text": "Six mondes, une adresse. Elle nous connaît.",
-    "heard": "Si monde une adresse, elle nous connaît."
+    "heard": "Simonde, une adresse. Elle nous connaît."
   },
   {
     "clip": "vault-reveal-fate",
     "detected": "fr",
-    "match": 0.944,
+    "match": 0.981,
     "seconds": 7.471,
     "english": 6.971,
     "slot": 7.15,
     "pace": 0.932,
     "text": "Ils n’ont jamais disparu, Nyra. Quand leurs mondes ont péri, ils ont quitté leur corps et sont devenus lumière.",
-    "heard": "Ils n'ont jamais disparu, Nira. Quand leurs mondons périllent, ils ont quitté leur corps et sont devenus lumière."
+    "heard": "Ils n'ont jamais disparu, Nira. Quand leur monde ont péri, ils ont quitté leur corps et sont devenus lumière."
   },
   {
     "clip": "vault-reveal-doors",
     "detected": "fr",
-    "match": 0.957,
+    "match": 0.948,
     "seconds": 6.348,
     "english": 5.289,
     "slot": 5.35,
     "pace": 0.817,
     "text": "Chaque porte que nous avons ouverte était gardée éveillée par l’un d’eux, pour ceux qui viendraient ensuite.",
-    "heard": "Chaque porte que nous avons ouverte était gardée éveillée par nain d'œuf pour ceux qui viendraient ensuite."
+    "heard": "Chaque porte que nous avons ouverte était gardée éveillée par nains d'œufs, pour ceux qui viendraient ensuite."
   },
   {
     "clip": "vault-reveal-next",
     "detected": "fr",
-    "match": 0.987,
-    "seconds": 5.116,
+    "match": 1.0,
+    "seconds": 3.57,
     "english": 4.989,
     "slot": 5.35,
     "pace": 1.0,
     "text": "Et une adresse qu’ils n’ont jamais atteinte. Ils l’ont laissée ouverte pour nous.",
-    "heard": "et une adresse qu'ils n'ont jamais attente. Ils l'ont laissé ouverte pour nous."
+    "heard": "et une adresse qu'ils n'ont jamais atteinte. Ils l'ont laissée ouverte pour nous."
   },
   {
     "clip": "vault-crossing",
@@ -404,6 +404,6 @@
     "slot": 1.94,
     "pace": 1.0,
     "text": "Ensemble, cette fois.",
-    "heard": "ensemble cette fois."
+    "heard": "Ensemble, cette fois."
   }
 ]

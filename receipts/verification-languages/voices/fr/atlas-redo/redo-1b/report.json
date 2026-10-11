@@ -1,0 +1,12 @@
+{
+  "seconds": 120.619,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Error executing tool prompt_project_agent: ACCESS_EXPIRED: Workspace access has expired (HTTP 402)"
+      }
+    ],
+    "isError": true
+  }
+}

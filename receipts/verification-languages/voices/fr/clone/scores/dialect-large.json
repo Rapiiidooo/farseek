@@ -1,0 +1,587 @@
+{
+  "model": "tiantiaf/voxlect-french-dialect-whisper-large-v3",
+  "labels": [
+    "Africa",
+    "France",
+    "Canada",
+    "Swiss/Belgium/German"
+  ],
+  "results": [
+    {
+      "file": "outputs/voice-l10n/clone/fr/castle-2-t1.wav",
+      "seconds": 5.96,
+      "Africa": 0.0083,
+      "France": 0.9835,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0082
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/castle-2-t2.wav",
+      "seconds": 4.92,
+      "Africa": 0.0001,
+      "France": 0.9988,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0011
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/castle-2-t3.wav",
+      "seconds": 5.08,
+      "Africa": 0.0001,
+      "France": 0.993,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0069
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/castle-2-t4.wav",
+      "seconds": 4.24,
+      "Africa": 0.0,
+      "France": 0.9981,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0019
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/ice-1-t1.wav",
+      "seconds": 4.64,
+      "Africa": 0.0,
+      "France": 0.9061,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0939
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/ice-1-t2.wav",
+      "seconds": 5.32,
+      "Africa": 0.0001,
+      "France": 0.9917,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0083
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/ice-1-t3.wav",
+      "seconds": 4.8,
+      "Africa": 0.001,
+      "France": 0.8462,
+      "Canada": 0.0001,
+      "Swiss/Belgium/German": 0.1527
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/ice-1-t4.wav",
+      "seconds": 4.88,
+      "Africa": 0.0008,
+      "France": 0.8391,
+      "Canada": 0.0065,
+      "Swiss/Belgium/German": 0.1537
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/radio-1-t1.wav",
+      "seconds": 4.08,
+      "Africa": 0.0002,
+      "France": 0.849,
+      "Canada": 0.0391,
+      "Swiss/Belgium/German": 0.1117
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/radio-1-t2.wav",
+      "seconds": 3.56,
+      "Africa": 0.0,
+      "France": 0.2943,
+      "Canada": 0.0015,
+      "Swiss/Belgium/German": 0.7043
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/radio-1-t3.wav",
+      "seconds": 3.88,
+      "Africa": 0.0001,
+      "France": 0.6966,
+      "Canada": 0.0437,
+      "Swiss/Belgium/German": 0.2596
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/radio-1-t4.wav",
+      "seconds": 3.76,
+      "Africa": 0.0025,
+      "France": 0.6039,
+      "Canada": 0.0586,
+      "Swiss/Belgium/German": 0.335
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-1-t1.wav",
+      "seconds": 2.4,
+      "Africa": 0.0064,
+      "France": 0.507,
+      "Canada": 0.3744,
+      "Swiss/Belgium/German": 0.1121
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-1-t10.wav",
+      "seconds": 0.84,
+      "Africa": 0.0,
+      "France": 0.9911,
+      "Canada": 0.0048,
+      "Swiss/Belgium/German": 0.0041
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-1-t11.wav",
+      "seconds": 1.08,
+      "Africa": 0.0136,
+      "France": 0.5819,
+      "Canada": 0.1234,
+      "Swiss/Belgium/German": 0.2811
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-1-t12.wav",
+      "seconds": 0.8,
+      "Africa": 0.0,
+      "France": 0.9986,
+      "Canada": 0.0014,
+      "Swiss/Belgium/German": 0.0
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-1-t2.wav",
+      "seconds": 2.2,
+      "Africa": 0.5789,
+      "France": 0.2767,
+      "Canada": 0.1064,
+      "Swiss/Belgium/German": 0.038
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-1-t3.wav",
+      "seconds": 0.88,
+      "Africa": 0.0,
+      "France": 0.7317,
+      "Canada": 0.0732,
+      "Swiss/Belgium/German": 0.1952
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-1-t4.wav",
+      "seconds": 0.84,
+      "Africa": 0.0,
+      "France": 0.1753,
+      "Canada": 0.0004,
+      "Swiss/Belgium/German": 0.8243
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-1-t5.wav",
+      "seconds": 0.76,
+      "Africa": 0.0,
+      "France": 1.0,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-1-t6.wav",
+      "seconds": 2.24,
+      "Africa": 0.5608,
+      "France": 0.1608,
+      "Canada": 0.2292,
+      "Swiss/Belgium/German": 0.0492
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-1-t7.wav",
+      "seconds": 0.84,
+      "Africa": 0.006,
+      "France": 0.9708,
+      "Canada": 0.0097,
+      "Swiss/Belgium/German": 0.0135
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-1-t8.wav",
+      "seconds": 1.16,
+      "Africa": 0.0,
+      "France": 0.2434,
+      "Canada": 0.7553,
+      "Swiss/Belgium/German": 0.0014
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-1-t9.wav",
+      "seconds": 0.8,
+      "Africa": 0.0,
+      "France": 0.8326,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.1674
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-2-t1.wav",
+      "seconds": 4.0,
+      "Africa": 0.0002,
+      "France": 0.6183,
+      "Canada": 0.0044,
+      "Swiss/Belgium/German": 0.3772
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-2-t2.wav",
+      "seconds": 3.88,
+      "Africa": 0.005,
+      "France": 0.7911,
+      "Canada": 0.0335,
+      "Swiss/Belgium/German": 0.1704
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-2-t3.wav",
+      "seconds": 4.04,
+      "Africa": 0.0001,
+      "France": 0.4465,
+      "Canada": 0.0004,
+      "Swiss/Belgium/German": 0.5531
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/reunion-2-t4.wav",
+      "seconds": 4.08,
+      "Africa": 0.0043,
+      "France": 0.8926,
+      "Canada": 0.0017,
+      "Swiss/Belgium/German": 0.1014
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-arrival-t1.wav",
+      "seconds": 5.4,
+      "Africa": 0.0001,
+      "France": 0.913,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0869
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-arrival-t2.wav",
+      "seconds": 7.48,
+      "Africa": 0.0002,
+      "France": 0.6065,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.3933
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-arrival-t3.wav",
+      "seconds": 6.24,
+      "Africa": 0.0001,
+      "France": 0.8225,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.1774
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-arrival-t4.wav",
+      "seconds": 5.84,
+      "Africa": 0.0001,
+      "France": 0.9039,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.096
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t1.wav",
+      "seconds": 2.64,
+      "Africa": 0.0024,
+      "France": 0.2606,
+      "Canada": 0.0021,
+      "Swiss/Belgium/German": 0.7349
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t2.wav",
+      "seconds": 2.92,
+      "Africa": 0.0,
+      "France": 0.8052,
+      "Canada": 0.0341,
+      "Swiss/Belgium/German": 0.1607
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t3.wav",
+      "seconds": 2.48,
+      "Africa": 0.0403,
+      "France": 0.6405,
+      "Canada": 0.0336,
+      "Swiss/Belgium/German": 0.2857
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t4.wav",
+      "seconds": 2.52,
+      "Africa": 0.0017,
+      "France": 0.6442,
+      "Canada": 0.005,
+      "Swiss/Belgium/German": 0.3491
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t1.wav",
+      "seconds": 5.48,
+      "Africa": 0.0,
+      "France": 0.9853,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0147
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t2.wav",
+      "seconds": 5.48,
+      "Africa": 0.0001,
+      "France": 0.9506,
+      "Canada": 0.0001,
+      "Swiss/Belgium/German": 0.0492
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t3.wav",
+      "seconds": 5.6,
+      "Africa": 0.0,
+      "France": 0.964,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0359
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t4.wav",
+      "seconds": 5.96,
+      "Africa": 0.0,
+      "France": 0.9096,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0904
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t1.wav",
+      "seconds": 4.12,
+      "Africa": 0.0001,
+      "France": 0.9673,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0326
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t2.wav",
+      "seconds": 3.6,
+      "Africa": 0.0002,
+      "France": 0.4448,
+      "Canada": 0.0001,
+      "Swiss/Belgium/German": 0.5549
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t3.wav",
+      "seconds": 3.92,
+      "Africa": 0.0,
+      "France": 0.9886,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0114
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t4.wav",
+      "seconds": 3.96,
+      "Africa": 0.0,
+      "France": 0.9497,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0503
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t1.wav",
+      "seconds": 1.72,
+      "Africa": 0.9999,
+      "France": 0.0001,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t10.wav",
+      "seconds": 1.36,
+      "Africa": 0.0121,
+      "France": 0.7008,
+      "Canada": 0.0028,
+      "Swiss/Belgium/German": 0.2843
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t11.wav",
+      "seconds": 1.44,
+      "Africa": 0.9999,
+      "France": 0.0001,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t12.wav",
+      "seconds": 1.48,
+      "Africa": 0.9427,
+      "France": 0.0319,
+      "Canada": 0.0006,
+      "Swiss/Belgium/German": 0.0248
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t2.wav",
+      "seconds": 1.56,
+      "Africa": 0.6908,
+      "France": 0.1322,
+      "Canada": 0.1554,
+      "Swiss/Belgium/German": 0.0215
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t3.wav",
+      "seconds": 1.44,
+      "Africa": 0.8569,
+      "France": 0.1041,
+      "Canada": 0.0014,
+      "Swiss/Belgium/German": 0.0376
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t4.wav",
+      "seconds": 1.48,
+      "Africa": 0.9223,
+      "France": 0.0302,
+      "Canada": 0.0003,
+      "Swiss/Belgium/German": 0.0471
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t5.wav",
+      "seconds": 1.28,
+      "Africa": 0.5062,
+      "France": 0.2955,
+      "Canada": 0.009,
+      "Swiss/Belgium/German": 0.1892
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t6.wav",
+      "seconds": 2.64,
+      "Africa": 0.9669,
+      "France": 0.0259,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0072
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t7.wav",
+      "seconds": 2.48,
+      "Africa": 0.6809,
+      "France": 0.2206,
+      "Canada": 0.0211,
+      "Swiss/Belgium/German": 0.0774
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t8.wav",
+      "seconds": 1.32,
+      "Africa": 0.0397,
+      "France": 0.922,
+      "Canada": 0.0199,
+      "Swiss/Belgium/German": 0.0184
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t9.wav",
+      "seconds": 1.64,
+      "Africa": 0.4837,
+      "France": 0.4993,
+      "Canada": 0.0041,
+      "Swiss/Belgium/German": 0.0129
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t1.wav",
+      "seconds": 4.16,
+      "Africa": 0.0096,
+      "France": 0.1719,
+      "Canada": 0.8178,
+      "Swiss/Belgium/German": 0.0007
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t10.wav",
+      "seconds": 4.24,
+      "Africa": 0.0003,
+      "France": 0.9721,
+      "Canada": 0.0259,
+      "Swiss/Belgium/German": 0.0017
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t11.wav",
+      "seconds": 4.24,
+      "Africa": 0.0107,
+      "France": 0.7987,
+      "Canada": 0.1847,
+      "Swiss/Belgium/German": 0.0058
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t12.wav",
+      "seconds": 4.48,
+      "Africa": 0.3537,
+      "France": 0.1326,
+      "Canada": 0.5115,
+      "Swiss/Belgium/German": 0.0023
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t2.wav",
+      "seconds": 4.28,
+      "Africa": 0.0002,
+      "France": 0.997,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0028
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t3.wav",
+      "seconds": 4.24,
+      "Africa": 0.0005,
+      "France": 0.0126,
+      "Canada": 0.9869,
+      "Swiss/Belgium/German": 0.0
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t4.wav",
+      "seconds": 4.2,
+      "Africa": 0.0006,
+      "France": 0.8704,
+      "Canada": 0.1275,
+      "Swiss/Belgium/German": 0.0015
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t5.wav",
+      "seconds": 4.28,
+      "Africa": 0.2172,
+      "France": 0.7244,
+      "Canada": 0.0466,
+      "Swiss/Belgium/German": 0.0118
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t6.wav",
+      "seconds": 4.48,
+      "Africa": 0.1045,
+      "France": 0.1218,
+      "Canada": 0.7723,
+      "Swiss/Belgium/German": 0.0015
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t7.wav",
+      "seconds": 4.08,
+      "Africa": 0.0221,
+      "France": 0.9749,
+      "Canada": 0.0016,
+      "Swiss/Belgium/German": 0.0014
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t8.wav",
+      "seconds": 4.0,
+      "Africa": 0.1037,
+      "France": 0.484,
+      "Canada": 0.41,
+      "Swiss/Belgium/German": 0.0023
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t9.wav",
+      "seconds": 4.08,
+      "Africa": 0.0058,
+      "France": 0.9902,
+      "Canada": 0.0001,
+      "Swiss/Belgium/German": 0.0039
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t1.wav",
+      "seconds": 4.12,
+      "Africa": 0.0003,
+      "France": 0.6019,
+      "Canada": 0.2786,
+      "Swiss/Belgium/German": 0.1192
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t2.wav",
+      "seconds": 4.28,
+      "Africa": 0.0012,
+      "France": 0.1963,
+      "Canada": 0.7749,
+      "Swiss/Belgium/German": 0.0276
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t3.wav",
+      "seconds": 4.04,
+      "Africa": 0.002,
+      "France": 0.5733,
+      "Canada": 0.2057,
+      "Swiss/Belgium/German": 0.219
+    },
+    {
+      "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t4.wav",
+      "seconds": 4.6,
+      "Africa": 0.0001,
+      "France": 0.915,
+      "Canada": 0.0098,
+      "Swiss/Belgium/German": 0.0751
+    }
+  ]
+}

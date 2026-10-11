@@ -1,0 +1,2390 @@
+[
+  {
+    "clip": "castle-2",
+    "pick": "outputs/voice-l10n/clone/fr/castle-2-t4.wav",
+    "unspellable": false,
+    "takes": [
+      {
+        "file": "outputs/voice-l10n/clone/fr/castle-2-t4.wav",
+        "canada": 0,
+        "france": 0.9916,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/castle-2-t4.wav",
+          "seconds": 4.24,
+          "Africa": 0.0002,
+          "France": 0.9851,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0147
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/castle-2-t4.wav",
+          "seconds": 4.24,
+          "Africa": 0,
+          "France": 0.9981,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0019
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/castle-2-t4.wav",
+          "clip": "castle-2",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 4.24,
+          "heard": "D'abord l'eau, puis la spirale de racines, puis le croissant au-dessus des arbres."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/castle-2-t2.wav",
+        "canada": 0,
+        "france": 0.9914499999999999,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/castle-2-t2.wav",
+          "seconds": 4.92,
+          "Africa": 0,
+          "France": 0.9841,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0159
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/castle-2-t2.wav",
+          "seconds": 4.92,
+          "Africa": 0.0001,
+          "France": 0.9988,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0011
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/castle-2-t2.wav",
+          "clip": "castle-2",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 4.92,
+          "heard": "D'abord l'eau, puis la spirale de racines, puis le croissant au-dessus des arbres."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/castle-2-t3.wav",
+        "canada": 0,
+        "france": 0.98925,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/castle-2-t3.wav",
+          "seconds": 5.08,
+          "Africa": 0,
+          "France": 0.9855,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0144
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/castle-2-t3.wav",
+          "seconds": 5.08,
+          "Africa": 0.0001,
+          "France": 0.993,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0069
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/castle-2-t3.wav",
+          "clip": "castle-2",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 5.08,
+          "heard": "D'abord l'eau, puis la spirale de racines, puis le croissant au-dessus des arbres."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/castle-2-t1.wav",
+        "canada": 0,
+        "france": 0.97545,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/castle-2-t1.wav",
+          "seconds": 5.96,
+          "Africa": 0,
+          "France": 0.9674,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0326
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/castle-2-t1.wav",
+          "seconds": 5.96,
+          "Africa": 0.0083,
+          "France": 0.9835,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0082
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/castle-2-t1.wav",
+          "clip": "castle-2",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 5.96,
+          "heard": "D'abord l'eau, puis la spirale de racines, puis le croissant au-dessus des arbres."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "clip": "ice-1",
+    "pick": "outputs/voice-l10n/clone/fr/ice-1-t1.wav",
+    "unspellable": false,
+    "takes": [
+      {
+        "file": "outputs/voice-l10n/clone/fr/ice-1-t1.wav",
+        "canada": 0.0001,
+        "france": 0.6205,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/ice-1-t1.wav",
+          "seconds": 4.64,
+          "Africa": 0.0001,
+          "France": 0.3349,
+          "Canada": 0.0001,
+          "Swiss/Belgium/German": 0.665
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/ice-1-t1.wav",
+          "seconds": 4.64,
+          "Africa": 0,
+          "France": 0.9061,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0939
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/ice-1-t1.wav",
+          "clip": "ice-1",
+          "detected": "fr",
+          "match": 0.973,
+          "seconds": 4.64,
+          "heard": "J'ai gravé notre cygne dans la glace, là où la neige ne peut pas l'ensevelir."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/ice-1-t4.wav",
+        "canada": 0.0065,
+        "france": 0.5018,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/ice-1-t4.wav",
+          "seconds": 4.88,
+          "Africa": 0.0001,
+          "France": 0.1645,
+          "Canada": 0.0017,
+          "Swiss/Belgium/German": 0.8337
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/ice-1-t4.wav",
+          "seconds": 4.88,
+          "Africa": 0.0008,
+          "France": 0.8391,
+          "Canada": 0.0065,
+          "Swiss/Belgium/German": 0.1537
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/ice-1-t4.wav",
+          "clip": "ice-1",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 4.88,
+          "heard": "J'ai gravé notre signe dans la glace, là où la neige ne peut pas l'ensevelir."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": false
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/ice-1-t2.wav",
+        "canada": 0.0001,
+        "france": 0.74685,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/ice-1-t2.wav",
+          "seconds": 5.32,
+          "Africa": 0.0001,
+          "France": 0.502,
+          "Canada": 0.0001,
+          "Swiss/Belgium/German": 0.4979
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/ice-1-t2.wav",
+          "seconds": 5.32,
+          "Africa": 0.0001,
+          "France": 0.9917,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0083
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/ice-1-t2.wav",
+          "clip": "ice-1",
+          "detected": "fr",
+          "match": 0.942,
+          "seconds": 5.32,
+          "heard": "J'ai gravé notre signe dans la glace, là où la neige ne peut pas l'ensevelir. Exybille."
+        },
+        "ok": true,
+        "clean": false,
+        "fits": false
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/ice-1-t3.wav",
+        "canada": 0.0016,
+        "france": 0.53675,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/ice-1-t3.wav",
+          "seconds": 4.8,
+          "Africa": 0.0005,
+          "France": 0.2273,
+          "Canada": 0.0016,
+          "Swiss/Belgium/German": 0.7706
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/ice-1-t3.wav",
+          "seconds": 4.8,
+          "Africa": 0.001,
+          "France": 0.8462,
+          "Canada": 0.0001,
+          "Swiss/Belgium/German": 0.1527
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/ice-1-t3.wav",
+          "clip": "ice-1",
+          "detected": "fr",
+          "match": 0.947,
+          "seconds": 4.8,
+          "heard": "J'ai gravé notre signe dans la glace, là où la neige ne peut pas long se relire."
+        },
+        "ok": true,
+        "clean": false,
+        "fits": false
+      }
+    ]
+  },
+  {
+    "clip": "radio-1",
+    "pick": "outputs/voice-l10n/clone/fr/radio-1-t1.wav",
+    "unspellable": false,
+    "takes": [
+      {
+        "file": "outputs/voice-l10n/clone/fr/radio-1-t1.wav",
+        "canada": 0.0391,
+        "france": 0.8746,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/radio-1-t1.wav",
+          "seconds": 4.08,
+          "Africa": 0,
+          "France": 0.9002,
+          "Canada": 0.0005,
+          "Swiss/Belgium/German": 0.0993
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/radio-1-t1.wav",
+          "seconds": 4.08,
+          "Africa": 0.0002,
+          "France": 0.849,
+          "Canada": 0.0391,
+          "Swiss/Belgium/German": 0.1117
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/radio-1-t1.wav",
+          "clip": "radio-1",
+          "detected": "fr",
+          "match": 0.982,
+          "seconds": 4.08,
+          "heard": "Ici Myra. Si vous avez franchi la porte après nous, écoutez."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/radio-1-t3.wav",
+        "canada": 0.0437,
+        "france": 0.7908,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/radio-1-t3.wav",
+          "seconds": 3.88,
+          "Africa": 0,
+          "France": 0.885,
+          "Canada": 0.0063,
+          "Swiss/Belgium/German": 0.1087
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/radio-1-t3.wav",
+          "seconds": 3.88,
+          "Africa": 0.0001,
+          "France": 0.6966,
+          "Canada": 0.0437,
+          "Swiss/Belgium/German": 0.2596
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/radio-1-t3.wav",
+          "clip": "radio-1",
+          "detected": "fr",
+          "match": 0.982,
+          "seconds": 3.88,
+          "heard": "Ici Myra, si vous avez franchi la porte après nous, écoutez."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/radio-1-t4.wav",
+        "canada": 0.0586,
+        "france": 0.67755,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/radio-1-t4.wav",
+          "seconds": 3.76,
+          "Africa": 0.0001,
+          "France": 0.7512,
+          "Canada": 0.0048,
+          "Swiss/Belgium/German": 0.2439
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/radio-1-t4.wav",
+          "seconds": 3.76,
+          "Africa": 0.0025,
+          "France": 0.6039,
+          "Canada": 0.0586,
+          "Swiss/Belgium/German": 0.335
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/radio-1-t4.wav",
+          "clip": "radio-1",
+          "detected": "fr",
+          "match": 0.982,
+          "seconds": 3.76,
+          "heard": "Ici Myra. Si vous avez franchi la porte après nous, écoutez."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/radio-1-t2.wav",
+        "canada": 0.0015,
+        "france": 0.60225,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/radio-1-t2.wav",
+          "seconds": 3.56,
+          "Africa": 0,
+          "France": 0.9102,
+          "Canada": 0.0002,
+          "Swiss/Belgium/German": 0.0896
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/radio-1-t2.wav",
+          "seconds": 3.56,
+          "Africa": 0,
+          "France": 0.2943,
+          "Canada": 0.0015,
+          "Swiss/Belgium/German": 0.7043
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/radio-1-t2.wav",
+          "clip": "radio-1",
+          "detected": "fr",
+          "match": 0.948,
+          "seconds": 3.56,
+          "heard": "Ici Myra, si vous allez franchir la porte après nous, écoutez."
+        },
+        "ok": true,
+        "clean": false,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "clip": "reunion-1",
+    "pick": "outputs/voice-l10n/clone/fr/reunion-1-t9.wav",
+    "unspellable": true,
+    "takes": [
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-1-t9.wav",
+        "canada": 0.0057,
+        "france": 0.48595,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t9.wav",
+          "seconds": 0.8,
+          "Africa": 0.0029,
+          "France": 0.1393,
+          "Canada": 0.0057,
+          "Swiss/Belgium/German": 0.8521
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t9.wav",
+          "seconds": 0.8,
+          "Africa": 0,
+          "France": 0.8326,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.1674
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t9.wav",
+          "clip": "reunion-1",
+          "detected": "ru",
+          "match": 0,
+          "seconds": 0.8,
+          "heard": "Ниха."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-1-t5.wav",
+        "canada": 0.0701,
+        "france": 0.7162999999999999,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t5.wav",
+          "seconds": 0.76,
+          "Africa": 0.0118,
+          "France": 0.4326,
+          "Canada": 0.0701,
+          "Swiss/Belgium/German": 0.4854
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t5.wav",
+          "seconds": 0.76,
+          "Africa": 0,
+          "France": 1,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t5.wav",
+          "clip": "reunion-1",
+          "detected": "zh",
+          "match": 0,
+          "seconds": 0.76,
+          "heard": "你好"
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-1-t10.wav",
+        "canada": 0.0905,
+        "france": 0.5509,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t10.wav",
+          "seconds": 0.84,
+          "Africa": 0.0063,
+          "France": 0.1107,
+          "Canada": 0.0905,
+          "Swiss/Belgium/German": 0.7925
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t10.wav",
+          "seconds": 0.84,
+          "Africa": 0,
+          "France": 0.9911,
+          "Canada": 0.0048,
+          "Swiss/Belgium/German": 0.0041
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t10.wav",
+          "clip": "reunion-1",
+          "detected": "ru",
+          "match": 0,
+          "seconds": 0.84,
+          "heard": "Ниха."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-1-t12.wav",
+        "canada": 0.1325,
+        "france": 0.62605,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t12.wav",
+          "seconds": 0.8,
+          "Africa": 0.0097,
+          "France": 0.2535,
+          "Canada": 0.1325,
+          "Swiss/Belgium/German": 0.6042
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t12.wav",
+          "seconds": 0.8,
+          "Africa": 0,
+          "France": 0.9986,
+          "Canada": 0.0014,
+          "Swiss/Belgium/German": 0
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t12.wav",
+          "clip": "reunion-1",
+          "detected": "zh",
+          "match": 0,
+          "seconds": 0.8,
+          "heard": "你好"
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-1-t11.wav",
+        "canada": 0.1404,
+        "france": 0.42164999999999997,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t11.wav",
+          "seconds": 1.08,
+          "Africa": 0.001,
+          "France": 0.2614,
+          "Canada": 0.1404,
+          "Swiss/Belgium/German": 0.5972
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t11.wav",
+          "seconds": 1.08,
+          "Africa": 0.0136,
+          "France": 0.5819,
+          "Canada": 0.1234,
+          "Swiss/Belgium/German": 0.2811
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t11.wav",
+          "clip": "reunion-1",
+          "detected": "ru",
+          "match": 0,
+          "seconds": 1.08,
+          "heard": "Ни-ха."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-1-t7.wav",
+        "canada": 0.259,
+        "france": 0.59485,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t7.wav",
+          "seconds": 0.84,
+          "Africa": 0.0098,
+          "France": 0.2189,
+          "Canada": 0.259,
+          "Swiss/Belgium/German": 0.5123
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t7.wav",
+          "seconds": 0.84,
+          "Africa": 0.006,
+          "France": 0.9708,
+          "Canada": 0.0097,
+          "Swiss/Belgium/German": 0.0135
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t7.wav",
+          "clip": "reunion-1",
+          "detected": "ru",
+          "match": 0,
+          "seconds": 0.84,
+          "heard": "НИРА"
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-1-t3.wav",
+        "canada": 0.2875,
+        "france": 0.47775,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t3.wav",
+          "seconds": 0.88,
+          "Africa": 0.0125,
+          "France": 0.2238,
+          "Canada": 0.2875,
+          "Swiss/Belgium/German": 0.4762
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t3.wav",
+          "seconds": 0.88,
+          "Africa": 0,
+          "France": 0.7317,
+          "Canada": 0.0732,
+          "Swiss/Belgium/German": 0.1952
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t3.wav",
+          "clip": "reunion-1",
+          "detected": "ru",
+          "match": 0,
+          "seconds": 0.88,
+          "heard": "Ни-ра."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-1-t2.wav",
+        "canada": 0.3291,
+        "france": 0.2893,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t2.wav",
+          "seconds": 2.2,
+          "Africa": 0.001,
+          "France": 0.3019,
+          "Canada": 0.3291,
+          "Swiss/Belgium/German": 0.3679
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t2.wav",
+          "seconds": 2.2,
+          "Africa": 0.5789,
+          "France": 0.2767,
+          "Canada": 0.1064,
+          "Swiss/Belgium/German": 0.038
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t2.wav",
+          "clip": "reunion-1",
+          "detected": "ru",
+          "match": 0,
+          "seconds": 2.2,
+          "heard": "Ниха."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-1-t4.wav",
+        "canada": 0.4637,
+        "france": 0.2545,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t4.wav",
+          "seconds": 0.84,
+          "Africa": 0.0011,
+          "France": 0.3337,
+          "Canada": 0.4637,
+          "Swiss/Belgium/German": 0.2015
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t4.wav",
+          "seconds": 0.84,
+          "Africa": 0,
+          "France": 0.1753,
+          "Canada": 0.0004,
+          "Swiss/Belgium/German": 0.8243
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t4.wav",
+          "clip": "reunion-1",
+          "detected": "en",
+          "match": 0.4,
+          "seconds": 0.84,
+          "heard": "Ni hao."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-1-t1.wav",
+        "canada": 0.4774,
+        "france": 0.34795,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t1.wav",
+          "seconds": 2.4,
+          "Africa": 0.2553,
+          "France": 0.1889,
+          "Canada": 0.4774,
+          "Swiss/Belgium/German": 0.0784
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t1.wav",
+          "seconds": 2.4,
+          "Africa": 0.0064,
+          "France": 0.507,
+          "Canada": 0.3744,
+          "Swiss/Belgium/German": 0.1121
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t1.wav",
+          "clip": "reunion-1",
+          "detected": "en",
+          "match": 0.4,
+          "seconds": 2.4,
+          "heard": "Ni hao."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-1-t6.wav",
+        "canada": 0.5766,
+        "france": 0.18080000000000002,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t6.wav",
+          "seconds": 2.24,
+          "Africa": 0.0057,
+          "France": 0.2008,
+          "Canada": 0.5766,
+          "Swiss/Belgium/German": 0.2169
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t6.wav",
+          "seconds": 2.24,
+          "Africa": 0.5608,
+          "France": 0.1608,
+          "Canada": 0.2292,
+          "Swiss/Belgium/German": 0.0492
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t6.wav",
+          "clip": "reunion-1",
+          "detected": "ru",
+          "match": 0,
+          "seconds": 2.24,
+          "heard": "Ни-ха!"
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-1-t8.wav",
+        "canada": 0.8591,
+        "france": 0.14145,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t8.wav",
+          "seconds": 1.16,
+          "Africa": 0.0044,
+          "France": 0.0395,
+          "Canada": 0.8591,
+          "Swiss/Belgium/German": 0.0971
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t8.wav",
+          "seconds": 1.16,
+          "Africa": 0,
+          "France": 0.2434,
+          "Canada": 0.7553,
+          "Swiss/Belgium/German": 0.0014
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-1-t8.wav",
+          "clip": "reunion-1",
+          "detected": "ru",
+          "match": 0,
+          "seconds": 1.16,
+          "heard": "Нера."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "clip": "reunion-2",
+    "pick": "outputs/voice-l10n/clone/fr/reunion-2-t4.wav",
+    "unspellable": false,
+    "takes": [
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-2-t4.wav",
+        "canada": 0.0017,
+        "france": 0.9273499999999999,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-2-t4.wav",
+          "seconds": 4.08,
+          "Africa": 0,
+          "France": 0.9621,
+          "Canada": 0.0015,
+          "Swiss/Belgium/German": 0.0364
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-2-t4.wav",
+          "seconds": 4.08,
+          "Africa": 0.0043,
+          "France": 0.8926,
+          "Canada": 0.0017,
+          "Swiss/Belgium/German": 0.1014
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-2-t4.wav",
+          "clip": "reunion-2",
+          "detected": "fr",
+          "match": 0.986,
+          "seconds": 4.08,
+          "heard": "Je savais que tu suivrais la lumière, je l'ai gardé allumé à chaque porte."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-2-t3.wav",
+        "canada": 0.0007,
+        "france": 0.6213500000000001,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-2-t3.wav",
+          "seconds": 4.04,
+          "Africa": 0,
+          "France": 0.7962,
+          "Canada": 0.0007,
+          "Swiss/Belgium/German": 0.2031
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-2-t3.wav",
+          "seconds": 4.04,
+          "Africa": 0.0001,
+          "France": 0.4465,
+          "Canada": 0.0004,
+          "Swiss/Belgium/German": 0.5531
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-2-t3.wav",
+          "clip": "reunion-2",
+          "detected": "fr",
+          "match": 0.986,
+          "seconds": 4.04,
+          "heard": "Je savais que tu suivrais la lumière. Je l'ai gardé allumé à chaque porte."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-2-t1.wav",
+        "canada": 0.0044,
+        "france": 0.5655,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-2-t1.wav",
+          "seconds": 4,
+          "Africa": 0,
+          "France": 0.5127,
+          "Canada": 0.0002,
+          "Swiss/Belgium/German": 0.4872
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-2-t1.wav",
+          "seconds": 4,
+          "Africa": 0.0002,
+          "France": 0.6183,
+          "Canada": 0.0044,
+          "Swiss/Belgium/German": 0.3772
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-2-t1.wav",
+          "clip": "reunion-2",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 4,
+          "heard": "Je savais que tu suivrais la lumière. Je l'ai gardée allumée à chaque porte."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/reunion-2-t2.wav",
+        "canada": 0.0335,
+        "france": 0.77485,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-2-t2.wav",
+          "seconds": 3.88,
+          "Africa": 0.0001,
+          "France": 0.7586,
+          "Canada": 0.004,
+          "Swiss/Belgium/German": 0.2373
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-2-t2.wav",
+          "seconds": 3.88,
+          "Africa": 0.005,
+          "France": 0.7911,
+          "Canada": 0.0335,
+          "Swiss/Belgium/German": 0.1704
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/reunion-2-t2.wav",
+          "clip": "reunion-2",
+          "detected": "fr",
+          "match": 0.925,
+          "seconds": 3.88,
+          "heard": "Je savais que tu suivrais la lumière. Je les gardais allumés à chaque porte."
+        },
+        "ok": true,
+        "clean": false,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "clip": "vault-arrival",
+    "pick": "outputs/voice-l10n/clone/fr/vault-arrival-t1.wav",
+    "unspellable": false,
+    "takes": [
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-arrival-t1.wav",
+        "canada": 0.0008,
+        "france": 0.5899,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-arrival-t1.wav",
+          "seconds": 5.4,
+          "Africa": 0,
+          "France": 0.2668,
+          "Canada": 0.0008,
+          "Swiss/Belgium/German": 0.7324
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-arrival-t1.wav",
+          "seconds": 5.4,
+          "Africa": 0.0001,
+          "France": 0.913,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0869
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-arrival-t1.wav",
+          "clip": "vault-arrival",
+          "detected": "fr",
+          "match": 0.968,
+          "seconds": 5.4,
+          "heard": "Ici le R tient encore Nira, tu peux marcher, je ne suis que lumière pour l'instant, alors suis-moi."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-arrival-t3.wav",
+        "canada": 0.0044,
+        "france": 0.5801000000000001,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-arrival-t3.wav",
+          "seconds": 6.24,
+          "Africa": 0,
+          "France": 0.3377,
+          "Canada": 0.0044,
+          "Swiss/Belgium/German": 0.6579
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-arrival-t3.wav",
+          "seconds": 6.24,
+          "Africa": 0.0001,
+          "France": 0.8225,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.1774
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-arrival-t3.wav",
+          "clip": "vault-arrival",
+          "detected": "fr",
+          "match": 0.959,
+          "seconds": 6.24,
+          "heard": "Ici, l'heure retient encore, Nira, tu peux marcher, je ne suis que lumière pour l'instant, alors suis-moi."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-arrival-t4.wav",
+        "canada": 0.0205,
+        "france": 0.49060000000000004,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-arrival-t4.wav",
+          "seconds": 5.84,
+          "Africa": 0,
+          "France": 0.0773,
+          "Canada": 0.0205,
+          "Swiss/Belgium/German": 0.9022
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-arrival-t4.wav",
+          "seconds": 5.84,
+          "Africa": 0.0001,
+          "France": 0.9039,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.096
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-arrival-t4.wav",
+          "clip": "vault-arrival",
+          "detected": "fr",
+          "match": 0.959,
+          "seconds": 5.84,
+          "heard": "Ici, l'heure retient encore, Nira, tu peux marcher, je ne suis que lumière pour l'instant, alors suis-moi."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-arrival-t2.wav",
+        "canada": 0.0035,
+        "france": 0.4142,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-arrival-t2.wav",
+          "seconds": 7.48,
+          "Africa": 0,
+          "France": 0.2219,
+          "Canada": 0.0035,
+          "Swiss/Belgium/German": 0.7746
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-arrival-t2.wav",
+          "seconds": 7.48,
+          "Africa": 0.0002,
+          "France": 0.6065,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.3933
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-arrival-t2.wav",
+          "clip": "vault-arrival",
+          "detected": "fr",
+          "match": 0.959,
+          "seconds": 7.48,
+          "heard": "Ici, l'heure retient encore, Nira, tu peux marcher, je ne suis que lumière pour l'instant, alors suis-moi."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": false
+      }
+    ]
+  },
+  {
+    "clip": "vault-bank-forest",
+    "pick": "outputs/voice-l10n/clone/fr/vault-bank-forest-t2.wav",
+    "unspellable": false,
+    "takes": [
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t2.wav",
+        "canada": 0.0341,
+        "france": 0.73515,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t2.wav",
+          "seconds": 2.92,
+          "Africa": 0,
+          "France": 0.6651,
+          "Canada": 0.0246,
+          "Swiss/Belgium/German": 0.3103
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t2.wav",
+          "seconds": 2.92,
+          "Africa": 0,
+          "France": 0.8052,
+          "Canada": 0.0341,
+          "Swiss/Belgium/German": 0.1607
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t2.wav",
+          "clip": "vault-bank-forest",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 2.92,
+          "heard": "Ce lierre te portera. Allez, grimpe !"
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t4.wav",
+        "canada": 0.0602,
+        "france": 0.7494000000000001,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t4.wav",
+          "seconds": 2.52,
+          "Africa": 0,
+          "France": 0.8546,
+          "Canada": 0.0602,
+          "Swiss/Belgium/German": 0.0852
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t4.wav",
+          "seconds": 2.52,
+          "Africa": 0.0017,
+          "France": 0.6442,
+          "Canada": 0.005,
+          "Swiss/Belgium/German": 0.3491
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t4.wav",
+          "clip": "vault-bank-forest",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 2.52,
+          "heard": "Ce lierre te portera. Allez, grimpe !"
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t3.wav",
+        "canada": 0.0336,
+        "france": 0.7531,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t3.wav",
+          "seconds": 2.48,
+          "Africa": 0,
+          "France": 0.8657,
+          "Canada": 0.012,
+          "Swiss/Belgium/German": 0.1224
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t3.wav",
+          "seconds": 2.48,
+          "Africa": 0.0403,
+          "France": 0.6405,
+          "Canada": 0.0336,
+          "Swiss/Belgium/German": 0.2857
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t3.wav",
+          "clip": "vault-bank-forest",
+          "detected": "fr",
+          "match": 0.875,
+          "seconds": 2.48,
+          "heard": "Celui-là te portera. Allez, grimpe !"
+        },
+        "ok": true,
+        "clean": false,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t1.wav",
+        "canada": 0.0021,
+        "france": 0.57935,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t1.wav",
+          "seconds": 2.64,
+          "Africa": 0.0001,
+          "France": 0.8981,
+          "Canada": 0.001,
+          "Swiss/Belgium/German": 0.1008
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t1.wav",
+          "seconds": 2.64,
+          "Africa": 0.0024,
+          "France": 0.2606,
+          "Canada": 0.0021,
+          "Swiss/Belgium/German": 0.7349
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bank-forest-t1.wav",
+          "clip": "vault-bank-forest",
+          "detected": "fr",
+          "match": 0.862,
+          "seconds": 2.64,
+          "heard": "Soliaire te portera. Allez, grimpe !"
+        },
+        "ok": true,
+        "clean": false,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "clip": "vault-bay-court",
+    "pick": "outputs/voice-l10n/clone/fr/vault-bay-court-t1.wav",
+    "unspellable": false,
+    "takes": [
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t1.wav",
+        "canada": 0,
+        "france": 0.9722,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t1.wav",
+          "seconds": 5.48,
+          "Africa": 0,
+          "France": 0.9591,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0409
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t1.wav",
+          "seconds": 5.48,
+          "Africa": 0,
+          "France": 0.9853,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0147
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t1.wav",
+          "clip": "vault-bay-court",
+          "detected": "fr",
+          "match": 0.995,
+          "seconds": 5.48,
+          "heard": "La lumière des étoiles part une fente, comme le soleil dans la cour, les miroirs tournent encore."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t3.wav",
+        "canada": 0.0002,
+        "france": 0.9696,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t3.wav",
+          "seconds": 5.6,
+          "Africa": 0,
+          "France": 0.9752,
+          "Canada": 0.0002,
+          "Swiss/Belgium/German": 0.0246
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t3.wav",
+          "seconds": 5.6,
+          "Africa": 0,
+          "France": 0.964,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0359
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t3.wav",
+          "clip": "vault-bay-court",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 5.6,
+          "heard": "La lumière des étoiles par une fente, comme le soleil dans la cour. Les miroirs tournent encore."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t2.wav",
+        "canada": 0.0002,
+        "france": 0.96085,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t2.wav",
+          "seconds": 5.48,
+          "Africa": 0,
+          "France": 0.9711,
+          "Canada": 0.0002,
+          "Swiss/Belgium/German": 0.0288
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t2.wav",
+          "seconds": 5.48,
+          "Africa": 0.0001,
+          "France": 0.9506,
+          "Canada": 0.0001,
+          "Swiss/Belgium/German": 0.0492
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t2.wav",
+          "clip": "vault-bay-court",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 5.48,
+          "heard": "La lumière des étoiles par une fente, comme le soleil dans la cour, les miroirs tournent encore."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t4.wav",
+        "canada": 0,
+        "france": 0.9082,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t4.wav",
+          "seconds": 5.96,
+          "Africa": 0,
+          "France": 0.9068,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0932
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t4.wav",
+          "seconds": 5.96,
+          "Africa": 0,
+          "France": 0.9096,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0904
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-bay-court-t4.wav",
+          "clip": "vault-bay-court",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 5.96,
+          "heard": "La lumière des étoiles par une fente, comme le soleil dans la cour, les miroirs tournent encore."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "clip": "vault-done-checkpoint",
+    "pick": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t3.wav",
+    "unspellable": false,
+    "takes": [
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t3.wav",
+        "canada": 0.002,
+        "france": 0.97475,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t3.wav",
+          "seconds": 3.92,
+          "Africa": 0,
+          "France": 0.9609,
+          "Canada": 0.002,
+          "Swiss/Belgium/German": 0.037
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t3.wav",
+          "seconds": 3.92,
+          "Africa": 0,
+          "France": 0.9886,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0114
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t3.wav",
+          "clip": "vault-done-checkpoint",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 3.92,
+          "heard": "2. Il s'est incliné devant toi. Je crois que c'était une approbation."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t1.wav",
+        "canada": 0.0003,
+        "france": 0.9565,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t1.wav",
+          "seconds": 4.12,
+          "Africa": 0,
+          "France": 0.9457,
+          "Canada": 0.0003,
+          "Swiss/Belgium/German": 0.054
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t1.wav",
+          "seconds": 4.12,
+          "Africa": 0.0001,
+          "France": 0.9673,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0326
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t1.wav",
+          "clip": "vault-done-checkpoint",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 4.12,
+          "heard": "2. Il s'est incliné devant toi. Je crois que c'était une approbation."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t4.wav",
+        "canada": 0,
+        "france": 0.85535,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t4.wav",
+          "seconds": 3.96,
+          "Africa": 0,
+          "France": 0.761,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.2389
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t4.wav",
+          "seconds": 3.96,
+          "Africa": 0,
+          "France": 0.9497,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0503
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t4.wav",
+          "clip": "vault-done-checkpoint",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 3.96,
+          "heard": "2. Il s'est incliné devant toi. Je crois que c'était une approbation."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t2.wav",
+        "canada": 0.0013,
+        "france": 0.5991,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t2.wav",
+          "seconds": 3.6,
+          "Africa": 0,
+          "France": 0.7534,
+          "Canada": 0.0013,
+          "Swiss/Belgium/German": 0.2453
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t2.wav",
+          "seconds": 3.6,
+          "Africa": 0.0002,
+          "France": 0.4448,
+          "Canada": 0.0001,
+          "Swiss/Belgium/German": 0.5549
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-checkpoint-t2.wav",
+          "clip": "vault-done-checkpoint",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 3.6,
+          "heard": "2. Il s'est incliné devant toi. Je crois que c'était une approbation."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "clip": "vault-done-forest",
+    "pick": "outputs/voice-l10n/clone/fr/vault-done-forest-t8.wav",
+    "unspellable": false,
+    "takes": [
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t8.wav",
+        "canada": 0.0199,
+        "france": 0.50425,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t8.wav",
+          "seconds": 1.32,
+          "Africa": 0.0007,
+          "France": 0.0865,
+          "Canada": 0.0055,
+          "Swiss/Belgium/German": 0.9073
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t8.wav",
+          "seconds": 1.32,
+          "Africa": 0.0397,
+          "France": 0.922,
+          "Canada": 0.0199,
+          "Swiss/Belgium/German": 0.0184
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t8.wav",
+          "clip": "vault-done-forest",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 1.32,
+          "heard": "5. Plus qu'un."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t4.wav",
+        "canada": 0.0105,
+        "france": 0.07715,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t4.wav",
+          "seconds": 1.48,
+          "Africa": 0.0001,
+          "France": 0.1241,
+          "Canada": 0.0105,
+          "Swiss/Belgium/German": 0.8653
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t4.wav",
+          "seconds": 1.48,
+          "Africa": 0.9223,
+          "France": 0.0302,
+          "Canada": 0.0003,
+          "Swiss/Belgium/German": 0.0471
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t4.wav",
+          "clip": "vault-done-forest",
+          "detected": "fr",
+          "match": 0.923,
+          "seconds": 1.48,
+          "heard": "5 plus 1"
+        },
+        "ok": true,
+        "clean": false,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t6.wav",
+        "canada": 0.1556,
+        "france": 0.24939999999999998,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t6.wav",
+          "seconds": 2.64,
+          "Africa": 0,
+          "France": 0.4729,
+          "Canada": 0.1556,
+          "Swiss/Belgium/German": 0.3714
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t6.wav",
+          "seconds": 2.64,
+          "Africa": 0.9669,
+          "France": 0.0259,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0072
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t6.wav",
+          "clip": "vault-done-forest",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 2.64,
+          "heard": "Cinq, plus qu'un."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t11.wav",
+        "canada": 0.1738,
+        "france": 0.19319999999999998,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t11.wav",
+          "seconds": 1.44,
+          "Africa": 0.0097,
+          "France": 0.3863,
+          "Canada": 0.1738,
+          "Swiss/Belgium/German": 0.4302
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t11.wav",
+          "seconds": 1.44,
+          "Africa": 0.9999,
+          "France": 0.0001,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t11.wav",
+          "clip": "vault-done-forest",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 1.44,
+          "heard": "Cinq plus qu'un."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t2.wav",
+        "canada": 0.2583,
+        "france": 0.14535,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t2.wav",
+          "seconds": 1.56,
+          "Africa": 0.0054,
+          "France": 0.1585,
+          "Canada": 0.2583,
+          "Swiss/Belgium/German": 0.5778
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t2.wav",
+          "seconds": 1.56,
+          "Africa": 0.6908,
+          "France": 0.1322,
+          "Canada": 0.1554,
+          "Swiss/Belgium/German": 0.0215
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t2.wav",
+          "clip": "vault-done-forest",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 1.56,
+          "heard": "Cinq plus qu'un."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t9.wav",
+        "canada": 0.2645,
+        "france": 0.4507,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t9.wav",
+          "seconds": 1.64,
+          "Africa": 0.0021,
+          "France": 0.4021,
+          "Canada": 0.2645,
+          "Swiss/Belgium/German": 0.3313
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t9.wav",
+          "seconds": 1.64,
+          "Africa": 0.4837,
+          "France": 0.4993,
+          "Canada": 0.0041,
+          "Swiss/Belgium/German": 0.0129
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t9.wav",
+          "clip": "vault-done-forest",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 1.64,
+          "heard": "Cinq, plus qu'un."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t7.wav",
+        "canada": 0.4094,
+        "france": 0.16835,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t7.wav",
+          "seconds": 2.48,
+          "Africa": 0.0076,
+          "France": 0.1161,
+          "Canada": 0.4094,
+          "Swiss/Belgium/German": 0.4669
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t7.wav",
+          "seconds": 2.48,
+          "Africa": 0.6809,
+          "France": 0.2206,
+          "Canada": 0.0211,
+          "Swiss/Belgium/German": 0.0774
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t7.wav",
+          "clip": "vault-done-forest",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 2.48,
+          "heard": "Cinq plus qu'un."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t12.wav",
+        "canada": 0.9511,
+        "france": 0.028949999999999997,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t12.wav",
+          "seconds": 1.48,
+          "Africa": 0.0062,
+          "France": 0.026,
+          "Canada": 0.9511,
+          "Swiss/Belgium/German": 0.0168
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t12.wav",
+          "seconds": 1.48,
+          "Africa": 0.9427,
+          "France": 0.0319,
+          "Canada": 0.0006,
+          "Swiss/Belgium/German": 0.0248
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t12.wav",
+          "clip": "vault-done-forest",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 1.48,
+          "heard": "Cinq plus qu'un."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t10.wav",
+        "canada": 0.0028,
+        "france": 0.37295,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t10.wav",
+          "seconds": 1.36,
+          "Africa": 0.0103,
+          "France": 0.0451,
+          "Canada": 0.0004,
+          "Swiss/Belgium/German": 0.9443
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t10.wav",
+          "seconds": 1.36,
+          "Africa": 0.0121,
+          "France": 0.7008,
+          "Canada": 0.0028,
+          "Swiss/Belgium/German": 0.2843
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t10.wav",
+          "clip": "vault-done-forest",
+          "detected": "en",
+          "match": 0.923,
+          "seconds": 1.36,
+          "heard": "5 plus 1"
+        },
+        "ok": false,
+        "clean": false,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t3.wav",
+        "canada": 0.0366,
+        "france": 0.1492,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t3.wav",
+          "seconds": 1.44,
+          "Africa": 0.0033,
+          "France": 0.1943,
+          "Canada": 0.0366,
+          "Swiss/Belgium/German": 0.7658
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t3.wav",
+          "seconds": 1.44,
+          "Africa": 0.8569,
+          "France": 0.1041,
+          "Canada": 0.0014,
+          "Swiss/Belgium/German": 0.0376
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t3.wav",
+          "clip": "vault-done-forest",
+          "detected": "fr",
+          "match": 0.714,
+          "seconds": 1.44,
+          "heard": "Cinq, plus tard."
+        },
+        "ok": false,
+        "clean": false,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t5.wav",
+        "canada": 0.2931,
+        "france": 0.42845,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t5.wav",
+          "seconds": 1.28,
+          "Africa": 0.0019,
+          "France": 0.5614,
+          "Canada": 0.2931,
+          "Swiss/Belgium/German": 0.1436
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t5.wav",
+          "seconds": 1.28,
+          "Africa": 0.5062,
+          "France": 0.2955,
+          "Canada": 0.009,
+          "Swiss/Belgium/German": 0.1892
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t5.wav",
+          "clip": "vault-done-forest",
+          "detected": "fr",
+          "match": 0.923,
+          "seconds": 1.28,
+          "heard": "5 plus 1."
+        },
+        "ok": false,
+        "clean": false,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t1.wav",
+        "canada": 0.3905,
+        "france": 0.06294999999999999,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t1.wav",
+          "seconds": 1.72,
+          "Africa": 0.0145,
+          "France": 0.1258,
+          "Canada": 0.3905,
+          "Swiss/Belgium/German": 0.4692
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t1.wav",
+          "seconds": 1.72,
+          "Africa": 0.9999,
+          "France": 0.0001,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-done-forest-t1.wav",
+          "clip": "vault-done-forest",
+          "detected": "fr",
+          "match": 0.923,
+          "seconds": 1.72,
+          "heard": "5 plus 1"
+        },
+        "ok": false,
+        "clean": false,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "clip": "vault-power-frost",
+    "pick": "outputs/voice-l10n/clone/fr/vault-power-frost-t10.wav",
+    "unspellable": false,
+    "takes": [
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t10.wav",
+        "canada": 0.0259,
+        "france": 0.98075,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t10.wav",
+          "seconds": 4.24,
+          "Africa": 0,
+          "France": 0.9894,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0105
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t10.wav",
+          "seconds": 4.24,
+          "Africa": 0.0003,
+          "France": 0.9721,
+          "Canada": 0.0259,
+          "Swiss/Belgium/German": 0.0017
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t10.wav",
+          "clip": "vault-power-frost",
+          "detected": "fr",
+          "match": 0.98,
+          "seconds": 4.24,
+          "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mes piolets."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t9.wav",
+        "canada": 0.0001,
+        "france": 0.9402999999999999,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t9.wav",
+          "seconds": 4.08,
+          "Africa": 0.0001,
+          "France": 0.8904,
+          "Canada": 0.0001,
+          "Swiss/Belgium/German": 0.1095
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t9.wav",
+          "seconds": 4.08,
+          "Africa": 0.0058,
+          "France": 0.9902,
+          "Canada": 0.0001,
+          "Swiss/Belgium/German": 0.0039
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t9.wav",
+          "clip": "vault-power-frost",
+          "detected": "fr",
+          "match": 0.98,
+          "seconds": 4.08,
+          "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mes piolets."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t5.wav",
+        "canada": 0.0466,
+        "france": 0.8480000000000001,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t5.wav",
+          "seconds": 4.28,
+          "Africa": 0.0001,
+          "France": 0.9716,
+          "Canada": 0.0017,
+          "Swiss/Belgium/German": 0.0267
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t5.wav",
+          "seconds": 4.28,
+          "Africa": 0.2172,
+          "France": 0.7244,
+          "Canada": 0.0466,
+          "Swiss/Belgium/German": 0.0118
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t5.wav",
+          "clip": "vault-power-frost",
+          "detected": "fr",
+          "match": 0.967,
+          "seconds": 4.28,
+          "heard": "Ça a réveillé le saut. Monde sur la glace maintenant, tu as encore mes piolets."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t2.wav",
+        "canada": 0,
+        "france": 0.9857,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t2.wav",
+          "seconds": 4.28,
+          "Africa": 0,
+          "France": 0.9744,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0255
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t2.wav",
+          "seconds": 4.28,
+          "Africa": 0.0002,
+          "France": 0.997,
+          "Canada": 0,
+          "Swiss/Belgium/German": 0.0028
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t2.wav",
+          "clip": "vault-power-frost",
+          "detected": "fr",
+          "match": 0.926,
+          "seconds": 4.28,
+          "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu es encore mépiole."
+        },
+        "ok": true,
+        "clean": false,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t7.wav",
+        "canada": 0.0942,
+        "france": 0.9310499999999999,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t7.wav",
+          "seconds": 4.08,
+          "Africa": 0.0019,
+          "France": 0.8872,
+          "Canada": 0.0942,
+          "Swiss/Belgium/German": 0.0167
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t7.wav",
+          "seconds": 4.08,
+          "Africa": 0.0221,
+          "France": 0.9749,
+          "Canada": 0.0016,
+          "Swiss/Belgium/German": 0.0014
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t7.wav",
+          "clip": "vault-power-frost",
+          "detected": "fr",
+          "match": 0.921,
+          "seconds": 4.08,
+          "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore à m'épioler."
+        },
+        "ok": true,
+        "clean": false,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t4.wav",
+        "canada": 0.1275,
+        "france": 0.8910499999999999,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t4.wav",
+          "seconds": 4.2,
+          "Africa": 0,
+          "France": 0.9117,
+          "Canada": 0.0264,
+          "Swiss/Belgium/German": 0.0619
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t4.wav",
+          "seconds": 4.2,
+          "Africa": 0.0006,
+          "France": 0.8704,
+          "Canada": 0.1275,
+          "Swiss/Belgium/German": 0.0015
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t4.wav",
+          "clip": "vault-power-frost",
+          "detected": "fr",
+          "match": 0.98,
+          "seconds": 4.2,
+          "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mes piolets."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t8.wav",
+        "canada": 0.41,
+        "france": 0.70345,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t8.wav",
+          "seconds": 4,
+          "Africa": 0.0007,
+          "France": 0.9229,
+          "Canada": 0.0356,
+          "Swiss/Belgium/German": 0.0408
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t8.wav",
+          "seconds": 4,
+          "Africa": 0.1037,
+          "France": 0.484,
+          "Canada": 0.41,
+          "Swiss/Belgium/German": 0.0023
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t8.wav",
+          "clip": "vault-power-frost",
+          "detected": "fr",
+          "match": 0.98,
+          "seconds": 4,
+          "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mes piolets."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t6.wav",
+        "canada": 0.7723,
+        "france": 0.51895,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t6.wav",
+          "seconds": 4.48,
+          "Africa": 0.0008,
+          "France": 0.9161,
+          "Canada": 0.0095,
+          "Swiss/Belgium/German": 0.0736
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t6.wav",
+          "seconds": 4.48,
+          "Africa": 0.1045,
+          "France": 0.1218,
+          "Canada": 0.7723,
+          "Swiss/Belgium/German": 0.0015
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t6.wav",
+          "clip": "vault-power-frost",
+          "detected": "fr",
+          "match": 0.98,
+          "seconds": 4.48,
+          "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mes piolets."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t1.wav",
+        "canada": 0.8178,
+        "france": 0.27585000000000004,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t1.wav",
+          "seconds": 4.16,
+          "Africa": 0,
+          "France": 0.3798,
+          "Canada": 0.5788,
+          "Swiss/Belgium/German": 0.0413
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t1.wav",
+          "seconds": 4.16,
+          "Africa": 0.0096,
+          "France": 0.1719,
+          "Canada": 0.8178,
+          "Swiss/Belgium/German": 0.0007
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t1.wav",
+          "clip": "vault-power-frost",
+          "detected": "fr",
+          "match": 0.974,
+          "seconds": 4.16,
+          "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mes pioulets."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t3.wav",
+        "canada": 0.9869,
+        "france": 0.48665,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t3.wav",
+          "seconds": 4.24,
+          "Africa": 0.0006,
+          "France": 0.9607,
+          "Canada": 0.0034,
+          "Swiss/Belgium/German": 0.0353
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t3.wav",
+          "seconds": 4.24,
+          "Africa": 0.0005,
+          "France": 0.0126,
+          "Canada": 0.9869,
+          "Swiss/Belgium/German": 0
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t3.wav",
+          "clip": "vault-power-frost",
+          "detected": "fr",
+          "match": 0.98,
+          "seconds": 4.24,
+          "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mes piolets."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t11.wav",
+        "canada": 0.1847,
+        "france": 0.86425,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t11.wav",
+          "seconds": 4.24,
+          "Africa": 0,
+          "France": 0.9298,
+          "Canada": 0.0188,
+          "Swiss/Belgium/German": 0.0515
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t11.wav",
+          "seconds": 4.24,
+          "Africa": 0.0107,
+          "France": 0.7987,
+          "Canada": 0.1847,
+          "Swiss/Belgium/German": 0.0058
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t11.wav",
+          "clip": "vault-power-frost",
+          "detected": "fr",
+          "match": 0.947,
+          "seconds": 4.24,
+          "heard": "Ça a réveillé le saut, monte sur la glace maintenant, tu as encore mis Pioley."
+        },
+        "ok": false,
+        "clean": false,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t12.wav",
+        "canada": 0.5115,
+        "france": 0.4376,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t12.wav",
+          "seconds": 4.48,
+          "Africa": 0,
+          "France": 0.7426,
+          "Canada": 0.0408,
+          "Swiss/Belgium/German": 0.2166
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t12.wav",
+          "seconds": 4.48,
+          "Africa": 0.3537,
+          "France": 0.1326,
+          "Canada": 0.5115,
+          "Swiss/Belgium/German": 0.0023
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-power-frost-t12.wav",
+          "clip": "vault-power-frost",
+          "detected": "fr",
+          "match": 0.91,
+          "seconds": 4.48,
+          "heard": "C'est à réveiller le saut, monte sur la glace maintenant, tu as encore mes piolets."
+        },
+        "ok": false,
+        "clean": false,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "clip": "vault-reveal-next",
+    "pick": "outputs/voice-l10n/clone/fr/vault-reveal-next-t4.wav",
+    "unspellable": false,
+    "takes": [
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t4.wav",
+        "canada": 0.0098,
+        "france": 0.8343,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t4.wav",
+          "seconds": 4.6,
+          "Africa": 0,
+          "France": 0.7536,
+          "Canada": 0.0027,
+          "Swiss/Belgium/German": 0.2436
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t4.wav",
+          "seconds": 4.6,
+          "Africa": 0.0001,
+          "France": 0.915,
+          "Canada": 0.0098,
+          "Swiss/Belgium/German": 0.0751
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t4.wav",
+          "clip": "vault-reveal-next",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 4.6,
+          "heard": "et une adresse qu'ils n'ont jamais atteinte. Ils l'ont laissée ouverte pour nous."
+        },
+        "ok": true,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t3.wav",
+        "canada": 0.2057,
+        "france": 0.71945,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t3.wav",
+          "seconds": 4.04,
+          "Africa": 0.0001,
+          "France": 0.8656,
+          "Canada": 0.0022,
+          "Swiss/Belgium/German": 0.1321
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t3.wav",
+          "seconds": 4.04,
+          "Africa": 0.002,
+          "France": 0.5733,
+          "Canada": 0.2057,
+          "Swiss/Belgium/German": 0.219
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t3.wav",
+          "clip": "vault-reveal-next",
+          "detected": "fr",
+          "match": 0.973,
+          "seconds": 4.04,
+          "heard": "Une adresse qu'ils n'ont jamais attente. Ils l'ont laissée ouverte pour nous."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t1.wav",
+        "canada": 0.2786,
+        "france": 0.7506999999999999,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t1.wav",
+          "seconds": 4.12,
+          "Africa": 0.0012,
+          "France": 0.8995,
+          "Canada": 0.0208,
+          "Swiss/Belgium/German": 0.0786
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t1.wav",
+          "seconds": 4.12,
+          "Africa": 0.0003,
+          "France": 0.6019,
+          "Canada": 0.2786,
+          "Swiss/Belgium/German": 0.1192
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t1.wav",
+          "clip": "vault-reveal-next",
+          "detected": "fr",
+          "match": 0.98,
+          "seconds": 4.12,
+          "heard": "Une adresse qu'ils n'ont jamais atteinte. Ils l'ont laissée ouverte pour nous."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      },
+      {
+        "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t2.wav",
+        "canada": 0.7749,
+        "france": 0.57655,
+        "small": {
+          "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t2.wav",
+          "seconds": 4.28,
+          "Africa": 0.0068,
+          "France": 0.9568,
+          "Canada": 0.0012,
+          "Swiss/Belgium/German": 0.0352
+        },
+        "large": {
+          "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t2.wav",
+          "seconds": 4.28,
+          "Africa": 0.0012,
+          "France": 0.1963,
+          "Canada": 0.7749,
+          "Swiss/Belgium/German": 0.0276
+        },
+        "heard": {
+          "file": "outputs/voice-l10n/clone/fr/vault-reveal-next-t2.wav",
+          "clip": "vault-reveal-next",
+          "detected": "fr",
+          "match": 1,
+          "seconds": 4.28,
+          "heard": "et une adresse qu'ils n'ont jamais atteinte. Ils l'ont laissée ouverte pour nous."
+        },
+        "ok": false,
+        "clean": true,
+        "fits": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,307 @@
+{
+  "model": "tiantiaf/voxlect-french-dialect-whisper-small",
+  "labels": [
+    "Africa",
+    "France",
+    "Canada",
+    "Swiss/Belgium/German"
+  ],
+  "results": [
+    {
+      "file": "game/audio/voice/fr/camp-1.mp3",
+      "seconds": 7.97,
+      "Africa": 0.0,
+      "France": 0.2622,
+      "Canada": 0.0005,
+      "Swiss/Belgium/German": 0.7373
+    },
+    {
+      "file": "game/audio/voice/fr/camp-2.mp3",
+      "seconds": 6.27,
+      "Africa": 0.0001,
+      "France": 0.8757,
+      "Canada": 0.0007,
+      "Swiss/Belgium/German": 0.1235
+    },
+    {
+      "file": "game/audio/voice/fr/camp-3.mp3",
+      "seconds": 5.19,
+      "Africa": 0.0,
+      "France": 0.8444,
+      "Canada": 0.0589,
+      "Swiss/Belgium/German": 0.0967
+    },
+    {
+      "file": "game/audio/voice/fr/castle-1.mp3",
+      "seconds": 4.83,
+      "Africa": 0.0004,
+      "France": 0.9162,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0834
+    },
+    {
+      "file": "game/audio/voice/fr/castle-2.mp3",
+      "seconds": 6.47,
+      "Africa": 0.0,
+      "France": 0.0003,
+      "Canada": 0.9996,
+      "Swiss/Belgium/German": 0.0001
+    },
+    {
+      "file": "game/audio/voice/fr/castle-3.mp3",
+      "seconds": 4.83,
+      "Africa": 0.0001,
+      "France": 0.6096,
+      "Canada": 0.0045,
+      "Swiss/Belgium/German": 0.3858
+    },
+    {
+      "file": "game/audio/voice/fr/ice-1.mp3",
+      "seconds": 5.55,
+      "Africa": 0.0001,
+      "France": 0.0103,
+      "Canada": 0.9099,
+      "Swiss/Belgium/German": 0.0798
+    },
+    {
+      "file": "game/audio/voice/fr/ice-2.mp3",
+      "seconds": 5.27,
+      "Africa": 0.0,
+      "France": 0.9582,
+      "Canada": 0.0001,
+      "Swiss/Belgium/German": 0.0417
+    },
+    {
+      "file": "game/audio/voice/fr/radio-1.mp3",
+      "seconds": 4.28,
+      "Africa": 0.0,
+      "France": 0.5987,
+      "Canada": 0.1926,
+      "Swiss/Belgium/German": 0.2087
+    },
+    {
+      "file": "game/audio/voice/fr/radio-2.mp3",
+      "seconds": 6.43,
+      "Africa": 0.0,
+      "France": 0.9759,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0241
+    },
+    {
+      "file": "game/audio/voice/fr/radio-3.mp3",
+      "seconds": 3.97,
+      "Africa": 0.0,
+      "France": 0.4056,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.5944
+    },
+    {
+      "file": "game/audio/voice/fr/radio-4.mp3",
+      "seconds": 5.54,
+      "Africa": 0.0,
+      "France": 0.8249,
+      "Canada": 0.0001,
+      "Swiss/Belgium/German": 0.175
+    },
+    {
+      "file": "game/audio/voice/fr/reunion-1.mp3",
+      "seconds": 1.49,
+      "Africa": 0.0001,
+      "France": 0.0051,
+      "Canada": 0.9941,
+      "Swiss/Belgium/German": 0.0007
+    },
+    {
+      "file": "game/audio/voice/fr/reunion-2.mp3",
+      "seconds": 5.49,
+      "Africa": 0.0,
+      "France": 0.0,
+      "Canada": 1.0,
+      "Swiss/Belgium/German": 0.0
+    },
+    {
+      "file": "game/audio/voice/fr/reunion-3a.mp3",
+      "seconds": 5.15,
+      "Africa": 0.0,
+      "France": 0.9541,
+      "Canada": 0.0005,
+      "Swiss/Belgium/German": 0.0453
+    },
+    {
+      "file": "game/audio/voice/fr/reunion-3b.mp3",
+      "seconds": 4.52,
+      "Africa": 0.0,
+      "France": 0.9891,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.0109
+    },
+    {
+      "file": "game/audio/voice/fr/reunion-4.mp3",
+      "seconds": 2.19,
+      "Africa": 0.0,
+      "France": 0.038,
+      "Canada": 0.0214,
+      "Swiss/Belgium/German": 0.9405
+    },
+    {
+      "file": "game/audio/voice/fr/vault-arrival.mp3",
+      "seconds": 7.47,
+      "Africa": 0.0,
+      "France": 0.0044,
+      "Canada": 0.9786,
+      "Swiss/Belgium/German": 0.017
+    },
+    {
+      "file": "game/audio/voice/fr/vault-bank-forest.mp3",
+      "seconds": 3.39,
+      "Africa": 0.0,
+      "France": 0.0643,
+      "Canada": 0.0068,
+      "Swiss/Belgium/German": 0.9289
+    },
+    {
+      "file": "game/audio/voice/fr/vault-bay-checkpoint.mp3",
+      "seconds": 8.05,
+      "Africa": 0.0,
+      "France": 0.5329,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.467
+    },
+    {
+      "file": "game/audio/voice/fr/vault-bay-court.mp3",
+      "seconds": 7.39,
+      "Africa": 0.0,
+      "France": 0.0005,
+      "Canada": 0.9969,
+      "Swiss/Belgium/German": 0.0025
+    },
+    {
+      "file": "game/audio/voice/fr/vault-bay-forest.mp3",
+      "seconds": 4.91,
+      "Africa": 0.0001,
+      "France": 0.27,
+      "Canada": 0.0007,
+      "Swiss/Belgium/German": 0.7291
+    },
+    {
+      "file": "game/audio/voice/fr/vault-bay-frost.mp3",
+      "seconds": 8.2,
+      "Africa": 0.0,
+      "France": 0.4846,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.5153
+    },
+    {
+      "file": "game/audio/voice/fr/vault-bay-isles.mp3",
+      "seconds": 7.08,
+      "Africa": 0.0,
+      "France": 0.7072,
+      "Canada": 0.0009,
+      "Swiss/Belgium/German": 0.2919
+    },
+    {
+      "file": "game/audio/voice/fr/vault-bay-sea.mp3",
+      "seconds": 6.19,
+      "Africa": 0.0,
+      "France": 0.6051,
+      "Canada": 0.0011,
+      "Swiss/Belgium/German": 0.3937
+    },
+    {
+      "file": "game/audio/voice/fr/vault-crossing.mp3",
+      "seconds": 1.23,
+      "Africa": 0.0001,
+      "France": 0.4602,
+      "Canada": 0.0002,
+      "Swiss/Belgium/German": 0.5395
+    },
+    {
+      "file": "game/audio/voice/fr/vault-done-checkpoint.mp3",
+      "seconds": 6.61,
+      "Africa": 0.0,
+      "France": 0.0003,
+      "Canada": 0.9996,
+      "Swiss/Belgium/German": 0.0001
+    },
+    {
+      "file": "game/audio/voice/fr/vault-done-court.mp3",
+      "seconds": 3.08,
+      "Africa": 0.0,
+      "France": 0.2231,
+      "Canada": 0.0001,
+      "Swiss/Belgium/German": 0.7768
+    },
+    {
+      "file": "game/audio/voice/fr/vault-done-forest.mp3",
+      "seconds": 1.8,
+      "Africa": 0.0089,
+      "France": 0.1055,
+      "Canada": 0.6938,
+      "Swiss/Belgium/German": 0.1918
+    },
+    {
+      "file": "game/audio/voice/fr/vault-done-frost.mp3",
+      "seconds": 2.19,
+      "Africa": 0.0006,
+      "France": 0.0636,
+      "Canada": 0.0393,
+      "Swiss/Belgium/German": 0.8965
+    },
+    {
+      "file": "game/audio/voice/fr/vault-done-isles.mp3",
+      "seconds": 7.08,
+      "Africa": 0.0,
+      "France": 0.0504,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.9496
+    },
+    {
+      "file": "game/audio/voice/fr/vault-done-sea.mp3",
+      "seconds": 4.13,
+      "Africa": 0.0,
+      "France": 0.8051,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.1949
+    },
+    {
+      "file": "game/audio/voice/fr/vault-power-frost.mp3",
+      "seconds": 5.37,
+      "Africa": 0.0053,
+      "France": 0.6315,
+      "Canada": 0.1541,
+      "Swiss/Belgium/German": 0.209
+    },
+    {
+      "file": "game/audio/voice/fr/vault-reveal-address.mp3",
+      "seconds": 3.24,
+      "Africa": 0.0,
+      "France": 0.0072,
+      "Canada": 0.0359,
+      "Swiss/Belgium/German": 0.9569
+    },
+    {
+      "file": "game/audio/voice/fr/vault-reveal-doors.mp3",
+      "seconds": 6.35,
+      "Africa": 0.0,
+      "France": 0.5387,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.4613
+    },
+    {
+      "file": "game/audio/voice/fr/vault-reveal-fate.mp3",
+      "seconds": 7.47,
+      "Africa": 0.0,
+      "France": 0.5436,
+      "Canada": 0.0,
+      "Swiss/Belgium/German": 0.4563
+    },
+    {
+      "file": "game/audio/voice/fr/vault-reveal-next.mp3",
+      "seconds": 5.12,
+      "Africa": 0.0,
+      "France": 0.9081,
+      "Canada": 0.0015,
+      "Swiss/Belgium/German": 0.0904
+    }
+  ]
+}

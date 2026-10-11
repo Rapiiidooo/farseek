@@ -1,0 +1,1163 @@
+{
+  "model": "tiantiaf/voxlect-french-dialect-whisper-small",
+  "labels": [
+    "Africa",
+    "France",
+    "Canada",
+    "Swiss/Belgium/German"
+  ],
+  "results": [
+    {
+      "file": "calib/CA_Amelie_camp-2.aiff",
+      "seconds": 4.57,
+      "Africa": 0.014,
+      "France": 0.9542,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0318
+    },
+    {
+      "file": "calib/CA_Amelie_castle-2.aiff",
+      "seconds": 4.47,
+      "Africa": 0.0109,
+      "France": 0.9833,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0058
+    },
+    {
+      "file": "calib/CA_Amelie_ice-1.aiff",
+      "seconds": 4.06,
+      "Africa": 0.0074,
+      "France": 0.916,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0767
+    },
+    {
+      "file": "calib/CA_Amelie_radio-2.aiff",
+      "seconds": 4.73,
+      "Africa": 0.0013,
+      "France": 0.9683,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0305
+    },
+    {
+      "file": "calib/CA_Amelie_reunion-2.aiff",
+      "seconds": 4.27,
+      "Africa": 0.0015,
+      "France": 0.904,
+      "Canada": 0.0002,
+      "Swiss/Belgium/German": 0.0943
+    },
+    {
+      "file": "calib/CA_Amelie_reunion-3b.aiff",
+      "seconds": 3.82,
+      "Africa": 0.0036,
+      "France": 0.9956,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0008
+    },
+    {
+      "file": "calib/CA_Amelie_vault-arrival.aiff",
+      "seconds": 6.65,
+      "Africa": 0.0078,
+      "France": 0.1859,
+      "Canada": 0.0002,
+      "Swiss/Belgium/German": 0.8062
+    },
+    {
+      "file": "calib/CA_Amelie_vault-reveal-fate.aiff",
+      "seconds": 5.81,
+      "Africa": 0.5646,
+      "France": 0.4067,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0287
+    },
+    {
+      "file": "calib/CA_Eddy_camp-2.aiff",
+      "seconds": 5.12,
+      "Africa": 0.9812,
+      "France": 0.011,
+      "Canada": 0.001,
+      "Swiss/Belgium/German": 0.0068
+    },
+    {
+      "file": "calib/CA_Eddy_castle-2.aiff",
+      "seconds": 4.63,
+      "Africa": 0.1237,
+      "France": 0.0479,
+      "Canada": 0.7961,
+      "Swiss/Belgium/German": 0.0323
+    },
+    {
+      "file": "calib/CA_Eddy_ice-1.aiff",
+      "seconds": 4.28,
+      "Africa": 0.2084,
+      "France": 0.209,
+      "Canada": 0.0009,
+      "Swiss/Belgium/German": 0.5817
+    },
+    {
+      "file": "calib/CA_Eddy_radio-2.aiff",
+      "seconds": 5.02,
+      "Africa": 0.782,
+      "France": 0.0285,
+      "Canada": 0.1356,
+      "Swiss/Belgium/German": 0.0538
+    },
+    {
+      "file": "calib/CA_Eddy_reunion-2.aiff",
+      "seconds": 4.64,
+      "Africa": 0.0857,
+      "France": 0.3063,
+      "Canada": 0.1247,
+      "Swiss/Belgium/German": 0.4833
+    },
+    {
+      "file": "calib/CA_Eddy_reunion-3b.aiff",
+      "seconds": 4.35,
+      "Africa": 0.9545,
+      "France": 0.0326,
+      "Canada": 0.0007,
+      "Swiss/Belgium/German": 0.0122
+    },
+    {
+      "file": "calib/CA_Eddy_vault-arrival.aiff",
+      "seconds": 7.03,
+      "Africa": 0.1646,
+      "France": 0.0381,
+      "Canada": 0.7494,
+      "Swiss/Belgium/German": 0.0478
+    },
+    {
+      "file": "calib/CA_Eddy_vault-reveal-fate.aiff",
+      "seconds": 6.12,
+      "Africa": 0.3356,
+      "France": 0.152,
+      "Canada": 0.0633,
+      "Swiss/Belgium/German": 0.4491
+    },
+    {
+      "file": "calib/CA_Flo_camp-2.aiff",
+      "seconds": 5.12,
+      "Africa": 0.9934,
+      "France": 0.0047,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0018
+    },
+    {
+      "file": "calib/CA_Flo_castle-2.aiff",
+      "seconds": 4.63,
+      "Africa": 0.9913,
+      "France": 0.0033,
+      "Canada": 0.0049,
+      "Swiss/Belgium/German": 0.0005
+    },
+    {
+      "file": "calib/CA_Flo_ice-1.aiff",
+      "seconds": 4.28,
+      "Africa": 0.0805,
+      "France": 0.1238,
+      "Canada": 0.0007,
+      "Swiss/Belgium/German": 0.795
+    },
+    {
+      "file": "calib/CA_Flo_radio-2.aiff",
+      "seconds": 5.02,
+      "Africa": 0.0949,
+      "France": 0.1589,
+      "Canada": 0.0214,
+      "Swiss/Belgium/German": 0.7248
+    },
+    {
+      "file": "calib/CA_Flo_reunion-2.aiff",
+      "seconds": 4.64,
+      "Africa": 0.085,
+      "France": 0.1635,
+      "Canada": 0.0483,
+      "Swiss/Belgium/German": 0.7031
+    },
+    {
+      "file": "calib/CA_Flo_reunion-3b.aiff",
+      "seconds": 4.35,
+      "Africa": 0.6392,
+      "France": 0.1621,
+      "Canada": 0.0003,
+      "Swiss/Belgium/German": 0.1985
+    },
+    {
+      "file": "calib/CA_Flo_vault-arrival.aiff",
+      "seconds": 7.03,
+      "Africa": 0.6171,
+      "France": 0.0326,
+      "Canada": 0.0355,
+      "Swiss/Belgium/German": 0.3149
+    },
+    {
+      "file": "calib/CA_Flo_vault-reveal-fate.aiff",
+      "seconds": 6.12,
+      "Africa": 0.2809,
+      "France": 0.1627,
+      "Canada": 0.004,
+      "Swiss/Belgium/German": 0.5525
+    },
+    {
+      "file": "calib/CA_Grandma_camp-2.aiff",
+      "seconds": 5.12,
+      "Africa": 0.9031,
+      "France": 0.0472,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0497
+    },
+    {
+      "file": "calib/CA_Grandma_castle-2.aiff",
+      "seconds": 4.63,
+      "Africa": 0.8175,
+      "France": 0.049,
+      "Canada": 0.1155,
+      "Swiss/Belgium/German": 0.0179
+    },
+    {
+      "file": "calib/CA_Grandma_ice-1.aiff",
+      "seconds": 4.28,
+      "Africa": 0.1871,
+      "France": 0.1598,
+      "Canada": 0.0025,
+      "Swiss/Belgium/German": 0.6506
+    },
+    {
+      "file": "calib/CA_Grandma_radio-2.aiff",
+      "seconds": 5.02,
+      "Africa": 0.0707,
+      "France": 0.2543,
+      "Canada": 0.2121,
+      "Swiss/Belgium/German": 0.4629
+    },
+    {
+      "file": "calib/CA_Grandma_reunion-2.aiff",
+      "seconds": 4.64,
+      "Africa": 0.3112,
+      "France": 0.4124,
+      "Canada": 0.0376,
+      "Swiss/Belgium/German": 0.2389
+    },
+    {
+      "file": "calib/CA_Grandma_reunion-3b.aiff",
+      "seconds": 4.35,
+      "Africa": 0.9884,
+      "France": 0.0098,
+      "Canada": 0.0002,
+      "Swiss/Belgium/German": 0.0017
+    },
+    {
+      "file": "calib/CA_Grandma_vault-arrival.aiff",
+      "seconds": 7.03,
+      "Africa": 0.0273,
+      "France": 0.0498,
+      "Canada": 0.8988,
+      "Swiss/Belgium/German": 0.024
+    },
+    {
+      "file": "calib/CA_Grandma_vault-reveal-fate.aiff",
+      "seconds": 6.12,
+      "Africa": 0.8741,
+      "France": 0.0392,
+      "Canada": 0.039,
+      "Swiss/Belgium/German": 0.0477
+    },
+    {
+      "file": "calib/CA_Grandpa_camp-2.aiff",
+      "seconds": 5.12,
+      "Africa": 0.8736,
+      "France": 0.0642,
+      "Canada": 0.0065,
+      "Swiss/Belgium/German": 0.0557
+    },
+    {
+      "file": "calib/CA_Grandpa_castle-2.aiff",
+      "seconds": 4.63,
+      "Africa": 0.0317,
+      "France": 0.0183,
+      "Canada": 0.9148,
+      "Swiss/Belgium/German": 0.0353
+    },
+    {
+      "file": "calib/CA_Grandpa_ice-1.aiff",
+      "seconds": 4.28,
+      "Africa": 0.0994,
+      "France": 0.099,
+      "Canada": 0.0068,
+      "Swiss/Belgium/German": 0.7948
+    },
+    {
+      "file": "calib/CA_Grandpa_radio-2.aiff",
+      "seconds": 5.02,
+      "Africa": 0.0429,
+      "France": 0.376,
+      "Canada": 0.0895,
+      "Swiss/Belgium/German": 0.4916
+    },
+    {
+      "file": "calib/CA_Grandpa_reunion-2.aiff",
+      "seconds": 4.64,
+      "Africa": 0.0297,
+      "France": 0.3218,
+      "Canada": 0.1858,
+      "Swiss/Belgium/German": 0.4627
+    },
+    {
+      "file": "calib/CA_Grandpa_reunion-3b.aiff",
+      "seconds": 4.35,
+      "Africa": 0.8824,
+      "France": 0.0743,
+      "Canada": 0.0138,
+      "Swiss/Belgium/German": 0.0294
+    },
+    {
+      "file": "calib/CA_Grandpa_vault-arrival.aiff",
+      "seconds": 7.03,
+      "Africa": 0.0986,
+      "France": 0.1227,
+      "Canada": 0.7111,
+      "Swiss/Belgium/German": 0.0677
+    },
+    {
+      "file": "calib/CA_Grandpa_vault-reveal-fate.aiff",
+      "seconds": 6.12,
+      "Africa": 0.0355,
+      "France": 0.1533,
+      "Canada": 0.5571,
+      "Swiss/Belgium/German": 0.2541
+    },
+    {
+      "file": "calib/CA_Reed_camp-2.aiff",
+      "seconds": 5.12,
+      "Africa": 0.9325,
+      "France": 0.0305,
+      "Canada": 0.002,
+      "Swiss/Belgium/German": 0.0349
+    },
+    {
+      "file": "calib/CA_Reed_castle-2.aiff",
+      "seconds": 4.63,
+      "Africa": 0.0285,
+      "France": 0.0282,
+      "Canada": 0.9217,
+      "Swiss/Belgium/German": 0.0216
+    },
+    {
+      "file": "calib/CA_Reed_ice-1.aiff",
+      "seconds": 4.28,
+      "Africa": 0.2868,
+      "France": 0.1337,
+      "Canada": 0.001,
+      "Swiss/Belgium/German": 0.5784
+    },
+    {
+      "file": "calib/CA_Reed_radio-2.aiff",
+      "seconds": 5.02,
+      "Africa": 0.4809,
+      "France": 0.1103,
+      "Canada": 0.2163,
+      "Swiss/Belgium/German": 0.1924
+    },
+    {
+      "file": "calib/CA_Reed_reunion-2.aiff",
+      "seconds": 4.64,
+      "Africa": 0.0683,
+      "France": 0.3025,
+      "Canada": 0.2232,
+      "Swiss/Belgium/German": 0.4061
+    },
+    {
+      "file": "calib/CA_Reed_reunion-3b.aiff",
+      "seconds": 4.35,
+      "Africa": 0.9584,
+      "France": 0.033,
+      "Canada": 0.0011,
+      "Swiss/Belgium/German": 0.0074
+    },
+    {
+      "file": "calib/CA_Reed_vault-arrival.aiff",
+      "seconds": 7.03,
+      "Africa": 0.1468,
+      "France": 0.0577,
+      "Canada": 0.7443,
+      "Swiss/Belgium/German": 0.0512
+    },
+    {
+      "file": "calib/CA_Reed_vault-reveal-fate.aiff",
+      "seconds": 6.12,
+      "Africa": 0.1359,
+      "France": 0.2303,
+      "Canada": 0.0296,
+      "Swiss/Belgium/German": 0.6042
+    },
+    {
+      "file": "calib/CA_Rocko_camp-2.aiff",
+      "seconds": 5.12,
+      "Africa": 0.1541,
+      "France": 0.3708,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.4751
+    },
+    {
+      "file": "calib/CA_Rocko_castle-2.aiff",
+      "seconds": 4.63,
+      "Africa": 0.0009,
+      "France": 0.4774,
+      "Canada": 0.0316,
+      "Swiss/Belgium/German": 0.4901
+    },
+    {
+      "file": "calib/CA_Rocko_ice-1.aiff",
+      "seconds": 4.28,
+      "Africa": 0.0075,
+      "France": 0.3323,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.6601
+    },
+    {
+      "file": "calib/CA_Rocko_radio-2.aiff",
+      "seconds": 5.02,
+      "Africa": 0.0187,
+      "France": 0.0371,
+      "Canada": 0.0323,
+      "Swiss/Belgium/German": 0.9118
+    },
+    {
+      "file": "calib/CA_Rocko_reunion-2.aiff",
+      "seconds": 4.64,
+      "Africa": 0.0002,
+      "France": 0.1525,
+      "Canada": 0.0002,
+      "Swiss/Belgium/German": 0.8471
+    },
+    {
+      "file": "calib/CA_Rocko_reunion-3b.aiff",
+      "seconds": 4.35,
+      "Africa": 0.4695,
+      "France": 0.1638,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.3666
+    },
+    {
+      "file": "calib/CA_Rocko_vault-arrival.aiff",
+      "seconds": 7.03,
+      "Africa": 0.0006,
+      "France": 0.1482,
+      "Canada": 0.0153,
+      "Swiss/Belgium/German": 0.8359
+    },
+    {
+      "file": "calib/CA_Rocko_vault-reveal-fate.aiff",
+      "seconds": 6.12,
+      "Africa": 0.0009,
+      "France": 0.3385,
+      "Canada": 0.0009,
+      "Swiss/Belgium/German": 0.6597
+    },
+    {
+      "file": "calib/CA_Sandy_camp-2.aiff",
+      "seconds": 5.12,
+      "Africa": 0.697,
+      "France": 0.0688,
+      "Canada": 0.0105,
+      "Swiss/Belgium/German": 0.2237
+    },
+    {
+      "file": "calib/CA_Sandy_castle-2.aiff",
+      "seconds": 4.63,
+      "Africa": 0.0902,
+      "France": 0.024,
+      "Canada": 0.8201,
+      "Swiss/Belgium/German": 0.0656
+    },
+    {
+      "file": "calib/CA_Sandy_ice-1.aiff",
+      "seconds": 4.28,
+      "Africa": 0.3498,
+      "France": 0.1777,
+      "Canada": 0.0035,
+      "Swiss/Belgium/German": 0.469
+    },
+    {
+      "file": "calib/CA_Sandy_radio-2.aiff",
+      "seconds": 5.02,
+      "Africa": 0.0027,
+      "France": 0.1462,
+      "Canada": 0.0263,
+      "Swiss/Belgium/German": 0.8249
+    },
+    {
+      "file": "calib/CA_Sandy_reunion-2.aiff",
+      "seconds": 4.64,
+      "Africa": 0.0662,
+      "France": 0.219,
+      "Canada": 0.5444,
+      "Swiss/Belgium/German": 0.1704
+    },
+    {
+      "file": "calib/CA_Sandy_reunion-3b.aiff",
+      "seconds": 4.35,
+      "Africa": 0.4448,
+      "France": 0.2006,
+      "Canada": 0.0193,
+      "Swiss/Belgium/German": 0.3353
+    },
+    {
+      "file": "calib/CA_Sandy_vault-arrival.aiff",
+      "seconds": 7.03,
+      "Africa": 0.0229,
+      "France": 0.0145,
+      "Canada": 0.9268,
+      "Swiss/Belgium/German": 0.0358
+    },
+    {
+      "file": "calib/CA_Sandy_vault-reveal-fate.aiff",
+      "seconds": 6.12,
+      "Africa": 0.1116,
+      "France": 0.072,
+      "Canada": 0.0721,
+      "Swiss/Belgium/German": 0.7444
+    },
+    {
+      "file": "calib/CA_Shelley_camp-2.aiff",
+      "seconds": 5.12,
+      "Africa": 0.9974,
+      "France": 0.0014,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0012
+    },
+    {
+      "file": "calib/CA_Shelley_castle-2.aiff",
+      "seconds": 4.63,
+      "Africa": 0.9364,
+      "France": 0.0127,
+      "Canada": 0.0492,
+      "Swiss/Belgium/German": 0.0018
+    },
+    {
+      "file": "calib/CA_Shelley_ice-1.aiff",
+      "seconds": 4.28,
+      "Africa": 0.428,
+      "France": 0.1036,
+      "Canada": 0.0023,
+      "Swiss/Belgium/German": 0.4661
+    },
+    {
+      "file": "calib/CA_Shelley_radio-2.aiff",
+      "seconds": 5.02,
+      "Africa": 0.6091,
+      "France": 0.1035,
+      "Canada": 0.0132,
+      "Swiss/Belgium/German": 0.2743
+    },
+    {
+      "file": "calib/CA_Shelley_reunion-2.aiff",
+      "seconds": 4.64,
+      "Africa": 0.1409,
+      "France": 0.3576,
+      "Canada": 0.0212,
+      "Swiss/Belgium/German": 0.4803
+    },
+    {
+      "file": "calib/CA_Shelley_reunion-3b.aiff",
+      "seconds": 4.35,
+      "Africa": 0.9957,
+      "France": 0.0036,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0007
+    },
+    {
+      "file": "calib/CA_Shelley_vault-arrival.aiff",
+      "seconds": 7.03,
+      "Africa": 0.303,
+      "France": 0.0679,
+      "Canada": 0.3336,
+      "Swiss/Belgium/German": 0.2955
+    },
+    {
+      "file": "calib/CA_Shelley_vault-reveal-fate.aiff",
+      "seconds": 6.12,
+      "Africa": 0.573,
+      "France": 0.0912,
+      "Canada": 0.002,
+      "Swiss/Belgium/German": 0.3338
+    },
+    {
+      "file": "calib/FR_Eddy_camp-2.aiff",
+      "seconds": 4.85,
+      "Africa": 0.7711,
+      "France": 0.0575,
+      "Canada": 0.0061,
+      "Swiss/Belgium/German": 0.1653
+    },
+    {
+      "file": "calib/FR_Eddy_castle-2.aiff",
+      "seconds": 4.5,
+      "Africa": 0.7733,
+      "France": 0.1034,
+      "Canada": 0.0047,
+      "Swiss/Belgium/German": 0.1186
+    },
+    {
+      "file": "calib/FR_Eddy_ice-1.aiff",
+      "seconds": 4.31,
+      "Africa": 0.1272,
+      "France": 0.3785,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.4943
+    },
+    {
+      "file": "calib/FR_Eddy_radio-2.aiff",
+      "seconds": 4.96,
+      "Africa": 0.2082,
+      "France": 0.2931,
+      "Canada": 0.0023,
+      "Swiss/Belgium/German": 0.4964
+    },
+    {
+      "file": "calib/FR_Eddy_reunion-2.aiff",
+      "seconds": 4.45,
+      "Africa": 0.053,
+      "France": 0.1948,
+      "Canada": 0.0007,
+      "Swiss/Belgium/German": 0.7514
+    },
+    {
+      "file": "calib/FR_Eddy_reunion-3b.aiff",
+      "seconds": 4.11,
+      "Africa": 0.7645,
+      "France": 0.2244,
+      "Canada": 0.0001,
+      "Swiss/Belgium/German": 0.011
+    },
+    {
+      "file": "calib/FR_Eddy_vault-arrival.aiff",
+      "seconds": 7.16,
+      "Africa": 0.7591,
+      "France": 0.0441,
+      "Canada": 0.0018,
+      "Swiss/Belgium/German": 0.195
+    },
+    {
+      "file": "calib/FR_Eddy_vault-reveal-fate.aiff",
+      "seconds": 6.17,
+      "Africa": 0.5331,
+      "France": 0.2897,
+      "Canada": 0.0009,
+      "Swiss/Belgium/German": 0.1764
+    },
+    {
+      "file": "calib/FR_Flo_camp-2.aiff",
+      "seconds": 4.85,
+      "Africa": 0.9243,
+      "France": 0.0339,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0418
+    },
+    {
+      "file": "calib/FR_Flo_castle-2.aiff",
+      "seconds": 4.5,
+      "Africa": 0.9,
+      "France": 0.043,
+      "Canada": 0.0003,
+      "Swiss/Belgium/German": 0.0567
+    },
+    {
+      "file": "calib/FR_Flo_ice-1.aiff",
+      "seconds": 4.31,
+      "Africa": 0.089,
+      "France": 0.4332,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.4777
+    },
+    {
+      "file": "calib/FR_Flo_radio-2.aiff",
+      "seconds": 4.96,
+      "Africa": 0.2278,
+      "France": 0.3554,
+      "Canada": 0.0012,
+      "Swiss/Belgium/German": 0.4156
+    },
+    {
+      "file": "calib/FR_Flo_reunion-2.aiff",
+      "seconds": 4.45,
+      "Africa": 0.8489,
+      "France": 0.0493,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.1018
+    },
+    {
+      "file": "calib/FR_Flo_reunion-3b.aiff",
+      "seconds": 4.11,
+      "Africa": 0.8637,
+      "France": 0.0773,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0589
+    },
+    {
+      "file": "calib/FR_Flo_vault-arrival.aiff",
+      "seconds": 7.16,
+      "Africa": 0.6343,
+      "France": 0.0291,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.3365
+    },
+    {
+      "file": "calib/FR_Flo_vault-reveal-fate.aiff",
+      "seconds": 6.17,
+      "Africa": 0.6766,
+      "France": 0.2681,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0552
+    },
+    {
+      "file": "calib/FR_Grandma_camp-2.aiff",
+      "seconds": 4.85,
+      "Africa": 0.7794,
+      "France": 0.0901,
+      "Canada": 0.0002,
+      "Swiss/Belgium/German": 0.1303
+    },
+    {
+      "file": "calib/FR_Grandma_castle-2.aiff",
+      "seconds": 4.5,
+      "Africa": 0.8783,
+      "France": 0.0715,
+      "Canada": 0.0001,
+      "Swiss/Belgium/German": 0.0501
+    },
+    {
+      "file": "calib/FR_Grandma_ice-1.aiff",
+      "seconds": 4.31,
+      "Africa": 0.3285,
+      "France": 0.2742,
+      "Canada": 0.0004,
+      "Swiss/Belgium/German": 0.397
+    },
+    {
+      "file": "calib/FR_Grandma_radio-2.aiff",
+      "seconds": 4.96,
+      "Africa": 0.2354,
+      "France": 0.339,
+      "Canada": 0.0016,
+      "Swiss/Belgium/German": 0.424
+    },
+    {
+      "file": "calib/FR_Grandma_reunion-2.aiff",
+      "seconds": 4.45,
+      "Africa": 0.0499,
+      "France": 0.3684,
+      "Canada": 0.0004,
+      "Swiss/Belgium/German": 0.5814
+    },
+    {
+      "file": "calib/FR_Grandma_reunion-3b.aiff",
+      "seconds": 4.11,
+      "Africa": 0.9254,
+      "France": 0.0695,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.005
+    },
+    {
+      "file": "calib/FR_Grandma_vault-arrival.aiff",
+      "seconds": 7.16,
+      "Africa": 0.674,
+      "France": 0.0585,
+      "Canada": 0.0012,
+      "Swiss/Belgium/German": 0.2663
+    },
+    {
+      "file": "calib/FR_Grandma_vault-reveal-fate.aiff",
+      "seconds": 6.17,
+      "Africa": 0.5974,
+      "France": 0.3419,
+      "Canada": 0.0001,
+      "Swiss/Belgium/German": 0.0607
+    },
+    {
+      "file": "calib/FR_Grandpa_camp-2.aiff",
+      "seconds": 4.86,
+      "Africa": 0.2371,
+      "France": 0.1813,
+      "Canada": 0.0104,
+      "Swiss/Belgium/German": 0.5713
+    },
+    {
+      "file": "calib/FR_Grandpa_castle-2.aiff",
+      "seconds": 4.5,
+      "Africa": 0.2673,
+      "France": 0.1099,
+      "Canada": 0.0672,
+      "Swiss/Belgium/German": 0.5557
+    },
+    {
+      "file": "calib/FR_Grandpa_ice-1.aiff",
+      "seconds": 4.31,
+      "Africa": 0.0354,
+      "France": 0.137,
+      "Canada": 0.0001,
+      "Swiss/Belgium/German": 0.8276
+    },
+    {
+      "file": "calib/FR_Grandpa_radio-2.aiff",
+      "seconds": 4.96,
+      "Africa": 0.4709,
+      "France": 0.3113,
+      "Canada": 0.0137,
+      "Swiss/Belgium/German": 0.2042
+    },
+    {
+      "file": "calib/FR_Grandpa_reunion-2.aiff",
+      "seconds": 4.45,
+      "Africa": 0.0038,
+      "France": 0.3106,
+      "Canada": 0.002,
+      "Swiss/Belgium/German": 0.6835
+    },
+    {
+      "file": "calib/FR_Grandpa_reunion-3b.aiff",
+      "seconds": 4.11,
+      "Africa": 0.8493,
+      "France": 0.1473,
+      "Canada": 0.0012,
+      "Swiss/Belgium/German": 0.0023
+    },
+    {
+      "file": "calib/FR_Grandpa_vault-arrival.aiff",
+      "seconds": 7.16,
+      "Africa": 0.2418,
+      "France": 0.1498,
+      "Canada": 0.0119,
+      "Swiss/Belgium/German": 0.5965
+    },
+    {
+      "file": "calib/FR_Grandpa_vault-reveal-fate.aiff",
+      "seconds": 6.17,
+      "Africa": 0.441,
+      "France": 0.4836,
+      "Canada": 0.0008,
+      "Swiss/Belgium/German": 0.0746
+    },
+    {
+      "file": "calib/FR_Jacques_camp-2.aiff",
+      "seconds": 4.85,
+      "Africa": 0.8324,
+      "France": 0.0483,
+      "Canada": 0.0068,
+      "Swiss/Belgium/German": 0.1126
+    },
+    {
+      "file": "calib/FR_Jacques_castle-2.aiff",
+      "seconds": 4.5,
+      "Africa": 0.8327,
+      "France": 0.0739,
+      "Canada": 0.0036,
+      "Swiss/Belgium/German": 0.0898
+    },
+    {
+      "file": "calib/FR_Jacques_ice-1.aiff",
+      "seconds": 4.31,
+      "Africa": 0.112,
+      "France": 0.2969,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.5911
+    },
+    {
+      "file": "calib/FR_Jacques_radio-2.aiff",
+      "seconds": 4.96,
+      "Africa": 0.2676,
+      "France": 0.3085,
+      "Canada": 0.0018,
+      "Swiss/Belgium/German": 0.4221
+    },
+    {
+      "file": "calib/FR_Jacques_reunion-2.aiff",
+      "seconds": 4.45,
+      "Africa": 0.055,
+      "France": 0.207,
+      "Canada": 0.001,
+      "Swiss/Belgium/German": 0.7371
+    },
+    {
+      "file": "calib/FR_Jacques_reunion-3b.aiff",
+      "seconds": 4.11,
+      "Africa": 0.7876,
+      "France": 0.2013,
+      "Canada": 0.0001,
+      "Swiss/Belgium/German": 0.011
+    },
+    {
+      "file": "calib/FR_Jacques_vault-arrival.aiff",
+      "seconds": 7.16,
+      "Africa": 0.6407,
+      "France": 0.0518,
+      "Canada": 0.0041,
+      "Swiss/Belgium/German": 0.3033
+    },
+    {
+      "file": "calib/FR_Jacques_vault-reveal-fate.aiff",
+      "seconds": 6.17,
+      "Africa": 0.684,
+      "France": 0.2048,
+      "Canada": 0.0009,
+      "Swiss/Belgium/German": 0.1103
+    },
+    {
+      "file": "calib/FR_Rocko_camp-2.aiff",
+      "seconds": 4.85,
+      "Africa": 0.0006,
+      "France": 0.1466,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.8527
+    },
+    {
+      "file": "calib/FR_Rocko_castle-2.aiff",
+      "seconds": 4.5,
+      "Africa": 0.0001,
+      "France": 0.0716,
+      "Canada": 0.0005,
+      "Swiss/Belgium/German": 0.9278
+    },
+    {
+      "file": "calib/FR_Rocko_ice-1.aiff",
+      "seconds": 4.31,
+      "Africa": 0.004,
+      "France": 0.3508,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.6451
+    },
+    {
+      "file": "calib/FR_Rocko_radio-2.aiff",
+      "seconds": 4.96,
+      "Africa": 0.0007,
+      "France": 0.4011,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.5982
+    },
+    {
+      "file": "calib/FR_Rocko_reunion-2.aiff",
+      "seconds": 4.45,
+      "Africa": 0,
+      "France": 0.0461,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.9539
+    },
+    {
+      "file": "calib/FR_Rocko_reunion-3b.aiff",
+      "seconds": 4.11,
+      "Africa": 0.001,
+      "France": 0.3517,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.6474
+    },
+    {
+      "file": "calib/FR_Rocko_vault-arrival.aiff",
+      "seconds": 7.16,
+      "Africa": 0.0002,
+      "France": 0.0781,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.9217
+    },
+    {
+      "file": "calib/FR_Rocko_vault-reveal-fate.aiff",
+      "seconds": 6.17,
+      "Africa": 0,
+      "France": 0.5033,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.4967
+    },
+    {
+      "file": "calib/FR_Sandy_camp-2.aiff",
+      "seconds": 4.86,
+      "Africa": 0.015,
+      "France": 0.4319,
+      "Canada": 0.0035,
+      "Swiss/Belgium/German": 0.5496
+    },
+    {
+      "file": "calib/FR_Sandy_castle-2.aiff",
+      "seconds": 4.5,
+      "Africa": 0.6374,
+      "France": 0.0338,
+      "Canada": 0.0018,
+      "Swiss/Belgium/German": 0.327
+    },
+    {
+      "file": "calib/FR_Sandy_ice-1.aiff",
+      "seconds": 4.31,
+      "Africa": 0.0419,
+      "France": 0.5426,
+      "Canada": 0.0001,
+      "Swiss/Belgium/German": 0.4154
+    },
+    {
+      "file": "calib/FR_Sandy_radio-2.aiff",
+      "seconds": 4.96,
+      "Africa": 0.0192,
+      "France": 0.6273,
+      "Canada": 0.0151,
+      "Swiss/Belgium/German": 0.3384
+    },
+    {
+      "file": "calib/FR_Sandy_reunion-2.aiff",
+      "seconds": 4.45,
+      "Africa": 0.0188,
+      "France": 0.138,
+      "Canada": 0.0005,
+      "Swiss/Belgium/German": 0.8427
+    },
+    {
+      "file": "calib/FR_Sandy_reunion-3b.aiff",
+      "seconds": 4.11,
+      "Africa": 0.4483,
+      "France": 0.3408,
+      "Canada": 0.0022,
+      "Swiss/Belgium/German": 0.2087
+    },
+    {
+      "file": "calib/FR_Sandy_vault-arrival.aiff",
+      "seconds": 7.16,
+      "Africa": 0.2445,
+      "France": 0.0566,
+      "Canada": 0.002,
+      "Swiss/Belgium/German": 0.6969
+    },
+    {
+      "file": "calib/FR_Sandy_vault-reveal-fate.aiff",
+      "seconds": 6.17,
+      "Africa": 0.162,
+      "France": 0.231,
+      "Canada": 0.0005,
+      "Swiss/Belgium/German": 0.6065
+    },
+    {
+      "file": "calib/FR_Shelley_camp-2.aiff",
+      "seconds": 4.85,
+      "Africa": 0.9393,
+      "France": 0.0333,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0274
+    },
+    {
+      "file": "calib/FR_Shelley_castle-2.aiff",
+      "seconds": 4.5,
+      "Africa": 0.9487,
+      "France": 0.0297,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0216
+    },
+    {
+      "file": "calib/FR_Shelley_ice-1.aiff",
+      "seconds": 4.31,
+      "Africa": 0.5278,
+      "France": 0.2772,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.195
+    },
+    {
+      "file": "calib/FR_Shelley_radio-2.aiff",
+      "seconds": 4.96,
+      "Africa": 0.2488,
+      "France": 0.3745,
+      "Canada": 0.0012,
+      "Swiss/Belgium/German": 0.3756
+    },
+    {
+      "file": "calib/FR_Shelley_reunion-2.aiff",
+      "seconds": 4.45,
+      "Africa": 0.8913,
+      "France": 0.0325,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0761
+    },
+    {
+      "file": "calib/FR_Shelley_reunion-3b.aiff",
+      "seconds": 4.11,
+      "Africa": 0.9676,
+      "France": 0.0275,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0049
+    },
+    {
+      "file": "calib/FR_Shelley_vault-arrival.aiff",
+      "seconds": 7.16,
+      "Africa": 0.8679,
+      "France": 0.0192,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.1129
+    },
+    {
+      "file": "calib/FR_Shelley_vault-reveal-fate.aiff",
+      "seconds": 6.17,
+      "Africa": 0.8154,
+      "France": 0.1098,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0747
+    },
+    {
+      "file": "calib/FR_Thomas_camp-2.aiff",
+      "seconds": 4.71,
+      "Africa": 0.0013,
+      "France": 0.9879,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0108
+    },
+    {
+      "file": "calib/FR_Thomas_castle-2.aiff",
+      "seconds": 5.29,
+      "Africa": 0.0001,
+      "France": 0.9975,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0024
+    },
+    {
+      "file": "calib/FR_Thomas_ice-1.aiff",
+      "seconds": 4.5,
+      "Africa": 0.0002,
+      "France": 0.9062,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0936
+    },
+    {
+      "file": "calib/FR_Thomas_radio-2.aiff",
+      "seconds": 5.09,
+      "Africa": 0,
+      "France": 0.9843,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0157
+    },
+    {
+      "file": "calib/FR_Thomas_reunion-2.aiff",
+      "seconds": 4.63,
+      "Africa": 0.0001,
+      "France": 0.9288,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0711
+    },
+    {
+      "file": "calib/FR_Thomas_reunion-3b.aiff",
+      "seconds": 4.28,
+      "Africa": 0,
+      "France": 0.9998,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0002
+    },
+    {
+      "file": "calib/FR_Thomas_vault-arrival.aiff",
+      "seconds": 7.09,
+      "Africa": 0.0001,
+      "France": 0.5227,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.4772
+    },
+    {
+      "file": "calib/FR_Thomas_vault-reveal-fate.aiff",
+      "seconds": 6.23,
+      "Africa": 0.0011,
+      "France": 0.9686,
+      "Canada": 0,
+      "Swiss/Belgium/German": 0.0303
+    }
+  ]
+}
