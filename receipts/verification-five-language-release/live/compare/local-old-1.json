@@ -1,0 +1,200 @@
+{
+  "url": "http://localhost:3021/",
+  "errors": [],
+  "samples": [
+    {
+      "t": 0,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 0.252,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 0.561,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 0.826,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 1.078,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 1.338,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 1.589,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 1.93,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 2.19,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 2.442,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 2.693,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 2.982,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 3.234,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 3.555,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 3.807,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 4.058,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 4.309,
+      "mode": "play",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 4.561,
+      "mode": "play",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 4.812,
+      "mode": "play",
+      "loading": true,
+      "text": "An expedition in seven worlds\n        Farseek\n        \n     ",
+      "pos": [
+        19.4,
+        39
+      ]
+    }
+  ],
+  "ready": 2.183,
+  "playAfterClick": 5.064,
+  "movedWithoutSkip": 3.1919491221240435,
+  "movedAfterSkip": 0
+}

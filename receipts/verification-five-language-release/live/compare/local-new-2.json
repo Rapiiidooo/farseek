@@ -1,0 +1,210 @@
+{
+  "url": "http://localhost:3022/",
+  "errors": [],
+  "samples": [
+    {
+      "t": 0,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 0.252,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 0.571,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 0.839,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 1.091,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 1.35,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 1.602,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 1.854,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 2.118,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 2.388,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 2.65,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 3.038,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 3.292,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 3.627,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 3.878,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 4.129,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 4.381,
+      "mode": "play",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 4.633,
+      "mode": "play",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 4.885,
+      "mode": "play",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 5.137,
+      "mode": "play",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    }
+  ],
+  "ready": 2.195,
+  "playAfterClick": 5.394,
+  "movedWithoutSkip": 3.1919457940737885,
+  "movedAfterSkip": 0
+}

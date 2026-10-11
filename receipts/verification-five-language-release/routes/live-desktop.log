@@ -1,0 +1,8 @@
+url        https://farseek.rapidoai.dev/
+ready      12.9 s   (laptop viewport, click)
+held       ArrowUp and KeyW
+moved      0.0 m
+screenshot live/desktop.jpg (resized)
+
+problems:
+  the player moved 0.00 m while a control was held for four seconds

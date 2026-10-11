@@ -1,0 +1,6868 @@
+{
+  "checks": [
+    {
+      "name": "Sea and portal shaders are prepared before the route",
+      "ok": true,
+      "detail": {
+        "load": 631,
+        "start": 631,
+        "arrival": 631
+      }
+    },
+    {
+      "name": "Sea starts buoyant with the disc stowed",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Rise gains genuine altitude",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Pier 1 shelters the swimmer from the current",
+      "ok": true,
+      "detail": {
+        "pos": [
+          4.3207867338135895,
+          -8.576422958996025
+        ],
+        "feet": 30.414653028881702
+      }
+    },
+    {
+      "name": "Pier 2 shelters the swimmer from the current",
+      "ok": true,
+      "detail": {
+        "pos": [
+          6.4795962701679555,
+          -11.513536884255203
+        ],
+        "feet": 30.419274707663764
+      }
+    },
+    {
+      "name": "Pier 3 shelters the swimmer from the current",
+      "ok": true,
+      "detail": {
+        "pos": [
+          8.891539729891356,
+          -13.671814432527261
+        ],
+        "feet": 30.289652277566532
+      }
+    },
+    {
+      "name": "The current is crossed with breath to spare",
+      "ok": true,
+      "detail": {
+        "breath": 35.56700000000051
+      }
+    },
+    {
+      "name": "Dive reaches a lower beacon while swimming",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Shield restores grounded traversal and the disc",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Beacon stairs return to the causeway",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Disc charged through entry crystal",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "First pressure seal lights bridge",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Crossed bridge secures return route",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Second seal releases archive",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "A fallen block shelters the swimmer through a surge",
+      "ok": true,
+      "detail": {
+        "pos": [
+          -1.0118468395168598,
+          -53.32
+        ],
+        "feet": 22.82655511562014,
+        "lee": {
+          "minX": -2.9,
+          "maxX": 0.5000000000000001,
+          "minY": 21.5,
+          "maxY": 25.05,
+          "minZ": -55.15,
+          "maxZ": -53.449999999999996
+        }
+      }
+    },
+    {
+      "name": "The flooded stair is swum between surges to the far landing",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Guardian HUD fits touch portrait",
+      "ok": true,
+      "detail": {
+        "boss": {
+          "x": 82.5,
+          "y": 12,
+          "right": 292.5,
+          "bottom": 79,
+          "visible": true
+        },
+        "health": {
+          "x": 201,
+          "y": 84,
+          "right": 305,
+          "bottom": 104,
+          "visible": true
+        },
+        "objective": {
+          "x": 24,
+          "y": 112,
+          "right": 351,
+          "bottom": 207.390625,
+          "visible": true
+        },
+        "address": {
+          "x": 115.5,
+          "y": 18,
+          "right": 259.5,
+          "bottom": 75.796875,
+          "visible": false
+        },
+        "hint": {
+          "x": 75.25532531738281,
+          "y": 216,
+          "right": 418.2553253173828,
+          "bottom": 355.140625,
+          "visible": true
+        },
+        "subtitle": {
+          "x": 16,
+          "y": 567.171875,
+          "right": 359,
+          "bottom": 613.546875,
+          "visible": false
+        },
+        "touch": true
+      }
+    },
+    {
+      "name": "Guardian HUD fits touch landscape",
+      "ok": true,
+      "detail": {
+        "boss": {
+          "x": 312,
+          "y": 18,
+          "right": 532,
+          "bottom": 85,
+          "visible": true
+        },
+        "health": {
+          "x": 670,
+          "y": 26,
+          "right": 774,
+          "bottom": 46,
+          "visible": true
+        },
+        "objective": {
+          "x": 16,
+          "y": 10,
+          "right": 304,
+          "bottom": 95.671875,
+          "visible": false
+        },
+        "address": {
+          "x": 350,
+          "y": 8,
+          "right": 494,
+          "bottom": 65.796875,
+          "visible": false
+        },
+        "hint": {
+          "x": -4.6102142333984375,
+          "y": 10,
+          "right": 267.38978576660156,
+          "bottom": 118.46875,
+          "visible": true
+        },
+        "subtitle": {
+          "x": 232,
+          "y": 214.609375,
+          "right": 612,
+          "bottom": 268.421875,
+          "visible": false
+        },
+        "touch": true
+      }
+    },
+    {
+      "name": "Guardian defeated through three phases",
+      "ok": true,
+      "detail": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "Charged orb cracks the core and only pistols wound it",
+      "ok": true,
+      "detail": {
+        "cracks": 3,
+        "hits": 6
+      }
+    },
+    {
+      "name": "Victory restores hero health",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The reunion crosses into the vault's arrival without the credits",
+      "ok": true,
+      "detail": {
+        "pos": [
+          0,
+          4.6
+        ],
+        "credits": false
+      }
+    },
+    {
+      "name": "No runtime errors",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "Shaders precompiled before sea play",
+      "ok": true,
+      "detail": {
+        "load": 631,
+        "after": 631
+      }
+    }
+  ],
+  "errors": [],
+  "samples": [
+    {
+      "name": "arrival",
+      "time": 8.643800000000025,
+      "wallTime": 1791741683560,
+      "pos": [
+        0.07084356095098528,
+        -4.539336003269039
+      ],
+      "feet": 31.545023637103093,
+      "sea": {
+        "intro": {
+          "active": false,
+          "progress": 0,
+          "ready": false,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              11,
+              26.3,
+              -18
+            ],
+            "radii": [
+              0.02,
+              0.02,
+              0.02
+            ]
+          },
+          "water": 1,
+          "near": false
+        },
+        "swimming": true,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 43.133300000000126,
+          "ratio": 0.9585177777777806,
+          "submerged": true,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": false,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": false,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 0,
+          "secured": false,
+          "solid": false
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -18,
+          "feet": 28,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 6,
+          "maxHealth": 6,
+          "state": "dormant",
+          "phase": 1,
+          "timer": 0,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [],
+          "sequence": "pressure-strike",
+          "attackName": "Pressure strike",
+          "pattern": 0,
+          "attack": "dormant",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 1,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "calm",
+            "scale": 0.12,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 1,
+        "disc": {
+          "state": "stowed",
+          "charged": false,
+          "hits": [],
+          "activations": 0,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "current-shelter",
+      "time": 13.84359999999995,
+      "wallTime": 1791741688750,
+      "pos": [
+        6.521246692717977,
+        -11.50401821363227
+      ],
+      "feet": 30.424488746136937,
+      "sea": {
+        "intro": {
+          "active": false,
+          "progress": 0,
+          "ready": false,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              11,
+              26.3,
+              -18
+            ],
+            "radii": [
+              0.02,
+              0.02,
+              0.02
+            ]
+          },
+          "water": 1,
+          "near": false
+        },
+        "swimming": true,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 37.933500000000464,
+          "ratio": 0.842966666666677,
+          "submerged": true,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": false,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": false,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 0,
+          "secured": false,
+          "solid": false
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -18,
+          "feet": 28,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 6,
+          "maxHealth": 6,
+          "state": "dormant",
+          "phase": 1,
+          "timer": 0,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [],
+          "sequence": "pressure-strike",
+          "attackName": "Pressure strike",
+          "pattern": 0,
+          "attack": "dormant",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 1,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "calm",
+            "scale": 0.12,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 1,
+        "disc": {
+          "state": "stowed",
+          "charged": false,
+          "hits": [],
+          "activations": 0,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "submerged-beacon",
+      "time": 18.293399999999846,
+      "wallTime": 1791741693207,
+      "pos": [
+        10.021835884104842,
+        -17.51689101411545
+      ],
+      "feet": 26.830829232907963,
+      "sea": {
+        "intro": {
+          "active": false,
+          "progress": 0,
+          "ready": false,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              11,
+              26.3,
+              -18
+            ],
+            "radii": [
+              0.02,
+              0.02,
+              0.02
+            ]
+          },
+          "water": 1,
+          "near": true
+        },
+        "swimming": true,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 33.483700000000546,
+          "ratio": 0.7440822222222343,
+          "submerged": true,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": false,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": false,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 0,
+          "secured": false,
+          "solid": false
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -18,
+          "feet": 28,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 6,
+          "maxHealth": 6,
+          "state": "dormant",
+          "phase": 1,
+          "timer": 0,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [],
+          "sequence": "pressure-strike",
+          "attackName": "Pressure strike",
+          "pattern": 0,
+          "attack": "dormant",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 1,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "calm",
+            "scale": 0.12,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 1,
+        "disc": {
+          "state": "stowed",
+          "charged": false,
+          "hits": [],
+          "activations": 0,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "shield-expanding",
+      "time": 19.443399999999816,
+      "wallTime": 1791741694351,
+      "pos": [
+        9.942726769258032,
+        -17.685600677636366
+      ],
+      "feet": 25,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 0.3166666666666666,
+          "ready": false,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              8.389435185185187,
+              26.940775,
+              -25.594370370370367
+            ],
+            "radii": [
+              4.766481481481479,
+              3.8171851851851835,
+              15.446064814814807
+            ]
+          },
+          "water": 0,
+          "near": true
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 36.88370000000058,
+          "ratio": 0.8196377777777907,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": false,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": false,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 0,
+          "secured": false,
+          "solid": false
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -18,
+          "feet": 28,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 6,
+          "maxHealth": 6,
+          "state": "dormant",
+          "phase": 1,
+          "timer": 0,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [],
+          "sequence": "pressure-strike",
+          "attackName": "Pressure strike",
+          "pattern": 0,
+          "attack": "dormant",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0.6889000000000003,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "calm",
+            "scale": 0.12,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 0.5828223163485278,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [],
+          "activations": 0,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "shield-active",
+      "time": 21.55989999999979,
+      "wallTime": 1791741696469,
+      "pos": [
+        9.940410095530979,
+        -17.687219772020743
+      ],
+      "feet": 25,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": true
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": false,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": false,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": true
+          },
+          {
+            "z": -25,
+            "active": true,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 0,
+          "secured": false,
+          "solid": false
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -18,
+          "feet": 28,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 6,
+          "maxHealth": 6,
+          "state": "dormant",
+          "phase": 1,
+          "timer": -0.06670000000000073,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [],
+          "sequence": "pressure-strike",
+          "attackName": "Pressure strike",
+          "pattern": 0,
+          "attack": "dormant",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "warning",
+            "scale": 0.2720742857142762,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 0.0000010486594604733173,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [],
+          "activations": 0,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "pressure-bridge",
+      "time": 29.959599999999597,
+      "wallTime": 1791741704876,
+      "pos": [
+        0.1739693363326501,
+        -26.55198340997731
+      ],
+      "feet": 28,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": false,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 11.516600000000007,
+          "secured": false,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -18,
+          "feet": 28,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 6,
+          "maxHealth": 6,
+          "state": "dormant",
+          "phase": 1,
+          "timer": -8.466400000000037,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [],
+          "sequence": "pressure-strike",
+          "attackName": "Pressure strike",
+          "pattern": 0,
+          "attack": "dormant",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "calm",
+            "scale": 0.12,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 1.663368533073881e-29,
+        "disc": {
+          "state": "held",
+          "charged": true,
+          "hits": [
+            "seal:0"
+          ],
+          "activations": 2,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "flooded-surge",
+      "time": 38.94249999999996,
+      "wallTime": 1791741713850,
+      "pos": [
+        -1.0118468395168598,
+        -53.32
+      ],
+      "feet": 22.82655511562014,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 1,
+          "near": false
+        },
+        "swimming": true,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 42.55009999999985,
+          "ratio": 0.9455577777777745,
+          "submerged": true,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": true,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -45,
+          "feet": 28,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 6,
+          "maxHealth": 6,
+          "state": "dormant",
+          "phase": 1,
+          "timer": -17.44929999999988,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [],
+          "sequence": "pressure-strike",
+          "attackName": "Pressure strike",
+          "pattern": 0,
+          "attack": "dormant",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "burst",
+            "scale": 1,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 1,
+        "disc": {
+          "state": "stowed",
+          "charged": false,
+          "hits": [
+            "seal:1"
+          ],
+          "activations": 3,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "flooded-stair",
+      "time": 49.908800000000774,
+      "wallTime": 1791741724823,
+      "pos": [
+        0.17761342146312675,
+        -61.41091953272998
+      ],
+      "feet": 25.5,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 36.7824999999991,
+          "ratio": 0.8173888888888688,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": true
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -45,
+          "feet": 28,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 6,
+          "maxHealth": 6,
+          "state": "dormant",
+          "phase": 1,
+          "timer": -28.415599999999433,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [],
+          "sequence": "pressure-strike",
+          "attackName": "Pressure strike",
+          "pattern": 0,
+          "attack": "dormant",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "burst",
+            "scale": 1,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 1,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [
+            "seal:1"
+          ],
+          "activations": 3,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "guardian-awake",
+      "time": 51.9754000000009,
+      "wallTime": 1791741726883,
+      "pos": [
+        0.2520917188306163,
+        -70.22489608344087
+      ],
+      "feet": 24,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": true
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -68.5,
+          "feet": 24,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 6,
+          "maxHealth": 6,
+          "state": "waking",
+          "phase": 1,
+          "timer": 1.9833000000000047,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [],
+          "sequence": "pressure-strike",
+          "attackName": "Pressure strike",
+          "pattern": 0,
+          "attack": "waking",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "calm",
+            "scale": 0.12,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 0.00008481823524646921,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [
+            "seal:1"
+          ],
+          "activations": 3,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "guardian-portrait",
+      "time": 52.30870000000092,
+      "wallTime": 1791741727223,
+      "pos": [
+        0.16706037496407536,
+        -70.32747672354503
+      ],
+      "feet": 24,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": true
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -68.5,
+          "feet": 24,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 6,
+          "maxHealth": 6,
+          "state": "waking",
+          "phase": 1,
+          "timer": 1.650000000000002,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [],
+          "sequence": "pressure-strike",
+          "attackName": "Pressure strike",
+          "pattern": 0,
+          "attack": "waking",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "calm",
+            "scale": 0.12,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 0.000010563298188437474,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [
+            "seal:1"
+          ],
+          "activations": 3,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "guardian-landscape",
+      "time": 52.55870000000093,
+      "wallTime": 1791741727471,
+      "pos": [
+        0.1662772222611845,
+        -70.32842150816101
+      ],
+      "feet": 24,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": true
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -68.5,
+          "feet": 24,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 6,
+          "maxHealth": 6,
+          "state": "waking",
+          "phase": 1,
+          "timer": 1.4000000000000017,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [],
+          "sequence": "pressure-strike",
+          "attackName": "Pressure strike",
+          "pattern": 0,
+          "attack": "waking",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "calm",
+            "scale": 0.12,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 0.000002214187586169057,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [
+            "seal:1"
+          ],
+          "activations": 3,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "guardian-cracked-1",
+      "time": 58.07510000000131,
+      "wallTime": 1791741732989,
+      "pos": [
+        -5.497893729109168,
+        -78.86712827276774
+      ],
+      "feet": 24,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": true
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -68.5,
+          "feet": 24,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 6,
+          "maxHealth": 6,
+          "state": "cracked",
+          "phase": 1,
+          "timer": 5.016699999999998,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [
+            {
+              "x": 0.16625283676980035,
+              "z": -70.3284509264814,
+              "radius": 2.35,
+              "wave": false,
+              "delay": 0.48,
+              "started": true,
+              "hit": false,
+              "hp": 2,
+              "vented": false
+            }
+          ],
+          "sequence": "pressure-strike",
+          "attackName": "Cracked core",
+          "pattern": 1,
+          "attack": "cracked",
+          "counterWindow": false,
+          "cracked": true
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "calm",
+            "scale": 0.12,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 2.354108154747366e-21,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [
+            "guardian"
+          ],
+          "activations": 5,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "guardian-5",
+      "time": 59.375000000001386,
+      "wallTime": 1791741734289,
+      "pos": [
+        -5.497893729109312,
+        -78.86712827276784
+      ],
+      "feet": 24,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": true,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -68.5,
+          "feet": 24,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 5,
+          "maxHealth": 6,
+          "state": "cracked",
+          "phase": 1,
+          "timer": 3.7167999999999872,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [
+            {
+              "x": 0.16625283676980035,
+              "z": -70.3284509264814,
+              "radius": 2.35,
+              "wave": false,
+              "delay": 0.48,
+              "started": true,
+              "hit": false,
+              "hp": 2,
+              "vented": false
+            }
+          ],
+          "sequence": "pressure-strike",
+          "attackName": "Cracked core",
+          "pattern": 1,
+          "attack": "cracked",
+          "counterWindow": false,
+          "cracked": true
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "calm",
+            "scale": 0.12,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 6.973570251633743e-25,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [
+            "guardian"
+          ],
+          "activations": 5,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "guardian-4",
+      "time": 59.6251000000014,
+      "wallTime": 1791741734535,
+      "pos": [
+        -5.497893729109312,
+        -78.86712827276784
+      ],
+      "feet": 24,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": true,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -68.5,
+          "feet": 24,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 4,
+          "maxHealth": 6,
+          "state": "recovering",
+          "phase": 2,
+          "timer": 2.4667000000000043,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [
+            {
+              "x": 0.16625283676980035,
+              "z": -70.3284509264814,
+              "radius": 2.35,
+              "wave": false,
+              "delay": 0.48,
+              "started": true,
+              "hit": false,
+              "hp": 2,
+              "vented": false
+            }
+          ],
+          "sequence": "pressure-strike",
+          "attackName": "Pressure strike",
+          "pattern": 1,
+          "attack": "recovering",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "warning",
+            "scale": 0.12617142857154123,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 1.460826431943515e-25,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [
+            "guardian"
+          ],
+          "activations": 5,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "guardian-cracked-2",
+      "time": 66.80810000000233,
+      "wallTime": 1791741741722,
+      "pos": [
+        6.263093395653847,
+        -74.43980174316252
+      ],
+      "feet": 24,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -68.5,
+          "feet": 24,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 4,
+          "maxHealth": 6,
+          "state": "cracked",
+          "phase": 2,
+          "timer": 5.01669999999999,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [
+            {
+              "x": -5.497893729109312,
+              "z": -78.86712827276784,
+              "radius": 2.35,
+              "wave": false,
+              "delay": 0.48,
+              "started": true,
+              "hit": false,
+              "hp": 2,
+              "vented": false
+            },
+            {
+              "x": -0.6978937291093121,
+              "z": -79.86712827276784,
+              "radius": 2.35,
+              "wave": false,
+              "delay": 0.61,
+              "started": true,
+              "hit": false,
+              "hp": 2,
+              "vented": false
+            }
+          ],
+          "sequence": "cross-pressure",
+          "attackName": "Cracked core",
+          "pattern": 2,
+          "attack": "cracked",
+          "counterWindow": false,
+          "cracked": true
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "burst",
+            "scale": 1,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 4.650404405451944e-45,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [
+            "guardian"
+          ],
+          "activations": 7,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "guardian-3",
+      "time": 67.5247000000025,
+      "wallTime": 1791741742439,
+      "pos": [
+        6.263093395653847,
+        -74.43980174316252
+      ],
+      "feet": 24,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": true
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -68.5,
+          "feet": 24,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 3,
+          "maxHealth": 6,
+          "state": "cracked",
+          "phase": 2,
+          "timer": 4.300099999999975,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [
+            {
+              "x": -5.497893729109312,
+              "z": -78.86712827276784,
+              "radius": 2.35,
+              "wave": false,
+              "delay": 0.48,
+              "started": true,
+              "hit": false,
+              "hp": 2,
+              "vented": false
+            },
+            {
+              "x": -0.6978937291093121,
+              "z": -79.86712827276784,
+              "radius": 2.35,
+              "wave": false,
+              "delay": 0.61,
+              "started": true,
+              "hit": false,
+              "hp": 2,
+              "vented": false
+            }
+          ],
+          "sequence": "cross-pressure",
+          "attackName": "Cracked core",
+          "pattern": 2,
+          "attack": "cracked",
+          "counterWindow": false,
+          "cracked": true
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "burst",
+            "scale": 1,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 5.277087684925704e-47,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [
+            "guardian"
+          ],
+          "activations": 7,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "guardian-2",
+      "time": 67.72470000000254,
+      "wallTime": 1791741742638,
+      "pos": [
+        6.263093395653847,
+        -74.43980174316252
+      ],
+      "feet": 24,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": true
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -68.5,
+          "feet": 24,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 2,
+          "maxHealth": 6,
+          "state": "recovering",
+          "phase": 3,
+          "timer": 2.5,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [
+            {
+              "x": -5.497893729109312,
+              "z": -78.86712827276784,
+              "radius": 2.35,
+              "wave": false,
+              "delay": 0.48,
+              "started": true,
+              "hit": false,
+              "hp": 2,
+              "vented": false
+            },
+            {
+              "x": -0.6978937291093121,
+              "z": -79.86712827276784,
+              "radius": 2.35,
+              "wave": false,
+              "delay": 0.61,
+              "started": true,
+              "hit": false,
+              "hp": 2,
+              "vented": false
+            }
+          ],
+          "sequence": "cross-pressure",
+          "attackName": "Cross pressure",
+          "pattern": 2,
+          "attack": "recovering",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "burst",
+            "scale": 1,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 1.51191093518305e-47,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [
+            "guardian"
+          ],
+          "activations": 7,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "guardian-cracked-3",
+      "time": 76.44110000000451,
+      "wallTime": 1791741751355,
+      "pos": [
+        -6.300715246492868,
+        -74.48998818461273
+      ],
+      "feet": 24,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": true
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -68.5,
+          "feet": 24,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 2,
+          "maxHealth": 6,
+          "state": "cracked",
+          "phase": 3,
+          "timer": 5.0166,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [
+            {
+              "x": 6.263093395653847,
+              "z": -74.43980174316252,
+              "radius": 2.35,
+              "wave": false,
+              "delay": 0.48,
+              "started": true,
+              "hit": false,
+              "hp": 2,
+              "vented": false
+            },
+            {
+              "x": 1.4630933956538472,
+              "z": -75.43980174316252,
+              "radius": 2.35,
+              "wave": false,
+              "delay": 0.61,
+              "started": true,
+              "hit": false,
+              "hp": 2,
+              "vented": false
+            },
+            {
+              "x": 0,
+              "z": -84,
+              "radius": 23.01549999999995,
+              "wave": true,
+              "delay": 0.8,
+              "started": true,
+              "hit": false
+            }
+          ],
+          "sequence": "converging-tide",
+          "attackName": "Cracked core",
+          "pattern": 3,
+          "attack": "cracked",
+          "counterWindow": false,
+          "cracked": true
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "warning",
+            "scale": 0.12822857142894672,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 3.3132070002533528e-71,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [
+            "guardian"
+          ],
+          "activations": 9,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "guardian-1",
+      "time": 78.09100000000488,
+      "wallTime": 1791741753003,
+      "pos": [
+        -6.300715246492868,
+        -74.48998818461273
+      ],
+      "feet": 24,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": false,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -68.5,
+          "feet": 24,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 1,
+          "maxHealth": 6,
+          "state": "cracked",
+          "phase": 3,
+          "timer": 3.366699999999981,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [
+            {
+              "x": 6.263093395653847,
+              "z": -74.43980174316252,
+              "radius": 2.35,
+              "wave": false,
+              "delay": 0.48,
+              "started": true,
+              "hit": false,
+              "hp": 2,
+              "vented": false
+            },
+            {
+              "x": 1.4630933956538472,
+              "z": -75.43980174316252,
+              "radius": 2.35,
+              "wave": false,
+              "delay": 0.61,
+              "started": true,
+              "hit": false,
+              "hp": 2,
+              "vented": false
+            },
+            {
+              "x": 0,
+              "z": -84,
+              "radius": 23.01549999999995,
+              "wave": true,
+              "delay": 0.8,
+              "started": true,
+              "hit": false
+            }
+          ],
+          "sequence": "converging-tide",
+          "attackName": "Cracked core",
+          "pattern": 3,
+          "attack": "cracked",
+          "counterWindow": false,
+          "cracked": true
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "burst",
+            "scale": 1,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "closed",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 1.1011796062589737e-75,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [
+            "guardian"
+          ],
+          "activations": 9,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "guardian-0",
+      "time": 79.79100000000523,
+      "wallTime": 1791741754704,
+      "pos": [
+        -6.300715246492868,
+        -74.48998818461273
+      ],
+      "feet": 24,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": true,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": true
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -68.5,
+          "feet": 24,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 0,
+          "maxHealth": 6,
+          "state": "defeated",
+          "phase": 3,
+          "timer": -0.03340000000000873,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [],
+          "sequence": "converging-tide",
+          "attackName": "Converging tide",
+          "pattern": 3,
+          "attack": "defeated",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "calm",
+            "scale": 0.12,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "arming",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 2.6759579797914255e-80,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [
+            "guardian"
+          ],
+          "activations": 9,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "home-door",
+      "time": 92.65710000000813,
+      "wallTime": 1791741767564,
+      "pos": [
+        0.3337948405938194,
+        -94.86372864717531
+      ],
+      "feet": 24,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": true,
+        "completed": false,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": false,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": true
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -68.5,
+          "feet": 24,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 0,
+          "maxHealth": 6,
+          "state": "defeated",
+          "phase": 3,
+          "timer": -12.899499999999952,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [],
+          "sequence": "converging-tide",
+          "attackName": "Converging tide",
+          "pattern": 3,
+          "attack": "defeated",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "calm",
+            "scale": 0.12,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "open",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 3.1952351813775084e-115,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [
+            "guardian"
+          ],
+          "activations": 9,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "epilogue",
+      "time": 101.00680000000996,
+      "wallTime": 1791741775919,
+      "pos": [
+        0.10411105579881257,
+        -100.03642312206077
+      ],
+      "feet": 24.02,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 0,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": true,
+        "completed": true,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": true,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -68.5,
+          "feet": 24,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 0,
+          "maxHealth": 6,
+          "state": "defeated",
+          "phase": 3,
+          "timer": -21.24919999999988,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [],
+          "sequence": "converging-tide",
+          "attackName": "Converging tide",
+          "pattern": 3,
+          "attack": "defeated",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "burst",
+            "scale": 1,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "open",
+        "epilogue": {
+          "active": true,
+          "stage": "reunion",
+          "time": 7.0331000000000135,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 0,
+        "disc": {
+          "state": "held",
+          "charged": false,
+          "hits": [
+            "guardian"
+          ],
+          "activations": 9,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    },
+    {
+      "name": "vault-arrival",
+      "time": 103.88990000001063,
+      "wallTime": 1791741778798,
+      "pos": [
+        0,
+        4.6
+      ],
+      "feet": 0,
+      "sea": {
+        "intro": {
+          "active": true,
+          "progress": 1,
+          "ready": true,
+          "beacon": [
+            11,
+            26.3,
+            -18
+          ],
+          "console": "airShieldConsole",
+          "boundary": {
+            "center": [
+              0,
+              29,
+              -50
+            ],
+            "radii": [
+              20.02,
+              16.02,
+              65.02
+            ]
+          },
+          "water": 1,
+          "near": false
+        },
+        "swimming": false,
+        "health": 4,
+        "breath": {
+          "base": 45,
+          "capacity": 45,
+          "remaining": 45,
+          "ratio": 1,
+          "submerged": false,
+          "drowning": 0
+        },
+        "ready": true,
+        "completed": true,
+        "seals": [
+          {
+            "lit": true,
+            "center": [
+              3.5,
+              30.35,
+              -26.775
+            ]
+          },
+          {
+            "lit": true,
+            "center": [
+              -3.5,
+              30.35,
+              -43.775
+            ]
+          }
+        ],
+        "wells": [
+          [
+            -3.5,
+            29.615,
+            -18
+          ],
+          [
+            4,
+            29.615,
+            -40
+          ],
+          [
+            -8,
+            25.615,
+            -73
+          ],
+          [
+            8,
+            25.615,
+            -82
+          ]
+        ],
+        "vents": [
+          {
+            "z": -21,
+            "active": true,
+            "warning": false
+          },
+          {
+            "z": -25,
+            "active": false,
+            "warning": false
+          }
+        ],
+        "bridge": {
+          "left": 12,
+          "secured": true,
+          "solid": true
+        },
+        "checkpoint": {
+          "x": 0,
+          "z": -68.5,
+          "feet": 24,
+          "yaw": 3.141592653589793
+        },
+        "boss": {
+          "name": "Tide Guardian",
+          "health": 0,
+          "maxHealth": 6,
+          "state": "defeated",
+          "phase": 3,
+          "timer": -21.849099999999904,
+          "core": [
+            0,
+            28.65,
+            -84.9
+          ],
+          "warnings": [],
+          "sequence": "converging-tide",
+          "attackName": "Converging tide",
+          "pattern": 3,
+          "attack": "defeated",
+          "counterWindow": false,
+          "cracked": false
+        },
+        "currents": {
+          "arrival": {
+            "scale": 0,
+            "box": {
+              "minX": -24,
+              "maxX": 24,
+              "minY": 18,
+              "maxY": 44,
+              "minZ": -15.5,
+              "maxZ": -7.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "shelters": [
+              [
+                4.6,
+                31,
+                -9
+              ],
+              [
+                6.999999999999999,
+                31,
+                -11.3
+              ],
+              [
+                9.399999999999999,
+                30.799999999999997,
+                -13.5
+              ]
+            ],
+            "lees": [
+              {
+                "minX": 2.9,
+                "maxX": 6.3,
+                "minY": 18,
+                "maxY": 33.6,
+                "minZ": -10.600000000000001,
+                "maxZ": -7.4
+              },
+              {
+                "minX": 5.299999999999999,
+                "maxX": 8.7,
+                "minY": 18,
+                "maxY": 33,
+                "minZ": -12.900000000000002,
+                "maxZ": -9.7
+              },
+              {
+                "minX": 7.699999999999999,
+                "maxX": 11.1,
+                "minY": 18,
+                "maxY": 32.4,
+                "minZ": -14.8,
+                "maxZ": -12.2
+              }
+            ]
+          },
+          "flooded": {
+            "phase": "burst",
+            "scale": 1,
+            "region": {
+              "minX": -3,
+              "maxX": 3,
+              "minY": 21.5,
+              "maxY": 29.4,
+              "minZ": -61,
+              "maxZ": -53
+            },
+            "lees": [
+              {
+                "minX": -2.9,
+                "maxX": 0.5000000000000001,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -55.15,
+                "maxZ": -53.449999999999996
+              },
+              {
+                "minX": -0.5000000000000001,
+                "maxX": 2.9,
+                "minY": 21.5,
+                "maxY": 25.05,
+                "minZ": -57.849999999999994,
+                "maxZ": -56.14999999999999
+              }
+            ]
+          }
+        },
+        "tideSketch": {
+          "inspected": false,
+          "marks": 0,
+          "proof": 0,
+          "completed": false,
+          "ready": false,
+          "claimed": false,
+          "opening": 0,
+          "accessible": false,
+          "stations": [
+            {
+              "at": [
+                2.1,
+                26.9,
+                -56.8
+              ],
+              "visible": true
+            },
+            {
+              "at": [
+                -8.4,
+                24.9,
+                -88
+              ],
+              "visible": false
+            }
+          ]
+        },
+        "gate": "open",
+        "epilogue": {
+          "active": false,
+          "stage": "off",
+          "time": 0,
+          "replySeen": false,
+          "said": [],
+          "mapCarried": false,
+          "worlds": [
+            "Ocean world",
+            "Ringed world",
+            "Ember world",
+            "Pale moon",
+            "Far moon"
+          ]
+        },
+        "cameraWater": 0,
+        "disc": {
+          "state": "stowed",
+          "charged": false,
+          "hits": [
+            "guardian"
+          ],
+          "activations": 9,
+          "cooldown": 0,
+          "kind": "orb"
+        }
+      },
+      "programs": 631,
+      "programsAtLoad": 631,
+      "programsAtStart": 631
+    }
+  ]
+}

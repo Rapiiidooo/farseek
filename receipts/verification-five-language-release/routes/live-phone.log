@@ -1,0 +1,8 @@
+url        https://farseek.rapidoai.dev/
+ready      11.6 s   (phone viewport, real touch)
+held       ArrowUp and KeyW
+moved      0.0 m
+screenshot live/phone.jpg (resized)
+
+problems:
+  the player moved 0.00 m while a control was held for four seconds

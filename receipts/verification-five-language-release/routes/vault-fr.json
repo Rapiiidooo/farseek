@@ -1,0 +1,645 @@
+{
+  "url": "https://farseek.rapidoai.dev/?nolock=1&chapter=vault&lang=fr",
+  "checks": [
+    {
+      "name": "Vault shaders are prepared before play",
+      "ok": true,
+      "detail": {
+        "load": 982,
+        "now": 982
+      }
+    },
+    {
+      "name": "The vault starts at its arrival with the orb and pistols",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The block leaves the starlight",
+      "ok": true,
+      "detail": {
+        "x": -27,
+        "z": -15,
+        "moving": false
+      }
+    },
+    {
+      "name": "Relayed starlight wakes the court's seal",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "A stamp turned aside by the shield leaves the keeper reeling",
+      "ok": true,
+      "detail": {
+        "state": "stun",
+        "hostile": false,
+        "hp": 3,
+        "pos": [
+          18.32,
+          -11.7
+        ],
+        "center": [
+          18.315595619960735,
+          0.62,
+          -11.699477881949571
+        ]
+      }
+    },
+    {
+      "name": "The seal answers while its keeper is stunned",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Pistol shots break the crystal lock",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The isles crystal charges the orb",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "A charged pulse wakes the pylon",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The bridge of light carries Nyra to the seal",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The cable carries Nyra back over the chasm",
+      "ok": true,
+      "detail": {
+        "pos": [
+          -25.10832896174879,
+          -26.446789612304872
+        ]
+      }
+    },
+    {
+      "name": "The orb's tether drags the ice out of its corner",
+      "ok": true,
+      "detail": {
+        "x": 22,
+        "z": -37,
+        "state": "rest"
+      }
+    },
+    {
+      "name": "The sliding ice wakes the plate",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Mira's axes carry Nyra up the scarred ice",
+      "ok": true,
+      "detail": {
+        "feet": 3.4,
+        "climb": {
+          "axes": true,
+          "wall": null,
+          "leaping": false
+        }
+      }
+    },
+    {
+      "name": "The frost seal wakes on its shelf",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The sinking stones are crossed without a fall",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Thick ivy carries Nyra to the ledge",
+      "ok": true,
+      "detail": {
+        "feet": 3.2
+      }
+    },
+    {
+      "name": "The forest seal wakes across the bog",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Back over the bog unharmed",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Into the well's water, swimming",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The drowned seal wakes on one breath",
+      "ok": true,
+      "detail": {
+        "breath": 15.47
+      }
+    },
+    {
+      "name": "Out of the well with breath to spare",
+      "ok": true,
+      "detail": {
+        "health": 4
+      }
+    },
+    {
+      "name": "All six seals awake",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The door opens on the whole address",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The reveal hands control back with the next door open",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Crossing the next door calls the completion callback",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "The completion callback rolls the credits",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "Mira speaks the vault's lines live from their clips",
+      "ok": true,
+      "detail": {
+        "said": 20,
+        "sources": [
+          "clip"
+        ]
+      }
+    },
+    {
+      "name": "No page or WebGL errors",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "No shader compiled during the vault",
+      "ok": true,
+      "detail": {
+        "load": 982,
+        "now": 982
+      }
+    }
+  ],
+  "errors": [],
+  "log": [
+    "--- court",
+    "--- checkpoint",
+    "shield: parried 1, keeper stun",
+    "--- isles",
+    "caught the cable",
+    "--- frost",
+    "tethered the ice to 22, -37",
+    "--- forest",
+    "stone 0: takeoff at -12.96,-52.00 speed 2.1",
+    "stone 0: landed at -15.19,-52.00 feet 0.15",
+    "stone 1: takeoff at -17.03,-52.00 speed 2.1, stone held 0.82",
+    "stone 1: landed at -19.31,-51.81 feet 0.15",
+    "stone 2: takeoff at -21.05,-51.79 speed 2.0, stone held 0.83",
+    "stone 2: landed at -23.27,-51.96 feet 0.15",
+    "stone 3: takeoff at -24.98,-52.05 speed 2.1, stone held 0.77",
+    "stone 3: landed at -27.27,-52.05 feet 0.15",
+    "far bank: takeoff at -28.32,-52.04 speed 2.1, stone held 0.47",
+    "far bank: landed at -30.80,-52.06 feet 0.00",
+    "stone back 0: takeoff at -30.12,-52.08 speed 2.1",
+    "stone back 0: landed at -27.84,-51.94 feet 0.15",
+    "stone back 1: takeoff at -26.09,-51.91 speed 2.0, stone held 0.82",
+    "stone back 1: landed at -23.86,-51.96 feet 0.15",
+    "stone back 2: takeoff at -22.12,-51.96 speed 2.1, stone held 0.78",
+    "stone back 2: landed at -19.80,-51.79 feet 0.15",
+    "stone back 3: takeoff at -18.08,-51.63 speed 2.1, stone held 0.8",
+    "stone back 3: landed at -15.80,-51.69 feet 0.15",
+    "near bank: takeoff at -13.98,-51.70 speed 2.1, stone held 0.85",
+    "near bank: landed at -11.69,-51.79 feet 0.00",
+    "--- sea",
+    "at the drowned seal: breath 15.63 s"
+  ],
+  "samples": [
+    {
+      "name": "arrival",
+      "time": 12.297400000071493,
+      "pos": [
+        0,
+        4.6
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 1031,
+      "tris": 1046474,
+      "fps": 60
+    },
+    {
+      "name": "court-block",
+      "time": 23.880300000071262,
+      "pos": [
+        -26.83288740667044,
+        -13.5
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 822,
+      "tris": 922822,
+      "fps": 60
+    },
+    {
+      "name": "court-seal",
+      "time": 37.91300000007138,
+      "pos": [
+        -18.92430885989113,
+        -8.05729411769338
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 608,
+      "tris": 781451,
+      "fps": 60
+    },
+    {
+      "name": "checkpoint-keeper",
+      "time": 53.34570000007241,
+      "pos": [
+        29.93741834155603,
+        -11.945992907546175
+      ],
+      "feet": 0.3,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 570,
+      "tris": 739373,
+      "fps": 60
+    },
+    {
+      "name": "checkpoint-seal",
+      "time": 53.57910000007243,
+      "pos": [
+        29.96863197003613,
+        -11.926569497898313
+      ],
+      "feet": 0.3,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 570,
+      "tris": 739373,
+      "fps": 60
+    },
+    {
+      "name": "isles-lock",
+      "time": 67.39510000007391,
+      "pos": [
+        -15.038839744500192,
+        -27.43940376463887
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 710,
+      "tris": 815719,
+      "fps": 60
+    },
+    {
+      "name": "isles-bridge",
+      "time": 74.62810000007553,
+      "pos": [
+        -21.092018143825214,
+        -28.336372569540995
+      ],
+      "feet": 0.05,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 732,
+      "tris": 850041,
+      "fps": 60
+    },
+    {
+      "name": "isles-seal",
+      "time": 79.17800000007655,
+      "pos": [
+        -21.03040879272544,
+        -37.460495766379594
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 803,
+      "tris": 925307,
+      "fps": 60
+    },
+    {
+      "name": "isles-cable",
+      "time": 82.32790000007725,
+      "pos": [
+        -21.030405338685643,
+        -37.46178178481345
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 632,
+      "tris": 803707,
+      "fps": 60
+    },
+    {
+      "name": "isles-swing",
+      "time": 86.56110000007817,
+      "pos": [
+        -25.10832896174879,
+        -26.446789612304872
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 668,
+      "tris": 835439,
+      "fps": 60
+    },
+    {
+      "name": "frost-tether",
+      "time": 103.37700000008192,
+      "pos": [
+        19.722650760931394,
+        -33.37291016694075
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 937,
+      "tris": 997040,
+      "fps": 60
+    },
+    {
+      "name": "frost-plate",
+      "time": 110.44340000008353,
+      "pos": [
+        21.95224572005278,
+        -38.3952090961525
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 633,
+      "tris": 774898,
+      "fps": 60
+    },
+    {
+      "name": "frost-climb",
+      "time": 116.52650000008487,
+      "pos": [
+        30.43832409826023,
+        -37.849999999999994
+      ],
+      "feet": 3.4,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 711,
+      "tris": 831040,
+      "fps": 60
+    },
+    {
+      "name": "forest-stones",
+      "time": 132.99250000008857,
+      "pos": [
+        -10.373284034801543,
+        -52.00028034448729
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 673,
+      "tris": 854796,
+      "fps": 60
+    },
+    {
+      "name": "forest-seal",
+      "time": 146.17530000009157,
+      "pos": [
+        -31.53910133905147,
+        -57.378390745294126
+      ],
+      "feet": 3.2,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 556,
+      "tris": 777703,
+      "fps": 60
+    },
+    {
+      "name": "sea-surface",
+      "time": 163.59130000009554,
+      "pos": [
+        20.77661630748543,
+        -51.91274192405976
+      ],
+      "feet": -1.553658056593481,
+      "state": "swim",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 609,
+      "tris": 741329,
+      "fps": 60
+    },
+    {
+      "name": "sea-passage",
+      "time": 173.0742000000977,
+      "pos": [
+        29.722365818965947,
+        -51.8172671958339
+      ],
+      "feet": -10.8,
+      "state": "swim",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 539,
+      "tris": 707216,
+      "fps": 60
+    },
+    {
+      "name": "medallions",
+      "time": 191.0901000001018,
+      "pos": [
+        0.13133828301966508,
+        -47.731942457531424
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 792,
+      "tris": 906341,
+      "fps": 60
+    },
+    {
+      "name": "reveal-door",
+      "time": 196.73990000010312,
+      "pos": [
+        -0.020427306653158707,
+        -57.36853448119377
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 609,
+      "tris": 734398,
+      "fps": 60
+    },
+    {
+      "name": "reveal-masks",
+      "time": 202.25640000010438,
+      "pos": [
+        -0.020427306653158707,
+        -57.36853448119377
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 522,
+      "tris": 684430,
+      "fps": 60
+    },
+    {
+      "name": "reveal-dome",
+      "time": 207.2562000001055,
+      "pos": [
+        -0.020427306653158707,
+        -57.36853448119377
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 480,
+      "tris": 667368,
+      "fps": 60
+    },
+    {
+      "name": "reveal-lights",
+      "time": 213.23930000010688,
+      "pos": [
+        -0.020427306653158707,
+        -57.36853448119377
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 503,
+      "tris": 674120,
+      "fps": 60
+    },
+    {
+      "name": "reveal-next-door",
+      "time": 219.25580000010825,
+      "pos": [
+        -0.020427306653158707,
+        -57.36853448119377
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 593,
+      "tris": 678008,
+      "fps": 60
+    },
+    {
+      "name": "next-door",
+      "time": 227.45540000011013,
+      "pos": [
+        -0.020427306653158707,
+        -57.36853448119377
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 593,
+      "tris": 688996,
+      "fps": 60
+    },
+    {
+      "name": "before-crossing",
+      "time": 233.18850000011145,
+      "pos": [
+        -0.00395138612198257,
+        -87.98356152195329
+      ],
+      "feet": 0,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 657,
+      "tris": 757327,
+      "fps": 60
+    },
+    {
+      "name": "beyond",
+      "time": 239.20490000011281,
+      "pos": [
+        -0.0016463925308435724,
+        -92.26662667682396
+      ],
+      "feet": 1.02,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 111,
+      "tris": 4301,
+      "fps": 60
+    },
+    {
+      "name": "credits",
+      "time": 249.7212000001152,
+      "pos": [
+        -0.0016463925308435724,
+        -92.26662667682396
+      ],
+      "feet": 1.02,
+      "state": "ground",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "draws": 94,
+      "tris": 4097,
+      "fps": 60
+    }
+  ]
+}

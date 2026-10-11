@@ -1,0 +1,8 @@
+playthrough exit 0 in 368 s
+forest exit 0 in 172 s
+sea exit 0 in 107 s
+vault exit 0 in 250 s
+vault-fr exit 0 in 254 s
+menu: 21 of 21 checks passed, then the process hung closing Chrome and was stopped (exit 143)
+live-phone exit 1 (held keys during the level intro, moved 0.0 m)
+live-desktop exit 1 (still preparing the worlds ahead, moved 0.0 m)
