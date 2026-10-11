@@ -14,11 +14,11 @@ Environment: a Python 3.12 venv with `torch`, `transformers==4.46.3`, `loralib`,
 
 ## Blocker
 
-Atlas has refused `prompt_project_agent` with `ACCESS_EXPIRED: Workspace access has expired` (HTTP 402) since 10 October 19:46 UTC, last tried on 11 October 15:20 UTC; a refused call spends no credits, and `whoami` and asset listing still work. The key acts in the 404 Game Jam workspace, whose plan, subscription status and credits show only in Studio (`app.atlas.design`, Settings, Workspace, Plan & credits), not through MCP. The French project holds no other take of these lines.
+The Atlas workspace has no usable credits. Its plan is a Trial whose 600-credit allowance (249 unspent) expired on 30 September; Studio shows the plan and balance (`app.atlas.design`, the credits pill in the top bar, or Settings, Workspace, Plan & credits), MCP shows neither. The 10 October voices spent about 807 credits after that date, probably from non-expiring credits, until that evening. Since then `prompt_project_agent` refuses a 1500-credit budget with `ACCESS_EXPIRED: Workspace access has expired` (HTTP 402) and accepts a 100-credit budget but stops after 4 credits with `Agent credit budget exhausted` (`outputs/voice-l10n/atlas/fr/redo-scenes/report.json`, 11 October). `whoami` and asset listing still work, and the French project holds no other take of these lines.
 
 ## Next
 
-1. When generation works, run `node outputs/voice-l10n/atlas/redo.mjs fr <round> 3 <label,...>`: three takes per line in a new frame, downloaded to `outputs/voice-l10n/atlas/fr/redo-<round>/`.
-2. Score them with both models and `check.py`; per line keep the take with no Canada signal and the best France score, the current take included.
+1. Once the workspace has credits, run `node outputs/voice-l10n/atlas/redo.mjs fr <round> 3 <label,...> <budget>` in batches of five to seven lines: three takes per line in a new frame, downloaded to `outputs/voice-l10n/atlas/fr/redo-<round>/`. Atlas caches outputs by input, so the prompt asks for fresh syntheses and the script reports any take identical to an original.
+2. Score the takes with `dialect.py` (both sizes) and `heard.py fr medium`, then `choose.mjs` keeps per line the take that both models hear as France with the script heard in French; the current takes of these lines are out, since the owner heard them as Canadian.
 3. Move each replaced original to `fr/replaced/`, put the new one in `fr/originals/` and its fid in `downloads.json`, then run `process.py fr` (unchanged takes must keep their hashes), `notice.mjs`, `check.py fr medium` and `beats.mjs` for the affected scenes.
 4. Copy the scripts and scores to `receipts/verification-languages/voices/` and update its README.
