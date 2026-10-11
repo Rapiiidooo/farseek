@@ -14,7 +14,7 @@ Environment: a Python 3.12 venv with `torch`, `transformers==4.46.3`, `loralib`,
 
 ## Blocker
 
-Atlas refuses `prompt_project_agent` with `ACCESS_EXPIRED: Workspace access has expired` (HTTP 402); `whoami` and asset listing still work. The French project holds no other take of these lines.
+Atlas has refused `prompt_project_agent` with `ACCESS_EXPIRED: Workspace access has expired` (HTTP 402) since 10 October 19:46 UTC, last tried on 11 October 15:20 UTC; a refused call spends no credits, and `whoami` and asset listing still work. The key acts in the 404 Game Jam workspace, whose plan, subscription status and credits show only in Studio (`app.atlas.design`, Settings, Workspace, Plan & credits), not through MCP. The French project holds no other take of these lines.
 
 ## Next
 
