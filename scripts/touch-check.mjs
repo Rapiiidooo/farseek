@@ -1,5 +1,6 @@
 // Checks the phone controls with real touch events on the jam gate's phone viewport: the title
-// menus, the opening shot skipped by a tap, the stick walking to the camp, the notes, a light
+// menus, the levels screen swiped and tapped, the opening shot skipped by a tap, the stick
+// walking to the camp, the notes, a light
 // push stopping at the terrace's edge, hanging and climbing back, pause and the mute, looking
 // around, the landscape layout, the other two levels and the credits. Controls must never cover
 // the text.
@@ -211,6 +212,86 @@ async function crowded() {
   return found;
 }
 
+// The levels screen's stage: its cards, the one in the middle and the starts it offers.
+const stage = () =>
+  page.evaluate(() => {
+    const panel = document.querySelector('#menu [data-screen="levels"]');
+    const slides = [...panel.querySelectorAll(".carousel-slide")];
+    const name = (slide) =>
+      slide?.dataset.world ||
+      (slide?.classList.contains("sealed") ? "sealed" : "none");
+    return {
+      worlds: slides.map(name),
+      current: name(slides.find((slide) => slide.dataset.place === "current")),
+      open: [...panel.querySelectorAll(".level-starts button")]
+        .filter((b) => !b.disabled)
+        .map((b) => b.dataset.chapter),
+    };
+  });
+// A finger drawn across the middle card, towards the left (-1) or the right (1).
+async function swipe(direction) {
+  const b = await box(
+    '#menu [data-screen="levels"] .carousel-slide[data-place="current"]',
+  );
+  const contact = await page.touchscreen.touchStart(b.x - direction * 90, b.y);
+  for (let i = 1; i <= 6; i++) {
+    await contact.move(b.x - direction * 90 + direction * 30 * i, b.y);
+    await sleep(20);
+  }
+  await contact.end();
+  await sleep(800);
+}
+// The levels screen's lines that wrap or run out of their box, a card's text that runs past
+// it, and anything off the screen.
+const levelsFit = () =>
+  page.evaluate(() => {
+    const found = [];
+    const panel = document.querySelector('#menu [data-screen="levels"]');
+    const card = panel.querySelector('.carousel-slide[data-place="current"]');
+    if (panel.scrollHeight > panel.clientHeight + 2)
+      found.push("panel scrolls");
+    if (document.documentElement.scrollWidth > innerWidth + 1)
+      found.push("page scrolls sideways");
+    for (const el of [
+      ...panel.querySelectorAll(
+        ":scope > :is(.kicker, .panel-title), nav button",
+      ),
+      ...card.querySelectorAll(":is(.kicker, h3, .label)"),
+    ]) {
+      if (!el.getClientRects().length) continue;
+      const tops = [];
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        for (const r of range.getClientRects())
+          if (r.width > 1) tops.push(r.top);
+      }
+      const step = parseFloat(getComputedStyle(el).fontSize) * 0.8;
+      const wraps = tops
+        .sort((a, b) => a - b)
+        .some((top, i, all) => i && top - all[i - 1] > step);
+      if (wraps || el.scrollWidth > el.clientWidth + 1)
+        found.push(`"${el.textContent.trim()}" wraps or is cut`);
+    }
+    const frame = card.getBoundingClientRect();
+    const info = card.querySelector(".level-info");
+    const text = info.getBoundingClientRect();
+    if (
+      text.top < frame.top - 1 ||
+      text.bottom > frame.bottom + 1 ||
+      info.scrollHeight > info.clientHeight + 1
+    )
+      found.push("the card's text runs past it");
+    if (frame.top < 0 || frame.bottom > innerHeight)
+      found.push("card off screen");
+    for (const arrow of panel.querySelectorAll(".carousel-turn")) {
+      const r = arrow.getBoundingClientRect();
+      if (r.left < 0 || r.right > innerWidth) found.push("arrow off screen");
+    }
+    return found;
+  });
+
 // The stick: a finger lands on its centre and slides to (x right, y forward) of its throw.
 let finger = null;
 async function stick(x, y) {
@@ -378,6 +459,88 @@ try {
     await text('[data-help="menu"]'),
   );
   check("no controls over the title", !(await visible("#stick")));
+
+  // Levels on a save at the first world: that world and the sealed door, turned by a swipe and
+  // by the arrows, in portrait and on its side.
+  await tap('#menu [data-action="levels"]');
+  await sleep(500);
+  let levels = await stage();
+  check(
+    "a first save's levels show the first world and one sealed door",
+    levels.worlds.join() === "court,sealed" && levels.current === "court",
+    `${levels.worlds} on ${levels.current}`,
+  );
+  await swipe(-1);
+  levels = await stage();
+  check(
+    "a swipe to the left turns to the sealed door, which offers no start",
+    levels.current === "sealed" && !levels.open.length,
+    `${levels.current} ${levels.open}`,
+  );
+  await shot("levels-sealed");
+  await swipe(1);
+  check(
+    "a swipe to the right turns back to the first world",
+    (await stage()).current === "court",
+  );
+  await tap('#menu .carousel-turn[data-turn="1"]');
+  await sleep(600);
+  const tapped = (await stage()).current;
+  await tap('#menu .carousel-turn[data-turn="-1"]');
+  await sleep(600);
+  check(
+    "a tap on an arrow turns the stage",
+    tapped === "sealed" && (await stage()).current === "court",
+    tapped,
+  );
+  await shot("levels-portrait");
+  let fit = await levelsFit();
+  check("the levels screen fits in portrait", !fit.length, fit.join(", "));
+  await page.setViewport(LANDSCAPE);
+  await sleep(700);
+  await shot("levels-landscape");
+  fit = await levelsFit();
+  check("the levels screen fits in landscape", !fit.length, fit.join(", "));
+  await page.setViewport(PORTRAIT);
+  await sleep(500);
+
+  // A save further along: the stage opens on its world, and a tap starts the one before it.
+  await page.evaluate(() =>
+    localStorage.setItem(
+      "far-door-progress",
+      JSON.stringify({
+        reached: ["court", "floor", "checkpoint", "isles"],
+        last: "isles",
+      }),
+    ),
+  );
+  await open();
+  await tap('#menu [data-action="levels"]');
+  await sleep(500);
+  levels = await stage();
+  await swipe(1);
+  const turnedTo = await stage();
+  await tap(
+    '#menu .carousel-slide[data-place="current"] [data-chapter="checkpoint"]',
+  );
+  await page.waitForFunction(
+    () => window.__READY__ && window.__GAME__?.chapter === "checkpoint",
+    { timeout: 90000 },
+  );
+  const playing = await until(
+    (s) => s.mode === "play",
+    6000,
+    "start the checkpoint",
+  );
+  check(
+    "a tap on a later world's start plays it",
+    levels.current === "three" &&
+      turnedTo.current === "two" &&
+      playing.where === "two",
+    `${levels.current} then ${turnedTo.current}, playing ${playing.where}`,
+  );
+  await page.evaluate(() => localStorage.removeItem("far-door-progress"));
+  await open();
 
   await tap('#menu [data-action="controls"]');
   await shot("controls");

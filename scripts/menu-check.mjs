@@ -1,5 +1,6 @@
-// Checks the menus and level flow with real key events: the title menu, Levels, Settings, the
-// mute, pausing, starting any reached level, restarting, quitting to the title, the credits,
+// Checks the menus and level flow with real key events: the title menu, the levels screen
+// turned with keys and its arrows, Settings, the mute, pausing, starting any reached level from
+// the levels screen, restarting, quitting to the title, the credits,
 // walking back through the first door, a new game's opening and notes, a knockout at the
 // checkpoint, and the ways back from the isles to the checkpoint and from the frozen reach to
 // the isles.
@@ -46,6 +47,28 @@ const focused = () =>
         .querySelector("#menu .panel:not([hidden]) .focus")
         ?.textContent?.trim() || null,
   );
+// The levels screen's stage: its cards, the one in the middle and the starts it offers.
+const stage = () =>
+  page.evaluate(() => {
+    const panel = document.querySelector('#menu [data-screen="levels"]');
+    const slides = [...panel.querySelectorAll(".carousel-slide")];
+    const name = (slide) =>
+      slide?.dataset.world ||
+      (slide?.classList.contains("sealed") ? "sealed" : "none");
+    const buttons = [...panel.querySelectorAll(".level-starts button")];
+    const pips = [...panel.querySelectorAll(".carousel-pips li")];
+    return {
+      worlds: slides.map(name),
+      current: name(slides.find((slide) => slide.dataset.place === "current")),
+      starts: buttons.length,
+      locked: buttons.filter((b) => "locked" in b.dataset).length,
+      open: buttons.filter((b) => !b.disabled).map((b) => b.dataset.chapter),
+      pips: pips.length,
+      pip: pips.findIndex((pip) => pip.classList.contains("current")),
+      prevShut: panel.querySelector('.carousel-turn[data-turn="-1"]').disabled,
+      nextShut: panel.querySelector('.carousel-turn[data-turn="1"]').disabled,
+    };
+  });
 // Moves the menu focus to the item whose text starts with `label`.
 async function choose(label) {
   for (let i = 0; i < 12; i++) {
@@ -111,25 +134,102 @@ try {
 
   await choose("Levels");
   g = await game();
-  const buttons = await page.evaluate(() =>
-    [...document.querySelectorAll("#level-list button")].map(
-      (b) => `${b.textContent}:${b.disabled ? "locked" : "open"}`,
-    ),
-  );
-  const unknown = await page.evaluate(
-    () => document.querySelectorAll("#level-list .level-card.unknown").length,
+  const levels = await stage();
+  check(
+    "levels screen holds every reached world and one sealed door",
+    g.menu === "levels" &&
+      levels.worlds.join() === "court,two,three,four,five,six,sealed" &&
+      levels.starts === 7 &&
+      levels.locked === 0 &&
+      levels.pips === 7,
+    JSON.stringify(levels),
   );
   check(
-    "levels screen lists every reached start and one unknown world",
-    g.menu === "levels" &&
-      buttons.length === 7 &&
-      buttons.every((b) => b.endsWith("open")) &&
-      unknown === 1,
-    `${buttons.join(", ")}; unknown cards ${unknown}`,
+    "levels opens on the last world reached, its start in focus",
+    levels.current === "two" &&
+      levels.open.join() === "checkpoint" &&
+      (await focused()) === "Beyond the first door",
+    `${levels.current} ${levels.open} focus ${await focused()}`,
   );
   await shot("levels");
+  // Left and right turn the stage, as the arrows and the bound movement keys do.
+  const turns = [];
+  for (const key of ["ArrowRight", "KeyD", "ArrowLeft", "KeyA", "ArrowLeft"]) {
+    await press(key);
+    const now = await stage();
+    turns.push(`${key}:${now.current}:${now.open.join("+")}:${now.pip}`);
+  }
+  check(
+    "arrow keys and movement keys turn the stage, one world's starts at a time",
+    turns.join() ===
+      "ArrowRight:three:isles:2,KeyD:four:frost:3,ArrowLeft:three:isles:2,KeyA:two:checkpoint:1,ArrowLeft:court:court+floor:0",
+    turns.join(),
+  );
+  await press("ArrowLeft");
+  levels.first = await stage();
+  check(
+    "the first world is the end: left stays, its arrow is shut",
+    levels.first.current === "court" && levels.first.prevShut,
+    JSON.stringify(levels.first),
+  );
+  await press("ArrowDown");
+  await press("ArrowDown");
+  const onBack = await focused();
+  await press("ArrowRight");
+  check(
+    "up and down move between the starts and Back, which keeps its focus on a turn",
+    onBack === "Back" && (await focused()) === "Back",
+    `${onBack} then ${await focused()}`,
+  );
+  await page.click('#menu .carousel-turn[data-turn="1"]');
+  await sleep(200);
+  await page.click('#menu .carousel-turn[data-turn="1"]');
+  await sleep(200);
+  const clicked = await stage();
+  await page.click('#menu .carousel-turn[data-turn="-1"]');
+  await sleep(200);
+  check(
+    "the arrow medallions turn the stage",
+    clicked.current === "four" && (await stage()).current === "three",
+    `${clicked.current} then ${(await stage()).current}`,
+  );
+  for (let i = 0; i < 6; i++) await press("ArrowRight");
+  const sealed = await stage();
+  await shot("levels-sealed");
+  check(
+    "the sealed door comes last, offers no start and shuts the right arrow",
+    sealed.current === "sealed" &&
+      sealed.open.length === 0 &&
+      sealed.nextShut &&
+      (await focused()) === "Back",
+    JSON.stringify(sealed),
+  );
   await press("Escape");
   check("back returns to the title menu", (await game()).menu === "main");
+
+  // A world further along starts from its card.
+  await choose("Levels");
+  await press("ArrowRight");
+  await press("Enter");
+  await page.waitForFunction(
+    () => window.__READY__ && window.__GAME__?.chapter === "isles",
+    { timeout: 90000 },
+  );
+  g = await until(
+    (g) => g.mode === "play" && !g.paused,
+    6000,
+    "start the isles",
+  );
+  check(
+    "the levels screen starts a world further along",
+    g.chapter === "isles" && g.where === "three",
+    `${g.chapter} in ${g.where}`,
+  );
+  await page.goto(url, { waitUntil: "load" });
+  await page.waitForFunction(() => window.__READY__ === true, {
+    timeout: 90000,
+  });
+  await sleep(900);
 
   await choose("Settings");
   // The key bindings and aim come first; sensitivity opens the camera's group.
@@ -228,10 +328,12 @@ try {
   check("escape pauses", g.paused && g.menu === "pause");
   await shot("pause");
   await choose("Levels");
-  await page.evaluate(() =>
-    document
-      .querySelector('#level-list button[data-chapter="floor"]')
-      .classList.add("probe"),
+  const paused = await stage();
+  await shot("levels-from-pause");
+  check(
+    "levels from pause opens on the world in play",
+    paused.current === "court" && (await game()).paused,
+    paused.current,
   );
   // From the court floor is the second start.
   await press("ArrowDown");
