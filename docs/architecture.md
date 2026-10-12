@@ -7,6 +7,8 @@
 | `app/bootstrap.js`      | Construct services, load the character, assemble the application |
 | `app/campaign.js`       | Chapters, progress, world transitions and the finale             |
 | `app/ui.js`             | Loading, menus, settings, notes and pointer capture              |
+| `carousel.js`           | One card centre stage, turned by keys, arrows, swipes and clicks |
+| `level-select.js`       | The levels screen's world cards and starts on a carousel         |
 | `app/loop.js`           | Input, physics, animation, camera and frame order                |
 | `app/rendering.js`      | Renderer setup, shader preparation and resizing                  |
 | `app/diagnostics.js`    | Browser telemetry used by verification scripts                   |
@@ -41,7 +43,7 @@ Progress keeps the `far-door-progress` format. `completed` with `campaign` 6 or 
 
 While the Relics or relic account screen is open, `loop.js` asks `ui.renderStage(dt)` before drawing the world: once its stage is built, `RelicShowcase` draws its own small scene straight to the screen, restoring the renderer's target, clipping planes and exposure, and the world is not drawn. The stage is imported on first opening, so the title's modules do not include it; the screen owns the chosen relic and the stage reports drags and taps through `onSelect` and `onPick`.
 
-The title's downloads arrive together rather than one round trip at a time. `index.html` lists as module preloads every module the title imports, written by `scripts/boot-preload.mjs`, whose `--check` the architecture check runs. The court's build first preloads the assets it then makes one after another (`AssetStore.preload`); a preload only downloads, so modules still run in the build's order.
+The title's downloads arrive together rather than one round trip at a time. `index.html` lists as module preloads every module the title imports, written by `scripts/boot-preload.mjs`, whose `--check` the architecture check runs. The court's build first preloads the assets it then makes one after another (`AssetStore.preload`); a preload only downloads, so modules still run in the build's order. The levels screen's world pictures (`ui/levels/<world>.webp`) are requested only when that screen opens (`createLevelSelect().refresh`), never on the title's path.
 
 `prefetch(id)` prepares the next and previous worlds at background priority. With `retainAll` it also builds every world not yet built, nearest first; the title screen starts this, so later crossings find their destination ready. Background work yields on a cooperative budget of 12 ms on the title screen and 4 ms in play. Long loops are generators run by `runSteps` (`work-steps.js`), which pauses at each `yield` once the budget is spent: isle cap measurement, the forest and frozen grounds and the render budget's shadow casters use it, and a world's module and constructor run apart from its build. `WorldWorkBudget.hold(ms)` suspends background work during door crossings, chapter starts, cinematics and the finale, while a foreground request still runs at once. If the destination is still pending, the source remains visible and the hero holds position until it is ready. Background failures preserve the playable world and permit retry.
 

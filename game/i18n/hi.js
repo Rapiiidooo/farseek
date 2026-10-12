@@ -778,6 +778,7 @@ export default {
     "करीब से चूकी गोलियाँ भी निशाने पर लगती हैं, और निशाना सिमट जाता है।",
   "New game": "नया गेम",
   "Next relic": "अगली निशानी",
+  "Next world": "अगली दुनिया",
   "Next!": "अगला!",
   No: "नहीं",
   "No address stamp, no passage. Get stamped, one way or another.":
@@ -926,6 +927,7 @@ export default {
     "दबाव निकल गया। फैलती नीची लहर के ऊपर से कूदो",
   "Pressure vents": "दबाव-निकास",
   "Previous relic": "पिछली निशानी",
+  "Previous world": "पिछली दुनिया",
   Processed: "निपटाया गया",
   "Pull with the orb, once earned": "गोले से खींचो, मिलने के बाद",
   "Pulse both amber lenses from the drifting isle; link to this crystal to recharge.":

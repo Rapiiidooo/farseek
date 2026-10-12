@@ -14,6 +14,7 @@ import { applyVoiceVolume } from "../voice.js";
 import { craftLine } from "../pistol-craft.js";
 import { recordLoadEvent, reportLoadFailure } from "../load-diagnostics.js";
 import { createLoadBar } from "../load-bar.js";
+import { createLevelSelect } from "../level-select.js";
 import { svg } from "../glyph-icons.js";
 import { t } from "../i18n.js";
 import {
@@ -52,7 +53,7 @@ const named = (title) => title.replace(/^The /, "the ");
 // size, and only past that does it end in an ellipsis.
 function fitLines(panel) {
   for (const el of panel.querySelectorAll(
-    ".panel-title, .level-card h3, .level-card button, .menu-list .label, .menu-list .detail, .settings .row > span, .relic-caption h3, .menu-list.compact button",
+    ".panel-title, .level-card h3, .level-card button, .level-slide h3, .level-starts .label, .menu-list .label, .menu-list .detail, .settings .row > span, .relic-caption h3, .menu-list.compact button",
   )) {
     el.style.fontSize = "";
     if (!el.clientWidth || el.scrollWidth <= el.clientWidth) continue;
@@ -302,8 +303,19 @@ export function createUI(app) {
     if (showcase) showcase.area = stageArea();
   };
   addEventListener("resize", () => menu.isOpen && fitLines(menu.panel()));
+  // The display face's heavy weight first loads when a screen shows it, and changes its widths.
+  document.fonts?.addEventListener(
+    "loadingdone",
+    () => menu.isOpen && fitLines(menu.panel()),
+  );
+  const levels = createLevelSelect(menu.panel("levels"), {
+    menu,
+    sound,
+    keys: (code) => hud.keys(code),
+  });
   // Screens that show one thing at a time turn with left and right.
   const turners = {
+    levels: (direction) => levels.turn(direction),
     relics: (direction) => (selectRelic(relicIndex + direction), true),
     "relic-note": (direction) => (showcase?.nudge(direction), true),
   };
@@ -386,7 +398,7 @@ export function createUI(app) {
       case "new":
         return app.campaign.startChapter("court");
       case "levels":
-        refreshLevels();
+        levels.refresh();
         return menu.push("levels");
       case "relics":
         menu.push("relics");
@@ -474,58 +486,6 @@ export function createUI(app) {
     document.querySelector('[data-help="skip"]').innerHTML = input.usingTouch
       ? t("Tap to skip")
       : t("<kbd>Esc</kbd> or <kbd>Enter</kbd> to skip");
-  }
-
-  function refreshLevels() {
-    const list = document.querySelector("#level-list");
-    list.innerHTML = "";
-    // A finish recorded before the vault belongs to the drowned archive, a later one to the vault.
-    const finalLevel =
-      progress.campaign >= 7
-        ? WORLDS.length
-        : WORLDS.find((world) => world.entry === "finale")?.level - 1 ||
-          WORLDS.length;
-    // Worlds not reached stay one unknown card, so the list never tells how many lie ahead; the
-    // local test session still opens every chapter.
-    const reached = (c) => LAB_SESSION || progress.reached.has(c.id);
-    let next = null;
-    for (const definition of WORLDS) {
-      const n = definition.level;
-      const starts = CHAPTERS.filter((c) => c.level === n);
-      if (!starts.some(reached)) {
-        next ??= n;
-        continue;
-      }
-      const card = document.createElement("div");
-      card.className = `level-card${n === 1 ? "" : ` ${definition.id}`}`;
-      card.innerHTML = `<p class="num">${t("Level {n}", { n })}</p><h3>${starts[0].title}</h3><p class="blurb">${starts[0].blurb}</p>`;
-      if (n === finalLevel && progress.finished) {
-        const p = document.createElement("p");
-        p.className = "state";
-        p.textContent = t("Completed.");
-        card.appendChild(p);
-      }
-      // The starts sit at the foot of every card, so they line up across a row.
-      const row = document.createElement("div");
-      row.className = "starts";
-      for (const c of starts) {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.dataset.action = "chapter";
-        b.dataset.chapter = c.id;
-        b.textContent = c.start;
-        b.disabled = !reached(c);
-        row.appendChild(b);
-      }
-      card.appendChild(row);
-      list.appendChild(card);
-    }
-    if (next !== null) {
-      const card = document.createElement("div");
-      card.className = "level-card unknown";
-      card.innerHTML = `<p class="num">${t("Level {n}", { n: next })}</p><h3>${t("Unknown")}</h3><p class="blurb">${t("Open the next door to learn where it leads.")}</p>`;
-      list.appendChild(card);
-    }
   }
 
   // The Relics screen: one relic at a time on the showcase's stage, turned with left and right,

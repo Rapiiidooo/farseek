@@ -796,6 +796,7 @@ export default {
     "Los disparos que casi fallan aún dan en el blanco, y la retícula se cierra.",
   "New game": "Nueva partida",
   "Next relic": "Reliquia siguiente",
+  "Next world": "Mundo siguiente",
   "Next!": "¡Siguiente!",
   No: "No",
   "No address stamp, no passage. Get stamped, one way or another.":
@@ -945,6 +946,7 @@ export default {
     "Presión liberada. Salta la ola baja que se expande",
   "Pressure vents": "Respiraderos de presión",
   "Previous relic": "Reliquia anterior",
+  "Previous world": "Mundo anterior",
   Processed: "Tramitado",
   "Pull with the orb, once earned": "Atraer con el orbe, una vez conseguido",
   "Pulse both amber lenses from the drifting isle; link to this crystal to recharge.":

@@ -389,31 +389,32 @@ h1 .logo {
   box-shadow: 0 0 9px color-mix(in srgb, var(--world) 55%, transparent);
 }
 
-#load-worlds li[data-world="court"] {
+/* Anything marked with a world (a loading pip, a level's card) takes that world's colour. */
+[data-world="court"] {
   --world: var(--world-court);
 }
 
-#load-worlds li[data-world="two"] {
+[data-world="two"] {
   --world: var(--world-two);
 }
 
-#load-worlds li[data-world="three"] {
+[data-world="three"] {
   --world: var(--world-three);
 }
 
-#load-worlds li[data-world="four"] {
+[data-world="four"] {
   --world: var(--world-four);
 }
 
-#load-worlds li[data-world="five"] {
+[data-world="five"] {
   --world: var(--world-five);
 }
 
-#load-worlds li[data-world="six"] {
+[data-world="six"] {
   --world: var(--world-six);
 }
 
-#load-worlds li[data-world="vault"] {
+[data-world="vault"] {
   --world: var(--world-vault);
 }
 
@@ -556,6 +557,7 @@ body.reduce-motion #load-worlds li[data-state="active"] {
 .panel-title,
 #menu .kicker,
 .level-card h3,
+.level-slide h3,
 .settings .row > span {
   min-width: 0;
   white-space: nowrap;
@@ -658,13 +660,15 @@ body.reduce-motion #load-worlds li[data-state="active"] {
   transition: stroke 0.25s;
 }
 
-.menu-list button.focus .menu-glyph {
+.menu-list button.focus .menu-glyph,
+.level-starts button.focus .menu-glyph {
   border-color: var(--light);
   background: rgba(20, 70, 70, 0.78);
   box-shadow: 0 0 14px rgba(57, 227, 208, 0.55);
 }
 
-.menu-list button.focus .menu-glyph svg {
+.menu-list button.focus .menu-glyph svg,
+.level-starts button.focus .menu-glyph svg {
   stroke: #d9fffa;
 }
 
@@ -821,58 +825,6 @@ body.reduce-motion #load-worlds li[data-state="active"] {
   );
 }
 
-.level-card.two {
-  background: linear-gradient(
-    160deg,
-    rgba(140, 127, 163, 0.2),
-    rgba(18, 12, 9, 0.2)
-  );
-}
-
-.level-card.three {
-  background: linear-gradient(
-    160deg,
-    rgba(242, 212, 154, 0.2),
-    rgba(18, 12, 9, 0.2)
-  );
-}
-
-.level-card.four {
-  background: linear-gradient(
-    160deg,
-    rgba(169, 210, 227, 0.2),
-    rgba(18, 12, 9, 0.2)
-  );
-}
-
-.level-card.locked {
-  opacity: 0.5;
-}
-
-.level-card.five {
-  background: linear-gradient(
-    160deg,
-    rgba(79, 122, 58, 0.3),
-    rgba(18, 12, 9, 0.2)
-  );
-}
-
-.level-card.six {
-  background: linear-gradient(
-    160deg,
-    rgba(29, 95, 99, 0.4),
-    rgba(18, 12, 9, 0.2)
-  );
-}
-
-.level-card.vault {
-  background: linear-gradient(
-    160deg,
-    rgba(255, 178, 74, 0.18),
-    rgba(18, 12, 9, 0.2)
-  );
-}
-
 /* The vault's six-glyph address stays clear of the objective and pause button on phones. */
 body.touch #address[data-slots="6"] .glyphs {
   gap: 6px;
@@ -914,25 +866,593 @@ body.touch #address[data-slots="6"] .glyph svg {
   color: rgba(240, 226, 200, 0.82);
 }
 
-.level-card .state {
+/* --- carousels: one thing at a time, centre stage (carousel.js) --------------------------- */
+
+/* A carousel's screen dims what lies behind it and gives its stage the whole width. */
+#menu:has(> .carousel-panel:not([hidden])) {
+  place-items: stretch;
+  padding: max(14px, env(safe-area-inset-top)) 0
+    max(12px, env(safe-area-inset-bottom));
+  background: radial-gradient(
+    ellipse 120% 95% at 50% 45%,
+    rgba(14, 9, 6, 0.7),
+    rgba(10, 7, 5, 0.95)
+  );
+}
+
+#menu:has(> .carousel-panel:not([hidden])) ~ #local-tools {
+  display: none;
+}
+
+.carousel-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-height: none;
+  overflow: hidden;
+  text-align: center;
+}
+
+.carousel-panel > :not(.carousel) {
+  max-width: calc(100% - 32px);
+}
+
+.carousel-panel > .panel-title {
   margin: 0;
+  font-size: clamp(1.5rem, 3.4vw, 2.4rem);
+}
+
+.carousel-panel > .tagline {
+  margin: 0.25rem 0 0;
   font-size: 0.8rem;
-  color: rgba(232, 207, 164, 0.6);
+  color: rgba(240, 226, 200, 0.6);
 }
 
-.level-card .starts {
+.carousel-panel > nav {
+  justify-content: center;
+  margin-top: 0.7rem;
+}
+
+/* The card in the middle takes the room the stage gives it at its own proportions; each
+   neighbour sits a step to the side, a fifth smaller. */
+.carousel {
+  --card-ratio: 1.7778;
+  --card-w: min(64cqw, calc(100cqh * var(--card-ratio)), 68rem);
+  --card-h: calc(var(--card-w) / var(--card-ratio));
+  --card-gap: 1.5rem;
+  --card-step: calc(var(--card-w) * 0.9 + var(--card-gap));
+  --turn-size: 3rem;
+  --turn-at: 50%;
+  --turn-inset: 1.1rem;
+  position: relative;
+  flex: 1 1 0;
+  align-self: stretch;
+  min-height: 0;
+  margin-top: 0.9rem;
+  overflow-x: clip;
+  container-type: size;
+}
+
+.carousel-stage {
+  position: absolute;
+  inset: 0;
+  touch-action: pan-y;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--card-w);
+  height: var(--card-h);
+  translate: -50% -50%;
+  transform: translateX(var(--drag, 0px));
+  transition:
+    transform 0.5s cubic-bezier(0.2, 0.75, 0.25, 1),
+    opacity 0.5s ease,
+    visibility 0.5s;
+}
+
+/* Neighbours dim under a veil rather than a filter, so a turn only moves layers. */
+.carousel-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(10, 7, 5, 0.62);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.carousel-slide[data-place="current"] {
+  z-index: 2;
+}
+
+.carousel-slide:not([data-place="current"]) {
+  cursor: pointer;
+}
+
+.carousel-slide:not([data-place="current"])::after {
+  opacity: 1;
+}
+
+.carousel-slide[data-place="prev"],
+.carousel-slide[data-place="next"] {
+  z-index: 1;
+}
+
+.carousel-slide[data-place="prev"] {
+  transform: translateX(calc(var(--drag, 0px) - var(--card-step))) scale(0.8);
+}
+
+.carousel-slide[data-place="next"] {
+  transform: translateX(calc(var(--drag, 0px) + var(--card-step))) scale(0.8);
+}
+
+.carousel-slide[data-place="before"],
+.carousel-slide[data-place="after"] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.carousel-slide[data-place="before"] {
+  transform: translateX(calc(var(--drag, 0px) - 2 * var(--card-step)))
+    scale(0.7);
+}
+
+.carousel-slide[data-place="after"] {
+  transform: translateX(calc(var(--drag, 0px) + 2 * var(--card-step)))
+    scale(0.7);
+}
+
+.carousel-stage.dragging .carousel-slide {
+  transition: none;
+}
+
+/* The arrow medallions at the card's sides, with the key that turns the stage beneath. */
+.carousel-turn {
+  position: absolute;
+  top: var(--turn-at);
+  z-index: 3;
   display: grid;
+  justify-items: center;
+  gap: 0.45rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  translate: 0 calc(var(--turn-size) / -2);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.carousel-turn[data-turn="-1"] {
+  right: calc(50% + var(--card-w) / 2 + var(--turn-inset));
+}
+
+.carousel-turn[data-turn="1"] {
+  left: calc(50% + var(--card-w) / 2 + var(--turn-inset));
+}
+
+.carousel-turn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.carousel-turn:focus-visible {
+  outline: none;
+}
+
+.carousel-arrow {
+  display: grid;
+  place-items: center;
+  width: var(--turn-size);
+  height: var(--turn-size);
+  border: 1px solid rgba(232, 207, 164, 0.4);
+  border-radius: 50%;
+  background: rgba(16, 12, 10, 0.78);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  transition:
+    background 0.25s,
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+
+.carousel-arrow svg {
+  width: 46%;
+  height: 46%;
+  fill: none;
+  stroke: rgba(246, 231, 200, 0.85);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.25s;
+}
+
+/* The builders' light fills a medallion under the pointer or the keyboard's focus, and for a
+   moment whenever the stage turns its way. */
+.carousel-turn:focus-visible .carousel-arrow {
+  border-color: var(--light);
+  background: rgba(20, 70, 70, 0.85);
+  box-shadow: 0 0 18px rgba(57, 227, 208, 0.6);
+}
+
+.carousel-turn:focus-visible .carousel-arrow svg {
+  stroke: #d9fffa;
+}
+
+@media (hover: hover) {
+  .carousel-turn:not(:disabled):hover .carousel-arrow {
+    border-color: var(--light);
+    background: rgba(20, 70, 70, 0.85);
+    box-shadow: 0 0 18px rgba(57, 227, 208, 0.6);
+  }
+
+  .carousel-turn:not(:disabled):hover .carousel-arrow svg {
+    stroke: #d9fffa;
+  }
+}
+
+.carousel-turn.lit .carousel-arrow {
+  animation: carousel-lit 0.6s ease-out;
+}
+
+.carousel-turn.lit .carousel-arrow svg {
+  animation: carousel-lit-stroke 0.6s ease-out;
+}
+
+@keyframes carousel-lit {
+  from {
+    border-color: var(--light);
+    background: rgba(20, 70, 70, 0.85);
+    box-shadow: 0 0 18px rgba(57, 227, 208, 0.6);
+  }
+}
+
+@keyframes carousel-lit-stroke {
+  from {
+    stroke: #d9fffa;
+  }
+}
+
+.carousel-key kbd {
+  margin: 0;
+  font-size: 0.72rem;
+}
+
+.carousel-key:empty,
+body.touch .carousel-key {
+  display: none;
+}
+
+/* One diamond per card, in its world's colour when it has one, the one in the middle filled. */
+.carousel-pips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  height: 14px;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.carousel-pips li {
+  width: 9px;
+  height: 9px;
+  rotate: 45deg;
+  border: 1.5px solid color-mix(in srgb, var(--world, #e8cfa4) 55%, transparent);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    scale 0.3s ease;
+}
+
+.carousel-pips li.current {
+  scale: 1.4;
+  border-color: var(--world, #e8cfa4);
+  background: var(--world, #e8cfa4);
+  box-shadow: 0 0 10px
+    color-mix(in srgb, var(--world, #e8cfa4) 60%, transparent);
+}
+
+/* The sealed door's pip stays hollow: it has no colour to give away. */
+.carousel-pips li.current:not([data-world]) {
+  background: none;
+  box-shadow: none;
+}
+
+/* A world's card: its picture, with its name, its line and its starts over the foot of it. */
+.level-slide {
+  display: grid;
+  grid-template-areas: "picture";
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid rgba(232, 207, 164, 0.2);
+  border-radius: 8px;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--world, #b57f4f) 24%, #140e0a),
+    #0e0a08 70%
+  );
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+  text-align: left;
+  container-type: inline-size;
+}
+
+.level-slide[data-place="current"] {
+  border-color: color-mix(in srgb, var(--world, #e8cfa4) 55%, transparent);
+}
+
+.level-shot,
+.level-door {
+  grid-area: picture;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Until its picture arrives a card shows its world's tint, and the picture fades in over it. */
+.level-shot {
+  display: block;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.level-shot.ready {
+  opacity: 1;
+}
+
+.level-info {
+  grid-area: picture;
+  align-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+  min-width: 0;
+  padding: clamp(2.4rem, 11cqi, 6rem) 4.5cqi 3.6cqi;
+  background: linear-gradient(
+    to top,
+    rgba(10, 7, 5, 0.94),
+    rgba(10, 7, 5, 0.8) 55%,
+    rgba(10, 7, 5, 0)
+  );
+}
+
+.level-info > * {
+  max-width: 100%;
+  margin: 0;
+}
+
+.level-info .kicker {
+  font-size: clamp(0.68rem, 1.5cqi, 0.9rem);
+  color: var(--world, var(--sand));
+}
+
+.level-info h3 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 5.2cqi, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--sand-bright);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+}
+
+.level-info .blurb {
+  max-width: min(100%, 38em);
+  font-size: clamp(0.82rem, 1.75cqi, 1.05rem);
+  line-height: 1.42;
+  color: rgba(240, 226, 200, 0.88);
+}
+
+.level-state {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--world, var(--sand));
+}
+
+.level-starts {
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: auto;
+  margin-top: 0.5rem;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s;
 }
 
-.level-card.unknown {
-  border-style: dashed;
-  background: rgba(18, 12, 9, 0.35);
+.carousel-slide:not([data-place="current"]) .level-starts {
+  opacity: 0;
+  visibility: hidden;
 }
 
-.level-card.unknown h3 {
-  color: rgba(246, 231, 200, 0.55);
+.level-starts button {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+  max-width: 100%;
+  padding: 0.38rem 1rem 0.38rem 0.42rem;
+  border: 1px solid rgba(232, 207, 164, 0.32);
+  border-radius: 4px;
+  background: rgba(16, 11, 8, 0.62);
+  color: rgba(246, 231, 200, 0.85);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(0.95rem, 1.85cqi, 1.2rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    border-color 0.15s,
+    background 0.15s;
+}
+
+.level-starts .label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.level-starts button.focus {
+  color: #fffaf0;
+  border-color: var(--light);
+  background: rgba(29, 95, 99, 0.72);
+  outline: none;
+}
+
+.level-starts button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* The world after the last one reached: a sealed door, the same whichever world it hides. */
+.level-slide.sealed {
+  background:
+    radial-gradient(
+      circle at 50% 38%,
+      rgba(57, 227, 208, 0.06),
+      transparent 40%
+    ),
+    radial-gradient(ellipse at 50% 115%, #2a1d14, #0d0907 72%);
+}
+
+.level-door {
+  display: grid;
+  place-items: center;
+}
+
+.level-door > svg {
+  height: 58%;
+  max-width: 80%;
+  translate: 0 -18%;
+  filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.6));
+}
+
+.level-door .sealed-glyph {
+  fill: none;
+  stroke: rgba(232, 207, 164, 0.55);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* A tall screen stacks the picture over the text. */
+@media (max-aspect-ratio: 4/5) {
+  .carousel {
+    --card-ratio: 0.56;
+    --card-w: min(80cqw, calc(100cqh * var(--card-ratio)), 26rem);
+    --card-gap: 0.75rem;
+    --turn-size: 2.6rem;
+    --turn-at: calc(50% - var(--card-h) * 0.25);
+    --turn-inset: -1.3rem;
+  }
+
+  .level-slide {
+    grid-template-areas: "picture" "info";
+    grid-template-rows: 50% minmax(0, 1fr);
+  }
+
+  .level-info {
+    grid-area: info;
+    align-self: stretch;
+    padding: 0.85rem 1rem 1rem;
+    background: none;
+  }
+
+  .level-starts {
+    flex-direction: column;
+    align-self: stretch;
+    margin-top: auto;
+  }
+
+  .level-door > svg {
+    height: 78%;
+    translate: none;
+  }
+}
+
+/* A short screen on its side sets the text beside the picture. */
+@media (max-height: 500px) and (min-aspect-ratio: 1/1) {
+  .carousel-panel > .kicker,
+  .carousel-panel > .tagline {
+    display: none;
+  }
+
+  .carousel-panel > .panel-title {
+    font-size: 1.4rem;
+  }
+
+  .carousel {
+    --card-ratio: 2.3;
+    --card-w: min(76cqw, calc(100cqh * var(--card-ratio)));
+    --turn-size: 2.6rem;
+    margin-top: 0.6rem;
+  }
+
+  .level-slide {
+    grid-template-areas: "picture info";
+    grid-template-columns: 48% minmax(0, 1fr);
+  }
+
+  .level-starts .menu-glyph {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  .level-info {
+    grid-area: info;
+    align-self: stretch;
+    justify-content: center;
+    padding: 0.7rem 0.9rem;
+    background: none;
+  }
+
+  .level-info h3 {
+    font-size: clamp(1.15rem, 3.4cqi, 1.7rem);
+  }
+
+  .level-starts {
+    flex-direction: column;
+    align-self: stretch;
+  }
+
+  .level-door > svg {
+    height: 80%;
+    translate: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-slide,
+  .carousel-slide::after,
+  .level-shot,
+  .level-starts,
+  .carousel-pips li {
+    transition: none;
+  }
+}
+
+body.reduce-motion .carousel-slide,
+body.reduce-motion .carousel-slide::after,
+body.reduce-motion .level-shot,
+body.reduce-motion .level-starts,
+body.reduce-motion .carousel-pips li {
+  transition: none;
 }
 
 /* --- relics: the screens over the showcase's stage -------------------------------------- */

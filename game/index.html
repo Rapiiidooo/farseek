@@ -87,6 +87,7 @@
     <link rel="modulepreload" href="./body-sound.js" />
     <link rel="modulepreload" href="./bubbles.js" />
     <link rel="modulepreload" href="./calm-camera.js" />
+    <link rel="modulepreload" href="./carousel.js" />
     <link rel="modulepreload" href="./cliffs.js" />
     <link rel="modulepreload" href="./close-up.js" />
     <link rel="modulepreload" href="./controls-screen.js" />
@@ -134,6 +135,7 @@
     <link rel="modulepreload" href="./i18n.js" />
     <link rel="modulepreload" href="./input.js" />
     <link rel="modulepreload" href="./leaf-surface.js" />
+    <link rel="modulepreload" href="./level-select.js" />
     <link rel="modulepreload" href="./level.js" />
     <link rel="modulepreload" href="./load-bar.js" />
     <link rel="modulepreload" href="./load-diagnostics.js" />
@@ -474,10 +476,39 @@
         </nav>
       </div>
 
-      <div class="panel wide" data-screen="levels" hidden>
+      <div class="panel carousel-panel" data-screen="levels" hidden>
         <p class="kicker">Levels</p>
         <h2 class="panel-title">Choose where to start</h2>
-        <div class="levels" id="level-list"></div>
+        <div class="carousel">
+          <div class="carousel-stage" id="level-list"></div>
+          <button
+            type="button"
+            class="carousel-turn"
+            data-turn="-1"
+            aria-label="Previous world"
+          >
+            <span class="carousel-arrow">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14.5 5.5 8 12l6.5 6.5" />
+              </svg>
+            </span>
+            <span class="carousel-key" data-key="KeyA"></span>
+          </button>
+          <button
+            type="button"
+            class="carousel-turn"
+            data-turn="1"
+            aria-label="Next world"
+          >
+            <span class="carousel-arrow">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9.5 5.5 16 12l-6.5 6.5" />
+              </svg>
+            </span>
+            <span class="carousel-key" data-key="KeyD"></span>
+          </button>
+        </div>
+        <ol class="carousel-pips" aria-hidden="true"></ol>
         <nav class="menu-list compact">
           <button type="button" data-action="back">Back</button>
         </nav>

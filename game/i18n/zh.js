@@ -752,6 +752,7 @@ export default {
     "稍有偏差也能命中目标，准星也会收窄。",
   "New game": "新游戏",
   "Next relic": "下一件遗物",
+  "Next world": "下一个世界",
   "Next!": "下一位！",
   No: "否",
   "No address stamp, no passage. Get stamped, one way or another.":
@@ -894,6 +895,7 @@ export default {
   "Pressure vented. Jump the expanding low wave": "压力已释放。跳过扩散的低浪",
   "Pressure vents": "压力喷口",
   "Previous relic": "上一件遗物",
+  "Previous world": "上一个世界",
   Processed: "已处理",
   "Pull with the orb, once earned": "习得后可用宝珠牵引",
   "Pulse both amber lenses from the drifting isle; link to this crystal to recharge.":

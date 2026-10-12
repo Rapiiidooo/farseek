@@ -803,6 +803,7 @@ export default {
     "Les tirs qui frôlent la cible la touchent quand même, et la mire se resserre.",
   "New game": "Nouvelle partie",
   "Next relic": "Relique suivante",
+  "Next world": "Monde suivant",
   "Next!": "Au suivant !",
   No: "Non",
   "No address stamp, no passage. Get stamped, one way or another.":
@@ -953,6 +954,7 @@ export default {
     "Pression purgée. Saute la vague basse qui s’étend",
   "Pressure vents": "Évents de pression",
   "Previous relic": "Relique précédente",
+  "Previous world": "Monde précédent",
   Processed: "Traité",
   "Pull with the orb, once earned": "Attirer avec l’orbe, une fois acquis",
   "Pulse both amber lenses from the drifting isle; link to this crystal to recharge.":
