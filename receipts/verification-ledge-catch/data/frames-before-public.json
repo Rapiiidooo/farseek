@@ -1,0 +1,1356 @@
+[
+ {
+  "name": "crack",
+  "i": 0,
+  "state": "air",
+  "feet": 5.729,
+  "y": 3.18,
+  "x": 4.5,
+  "z": 33.76
+ },
+ {
+  "name": "crack",
+  "i": 1,
+  "state": "air",
+  "feet": 5.818,
+  "y": 2.48,
+  "x": 4.5,
+  "z": 33.67
+ },
+ {
+  "name": "crack",
+  "i": 2,
+  "state": "air",
+  "feet": 5.883,
+  "y": 1.78,
+  "x": 4.5,
+  "z": 33.57
+ },
+ {
+  "name": "crack",
+  "i": 3,
+  "state": "air",
+  "feet": 5.925,
+  "y": 1.08,
+  "x": 4.5,
+  "z": 33.47
+ },
+ {
+  "name": "crack",
+  "i": 4,
+  "state": "air",
+  "feet": 5.943,
+  "y": 0.38,
+  "x": 4.5,
+  "z": 33.36
+ },
+ {
+  "name": "crack",
+  "i": 5,
+  "state": "air",
+  "feet": 5.938,
+  "y": -0.32,
+  "x": 4.5,
+  "z": 33.26
+ },
+ {
+  "name": "crack",
+  "i": 6,
+  "state": "air",
+  "feet": 5.905,
+  "y": -1.23,
+  "x": 4.5,
+  "z": 33.15
+ },
+ {
+  "name": "crack",
+  "i": 7,
+  "state": "air",
+  "feet": 5.841,
+  "y": -2.14,
+  "x": 4.5,
+  "z": 33.03
+ },
+ {
+  "name": "crack",
+  "i": 8,
+  "state": "air",
+  "feet": 5.747,
+  "y": -3.05,
+  "x": 4.5,
+  "z": 32.92
+ },
+ {
+  "name": "crack",
+  "i": 9,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 10,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 11,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 12,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 13,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 14,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 15,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 16,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 17,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 18,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 19,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 20,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 21,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 22,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 23,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 24,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 25,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 26,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 27,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 28,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 29,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 30,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 31,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 32,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 33,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 34,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 35,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 36,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 37,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 38,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 39,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 40,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 41,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 42,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 43,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 44,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 45,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 46,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 47,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 48,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 49,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 50,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 51,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 52,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 53,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 54,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 55,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 56,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 57,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 58,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 59,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 60,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 61,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 62,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 63,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 64,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 65,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 66,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 67,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 68,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 69,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 70,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 71,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 72,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 73,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 74,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 75,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 76,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 77,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 78,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "crack",
+  "i": 79,
+  "state": "hang",
+  "feet": 5.137,
+  "y": 0,
+  "x": 4.5,
+  "z": 32.62
+ },
+ {
+  "name": "edge",
+  "i": 0,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 1,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 2,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 3,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 4,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 5,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 6,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 7,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 8,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 9,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 10,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 11,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 12,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 13,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 14,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 15,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 16,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 17,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 18,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 19,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 20,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 21,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 22,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 23,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 24,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 25,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 26,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 27,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 28,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 29,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 30,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 31,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 32,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 33,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 34,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 35,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 36,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 37,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 38,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 39,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 40,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 41,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 42,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 43,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 44,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 45,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 46,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 47,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 48,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 49,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 50,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 51,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 52,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 53,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 54,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 55,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 56,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 57,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 58,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 59,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 60,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 61,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 62,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 63,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 64,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 65,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 66,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 67,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 68,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "name": "edge",
+  "i": 69,
+  "state": "hang",
+  "feet": 6.137,
+  "y": 0,
+  "x": 4,
+  "z": 35.73
+ },
+ {
+  "crackHangFrame": 9,
+  "edgeHangFrame": 0
+ }
+]

@@ -181,7 +181,8 @@ export const wallClimbing = {
     const b = range(s);
     const ox = this.pos.x,
       oz = this.pos.z,
-      of = this.feet;
+      of = this.feet,
+      vy = this.vel.y;
     this.state = "wall";
     this.t = 0;
     this.waterLanding = false;
@@ -197,9 +198,7 @@ export const wallClimbing = {
     };
     this.feet = clamp(feet, b.f0, b.f1);
     this.placeOnWall();
-    this.snap.x += ox - this.pos.x;
-    this.snap.z += oz - this.pos.z;
-    this.stepLift += of - this.feet;
+    this.arrive(ox, oz, of, vy);
     this.plantAll(CATCH);
     this.events.push("grab");
     for (const name of ["leftHand", "rightHand"]) this.wallStrike(name);

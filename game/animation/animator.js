@@ -10,6 +10,7 @@ import { face } from "./face.js";
 import { secondary } from "./secondary.js";
 import { reloadArms, reloadBody } from "./reload.js";
 import { wall, wallPose } from "./wall.js";
+import { arrival } from "./arrival.js";
 
 const JOINTS = [
   "hips",
@@ -242,6 +243,8 @@ export class HeroAnimator {
     this.motionTurn +=
       (THREE.MathUtils.clamp(rawTurn, -8, 8) - this.motionTurn) *
       (1 - Math.exp(-dt * 8));
+    if (discontinuity && !["hang", "wall"].includes(hero.state))
+      this.arrival = null;
     if (discontinuity)
       for (const leg of this.legs)
         leg.goal =
@@ -276,6 +279,7 @@ export class HeroAnimator {
     this.detailPose(pose, root, hero, dt);
     reloadBody(pose, root, hero);
     overlays(pose, root, hero, this.stepSpeed);
+    this.arrivalPose(pose, root, dt);
 
     for (const name of JOINTS) {
       const j = this.joints[name],
@@ -338,6 +342,7 @@ export class HeroAnimator {
       hero.feet + hero.stepLift + this.lift,
       hero.pos.z + hero.snap.z,
     );
+    if (this.arrival) m.position.add(this.arrival.offset);
     const rollTime = Math.min(1, hero.t / 0.72);
     const tumble =
       hero.state === "roll" ? smooth(0.12, 0.79, rollTime) * Math.PI * 2 : 0;
@@ -431,7 +436,9 @@ export class HeroAnimator {
 
   enter(state, hero) {
     const S = this.springs;
-    if (state === "hang") {
+    if ((state === "hang" || state === "wall") && hero.arrival)
+      this.startArrival(hero, state);
+    if (state === "hang" && !this.arrival?.fromTop) {
       this.root.pitch.dv += 3.2;
       if (S.leftUpperLeg) S.leftUpperLeg[0].dv -= 4;
       if (S.rightUpperLeg) S.rightUpperLeg[0].dv -= 3;
@@ -454,5 +461,6 @@ Object.assign(
   face,
   secondary,
   wall,
+  arrival,
 );
 POSES.wall = wallPose;

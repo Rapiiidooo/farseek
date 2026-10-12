@@ -500,7 +500,8 @@ export class Hero {
   }
 
   // --- hang -----------------------------------------------------------------
-  beginHang(ledge) {
+  beginHang(ledge, fromTop = false) {
+    const vy = this.vel.y;
     this.state = "hang";
     this.waterLanding = false;
     this.ledge = ledge;
@@ -510,16 +511,26 @@ export class Hero {
       oz = this.pos.z,
       of = this.feet;
     this.placeOnLedge(ledge.hand.x, ledge.hand.z);
-    this.snap.x += ox - this.pos.x;
-    this.snap.z += oz - this.pos.z;
-    this.stepLift += of - this.feet;
+    this.arrive(ox, oz, of, vy, fromTop);
     this.backHold = 0;
     this.events.push("grab");
   }
 
   beginHangFromTop(edge) {
-    this.beginHang(edge);
+    this.beginHang(edge, true);
     this.events.push("drop-to-hang");
+  }
+
+  // Where the body was before a catch put it on a hold; the animator carries it there over a
+  // moment (a lowering from the top for `fromTop`) instead of the frame it takes here.
+  arrive(ox, oz, of, vy = 0, fromTop = false) {
+    this.arrival = {
+      x: ox - this.pos.x,
+      y: of - this.feet,
+      z: oz - this.pos.z,
+      vy,
+      fromTop,
+    };
   }
 
   placeOnLedge(hx, hz) {
