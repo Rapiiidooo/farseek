@@ -20,6 +20,10 @@ The two shafts now cross against the pack's outer panel, the first at z -0.17 an
 - The [animation contracts](data/animation-check.json) pass 62 of 62, among them "Axes ride the pack once owned and off the climb" and "Axe picks bite the ice at planted holds".
 - The pair waiting at the foot of the frozen reach's first fall stands on the snow (ground 0, its tips 7 cm into it) and leans its heads on the ice ([frame](frames/waiting-at-the-fall.jpg)); it was not floating and is unchanged.
 
+## Lashing
+
+The owner then asked for a small cord to hold them. A red cord (`LASHING` in `wall.js`) is knotted where the shafts cross and runs out to the pack's four corners, bowing a little over the shafts; it rides the spine with the axes and shows only while they are stowed ([behind](frames/lashing-back.jpg), [three quarters](frames/lashing-three-quarter.jpg), [side](frames/lashing-side.jpg)). Built with the axes before any world prepares its shaders, it compiles nothing during play: the [wall review](data/walls-review.log) passes 10 of 10, frost and ivy climbs included, the animation contracts 62 of 62.
+
 ## Not checked
 
-Straps holding the shafts (there are none, the pack's panel carries them), every animation from every angle, and the owner's eye.
+Every animation from every angle, and the owner's eye.

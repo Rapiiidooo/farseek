@@ -19,6 +19,56 @@ const STOW = [
   { side: 1, at: [0.012, 1.3, -0.17], tilt: 0.42 },
   { side: -1, at: [-0.012, 1.3, -0.2], tilt: 0.42 },
 ];
+// The cord that holds them: knotted where the shafts cross, out to the pack's four corners.
+const LASHING = {
+  knot: [0, 1.3, -0.207],
+  corners: [
+    [-0.085, 1.41],
+    [0.085, 1.41],
+    [-0.085, 1.19],
+    [0.085, 1.19],
+  ],
+  face: -0.15,
+};
+
+function lashing() {
+  const material = new THREE.MeshStandardMaterial({
+    color: 0x8e3326,
+    roughness: 0.75,
+  });
+  const group = new THREE.Group();
+  group.name = "Ice axe lashing";
+  const knot = V(...LASHING.knot);
+  for (const [x, y] of LASHING.corners) {
+    const corner = V(x, y, LASHING.face);
+    // Pulled taut over the shafts, it bows a little away from the pack.
+    const bend = knot
+      .clone()
+      .lerp(corner, 0.5)
+      .setZ(LASHING.face - 0.035);
+    group.add(
+      new THREE.Mesh(
+        new THREE.TubeGeometry(
+          new THREE.QuadraticBezierCurve3(knot, bend, corner),
+          10,
+          0.0032,
+          6,
+        ),
+        material,
+      ),
+    );
+  }
+  const tie = new THREE.Mesh(
+    new THREE.TorusGeometry(0.014, 0.0055, 6, 14),
+    material,
+  );
+  tie.position.copy(knot);
+  group.add(tie);
+  group.traverse((node) => {
+    if (node.isMesh) node.castShadow = node.receiveShadow = true;
+  });
+  return group;
+}
 
 function holdPoint(s, hold, d, out) {
   return out.set(
@@ -102,6 +152,14 @@ export const wall = {
       this.stowAxe(record);
       return record;
     });
+    this.lashing = lashing();
+    toSpine.decompose(
+      this.lashing.position,
+      this.lashing.quaternion,
+      this.lashing.scale,
+    );
+    this.lashing.visible = false;
+    spine.add(this.lashing);
   },
 
   stowAxe(record) {
@@ -149,6 +207,7 @@ export const wall = {
       if (held && !record.held) this.holdAxe(record);
       else if (!held && record.held !== false) this.stowAxe(record);
     }
+    if (this.lashing) this.lashing.visible = owned && !held;
   },
 
   // The hands' goals on the wall, for `reach`.
