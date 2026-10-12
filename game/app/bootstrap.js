@@ -308,6 +308,7 @@ export function startGame() {
       params.get("chapter") ||
       (params.has("w2") ? "checkpoint" : null);
     app.campaign.toTitle({ prefetch: !auto });
+    if (!auto) app.ui.reopenMenu();
     if (auto)
       await app.campaign.startChapter(auto, {
         continuing: params.get("resume") === "1",

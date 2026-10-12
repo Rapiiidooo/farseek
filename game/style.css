@@ -1833,6 +1833,23 @@ body:has(#menu[data-screen="relic-note"]) #hud {
   outline: none;
 }
 
+/* A row that opens a screen of its own ends in a chevron. */
+.settings .row-button .value::after {
+  content: "\203A";
+  margin-left: 0.55rem;
+  color: var(--light);
+}
+
+/* The language in use: its medallion holds a point of the builders' light. */
+#language-list button.current .menu-glyph::after {
+  content: "";
+  width: 38%;
+  height: 38%;
+  border-radius: 50%;
+  background: var(--light);
+  box-shadow: 0 0 8px rgba(57, 227, 208, 0.7);
+}
+
 /* A finger needs taller rows than a mouse. */
 @media (pointer: coarse) {
   .settings .row,
@@ -2163,34 +2180,9 @@ body.touch .settings input[type="range"] {
   box-shadow: 0 0 6px rgba(57, 227, 208, 0.8);
 }
 
-/* A choice that applies after a pause fills a groove of light in the pips' place meanwhile. */
-.cycler.settling .cycler-pips {
-  opacity: 0;
-}
-
-.cycler.settling .cycler-value::before {
-  content: "";
-  position: absolute;
-  top: calc(100% + 5px);
-  left: 0;
-  right: 0;
-  height: 2px;
-  border-radius: 1px;
-  background: linear-gradient(90deg, var(--light), rgba(57, 227, 208, 0.3));
-  transform-origin: left;
-  animation: cycler-settle var(--settle) linear both;
-}
-
-@keyframes cycler-settle {
-  from {
-    transform: scaleX(0);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .cycler-arrow,
   .cycler-pips,
-  .cycler.settling .cycler-value::before,
   .settings input[type="checkbox"] {
     transition: none;
     animation: none;
@@ -2199,7 +2191,6 @@ body.touch .settings input[type="range"] {
 
 body.reduce-motion .cycler-arrow,
 body.reduce-motion .cycler-pips,
-body.reduce-motion .cycler.settling .cycler-value::before,
 body.reduce-motion .settings input[type="checkbox"] {
   transition: none;
   animation: none;

@@ -629,17 +629,10 @@
           </section>
           <section class="settings-group" aria-labelledby="settings-display">
             <h3 id="settings-display">Display</h3>
-            <label class="row"
-              ><span>Language</span
-              ><select id="set-language">
-                <option value="auto">Automatic</option>
-                <option value="en" lang="en" translate="no">English</option>
-                <option value="fr" lang="fr" translate="no">Français</option>
-                <option value="es" lang="es" translate="no">Español</option>
-                <option value="zh" lang="zh-Hans" translate="no">中文</option>
-                <option value="hi" lang="hi" translate="no">हिन्दी</option>
-              </select></label
-            >
+            <button type="button" class="row-button" data-action="language">
+              <span>Language</span
+              ><span class="value" id="language-value"></span>
+            </button>
             <label class="row"
               ><span>Image quality</span
               ><select id="set-quality">
@@ -735,6 +728,68 @@
           <button type="button" data-action="reset-progress">
             Reset saved progress
           </button>
+          <button type="button" data-action="back">Back</button>
+        </nav>
+      </div>
+
+      <div class="panel" data-screen="language" hidden>
+        <p class="kicker">Settings</p>
+        <h2 class="panel-title">Language</h2>
+        <nav class="menu-list" id="language-list">
+          <button
+            type="button"
+            data-action="choose-language"
+            data-language="auto"
+          >
+            Automatic
+          </button>
+          <button
+            type="button"
+            data-action="choose-language"
+            data-language="en"
+            lang="en"
+            translate="no"
+          >
+            English
+          </button>
+          <button
+            type="button"
+            data-action="choose-language"
+            data-language="fr"
+            lang="fr"
+            translate="no"
+          >
+            Français
+          </button>
+          <button
+            type="button"
+            data-action="choose-language"
+            data-language="es"
+            lang="es"
+            translate="no"
+          >
+            Español
+          </button>
+          <button
+            type="button"
+            data-action="choose-language"
+            data-language="zh"
+            lang="zh-Hans"
+            translate="no"
+          >
+            中文
+          </button>
+          <button
+            type="button"
+            data-action="choose-language"
+            data-language="hi"
+            lang="hi"
+            translate="no"
+          >
+            हिन्दी
+          </button>
+        </nav>
+        <nav class="menu-list compact">
           <button type="button" data-action="back">Back</button>
         </nav>
       </div>

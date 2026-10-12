@@ -1,6 +1,6 @@
 import { Menu } from "../menu.js";
 import { createControlsScreen } from "../controls-screen.js";
-import { dressSetting, showSetting, settling } from "../setting-controls.js";
+import { dressSetting, showSetting } from "../setting-controls.js";
 import {
   settings,
   saveSettings,
@@ -16,7 +16,7 @@ import { recordLoadEvent, reportLoadFailure } from "../load-diagnostics.js";
 import { createLoadBar } from "../load-bar.js";
 import { createLevelSelect } from "../level-select.js";
 import { svg } from "../glyph-icons.js";
-import { t } from "../i18n.js";
+import { t, LANGUAGES, language, browserLanguage } from "../i18n.js";
 import {
   LOCAL_PREVIEW,
   LAB_SESSION,
@@ -47,6 +47,7 @@ const MENU_GLYPHS = {
   title: "star",
 };
 const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
+const REOPEN_KEY = "far-door-reopen";
 const named = (title) => title.replace(/^The /, "the ");
 
 // Headings, labels and buttons keep to one line: a long one is set smaller, down to 60% of its
@@ -408,6 +409,14 @@ export function createUI(app) {
         return inspectRelic(el.dataset.relic);
       case "settings":
         return menu.push("settings");
+      case "language":
+        showLanguage();
+        menu.push("language");
+        return menu.focus(
+          menu.items().findIndex((b) => b.classList.contains("current")),
+        );
+      case "choose-language":
+        return chooseLanguage(el.dataset.language);
       case "controls":
         controls.render();
         return menu.push("controls");
@@ -669,7 +678,6 @@ export function createUI(app) {
     bind("set-voice", "voice");
     bind("set-muted", "muted");
     bind("set-quality", "quality", String);
-    bind("set-language", "language", String);
     bind("set-markers", "markers");
     bind("set-hints", "hints");
     bind("set-shake", "shake");
@@ -684,6 +692,7 @@ export function createUI(app) {
     app.follow.settings = settings;
     applyLook();
     showMuted();
+    showLanguage();
     skipHelp();
   }
 
@@ -698,11 +707,6 @@ export function createUI(app) {
     body.toggle("reduce-motion", !!settings.reduceMotion);
     document.querySelector("#fov-value").textContent = `${settings.fov}°`;
   }
-
-  // The language's cycler reloads the game only once the player stops on a language other than
-  // the one this page loaded with.
-  const loadedLanguage = settings.language;
-  let relaunching = 0;
 
   function settingChanged(el) {
     const key = el.dataset?.setting;
@@ -720,17 +724,43 @@ export function createUI(app) {
     if (key === "muted") showMuted();
     if (key === "voice") applyVoiceVolume(sound);
     if (key === "quality") app.rendering.resize();
-    if (key === "language") {
-      clearTimeout(relaunching);
-      const wait = settings.language === loadedLanguage ? 0 : 1.2;
-      settling(el, wait);
-      if (wait) relaunching = setTimeout(relaunch, wait * 1000);
-    }
     applyLook();
   }
 
-  // The game's text is translated as its modules load, so another language needs a reload;
-  // a level in progress starts again from its own start.
+  // Settings' language row opens the languages, each written in itself; Automatic names the
+  // browser's language it stands for.
+  const languageName = (id) =>
+    id === "auto"
+      ? t("Automatic")
+      : (LANGUAGES.find((entry) => entry.id === id)?.name ?? id);
+
+  function showLanguage() {
+    document.querySelector("#language-value").textContent = languageName(
+      settings.language,
+    );
+    for (const button of document.querySelectorAll("#language-list button"))
+      button.classList.toggle(
+        "current",
+        button.dataset.language === settings.language,
+      );
+    setDetail(
+      document.querySelector('#language-list [data-language="auto"]'),
+      languageName(browserLanguage()),
+    );
+  }
+
+  // A choice that changes the text on screen reloads the game in it at once.
+  function chooseLanguage(id) {
+    settings.language = id;
+    saveSettings();
+    showLanguage();
+    if ((id === "auto" ? browserLanguage() : id) === language)
+      return menu.back();
+    relaunch();
+  }
+
+  // The game's text is translated as its modules load, so another language needs a reload: a
+  // level in progress starts again from its own start, and the title comes back on Settings.
   function relaunch() {
     const url = new URL(location.href);
     for (const name of ["lang", "chapter", "level", "w2", "resume"])
@@ -738,8 +768,27 @@ export function createUI(app) {
     if (state.mode === "play" && state.chapter) {
       url.searchParams.set("chapter", state.chapter);
       url.searchParams.set("resume", "1");
-    }
+    } else
+      try {
+        sessionStorage.setItem(REOPEN_KEY, "settings");
+      } catch {
+        /* the title opens as usual */
+      }
     location.replace(url);
+  }
+
+  // After a reload into another language the title reopens Settings on the language row.
+  function reopenMenu() {
+    let screen = null;
+    try {
+      screen = sessionStorage.getItem(REOPEN_KEY);
+      sessionStorage.removeItem(REOPEN_KEY);
+    } catch {
+      return;
+    }
+    if (screen !== "settings" || state.mode !== "title") return;
+    menu.push("settings");
+    menu.focus(menu.items().findIndex((b) => b.dataset.action === "language"));
   }
 
   function ready() {
@@ -853,5 +902,6 @@ export function createUI(app) {
     fail,
     pollRecovery,
     renderStage,
+    reopenMenu,
   };
 }

@@ -72,14 +72,3 @@ export function dressSetting(el) {
   if (el instanceof HTMLSelectElement && !cyclers.has(el)) cycler(el);
   showSetting(el);
 }
-
-// A change that applies after a pause fills a groove of light in the pips' place meanwhile.
-export function settling(select, seconds) {
-  const box = cyclers.get(select)?.box;
-  if (!box) return;
-  box.classList.remove("settling");
-  if (!seconds) return;
-  box.style.setProperty("--settle", `${seconds}s`);
-  void box.offsetWidth;
-  box.classList.add("settling");
-}

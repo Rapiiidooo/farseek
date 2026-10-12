@@ -42,6 +42,11 @@ export function chooseLanguage() {
     /* storage unavailable */
   }
   if (supported(saved)) return saved;
+  return browserLanguage();
+}
+
+// What Automatic means: the browser's first supported language.
+export function browserLanguage() {
   if (navigator.webdriver) return "en";
   for (const tag of navigator.languages || [navigator.language]) {
     const id = String(tag).toLowerCase().split("-")[0];

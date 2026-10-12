@@ -1,0 +1,110 @@
+{
+ "results": [
+  {
+   "name": "a French browser opens in French on Automatic",
+   "ok": true,
+   "detail": {
+    "lang": "fr",
+    "screen": "main",
+    "mode": "title",
+    "focus": "ContinuerLa Cour enfouie",
+    "row": "Automatique",
+    "saved": null,
+    "current": "auto"
+   }
+  },
+  {
+   "name": "the row opens every language at once, the one in use marked and in focus",
+   "ok": true,
+   "detail": {
+    "list": [
+     "AutomatiqueFrançais",
+     "English",
+     "Français",
+     "Español",
+     "中文",
+     "हिन्दी"
+    ],
+    "focus": "AutomatiqueFrançais"
+   }
+  },
+  {
+   "name": "one click reloads into Spanish at once and comes back on Settings, the row in focus",
+   "ok": true,
+   "detail": {
+    "lang": "es",
+    "screen": "settings",
+    "mode": "title",
+    "focus": "IdiomaEspañol",
+    "row": "Español",
+    "saved": "es",
+    "current": "es",
+    "navigationMs": 128
+   }
+  },
+  {
+   "name": "with keys: Enter opens the list on the language in use, up three and Enter chooses Automatic",
+   "ok": true,
+   "detail": {
+    "opened": "Español",
+    "chosen": "AutomáticoFrançais",
+    "after": {
+     "lang": "fr",
+     "screen": "settings",
+     "mode": "title",
+     "focus": "LangueAutomatique",
+     "row": "Automatique",
+     "saved": "auto",
+     "current": "auto"
+    }
+   }
+  },
+  {
+   "name": "choosing French while Automatic already shows French saves it without a reload",
+   "ok": true,
+   "detail": {
+    "navigated": false,
+    "lang": "fr",
+    "screen": "settings",
+    "mode": "title",
+    "focus": "LangueFrançais",
+    "row": "Français",
+    "saved": "fr",
+    "current": "fr"
+   }
+  },
+  {
+   "name": "a phone taps the row, then Hindi, and comes back on Settings in Hindi",
+   "ok": true,
+   "detail": {
+    "lang": "hi",
+    "screen": "settings",
+    "mode": "title",
+    "focus": "भाषाहिन्दी",
+    "row": "हिन्दी",
+    "saved": "hi",
+    "current": "hi"
+   }
+  },
+  {
+   "name": "during play the level starts again in English, with no menu reopened",
+   "ok": true,
+   "detail": {
+    "lang": "en",
+    "screen": "",
+    "mode": "play",
+    "focus": null,
+    "row": "English",
+    "saved": "en",
+    "current": "en",
+    "url": "?nolock=1&chapter=floor&resume=1"
+   }
+  },
+  {
+   "name": "no page errors",
+   "ok": true,
+   "detail": []
+  }
+ ],
+ "errors": []
+}
