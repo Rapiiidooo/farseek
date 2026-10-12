@@ -1,5 +1,5 @@
 {
-  "url": "http://localhost:3007/?nolock=1",
+  "url": "http://localhost:3002/?nolock=1",
   "deviceScale": 1,
   "chrome": "Chrome/155.0.8059.39",
   "requested": [
