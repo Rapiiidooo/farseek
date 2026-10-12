@@ -1,0 +1,113 @@
+{
+ "url": "https://farseek.rapidoai.dev/?nolock=1&debug",
+ "steps": [
+  {
+   "name": "title, before any gesture",
+   "mode": "title",
+   "menu": "main",
+   "context": "suspended",
+   "music": null,
+   "layers": null,
+   "airGain": 1,
+   "master": 0.6,
+   "outDb": -180,
+   "airDb": -180,
+   "notes": {}
+  },
+  {
+   "name": "title, 1 s after the first click",
+   "mode": "title",
+   "menu": "main",
+   "context": "suspended",
+   "music": null,
+   "layers": null,
+   "airGain": 1,
+   "master": 0.6,
+   "outDb": -180,
+   "airDb": -180,
+   "notes": {}
+  },
+  {
+   "name": "title, 10 s after the first click",
+   "mode": "title",
+   "menu": "main",
+   "context": "suspended",
+   "music": null,
+   "layers": null,
+   "airGain": 1,
+   "master": 0.6,
+   "outDb": -180,
+   "airDb": -180,
+   "notes": {}
+  },
+  {
+   "name": "play, 6 s after New game",
+   "mode": "play",
+   "menu": null,
+   "context": "running",
+   "music": "court",
+   "layers": {
+    "court": 0.946
+   },
+   "airGain": 1,
+   "master": 0.6,
+   "outDb": -21.7,
+   "airDb": -39.6,
+   "notes": {
+    "harp": 4
+   }
+  },
+  {
+   "name": "paused",
+   "mode": "play",
+   "menu": "pause",
+   "context": "running",
+   "music": "court",
+   "layers": {
+    "court": 0.975
+   },
+   "airGain": 1,
+   "master": 0.21,
+   "outDb": -21.2,
+   "airDb": -39.3,
+   "notes": {
+    "harp": 8
+   }
+  },
+  {
+   "name": "play, after Restart level",
+   "mode": "play",
+   "menu": null,
+   "context": "running",
+   "music": "court",
+   "layers": {
+    "court": 0.994
+   },
+   "airGain": 1,
+   "master": 0.21,
+   "outDb": -20.9,
+   "airDb": -40.9,
+   "notes": {
+    "harp": 8
+   }
+  },
+  {
+   "name": "title, 6 s after Quit to title",
+   "mode": "title",
+   "menu": "main",
+   "context": "running",
+   "music": "court",
+   "layers": {
+    "court": 0.997
+   },
+   "airGain": 1,
+   "master": 0.21,
+   "outDb": -21.7,
+   "airDb": -41.8,
+   "notes": {
+    "harp": 13
+   }
+  }
+ ],
+ "errors": []
+}

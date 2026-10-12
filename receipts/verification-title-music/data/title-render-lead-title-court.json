@@ -1,0 +1,38 @@
+{
+ "base": "http://localhost:3002/",
+ "results": [
+  {
+   "name": "title-lead",
+   "plan": [
+    [
+     0,
+     "title",
+     true
+    ]
+   ],
+   "integratedLufs": -17.34,
+   "truePeakDbtp": -6.21,
+   "samplePeakDbfs": -6.21,
+   "shortTermMaxLufs": -14.98,
+   "momentaryMaxLufs": -11.69,
+   "seconds": 158
+  },
+  {
+   "name": "court-lead",
+   "plan": [
+    [
+     0,
+     "music",
+     "court"
+    ]
+   ],
+   "integratedLufs": -16.59,
+   "truePeakDbtp": -5.17,
+   "samplePeakDbfs": -5.17,
+   "shortTermMaxLufs": -15.19,
+   "momentaryMaxLufs": -10.67,
+   "seconds": 158
+  }
+ ],
+ "errors": []
+}

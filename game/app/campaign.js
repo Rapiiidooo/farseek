@@ -99,7 +99,9 @@ export function createCampaign(app) {
           hud.clearHint();
           input.clear();
           sound.start();
+          sound.duck(false);
           sound.startMusic();
+          sound.setTitle(false);
           const next = goTo(chapter.where, { arrive: true });
           if (chapter.where === "court") {
             const start = chapter.id === "floor" ? COURT.FLOOR : COURT.START;
@@ -197,7 +199,8 @@ export function createCampaign(app) {
     app.ui.refreshMainMenu();
     titleCamera();
     app.menu.open("main");
-    sound.setMusic?.("court");
+    sound.duck(false);
+    sound.setTitle(true);
     if (prefetch) worlds.prefetch("court");
   }
 

@@ -298,6 +298,9 @@ export function startGame() {
     // that wait off the New game click, which then only resumes it.
     sound.start();
     sound.ctx?.suspend();
+    // Sound may only start on a gesture: the first press anywhere wakes the title's tune.
+    for (const type of ["pointerup", "keydown"])
+      addEventListener(type, () => sound.start(), true);
     state.loading = false;
     app.ui.ready();
     const auto =

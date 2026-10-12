@@ -42,6 +42,7 @@ export class Sound {
     this.app = null;
     this.gates = new Set();
     this.voice = false;
+    this.title = false;
     this.alertLevel = 0;
     this.alertUntil = 0;
     this.lastHurt = -1;
@@ -205,7 +206,7 @@ export class Sound {
       on ? 0.12 : 0.7,
     );
     this.ambienceDuck.gain.setTargetAtTime(
-      on ? MIX.voiceAmbience : 1,
+      this.title ? 0 : on ? MIX.voiceAmbience : 1,
       t,
       on ? 0.15 : 0.9,
     );
@@ -215,6 +216,27 @@ export class Sound {
   duck(on) {
     this.ducked = on;
     this.applyVolumes();
+  }
+
+  // The title plays its own tune over a silent world; play brings the world's air back.
+  setTitle(on) {
+    this.title = on;
+    if (!this.ctx) return;
+    const t = this.ctx.currentTime;
+    if (on) {
+      this.stems?.setDanger(0);
+      this.alertUntil = 0;
+      this.hum.gain.setTargetAtTime(0, t, 0.3);
+      this.startMusic();
+      this.setMusic("title");
+      // Before the first gesture the context waits suspended: a fade would play at the resume.
+      if (this.ctx.state !== "running") {
+        this.ambienceDuck.gain.cancelScheduledValues(t);
+        this.ambienceDuck.gain.setValueAtTime(0, t);
+        return;
+      }
+    }
+    this.applyDucking();
   }
 
   // --- music: one small tune for the whole journey, played in each world's own mode, tempo and
@@ -536,6 +558,28 @@ export class Sound {
             "sine",
             0.003,
           );
+        return;
+      }
+      // Felt on soft strings: a muted strike whose upper partials die first.
+      case "piano": {
+        const length = Math.max(3.2, len + 2.4);
+        const lp = ctx.createBiquadFilter();
+        lp.type = "lowpass";
+        lp.frequency.setValueAtTime(Math.min(4800, f * 6), at);
+        lp.frequency.exponentialRampToValueAtTime(f * 2.2, at + 1.4);
+        lp.connect(into);
+        this.ring(f, at, length, vel, lp, "sine", 0.012);
+        this.ring(
+          f * 1.0016,
+          at,
+          length * 0.8,
+          vel * 0.3,
+          lp,
+          "triangle",
+          0.014,
+        );
+        this.ring(f * 2, at, length * 0.45, vel * 0.2, lp, "sine", 0.01);
+        this.ring(f * 3, at, length * 0.22, vel * 0.06, lp, "sine", 0.008);
         return;
       }
       case "box":
@@ -1183,6 +1227,24 @@ const BOX = [0, 1, 2, 3, 2, 3, 1, 2];
 // seconds, the voice, its level, how much of it goes into the room, its loudness trim in dB,
 // an echo in beats, the order of its lines and rests, and the pads' chords, one a bar.
 const CUES = {
+  // The title: the journey's tune on a soft piano in D major, slow, over warm open chords.
+  title: {
+    root: 62,
+    scale: MAJOR,
+    bar: 9.6,
+    lead: "piano",
+    level: 0.13,
+    hall: 0.5,
+    trim: -2,
+    echo: 0.5,
+    song: ["theme", "answer", "rest"],
+    chords: [
+      [50, 57, 64, 66, 69],
+      [47, 54, 57, 62, 66],
+      [43, 50, 54, 59, 62],
+      [45, 52, 57, 59, 64],
+    ],
+  },
   // The sunken court: D minor on a plucked harp, patient.
   court: {
     root: 62,

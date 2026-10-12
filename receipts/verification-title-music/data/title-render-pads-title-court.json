@@ -1,0 +1,38 @@
+{
+ "base": "http://localhost:3002/",
+ "results": [
+  {
+   "name": "title-pads",
+   "plan": [
+    [
+     0,
+     "title",
+     true
+    ]
+   ],
+   "integratedLufs": -25.37,
+   "truePeakDbtp": -13.86,
+   "samplePeakDbfs": -13.87,
+   "shortTermMaxLufs": -24.55,
+   "momentaryMaxLufs": -23.63,
+   "seconds": 158
+  },
+  {
+   "name": "court-pads",
+   "plan": [
+    [
+     0,
+     "music",
+     "court"
+    ]
+   ],
+   "integratedLufs": -21.97,
+   "truePeakDbtp": -11.01,
+   "samplePeakDbfs": -11.01,
+   "shortTermMaxLufs": -21.09,
+   "momentaryMaxLufs": -20.25,
+   "seconds": 158
+  }
+ ],
+ "errors": []
+}

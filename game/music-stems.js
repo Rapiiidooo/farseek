@@ -6,6 +6,7 @@ const hz = (m) => 440 * Math.pow(2, (m - 69) / 12);
 // Each place's palette: the percussion kit under danger, the tension stem's level and the
 // voice that lifts after a find.
 const PALETTE = {
+  title: { kit: null, tension: 0, lift: null },
   court: { kit: "desert", tension: 0.75, lift: "harp" },
   "court-open": { kit: "desert", tension: 1, lift: "harp" },
   world2: { kit: "wood", tension: 0.82, lift: "box" },

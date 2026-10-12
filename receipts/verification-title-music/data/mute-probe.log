@@ -1,0 +1,14 @@
+pass  speaker shown on the title, sound on  {"pressed":"false","visible":true,"box":false,"saved":null,"audio":{"muted":false,"gain":0.6},"label":"Mute sound","title":"Mute sound (M)"}
+pass  M mutes from the title and saves it  {"pressed":"true","visible":true,"box":true,"saved":true,"audio":{"muted":true,"gain":0.014},"label":"Mute sound","title":"Mute sound (M)"}
+pass  the speaker unmutes  {"pressed":"false","visible":true,"box":false,"saved":false,"audio":{"muted":false,"gain":0.588},"label":"Mute sound","title":"Mute sound (M)"}
+pass  AZERTY's comma key (KeyM) leaves the sound on
+pass  AZERTY's M key (Semicolon) mutes
+pass  a Cyrillic layout's M place unmutes
+pass  a held M toggles once
+pass  a muted new game plays silent  {"muted":true,"gain":0}
+pass  M in play brings the sound back  {"muted":false,"gain":0.6}
+pass  M in play mutes again  {"muted":true,"gain":0}
+pass  the pause menu shows the muted speaker  {"pressed":"true","visible":true,"box":true,"saved":true,"audio":{"muted":true,"gain":0},"label":"Mute sound","title":"Mute sound (M)"}
+pass  the mute survives a reload  {"pressed":"true","visible":true,"box":true,"saved":true,"audio":{"muted":true,"gain":0},"label":"Mute sound","title":"Mute sound (M)"}
+pass  French labels  {"pressed":"true","visible":true,"box":true,"saved":true,"audio":{"muted":true,"gain":0},"label":"Couper le son","title":"Couper le son (M)","row":"Couper le son (M)"}
+pass  no page errors

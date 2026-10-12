@@ -1,0 +1,131 @@
+{
+ "url": "http://localhost:3002/?nolock=1&debug",
+ "steps": [
+  {
+   "name": "title, before any gesture",
+   "mode": "title",
+   "menu": "main",
+   "context": "suspended",
+   "music": "title",
+   "layers": {
+    "title": 0
+   },
+   "airGain": 1,
+   "master": 0.6,
+   "outDb": -180,
+   "airDb": -180,
+   "notes": {}
+  },
+  {
+   "name": "title, 1 s after the first click",
+   "mode": "title",
+   "menu": "main",
+   "context": "running",
+   "music": "title",
+   "layers": {
+    "title": 0.558
+   },
+   "airGain": 0,
+   "master": 0.6,
+   "outDb": -29.4,
+   "airDb": -180,
+   "notes": {
+    "piano": 4
+   }
+  },
+  {
+   "name": "title, 10 s after the first click",
+   "mode": "title",
+   "menu": "main",
+   "context": "running",
+   "music": "title",
+   "layers": {
+    "title": 0.993
+   },
+   "airGain": 0,
+   "master": 0.6,
+   "outDb": -25,
+   "airDb": -180,
+   "notes": {
+    "piano": 8
+   }
+  },
+  {
+   "name": "play, 6 s after New game",
+   "mode": "play",
+   "menu": null,
+   "context": "running",
+   "music": "court",
+   "layers": {
+    "title": 0.02,
+    "court": 0.897
+   },
+   "airGain": 0.999,
+   "master": 0.6,
+   "outDb": -17.7,
+   "airDb": -47.6,
+   "notes": {
+    "piano": 13,
+    "harp": 4
+   }
+  },
+  {
+   "name": "paused",
+   "mode": "play",
+   "menu": "pause",
+   "context": "running",
+   "music": "court",
+   "layers": {
+    "title": 0.007,
+    "court": 0.952
+   },
+   "airGain": 0.999,
+   "master": 0.21,
+   "outDb": -31.2,
+   "airDb": -47.9,
+   "notes": {
+    "piano": 13,
+    "harp": 4
+   }
+  },
+  {
+   "name": "play, after Restart level",
+   "mode": "play",
+   "menu": null,
+   "context": "running",
+   "music": "court",
+   "layers": {
+    "title": 0.001,
+    "court": 0.989
+   },
+   "airGain": 0.999,
+   "master": 0.6,
+   "outDb": -12.7,
+   "airDb": -48.5,
+   "notes": {
+    "piano": 13,
+    "harp": 8
+   }
+  },
+  {
+   "name": "title, 6 s after Quit to title",
+   "mode": "title",
+   "menu": "main",
+   "context": "running",
+   "music": "title",
+   "layers": {
+    "title": 0.896,
+    "court": 0.02
+   },
+   "airGain": 0,
+   "master": 0.6,
+   "outDb": -16.5,
+   "airDb": -105.2,
+   "notes": {
+    "piano": 17,
+    "harp": 13
+   }
+  }
+ ],
+ "errors": []
+}

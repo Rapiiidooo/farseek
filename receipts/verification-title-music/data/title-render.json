@@ -1,0 +1,283 @@
+{
+ "base": "http://localhost:3002/",
+ "results": [
+  {
+   "name": "title",
+   "plan": [
+    [
+     0,
+     "title",
+     true
+    ]
+   ],
+   "integratedLufs": -19.77,
+   "truePeakDbtp": -6.75,
+   "samplePeakDbfs": -6.75,
+   "shortTermMaxLufs": -15.27,
+   "momentaryMaxLufs": -12.02,
+   "seconds": 158
+  },
+  {
+   "name": "court",
+   "plan": [
+    [
+     0,
+     "music",
+     "court"
+    ]
+   ],
+   "integratedLufs": -17.63,
+   "truePeakDbtp": -3.34,
+   "samplePeakDbfs": -3.34,
+   "shortTermMaxLufs": -14.14,
+   "momentaryMaxLufs": -10.4,
+   "seconds": 158
+  },
+  {
+   "name": "title-world",
+   "plan": [
+    [
+     0,
+     "title",
+     true
+    ]
+   ],
+   "integratedLufs": null,
+   "truePeakDbtp": -240,
+   "samplePeakDbfs": -240,
+   "shortTermMaxLufs": -200.69,
+   "momentaryMaxLufs": -200.69,
+   "seconds": 28
+  },
+  {
+   "name": "play-world",
+   "plan": [
+    [
+     0,
+     "title",
+     true
+    ],
+    [
+     0.2,
+     "title",
+     false
+    ]
+   ],
+   "integratedLufs": -25.39,
+   "truePeakDbtp": -15.01,
+   "samplePeakDbfs": -15.16,
+   "shortTermMaxLufs": -22.32,
+   "momentaryMaxLufs": -22.07,
+   "seconds": 24
+  },
+  {
+   "name": "new-game",
+   "plan": [
+    [
+     0,
+     "title",
+     true
+    ],
+    [
+     70,
+     "title",
+     false
+    ],
+    [
+     70,
+     "music",
+     "court"
+    ]
+   ],
+   "integratedLufs": -18.62,
+   "truePeakDbtp": -3.19,
+   "samplePeakDbfs": -3.26,
+   "shortTermMaxLufs": -14.47,
+   "momentaryMaxLufs": -10.52,
+   "seconds": 108,
+   "windows": [
+    {
+     "t": 0,
+     "lufs": -26.19,
+     "peak": -12.24
+    },
+    {
+     "t": 3,
+     "lufs": -19.72,
+     "peak": -9.66
+    },
+    {
+     "t": 6,
+     "lufs": -25.64,
+     "peak": -14.74
+    },
+    {
+     "t": 9,
+     "lufs": -19.69,
+     "peak": -10.39
+    },
+    {
+     "t": 12,
+     "lufs": -18,
+     "peak": -7.52
+    },
+    {
+     "t": 15,
+     "lufs": -24.38,
+     "peak": -12.47
+    },
+    {
+     "t": 18,
+     "lufs": -20.44,
+     "peak": -9.4
+    },
+    {
+     "t": 21,
+     "lufs": -19,
+     "peak": -8.09
+    },
+    {
+     "t": 24,
+     "lufs": -19.41,
+     "peak": -7.41
+    },
+    {
+     "t": 27,
+     "lufs": -19.75,
+     "peak": -8.55
+    },
+    {
+     "t": 30,
+     "lufs": -19.5,
+     "peak": -8.08
+    },
+    {
+     "t": 33,
+     "lufs": -19.23,
+     "peak": -7.74
+    },
+    {
+     "t": 36,
+     "lufs": -22.66,
+     "peak": -8.99
+    },
+    {
+     "t": 39,
+     "lufs": -18.44,
+     "peak": -8.14
+    },
+    {
+     "t": 42,
+     "lufs": -18.22,
+     "peak": -6.77
+    },
+    {
+     "t": 45,
+     "lufs": -19.45,
+     "peak": -7.7
+    },
+    {
+     "t": 48,
+     "lufs": -18.89,
+     "peak": -9.71
+    },
+    {
+     "t": 51,
+     "lufs": -18.28,
+     "peak": -7.65
+    },
+    {
+     "t": 54,
+     "lufs": -25.11,
+     "peak": -12.52
+    },
+    {
+     "t": 57,
+     "lufs": -18.25,
+     "peak": -7.36
+    },
+    {
+     "t": 60,
+     "lufs": -18.89,
+     "peak": -8.12
+    },
+    {
+     "t": 63,
+     "lufs": -18.52,
+     "peak": -7.87
+    },
+    {
+     "t": 66,
+     "lufs": -19.75,
+     "peak": -8.56
+    },
+    {
+     "t": 69,
+     "lufs": -21.35,
+     "peak": -8.62
+    },
+    {
+     "t": 72,
+     "lufs": -19.45,
+     "peak": -7.1
+    },
+    {
+     "t": 75,
+     "lufs": -17.55,
+     "peak": -5.26
+    },
+    {
+     "t": 78,
+     "lufs": -16.23,
+     "peak": -3.47
+    },
+    {
+     "t": 81,
+     "lufs": -14.72,
+     "peak": -3.26
+    },
+    {
+     "t": 84,
+     "lufs": -18.93,
+     "peak": -6.93
+    },
+    {
+     "t": 87,
+     "lufs": -16.01,
+     "peak": -4
+    },
+    {
+     "t": 90,
+     "lufs": -15.29,
+     "peak": -4.15
+    },
+    {
+     "t": 93,
+     "lufs": -15.71,
+     "peak": -4.67
+    },
+    {
+     "t": 96,
+     "lufs": -16.57,
+     "peak": -3.64
+    },
+    {
+     "t": 99,
+     "lufs": -16.17,
+     "peak": -4.13
+    },
+    {
+     "t": 102,
+     "lufs": -20.41,
+     "peak": -8.87
+    },
+    {
+     "t": 105,
+     "lufs": -20.53,
+     "peak": -10.98
+    }
+   ]
+  }
+ ],
+ "errors": []
+}
