@@ -483,15 +483,15 @@ export class Gate {
     if (ch && !ch.running) ch.running = true;
   }
 
-  // Lights one medallion and its glyph with a bright pulse.
-  ignite(slot) {
+  // Lights one medallion and its glyph with a bright pulse; `quiet` leaves out its bell.
+  ignite(slot, quiet = false) {
     if (this.lit[slot]) return;
     this.lit[slot] = true;
     this.glow(MEDALLIONS[slot][0], 1.6);
     const mark = this.medallionGlyphs[slot];
     if (mark) mark.emissiveIntensity = 3;
     this.pulse = 1;
-    this.sound?.play("medallion", slot);
+    if (!quiet) this.sound?.play("medallion", slot);
     this.onIgnite?.(slot);
   }
 
@@ -516,9 +516,10 @@ export class Gate {
     if (state && shots) state.cinematic = new OpeningShot(this, shots);
   }
 
-  // Skips straight to an open gate (a replay, or a cinematic skipped).
+  // Skips straight to an open gate (a replay, or a cinematic skipped), in silence: worlds also
+  // open their doors this way while they are built or solved out of sight.
   forceOpen() {
-    for (let i = 0; i < 3; i++) if (!this.lit[i]) this.ignite(i);
+    for (let i = 0; i < 3; i++) if (!this.lit[i]) this.ignite(i, true);
     if (this.phase !== "open") this.onOpen?.();
     this.phase = "open";
     this.phaseT = 99;

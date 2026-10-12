@@ -695,12 +695,7 @@ export class VaultMemory {
     this.points.visible = this.threads.visible = this.motes.visible = true;
     this.motes.material.opacity = 0.9;
     this.wellU.uPower.value = 1.4;
-    if (this.gate.phase !== "open") {
-      const sound = this.gate.sound;
-      this.gate.sound = null;
-      this.gate.forceOpen();
-      this.gate.sound = sound;
-    }
+    if (this.gate.phase !== "open") this.gate.forceOpen();
     this.phase = "open";
   }
 

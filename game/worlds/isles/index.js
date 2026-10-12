@@ -744,7 +744,6 @@ export class WorldThree {
   solve() {
     const R = this.isles.ring;
     this.isles.read = true;
-    for (let i = 0; i < 3; i++) R.ignite(i);
     R.forceOpen();
   }
 

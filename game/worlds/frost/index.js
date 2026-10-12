@@ -690,8 +690,8 @@ export class WorldFour {
     this.forest?.reset();
     this.arrival.forceOpen();
     this.ring.reset();
-    this.ring.ignite(0);
-    this.ring.ignite(1);
+    this.ring.ignite(0, true);
+    this.ring.ignite(1, true);
     this.said.clear();
     this.mira?.reset();
     this.storyT = 0;
@@ -761,10 +761,7 @@ class FinaleShot {
     this.t = Math.max(this.t, SHOT.end);
     const last = this.forest.lastGate;
     if (last && !last.isOpen) {
-      const sound = last.sound;
-      last.sound = null;
       last.forceOpen();
-      last.sound = sound;
       this.sound?.setMusic("sea");
     }
   }
