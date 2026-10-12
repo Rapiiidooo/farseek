@@ -1,0 +1,20 @@
+pass  opens on the first relic found, Inspect in focus  {"screen":"relics","name":"The first papyrus","current":"papyrus","read":true,"focus":"Inspect"}
+pass  the right arrow key turns to the next relic  {"screen":"relics","name":"The builders' stone memory","current":"sun-memory","read":true,"focus":"Inspect"}
+pass  the bound movement key turns too, and left turns back  {"keyD":"radio","back":"papyrus"}
+pass  turning past the first relic wraps to the last, still hidden  {"screen":"relics","name":"Not found yet","current":"tide-proof","read":false,"focus":"Back"}
+pass  a hidden relic names no relic and leaves Inspect off, the focus on Back  {"screen":"relics","name":"Not found yet","current":"tide-proof","read":false,"focus":"Back"}
+pass  the next arrow turns back to the first relic  {"screen":"relics","name":"The first papyrus","current":"papyrus","read":true,"focus":"Back"}
+pass  a pip chooses its relic  {"screen":"relics","name":"Mira's lantern","current":"lantern","read":true,"focus":"Back"}
+pass  a drag across the stage turns the arc  {"screen":"relics","name":"Not found yet","current":"winter-crossing","read":false,"focus":"Back"}
+pass  a click on the chosen relic inspects it  {"screen":"relic-note","title":"The field radio"}
+pass  left and right turn the inspected relic and stay  {"screen":"relic-note","name":"The field radio","current":"radio","read":true,"focus":"Back"}
+pass  Escape returns to the carousel on the same relic  {"screen":"relics","name":"The field radio","current":"radio","read":true,"focus":"Back"}
+pass  a click on a hidden relic opens nothing  {"before":"dawn-survey","screen":"relics"}
+pass  Enter on Inspect inspects  {"focus":"Inspect","screen":"relic-note"}
+pass  Escape again returns to the title  {"screen":"main","name":"The first papyrus","current":"papyrus","read":true,"focus":"Relics4/13"}
+pass  a phone is told to swipe and tap  "Swipe to turn · Tap the relic to inspect it"
+pass  a swipe turns to the next relic  {"screen":"relics","name":"The builders' stone memory","current":"sun-memory","read":true,"focus":"Inspect"}
+pass  a tap on the chosen relic inspects it  {"screen":"relic-note","name":"The builders' stone memory","current":"sun-memory","read":true,"focus":"Back"}
+pass  Back returns to the carousel  {"screen":"relics","name":"The builders' stone memory","current":"sun-memory","read":true,"focus":"Inspect"}
+pass  no page errors  []
+exit 0
