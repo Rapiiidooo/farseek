@@ -1,0 +1,10 @@
+en desktop exit 0 {"lang":"en","kind":"desktop","tag":"after","lines":{"found":[],"shrunk":[]},"errors":[]}
+fr desktop exit 0 {"lang":"fr","kind":"desktop","tag":"after","lines":{"found":[],"shrunk":[]},"errors":[]}
+es desktop exit 0 {"lang":"es","kind":"desktop","tag":"after","lines":{"found":[],"shrunk":[]},"errors":[]}
+zh desktop exit 0 {"lang":"zh","kind":"desktop","tag":"after","lines":{"found":[],"shrunk":[]},"errors":[]}
+hi desktop exit 0 {"lang":"hi","kind":"desktop","tag":"after","lines":{"found":[],"shrunk":[]},"errors":[]}
+en phone exit 0 {"lang":"en","kind":"phone","tag":"after","lines":{"found":[],"shrunk":[]},"errors":[]}
+fr phone exit 0 {"lang":"fr","kind":"phone","tag":"after","lines":{"found":[],"shrunk":["Sensibilité de la caméra @ 12.0805px","Champ de vision 58° @ 13.9256px","Taille des sous-titres @ 14.7674px"]},"errors":[]}
+es phone exit 0 {"lang":"es","kind":"phone","tag":"after","lines":{"found":[],"shrunk":["Sensibilidad de cámara @ 12.3038px","Campo de visión 58° @ 13.8301px","Calidad de imagen @ 14.1347px","Tamaño de subtítulos @ 14.5769px"]},"errors":[]}
+zh phone exit 0 {"lang":"zh","kind":"phone","tag":"after","lines":{"found":[],"shrunk":[]},"errors":[]}
+hi phone exit 0 {"lang":"hi","kind":"phone","tag":"after","lines":{"found":[],"shrunk":[]},"errors":[]}

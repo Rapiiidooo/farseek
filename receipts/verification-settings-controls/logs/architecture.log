@@ -1,0 +1,9 @@
+PASS Chapters, lab entries and runtime assets keep their identifiers
+PASS Asset probes deduplicate requests, cache empty factories and record failures
+PASS Worlds load once, keep their state on return and defer solved predecessors
+PASS A failed world load clears its request and can retry
+PASS Background preparation yields to foreground requests and crossing holds
+PASS Settling finishes every queued world in the foreground
+PASS A start's preparation list matches what settling prepares
+PASS A start from the menus waits for its window alone, requested together
+PASS The page preloads every module the title imports

@@ -1,0 +1,110 @@
+{
+  "results": [
+    {
+      "name": "each select is a cycler; the select stays rendered and labelled, its arrows and value hidden from screen readers and from the menu's actions",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "a screen reader still meets each select as a combobox named by its row, with its value, and no unnamed button",
+      "ok": true,
+      "detail": "Aim=Hold, Language=Automatic, Image quality=High, Subtitle size=Medium, Subtitle backing=None, Difficulty=Standard; 0 unnamed buttons"
+    },
+    {
+      "name": "every cycler opens on its saved option and lights its pip",
+      "ok": true,
+      "detail": "hold=Hold, auto=Automatic, high=High, medium=Medium, none=None, standard=Standard"
+    },
+    {
+      "name": "the right arrow steps Image quality forward through every option, saved each time",
+      "ok": true,
+      "detail": "High > Balanced > Fast > High"
+    },
+    {
+      "name": "the arrows keep their place whichever option shows",
+      "ok": true,
+      "detail": "671.4/823.4, 671.4/823.4, 671.4/823.4"
+    },
+    {
+      "name": "the left arrow steps back",
+      "ok": true,
+      "detail": "high < fast"
+    },
+    {
+      "name": "a click on the value steps forward and applies the subtitle size",
+      "ok": true,
+      "detail": "large:large:large:true, small:small:small:true, medium:medium:medium:true"
+    },
+    {
+      "name": "right and left keys on the focused Difficulty row step it and save it",
+      "ok": true,
+      "detail": "Right>hard, Left>standard, Left>story, Right>standard"
+    },
+    {
+      "name": "Enter on the focused Aim row steps forward",
+      "ok": true,
+      "detail": "Toggle then Hold"
+    },
+    {
+      "name": "the gamepad's d-pad steps the focused row",
+      "ok": true,
+      "detail": "Soft then None"
+    },
+    {
+      "name": "a drag on Master volume moves it, saves it and fills the groove to the thumb",
+      "ok": true,
+      "detail": "0.8 -> 0.25, fill 0.25"
+    },
+    {
+      "name": "right on the focused Field of view row steps it, its fill and its shown degrees",
+      "ok": true,
+      "detail": "62, 62°, fill 0.3"
+    },
+    {
+      "name": "a click on a switch, then on its row's name, turns Invert vertical look on and off",
+      "ok": true,
+      "detail": "true then false"
+    },
+    {
+      "name": "the save holds every value chosen above",
+      "ok": true,
+      "detail": "{\"sensitivity\":1,\"invertY\":false,\"volume\":0.25,\"music\":0.7,\"ambience\":0.8,\"effects\":0.9,\"voice\":0.9,\"muted\":false,\"quality\":\"high\",\"markers\":true,\"hints\":true,\"shake\":true,\"invertX\":false,\"fov\":62,\"recenter\":true,\"aimMode\":\"hold\",\"reduceMotion\":false,\"subtitleSize\":\"medium\",\"subtitleBacking\":\"none\",\"contrast\":false,\"difficulty\":\"standard\",\"language\":\"auto\"}"
+    },
+    {
+      "name": "two quick steps on Language show the groove, then reload once into French about 1.2 s after the last",
+      "ok": true,
+      "detail": "{\"waited\":1283,\"loads\":1,\"lang\":\"fr\",\"settings\":\"Paramètres\",\"saved\":\"fr\",\"shown\":\"Français\"}"
+    },
+    {
+      "name": "stepping away from French and back keeps the page, with no reload pending",
+      "ok": true,
+      "detail": "0 reloads"
+    },
+    {
+      "name": "left on the focused Language row reloads into English",
+      "ok": true,
+      "detail": "{\"lang\":\"en\",\"saved\":\"en\"}"
+    },
+    {
+      "name": "settings rows stay 48 px tall on a phone",
+      "ok": true,
+      "detail": "48"
+    },
+    {
+      "name": "on a phone each arrow answers across 44 px and the value across 44 px of height",
+      "ok": true,
+      "detail": "72 probes; "
+    },
+    {
+      "name": "taps on the arrows and the value step Difficulty on a phone",
+      "ok": true,
+      "detail": "hard, story, hard"
+    },
+    {
+      "name": "no page errors",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "errors": []
+}

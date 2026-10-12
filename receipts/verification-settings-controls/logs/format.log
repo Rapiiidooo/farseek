@@ -1,0 +1,6 @@
+
+> farseek@0.1.0 format:check
+> prettier --check --no-config --prose-wrap preserve --embedded-language-formatting off game/setting-controls.js game/app/ui.js game/style.css game/index.html docs/architecture.md docs/resume.md receipts/verification-settings-controls/README.md receipts/verification-settings-controls/scripts/all-shots.mjs receipts/verification-settings-controls/scripts/settings-shots.mjs receipts/verification-settings-controls/scripts/settings-paths.mjs
+
+Checking formatting...
+All matched files use Prettier code style!
