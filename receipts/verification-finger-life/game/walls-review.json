@@ -1,0 +1,288 @@
+{
+  "shots": [
+    "01-frost-axes-at-the-fall",
+    "02-frost-axes-taken",
+    "03-frost-axe-climb-chips",
+    "04-frost-axe-climb-close",
+    "05-frost-pocket-top",
+    "06-frost-shelf-ice-warning",
+    "07-frost-shelf-ice-falls-past",
+    "08-frost-shelf-leap-over-rock",
+    "09-frost-shelf-top",
+    "10-forest-outer-wall",
+    "11-forest-ivy-climb-leaves",
+    "12-forest-ivy-climb-close",
+    "13-forest-outer-wall-top",
+    "14-forest-bastion-climb",
+    "15-forest-bastion-top",
+    "16-forest-giant-camera-fitted",
+    "17-forest-giant-camera-old-cylinder"
+  ],
+  "programs": {
+    "frost": 967,
+    "frostEnd": 967,
+    "forest": 967,
+    "forestEnd": 967
+  },
+  "checks": [
+    {
+      "name": "Mira's axes are taken with Interact",
+      "ok": true,
+      "details": {}
+    },
+    {
+      "name": "The pocket fall is climbed over with the axes",
+      "ok": true,
+      "details": {
+        "state": "ground",
+        "feet": 4,
+        "pos": [
+          0.578,
+          -50.4
+        ],
+        "axes": true,
+        "wall": null,
+        "leaping": false,
+        "programs": 967
+      }
+    },
+    {
+      "name": "The shelf's ice falls past a climber who sidesteps",
+      "ok": true,
+      "details": {
+        "at": [
+          -8.6,
+          0.6,
+          -143.4609
+        ],
+        "source": [
+          -8.6,
+          5.5,
+          -143.55
+        ],
+        "state": "shatter",
+        "t": 0,
+        "bottom": 0.6,
+        "radius": 0.7150000000000001,
+        "falls": 1,
+        "contacts": 0,
+        "warning": true,
+        "wall": true
+      }
+    },
+    {
+      "name": "A leap crosses the bare rock to the upper ice",
+      "ok": true,
+      "details": {
+        "state": "wall",
+        "feet": 3.47,
+        "pos": [
+          -8.33,
+          -145.081
+        ],
+        "axes": true,
+        "wall": "shelf-upper",
+        "leaping": false,
+        "programs": 967
+      }
+    },
+    {
+      "name": "No shader compiles during the frost climbs",
+      "ok": true,
+      "details": {
+        "frost": 967,
+        "frostEnd": 967,
+        "forest": 967,
+        "forestEnd": 967
+      }
+    },
+    {
+      "name": "The outer wall's ivy is climbed by hand",
+      "ok": true,
+      "details": {
+        "state": "ground",
+        "feet": 28.565,
+        "pos": [
+          -24.4,
+          -203.29
+        ],
+        "axes": true,
+        "wall": null,
+        "leaping": false,
+        "programs": 967
+      }
+    },
+    {
+      "name": "The bastion's ivy leads to the crescent seal",
+      "ok": true,
+      "details": {
+        "state": "ground",
+        "feet": 38.884,
+        "pos": [
+          -24.51,
+          -248.709
+        ],
+        "axes": true,
+        "wall": null,
+        "leaping": false,
+        "programs": 967
+      }
+    },
+    {
+      "name": "The giant tree's trunk is fitted by height bands",
+      "ok": true,
+      "details": [
+        {
+          "x": 23.9,
+          "z": -151.56,
+          "r": 9.61,
+          "minY": 16.54,
+          "maxY": 18.19
+        },
+        {
+          "x": 23.92,
+          "z": -151.29,
+          "r": 9.09,
+          "minY": 18.19,
+          "maxY": 20.39
+        },
+        {
+          "x": 23.98,
+          "z": -150.77,
+          "r": 7.26,
+          "minY": 20.39,
+          "maxY": 22.59
+        },
+        {
+          "x": 23.99,
+          "z": -150.57,
+          "r": 6.18,
+          "minY": 22.59,
+          "maxY": 24.79
+        },
+        {
+          "x": 24.06,
+          "z": -150.57,
+          "r": 5.44,
+          "minY": 24.79,
+          "maxY": 29.19
+        },
+        {
+          "x": 24.1,
+          "z": -150.47,
+          "r": 5.46,
+          "minY": 29.19,
+          "maxY": 33.59
+        },
+        {
+          "x": 24.24,
+          "z": -150.39,
+          "r": 5.36,
+          "minY": 33.59,
+          "maxY": 37.99
+        },
+        {
+          "x": 24.46,
+          "z": -150.16,
+          "r": 5.13,
+          "minY": 37.99,
+          "maxY": 41.29
+        }
+      ]
+    },
+    {
+      "name": "No shader compiles during the forest climbs",
+      "ok": true,
+      "details": {
+        "frost": 967,
+        "frostEnd": 967,
+        "forest": 967,
+        "forestEnd": 967
+      }
+    },
+    {
+      "name": "No page or WebGL errors",
+      "ok": true,
+      "details": []
+    }
+  ],
+  "giant": [
+    {
+      "x": 23.9,
+      "z": -151.56,
+      "r": 9.61,
+      "minY": 16.54,
+      "maxY": 18.19
+    },
+    {
+      "x": 23.92,
+      "z": -151.29,
+      "r": 9.09,
+      "minY": 18.19,
+      "maxY": 20.39
+    },
+    {
+      "x": 23.98,
+      "z": -150.77,
+      "r": 7.26,
+      "minY": 20.39,
+      "maxY": 22.59
+    },
+    {
+      "x": 23.99,
+      "z": -150.57,
+      "r": 6.18,
+      "minY": 22.59,
+      "maxY": 24.79
+    },
+    {
+      "x": 24.06,
+      "z": -150.57,
+      "r": 5.44,
+      "minY": 24.79,
+      "maxY": 29.19
+    },
+    {
+      "x": 24.1,
+      "z": -150.47,
+      "r": 5.46,
+      "minY": 29.19,
+      "maxY": 33.59
+    },
+    {
+      "x": 24.24,
+      "z": -150.39,
+      "r": 5.36,
+      "minY": 33.59,
+      "maxY": 37.99
+    },
+    {
+      "x": 24.46,
+      "z": -150.16,
+      "r": 5.13,
+      "minY": 37.99,
+      "maxY": 41.29
+    }
+  ],
+  "giantCamera": {
+    "fitted": {
+      "camera": [
+        17.75,
+        15.72,
+        -147.88
+      ],
+      "toHero": 1.14,
+      "nearestBark": 0.87
+    },
+    "oldCylinder": {
+      "camera": [
+        19.04,
+        18.25,
+        -148.13
+      ],
+      "toHero": 2.45,
+      "nearestBark": 0.74
+    }
+  },
+  "errors": []
+}

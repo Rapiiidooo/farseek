@@ -1,0 +1,26 @@
+PASS left skinned glove at rest matches the shipped relaxed glove 
+PASS left skinned glove fully curled stays within 2.5 mm of the grip mesh 
+PASS left grip mesh keeps the shipped grip vertices 
+PASS left clones bind their own finger bones 
+PASS right skinned glove at rest matches the shipped relaxed glove 
+PASS right skinned glove fully curled stays within 2.5 mm of the grip mesh 
+PASS right grip mesh keeps the shipped grip vertices 
+PASS right clones bind their own finger bones 
+PASS Standing, every finger of both hands moves 
+PASS Standing, the fingers do not move as one 
+PASS Standing, the index stays straightest and the little finger roundest 
+PASS Reduced motion stops the drift and the gestures 
+PASS Finger drift agrees at 30, 60 and 120 Hz 
+PASS Running hands close loosely and open and close with the swing 
+PASS A landing and a hit flex the fingers briefly 
+PASS Both pistol grips stay closed, aiming and firing 
+PASS Both hands stay closed through a reload 
+PASS The orb hand stays closed while the other hand moves freely 
+PASS A released grip eases open 
+PASS Catching a ledge or the rope opens the hand, then closes it on the hold 
+PASS Axes stay in closed fists for the whole ice climb 
+PASS Ivy hands open between holds and stay closed on planted holds 
+PASS A curl written from outside resets the free fingers 
+PASS Updates add no scene nodes, geometry or materials 
+PASS Both hands' fingers update in well under a tenth of a millisecond 
+25 of 25 finger checks pass

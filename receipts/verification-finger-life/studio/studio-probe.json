@@ -1,0 +1,78 @@
+{
+  "runs": [
+    {
+      "model": "original",
+      "motion": "idle",
+      "errors": [],
+      "drawCalls": 129
+    },
+    {
+      "model": "original",
+      "motion": "walk",
+      "errors": [],
+      "drawCalls": 129
+    },
+    {
+      "model": "original",
+      "motion": "run",
+      "errors": [],
+      "drawCalls": 129
+    },
+    {
+      "model": "original",
+      "motion": "swim",
+      "errors": [],
+      "drawCalls": 129
+    },
+    {
+      "model": "original",
+      "motion": "hang",
+      "errors": [],
+      "drawCalls": 129
+    },
+    {
+      "model": "original",
+      "motion": "climb",
+      "errors": [],
+      "drawCalls": 129
+    },
+    {
+      "model": "refined",
+      "motion": "idle",
+      "errors": [],
+      "drawCalls": 218
+    },
+    {
+      "model": "refined",
+      "motion": "walk",
+      "errors": [],
+      "drawCalls": 218
+    },
+    {
+      "model": "refined",
+      "motion": "run",
+      "errors": [],
+      "drawCalls": 218
+    },
+    {
+      "model": "refined",
+      "motion": "swim",
+      "errors": [],
+      "drawCalls": 218
+    },
+    {
+      "model": "refined",
+      "motion": "hang",
+      "errors": [],
+      "drawCalls": 218
+    },
+    {
+      "model": "refined",
+      "motion": "climb",
+      "errors": [],
+      "drawCalls": 218
+    }
+  ],
+  "errors": [],
+  "ok": true
+}
