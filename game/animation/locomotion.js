@@ -10,7 +10,8 @@ const ARMS = [
 export function locomotion(pose, root, hero, dt, { turnRate, accel }) {
   const speed = this.gaitSpeed,
     r = smooth(2.2, 5, speed),
-    moving = smooth(0.06, 0.65, speed);
+    moving = smooth(0.06, 0.65, speed),
+    idle = 1 - moving;
   if (this.articulatedFeet) {
     if (this.distance > 1e-6 && !this.gaitStarted)
       this.phase = Math.PI * mix(0.58, this.runContact, r);
@@ -76,6 +77,7 @@ export function locomotion(pose, root, hero, dt, { turnRate, accel }) {
       -sign * moving * (0.03 + 0.055 * forward),
       sign *
         (-0.085 +
+          0.08 * idle +
           moving * (0.04 + 0.015 * r) -
           0.05 * r * moving * forward +
           vary * 0.1 * noise(k * 0.37 + clock * 0.04, seed + 5)),
@@ -84,6 +86,7 @@ export function locomotion(pose, root, hero, dt, { turnRate, accel }) {
       pose,
       side + "LowerArm",
       -0.12 -
+        0.2 * idle -
         moving *
           mix(0.17 + 0.07 * forward + 0.04 * trail, 1.2 + 0.25 * trail, r) +
         mix(0.15, 0.24, r) * moving * noise(k * 0.27 + clock * 0.07, seed + 3),
@@ -138,14 +141,29 @@ export function locomotion(pose, root, hero, dt, { turnRate, accel }) {
   root.pitch = 0.055 * r * moving;
   root.sway = mix(0.028, GAIT.sway, r) * moving * support;
   root.roll = THREE.MathUtils.clamp(-turnRate * speed * 0.022, -0.2, 0.2);
-  const idle = 1 - moving,
-    t = this.time;
-  const shift = Math.sin(t * 0.65) * 0.5 + Math.sin(t * 0.31 + 0.7) * 0.5;
+  const t = this.time;
   const breathe = Math.sin(t * 1.65) * 0.012;
-  root.sway += idle * shift * 0.018;
-  add(pose, "hips", 0, 0, -idle * shift * 0.025);
-  add(pose, "spine", idle * breathe, 0, idle * shift * 0.018);
-  add(pose, "head", -idle * breathe, idle * Math.sin(t * 0.37) * 0.1, 0);
+  // Standing, she settles her weight on one leg, the other easy, and now and then moves it over.
+  if (t >= (this.weightNext ??= t + 5)) {
+    this.weightSide = -(this.weightSide || 1);
+    const n = Math.sin(Math.floor(t) * 12.9898) * 43758.5453;
+    this.weightNext = t + 6 + 7 * (n - Math.floor(n));
+  }
+  this.weight =
+    (this.weight || 0) +
+    ((this.weightSide || 1) * idle - (this.weight || 0)) *
+      (1 - Math.exp(-dt / 0.8));
+  const weight = this.weight;
+  root.sway += 0.045 * weight;
+  add(pose, "hips", 0, 0, -0.1 * weight);
+  add(pose, "spine", idle * breathe, 0, 0.065 * weight);
+  add(
+    pose,
+    "head",
+    -idle * breathe,
+    idle * Math.sin(t * 0.37) * 0.1,
+    -0.012 * weight,
+  );
   add(pose, "leftUpperArm", idle * Math.sin(t * 1.1) * 0.016);
   add(pose, "rightUpperArm", idle * Math.sin(t * 1.1 + 0.5) * 0.016, 0, 0);
   // The upper body lags a floor that speeds up or slows down under the feet.

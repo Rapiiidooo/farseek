@@ -3,6 +3,9 @@ import { Spring } from "./spring.js";
 import { solveArm } from "./ik.js";
 import { smooth, mix, wrap, GAIT } from "./math.js";
 
+// Half the distance between the feet when she stands at ease.
+const STANCE = 0.16;
+
 function nudge(point, dx, dz) {
   if (!point) return;
   point.x += dx;
@@ -308,6 +311,8 @@ export const feet = {
       moving = smooth(0.06, 0.65, speed);
     const duty = mix(0.58, this.runContact, run),
       stride = mix(1.4, this.runStride, run);
+    this.stillFor =
+      moving < 0.06 && !this.gliding ? (this.stillFor || 0) + this.frameDt : 0;
     const yaw = this.root.yaw.v,
       forward = new THREE.Vector3(Math.sin(yaw), 0, Math.cos(yaw));
     const right = new THREE.Vector3(forward.z, 0, -forward.x);
@@ -404,7 +409,9 @@ export const feet = {
       const reach =
         mix(Math.min(0.39, stride * duty * 0.5), 0.25, run) * moving;
       const side = i ? -1 : 1;
-      // A glide on ice stands wide and staggered, the leading foot where it already was.
+      // At rest she stands on an easy base, the feet about shoulder width apart and the left a
+      // little ahead; a glide on ice stands wider and staggered, the leading foot where it was.
+      const stand = (1 - moving) * (1 - slide);
       const resting = new THREE.Vector3(
         hero.pos.x + hero.snap.x,
         floor,
@@ -412,11 +419,17 @@ export const feet = {
       )
         .addScaledVector(
           right,
-          mix(mix(leg.offset.x, side * GAIT.track, moving), side * 0.23, slide),
+          mix(
+            mix(side * STANCE, side * GAIT.track, moving),
+            side * 0.23,
+            slide,
+          ),
         )
         .addScaledVector(
           forward,
-          leg.offset.z + slide * (i === this.slideLead ? 0.12 : -0.08),
+          leg.offset.z +
+            0.025 * side * stand +
+            slide * (i === this.slideLead ? 0.12 : -0.08),
         );
       if (!leg.goal) {
         leg.goal = resting.clone();
@@ -438,8 +451,10 @@ export const feet = {
           wrap(yaw - leg.plantYaw) * (1 - Math.exp(-this.frameDt * 4));
         leg.swingStart = null;
       } else if (settling) {
+        // Once she has stood still a moment, a foot short of the easy base steps out to it.
         const displaced =
-          Math.hypot(leg.goal.x - resting.x, leg.goal.z - resting.z) > 0.13;
+          Math.hypot(leg.goal.x - resting.x, leg.goal.z - resting.z) >
+          (this.stillFor > 0.6 ? 0.05 : 0.13);
         if (
           !leg.settle &&
           (!leg.stance ||
@@ -558,7 +573,7 @@ export const feet = {
         leg.plantYaw +=
           wrap(yaw - leg.plantYaw) * (1 - Math.exp(-this.frameDt * 8 * turn));
       const sample = this.sampleGround(leg.goal.x, leg.goal.z, floor);
-      const toeOut = leg.plantYaw + side * 0.1 * slide;
+      const toeOut = leg.plantYaw + side * (0.1 * slide + 0.1 * stand);
       const heading = new THREE.Vector3(Math.sin(toeOut), 0, Math.cos(toeOut));
       heading
         .addScaledVector(sample.normal, -heading.dot(sample.normal))
