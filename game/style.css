@@ -959,6 +959,7 @@ body.touch #address[data-slots="6"] .glyph svg {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 3;
   border-radius: inherit;
   background: rgba(10, 7, 5, 0.62);
   opacity: 0;
@@ -1209,7 +1210,9 @@ body.touch .carousel-key {
   opacity: 1;
 }
 
+/* Above the picture even while it fades in: a fading picture otherwise paints over the text. */
 .level-info {
+  z-index: 1;
   grid-area: picture;
   align-self: end;
   display: flex;
