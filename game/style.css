@@ -744,6 +744,59 @@ body.reduce-motion #load-worlds li[data-state="active"] {
   color: rgba(232, 207, 164, 0.6);
 }
 
+#mute {
+  position: absolute;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(232, 207, 164, 0.25);
+  border-radius: 50%;
+  background: var(--glass);
+  color: rgba(246, 231, 200, 0.78);
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
+}
+
+#mute:hover,
+#mute:focus-visible {
+  color: #fffaf0;
+  border-color: var(--light);
+  outline: none;
+}
+
+#mute[aria-pressed="true"] {
+  border-color: var(--vermilion);
+}
+
+#menu:not([data-screen="main"], [data-screen="pause"]) #mute {
+  display: none;
+}
+
+#mute svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#mute .speaker {
+  fill: currentColor;
+}
+
+#mute[aria-pressed="true"] .waves,
+#mute[aria-pressed="false"] .cross {
+  display: none;
+}
+
 /* --- levels --------------------------------------------------------------------------- */
 
 .levels {

@@ -794,6 +794,8 @@ export default {
   "Move; a light push keeps your footing near edges":
     "Se déplacer ; une légère poussée évite de tomber près des bords",
   Music: "Musique",
+  "Mute sound": "Couper le son",
+  "Mute sound (M)": "Couper le son (M)",
   "Near misses still find the target, and the sight narrows.":
     "Les tirs qui frôlent la cible la touchent quand même, et la mire se resserre.",
   "New game": "Nouvelle partie",

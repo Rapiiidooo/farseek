@@ -1,7 +1,8 @@
 // Checks the phone controls with real touch events on the jam gate's phone viewport: the title
 // menus, the opening shot skipped by a tap, the stick walking to the camp, the notes, a light
-// push stopping at the terrace's edge, hanging and climbing back, pause, looking around, the
-// landscape layout, the other two levels and the credits. Controls must never cover the text.
+// push stopping at the terrace's edge, hanging and climbing back, pause and the mute, looking
+// around, the landscape layout, the other two levels and the credits. Controls must never cover
+// the text.
 //   node scripts/touch-check.mjs [outDir] [--url=http://localhost:3002/]
 import puppeteer from "puppeteer-core";
 import { mkdir, rm, writeFile } from "node:fs/promises";
@@ -520,7 +521,13 @@ try {
   await tap('#touch [data-touch="pause"]');
   g = await until((g) => g.paused, 2000, "pause");
   check("the pause button pauses", !(await visible("#stick")));
+  // The speaker shares the pause button's corner: the tap that paused must not mute.
+  check("the pause tap leaves the sound on", !(await game()).audio.muted);
   await shot("pause");
+  await tap("#mute");
+  check("a tap on the speaker mutes", (await game()).audio.muted);
+  await tap("#mute");
+  check("a second tap brings the sound back", !(await game()).audio.muted);
   await tap('#menu [data-action="resume"]');
   g = await until((g) => !g.paused, 2000, "resume");
   check("Resume returns to the controls", await visible("#stick"));

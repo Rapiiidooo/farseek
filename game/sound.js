@@ -114,6 +114,9 @@ export class Sound {
     this.loud = ctx.createGain();
     this.loud.gain.value = MIX.makeup;
     this.master = ctx.createGain();
+    // Set outright: a context opened suspended would otherwise ramp from full volume at its
+    // first resume, and a muted start would let the first click through.
+    this.mix.gain.value = this.master.gain.value = this.masterLevel();
     this.voiceTrim = ctx.createGain();
     this.voiceTrim.gain.value = MIX.voice;
     this.limiter = ctx.createDynamicsCompressor();
@@ -173,11 +176,17 @@ export class Sound {
     prepareEncounterAudio(this);
   }
 
+  // The master volume, lower under the pause menu and silent while muted.
+  masterLevel() {
+    const s = this.settings;
+    return s.muted ? 0 : 0.75 * level(s.volume, 0.8) * (this.ducked ? 0.35 : 1);
+  }
+
   applyVolumes() {
     if (!this.ctx) return;
     const s = this.settings;
     const t = this.ctx.currentTime;
-    const volume = 0.75 * level(s.volume, 0.8) * (this.ducked ? 0.35 : 1);
+    const volume = this.masterLevel();
     this.mix.gain.setTargetAtTime(volume, t, 0.05);
     this.master.gain.setTargetAtTime(volume, t, 0.05);
     this.fx.gain.setTargetAtTime(level(s.effects, 0.9), t, 0.05);

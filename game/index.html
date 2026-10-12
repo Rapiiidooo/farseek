@@ -416,6 +416,22 @@
     </section>
 
     <section id="menu" class="screen" hidden>
+      <button
+        type="button"
+        id="mute"
+        aria-pressed="false"
+        aria-label="Mute sound"
+        title="Mute sound (M)"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path class="speaker" d="M3.5 9.5v5h4l5 4v-13l-5 4z" />
+          <path
+            class="waves"
+            d="M15.5 9a4.5 4.5 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"
+          />
+          <path class="cross" d="M16 9.5l5 5m0-5l-5 5" />
+        </svg>
+      </button>
       <div class="panel" data-screen="main">
         <p class="kicker">An expedition between worlds</p>
         <h1 translate="no">
@@ -561,6 +577,9 @@
           </section>
           <section class="settings-group" aria-labelledby="settings-audio">
             <h3 id="settings-audio">Audio</h3>
+            <label class="row"
+              ><span>Mute sound (M)</span><input id="set-muted" type="checkbox"
+            /></label>
             <label class="row"
               ><span>Master volume</span
               ><input id="set-volume" type="range" min="0" max="1" step="0.05"

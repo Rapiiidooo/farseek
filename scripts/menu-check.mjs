@@ -1,7 +1,8 @@
-// Checks the menus and level flow with real key events: the title menu, Levels, Settings,
-// pausing, starting any reached level, restarting, quitting to the title, the credits, walking
-// back through the first door, a new game's opening and notes, a knockout at the checkpoint,
-// and the ways back from the isles to the checkpoint and from the frozen reach to the isles.
+// Checks the menus and level flow with real key events: the title menu, Levels, Settings, the
+// mute, pausing, starting any reached level, restarting, quitting to the title, the credits,
+// walking back through the first door, a new game's opening and notes, a knockout at the
+// checkpoint, and the ways back from the isles to the checkpoint and from the frozen reach to
+// the isles.
 //   node scripts/menu-check.mjs [outDir] [--url=http://localhost:3002/?nolock=1]
 import puppeteer from "puppeteer-core";
 import { mkdir, writeFile } from "node:fs/promises";
@@ -156,6 +157,29 @@ try {
   await shot("controls");
   await press("Escape");
 
+  const muted = () =>
+    page.evaluate(() => ({
+      pressed: document.querySelector("#mute").getAttribute("aria-pressed"),
+      box: document.querySelector("#set-muted").checked,
+      saved: JSON.parse(localStorage.getItem("far-door-settings") || "{}")
+        .muted,
+    }));
+  await press("KeyM");
+  let audio = await muted();
+  check(
+    "M mutes from the title and keeps it",
+    audio.pressed === "true" && audio.box && audio.saved === true,
+    JSON.stringify(audio),
+  );
+  await page.click("#mute");
+  await sleep(160);
+  audio = await muted();
+  check(
+    "the speaker turns the sound back on",
+    audio.pressed === "false" && !audio.box && audio.saved === false,
+    JSON.stringify(audio),
+  );
+
   await choose("Continue");
   g = await until(
     (g) => g.mode === "play" && g.where === "two",
@@ -165,6 +189,22 @@ try {
   check("continue starts the checkpoint", g.chapter === "checkpoint");
   await sleep(2500);
   await shot("continue");
+  await press("KeyM");
+  await sleep(600);
+  g = await game();
+  check(
+    "M mutes during play",
+    g.audio.muted && g.audio.gain < 0.01,
+    JSON.stringify(g.audio),
+  );
+  await press("KeyM");
+  await sleep(600);
+  g = await game();
+  check(
+    "M brings the sound back during play",
+    !g.audio.muted && g.audio.gain > 0.1,
+    JSON.stringify(g.audio),
+  );
 
   // Back through the first door: the membrane behind the explorer leads to the court.
   await page.keyboard.down("KeyS");

@@ -88,6 +88,10 @@ export function createDiagnostics(app) {
       cinematic: !!state.cinematic,
       beat: state.cinematic?.beat ?? null,
       voice: miraVoice(app.sound).telemetry(),
+      audio: {
+        muted: !!app.sound.settings.muted,
+        gain: app.sound.master ? +app.sound.master.gain.value.toFixed(3) : null,
+      },
       crossing: !!state.crossing,
       step: state.where === "court" ? story?.step?.id : cp?.step,
       objective: document.querySelector("#objective")?.textContent,

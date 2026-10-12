@@ -769,6 +769,8 @@ export default {
   "Move; a light push keeps your footing near edges":
     "चलो; हल्का धकेलने पर किनारों के पास पैर जमे रहते हैं",
   Music: "संगीत",
+  "Mute sound": "ध्वनि बंद करें",
+  "Mute sound (M)": "ध्वनि बंद करें (M)",
   "Near misses still find the target, and the sight narrows.":
     "करीब से चूकी गोलियाँ भी निशाने पर लगती हैं, और निशाना सिमट जाता है।",
   "New game": "नया गेम",

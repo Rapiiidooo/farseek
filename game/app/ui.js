@@ -324,6 +324,45 @@ export function createUI(app) {
     sound,
   });
 
+  // The speaker in the menu's corner and the key printed M mute everything, Mira's voice too.
+  const muteButton = document.querySelector("#mute");
+  function showMuted() {
+    muteButton.setAttribute("aria-pressed", String(!!settings.muted));
+    document.querySelector("#set-muted").checked = !!settings.muted;
+  }
+  function toggleMute() {
+    settings.muted = !settings.muted;
+    saveSettings();
+    sound.applyVolumes();
+    showMuted();
+  }
+  // The touch pause button shares this corner, and the tap that opens the menu ends in a click
+  // here: a click counts only when its press began on the speaker, or came from a key.
+  let pressedHere = false;
+  addEventListener(
+    "pointerdown",
+    (e) => (pressedHere = muteButton.contains(e.target)),
+    true,
+  );
+  muteButton.addEventListener("click", (e) => {
+    if (!e.detail || pressedHere) toggleMute();
+  });
+  addEventListener("keydown", (e) => {
+    // A layout without Latin letters keeps M's place.
+    const m =
+      /^m$/i.test(e.key) ||
+      (e.code === "KeyM" && /^[^\x00-\x7f]$/u.test(e.key));
+    if (!m || e.repeat || e.ctrlKey || e.metaKey || e.altKey) return;
+    // A key the player bound to an action, or one being bound, stays theirs.
+    if (
+      menu.locked ||
+      input.isGameKey(e.code) ||
+      e.target instanceof HTMLSelectElement
+    )
+      return;
+    toggleMute();
+  });
+
   let confirmAction = null;
   function menuAction(action, el) {
     sound.start();
@@ -577,6 +616,7 @@ export function createUI(app) {
     bind("set-ambience", "ambience");
     bind("set-effects", "effects");
     bind("set-voice", "voice");
+    bind("set-muted", "muted");
     bind("set-quality", "quality", String);
     bind("set-language", "language", String);
     bind("set-markers", "markers");
@@ -592,6 +632,7 @@ export function createUI(app) {
     bind("set-reduce-motion", "reduceMotion");
     app.follow.settings = settings;
     applyLook();
+    showMuted();
     skipHelp();
   }
 
@@ -617,8 +658,9 @@ export function createUI(app) {
           ? Number(el.value)
           : el.value;
     saveSettings();
-    if (["volume", "music", "ambience", "effects"].includes(key))
+    if (["volume", "music", "ambience", "effects", "muted"].includes(key))
       sound.applyVolumes();
+    if (key === "muted") showMuted();
     if (key === "voice") applyVoiceVolume(sound);
     if (key === "quality") app.rendering.resize();
     if (key === "language") relaunch();

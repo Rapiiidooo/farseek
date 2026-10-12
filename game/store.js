@@ -22,6 +22,7 @@ const DEFAULT_SETTINGS = {
   ambience: 0.8,
   effects: 0.9,
   voice: 0.9,
+  muted: false,
   quality: phone ? "balanced" : "high",
   markers: true,
   hints: true,

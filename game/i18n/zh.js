@@ -743,6 +743,8 @@ export default {
   "Move; a light push keeps your footing near edges":
     "移动；在边缘附近轻推可站稳脚步",
   Music: "音乐",
+  "Mute sound": "静音",
+  "Mute sound (M)": "静音（M）",
   "Near misses still find the target, and the sight narrows.":
     "稍有偏差也能命中目标，准星也会收窄。",
   "New game": "新游戏",
