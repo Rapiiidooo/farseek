@@ -1,5 +1,6 @@
 import { Menu } from "../menu.js";
 import { createControlsScreen } from "../controls-screen.js";
+import { dressSetting, showSetting, settling } from "../setting-controls.js";
 import {
   settings,
   saveSettings,
@@ -696,6 +697,7 @@ export function createUI(app) {
       else el.value = settings[key];
       el.dataset.setting = key;
       el.dataset.parse = parse === Number ? "number" : "string";
+      dressSetting(el);
     };
     bind("set-difficulty", "difficulty", String);
     bind("set-sensitivity", "sensitivity");
@@ -737,9 +739,15 @@ export function createUI(app) {
     document.querySelector("#fov-value").textContent = `${settings.fov}°`;
   }
 
+  // The language's cycler reloads the game only once the player stops on a language other than
+  // the one this page loaded with.
+  const loadedLanguage = settings.language;
+  let relaunching = 0;
+
   function settingChanged(el) {
     const key = el.dataset?.setting;
     if (!key) return;
+    showSetting(el);
     settings[key] =
       el.type === "checkbox"
         ? el.checked
@@ -752,7 +760,12 @@ export function createUI(app) {
     if (key === "muted") showMuted();
     if (key === "voice") applyVoiceVolume(sound);
     if (key === "quality") app.rendering.resize();
-    if (key === "language") relaunch();
+    if (key === "language") {
+      clearTimeout(relaunching);
+      const wait = settings.language === loadedLanguage ? 0 : 1.2;
+      settling(el, wait);
+      if (wait) relaunching = setTimeout(relaunch, wait * 1000);
+    }
     applyLook();
   }
 

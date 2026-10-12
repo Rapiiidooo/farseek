@@ -1338,25 +1338,354 @@ body.touch .settings .row-button {
   background: linear-gradient(90deg, rgba(57, 227, 208, 0.14), transparent);
 }
 
+/* A range is a groove filled with the builders' light up to a medallion; `--fill` is its share,
+   kept by setting-controls.js. */
 .settings input[type="range"] {
+  --thumb: 1.2rem;
   flex: none;
   width: min(14rem, 34vw);
-  accent-color: var(--light);
+  height: 1.6rem;
+  margin: 0;
+  background: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.settings input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--light) calc(var(--thumb) / 2 + var(--fill, 0) * (100% - var(--thumb))),
+    rgba(232, 207, 164, 0.16) 0
+  );
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.settings input[type="range"]::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(232, 207, 164, 0.16);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.settings input[type="range"]::-moz-range-progress {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--light);
+}
+
+.settings input[type="range"]::-webkit-slider-thumb {
+  box-sizing: border-box;
+  width: var(--thumb);
+  height: var(--thumb);
+  margin-top: calc(3px - var(--thumb) / 2);
+  border: 1.5px solid rgba(232, 207, 164, 0.75);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(232, 207, 164, 0.8) 0 2px, transparent 2.5px),
+    #1a120d;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  -webkit-appearance: none;
+  appearance: none;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+
+.settings input[type="range"]::-moz-range-thumb {
+  box-sizing: border-box;
+  width: var(--thumb);
+  height: var(--thumb);
+  border: 1.5px solid rgba(232, 207, 164, 0.75);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(232, 207, 164, 0.8) 0 2px, transparent 2.5px),
+    #1a120d;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.settings .row.focus input[type="range"]::-webkit-slider-thumb {
+  border-color: var(--light);
+  background:
+    radial-gradient(circle, #d9fffa 0 2.5px, transparent 3px), rgb(20, 70, 70);
+  box-shadow: 0 0 12px rgba(57, 227, 208, 0.6);
+}
+
+.settings .row.focus input[type="range"]::-moz-range-thumb {
+  border-color: var(--light);
+  background:
+    radial-gradient(circle, #d9fffa 0 2.5px, transparent 3px), rgb(20, 70, 70);
+  box-shadow: 0 0 12px rgba(57, 227, 208, 0.6);
+}
+
+/* A finger catches the range anywhere in its row's height, which stays as it was. */
+@media (pointer: coarse) {
+  .settings input[type="range"] {
+    height: 44px;
+    margin-block: -8px;
+  }
+}
+
+body.touch .settings input[type="range"] {
+  height: 44px;
+  margin-block: -8px;
 }
 
 .settings input[type="checkbox"] {
-  width: 1.2rem;
-  height: 1.2rem;
-  accent-color: var(--light);
+  --knob: rgba(232, 207, 164, 0.7);
+  flex: none;
+  width: 2.6rem;
+  height: 1.45rem;
+  margin: 0;
+  border: 1px solid rgba(232, 207, 164, 0.35);
+  border-radius: 999px;
+  background: radial-gradient(
+      circle closest-side,
+      var(--knob) 0 78%,
+      transparent 88%
+    )
+    3px 50% / 1.05rem 1.05rem no-repeat;
+  background-color: rgba(16, 12, 10, 0.6);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.55);
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  transition:
+    background-position 0.2s ease,
+    background-color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
-.settings select {
-  font: inherit;
-  padding: 0.25rem 0.5rem;
-  border: 1px solid rgba(232, 207, 164, 0.35);
-  border-radius: 3px;
-  background: #1c140f;
+.settings input[type="checkbox"]:checked {
+  --knob: #d9fffa;
+  border-color: var(--light);
+  background-color: rgba(20, 70, 70, 0.78);
+  background-position: calc(100% - 3px) 50%;
+  box-shadow: 0 0 12px rgba(57, 227, 208, 0.45);
+}
+
+.settings .row.focus input[type="checkbox"] {
+  border-color: var(--light);
+}
+
+/* A select is a cycler (setting-controls.js), its select kept out of sight for screen readers.
+   Isolated, its arrows rise over the value's edges but stay under the panel's sticky foot. */
+.cycler {
+  position: relative;
+  isolation: isolate;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.cycler select {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  pointer-events: none;
+}
+
+.cycler-arrow {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  padding: 0;
+  border: 1px solid rgba(232, 207, 164, 0.3);
+  border-radius: 50%;
+  background: rgba(16, 12, 10, 0.55);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background 0.25s,
+    border-color 0.25s,
+    box-shadow 0.25s,
+    transform 0.1s;
+}
+
+/* A finger's target reaches 44 px, mostly outward so it stays off the value's name. */
+.cycler-arrow::after,
+.cycler-value::after {
+  content: "";
+  position: absolute;
+  inset: -10px -17px -10px -5px;
+}
+
+.cycler-arrow[data-step="-1"]::after {
+  inset: -10px -5px -10px -17px;
+}
+
+.cycler-value::after {
+  inset: -14.5px 0;
+}
+
+.cycler-arrow svg {
+  width: 62%;
+  height: 62%;
+  fill: none;
+  stroke: rgba(232, 207, 164, 0.6);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.25s;
+}
+
+.settings .row.focus .cycler-arrow {
+  border-color: var(--light);
+  background: rgba(20, 70, 70, 0.78);
+  box-shadow: 0 0 14px rgba(57, 227, 208, 0.55);
+}
+
+.settings .row.focus .cycler-arrow svg {
+  stroke: #d9fffa;
+}
+
+@media (hover: hover) {
+  .cycler-arrow:hover {
+    border-color: #d9fffa;
+    background: rgba(57, 227, 208, 0.38);
+    box-shadow: 0 0 18px rgba(57, 227, 208, 0.8);
+    transform: scale(1.08);
+  }
+
+  .cycler-arrow:hover svg {
+    stroke: #ffffff;
+  }
+
+  .cycler-value:hover {
+    color: #fffaf0;
+  }
+}
+
+.cycler-arrow:active {
+  transform: scale(0.9);
+}
+
+/* Wide enough for every option in the five languages, so the arrows line up down the panel. */
+.cycler-value {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  min-width: 7.25rem;
+  padding: 0 0.45rem;
+  border: 0;
+  background: none;
   color: var(--sand-bright);
+  font-family: var(--display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.settings .row.focus .cycler-value {
+  color: #fffaf0;
+}
+
+.cycler-value > span:not(.cycler-pips) {
+  grid-area: 1 / 1;
+  visibility: hidden;
+}
+
+.cycler-value > span.current {
+  visibility: visible;
+}
+
+/* One pip per option under the value, the current one lit: where the cycle stands and how long
+   it is. */
+.cycler-pips {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  display: flex;
+  gap: 5px;
+  translate: -50% 0;
+  transition: opacity 0.2s;
+}
+
+.cycler-pips i {
+  width: 4px;
+  height: 4px;
+  rotate: 45deg;
+  background: rgba(232, 207, 164, 0.32);
+}
+
+.cycler-pips i.current {
+  background: var(--light);
+  box-shadow: 0 0 6px rgba(57, 227, 208, 0.8);
+}
+
+/* A choice that applies after a pause fills a groove of light in the pips' place meanwhile. */
+.cycler.settling .cycler-pips {
+  opacity: 0;
+}
+
+.cycler.settling .cycler-value::before {
+  content: "";
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, var(--light), rgba(57, 227, 208, 0.3));
+  transform-origin: left;
+  animation: cycler-settle var(--settle) linear both;
+}
+
+@keyframes cycler-settle {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cycler-arrow,
+  .cycler-pips,
+  .cycler.settling .cycler-value::before,
+  .settings input[type="checkbox"] {
+    transition: none;
+    animation: none;
+  }
+}
+
+body.reduce-motion .cycler-arrow,
+body.reduce-motion .cycler-pips,
+body.reduce-motion .cycler.settling .cycler-value::before,
+body.reduce-motion .settings input[type="checkbox"] {
+  transition: none;
+  animation: none;
+}
+
+/* A phone's panel is narrow: the cycler draws in so the names beside it keep their size. */
+@media (max-width: 600px) {
+  .cycler {
+    gap: 0.1rem;
+  }
+
+  .cycler-value {
+    min-width: 0;
+    padding: 0 0.3rem;
+    font-size: 1rem;
+    letter-spacing: 0.03em;
+  }
 }
 
 .controls-grid {
