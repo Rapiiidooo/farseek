@@ -308,7 +308,6 @@ export default {
   "Confiscated at the window and dropped by the spire. It still hisses, tuned to home.":
     "खिड़की पर ज़ब्त हुआ और मीनार के पास गिरा। घर के चैनल पर लगा, अब भी खरखराता है।",
   Continue: "जारी रखो",
-  "Continue · {title}": "जारी रखो · {title}",
   "Control hints": "कंट्रोल संकेत",
   Controls: "कंट्रोल",
   "Converging tide": "सिमटता ज्वार",
@@ -659,7 +658,6 @@ export default {
     "झूला सबसे आगे हो, दूर वाले द्वीप के ऊपर, तब छोड़ो",
   "Let go over the bridge of light": "रोशनी के पुल के ऊपर छोड़ो",
   "Level {n}": "लेवल {n}",
-  "Level {n} · {title}": "लेवल {n} · {title}",
   Levels: "लेवल",
   Light: "रोशनी",
   "Light opens it. The sun falls through a notch in the west cliff onto a bronze mirror, and the builders passed that light round the court with mirrors that turn on stone drums. A stela wakes when the light strikes its crystal head on.":
@@ -870,7 +868,6 @@ export default {
   Pause: "विराम",
   "Pause ferry survey": "द्वीप-सर्वे रोको",
   "Pause stamp review": "ठप्पा-जाँच रोको",
-  Paused: "विराम",
   "Phase {n} · {attack}": "चरण {n} · {attack}",
   "Phase {n} · Open core": "चरण {n} · खुला कोर",
   "Pick up the page": "पन्ना उठाओ",
@@ -992,7 +989,6 @@ export default {
   "Release the archive seal": "अभिलेखागार की सील खोलो",
   "Relic found · {count} of {total}": "निशानी मिली · {total} में से {count}",
   Relics: "निशानियाँ",
-  "Relics · {found} of {total}": "निशानियाँ · {total} में से {found}",
   Reload: "रीलोड",
   "Reload pistols": "पिस्तौलें रीलोड करो",
   "Reload the pistols": "पिस्तौलें रीलोड करो",

@@ -319,7 +319,6 @@ export default {
   "Confiscated at the window and dropped by the spire. It still hisses, tuned to home.":
     "Confiscada en la ventanilla y abandonada junto a la aguja. Aún sisea, sintonizada con casa.",
   Continue: "Continuar",
-  "Continue · {title}": "Continuar · {title}",
   "Control hints": "Ayudas de control",
   Controls: "Controles",
   "Converging tide": "Marea convergente",
@@ -677,7 +676,6 @@ export default {
     "Suéltate al final del vaivén, sobre la isla lejana",
   "Let go over the bridge of light": "Suéltate sobre el puente de luz",
   "Level {n}": "Nivel {n}",
-  "Level {n} · {title}": "Nivel {n} · {title}",
   Levels: "Niveles",
   Light: "Luz",
   "Light opens it. The sun falls through a notch in the west cliff onto a bronze mirror, and the builders passed that light round the court with mirrors that turn on stone drums. A stela wakes when the light strikes its crystal head on.":
@@ -889,7 +887,6 @@ export default {
   Pause: "Pausa",
   "Pause ferry survey": "Pausar la medición",
   "Pause stamp review": "Pausar la revisión",
-  Paused: "En pausa",
   "Phase {n} · {attack}": "Fase {n} · {attack}",
   "Phase {n} · Open core": "Fase {n} · Núcleo abierto",
   "Pick up the page": "Recoger la página",
@@ -1014,7 +1011,6 @@ export default {
   "Relic found · {count} of {total}":
     "Reliquia encontrada · {count} de {total}",
   Relics: "Reliquias",
-  "Relics · {found} of {total}": "Reliquias · {found} de {total}",
   Reload: "Recargar",
   "Reload pistols": "Recargar pistolas",
   "Reload the pistols": "Recargar las pistolas",

@@ -320,7 +320,6 @@ export default {
   "Confiscated at the window and dropped by the spire. It still hisses, tuned to home.":
     "Confisquée au guichet et abandonnée près de la flèche. Elle grésille encore, réglée sur la fréquence de la base.",
   Continue: "Continuer",
-  "Continue · {title}": "Continuer · {title}",
   "Control hints": "Aides aux commandes",
   Controls: "Commandes",
   "Converging tide": "Marée convergente",
@@ -683,7 +682,6 @@ export default {
   "Let go over the bridge of light":
     "Lâche la corde au-dessus du pont de lumière",
   "Level {n}": "Niveau {n}",
-  "Level {n} · {title}": "Niveau {n} · {title}",
   Levels: "Niveaux",
   Light: "Lumière",
   "Light opens it. The sun falls through a notch in the west cliff onto a bronze mirror, and the builders passed that light round the court with mirrors that turn on stone drums. A stela wakes when the light strikes its crystal head on.":
@@ -896,7 +894,6 @@ export default {
   Pause: "Pause",
   "Pause ferry survey": "Suspendre le relevé du bac",
   "Pause stamp review": "Suspendre le contrôle des tampons",
-  Paused: "En pause",
   "Phase {n} · {attack}": "Phase {n} · {attack}",
   "Phase {n} · Open core": "Phase {n} · Cœur ouvert",
   "Pick up the page": "Ramasser la page",
@@ -1021,7 +1018,6 @@ export default {
   "Release the archive seal": "Libérer le sceau des Archives",
   "Relic found · {count} of {total}": "Relique trouvée · {count} sur {total}",
   Relics: "Reliques",
-  "Relics · {found} of {total}": "Reliques · {found} sur {total}",
   Reload: "Recharger",
   "Reload pistols": "Recharger les pistolets",
   "Reload the pistols": "Recharger les pistolets",

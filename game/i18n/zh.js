@@ -298,7 +298,6 @@ export default {
   "Confiscated at the window and dropped by the spire. It still hisses, tuned to home.":
     "在窗口被没收，后来掉在尖塔旁。它仍在沙沙作响，频道调在家乡。",
   Continue: "继续",
-  "Continue · {title}": "继续 · {title}",
   "Control hints": "操作提示",
   Controls: "操作",
   "Converging tide": "汇聚潮汐",
@@ -635,7 +634,6 @@ export default {
     "荡到最前方、位于对面岛屿上空时松手",
   "Let go over the bridge of light": "在光桥上空松手",
   "Level {n}": "第{n}关",
-  "Level {n} · {title}": "第{n}关 · {title}",
   Levels: "关卡",
   Light: "光",
   "Light opens it. The sun falls through a notch in the west cliff onto a bronze mirror, and the builders passed that light round the court with mirrors that turn on stone drums. A stela wakes when the light strikes its crystal head on.":
@@ -840,7 +838,6 @@ export default {
   Pause: "暂停",
   "Pause ferry survey": "暂停漂流岛测量",
   "Pause stamp review": "暂停印章审核",
-  Paused: "已暂停",
   "Phase {n} · {attack}": "第{n}阶段 · {attack}",
   "Phase {n} · Open core": "第{n}阶段 · 核心敞开",
   "Pick up the page": "拾起书页",
@@ -957,7 +954,6 @@ export default {
   "Release the archive seal": "解开档案馆封印",
   "Relic found · {count} of {total}": "发现遗物 · {count}/{total}",
   Relics: "遗物",
-  "Relics · {found} of {total}": "遗物 · {found}/{total}",
   Reload: "换弹",
   "Reload pistols": "手枪换弹",
   "Reload the pistols": "为手枪换弹",

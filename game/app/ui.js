@@ -13,6 +13,7 @@ import { applyVoiceVolume } from "../voice.js";
 import { craftLine } from "../pistol-craft.js";
 import { recordLoadEvent, reportLoadFailure } from "../load-diagnostics.js";
 import { createLoadBar } from "../load-bar.js";
+import { svg } from "../glyph-icons.js";
 import { t } from "../i18n.js";
 import {
   LOCAL_PREVIEW,
@@ -31,8 +32,34 @@ const PREPARE_SECONDS = {
   vault: 0.8,
 };
 const WORLD_SPAN = [0.06, 0.96];
+const MENU_GLYPHS = {
+  continue: "disc",
+  resume: "disc",
+  new: "peak",
+  restart: "peak",
+  levels: "twin",
+  relics: "crescent",
+  settings: "spiral",
+  controls: "waves",
+  credits: "star",
+  title: "star",
+};
 const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
 const named = (title) => title.replace(/^The /, "the ");
+
+// Headings, labels and buttons keep to one line: a long one is set smaller, down to 60% of its
+// size, and only past that does it end in an ellipsis.
+function fitLines(panel) {
+  for (const el of panel.querySelectorAll(
+    ".panel-title, .level-card h3, .level-card button, .menu-list .label, .menu-list .detail, .settings .row > span",
+  )) {
+    el.style.fontSize = "";
+    if (!el.clientWidth || el.scrollWidth <= el.clientWidth) continue;
+    const size = parseFloat(getComputedStyle(el).fontSize);
+    const fitted = (size * el.clientWidth) / el.scrollWidth - 0.5;
+    el.style.fontSize = `${Math.max(size * 0.6, fitted)}px`;
+  }
+}
 
 export function createUI(app) {
   const {
@@ -242,13 +269,10 @@ export function createUI(app) {
       inventory.close();
       hud.compactChapter();
       const chapter = CHAPTERS.find((c) => c.id === state.chapter);
-      document.querySelector("#pause-where").textContent = t(
-        "Level {n} · {title}",
-        {
-          n: chapter?.level ?? 1,
-          title: chapter?.title ?? "",
-        },
-      );
+      document.querySelector("#pause-level").textContent = t("Level {n}", {
+        n: chapter?.level ?? 1,
+      });
+      document.querySelector("#pause-where").textContent = chapter?.title ?? "";
       document.querySelector("#pause-objective").textContent =
         document.querySelector("#objective").textContent;
       menu.open("pause", { paused: true });
@@ -271,6 +295,25 @@ export function createUI(app) {
     onChange: (el) => settingChanged(el),
   });
   menu.moveKeys = (direction) => input.binding(direction);
+  menu.onShow = fitLines;
+  addEventListener("resize", () => menu.isOpen && fitLines(menu.panel()));
+  // Each entry of the title and pause lists carries a builders' glyph, lit while it has the
+  // focus; a detail such as the level to continue follows the label on the same line.
+  for (const button of document.querySelectorAll(
+    "#menu .menu-list:not(.compact) > button",
+  )) {
+    const label = document.createElement("span");
+    label.className = "label";
+    label.textContent = button.textContent.trim();
+    const detail = document.createElement("span");
+    detail.className = "detail";
+    button.replaceChildren(label, detail);
+    const glyph = MENU_GLYPHS[button.dataset.action];
+    button.insertAdjacentHTML(
+      "afterbegin",
+      `<span class="menu-glyph" aria-hidden="true">${glyph ? svg(glyph) : ""}</span>`,
+    );
+  }
   const controls = createControlsScreen({
     input,
     saveSettings: () => {
@@ -353,17 +396,22 @@ export function createUI(app) {
     }
   }
 
+  // A list entry's detail, which a screen reader hears after its label.
+  function setDetail(button, text) {
+    button.querySelector(".detail").textContent = text;
+    const label = button.querySelector(".label").textContent;
+    if (text) button.setAttribute("aria-label", `${label}, ${text}`);
+    else button.removeAttribute("aria-label");
+  }
+
   function refreshMainMenu() {
     const found = RELICS.filter((r) => progress.relics.has(r.id)).length;
     for (const b of document.querySelectorAll('#menu [data-action="relics"]'))
-      b.textContent = found
-        ? t("Relics · {found} of {total}", { found, total: RELICS.length })
-        : t("Relics");
+      setDetail(b, found ? `${found}/${RELICS.length}` : "");
     const cont = document.querySelector('#menu [data-action="continue"]');
     cont.hidden = !progress.last || progress.last === "court";
     const chapter = CHAPTERS.find((c) => c.id === progress.last);
-    if (chapter)
-      cont.textContent = t("Continue · {title}", { title: chapter.title });
+    setDetail(cont, chapter?.title ?? "");
     document.querySelector('[data-help="menu"]').innerHTML = input.usingTouch
       ? t("Tap to choose")
       : t("{keys} or mouse to choose · <kbd>Enter</kbd> to confirm", {
@@ -500,7 +548,7 @@ export function createUI(app) {
         for (const button of document.querySelectorAll(
           '[data-action="levels"]',
         ))
-          button.textContent = "Test levels";
+          button.querySelector(".label").textContent = "Test levels";
       const tools = document.createElement("nav");
       tools.id = "local-tools";
       tools.setAttribute("aria-label", "Local tools");

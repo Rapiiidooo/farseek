@@ -117,6 +117,7 @@ export class Menu {
     p.style.animation = "none";
     void p.offsetWidth;
     p.style.animation = "";
+    this.shown(p);
     this.focus(0);
   }
 
@@ -128,12 +129,20 @@ export class Menu {
     this.panel().hidden = true;
     this.stack.pop();
     this.panel().hidden = false;
+    this.shown(this.panel());
     this.focus(this.stack[this.stack.length - 1].index);
+  }
+
+  // The screen's name on the root for styles, and the panel now laid out to `onShow`.
+  shown(panel) {
+    this.root.dataset.screen = this.screen || "";
+    if (panel) this.onShow?.(panel);
   }
 
   close({ fade = false } = {}) {
     for (const p of this.root.querySelectorAll(".panel")) p.hidden = true;
     this.stack = [];
+    this.shown(null);
     if (fade) {
       this.root.classList.add("leaving");
       setTimeout(() => {

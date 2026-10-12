@@ -443,7 +443,7 @@
       </div>
 
       <div class="panel" data-screen="pause" hidden>
-        <p class="kicker">Paused</p>
+        <p class="kicker" id="pause-level"></p>
         <h2 class="panel-title" id="pause-where">The Sunken Court</h2>
         <p class="tagline" id="pause-objective"></p>
         <nav class="menu-list">
@@ -491,7 +491,6 @@
       </div>
 
       <div class="panel wide" data-screen="settings" hidden>
-        <p class="kicker">Settings</p>
         <h2 class="panel-title">Settings</h2>
         <div class="settings">
           <section class="settings-group" aria-labelledby="settings-controls">
@@ -648,7 +647,6 @@
       </div>
 
       <div class="panel wide" data-screen="controls" hidden>
-        <p class="kicker">Controls</p>
         <h2 class="panel-title">Controls</h2>
         <p class="controls-help" id="controls-help"></p>
         <div class="controls-grid">
@@ -671,8 +669,8 @@
       </div>
 
       <div class="panel" data-screen="confirm" hidden>
-        <p class="kicker">Are you sure?</p>
-        <h2 class="panel-title" id="confirm-text"></h2>
+        <h2 class="panel-title">Are you sure?</h2>
+        <p class="tagline" id="confirm-text"></p>
         <nav class="menu-list">
           <button type="button" data-action="confirm-yes">Yes</button>
           <button type="button" data-action="back">No</button>

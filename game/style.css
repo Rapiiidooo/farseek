@@ -143,7 +143,7 @@ h1 {
 
 h1 .logo {
   display: block;
-  width: clamp(16rem, 36vw, 31rem);
+  width: clamp(16rem, min(36vw, 55vh), 31rem);
   height: auto;
   filter: drop-shadow(0 0 22px rgba(10, 6, 4, 0.6));
 }
@@ -550,6 +550,17 @@ body.reduce-motion #load-worlds li[data-state="active"] {
   color: var(--sand-bright);
 }
 
+/* Headings, labels and buttons in the menus keep to one line (`fitLines` in app/ui.js). */
+.panel-title,
+#menu .kicker,
+.level-card h3,
+.settings .row > span {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .tagline {
   margin: 0.9rem 0 1.6rem;
   font-size: 1.1rem;
@@ -558,6 +569,7 @@ body.reduce-motion #load-worlds li[data-state="active"] {
 
 .menu-list {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   justify-items: start;
   gap: 0.15rem;
   margin-top: 0.4rem;
@@ -570,50 +582,154 @@ body.reduce-motion #load-worlds li[data-state="active"] {
   margin-top: 1.4rem;
 }
 
-.menu-list button,
-.level-card button {
+.menu-list button {
   position: relative;
-  padding: 0.38rem 0.9rem 0.38rem 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 100%;
+  padding: 0.22rem 0.9rem 0.36rem 0.1rem;
   border: 0;
-  border-left: 3px solid transparent;
   background: transparent;
-  color: rgba(246, 231, 200, 0.78);
+  color: rgba(246, 231, 200, 0.74);
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
-  letter-spacing: 0.06em;
+  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   text-align: left;
+  white-space: nowrap;
+  text-shadow: 0 1px 8px rgba(10, 6, 4, 0.75);
   cursor: pointer;
+  transition: color 0.15s;
+}
+
+/* Light runs along a groove under the entry in focus, as it runs along the court's channels. */
+.menu-list button::after {
+  content: "";
+  position: absolute;
+  left: 2.45rem;
+  right: 0.9rem;
+  bottom: 0.1rem;
+  height: 2px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, var(--light), rgba(57, 227, 208, 0));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.menu-list button.focus {
+  color: #fffaf0;
+  outline: none;
+}
+
+.menu-list button.focus::after {
+  transform: scaleX(1);
+}
+
+/* Each entry's glyph sits in a medallion like the address glyphs of play, and lights the same
+   way while the entry has the focus. */
+.menu-glyph {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border: 1px solid rgba(232, 207, 164, 0.3);
+  border-radius: 50%;
+  background: rgba(16, 12, 10, 0.55);
   transition:
-    color 0.15s,
-    border-color 0.15s,
-    background 0.15s,
-    transform 0.15s;
+    background 0.25s,
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+
+.menu-glyph svg {
+  width: 62%;
+  height: 62%;
+  fill: none;
+  stroke: rgba(232, 207, 164, 0.55);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.25s;
+}
+
+.menu-list button.focus .menu-glyph {
+  border-color: var(--light);
+  background: rgba(20, 70, 70, 0.78);
+  box-shadow: 0 0 14px rgba(57, 227, 208, 0.55);
+}
+
+.menu-list button.focus .menu-glyph svg {
+  stroke: #d9fffa;
+}
+
+.menu-list .label {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-list .detail {
+  flex: 0 100 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(232, 207, 164, 0.6);
+}
+
+.menu-list .detail:empty {
+  display: none;
+}
+
+/* Chinese and Devanagari stand taller than Latin capitals at one size; the list keeps its height. */
+:root:lang(zh) .menu-list button,
+:root:lang(hi) .menu-list button {
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
 }
 
 .menu-list.compact button,
 .level-card button {
-  font-size: 1.05rem;
+  position: relative;
   padding: 0.5rem 1rem;
   border: 1px solid rgba(232, 207, 164, 0.25);
   border-radius: 3px;
+  background: transparent;
+  color: rgba(246, 231, 200, 0.78);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    border-color 0.15s,
+    background 0.15s;
 }
 
-.menu-list button.focus,
-.level-card button.focus {
-  color: #fffaf0;
-  border-left-color: var(--light);
-  background: linear-gradient(90deg, rgba(57, 227, 208, 0.18), transparent);
-  transform: translateX(4px);
-  outline: none;
+.menu-list.compact button::after {
+  content: none;
 }
 
 .menu-list.compact button.focus,
 .level-card button.focus {
+  color: #fffaf0;
   border-color: var(--light);
   background: rgba(29, 95, 99, 0.55);
-  transform: none;
+  outline: none;
 }
 
 .menu-list button:disabled,
@@ -623,7 +739,7 @@ body.reduce-motion #load-worlds li[data-state="active"] {
 }
 
 .menu-foot {
-  margin: 1.6rem 0 0;
+  margin: 1.1rem 0 0;
   font-size: 0.8rem;
   color: rgba(232, 207, 164, 0.6);
 }
@@ -632,7 +748,7 @@ body.reduce-motion #load-worlds li[data-state="active"] {
 
 .levels {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
   gap: 1rem;
 }
 
@@ -811,11 +927,13 @@ body.touch #address[data-slots="6"] .glyph svg {
 
 .settings {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.1rem;
 }
 
 .settings-group {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.2rem;
 }
 
@@ -831,7 +949,7 @@ body.touch #address[data-slots="6"] .glyph svg {
   bottom: calc(-1 * clamp(18px, 3vw, 34px));
   margin-bottom: calc(-1 * clamp(18px, 3vw, 34px));
   padding: 0.9rem 0 clamp(18px, 3vw, 34px);
-  background: linear-gradient(rgba(16, 11, 8, 0), rgba(16, 11, 8, 0.96) 35%);
+  background: linear-gradient(rgba(16, 11, 8, 0), rgb(16, 11, 8) 0.9rem);
 }
 
 .settings-group h3 {
@@ -906,7 +1024,8 @@ body.touch .settings .row-button {
 }
 
 .settings input[type="range"] {
-  width: min(14rem, 45vw);
+  flex: none;
+  width: min(14rem, 34vw);
   accent-color: var(--light);
 }
 
