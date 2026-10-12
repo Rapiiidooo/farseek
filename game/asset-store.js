@@ -55,6 +55,20 @@ export class AssetStore {
     for (const name of OFFLOADED_ASSETS) prebuild(runtimeAsset(name).path);
   }
 
+  // Downloads together the modules of assets a build then makes one after another, each
+  // otherwise a round trip of its own; none runs before it is made, so builds keep their order.
+  preload(names) {
+    if (this.load !== loadRuntimeAsset) return;
+    for (const name of new Set(names)) {
+      const href = runtimeAsset(name).path;
+      if (document.head.querySelector(`link[href="${href}"]`)) continue;
+      const link = document.createElement("link");
+      link.rel = "modulepreload";
+      link.href = href;
+      document.head.append(link);
+    }
+  }
+
   has(name) {
     return this.available.get(name) === true;
   }

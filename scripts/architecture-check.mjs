@@ -1,7 +1,8 @@
-// Contracts of the world catalog, the asset store, the world manager and the background work
-// budget, without a browser (see docs/architecture.md).
+// Contracts of the world catalog, the asset store, the world manager, the background work
+// budget and the page's module preloads, without a browser (see docs/architecture.md).
 //   node scripts/architecture-check.mjs [outDir]
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import { mkdir, writeFile } from "node:fs/promises";
 import { WorldManager } from "../game/worlds/manager.js";
@@ -346,6 +347,53 @@ await check(
     assert.deepEqual(manager.toPrepare("p"), []);
     return { list };
   },
+);
+
+await check(
+  "A start from the menus waits for its window alone, requested together",
+  async () => {
+    const events = [];
+    const gates = { q: Promise.withResolvers() };
+    const ids = ["p", "q", "r", "s", "t", "u", "v"];
+    const budget = new WorldWorkBudget();
+    const manager = new WorldManager({
+      definitions: fakeWorlds(ids, events, gates),
+      services: () => ({}),
+      retainAll: true,
+      schedule: (work, job) => budget.run(work, job),
+      yieldWork: () => budget.yield(),
+    });
+    await manager.ensure("p");
+    manager.enter("p");
+    manager.prefetch("p");
+    await new Promise((r) => setTimeout(r, 20));
+    const list = manager.toPrepare("u", { ahead: false, around: true });
+    assert.deepEqual(
+      list.map(({ id }) => id).toSorted(),
+      ["q", "t", "u", "v"],
+      "the start, its neighbours and the preparation it waits behind",
+    );
+    const prepared = manager.prepare("u");
+    gates.q.resolve();
+    await prepared;
+    assert.deepEqual(
+      events.slice(1),
+      ["build:q", "build:t", "build:u", "build:v"],
+      "no queued world slips in before the window",
+    );
+    assert(manager.pending.has("r") && manager.pending.has("s"));
+    await manager.queue;
+    assert.deepEqual(manager.telemetry().loaded.toSorted(), ids);
+    return { list, order: events };
+  },
+);
+
+await check("The page preloads every module the title imports", () =>
+  execFileSync(
+    process.execPath,
+    [new URL("./boot-preload.mjs", import.meta.url).pathname, "--check"],
+    { encoding: "utf8" },
+  ).trim(),
 );
 
 await mkdir(out, { recursive: true });

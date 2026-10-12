@@ -9,6 +9,23 @@ import * as COURT from "../../court.js";
 import { reach } from "../../store.js";
 import { t } from "../../i18n.js";
 
+// What the court's build makes, one after another: the level, its scenery, grass, door and relic.
+const ASSETS = [
+  "push_block",
+  "sun_mirror",
+  "glyph_stela",
+  "temple_facade",
+  "guardian_colossus",
+  "broken_column",
+  ...COURT.PROPS.map(([name]) => name),
+  "meadow_grass",
+  "expedition_rope",
+  "brazier",
+  "court_gallery",
+  "far_gate",
+  "field_scroll",
+];
+
 export default class CourtWorld {
   constructor(renderer, assets, services = {}) {
     Object.assign(this, { renderer, assets, services });
@@ -26,6 +43,7 @@ export default class CourtWorld {
     const { scene, world, level, renderer, assets } = this;
     const { sound, hud, dust, state } = this.services;
     let beams, gate;
+    assets.preload?.(ASSETS);
     await level.build();
     beams = new Beams(
       scene,

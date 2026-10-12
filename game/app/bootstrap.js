@@ -308,6 +308,7 @@ export function startGame() {
     if (auto)
       await app.campaign.startChapter(auto, {
         continuing: params.get("resume") === "1",
+        settle: true,
       });
     app.diagnostics.publish();
     window.__READY__ = true;

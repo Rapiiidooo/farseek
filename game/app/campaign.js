@@ -67,7 +67,7 @@ export function createCampaign(app) {
     hud.hideBoss();
   }
 
-  function startChapter(id, { continuing = false } = {}) {
+  function startChapter(id, { continuing = false, settle = false } = {}) {
     if (starting) return starting;
     starting = app.ui
       .withLoading(
@@ -75,14 +75,21 @@ export function createCampaign(app) {
           const chapter = chapterById(id);
           const fromTitle = state.mode === "title";
           resetWorlds(chapter.level >= 4 || (continuing && progress.pistols));
-          app.ui.loadPlan(worlds.toPrepare(chapter.where), {
-            start: chapter.where,
-          });
-          await worlds.ensure(chapter.where);
-          worlds.solveBefore(chapter.where);
-          // Whatever the title screen has not prepared yet finishes here, so play never competes with loading.
-          worlds.prefetch(chapter.where);
-          await worlds.settle();
+          app.ui.loadPlan(
+            worlds.toPrepare(chapter.where, { ahead: settle, around: !settle }),
+            { start: chapter.where },
+          );
+          // Play begins once the worlds kept around the start are ready; the rest prepare behind
+          // it. A start by address prepares every world first, so captures and scripted checks
+          // never compete with loading.
+          const start = worlds
+            .ensure(chapter.where)
+            .then(() => worlds.solveBefore(chapter.where));
+          if (settle) {
+            await start;
+            worlds.prefetch(chapter.where);
+            await worlds.settle();
+          } else await Promise.all([start, worlds.prepare(chapter.where)]);
           state.chapter = chapter.id;
           state.paused = false;
           state.mode = "play";
@@ -147,7 +154,7 @@ export function createCampaign(app) {
           worlds.prefetch(chapter.where);
         },
         {
-          retry: () => startChapter(id, { continuing }),
+          retry: () => startChapter(id, { continuing, settle }),
           reload: () => reloadAt(id, { continuing }),
         },
       )

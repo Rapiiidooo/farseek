@@ -99,8 +99,12 @@ export class WorldManager {
   async prepare(id) {
     this.onEvent("prepare", { id });
     this.desired = id;
-    await this.ensure(id);
-    for (const definition of this.window(id)) await this.ensure(definition.id);
+    // Requested together, so no background preparation slips in between them.
+    await Promise.all(
+      [id, ...this.window(id).map((definition) => definition.id)].map((world) =>
+        this.ensure(world),
+      ),
+    );
     return this.get(id);
   }
 
@@ -139,17 +143,20 @@ export class WorldManager {
     this.scheduleTrim();
   }
 
-  // What a start at `id` prepares before play: the world, every queued preparation and, `ahead`,
-  // what `prefetch` adds; settling runs them all.
-  toPrepare(id, { ahead = true } = {}) {
+  // What a start at `id` prepares before play: the world and, `ahead`, every queued preparation
+  // and what `prefetch` adds, which settling runs, or, `around`, the worlds `prepare` keeps
+  // around it and the preparation it waits behind.
+  toPrepare(id, { ahead = true, around = false } = {}) {
+    const running = [...this.jobs].find(
+      ([, job]) => job === this.running?.job,
+    )?.[0];
     const ids = new Set([
       id,
       ...(ahead ? this.pending.keys() : []),
       ...(ahead ? this.ahead(id).map((definition) => definition.id) : []),
+      ...(around ? this.window(id).map((definition) => definition.id) : []),
+      ...(around && running ? [running] : []),
     ]);
-    const running = [...this.jobs].find(
-      ([, job]) => job === this.running?.job,
-    )?.[0];
     return [...ids]
       .filter((world) => !this.isResident(world))
       .map((world) => ({
