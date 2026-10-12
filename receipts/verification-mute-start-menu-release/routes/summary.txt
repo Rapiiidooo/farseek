@@ -1,0 +1,14 @@
+playthrough exit=0
+forest exit=0
+sea exit=0
+vault exit=0
+vault-fr exit=0
+menu exit=143
+touch exit=0
+live phone exit=1
+live desktop exit=0
+start-window 1 exit=0
+start-window 2 exit=0
+start-window 3 exit=0
+network exit=0
+bells exit=0
