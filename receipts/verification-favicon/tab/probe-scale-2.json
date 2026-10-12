@@ -1,0 +1,12 @@
+{
+  "url": "http://localhost:3007/?nolock=1",
+  "deviceScale": 2,
+  "chrome": "Chrome/155.0.8059.39",
+  "requested": [
+    "/favicon.svg"
+  ],
+  "stored": {
+    "1x": "16x16",
+    "2x": "32x32"
+  }
+}

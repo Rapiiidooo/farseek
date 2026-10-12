@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="light" cx="50%" cy="46%" r="54%">
+      <stop offset="0" stop-color="#e6fffb"/>
+      <stop offset="0.35" stop-color="#6cf2e2"/>
+      <stop offset="0.75" stop-color="#1fa89a"/>
+      <stop offset="1" stop-color="#0c3f3b"/>
+    </radialGradient>
+    <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6e4bf"/>
+      <stop offset="1" stop-color="#b58456"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#140e0a"/>
+  <path d="M10 56 h44 l-4 -5 h-36 z" fill="#8a6440"/>
+  <circle cx="32" cy="29" r="15.5" fill="url(#light)"/>
+  <circle cx="32" cy="29" r="19.5" fill="none" stroke="url(#stone)" stroke-width="6.5"/>
+  <g fill="#39e3d0" stroke="#140e0a" stroke-width="1.6">
+    <circle cx="32" cy="9.5" r="4.2"/>
+    <circle cx="15.1" cy="38.75" r="4.2"/>
+    <circle cx="48.9" cy="38.75" r="4.2"/>
+  </g>
+</svg>
