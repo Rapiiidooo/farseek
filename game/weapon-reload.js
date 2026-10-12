@@ -1,7 +1,7 @@
 import * as THREE from "three";
 
 export const RELOAD_DURATION = 2.65;
-export const PISTOL_CAPACITY = 32;
+export const PISTOL_CAPACITY = 24;
 export const RELOAD_TIMING = Object.freeze({
   release: 0.38,
   belt: 0.94,
