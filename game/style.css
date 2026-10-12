@@ -1262,9 +1262,17 @@ body:has(#menu[data-screen="relic-note"]) #hud {
 .panel[data-screen="controls"] > nav {
   position: sticky;
   bottom: calc(-1 * clamp(18px, 3vw, 34px));
+  flex-wrap: nowrap;
   margin-bottom: calc(-1 * clamp(18px, 3vw, 34px));
   padding: 0.9rem 0 clamp(18px, 3vw, 34px);
   background: linear-gradient(rgba(16, 11, 8, 0), rgb(16, 11, 8) 0.9rem);
+}
+
+/* The foot keeps one row: a long label is set smaller rather than pushing Back to a second. */
+.panel[data-screen="settings"] > nav button,
+.panel[data-screen="controls"] > nav button {
+  flex: 0 1 auto;
+  min-width: 0;
 }
 
 .settings-group h3 {

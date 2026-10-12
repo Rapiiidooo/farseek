@@ -52,7 +52,7 @@ const named = (title) => title.replace(/^The /, "the ");
 // size, and only past that does it end in an ellipsis.
 function fitLines(panel) {
   for (const el of panel.querySelectorAll(
-    ".panel-title, .level-card h3, .level-card button, .menu-list .label, .menu-list .detail, .settings .row > span, .relic-caption h3",
+    ".panel-title, .level-card h3, .level-card button, .menu-list .label, .menu-list .detail, .settings .row > span, .relic-caption h3, .menu-list.compact button",
   )) {
     el.style.fontSize = "";
     if (!el.clientWidth || el.scrollWidth <= el.clientWidth) continue;

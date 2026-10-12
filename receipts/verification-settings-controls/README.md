@@ -35,7 +35,8 @@ Frames, with a select row focused: [English desktop before](frames/settings-aim-
 
 The [ship check](logs/ship.log) (333 modules, 2 pages), [translations](logs/i18n.log) (1,066 keys, no new string), [preload list](logs/preload.log) (160 title modules, `setting-controls.js` added), [architecture](logs/architecture.log) (9 checks), [save check](logs/save.log), [menu check](logs/menu.log) (25 of 25), [touch check](logs/touch.log) (59 of 59) and the [formatter](logs/format.log) pass.
 
+Merged on `main` after the relic showcase, the foot of Settings and Controls keeps one row: its buttons may shrink, `fitLines` sets a long label smaller, and the Spanish reset reads "Borrar el progreso". The Spanish phone's foot no longer wraps or covers Difficulty ([frame](frames/settings-difficulty-es-phone-merged.jpg)), and the five languages on both viewports still show no wrapped, cut or overflowing line ([Spanish](data/lines-es-phone-merged.json), [French](data/lines-fr-phone-merged.json) phones).
+
 ## Open
 
-- On a phone in French and Spanish the sticky foot wraps to two lines and half covers the last row (Difficulty) at the end of the scroll, before and after this change.
 - Not checked: physical phones and Safari, Firefox (the ranges carry `-moz` rules unseen here), a physical gamepad (a stubbed pad drove the game's own polling), a real screen reader (Chrome's accessibility tree was read), and high contrast, which leaves these controls unchanged.

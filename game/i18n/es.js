@@ -1024,7 +1024,7 @@ export default {
   "Reloading…": "Recargando…",
   "Remaining breath": "Aire restante",
   "Report to the booth": "Preséntate en la garita",
-  "Reset saved progress": "Borrar el progreso guardado",
+  "Reset saved progress": "Borrar el progreso",
   "Reset to defaults": "Restablecer todo",
   "Rest at the trail lantern": "Descansar junto al farol del sendero",
   "Restart level": "Reiniciar nivel",
