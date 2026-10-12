@@ -287,22 +287,28 @@ const standing = async (hz, seconds, reduced = false) => {
       Math.max(...means) - Math.min(...means) > 0.05,
     { lowest, high: Math.max(...means), low: Math.min(...means) },
   );
+  // The fingers' own curl, which rests below the glove's bind pose, rather than the clamped
+  // handCurl the lab reads.
+  const fingersCurl = (t) => {
+    const c = curls(t.animator, "left");
+    return (c[1] + c[2] + c[3] + c[4]) / 4;
+  };
   const flex = async (cause) => {
     const t = await make();
     for (let i = 0; i < 120; i++) t.animator.update(1 / 60, t.h);
-    const rest = t.animator.handCurl.left;
+    const rest = fingersCurl(t);
     let peak = rest;
     for (let i = 0; i < 40; i++) {
       cause(t.h, i);
       t.animator.update(1 / 60, t.h);
-      peak = Math.max(peak, t.animator.handCurl.left);
+      peak = Math.max(peak, fingersCurl(t));
     }
     for (let i = 0; i < 90; i++) {
       t.h.landing = 0;
       t.h.stun = Math.max(0, t.h.stun - 1 / 60);
       t.animator.update(1 / 60, t.h);
     }
-    return { rest, peak, after: t.animator.handCurl.left };
+    return { rest, peak, after: fingersCurl(t) };
   };
   const landing = await flex(
     (h, i) => (h.landing = Math.max(0, 0.8 - (3 * i) / 60)),

@@ -1,0 +1,340 @@
+{
+  "checks": [
+    {
+      "name": "left skinned glove at rest matches the shipped relaxed glove",
+      "ok": true,
+      "details": {
+        "rest": 1.9187454447689303e-7
+      }
+    },
+    {
+      "name": "left skinned glove fully curled stays within 2.5 mm of the grip mesh",
+      "ok": true,
+      "details": {
+        "full": 0.0019119272906316755
+      }
+    },
+    {
+      "name": "left grip mesh keeps the shipped grip vertices",
+      "ok": true,
+      "details": {
+        "shipped": 4.083314551633084e-9,
+        "skinned": false
+      }
+    },
+    {
+      "name": "left clones bind their own finger bones",
+      "ok": true,
+      "details": {
+        "bones": 16
+      }
+    },
+    {
+      "name": "right skinned glove at rest matches the shipped relaxed glove",
+      "ok": true,
+      "details": {
+        "rest": 1.651759308307759e-7
+      }
+    },
+    {
+      "name": "right skinned glove fully curled stays within 2.5 mm of the grip mesh",
+      "ok": true,
+      "details": {
+        "full": 0.0019120307954818164
+      }
+    },
+    {
+      "name": "right grip mesh keeps the shipped grip vertices",
+      "ok": true,
+      "details": {
+        "shipped": 4.083314551633084e-9,
+        "skinned": false
+      }
+    },
+    {
+      "name": "right clones bind their own finger bones",
+      "ok": true,
+      "details": {
+        "bones": 16
+      }
+    },
+    {
+      "name": "Standing, every finger of both hands moves",
+      "ok": true,
+      "details": {
+        "left": {
+          "ranges": [
+            0.9655031960626732,
+            0.7016709599046732,
+            0.6756961400506454,
+            0.5805797012521461,
+            0.5470392609809149
+          ],
+          "means": [
+            -0.3289104686329282,
+            -0.5592492688335864,
+            -0.46743962970942426,
+            -0.3955604411808368,
+            -0.31743962221106836
+          ],
+          "indexLittleCorrelation": 0.8182009621744386
+        },
+        "right": {
+          "ranges": [
+            0.49887107582892526,
+            0.4404533699725271,
+            0.3730192535217357,
+            0.46361239772605367,
+            0.49510920414366255
+          ],
+          "means": [
+            -0.34433549532767976,
+            -0.5431341496459062,
+            -0.48744204324229984,
+            -0.38104697223606165,
+            -0.30637105576672086
+          ],
+          "indexLittleCorrelation": 0.29815741898792336
+        }
+      }
+    },
+    {
+      "name": "Standing, the fingers do not move as one",
+      "ok": true,
+      "details": {
+        "left": {
+          "ranges": [
+            0.9655031960626732,
+            0.7016709599046732,
+            0.6756961400506454,
+            0.5805797012521461,
+            0.5470392609809149
+          ],
+          "means": [
+            -0.3289104686329282,
+            -0.5592492688335864,
+            -0.46743962970942426,
+            -0.3955604411808368,
+            -0.31743962221106836
+          ],
+          "indexLittleCorrelation": 0.8182009621744386
+        },
+        "right": {
+          "ranges": [
+            0.49887107582892526,
+            0.4404533699725271,
+            0.3730192535217357,
+            0.46361239772605367,
+            0.49510920414366255
+          ],
+          "means": [
+            -0.34433549532767976,
+            -0.5431341496459062,
+            -0.48744204324229984,
+            -0.38104697223606165,
+            -0.30637105576672086
+          ],
+          "indexLittleCorrelation": 0.29815741898792336
+        },
+        "leftRight": 0.48198640063722187
+      }
+    },
+    {
+      "name": "Standing, the index stays straightest and the little finger roundest",
+      "ok": true,
+      "details": {
+        "left": {
+          "ranges": [
+            0.9655031960626732,
+            0.7016709599046732,
+            0.6756961400506454,
+            0.5805797012521461,
+            0.5470392609809149
+          ],
+          "means": [
+            -0.3289104686329282,
+            -0.5592492688335864,
+            -0.46743962970942426,
+            -0.3955604411808368,
+            -0.31743962221106836
+          ],
+          "indexLittleCorrelation": 0.8182009621744386
+        },
+        "right": {
+          "ranges": [
+            0.49887107582892526,
+            0.4404533699725271,
+            0.3730192535217357,
+            0.46361239772605367,
+            0.49510920414366255
+          ],
+          "means": [
+            -0.34433549532767976,
+            -0.5431341496459062,
+            -0.48744204324229984,
+            -0.38104697223606165,
+            -0.30637105576672086
+          ],
+          "indexLittleCorrelation": 0.29815741898792336
+        }
+      }
+    },
+    {
+      "name": "Reduced motion stops the drift and the gestures",
+      "ok": true,
+      "details": {
+        "still": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "Finger drift agrees at 30, 60 and 120 Hz",
+      "ok": true,
+      "details": {
+        "spread": 0.0007151031347688019,
+        "rates": [
+          {
+            "hz": 30,
+            "left": [
+              -0.35141931396335613,
+              -0.5550845331949987,
+              -0.5095451826981503,
+              -0.3538320460881417,
+              -0.3687567799886864
+            ]
+          },
+          {
+            "hz": 60,
+            "left": [
+              -0.3515778844794634,
+              -0.5550017696921027,
+              -0.5099039318062935,
+              -0.35428838246802963,
+              -0.3688082986617211
+            ]
+          },
+          {
+            "hz": 120,
+            "left": [
+              -0.35166765207297224,
+              -0.5549512954669397,
+              -0.5101212244301084,
+              -0.35454714922291053,
+              -0.368836255854053
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Running hands close loosely and open and close with the swing",
+      "ok": true,
+      "details": {
+        "lowest": 0.380483768044483,
+        "high": 0.5493484681862546,
+        "low": 0.4639675612378954
+      }
+    },
+    {
+      "name": "A landing and a hit flex the fingers briefly",
+      "ok": true,
+      "details": {
+        "landing": {
+          "rest": -0.4748509164873328,
+          "peak": -0.11338203347119369,
+          "after": -0.4624812140802572
+        },
+        "hit": {
+          "rest": -0.4748509164873328,
+          "peak": -0.03842325746568461,
+          "after": -0.46248121408025733
+        }
+      }
+    },
+    {
+      "name": "Both pistol grips stay closed, aiming and firing",
+      "ok": true,
+      "details": {}
+    },
+    {
+      "name": "Both hands stay closed through a reload",
+      "ok": true,
+      "details": {}
+    },
+    {
+      "name": "The orb hand stays closed while the other hand moves freely",
+      "ok": true,
+      "details": {}
+    },
+    {
+      "name": "A released grip eases open",
+      "ok": true,
+      "details": {
+        "first": 0.7838113459744868,
+        "later": 0
+      }
+    },
+    {
+      "name": "Catching a ledge or the rope opens the hand, then closes it on the hold",
+      "ok": true,
+      "details": {
+        "ledge": {
+          "opened": -0.7520322543465712,
+          "closedAt": 0.21666666666666667,
+          "end": true
+        },
+        "rope": {
+          "opened": -0.7520322543465712,
+          "closedAt": 0.21666666666666667,
+          "end": true
+        }
+      }
+    },
+    {
+      "name": "Axes stay in closed fists for the whole ice climb",
+      "ok": true,
+      "details": {
+        "onWall": 346,
+        "openOnWall": 0
+      }
+    },
+    {
+      "name": "Ivy hands open between holds and stay closed on planted holds",
+      "ok": true,
+      "details": {
+        "onWall": 346,
+        "openOnWall": 121,
+        "plantedOpen": 0,
+        "transitOpen": 0.8866277750070822
+      }
+    },
+    {
+      "name": "A curl written from outside resets the free fingers",
+      "ok": true,
+      "details": {
+        "curls": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "Updates add no scene nodes, geometry or materials",
+      "ok": true,
+      "details": {}
+    },
+    {
+      "name": "Both hands' fingers update in well under a tenth of a millisecond",
+      "ok": true,
+      "details": {
+        "showHandsMedianMs": 0.0029580000000350992,
+        "animatorMedianMs": 0.3913749999992433
+      }
+    }
+  ]
+}

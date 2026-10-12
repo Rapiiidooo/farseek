@@ -62,3 +62,7 @@ Each [contact sheet](frames/) shows the after body, then each hand before and af
 - Running down the court's terraces, each drop of a metre loosens the fist and each landing flexes it, between 0.2 and 0.76.
 - The in-game Settings box for reduced motion calms the camera only; the fingers follow the system preference, as the body springs do.
 - The generator needs the untracked MakeHuman sources of the main checkout. The capture drives gaits, the landing, the ledge and the rope through synthetic hero states, the walls through the explorer's own controller and the pistols through the lab's equipment. Nightly fixed views were not rerun, and no physical device was used.
+
+## Relaxed rest
+
+The owner still found the fingers a little clenched at rest. A free hand now rests half way from the glove's bind pose to the open hand (`CASCADE` in `fingers.js`, from -0.3 for the thumb and -0.52 for the index to -0.28 for the little finger), so the fingers hang in a soft curve instead of a hook; the running fist is unchanged. The landing and hit contract now reads the fingers' own curl, since the lab's clamped `handCurl` stays at zero below the bind pose. Before and after, the bind-pose rest on the left of each frame: [left hand](relaxed/standing-left-3s.jpg), [right hand](relaxed/standing-right-6s.jpg), [standing](relaxed/standing.jpg), [walking](relaxed/walking.jpg). The finger contract passes [25 of 25](relaxed/finger-check.json), the animation contracts 62 of 62, the wall review 10 of 10 and the play-through completes with no error.

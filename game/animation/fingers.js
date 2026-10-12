@@ -11,8 +11,9 @@ const FREE = 0,
 // Hz and damping: the outer fingers answer a little later and looser than the index.
 const HZ = [5.4, 6.6, 6.1, 5.7, 5.2];
 const DAMPING = [0.72, 0.62, 0.6, 0.57, 0.54];
-// On top of the glove's own cascade: the index straighter, the ring and little finger rounder.
-const CASCADE = [0.02, -0.04, 0.02, 0.07, 0.12];
+// A hand at rest, well short of the glove's bind pose, which reads clenched: the fingers half
+// open, the index straightest, the ring and little finger rounder.
+const CASCADE = [-0.3, -0.52, -0.44, -0.36, -0.28];
 // A loose running fist, the little finger closing most.
 const RUN = [0.32, 0.46, 0.54, 0.6, 0.66];
 // Degrees each finger parts from its neighbours as the hand spreads, about the palm's normal.
