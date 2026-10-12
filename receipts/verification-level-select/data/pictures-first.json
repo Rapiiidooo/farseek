@@ -1,0 +1,12 @@
+{
+  "save": "first",
+  "onTitle": [],
+  "onOpening": [
+    {
+      "url": "/ui/levels/court.webp",
+      "status": 200,
+      "bytes": 57560
+    }
+  ],
+  "onSecondOpening": []
+}

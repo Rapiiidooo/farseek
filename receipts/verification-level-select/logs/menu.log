@@ -1,0 +1,34 @@
+pass  title menu open
+pass  continue offered  ContinueThe Checkpoint
+pass  levels screen holds every reached world and one sealed door  {"worlds":["court","two","three","four","five","six","sealed"],"current":"two","starts":7,"locked":0,"open":["checkpoint"],"pips":7,"pip":1,"prevShut":false,"nextShut":false}
+pass  levels opens on the last world reached, its start in focus  two checkpoint focus Beyond the first door
+pass  arrow keys and movement keys turn the stage, one world's starts at a time  ArrowRight:three:isles:2,KeyD:four:frost:3,ArrowLeft:three:isles:2,KeyA:two:checkpoint:1,ArrowLeft:court:court+floor:0
+pass  the first world is the end: left stays, its arrow is shut  {"worlds":["court","two","three","four","five","six","sealed"],"current":"court","starts":7,"locked":0,"open":["court","floor"],"pips":7,"pip":0,"prevShut":true,"nextShut":false}
+pass  up and down move between the starts and Back, which keeps its focus on a turn  Back then Back
+pass  the arrow medallions turn the stage  four then three
+pass  the sealed door comes last, offers no start and shuts the right arrow  {"worlds":["court","two","three","four","five","six","sealed"],"current":"sealed","starts":7,"locked":0,"open":[],"pips":7,"pip":6,"prevShut":false,"nextShut":true}
+pass  back returns to the title menu
+pass  the levels screen starts a world further along  isles in three
+pass  settings change and persist  1 -> 1.2
+pass  controls screen
+pass  M mutes from the title and keeps it  {"pressed":"true","box":true,"saved":true}
+pass  the speaker turns the sound back on  {"pressed":"false","box":false,"saved":false}
+pass  continue starts the checkpoint
+pass  M mutes during play  {"muted":true,"gain":0}
+pass  M brings the sound back during play  {"muted":false,"gain":0.6}
+pass  the first door leads back to the court
+pass  escape pauses
+pass  levels from pause opens on the world in play  court
+pass  levels from pause starts the court floor  floor feet 0
+pass  restart keeps the level
+pass  quit returns to a single title menu  1 panel(s) showing
+pass  credits roll and skip
+pass  a new game opens on the expedition's story  camp
+pass  the expedition's notes open, close and move the story on  true true gap
+pass  a knockout sends the explorer back to the queue
+pass  the frozen reach leads back to Mira's camp, her ring open  open
+pass  the isles lead back to the checkpoint, left open  open true
+pass  return from forest preserves the previous puzzle
+pass  return from sea preserves the previous puzzle
+pass  no page errors
+exit 0

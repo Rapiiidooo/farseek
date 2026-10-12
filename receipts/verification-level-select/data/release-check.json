@@ -1,0 +1,19 @@
+{
+  "commit": "0c6f0d347a6904546e2ec858cd802c0c1c8c8bd3",
+  "releaseId": "20261012-0c6f0d347a69",
+  "fileCount": 643,
+  "levelFiles": {
+    "game/app/ui.js": "f00a6ddf762c79cb18654448cd7fbca6ae7d570879238486763291b0cdd994e4",
+    "game/carousel.js": "6ccd0ed0873facfbb465795f2c542482926b9e38a77c4bb7da252370649641a6",
+    "game/index.html": "943782ce47708751a4d83bd5b8a9e47e42af2a01f512fec4dd983336936d14d5",
+    "game/level-select.js": "8710ede263efe1ec6412b2953909f4285ec873b78e6e801e1e004ba0e2713fe8",
+    "game/style.css": "b51460be1322a1ee1a8352ca4de445ff1f6dd0061771a51d0f6558107de3116c",
+    "game/ui/levels/court.webp": "7dc73ffa94d83fd6776fa67aa467a4aeb0a362ff339e28d722622bfc7d2619bc",
+    "game/ui/levels/five.webp": "24ed5885793be5cad644ce13e69977fe181f53c05a34cf79cde129c795b081a2",
+    "game/ui/levels/four.webp": "0b3381de03b0b5d68192cd6e29e258aab82ed752c752641bd8201574c5bc6305",
+    "game/ui/levels/six.webp": "17aac122d3038d7858a534a535151fe90bde2fbd8a8a9cba5e771caa12e62bcb",
+    "game/ui/levels/three.webp": "158e3655973237354c7b13a3bf83bedf4181f512545f3b051ae7bd40871bd215",
+    "game/ui/levels/two.webp": "e5e14859953caf6d41171063c3c0d9924a8e3326b835ce7750ff2e89b25516e6",
+    "game/ui/levels/vault.webp": "d089b81ae8bbd56d6f6cdf22f30eaba940e550bd93a9466bda8bab993b0651aa"
+  }
+}

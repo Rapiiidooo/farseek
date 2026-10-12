@@ -1,0 +1,170 @@
+{
+  "results": [
+    {
+      "name": "title menu open",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "continue offered",
+      "ok": true,
+      "detail": "ContinueThe Checkpoint"
+    },
+    {
+      "name": "levels screen holds every reached world and one sealed door",
+      "ok": true,
+      "detail": "{\"worlds\":[\"court\",\"two\",\"three\",\"four\",\"five\",\"six\",\"sealed\"],\"current\":\"two\",\"starts\":7,\"locked\":0,\"open\":[\"checkpoint\"],\"pips\":7,\"pip\":1,\"prevShut\":false,\"nextShut\":false}"
+    },
+    {
+      "name": "levels opens on the last world reached, its start in focus",
+      "ok": true,
+      "detail": "two checkpoint focus Beyond the first door"
+    },
+    {
+      "name": "arrow keys and movement keys turn the stage, one world's starts at a time",
+      "ok": true,
+      "detail": "ArrowRight:three:isles:2,KeyD:four:frost:3,ArrowLeft:three:isles:2,KeyA:two:checkpoint:1,ArrowLeft:court:court+floor:0"
+    },
+    {
+      "name": "the first world is the end: left stays, its arrow is shut",
+      "ok": true,
+      "detail": "{\"worlds\":[\"court\",\"two\",\"three\",\"four\",\"five\",\"six\",\"sealed\"],\"current\":\"court\",\"starts\":7,\"locked\":0,\"open\":[\"court\",\"floor\"],\"pips\":7,\"pip\":0,\"prevShut\":true,\"nextShut\":false}"
+    },
+    {
+      "name": "up and down move between the starts and Back, which keeps its focus on a turn",
+      "ok": true,
+      "detail": "Back then Back"
+    },
+    {
+      "name": "the arrow medallions turn the stage",
+      "ok": true,
+      "detail": "four then three"
+    },
+    {
+      "name": "the sealed door comes last, offers no start and shuts the right arrow",
+      "ok": true,
+      "detail": "{\"worlds\":[\"court\",\"two\",\"three\",\"four\",\"five\",\"six\",\"sealed\"],\"current\":\"sealed\",\"starts\":7,\"locked\":0,\"open\":[],\"pips\":7,\"pip\":6,\"prevShut\":false,\"nextShut\":true}"
+    },
+    {
+      "name": "back returns to the title menu",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "the levels screen starts a world further along",
+      "ok": true,
+      "detail": "isles in three"
+    },
+    {
+      "name": "settings change and persist",
+      "ok": true,
+      "detail": "1 -> 1.2"
+    },
+    {
+      "name": "controls screen",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "M mutes from the title and keeps it",
+      "ok": true,
+      "detail": "{\"pressed\":\"true\",\"box\":true,\"saved\":true}"
+    },
+    {
+      "name": "the speaker turns the sound back on",
+      "ok": true,
+      "detail": "{\"pressed\":\"false\",\"box\":false,\"saved\":false}"
+    },
+    {
+      "name": "continue starts the checkpoint",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "M mutes during play",
+      "ok": true,
+      "detail": "{\"muted\":true,\"gain\":0}"
+    },
+    {
+      "name": "M brings the sound back during play",
+      "ok": true,
+      "detail": "{\"muted\":false,\"gain\":0.6}"
+    },
+    {
+      "name": "the first door leads back to the court",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "escape pauses",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "levels from pause opens on the world in play",
+      "ok": true,
+      "detail": "court"
+    },
+    {
+      "name": "levels from pause starts the court floor",
+      "ok": true,
+      "detail": "floor feet 0"
+    },
+    {
+      "name": "restart keeps the level",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "quit returns to a single title menu",
+      "ok": true,
+      "detail": "1 panel(s) showing"
+    },
+    {
+      "name": "credits roll and skip",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "a new game opens on the expedition's story",
+      "ok": true,
+      "detail": "camp"
+    },
+    {
+      "name": "the expedition's notes open, close and move the story on",
+      "ok": true,
+      "detail": "true true gap"
+    },
+    {
+      "name": "a knockout sends the explorer back to the queue",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "the frozen reach leads back to Mira's camp, her ring open",
+      "ok": true,
+      "detail": "open"
+    },
+    {
+      "name": "the isles lead back to the checkpoint, left open",
+      "ok": true,
+      "detail": "open true"
+    },
+    {
+      "name": "return from forest preserves the previous puzzle",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "return from sea preserves the previous puzzle",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "no page errors",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "errors": []
+}

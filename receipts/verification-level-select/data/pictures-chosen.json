@@ -1,0 +1,180 @@
+{
+  "base": "http://localhost:3006/",
+  "worlds": {
+    "court": {
+      "start": "court",
+      "pick": "floor",
+      "seconds": 12.996,
+      "shots": {
+        "floor": {
+          "cam": [
+            21,
+            2.4,
+            30,
+            14.5,
+            5.2,
+            9
+          ],
+          "fov": 48,
+          "file": "outputs/level-shots/chosen/court-floor.png"
+        }
+      },
+      "errors": [],
+      "encoded": {
+        "target": "game/ui/levels/court.webp",
+        "quality": 65,
+        "bytes": 57560
+      }
+    },
+    "two": {
+      "start": "checkpoint",
+      "pick": "corner",
+      "seconds": 12.49,
+      "shots": {
+        "corner": {
+          "cam": [
+            7,
+            6.5,
+            -6,
+            -2,
+            2.4,
+            -33
+          ],
+          "fov": 46,
+          "file": "outputs/level-shots/chosen/two-corner.png"
+        }
+      },
+      "errors": [],
+      "encoded": {
+        "target": "game/ui/levels/two.webp",
+        "quality": 70,
+        "bytes": 25188
+      }
+    },
+    "three": {
+      "start": "isles",
+      "pick": "wide",
+      "seconds": 14.309,
+      "shots": {
+        "wide": {
+          "cam": [
+            -4.5,
+            5.3,
+            4.2,
+            6,
+            0.2,
+            -50
+          ],
+          "fov": 42,
+          "file": "outputs/level-shots/chosen/three-wide.png"
+        }
+      },
+      "errors": [],
+      "encoded": {
+        "target": "game/ui/levels/three.webp",
+        "quality": 70,
+        "bytes": 21068
+      }
+    },
+    "four": {
+      "start": "frost",
+      "pick": "lake",
+      "seconds": 13.256,
+      "shots": {
+        "lake": {
+          "cam": [
+            4,
+            6,
+            -92,
+            0,
+            1.5,
+            -150
+          ],
+          "fov": 46,
+          "file": "outputs/level-shots/chosen/four-lake.png"
+        }
+      },
+      "errors": [],
+      "encoded": {
+        "target": "game/ui/levels/four.webp",
+        "quality": 70,
+        "bytes": 27220
+      }
+    },
+    "five": {
+      "start": "forest",
+      "pick": "avenue",
+      "seconds": 14.459,
+      "shots": {
+        "avenue": {
+          "cam": [
+            0.8,
+            2.6,
+            -6.5,
+            -0.5,
+            4.5,
+            -48
+          ],
+          "fov": 44,
+          "file": "outputs/level-shots/chosen/five-avenue.png"
+        }
+      },
+      "errors": [],
+      "encoded": {
+        "target": "game/ui/levels/five.webp",
+        "quality": 65,
+        "bytes": 54632
+      }
+    },
+    "six": {
+      "start": "sea",
+      "pick": "archive",
+      "seconds": 13.83,
+      "shots": {
+        "archive": {
+          "cam": [
+            8,
+            37,
+            -12,
+            -2,
+            29,
+            -50
+          ],
+          "fov": 46,
+          "file": "outputs/level-shots/chosen/six-archive.png"
+        }
+      },
+      "errors": [],
+      "encoded": {
+        "target": "game/ui/levels/six.webp",
+        "quality": 70,
+        "bytes": 23000
+      }
+    },
+    "vault": {
+      "start": "vault",
+      "pick": "medallions",
+      "seconds": 15.837,
+      "shots": {
+        "medallions": {
+          "cam": [
+            0,
+            2.4,
+            -36,
+            0,
+            3.8,
+            -67
+          ],
+          "fov": 46,
+          "file": "outputs/level-shots/chosen/vault-medallions.png"
+        }
+      },
+      "errors": [],
+      "encoded": {
+        "target": "game/ui/levels/vault.webp",
+        "quality": 70,
+        "bytes": 44116
+      }
+    }
+  }
+}

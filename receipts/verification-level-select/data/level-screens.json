@@ -1,0 +1,678 @@
+[
+  {
+    "save": "all",
+    "kind": "desktop",
+    "lang": "en",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "desktop",
+    "lang": "fr",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "desktop",
+    "lang": "es",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "desktop",
+    "lang": "zh",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "desktop",
+    "lang": "hi",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "wide",
+    "lang": "en",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "wide",
+    "lang": "fr",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "wide",
+    "lang": "es",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "wide",
+    "lang": "zh",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "wide",
+    "lang": "hi",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "phone",
+    "lang": "en",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "phone",
+    "lang": "fr",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "phone",
+    "lang": "es",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": [
+        {
+          "fittedSmaller": [
+            "19.4164px"
+          ]
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "phone",
+    "lang": "zh",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "phone",
+    "lang": "hi",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "landscape",
+    "lang": "en",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "landscape",
+    "lang": "fr",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [
+        {
+          "fittedSmaller": [
+            "14.4049px"
+          ]
+        }
+      ],
+      "four": [],
+      "five": [],
+      "six": [
+        {
+          "fittedSmaller": [
+            "13.6493px"
+          ]
+        }
+      ],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "landscape",
+    "lang": "es",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": [
+        {
+          "fittedSmaller": [
+            "18.0092px"
+          ]
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "landscape",
+    "lang": "zh",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "all",
+    "kind": "landscape",
+    "lang": "hi",
+    "opened": "vault",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "vault": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "desktop",
+    "lang": "en",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "desktop",
+    "lang": "fr",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "desktop",
+    "lang": "es",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "desktop",
+    "lang": "zh",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "desktop",
+    "lang": "hi",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "wide",
+    "lang": "en",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "wide",
+    "lang": "fr",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "wide",
+    "lang": "es",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "wide",
+    "lang": "zh",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "wide",
+    "lang": "hi",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "phone",
+    "lang": "en",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "phone",
+    "lang": "fr",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "phone",
+    "lang": "es",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "phone",
+    "lang": "zh",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "phone",
+    "lang": "hi",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "landscape",
+    "lang": "en",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "landscape",
+    "lang": "fr",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [
+        {
+          "fittedSmaller": [
+            "14.4049px"
+          ]
+        }
+      ],
+      "four": [],
+      "five": [],
+      "six": [
+        {
+          "fittedSmaller": [
+            "13.6493px"
+          ]
+        }
+      ],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "landscape",
+    "lang": "es",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "landscape",
+    "lang": "zh",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "partial",
+    "kind": "landscape",
+    "lang": "hi",
+    "opened": "four",
+    "cards": {
+      "court": [],
+      "two": [],
+      "three": [],
+      "four": [],
+      "five": [],
+      "six": [],
+      "sealed": []
+    },
+    "errors": []
+  }
+]

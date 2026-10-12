@@ -1,0 +1,90 @@
+[
+  {
+    "save": "first",
+    "kind": "desktop",
+    "lang": "en",
+    "opened": "court",
+    "cards": {
+      "court": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "first",
+    "kind": "desktop",
+    "lang": "fr",
+    "opened": "court",
+    "cards": {
+      "court": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "first",
+    "kind": "wide",
+    "lang": "en",
+    "opened": "court",
+    "cards": {
+      "court": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "first",
+    "kind": "wide",
+    "lang": "fr",
+    "opened": "court",
+    "cards": {
+      "court": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "first",
+    "kind": "phone",
+    "lang": "en",
+    "opened": "court",
+    "cards": {
+      "court": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "first",
+    "kind": "phone",
+    "lang": "fr",
+    "opened": "court",
+    "cards": {
+      "court": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "first",
+    "kind": "landscape",
+    "lang": "en",
+    "opened": "court",
+    "cards": {
+      "court": [],
+      "sealed": []
+    },
+    "errors": []
+  },
+  {
+    "save": "first",
+    "kind": "landscape",
+    "lang": "fr",
+    "opened": "court",
+    "cards": {
+      "court": [],
+      "sealed": []
+    },
+    "errors": []
+  }
+]

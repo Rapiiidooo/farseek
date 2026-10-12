@@ -1,0 +1,42 @@
+{
+  "save": "all",
+  "onTitle": [],
+  "onOpening": [
+    {
+      "url": "/ui/levels/court.webp",
+      "status": 200,
+      "bytes": 57560
+    },
+    {
+      "url": "/ui/levels/two.webp",
+      "status": 200,
+      "bytes": 25188
+    },
+    {
+      "url": "/ui/levels/three.webp",
+      "status": 200,
+      "bytes": 21068
+    },
+    {
+      "url": "/ui/levels/five.webp",
+      "status": 200,
+      "bytes": 54632
+    },
+    {
+      "url": "/ui/levels/four.webp",
+      "status": 200,
+      "bytes": 27220
+    },
+    {
+      "url": "/ui/levels/six.webp",
+      "status": 200,
+      "bytes": 23000
+    },
+    {
+      "url": "/ui/levels/vault.webp",
+      "status": 200,
+      "bytes": 44116
+    }
+  ],
+  "onSecondOpening": []
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "a card's text stays above its picture while the picture fades in",
+    "ok": true,
+    "detail": "text"
+  },
+  {
+    "name": "a turn plays the menu's ui sound once",
+    "ok": true,
+    "detail": "ui"
+  },
+  {
+    "name": "a turn lights the medallion on its side for a moment",
+    "ok": true,
+    "detail": "rgba(64, 226, 206, 0.945)"
+  },
+  {
+    "name": "the cards slide when the stage turns",
+    "ok": true,
+    "detail": "8 transitions, three to four"
+  },
+  {
+    "name": "the pointer lights a medallion with the builders' light",
+    "ok": true,
+    "detail": "rgb(57, 227, 208)"
+  },
+  {
+    "name": "a gamepad's d-pad and stick turn the stage",
+    "ok": true,
+    "detail": "sealed then four"
+  },
+  {
+    "name": "the Reduce motion setting turns the stage without sliding",
+    "ok": true,
+    "detail": "0 transitions"
+  },
+  {
+    "name": "the system's reduced motion turns the stage without sliding",
+    "ok": true,
+    "detail": "0 transitions"
+  }
+]
