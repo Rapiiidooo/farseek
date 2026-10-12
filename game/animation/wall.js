@@ -13,10 +13,11 @@ const UP = V(0, 1, 0);
 const PALM = { ice: 0.238, vine: 0.055 };
 // The sole's centre off the surface, with the toes against it.
 const SOLE = 0.12;
-// Stowed on the pack, in the model's frame: crossed behind it, heads up and picks outward.
+// Stowed on the pack, in the model's frame: crossed against its outer panel (z -0.149 as posed,
+// the hydration pack of hero-warrior.js), the second shaft over the first, heads up, picks outward.
 const STOW = [
-  { side: 1, at: [0.012, 1.3, -0.232], tilt: 0.42 },
-  { side: -1, at: [-0.012, 1.3, -0.252], tilt: 0.42 },
+  { side: 1, at: [0.012, 1.3, -0.17], tilt: 0.42 },
+  { side: -1, at: [-0.012, 1.3, -0.2], tilt: 0.42 },
 ];
 
 function holdPoint(s, hold, d, out) {

@@ -1,0 +1,74 @@
+{
+ "passed": 62,
+ "total": 62,
+ "axes": [
+  {
+   "name": "Axe picks bite the ice at planted holds",
+   "ok": true,
+   "details": [
+    {
+     "hz": 20,
+     "pick": 0.011365685168519324
+    },
+    {
+     "hz": 30,
+     "pick": 0.005480986548694222
+    },
+    {
+     "hz": 60,
+     "pick": 0.003360033442753707
+    },
+    {
+     "hz": 120,
+     "pick": 0.013009715388561105
+    }
+   ]
+  },
+  {
+   "name": "Axes ride the pack once owned and off the climb",
+   "ok": true,
+   "details": [
+    {
+     "kind": "ice",
+     "hz": 20,
+     "onPack": true
+    },
+    {
+     "kind": "ice",
+     "hz": 30,
+     "onPack": true
+    },
+    {
+     "kind": "ice",
+     "hz": 60,
+     "onPack": true
+    },
+    {
+     "kind": "ice",
+     "hz": 120,
+     "onPack": true
+    },
+    {
+     "kind": "vine",
+     "hz": 20,
+     "onPack": true
+    },
+    {
+     "kind": "vine",
+     "hz": 30,
+     "onPack": true
+    },
+    {
+     "kind": "vine",
+     "hz": 60,
+     "onPack": true
+    },
+    {
+     "kind": "vine",
+     "hz": 120,
+     "onPack": true
+    }
+   ]
+  }
+ ]
+}
