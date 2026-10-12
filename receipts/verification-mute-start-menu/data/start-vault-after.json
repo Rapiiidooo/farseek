@@ -1,0 +1,572 @@
+{
+  "scenario": "continue:vault",
+  "url": "http://localhost:3002/?nolock=1",
+  "errors": [],
+  "ready": 2.237,
+  "playAfterClick": 3.452,
+  "samples": [
+    {
+      "t": 0.001,
+      "resident": 4,
+      "loaded": 4,
+      "pending": [
+        "three",
+        "four",
+        "five"
+      ]
+    },
+    {
+      "t": 0.502,
+      "resident": 4,
+      "loaded": 4,
+      "pending": [
+        "three",
+        "four",
+        "five"
+      ]
+    },
+    {
+      "t": 1.004,
+      "resident": 4,
+      "loaded": 4,
+      "pending": [
+        "three",
+        "four",
+        "five"
+      ]
+    },
+    {
+      "t": 1.512,
+      "resident": 4,
+      "loaded": 4,
+      "pending": [
+        "three",
+        "four",
+        "five"
+      ]
+    },
+    {
+      "t": 2.014,
+      "resident": 4,
+      "loaded": 4,
+      "pending": [
+        "three",
+        "four",
+        "five"
+      ]
+    },
+    {
+      "t": 2.516,
+      "resident": 4,
+      "loaded": 4,
+      "pending": [
+        "three",
+        "four",
+        "five"
+      ]
+    },
+    {
+      "t": 3.018,
+      "resident": 4,
+      "loaded": 4,
+      "pending": [
+        "three",
+        "four",
+        "five"
+      ]
+    },
+    {
+      "t": 3.52,
+      "resident": 4,
+      "loaded": 4,
+      "pending": [
+        "three",
+        "four",
+        "five"
+      ]
+    },
+    {
+      "t": 4.02,
+      "resident": 4,
+      "loaded": 4,
+      "pending": [
+        "three",
+        "four",
+        "five"
+      ]
+    },
+    {
+      "t": 4.53,
+      "resident": 5,
+      "loaded": 5,
+      "pending": [
+        "four",
+        "five"
+      ]
+    },
+    {
+      "t": 5.032,
+      "resident": 5,
+      "loaded": 5,
+      "pending": [
+        "four",
+        "five"
+      ]
+    },
+    {
+      "t": 5.534,
+      "resident": 5,
+      "loaded": 5,
+      "pending": [
+        "four",
+        "five"
+      ]
+    },
+    {
+      "t": 6.035,
+      "resident": 5,
+      "loaded": 5,
+      "pending": [
+        "four",
+        "five"
+      ]
+    },
+    {
+      "t": 6.537,
+      "resident": 5,
+      "loaded": 5,
+      "pending": [
+        "four",
+        "five"
+      ]
+    },
+    {
+      "t": 7.046,
+      "resident": 6,
+      "loaded": 6,
+      "pending": [
+        "five"
+      ]
+    },
+    {
+      "t": 7.551,
+      "resident": 6,
+      "loaded": 6,
+      "pending": [
+        "five"
+      ]
+    },
+    {
+      "t": 8.052,
+      "resident": 6,
+      "loaded": 6,
+      "pending": [
+        "five"
+      ]
+    },
+    {
+      "t": 8.554,
+      "resident": 6,
+      "loaded": 6,
+      "pending": [
+        "five"
+      ]
+    },
+    {
+      "t": 9.062,
+      "resident": 6,
+      "loaded": 6,
+      "pending": [
+        "five"
+      ]
+    },
+    {
+      "t": 9.563,
+      "resident": 6,
+      "loaded": 6,
+      "pending": [
+        "five"
+      ]
+    },
+    {
+      "t": 10.074,
+      "resident": 6,
+      "loaded": 6,
+      "pending": [
+        "five"
+      ]
+    },
+    {
+      "t": 10.579,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 11.081,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 11.583,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 12.084,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 12.586,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 13.095,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 13.596,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 14.098,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 14.6,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 15.101,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 15.603,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 16.111,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 16.613,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 17.115,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 17.616,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 18.118,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 18.62,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 19.128,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 19.63,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 20.132,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 20.633,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 21.135,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 21.636,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 22.144,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 22.646,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 23.147,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 23.649,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 24.151,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 24.652,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 25.161,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 25.662,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 26.163,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 26.665,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 27.167,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 27.668,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 28.17,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 28.678,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 29.179,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 29.681,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 30.183,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 30.684,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 31.186,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 31.694,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 32.195,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 32.697,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 33.199,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 33.699,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 34.201,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 34.71,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 35.212,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 35.713,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 36.215,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 36.717,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 37.218,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 37.727,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 38.229,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 38.73,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 39.231,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 39.733,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    }
+  ],
+  "preparedAfter": 10.579,
+  "frames": {
+    "count": 2459,
+    "over50": 1,
+    "over100": 0,
+    "max": 66.7,
+    "worst": [
+      66.7,
+      33.3,
+      33.3,
+      33.3,
+      16.8,
+      16.8,
+      16.8,
+      16.8
+    ]
+  },
+  "where": "vault"
+}

@@ -1,0 +1,944 @@
+{
+  "scenario": "continue:sea",
+  "url": "http://localhost:3002/",
+  "errors": [],
+  "ready": 2.33,
+  "clickAt": 10.34,
+  "playAfterClick": 3.008,
+  "playAt": 13.43,
+  "residency": {
+    "tier": "all",
+    "budget": 8192,
+    "need": {
+      "all": 875,
+      "neighbors": 375,
+      "next": 250
+    }
+  },
+  "log": [
+    {
+      "t": 2.32,
+      "kind": "ctx-suspend",
+      "state": "running"
+    },
+    {
+      "t": 2.33,
+      "kind": "setMusic",
+      "args": [
+        "court"
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": true,
+      "jobs": "",
+      "where": "Object.toTitle (/app/campaign.js:193:21) < load (/app/bootstrap.js:307:18)"
+    },
+    {
+      "t": 2.42,
+      "kind": "play",
+      "args": [
+        "medallion",
+        0
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": true,
+      "jobs": "two:build three:queued four:queued five:queued six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldTwo.buildGates (/worlds/checkpoint/index.js:398:18) < async WorldTwo.build (/worlds/checkpoint/index.js:86:5) < async WorldManager.load (/worlds/manager.js:233:5)"
+    },
+    {
+      "t": 2.42,
+      "kind": "bell",
+      "args": [
+        196,
+        3
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": true,
+      "jobs": "two:build three:queued four:queued five:queued six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldTwo.buildGates (/worlds/checkpoint/index.js:398:18)"
+    },
+    {
+      "t": 2.42,
+      "kind": "play",
+      "args": [
+        "medallion",
+        1
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": true,
+      "jobs": "two:build three:queued four:queued five:queued six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldTwo.buildGates (/worlds/checkpoint/index.js:398:18) < async WorldTwo.build (/worlds/checkpoint/index.js:86:5) < async WorldManager.load (/worlds/manager.js:233:5)"
+    },
+    {
+      "t": 2.42,
+      "kind": "bell",
+      "args": [
+        261.63,
+        3
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": true,
+      "jobs": "two:build three:queued four:queued five:queued six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldTwo.buildGates (/worlds/checkpoint/index.js:398:18)"
+    },
+    {
+      "t": 2.42,
+      "kind": "play",
+      "args": [
+        "medallion",
+        2
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": true,
+      "jobs": "two:build three:queued four:queued five:queued six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldTwo.buildGates (/worlds/checkpoint/index.js:398:18) < async WorldTwo.build (/worlds/checkpoint/index.js:86:5) < async WorldManager.load (/worlds/manager.js:233:5)"
+    },
+    {
+      "t": 2.42,
+      "kind": "bell",
+      "args": [
+        329.63,
+        3
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": true,
+      "jobs": "two:build three:queued four:queued five:queued six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldTwo.buildGates (/worlds/checkpoint/index.js:398:18)"
+    },
+    {
+      "t": 5.02,
+      "kind": "play",
+      "args": [
+        "medallion",
+        0
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "three:build four:queued five:queued six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldThree.buildArrival (/worlds/isles/index.js:285:18) < async WorldThree.build (/worlds/isles/index.js:83:5) < async WorldManager.load (/worlds/manager.js:233:5)"
+    },
+    {
+      "t": 5.02,
+      "kind": "bell",
+      "args": [
+        196,
+        3
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "three:build four:queued five:queued six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldThree.buildArrival (/worlds/isles/index.js:285:18)"
+    },
+    {
+      "t": 5.02,
+      "kind": "play",
+      "args": [
+        "medallion",
+        1
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "three:build four:queued five:queued six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldThree.buildArrival (/worlds/isles/index.js:285:18) < async WorldThree.build (/worlds/isles/index.js:83:5) < async WorldManager.load (/worlds/manager.js:233:5)"
+    },
+    {
+      "t": 5.02,
+      "kind": "bell",
+      "args": [
+        261.63,
+        3
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "three:build four:queued five:queued six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldThree.buildArrival (/worlds/isles/index.js:285:18)"
+    },
+    {
+      "t": 5.02,
+      "kind": "play",
+      "args": [
+        "medallion",
+        2
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "three:build four:queued five:queued six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldThree.buildArrival (/worlds/isles/index.js:285:18) < async WorldThree.build (/worlds/isles/index.js:83:5) < async WorldManager.load (/worlds/manager.js:233:5)"
+    },
+    {
+      "t": 5.02,
+      "kind": "bell",
+      "args": [
+        329.63,
+        3
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "three:build four:queued five:queued six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldThree.buildArrival (/worlds/isles/index.js:285:18)"
+    },
+    {
+      "t": 7.52,
+      "kind": "play",
+      "args": [
+        "medallion",
+        0
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "four:build five:queued six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFour.buildArrival (/worlds/frost/index.js:224:18) < async WorldFour.build (/worlds/frost/index.js:92:5) < async WorldManager.load (/worlds/manager.js:233:5)"
+    },
+    {
+      "t": 7.52,
+      "kind": "bell",
+      "args": [
+        196,
+        3
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "four:build five:queued six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFour.buildArrival (/worlds/frost/index.js:224:18)"
+    },
+    {
+      "t": 7.52,
+      "kind": "play",
+      "args": [
+        "medallion",
+        1
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "four:build five:queued six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFour.buildArrival (/worlds/frost/index.js:224:18) < async WorldFour.build (/worlds/frost/index.js:92:5) < async WorldManager.load (/worlds/manager.js:233:5)"
+    },
+    {
+      "t": 7.52,
+      "kind": "bell",
+      "args": [
+        261.63,
+        3
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "four:build five:queued six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFour.buildArrival (/worlds/frost/index.js:224:18)"
+    },
+    {
+      "t": 7.52,
+      "kind": "play",
+      "args": [
+        "medallion",
+        2
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "four:build five:queued six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFour.buildArrival (/worlds/frost/index.js:224:18) < async WorldFour.build (/worlds/frost/index.js:92:5) < async WorldManager.load (/worlds/manager.js:233:5)"
+    },
+    {
+      "t": 7.52,
+      "kind": "bell",
+      "args": [
+        329.63,
+        3
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "four:build five:queued six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFour.buildArrival (/worlds/frost/index.js:224:18)"
+    },
+    {
+      "t": 7.53,
+      "kind": "play",
+      "args": [
+        "medallion",
+        0
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "four:reset five:queued six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < WorldFour.reset (/worlds/frost/index.js:693:15) < WorldManager.load (/worlds/manager.js:243:14) < async WorldWorkBudget.run (/worlds/work-budget.js:23:14)"
+    },
+    {
+      "t": 7.53,
+      "kind": "bell",
+      "args": [
+        196,
+        3
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "four:reset five:queued six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < WorldFour.reset (/worlds/frost/index.js:693:15) < WorldManager.load (/worlds/manager.js:243:14)"
+    },
+    {
+      "t": 7.53,
+      "kind": "play",
+      "args": [
+        "medallion",
+        1
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "four:reset five:queued six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < WorldFour.reset (/worlds/frost/index.js:694:15) < WorldManager.load (/worlds/manager.js:243:14) < async WorldWorkBudget.run (/worlds/work-budget.js:23:14)"
+    },
+    {
+      "t": 7.53,
+      "kind": "bell",
+      "args": [
+        261.63,
+        3
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "four:reset five:queued six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < WorldFour.reset (/worlds/frost/index.js:694:15) < WorldManager.load (/worlds/manager.js:243:14)"
+    },
+    {
+      "t": 10.35,
+      "kind": "play",
+      "args": [
+        "medallion",
+        0
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "five:build six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFive.build (/worlds/forest/index.js:84:18) < async WorldManager.load (/worlds/manager.js:233:5) < async WorldWorkBudget.run (/worlds/work-budget.js:23:14)"
+    },
+    {
+      "t": 10.35,
+      "kind": "bell",
+      "args": [
+        196,
+        3
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "five:build six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFive.build (/worlds/forest/index.js:84:18)"
+    },
+    {
+      "t": 10.35,
+      "kind": "play",
+      "args": [
+        "medallion",
+        1
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "five:build six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFive.build (/worlds/forest/index.js:84:18) < async WorldManager.load (/worlds/manager.js:233:5) < async WorldWorkBudget.run (/worlds/work-budget.js:23:14)"
+    },
+    {
+      "t": 10.35,
+      "kind": "bell",
+      "args": [
+        261.63,
+        3
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "five:build six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFive.build (/worlds/forest/index.js:84:18)"
+    },
+    {
+      "t": 10.35,
+      "kind": "play",
+      "args": [
+        "medallion",
+        2
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "five:build six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFive.build (/worlds/forest/index.js:84:18) < async WorldManager.load (/worlds/manager.js:233:5) < async WorldWorkBudget.run (/worlds/work-budget.js:23:14)"
+    },
+    {
+      "t": 10.35,
+      "kind": "bell",
+      "args": [
+        329.63,
+        3
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "five:build six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFive.build (/worlds/forest/index.js:84:18)"
+    },
+    {
+      "t": 10.42,
+      "kind": "ctx-resume",
+      "state": "suspended"
+    },
+    {
+      "t": 10.42,
+      "kind": "play",
+      "args": [
+        "ui"
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "five:prepare six:queued vault:queued",
+      "where": "menuAction (/app/ui.js:287:11) < Menu.onAction (/app/ui.js:270:49) < Menu.activate (/menu.js:171:20) < HTMLElement.<anonymous> (/menu.js:53:12)"
+    },
+    {
+      "t": 10.43,
+      "kind": "play",
+      "args": [
+        "medallion",
+        0
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "five:prepare six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < WorldFour.reset (/worlds/frost/index.js:693:15) < WorldManager.reset (/worlds/manager.js:369:56) < resetWorlds (/app/campaign.js:58:12) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:77:11)"
+    },
+    {
+      "t": 10.43,
+      "kind": "bell",
+      "args": [
+        196,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "five:prepare six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < WorldFour.reset (/worlds/frost/index.js:693:15) < WorldManager.reset (/worlds/manager.js:369:56)"
+    },
+    {
+      "t": 10.43,
+      "kind": "play",
+      "args": [
+        "medallion",
+        1
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "five:prepare six:queued vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < WorldFour.reset (/worlds/frost/index.js:694:15) < WorldManager.reset (/worlds/manager.js:369:56) < resetWorlds (/app/campaign.js:58:12) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:77:11)"
+    },
+    {
+      "t": 10.43,
+      "kind": "bell",
+      "args": [
+        261.63,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "five:prepare six:queued vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < WorldFour.reset (/worlds/frost/index.js:694:15) < WorldManager.reset (/worlds/manager.js:369:56)"
+    },
+    {
+      "t": 11.22,
+      "kind": "play",
+      "args": [
+        "medallion",
+        0
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "six:build vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldSix.build (/worlds/sea/index.js:73:18) < async WorldManager.load (/worlds/manager.js:233:5) < async WorldWorkBudget.run (/worlds/work-budget.js:23:14)"
+    },
+    {
+      "t": 11.22,
+      "kind": "bell",
+      "args": [
+        196,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "six:build vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldSix.build (/worlds/sea/index.js:73:18)"
+    },
+    {
+      "t": 11.22,
+      "kind": "play",
+      "args": [
+        "medallion",
+        1
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "six:build vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldSix.build (/worlds/sea/index.js:73:18) < async WorldManager.load (/worlds/manager.js:233:5) < async WorldWorkBudget.run (/worlds/work-budget.js:23:14)"
+    },
+    {
+      "t": 11.22,
+      "kind": "bell",
+      "args": [
+        261.63,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "six:build vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldSix.build (/worlds/sea/index.js:73:18)"
+    },
+    {
+      "t": 11.22,
+      "kind": "play",
+      "args": [
+        "medallion",
+        2
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "six:build vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldSix.build (/worlds/sea/index.js:73:18) < async WorldManager.load (/worlds/manager.js:233:5) < async WorldWorkBudget.run (/worlds/work-budget.js:23:14)"
+    },
+    {
+      "t": 11.22,
+      "kind": "bell",
+      "args": [
+        329.63,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "six:build vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldSix.build (/worlds/sea/index.js:73:18)"
+    },
+    {
+      "t": 11.79,
+      "kind": "play",
+      "args": [
+        "medallion",
+        0
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < CourtWorld.solve (/worlds/court/index.js:159:10) < WorldManager.solveBefore (/worlds/manager.js:376:27) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:82:18)"
+    },
+    {
+      "t": 11.79,
+      "kind": "bell",
+      "args": [
+        196,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < CourtWorld.solve (/worlds/court/index.js:159:10)"
+    },
+    {
+      "t": 11.79,
+      "kind": "play",
+      "args": [
+        "medallion",
+        1
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < CourtWorld.solve (/worlds/court/index.js:159:10) < WorldManager.solveBefore (/worlds/manager.js:376:27) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:82:18)"
+    },
+    {
+      "t": 11.79,
+      "kind": "bell",
+      "args": [
+        261.63,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < CourtWorld.solve (/worlds/court/index.js:159:10)"
+    },
+    {
+      "t": 11.79,
+      "kind": "play",
+      "args": [
+        "medallion",
+        2
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < CourtWorld.solve (/worlds/court/index.js:159:10) < WorldManager.solveBefore (/worlds/manager.js:376:27) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:82:18)"
+    },
+    {
+      "t": 11.79,
+      "kind": "bell",
+      "args": [
+        329.63,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < CourtWorld.solve (/worlds/court/index.js:159:10)"
+    },
+    {
+      "t": 11.79,
+      "kind": "setMusic",
+      "args": [
+        "court-open"
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "gate.onOpen (/worlds/court/index.js:45:42) < Gate.forceOpen (/gate.js:522:45) < CourtWorld.solve (/worlds/court/index.js:159:10) < WorldManager.solveBefore (/worlds/manager.js:376:27) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:82:18)"
+    },
+    {
+      "t": 11.79,
+      "kind": "play",
+      "args": [
+        "medallion",
+        0
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldTwo.solve (/worlds/checkpoint/index.js:810:19) < WorldManager.solveBefore (/worlds/manager.js:376:27) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:82:18)"
+    },
+    {
+      "t": 11.79,
+      "kind": "bell",
+      "args": [
+        196,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldTwo.solve (/worlds/checkpoint/index.js:810:19)"
+    },
+    {
+      "t": 11.79,
+      "kind": "play",
+      "args": [
+        "medallion",
+        1
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldTwo.solve (/worlds/checkpoint/index.js:810:19) < WorldManager.solveBefore (/worlds/manager.js:376:27) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:82:18)"
+    },
+    {
+      "t": 11.79,
+      "kind": "bell",
+      "args": [
+        261.63,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldTwo.solve (/worlds/checkpoint/index.js:810:19)"
+    },
+    {
+      "t": 11.79,
+      "kind": "play",
+      "args": [
+        "medallion",
+        2
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldTwo.solve (/worlds/checkpoint/index.js:810:19) < WorldManager.solveBefore (/worlds/manager.js:376:27) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:82:18)"
+    },
+    {
+      "t": 11.79,
+      "kind": "bell",
+      "args": [
+        329.63,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldTwo.solve (/worlds/checkpoint/index.js:810:19)"
+    },
+    {
+      "t": 11.79,
+      "kind": "play",
+      "args": [
+        "medallion",
+        0
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < WorldThree.solve (/worlds/isles/index.js:747:35) < WorldManager.solveBefore (/worlds/manager.js:376:27) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:82:18) < async Object.withLoading (/app/ui.js:632:22)"
+    },
+    {
+      "t": 11.79,
+      "kind": "bell",
+      "args": [
+        196,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < WorldThree.solve (/worlds/isles/index.js:747:35) < WorldManager.solveBefore (/worlds/manager.js:376:27)"
+    },
+    {
+      "t": 11.79,
+      "kind": "play",
+      "args": [
+        "medallion",
+        1
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < WorldThree.solve (/worlds/isles/index.js:747:35) < WorldManager.solveBefore (/worlds/manager.js:376:27) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:82:18) < async Object.withLoading (/app/ui.js:632:22)"
+    },
+    {
+      "t": 11.79,
+      "kind": "bell",
+      "args": [
+        261.63,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < WorldThree.solve (/worlds/isles/index.js:747:35) < WorldManager.solveBefore (/worlds/manager.js:376:27)"
+    },
+    {
+      "t": 11.79,
+      "kind": "play",
+      "args": [
+        "medallion",
+        2
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < WorldThree.solve (/worlds/isles/index.js:747:35) < WorldManager.solveBefore (/worlds/manager.js:376:27) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:82:18) < async Object.withLoading (/app/ui.js:632:22)"
+    },
+    {
+      "t": 11.79,
+      "kind": "bell",
+      "args": [
+        329.63,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < WorldThree.solve (/worlds/isles/index.js:747:35) < WorldManager.solveBefore (/worlds/manager.js:376:27)"
+    },
+    {
+      "t": 11.79,
+      "kind": "play",
+      "args": [
+        "medallion",
+        2
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFour.solve (/worlds/frost/index.js:682:15) < WorldManager.solveBefore (/worlds/manager.js:376:27) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:82:18)"
+    },
+    {
+      "t": 11.79,
+      "kind": "bell",
+      "args": [
+        329.63,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFour.solve (/worlds/frost/index.js:682:15)"
+    },
+    {
+      "t": 11.79,
+      "kind": "play",
+      "args": [
+        "medallion",
+        0
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFive.solve (/worlds/forest/index.js:456:15) < WorldManager.solveBefore (/worlds/manager.js:376:27) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:82:18)"
+    },
+    {
+      "t": 11.79,
+      "kind": "bell",
+      "args": [
+        196,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFive.solve (/worlds/forest/index.js:456:15)"
+    },
+    {
+      "t": 11.79,
+      "kind": "play",
+      "args": [
+        "medallion",
+        1
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFive.solve (/worlds/forest/index.js:456:15) < WorldManager.solveBefore (/worlds/manager.js:376:27) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:82:18)"
+    },
+    {
+      "t": 11.79,
+      "kind": "bell",
+      "args": [
+        261.63,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFive.solve (/worlds/forest/index.js:456:15)"
+    },
+    {
+      "t": 11.79,
+      "kind": "play",
+      "args": [
+        "medallion",
+        2
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFive.solve (/worlds/forest/index.js:456:15) < WorldManager.solveBefore (/worlds/manager.js:376:27) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:82:18)"
+    },
+    {
+      "t": 11.79,
+      "kind": "bell",
+      "args": [
+        329.63,
+        3
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "Sound.play (/sound.js:743:21) < sound.<computed> [as play] (<anonymous>:36:20) < Gate.ignite (/gate.js:494:17) < Gate.forceOpen (/gate.js:521:56) < WorldFive.solve (/worlds/forest/index.js:456:15)"
+    },
+    {
+      "t": 12.53,
+      "kind": "startMusic",
+      "args": [],
+      "ctx": "running",
+      "mode": "play",
+      "loading": true,
+      "jobs": "",
+      "where": "app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:95:17) < async Object.withLoading (/app/ui.js:632:22)"
+    },
+    {
+      "t": 12.54,
+      "kind": "setMusic",
+      "args": [
+        "sea"
+      ],
+      "ctx": "running",
+      "mode": "play",
+      "loading": true,
+      "jobs": "",
+      "where": "app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:107:17) < async Object.withLoading (/app/ui.js:632:22)"
+    },
+    {
+      "t": 12.54,
+      "kind": "play",
+      "args": [
+        "use"
+      ],
+      "ctx": "running",
+      "mode": "play",
+      "loading": true,
+      "jobs": "",
+      "where": "Equipment.select (/equipment.js:380:17) < Equipment.syncOrb (/equipment.js:388:12) < frame (/app/loop.js:84:23)"
+    },
+    {
+      "t": 12.54,
+      "kind": "play",
+      "args": [
+        "use"
+      ],
+      "ctx": "running",
+      "mode": "play",
+      "loading": true,
+      "jobs": "",
+      "where": "Equipment.select (/equipment.js:380:17) < Equipment.syncOrb (/equipment.js:390:12) < Equipment.prepare (/equipment.js:452:10) < placeHero (/app/loop.js:316:15) < step (/app/loop.js:284:5)"
+    }
+  ]
+}

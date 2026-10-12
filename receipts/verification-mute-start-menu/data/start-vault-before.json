@@ -1,0 +1,507 @@
+{
+  "scenario": "continue:vault",
+  "url": "http://localhost:3003/?nolock=1",
+  "errors": [],
+  "ready": 2.202,
+  "playAfterClick": 4.802,
+  "samples": [
+    {
+      "t": 0.001,
+      "resident": 4,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 0.503,
+      "resident": 4,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 1.012,
+      "resident": 4,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 1.514,
+      "resident": 4,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 2.016,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 2.517,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 3.019,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 3.528,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 4.029,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 4.532,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 5.033,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 5.535,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 6.036,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 6.545,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 7.047,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 7.548,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 8.05,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 8.552,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 9.053,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 9.561,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 10.062,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 10.563,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 11.065,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 11.566,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 12.068,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 12.569,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 13.07,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 13.578,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 14.079,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 14.581,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 15.083,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 15.584,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 16.086,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 16.595,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 17.096,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 17.597,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 18.099,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 18.601,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 19.102,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 19.603,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 20.111,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 20.613,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 21.115,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 21.616,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 22.118,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 22.619,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 23.128,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 23.629,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 24.131,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 24.632,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 25.134,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 25.635,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 26.144,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 26.645,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 27.147,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 27.649,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 28.15,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 28.652,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 29.154,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 29.661,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 30.163,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 30.665,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 31.166,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 31.668,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 32.169,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 32.67,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 33.178,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 33.68,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 34.181,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 34.683,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 35.185,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 35.686,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 36.194,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 36.696,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 37.198,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 37.7,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 38.201,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 38.703,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 39.212,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 39.713,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    }
+  ],
+  "preparedAfter": 0.001,
+  "frames": {
+    "count": 2465,
+    "over50": 0,
+    "over100": 0,
+    "max": 50,
+    "worst": [
+      50,
+      16.8,
+      16.8,
+      16.8,
+      16.8,
+      16.8,
+      16.8,
+      16.8
+    ]
+  },
+  "where": "vault"
+}

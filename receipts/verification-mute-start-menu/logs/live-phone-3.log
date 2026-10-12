@@ -1,0 +1,7 @@
+url        http://localhost:3002/
+ready      2.2 s   (phone viewport, real touch)
+held       #stick
+moved      3.2 m
+screenshot outputs/_live/live.png
+
+it loads, it starts from a real press, and it moves. now look at the screenshot.

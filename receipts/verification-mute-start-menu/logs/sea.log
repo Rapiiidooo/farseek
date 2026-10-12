@@ -1,0 +1,31 @@
+PASS Sea and portal shaders are prepared before the route {"load":631,"start":631,"arrival":631}
+PASS Sea starts buoyant with the disc stowed
+PASS Rise gains genuine altitude
+PASS Pier 1 shelters the swimmer from the current {"pos":[4.3168061599280945,-8.573249083292195],"feet":30.414908026955107}
+PASS Pier 2 shelters the swimmer from the current {"pos":[6.44435284574104,-11.480273680340924],"feet":30.42227775457732}
+PASS Pier 3 shelters the swimmer from the current {"pos":[8.841421092277873,-13.705859931220877],"feet":30.24947931058074}
+PASS The current is crossed with breath to spare {"breath":36.10040000000059}
+PASS Dive reaches a lower beacon while swimming
+PASS Shield restores grounded traversal and the disc
+PASS Beacon stairs return to the causeway
+PASS Disc charged through entry crystal
+PASS First pressure seal lights bridge
+PASS Crossed bridge secures return route
+PASS Second seal releases archive
+PASS A fallen block shelters the swimmer through a surge {"pos":[-1.1193847726777268,-53.32],"feet":22.832043602674435,"lee":{"minX":-2.9,"maxX":0.5000000000000001,"minY":21.5,"maxY":25.05,"minZ":-55.15,"maxZ":-53.449999999999996}}
+PASS The flooded stair is swum between surges to the far landing
+PASS Guardian HUD fits touch portrait {"boss":{"x":82.5,"y":12,"right":292.5,"bottom":79,"visible":true},"health":{"x":201,"y":84,"right":305,"bottom":104,"visible":true},"objective":{"x":24,"y":112,"right":351,"bottom":207.390625,"visible":true},"address":{"x":115.5,"y":18,"right":259.5,"bottom":75.796875,"visible":false},"hint":{"x":54.128021240234375,"y":216,"right":397.1280212402344,"bottom":355.140625,"visible":true},"subtitle":{"x":16,"y":551.546875,"right":359,"bottom":597.921875,"visible":false},"touch":true}
+PASS Guardian HUD fits touch landscape {"boss":{"x":312,"y":18,"right":532,"bottom":85,"visible":true},"health":{"x":670,"y":26,"right":774,"bottom":46,"visible":true},"objective":{"x":16,"y":10,"right":304,"bottom":95.671875,"visible":false},"address":{"x":350,"y":8,"right":494,"bottom":65.796875,"visible":false},"hint":{"x":-17.964649200439453,"y":10,"right":254.03535079956055,"bottom":118.46875,"visible":true},"subtitle":{"x":232,"y":198.875,"right":612,"bottom":252.6875,"visible":false},"touch":true}
+HIT Guardian 5/6
+HIT Guardian 4/6
+HIT Guardian 3/6
+HIT Guardian 2/6
+HIT Guardian 1/6
+HIT Guardian 0/6
+PASS Guardian defeated through three phases [1,2,3]
+PASS Charged orb cracks the core and only pistols wound it {"cracks":3,"hits":6}
+PASS Victory restores hero health
+PASS The reunion crosses into the vault's arrival without the credits {"pos":[0,4.6],"credits":false}
+PASS No runtime errors []
+PASS Shaders precompiled before sea play {"load":631,"after":631}
+exit=0

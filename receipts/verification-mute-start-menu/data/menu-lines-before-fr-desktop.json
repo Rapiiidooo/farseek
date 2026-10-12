@@ -1,0 +1,102 @@
+{
+  "title": [
+    {
+      "text": "Continuer · La Voûte des Bâtisseurs",
+      "lineCount": 2,
+      "overflow": false
+    }
+  ],
+  "settings": [
+    {
+      "text": "Commandes",
+      "lines": 2
+    },
+    {
+      "text": "Caméra",
+      "lines": 2
+    },
+    {
+      "text": "Affichage",
+      "lines": 2
+    },
+    {
+      "text": "Audio",
+      "lines": 2
+    },
+    {
+      "text": "Accessibilité",
+      "lines": 2
+    },
+    {
+      "text": "Jeu",
+      "lines": 2
+    }
+  ],
+  "levels": [
+    {
+      "text": "Depuis le fond de la cour",
+      "lineCount": 2,
+      "overflow": false
+    },
+    {
+      "text": "Le Poste-frontière",
+      "lines": 2
+    },
+    {
+      "text": "Au-delà de la première porte",
+      "lineCount": 2,
+      "overflow": false
+    },
+    {
+      "text": "Les Îles de l’Aube",
+      "lines": 2
+    },
+    {
+      "text": "Au-delà de la porte lointaine",
+      "lineCount": 2,
+      "overflow": false
+    },
+    {
+      "text": "Les Confins gelés",
+      "lines": 2
+    },
+    {
+      "text": "Au-delà de l’anneau de Mira",
+      "lineCount": 2,
+      "overflow": false
+    },
+    {
+      "text": "La Forêt sauvage",
+      "lines": 2
+    },
+    {
+      "text": "Les Archives englouties",
+      "lines": 2
+    },
+    {
+      "text": "Au-delà de la porte du château",
+      "lineCount": 2,
+      "overflow": false
+    },
+    {
+      "text": "La Voûte des Bâtisseurs",
+      "lines": 2
+    },
+    {
+      "text": "Au-delà de la dernière porte",
+      "lineCount": 2,
+      "overflow": false
+    }
+  ],
+  "pause": [
+    {
+      "text": "Niveau 7 · La Voûte des Bâtisseurs",
+      "lines": 2
+    },
+    {
+      "text": "Niveau 7 · La Voûte des Bâtisseurs",
+      "lineCount": 2,
+      "overflow": false
+    }
+  ]
+}

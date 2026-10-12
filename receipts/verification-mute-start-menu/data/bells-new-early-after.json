@@ -1,0 +1,76 @@
+{
+  "scenario": "new",
+  "url": "http://localhost:3002/",
+  "errors": [],
+  "ready": 2.201,
+  "clickAt": 3.2,
+  "playAfterClick": 5.002,
+  "playAt": 8.23,
+  "residency": {
+    "tier": "all",
+    "budget": 8192,
+    "need": {
+      "all": 875,
+      "neighbors": 375,
+      "next": 250
+    }
+  },
+  "log": [
+    {
+      "t": 2.19,
+      "kind": "ctx-suspend",
+      "state": "running"
+    },
+    {
+      "t": 2.2,
+      "kind": "setMusic",
+      "args": [
+        "court"
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": true,
+      "jobs": "",
+      "where": "Object.toTitle (/app/campaign.js:193:21) < load (/app/bootstrap.js:307:18)"
+    },
+    {
+      "t": 3.22,
+      "kind": "ctx-resume",
+      "state": "suspended"
+    },
+    {
+      "t": 3.22,
+      "kind": "play",
+      "args": [
+        "ui"
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "two:prepare three:queued four:queued five:queued six:queued vault:queued",
+      "where": "menuAction (/app/ui.js:287:11) < Menu.onAction (/app/ui.js:270:49) < Menu.activate (/menu.js:171:20) < HTMLElement.<anonymous> (/menu.js:53:12)"
+    },
+    {
+      "t": 7.27,
+      "kind": "startMusic",
+      "args": [],
+      "ctx": "running",
+      "mode": "play",
+      "loading": true,
+      "jobs": "",
+      "where": "app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:95:17) < async Object.withLoading (/app/ui.js:632:22)"
+    },
+    {
+      "t": 7.28,
+      "kind": "setMusic",
+      "args": [
+        "court"
+      ],
+      "ctx": "running",
+      "mode": "play",
+      "loading": true,
+      "jobs": "",
+      "where": "app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:107:17) < async Object.withLoading (/app/ui.js:632:22)"
+    }
+  ]
+}

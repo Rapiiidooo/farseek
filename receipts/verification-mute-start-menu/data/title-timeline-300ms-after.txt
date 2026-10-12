@@ -1,0 +1,7 @@
+ready 12.8 s, 199 requests, 6 serial waves
+  0.00 s    1  
+  0.31 s  166  ui/logo.webp, ui/worlds-landscape.webp, style.css, equipment.css, …
+  8.90 s    1  offload-worker.js
+  8.90 s    1  offload-worker.js
+  8.94 s   29  assets/push_block.js, assets/sun_mirror.js, assets/glyph_stela.js, assets/temple_facade.js, …
+ 12.79 s    1  fonts/barlow-condensed-700.woff2

@@ -1,0 +1,151 @@
+{
+  "results": [
+    {
+      "name": "speaker shown on the title, sound on",
+      "ok": true,
+      "detail": {
+        "pressed": "false",
+        "visible": true,
+        "box": false,
+        "saved": null,
+        "audio": {
+          "muted": false,
+          "gain": 0.6
+        },
+        "label": "Mute sound",
+        "title": "Mute sound (M)"
+      }
+    },
+    {
+      "name": "M mutes from the title and saves it",
+      "ok": true,
+      "detail": {
+        "pressed": "true",
+        "visible": true,
+        "box": true,
+        "saved": true,
+        "audio": {
+          "muted": true,
+          "gain": 0.6
+        },
+        "label": "Mute sound",
+        "title": "Mute sound (M)"
+      }
+    },
+    {
+      "name": "the speaker unmutes",
+      "ok": true,
+      "detail": {
+        "pressed": "false",
+        "visible": true,
+        "box": false,
+        "saved": false,
+        "audio": {
+          "muted": false,
+          "gain": 0.6
+        },
+        "label": "Mute sound",
+        "title": "Mute sound (M)"
+      }
+    },
+    {
+      "name": "AZERTY's comma key (KeyM) leaves the sound on",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "AZERTY's M key (Semicolon) mutes",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "a Cyrillic layout's M place unmutes",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "a held M toggles once",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "a muted new game plays silent",
+      "ok": true,
+      "detail": {
+        "muted": true,
+        "gain": 0
+      }
+    },
+    {
+      "name": "M in play brings the sound back",
+      "ok": true,
+      "detail": {
+        "muted": false,
+        "gain": 0.6
+      }
+    },
+    {
+      "name": "M in play mutes again",
+      "ok": true,
+      "detail": {
+        "muted": true,
+        "gain": 0
+      }
+    },
+    {
+      "name": "the pause menu shows the muted speaker",
+      "ok": true,
+      "detail": {
+        "pressed": "true",
+        "visible": true,
+        "box": true,
+        "saved": true,
+        "audio": {
+          "muted": true,
+          "gain": 0
+        },
+        "label": "Mute sound",
+        "title": "Mute sound (M)"
+      }
+    },
+    {
+      "name": "the mute survives a reload",
+      "ok": true,
+      "detail": {
+        "pressed": "true",
+        "visible": true,
+        "box": true,
+        "saved": true,
+        "audio": {
+          "muted": true,
+          "gain": 0
+        },
+        "label": "Mute sound",
+        "title": "Mute sound (M)"
+      }
+    },
+    {
+      "name": "French labels",
+      "ok": true,
+      "detail": {
+        "pressed": "true",
+        "visible": true,
+        "box": true,
+        "saved": true,
+        "audio": {
+          "muted": true,
+          "gain": 0
+        },
+        "label": "Couper le son",
+        "title": "Couper le son (M)",
+        "row": "Couper le son (M)"
+      }
+    },
+    {
+      "name": "no page errors",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "errors": []
+}

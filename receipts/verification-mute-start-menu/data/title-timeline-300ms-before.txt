@@ -1,0 +1,32 @@
+ready 18.8 s, 199 requests, 31 serial waves
+  0.00 s    1  
+  0.31 s    6  ui/logo.webp, ui/worlds-landscape.webp, style.css, equipment.css, …
+  0.62 s    3  fonts/dm-sans-variable.woff2, load-diagnostics.js, i18n.js
+  0.94 s    1  local-preview.js
+  1.25 s    2  app/bootstrap.js, favicon.svg
+  1.55 s  118  vendor/three.module.js, object-copy.js, asset-store.js, worlds/court/index.js, …
+  7.67 s    1  offload-worker.js
+  7.67 s    1  offload-worker.js
+  7.70 s   44  vendor/csm/CSM.js, vendor/postprocessing/EffectComposer.js, vendor/postprocessing/RenderPass.js, vendor/postprocessing/OutputPass.js, …
+ 11.43 s    1  assets/glyph_stela.js
+ 11.75 s    1  assets/temple_facade.js
+ 12.05 s    1  architecture-detail.js
+ 12.38 s    1  assets/guardian_colossus.js
+ 12.72 s    1  assets/broken_column.js
+ 13.04 s    1  assets/fallen_head.js
+ 13.36 s    1  assets/boulder_cluster.js
+ 13.67 s    1  nature-detail.js
+ 14.02 s    1  assets/desert_agave.js
+ 14.41 s    1  assets/glyph_banner.js
+ 14.76 s    1  assets/expedition_tent.js
+ 15.07 s    1  props-detail.js
+ 15.39 s    1  assets/supply_crates.js
+ 15.71 s    1  assets/clay_urns.js
+ 16.07 s    1  assets/rubble_pile.js
+ 16.39 s    1  assets/meadow_grass.js
+ 16.70 s    1  assets/expedition_rope.js
+ 17.01 s    1  assets/brazier.js
+ 17.32 s    1  assets/court_gallery.js
+ 17.64 s    1  assets/far_gate.js
+ 17.96 s    1  assets/field_scroll.js
+ 18.78 s    1  fonts/barlow-condensed-700.woff2

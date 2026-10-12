@@ -1,0 +1,26 @@
+pass  title menu open
+pass  continue offered  ContinueThe Checkpoint
+pass  levels screen lists every reached start and one unknown world  From the terrace:open, From the court floor:open, Beyond the first door:open, Beyond the far door:open, Beyond Mira's ring:open, Through the great ring:open, Beyond the castle door:open; unknown cards 1
+pass  back returns to the title menu
+pass  settings change and persist  1 -> 1.2
+pass  controls screen
+pass  M mutes from the title and keeps it  {"pressed":"true","box":true,"saved":true}
+pass  the speaker turns the sound back on  {"pressed":"false","box":false,"saved":false}
+pass  continue starts the checkpoint
+pass  M mutes during play  {"muted":true,"gain":0}
+pass  M brings the sound back during play  {"muted":false,"gain":0.6}
+pass  the first door leads back to the court
+pass  escape pauses
+pass  levels from pause starts the court floor  floor feet 0
+pass  restart keeps the level
+pass  quit returns to a single title menu  1 panel(s) showing
+pass  credits roll and skip
+pass  a new game opens on the expedition's story  camp
+pass  the expedition's notes open, close and move the story on  true true gap
+pass  a knockout sends the explorer back to the queue
+pass  the frozen reach leads back to Mira's camp, her ring open  open
+pass  the isles lead back to the checkpoint, left open  open true
+pass  return from forest preserves the previous puzzle
+pass  return from sea preserves the previous puzzle
+pass  no page errors
+exit=0

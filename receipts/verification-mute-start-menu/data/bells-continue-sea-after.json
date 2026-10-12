@@ -1,0 +1,112 @@
+{
+  "scenario": "continue:sea",
+  "url": "http://localhost:3002/",
+  "errors": [],
+  "ready": 2.193,
+  "clickAt": 10.19,
+  "playAfterClick": 3.752,
+  "playAt": 13.97,
+  "residency": {
+    "tier": "all",
+    "budget": 8192,
+    "need": {
+      "all": 875,
+      "neighbors": 375,
+      "next": 250
+    }
+  },
+  "log": [
+    {
+      "t": 2.19,
+      "kind": "ctx-suspend",
+      "state": "running"
+    },
+    {
+      "t": 2.19,
+      "kind": "setMusic",
+      "args": [
+        "court"
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": true,
+      "jobs": "",
+      "where": "Object.toTitle (/app/campaign.js:193:21) < load (/app/bootstrap.js:307:18)"
+    },
+    {
+      "t": 10.22,
+      "kind": "ctx-resume",
+      "state": "suspended"
+    },
+    {
+      "t": 10.22,
+      "kind": "play",
+      "args": [
+        "ui"
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "five:prepare six:queued vault:queued",
+      "where": "menuAction (/app/ui.js:287:11) < Menu.onAction (/app/ui.js:270:49) < Menu.activate (/menu.js:171:20) < HTMLElement.<anonymous> (/menu.js:53:12)"
+    },
+    {
+      "t": 12.36,
+      "kind": "setMusic",
+      "args": [
+        "court-open"
+      ],
+      "ctx": "running",
+      "mode": "title",
+      "loading": true,
+      "jobs": "vault:queued",
+      "where": "gate.onOpen (/worlds/court/index.js:45:42) < Gate.forceOpen (/gate.js:523:45) < CourtWorld.solve (/worlds/court/index.js:159:10) < WorldManager.solveBefore (/worlds/manager.js:376:27) < app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:82:18)"
+    },
+    {
+      "t": 13.06,
+      "kind": "startMusic",
+      "args": [],
+      "ctx": "running",
+      "mode": "play",
+      "loading": true,
+      "jobs": "",
+      "where": "app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:95:17) < async Object.withLoading (/app/ui.js:632:22)"
+    },
+    {
+      "t": 13.06,
+      "kind": "setMusic",
+      "args": [
+        "sea"
+      ],
+      "ctx": "running",
+      "mode": "play",
+      "loading": true,
+      "jobs": "",
+      "where": "app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:107:17) < async Object.withLoading (/app/ui.js:632:22)"
+    },
+    {
+      "t": 13.07,
+      "kind": "play",
+      "args": [
+        "use"
+      ],
+      "ctx": "running",
+      "mode": "play",
+      "loading": true,
+      "jobs": "",
+      "where": "Equipment.select (/equipment.js:380:17) < Equipment.syncOrb (/equipment.js:388:12) < frame (/app/loop.js:84:23)"
+    },
+    {
+      "t": 13.07,
+      "kind": "play",
+      "args": [
+        "use"
+      ],
+      "ctx": "running",
+      "mode": "play",
+      "loading": true,
+      "jobs": "",
+      "where": "Equipment.select (/equipment.js:380:17) < Equipment.syncOrb (/equipment.js:390:12) < Equipment.prepare (/equipment.js:452:10) < placeHero (/app/loop.js:316:15) < step (/app/loop.js:284:5)"
+    }
+  ]
+}

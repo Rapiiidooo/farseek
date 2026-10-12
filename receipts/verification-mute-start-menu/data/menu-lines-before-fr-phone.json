@@ -1,0 +1,87 @@
+{
+  "title": [
+    {
+      "text": "Continuer · La Voûte des Bâtisseurs",
+      "lineCount": 2,
+      "overflow": false
+    }
+  ],
+  "settings": [
+    {
+      "text": "Commandes",
+      "lines": 2
+    },
+    {
+      "text": "Caméra",
+      "lines": 2
+    },
+    {
+      "text": "Sensibilité de la caméra",
+      "lines": 2
+    },
+    {
+      "text": "Sensibilité de la caméra",
+      "lineCount": 2,
+      "overflow": false
+    },
+    {
+      "text": "Champ de vision 58°",
+      "lines": 2
+    },
+    {
+      "text": "Champ de vision 58°",
+      "lineCount": 2,
+      "overflow": false
+    },
+    {
+      "text": "Affichage",
+      "lines": 2
+    },
+    {
+      "text": "Audio",
+      "lines": 2
+    },
+    {
+      "text": "Volume général",
+      "lines": 2
+    },
+    {
+      "text": "Volume général",
+      "lineCount": 2,
+      "overflow": false
+    },
+    {
+      "text": "Accessibilité",
+      "lines": 2
+    },
+    {
+      "text": "Jeu",
+      "lines": 2
+    }
+  ],
+  "levels": [
+    {
+      "text": "All chapters are available in a separate local test session.",
+      "lines": 2
+    },
+    {
+      "text": "Les Archives englouties",
+      "lines": 2
+    },
+    {
+      "text": "La Voûte des Bâtisseurs",
+      "lines": 2
+    }
+  ],
+  "pause": [
+    {
+      "text": "Niveau 7 · La Voûte des Bâtisseurs",
+      "lines": 2
+    },
+    {
+      "text": "Niveau 7 · La Voûte des Bâtisseurs",
+      "lineCount": 2,
+      "overflow": false
+    }
+  ]
+}

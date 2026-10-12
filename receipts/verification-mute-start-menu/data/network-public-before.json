@@ -1,0 +1,157 @@
+{
+  "url": "https://farseek.rapidoai.dev/?nolock=1",
+  "visits": [
+    {
+      "visit": "first",
+      "ready": 4.042,
+      "playAfterClick": 9.003,
+      "phases": {
+        "page": {
+          "requests": 199,
+          "MB": 5.29,
+          "notModified": 0,
+          "fromCache": 0,
+          "protocols": [
+            "h2"
+          ],
+          "byType": {
+            "Document": {
+              "requests": 1,
+              "kB": 6
+            },
+            "Image": {
+              "requests": 9,
+              "kB": 2043
+            },
+            "Stylesheet": {
+              "requests": 2,
+              "kB": 19
+            },
+            "Script": {
+              "requests": 183,
+              "kB": 3137
+            },
+            "Font": {
+              "requests": 2,
+              "kB": 52
+            },
+            "Other": {
+              "requests": 1,
+              "kB": 0
+            },
+            "Fetch": {
+              "requests": 1,
+              "kB": 29
+            }
+          }
+        },
+        "start": {
+          "requests": 161,
+          "MB": 3.6,
+          "notModified": 0,
+          "fromCache": 0,
+          "protocols": [
+            "h2",
+            "blob"
+          ],
+          "byType": {
+            "Script": {
+              "requests": 142,
+              "kB": 499
+            },
+            "Other": {
+              "requests": 1,
+              "kB": 0
+            },
+            "Image": {
+              "requests": 7,
+              "kB": 2102
+            },
+            "Font": {
+              "requests": 1,
+              "kB": 15
+            },
+            "Fetch": {
+              "requests": 10,
+              "kB": 984
+            }
+          }
+        }
+      }
+    },
+    {
+      "visit": "return",
+      "ready": 3.511,
+      "playAfterClick": 9.501,
+      "phases": {
+        "page": {
+          "requests": 198,
+          "MB": 0.01,
+          "notModified": 11,
+          "fromCache": 0,
+          "protocols": [
+            "h2"
+          ],
+          "byType": {
+            "Document": {
+              "requests": 1,
+              "kB": 0
+            },
+            "Image": {
+              "requests": 9,
+              "kB": 0
+            },
+            "Stylesheet": {
+              "requests": 2,
+              "kB": 0
+            },
+            "Script": {
+              "requests": 183,
+              "kB": 6
+            },
+            "Font": {
+              "requests": 2,
+              "kB": 0
+            },
+            "Fetch": {
+              "requests": 1,
+              "kB": 0
+            }
+          }
+        },
+        "start": {
+          "requests": 161,
+          "MB": 0,
+          "notModified": 7,
+          "fromCache": 0,
+          "protocols": [
+            "h2",
+            "blob"
+          ],
+          "byType": {
+            "Script": {
+              "requests": 142,
+              "kB": 4
+            },
+            "Other": {
+              "requests": 1,
+              "kB": 0
+            },
+            "Image": {
+              "requests": 7,
+              "kB": 0
+            },
+            "Font": {
+              "requests": 1,
+              "kB": 0
+            },
+            "Fetch": {
+              "requests": 10,
+              "kB": 0
+            }
+          }
+        }
+      }
+    }
+  ]
+}

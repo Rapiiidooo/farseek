@@ -1,0 +1,387 @@
+{
+  "scenario": "new",
+  "url": "http://localhost:3003/?nolock=1",
+  "errors": [],
+  "ready": 2.146,
+  "playAfterClick": 4.652,
+  "samples": [
+    {
+      "t": 0.001,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 0.502,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 1.008,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 1.51,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 2.012,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 2.513,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 3.015,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 3.517,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 4.019,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 4.524,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 5.026,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 5.527,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 6.028,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 6.53,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 7.031,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 7.533,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 8.034,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 8.543,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 9.045,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 9.546,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 10.047,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 10.549,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 11.051,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 11.559,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 12.06,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 12.562,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 13.064,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 13.565,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 14.067,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 14.569,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 15.075,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 15.577,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 16.079,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 16.58,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 17.082,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 17.584,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 18.085,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 18.592,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 19.094,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 19.596,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 20.097,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 20.599,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 21.101,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 21.608,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 22.109,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 22.611,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 23.112,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 23.614,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 24.116,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 24.618,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 25.125,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 25.627,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 26.129,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 26.63,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 27.132,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 27.634,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 28.141,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 28.643,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 29.145,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    },
+    {
+      "t": 29.646,
+      "resident": 2,
+      "loaded": 7,
+      "pending": []
+    }
+  ],
+  "preparedAfter": 0.001,
+  "frames": {
+    "count": 1859,
+    "over50": 0,
+    "over100": 0,
+    "max": 33.3,
+    "worst": [
+      33.3,
+      16.8,
+      16.8,
+      16.8,
+      16.8,
+      16.8,
+      16.8,
+      16.8
+    ]
+  },
+  "where": "court"
+}

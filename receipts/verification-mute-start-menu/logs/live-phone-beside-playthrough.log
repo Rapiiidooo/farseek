@@ -1,0 +1,9 @@
+url        http://localhost:3002/
+ready      4.5 s   (phone viewport, real touch)
+held       ArrowUp and KeyW
+moved      0.0 m
+screenshot outputs/_live/live.png
+
+problems:
+  the player moved 0.00 m while a control was held for four seconds
+exit=1
