@@ -1,0 +1,383 @@
+{
+ "url": "https://farseek.rapidoai.dev/",
+ "recorded": true,
+ "phases": {
+  "run": {
+   "breaths": 24,
+   "first": 7.8,
+   "last": 25,
+   "maxLevel": 0.12
+  },
+  "stand": {
+   "breaths": 17,
+   "first": 25.65,
+   "last": 49.78,
+   "maxLevel": 0.12
+  },
+  "climb": {
+   "breaths": 18,
+   "first": 33.53,
+   "last": 44.97,
+   "maxLevel": 0.12
+  }
+ },
+ "breaths": 59,
+ "loudestInhale": 0.12,
+ "loudestExhale": 0.08,
+ "log": [
+  {
+   "t": 7.8,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.0514
+  },
+  {
+   "t": 8.95,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.0402
+  },
+  {
+   "t": 10.37,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.0714
+  },
+  {
+   "t": 11.37,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.0528
+  },
+  {
+   "t": 12.58,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.0887
+  },
+  {
+   "t": 13.43,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.0635
+  },
+  {
+   "t": 14.48,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.1035
+  },
+  {
+   "t": 15.22,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.0728
+  },
+  {
+   "t": 16.12,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.1162
+  },
+  {
+   "t": 16.75,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 17.53,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 18.08,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 18.75,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 19.25,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 19.9,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 20.4,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 21.05,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 21.55,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 22.2,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 22.7,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 23.35,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 23.85,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 24.5,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 25,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 25.65,
+   "phase": "stand",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 26.17,
+   "phase": "stand",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 26.88,
+   "phase": "stand",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 27.47,
+   "phase": "stand",
+   "kind": "exhale",
+   "level": 0.0788
+  },
+  {
+   "t": 28.28,
+   "phase": "stand",
+   "kind": "inhale",
+   "level": 0.113
+  },
+  {
+   "t": 28.93,
+   "phase": "stand",
+   "kind": "exhale",
+   "level": 0.0727
+  },
+  {
+   "t": 29.83,
+   "phase": "stand",
+   "kind": "inhale",
+   "level": 0.1034
+  },
+  {
+   "t": 30.57,
+   "phase": "stand",
+   "kind": "exhale",
+   "level": 0.0659
+  },
+  {
+   "t": 31.58,
+   "phase": "stand",
+   "kind": "inhale",
+   "level": 0.0924
+  },
+  {
+   "t": 32.4,
+   "phase": "stand",
+   "kind": "exhale",
+   "level": 0.0582
+  },
+  {
+   "t": 33.53,
+   "phase": "climb",
+   "kind": "inhale",
+   "level": 0.0875
+  },
+  {
+   "t": 34.4,
+   "phase": "climb",
+   "kind": "exhale",
+   "level": 0.0625
+  },
+  {
+   "t": 35.47,
+   "phase": "climb",
+   "kind": "inhale",
+   "level": 0.1016
+  },
+  {
+   "t": 36.22,
+   "phase": "climb",
+   "kind": "exhale",
+   "level": 0.0713
+  },
+  {
+   "t": 37.15,
+   "phase": "climb",
+   "kind": "inhale",
+   "level": 0.1138
+  },
+  {
+   "t": 37.8,
+   "phase": "climb",
+   "kind": "exhale",
+   "level": 0.079
+  },
+  {
+   "t": 38.6,
+   "phase": "climb",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 39.17,
+   "phase": "climb",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 39.87,
+   "phase": "climb",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 40.37,
+   "phase": "climb",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 41.02,
+   "phase": "climb",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 41.52,
+   "phase": "climb",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 42.17,
+   "phase": "climb",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 42.67,
+   "phase": "climb",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 43.32,
+   "phase": "climb",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 43.82,
+   "phase": "climb",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 44.47,
+   "phase": "climb",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 44.97,
+   "phase": "climb",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 45.62,
+   "phase": "stand",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 46.13,
+   "phase": "stand",
+   "kind": "exhale",
+   "level": 0.08
+  },
+  {
+   "t": 46.85,
+   "phase": "stand",
+   "kind": "inhale",
+   "level": 0.12
+  },
+  {
+   "t": 47.43,
+   "phase": "stand",
+   "kind": "exhale",
+   "level": 0.0789
+  },
+  {
+   "t": 48.23,
+   "phase": "stand",
+   "kind": "inhale",
+   "level": 0.1133
+  },
+  {
+   "t": 48.88,
+   "phase": "stand",
+   "kind": "exhale",
+   "level": 0.0729
+  },
+  {
+   "t": 49.78,
+   "phase": "stand",
+   "kind": "inhale",
+   "level": 0.1037
+  }
+ ]
+}

@@ -131,7 +131,7 @@ const CLIP_LEVEL = {
   gasp: 0.155,
   swing: 0.1,
   axe: 0.08,
-  breath: 0.08,
+  breath: 0.032,
 };
 const banks = new WeakMap();
 
@@ -161,7 +161,8 @@ export class BodySound {
     this.out.connect(sound.fx);
     this.exertion = 0;
     this.breathClock = 0.5;
-    this.inhaling = true;
+    this.inhaling = false;
+    this.panting = false;
     this.under = 0;
     this.lastVocal = -9;
     this.heartClock = 0;
@@ -214,21 +215,21 @@ export class BodySound {
       stun: hero.stun ?? 0,
       landing: hero.landing ?? 0,
     };
+    // Running is what winds her; climbing, swinging, pushing and swimming only a little.
     let gain = 0;
-    if (s === "ground" && speed > 3.2) gain = 0.075 * Math.min(1, speed / 5.6);
-    else if (CLIMBING.has(s))
-      gain = s === "hang" && !hero.shimmy ? 0.025 : 0.07;
-    else if (s === "swing") gain = 0.04;
-    else if (s === "shove" || s === "grab") gain = 0.04;
+    if (s === "ground" && speed > 4.5) gain = 0.05 * Math.min(1, speed / 5.6);
+    else if (CLIMBING.has(s)) gain = s === "hang" && !hero.shimmy ? 0 : 0.02;
+    else if (s === "swing") gain = 0.015;
+    else if (s === "shove" || s === "grab") gain = 0.02;
     else if (s === "swim")
       gain =
-        0.05 *
+        0.03 *
         Math.min(
           1,
           Math.hypot(hero.swimSpeed || 0, hero.swimVertical || 0) / 3.2,
         );
     const rest =
-      s === "ground" && speed < 1 ? 0.06 : s === "ground" ? 0.025 : 0.01;
+      s === "ground" && speed < 1 ? 0.16 : s === "ground" ? 0.1 : 0.04;
     this.exertion = Math.max(
       0,
       Math.min(1, this.exertion + (gain - (gain ? 0 : rest)) * dt),
@@ -297,22 +298,26 @@ export class BodySound {
     if (this.recent.length > 24) this.recent.shift();
   }
 
+  // Only a long run leaves her breathing hard: it starts after about ten seconds of running,
+  // eases within a few seconds of stopping, and stays soft, the in-breath softer still.
   breathing(dt) {
     const e = this.exertion;
-    if (e < 0.18) {
-      this.breathClock = Math.min(this.breathClock, 0.4);
+    this.panting = e > (this.panting ? 0.45 : 0.55);
+    if (!this.panting) {
+      this.breathClock = Math.min(this.breathClock, 0.3);
+      this.inhaling = false;
       return;
     }
     if ((this.breathClock -= dt) > 0) return;
-    const period = 3 - 1.9 * e;
-    const strength = Math.min(1, (e - 0.12) / 0.75);
-    const length = (this.inhaling ? 0.4 : 0.48) * period;
+    const strength = Math.min(1, (e - 0.45) / 0.55);
+    const period = (2.3 - 0.8 * strength) * (0.94 + Math.random() * 0.12);
+    const length = (this.inhaling ? 0.36 : 0.46) * period;
     this.breath(
       this.inhaling,
       strength,
       Math.max(0.28, Math.min(0.95, length)),
     );
-    this.breathClock = length + (this.inhaling ? 0.04 : 0.1) * period;
+    this.breathClock = length + (this.inhaling ? 0.06 : 0.12) * period;
     this.inhaling = !this.inhaling;
   }
 
@@ -370,25 +375,12 @@ export class BodySound {
     this.counts.breaths++;
     const t = this.ctx.currentTime + 0.01;
     const recorded =
-      CLIP_LEVEL.breath * (0.35 + 0.65 * strength) * (inhale ? 1.5 : 1);
+      CLIP_LEVEL.breath * (0.45 + 0.55 * strength) * (inhale ? 0.6 : 1);
     const rate = Math.max(0.8, Math.min(1.08, 0.3 / length));
     if (this.clip(inhale ? "inhale" : "exhale", t, recorded, rate)) return;
-    const level = 0.012 + 0.03 * strength;
-    if (inhale) this.air(t, true, length, level * 0.75, 1600, 2100);
-    else {
-      this.air(t, false, length, level, 1250, 950);
-      if (strength > 0.75 && Math.random() < 0.4)
-        this.vocal(
-          {
-            f0: [215, 190],
-            length: Math.min(0.25, length * 0.5),
-            vowel: "a",
-            breath: 0.9,
-            level: level * 0.35,
-          },
-          t,
-        );
-    }
+    const level = 0.008 + 0.014 * strength;
+    if (inhale) this.air(t, true, length, level * 0.6, 1600, 2100);
+    else this.air(t, false, length, level, 1250, 950);
   }
 
   // Air through the mouth: band-passed noise whose centre glides, shaped as an in or out breath.
@@ -520,6 +512,7 @@ export class BodySound {
   telemetry() {
     return {
       exertion: +this.exertion.toFixed(3),
+      panting: this.panting,
       under: +this.under.toFixed(2),
       ...this.counts,
       recent: this.recent.map((r) => ({ ...r })),

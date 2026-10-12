@@ -1,0 +1,107 @@
+{
+ "url": "http://localhost:3002/",
+ "recorded": true,
+ "phases": {
+  "run": {
+   "breaths": 10,
+   "first": 16.3,
+   "last": 24.7,
+   "maxLevel": 0.0301
+  },
+  "stand": {
+   "breaths": 4,
+   "first": 25.35,
+   "last": 28.23,
+   "maxLevel": 0.0302
+  }
+ },
+ "breaths": 14,
+ "loudestInhale": 0.0189,
+ "loudestExhale": 0.0302,
+ "log": [
+  {
+   "t": 16.3,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.0181
+  },
+  {
+   "t": 17.52,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.012
+  },
+  {
+   "t": 18.35,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.0214
+  },
+  {
+   "t": 19.48,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.0139
+  },
+  {
+   "t": 20.28,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.0245
+  },
+  {
+   "t": 21.42,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.0158
+  },
+  {
+   "t": 22.17,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.0275
+  },
+  {
+   "t": 23.12,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.0174
+  },
+  {
+   "t": 23.8,
+   "phase": "run",
+   "kind": "exhale",
+   "level": 0.0301
+  },
+  {
+   "t": 24.7,
+   "phase": "run",
+   "kind": "inhale",
+   "level": 0.0189
+  },
+  {
+   "t": 25.35,
+   "phase": "stand",
+   "kind": "exhale",
+   "level": 0.0302
+  },
+  {
+   "t": 26.32,
+   "phase": "stand",
+   "kind": "inhale",
+   "level": 0.0152
+  },
+  {
+   "t": 27.12,
+   "phase": "stand",
+   "kind": "exhale",
+   "level": 0.0212
+  },
+  {
+   "t": 28.23,
+   "phase": "stand",
+   "kind": "inhale",
+   "level": 0.0093
+  }
+ ]
+}
