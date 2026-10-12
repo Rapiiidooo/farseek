@@ -1,0 +1,86 @@
+{
+ "log": [
+  {
+   "name": "पहला पपाइरस",
+   "screen": "relics",
+   "stage": "",
+   "world": "धँसा प्रांगण",
+   "read": true,
+   "focus": "देखो",
+   "wrapped": []
+  },
+  {
+   "name": "निर्माताओं की शिला-स्मृति",
+   "screen": "relics",
+   "stage": "",
+   "world": "धँसा प्रांगण",
+   "read": true,
+   "focus": "देखो",
+   "wrapped": []
+  },
+  {
+   "name": "फ़ील्ड रेडियो",
+   "screen": "relics",
+   "stage": "",
+   "world": "चौकी",
+   "read": true,
+   "focus": "देखो",
+   "wrapped": []
+  },
+  {
+   "name": "अभी नहीं मिली",
+   "screen": "relics",
+   "stage": "",
+   "world": "डूबा अभिलेखागार",
+   "read": false,
+   "focus": "वापस",
+   "wrapped": []
+  },
+  {
+   "name": "पहला पपाइरस",
+   "screen": "relic-note",
+   "stage": "",
+   "world": "धँसा प्रांगण",
+   "read": true,
+   "focus": "वापस",
+   "wrapped": []
+  },
+  {
+   "name": "पहला पपाइरस",
+   "screen": "relic-note",
+   "stage": "",
+   "world": "धँसा प्रांगण",
+   "read": true,
+   "focus": "वापस",
+   "wrapped": []
+  },
+  {
+   "name": "पहला पपाइरस",
+   "screen": "relics",
+   "stage": "",
+   "world": "धँसा प्रांगण",
+   "read": true,
+   "focus": "वापस",
+   "wrapped": []
+  },
+  {
+   "name": "निर्माताओं की शिला-स्मृति",
+   "screen": "relics",
+   "stage": "",
+   "world": "धँसा प्रांगण",
+   "read": true,
+   "focus": "वापस",
+   "wrapped": []
+  },
+  {
+   "name": "निर्माताओं की शिला-स्मृति",
+   "screen": "main",
+   "stage": "",
+   "world": "धँसा प्रांगण",
+   "read": true,
+   "focus": "निशानियाँ7/13",
+   "wrapped": []
+  }
+ ],
+ "errors": []
+}

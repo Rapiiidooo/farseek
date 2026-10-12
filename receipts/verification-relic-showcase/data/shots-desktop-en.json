@@ -1,0 +1,86 @@
+{
+ "log": [
+  {
+   "name": "The first papyrus",
+   "screen": "relics",
+   "stage": "",
+   "world": "The Sunken Court",
+   "read": true,
+   "focus": "Inspect",
+   "wrapped": []
+  },
+  {
+   "name": "The builders' stone memory",
+   "screen": "relics",
+   "stage": "",
+   "world": "The Sunken Court",
+   "read": true,
+   "focus": "Inspect",
+   "wrapped": []
+  },
+  {
+   "name": "The field radio",
+   "screen": "relics",
+   "stage": "",
+   "world": "The Checkpoint",
+   "read": true,
+   "focus": "Inspect",
+   "wrapped": []
+  },
+  {
+   "name": "Not found yet",
+   "screen": "relics",
+   "stage": "",
+   "world": "The Drowned Archive",
+   "read": false,
+   "focus": "Back",
+   "wrapped": []
+  },
+  {
+   "name": "The first papyrus",
+   "screen": "relic-note",
+   "stage": "",
+   "world": "The Sunken Court",
+   "read": true,
+   "focus": "Back",
+   "wrapped": []
+  },
+  {
+   "name": "The first papyrus",
+   "screen": "relic-note",
+   "stage": "",
+   "world": "The Sunken Court",
+   "read": true,
+   "focus": "Back",
+   "wrapped": []
+  },
+  {
+   "name": "The first papyrus",
+   "screen": "relics",
+   "stage": "",
+   "world": "The Sunken Court",
+   "read": true,
+   "focus": "Back",
+   "wrapped": []
+  },
+  {
+   "name": "The builders' stone memory",
+   "screen": "relics",
+   "stage": "",
+   "world": "The Sunken Court",
+   "read": true,
+   "focus": "Back",
+   "wrapped": []
+  },
+  {
+   "name": "The builders' stone memory",
+   "screen": "main",
+   "stage": "",
+   "world": "The Sunken Court",
+   "read": true,
+   "focus": "Relics7/13",
+   "wrapped": []
+  }
+ ],
+ "errors": []
+}

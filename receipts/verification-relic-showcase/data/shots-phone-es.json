@@ -1,0 +1,86 @@
+{
+ "log": [
+  {
+   "name": "El primer papiro",
+   "screen": "relics",
+   "stage": "",
+   "world": "El Patio Hundido",
+   "read": true,
+   "focus": "Examinar",
+   "wrapped": []
+  },
+  {
+   "name": "La memoria de piedra de los constructores",
+   "screen": "relics",
+   "stage": "",
+   "world": "El Patio Hundido",
+   "read": true,
+   "focus": "Examinar",
+   "wrapped": []
+  },
+  {
+   "name": "La radio de campaña",
+   "screen": "relics",
+   "stage": "",
+   "world": "El Puesto de Control",
+   "read": true,
+   "focus": "Examinar",
+   "wrapped": []
+  },
+  {
+   "name": "Aún sin encontrar",
+   "screen": "relics",
+   "stage": "",
+   "world": "El Archivo Sumergido",
+   "read": false,
+   "focus": "Volver",
+   "wrapped": []
+  },
+  {
+   "name": "El primer papiro",
+   "screen": "relic-note",
+   "stage": "",
+   "world": "El Patio Hundido",
+   "read": true,
+   "focus": "Volver",
+   "wrapped": []
+  },
+  {
+   "name": "El primer papiro",
+   "screen": "relic-note",
+   "stage": "",
+   "world": "El Patio Hundido",
+   "read": true,
+   "focus": "Volver",
+   "wrapped": []
+  },
+  {
+   "name": "El primer papiro",
+   "screen": "relics",
+   "stage": "",
+   "world": "El Patio Hundido",
+   "read": true,
+   "focus": "Volver",
+   "wrapped": []
+  },
+  {
+   "name": "El primer papiro",
+   "screen": "relics",
+   "stage": "",
+   "world": "El Patio Hundido",
+   "read": true,
+   "focus": "Volver",
+   "wrapped": []
+  },
+  {
+   "name": "El primer papiro",
+   "screen": "main",
+   "stage": "",
+   "world": "El Patio Hundido",
+   "read": true,
+   "focus": "ContinuarLas Islas del Alba",
+   "wrapped": []
+  }
+ ],
+ "errors": []
+}

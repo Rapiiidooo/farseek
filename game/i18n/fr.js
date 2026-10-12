@@ -43,6 +43,8 @@ export default {
     "{key} reste au navigateur. Choisis une autre touche.",
   "{key} switches between walking and running.":
     "{key} alterne marche et course.",
+  "{keys} or drag to turn · <kbd>Enter</kbd> to inspect":
+    "{keys} ou glisser pour tourner · <kbd>Entrée</kbd> pour examiner",
   "{keys} or mouse to choose · <kbd>Enter</kbd> to confirm":
     "{keys} ou souris pour choisir · <kbd>Entrée</kbd> pour valider",
   "{move} climb · {jump} leap · {drop} let go":
@@ -409,6 +411,7 @@ export default {
   "Don't stop on the thin ice. The arrow points to the ring.":
     "Ne vous arrêtez pas sur la glace fine. La flèche indique l’anneau.",
   "Drag the picture": "Faire glisser l’image",
+  "Drag to turn it over": "Fais glisser pour la retourner",
   "Draw both weapons": "Dégainer les deux armes",
   "Draw the pistols with <kbd>2</kbd> or {inventory}, hold {aim} and shoot the crystal that locks the lens. Then link to the crystal and pulse the pylon with the charged orb.":
     "Dégaine les pistolets avec <kbd>2</kbd> ou {inventory}, maintiens {aim} et tire sur le cristal qui verrouille la lentille. Ensuite, relie l’orbe au cristal et active le pylône d’une impulsion de l’orbe chargé.",
@@ -799,6 +802,7 @@ export default {
   "Near misses still find the target, and the sight narrows.":
     "Les tirs qui frôlent la cible la touchent quand même, et la mire se resserre.",
   "New game": "Nouvelle partie",
+  "Next relic": "Relique suivante",
   "Next!": "Au suivant !",
   No: "Non",
   "No address stamp, no passage. Get stamped, one way or another.":
@@ -948,6 +952,7 @@ export default {
   "Pressure vented. Jump the expanding low wave":
     "Pression purgée. Saute la vague basse qui s’étend",
   "Pressure vents": "Évents de pression",
+  "Previous relic": "Relique précédente",
   Processed: "Traité",
   "Pull with the orb, once earned": "Attirer avec l’orbe, une fois acquis",
   "Pulse both amber lenses from the drifting isle; link to this crystal to recharge.":
@@ -1184,6 +1189,8 @@ export default {
   "Swing from the rope onto the bridge before it fades":
     "Balance-toi de la corde jusqu’au pont avant qu’il s’efface",
   "Swing onto the light": "Se balancer vers la lumière",
+  "Swipe to turn · Tap the relic to inspect it":
+    "Balaie pour tourner · Touche la relique pour l’examiner",
   "Switch to running": "Passer à la course",
   "Switch to walking": "Passer à la marche",
   "Switch walking / running": "Alterner marche / course",

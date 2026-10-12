@@ -43,6 +43,8 @@ export default {
     "{key} está reservada al navegador. Elige otra tecla.",
   "{key} switches between walking and running.":
     "{key} alterna entre caminar y correr.",
+  "{keys} or drag to turn · <kbd>Enter</kbd> to inspect":
+    "{keys} o arrastra para girar · <kbd>Enter</kbd> para examinar",
   "{keys} or mouse to choose · <kbd>Enter</kbd> to confirm":
     "{keys} o ratón para elegir · <kbd>Enter</kbd> para confirmar",
   "{move} climb · {jump} leap · {drop} let go":
@@ -406,6 +408,7 @@ export default {
   "Don't stop on the thin ice. The arrow points to the ring.":
     "No te detengas en el hielo fino. La flecha señala el anillo.",
   "Drag the picture": "Arrastrar la imagen",
+  "Drag to turn it over": "Arrástrala para darle la vuelta",
   "Draw both weapons": "Desenfundar ambas armas",
   "Draw the pistols with <kbd>2</kbd> or {inventory}, hold {aim} and shoot the crystal that locks the lens. Then link to the crystal and pulse the pylon with the charged orb.":
     "Desenfunda las pistolas con <kbd>2</kbd> o {inventory}, mantén {aim} y dispara al cristal que bloquea la lente. Luego enlaza con el cristal y lanza un pulso al pilón con el orbe cargado.",
@@ -792,6 +795,7 @@ export default {
   "Near misses still find the target, and the sight narrows.":
     "Los disparos que casi fallan aún dan en el blanco, y la retícula se cierra.",
   "New game": "Nueva partida",
+  "Next relic": "Reliquia siguiente",
   "Next!": "¡Siguiente!",
   No: "No",
   "No address stamp, no passage. Get stamped, one way or another.":
@@ -940,6 +944,7 @@ export default {
   "Pressure vented. Jump the expanding low wave":
     "Presión liberada. Salta la ola baja que se expande",
   "Pressure vents": "Respiraderos de presión",
+  "Previous relic": "Reliquia anterior",
   Processed: "Tramitado",
   "Pull with the orb, once earned": "Atraer con el orbe, una vez conseguido",
   "Pulse both amber lenses from the drifting isle; link to this crystal to recharge.":
@@ -1177,6 +1182,8 @@ export default {
   "Swing from the rope onto the bridge before it fades":
     "Balancéate desde la cuerda hasta el puente antes de que se desvanezca",
   "Swing onto the light": "Balancearse hasta la luz",
+  "Swipe to turn · Tap the relic to inspect it":
+    "Desliza para girar · Toca la reliquia para examinarla",
   "Switch to running": "Cambiar a correr",
   "Switch to walking": "Cambiar a caminar",
   "Switch walking / running": "Alternar caminar / correr",

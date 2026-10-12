@@ -211,24 +211,23 @@ try {
   await sleep(800);
   const button = await page.$eval(
     '#menu [data-screen="main"] [data-action="relics"]',
-    (b) => b.textContent.trim(),
+    (b) =>
+      `${b.querySelector(".label").textContent} ${b.querySelector(".detail").textContent}`,
   );
   check(
     "the title counts the relics after a reload",
-    button === `Relics · ${HUNTS.length} of ${catalogue.length}`,
+    button === `Relics ${HUNTS.length}/${catalogue.length}`,
     button,
   );
   await page.click('#menu [data-screen="main"] [data-action="relics"]');
   await sleep(500);
   const screen = await page.evaluate(() => ({
     count: document.querySelector("#relic-count").textContent,
-    cards: [...document.querySelectorAll("#relic-list .level-card")].map(
-      (c) => ({
-        id: c.dataset.relic,
-        missing: c.classList.contains("missing"),
-        name: c.querySelector("h3").textContent,
-      }),
-    ),
+    cards: [...document.querySelectorAll("#relic-list li")].map((c) => ({
+      id: c.dataset.relic,
+      missing: c.classList.contains("missing"),
+      name: c.querySelector("button").getAttribute("aria-label"),
+    })),
   }));
   check(
     "the Relics screen lists found pickups and retains earned records as hidden",
@@ -302,8 +301,7 @@ try {
   await page.click('#menu [data-screen="main"] [data-action="relics"]');
   await sleep(400);
   const none = await page.evaluate(
-    () =>
-      [...document.querySelectorAll("#relic-list .level-card.missing")].length,
+    () => [...document.querySelectorAll("#relic-list li.missing")].length,
   );
   check(
     "the Relics screen shows every item still hidden",

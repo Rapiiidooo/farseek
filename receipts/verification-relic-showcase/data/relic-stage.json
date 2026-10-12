@@ -1,0 +1,190 @@
+{
+ "results": [
+  {
+   "name": "opens on the first relic found, Inspect in focus",
+   "ok": true,
+   "detail": {
+    "screen": "relics",
+    "name": "The first papyrus",
+    "current": "papyrus",
+    "read": true,
+    "focus": "Inspect"
+   }
+  },
+  {
+   "name": "the right arrow key turns to the next relic",
+   "ok": true,
+   "detail": {
+    "screen": "relics",
+    "name": "The builders' stone memory",
+    "current": "sun-memory",
+    "read": true,
+    "focus": "Inspect"
+   }
+  },
+  {
+   "name": "the bound movement key turns too, and left turns back",
+   "ok": true,
+   "detail": {
+    "keyD": "radio",
+    "back": "papyrus"
+   }
+  },
+  {
+   "name": "turning past the first relic wraps to the last, still hidden",
+   "ok": true,
+   "detail": {
+    "screen": "relics",
+    "name": "Not found yet",
+    "current": "tide-proof",
+    "read": false,
+    "focus": "Back"
+   }
+  },
+  {
+   "name": "a hidden relic names no relic and leaves Inspect off, the focus on Back",
+   "ok": true,
+   "detail": {
+    "screen": "relics",
+    "name": "Not found yet",
+    "current": "tide-proof",
+    "read": false,
+    "focus": "Back"
+   }
+  },
+  {
+   "name": "the next arrow turns back to the first relic",
+   "ok": true,
+   "detail": {
+    "screen": "relics",
+    "name": "The first papyrus",
+    "current": "papyrus",
+    "read": true,
+    "focus": "Back"
+   }
+  },
+  {
+   "name": "a pip chooses its relic",
+   "ok": true,
+   "detail": {
+    "screen": "relics",
+    "name": "Mira's lantern",
+    "current": "lantern",
+    "read": true,
+    "focus": "Back"
+   }
+  },
+  {
+   "name": "a drag across the stage turns the arc",
+   "ok": true,
+   "detail": {
+    "screen": "relics",
+    "name": "Not found yet",
+    "current": "grove-map",
+    "read": false,
+    "focus": "Back"
+   }
+  },
+  {
+   "name": "a click on the chosen relic inspects it",
+   "ok": true,
+   "detail": {
+    "screen": "relic-note",
+    "title": "The field radio"
+   }
+  },
+  {
+   "name": "left and right turn the inspected relic and stay",
+   "ok": true,
+   "detail": {
+    "screen": "relic-note",
+    "name": "The field radio",
+    "current": "radio",
+    "read": true,
+    "focus": "Back"
+   }
+  },
+  {
+   "name": "Escape returns to the carousel on the same relic",
+   "ok": true,
+   "detail": {
+    "screen": "relics",
+    "name": "The field radio",
+    "current": "radio",
+    "read": true,
+    "focus": "Back"
+   }
+  },
+  {
+   "name": "a click on a hidden relic opens nothing",
+   "ok": true,
+   "detail": {
+    "before": "dawn-survey",
+    "screen": "relics"
+   }
+  },
+  {
+   "name": "Enter on Inspect inspects",
+   "ok": true,
+   "detail": {
+    "focus": "Inspect",
+    "screen": "relic-note"
+   }
+  },
+  {
+   "name": "Escape again returns to the title",
+   "ok": true,
+   "detail": {
+    "screen": "main",
+    "name": "The first papyrus",
+    "current": "papyrus",
+    "read": true,
+    "focus": "Relics4/13"
+   }
+  },
+  {
+   "name": "a phone is told to swipe and tap",
+   "ok": true,
+   "detail": "Swipe to turn · Tap the relic to inspect it"
+  },
+  {
+   "name": "a swipe turns to the next relic",
+   "ok": true,
+   "detail": {
+    "screen": "relics",
+    "name": "The builders' stone memory",
+    "current": "sun-memory",
+    "read": true,
+    "focus": "Inspect"
+   }
+  },
+  {
+   "name": "a tap on the chosen relic inspects it",
+   "ok": true,
+   "detail": {
+    "screen": "relic-note",
+    "name": "The builders' stone memory",
+    "current": "sun-memory",
+    "read": true,
+    "focus": "Back"
+   }
+  },
+  {
+   "name": "Back returns to the carousel",
+   "ok": true,
+   "detail": {
+    "screen": "relics",
+    "name": "The builders' stone memory",
+    "current": "sun-memory",
+    "read": true,
+    "focus": "Inspect"
+   }
+  },
+  {
+   "name": "no page errors",
+   "ok": true,
+   "detail": []
+  }
+ ],
+ "errors": []
+}

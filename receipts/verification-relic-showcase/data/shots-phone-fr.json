@@ -1,0 +1,86 @@
+{
+ "log": [
+  {
+   "name": "Le premier papyrus",
+   "screen": "relics",
+   "stage": "",
+   "world": "La Cour enfouie",
+   "read": true,
+   "focus": "Examiner",
+   "wrapped": []
+  },
+  {
+   "name": "La mémoire de pierre des bâtisseurs",
+   "screen": "relics",
+   "stage": "",
+   "world": "La Cour enfouie",
+   "read": true,
+   "focus": "Examiner",
+   "wrapped": []
+  },
+  {
+   "name": "La radio de campagne",
+   "screen": "relics",
+   "stage": "",
+   "world": "Le Poste-frontière",
+   "read": true,
+   "focus": "Examiner",
+   "wrapped": []
+  },
+  {
+   "name": "Pas encore trouvée",
+   "screen": "relics",
+   "stage": "",
+   "world": "Les Archives englouties",
+   "read": false,
+   "focus": "Retour",
+   "wrapped": []
+  },
+  {
+   "name": "Le premier papyrus",
+   "screen": "relic-note",
+   "stage": "",
+   "world": "La Cour enfouie",
+   "read": true,
+   "focus": "Retour",
+   "wrapped": []
+  },
+  {
+   "name": "Le premier papyrus",
+   "screen": "relic-note",
+   "stage": "",
+   "world": "La Cour enfouie",
+   "read": true,
+   "focus": "Retour",
+   "wrapped": []
+  },
+  {
+   "name": "Le premier papyrus",
+   "screen": "relics",
+   "stage": "",
+   "world": "La Cour enfouie",
+   "read": true,
+   "focus": "Retour",
+   "wrapped": []
+  },
+  {
+   "name": "Le premier papyrus",
+   "screen": "relics",
+   "stage": "",
+   "world": "La Cour enfouie",
+   "read": true,
+   "focus": "Retour",
+   "wrapped": []
+  },
+  {
+   "name": "Le premier papyrus",
+   "screen": "main",
+   "stage": "",
+   "world": "La Cour enfouie",
+   "read": true,
+   "focus": "ContinuerLes Îles de l’Aube",
+   "wrapped": []
+  }
+ ],
+ "errors": []
+}

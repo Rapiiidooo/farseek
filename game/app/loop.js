@@ -139,7 +139,8 @@ export function createLoop(app) {
       shield: equipment?.shieldStatus?.(),
     });
     state.framePhase = "render";
-    if (state.mode !== "loading" && !state.loading) worlds.render(camera, dt);
+    if (state.mode !== "loading" && !state.loading && !app.ui.renderStage(dt))
+      worlds.render(camera, dt);
     input.endFrame();
     app.diagnostics.publish();
     state.framePhase = "idle";

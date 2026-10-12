@@ -24,6 +24,8 @@
 | `early-world-detail.js` | Grounded environmental detail with unchanged traversal shapes    |
 | `weapon-reload.js`      | Magazine exchange timing and pooled falling magazines            |
 | `atmosphere.js`         | Per world grade and atmosphere, and Nyra's close-up lighting     |
+| `relic-showcase.js`     | The Relics screens' stage, drawn in place of the world           |
+| `relic-figures.js`      | Pages and the builders' stone for relics that are records        |
 
 ## Worlds and loading
 
@@ -36,6 +38,8 @@ A definition with `entry: "finale"` is reached from its predecessor's finale rat
 Progress keeps the `far-door-progress` format. `completed` with `campaign` 6 or more reads as a finished campaign; any older completed save reads as the four-level one and opens the forest. `campaign` records where the finish was earned: 6 at the drowned archive (saves from before the vault), 7 in the vault, which `finish` now writes. A finished campaign adds `vault` to `reached`, both at load and in `finish`, so the vault's chapter opens without a new field, and the levels screen marks completion on the archive for campaign 6 and on the vault for campaign 7.
 
 `ensure(id)` runs one preparation at a time and deduplicates requests. A waiting foreground request runs next, and the running background job stops yielding so it finishes quickly. Newly wired controllers reset before shader preparation, so the first entry uses the same puzzle state as a restarted chapter. `prepare(id)` requests the selected world and its immediate neighbors together, so no queued background world runs between them. A chapter started from the menus waits under its loading screen for that window alone, and the worlds the title has not prepared yet follow in the background during play, held back 2.5 s after the start. A chapter started by address (`?chapter=`) instead finishes every unprepared world under its loading screen (`settle`), so captures and scripted checks never compete with preparation. The title loads the court in the foreground.
+
+While the Relics or relic account screen is open, `loop.js` asks `ui.renderStage(dt)` before drawing the world: once its stage is built, `RelicShowcase` draws its own small scene straight to the screen, restoring the renderer's target, clipping planes and exposure, and the world is not drawn. The stage is imported on first opening, so the title's modules do not include it; the screen owns the chosen relic and the stage reports drags and taps through `onSelect` and `onPick`.
 
 The title's downloads arrive together rather than one round trip at a time. `index.html` lists as module preloads every module the title imports, written by `scripts/boot-preload.mjs`, whose `--check` the architecture check runs. The court's build first preloads the assets it then makes one after another (`AssetStore.preload`); a preload only downloads, so modules still run in the build's order.
 

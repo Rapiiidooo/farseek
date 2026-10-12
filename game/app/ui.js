@@ -51,7 +51,7 @@ const named = (title) => title.replace(/^The /, "the ");
 // size, and only past that does it end in an ellipsis.
 function fitLines(panel) {
   for (const el of panel.querySelectorAll(
-    ".panel-title, .level-card h3, .level-card button, .menu-list .label, .menu-list .detail, .settings .row > span",
+    ".panel-title, .level-card h3, .level-card button, .menu-list .label, .menu-list .detail, .settings .row > span, .relic-caption h3",
   )) {
     el.style.fontSize = "";
     if (!el.clientWidth || el.scrollWidth <= el.clientWidth) continue;
@@ -295,8 +295,18 @@ export function createUI(app) {
     onChange: (el) => settingChanged(el),
   });
   menu.moveKeys = (direction) => input.binding(direction);
-  menu.onShow = fitLines;
+  menu.onShow = (panel) => {
+    fitLines(panel);
+    showcase?.inspect(menu.screen === "relic-note");
+    if (showcase) showcase.area = stageArea();
+  };
   addEventListener("resize", () => menu.isOpen && fitLines(menu.panel()));
+  // Screens that show one thing at a time turn with left and right.
+  const turners = {
+    relics: (direction) => (selectRelic(relicIndex + direction), true),
+    "relic-note": (direction) => (showcase?.nudge(direction), true),
+  };
+  menu.onTurn = (screen, direction) => turners[screen]?.(direction) ?? false;
   // Each entry of the title and pause lists carries a builders' glyph, lit while it has the
   // focus; a detail such as the level to continue follows the label on the same line.
   for (const button of document.querySelectorAll(
@@ -378,8 +388,9 @@ export function createUI(app) {
         refreshLevels();
         return menu.push("levels");
       case "relics":
+        menu.push("relics");
         refreshRelics();
-        return menu.push("relics");
+        return selectRelic(relicIndex);
       case "inspect-relic":
         return inspectRelic(el.dataset.relic);
       case "settings":
@@ -516,45 +527,115 @@ export function createUI(app) {
     }
   }
 
-  // Each relic as a card: what it is once found, and only its world before.
+  // The Relics screen: one relic at a time on the showcase's stage, turned with left and right,
+  // a drag or the pips; the stage loads the first time the screen opens.
+  let relicList = [];
+  let relicIndex = -1;
+  let showcase = null;
+  const relicStage = document.querySelector("#relic-stage");
+  const relicFigure = document.querySelector("#relic-figure");
+  const STAGE_SCREENS = new Set(["relics", "relic-note"]);
+  const stageArea = () =>
+    menu.screen === "relic-note"
+      ? relicFigure
+      : document.querySelector("#relic-focus");
+  for (const button of document.querySelectorAll(".relic-focus .turn"))
+    button.addEventListener("click", () =>
+      selectRelic(relicIndex + Number(button.dataset.turn)),
+    );
+
+  async function openStage() {
+    if (!showcase) {
+      const { RelicShowcase } = await import("../relic-showcase.js");
+      showcase = new RelicShowcase({
+        renderer: app.renderer,
+        assets: app.assets,
+        reduced: () => app.reduced || settings.reduceMotion,
+      });
+      showcase.onSelect = selectRelic;
+      showcase.onPick = (i) =>
+        relicList[i]?.found && inspectRelic(relicList[i].id);
+      showcase.bind(relicStage);
+      showcase.bind(relicFigure);
+    }
+    showcase.area = stageArea();
+    showcase.inspect(menu.screen === "relic-note");
+    await showcase.prepare(relicList);
+    showcase.show(relicIndex, { instant: true });
+  }
+
   function refreshRelics() {
-    const list = document.querySelector("#relic-list");
-    list.innerHTML = "";
     const world = (r) => WORLDS.findIndex((w) => w.id === r.where);
-    const all = relics.list().sort((a, b) => world(a) - world(b));
-    const found = all.filter((r) => r.found).length;
+    relicList = relics.list().sort((a, b) => world(a) - world(b));
+    const found = relicList.filter((r) => r.found).length;
     document.querySelector("#relic-count").textContent = found
-      ? t("{found} of {total} found.", { found, total: all.length })
+      ? t("{found} of {total} found.", { found, total: relicList.length })
       : t("{total} relics lie hidden along the way. None found yet.", {
-          total: all.length,
+          total: relicList.length,
         });
-    for (const r of all) {
-      const card = document.createElement("div");
-      card.className = `level-card relic${r.found ? "" : " missing"}`;
-      card.dataset.relic = r.id;
-      const add = (tag, cls, text) => {
-        const el = document.createElement(tag);
-        el.className = cls;
-        el.textContent = text;
-        card.appendChild(el);
-      };
-      add("p", "num", r.world);
-      add("h3", "", r.found ? r.name : t("Not found yet"));
-      add("p", "blurb", r.found ? r.line : r.hint);
-      if (r.found && r.entry?.length) {
+    document.querySelector("#relic-list").replaceChildren(
+      ...relicList.map((r, i) => {
+        const pip = document.createElement("li");
+        pip.dataset.relic = r.id;
+        pip.classList.toggle("missing", !r.found);
         const button = document.createElement("button");
         button.type = "button";
-        button.dataset.action = "inspect-relic";
-        button.dataset.relic = r.id;
-        button.textContent = t("Inspect");
         button.setAttribute(
           "aria-label",
-          t("Inspect {name}", { name: r.name }),
+          r.found ? r.name : t("Not found yet"),
         );
-        card.appendChild(button);
-      }
-      list.appendChild(card);
-    }
+        button.addEventListener("click", () => selectRelic(i));
+        pip.append(button);
+        return pip;
+      }),
+    );
+    document.querySelector('[data-help="relics"]').innerHTML = input.usingTouch
+      ? t("Swipe to turn · Tap the relic to inspect it")
+      : t("{keys} or drag to turn · <kbd>Enter</kbd> to inspect", {
+          keys: hud.keys("KeyA", "KeyD"),
+        });
+    if (!relicList[relicIndex])
+      relicIndex = Math.max(
+        0,
+        relicList.findIndex((r) => r.found),
+      );
+    menu.root.dataset.stage = showcase?.built ? "" : "waiting";
+    openStage()
+      .then(() => (menu.root.dataset.stage = ""))
+      .catch((error) => {
+        menu.root.dataset.stage = "";
+        reportFailure(error, "Opening the relics");
+      });
+  }
+
+  function selectRelic(index) {
+    const n = relicList.length;
+    if (!n) return;
+    relicIndex = ((index % n) + n) % n;
+    const r = relicList[relicIndex];
+    const caption = document.querySelector(".relic-caption");
+    caption.classList.toggle("missing", !r.found);
+    document.querySelector("#relic-world").textContent = r.world;
+    document.querySelector("#relic-name").textContent = r.found
+      ? r.name
+      : t("Not found yet");
+    document.querySelector("#relic-line").textContent = r.found
+      ? r.line
+      : r.hint;
+    for (const pip of document.querySelectorAll("#relic-list li"))
+      pip.classList.toggle("current", pip.dataset.relic === r.id);
+    // The focus stays on the same entry when Inspect comes and goes.
+    const focused = menu.screen === "relics" && menu.items()[menu.index];
+    const read = document.querySelector("#relic-read");
+    read.dataset.relic = r.id;
+    read.disabled = !r.found || !r.entry?.length;
+    if (read.disabled) read.classList.remove("focus");
+    if (r.found)
+      read.setAttribute("aria-label", t("Inspect {name}", { name: r.name }));
+    else read.removeAttribute("aria-label");
+    if (focused) menu.focus(Math.max(0, menu.items().indexOf(focused)));
+    fitLines(caption);
+    showcase?.show(relicIndex);
   }
 
   function inspectRelic(id) {
@@ -577,7 +658,15 @@ export function createUI(app) {
     }
     document.querySelector("#relic-note-text").replaceChildren(...paragraphs);
     menu.push("relic-note");
-    menu.panel().scrollTop = 0;
+    document.querySelector(".relic-note").scrollTop = 0;
+    return true;
+  }
+
+  // Draws the relics' stage in place of the world while one of its screens is open.
+  function renderStage(dt) {
+    if (!showcase?.built || !menu.isOpen || !STAGE_SCREENS.has(menu.screen))
+      return false;
+    showcase.render(dt);
     return true;
   }
 
@@ -790,5 +879,6 @@ export function createUI(app) {
     reportFailure,
     fail,
     pollRecovery,
+    renderStage,
   };
 }

@@ -37,6 +37,8 @@ export default {
   "{key} stays with the browser. Choose another key.":
     "{key}由浏览器保留，请选择其他按键。",
   "{key} switches between walking and running.": "{key}切换步行与奔跑。",
+  "{keys} or drag to turn · <kbd>Enter</kbd> to inspect":
+    "{keys}或拖动转动 · <kbd>Enter</kbd>查看",
   "{keys} or mouse to choose · <kbd>Enter</kbd> to confirm":
     "{keys}或鼠标选择 · <kbd>Enter</kbd>确认",
   "{move} climb · {jump} leap · {drop} let go":
@@ -381,6 +383,7 @@ export default {
   "Don't stop on the thin ice. The arrow points to the ring.":
     "别在薄冰上停下。箭头指向环门。",
   "Drag the picture": "拖动画面",
+  "Drag to turn it over": "拖动可翻转查看",
   "Draw both weapons": "拔出双枪",
   "Draw the pistols with <kbd>2</kbd> or {inventory}, hold {aim} and shoot the crystal that locks the lens. Then link to the crystal and pulse the pylon with the charged orb.":
     "用<kbd>2</kbd>或{inventory}拔出手枪，按住{aim}射击锁住透镜的水晶。然后连接水晶，用充能宝珠向光塔发出脉冲。",
@@ -748,6 +751,7 @@ export default {
   "Near misses still find the target, and the sight narrows.":
     "稍有偏差也能命中目标，准星也会收窄。",
   "New game": "新游戏",
+  "Next relic": "下一件遗物",
   "Next!": "下一位！",
   No: "否",
   "No address stamp, no passage. Get stamped, one way or another.":
@@ -889,6 +893,7 @@ export default {
     "压力已释放。为宝珠充能，对付敞开的核心",
   "Pressure vented. Jump the expanding low wave": "压力已释放。跳过扩散的低浪",
   "Pressure vents": "压力喷口",
+  "Previous relic": "上一件遗物",
   Processed: "已处理",
   "Pull with the orb, once earned": "习得后可用宝珠牵引",
   "Pulse both amber lenses from the drifting isle; link to this crystal to recharge.":
@@ -1113,6 +1118,7 @@ export default {
   "Swing from the rope onto the bridge before it fades":
     "在光桥消失前，抓着绳索荡上去",
   "Swing onto the light": "荡上光桥",
+  "Swipe to turn · Tap the relic to inspect it": "滑动转动 · 点按遗物查看",
   "Switch to running": "切换为奔跑",
   "Switch to walking": "切换为步行",
   "Switch walking / running": "切换步行/奔跑",

@@ -1,0 +1,86 @@
+{
+ "log": [
+  {
+   "name": "第一卷莎草纸",
+   "screen": "relics",
+   "stage": "",
+   "world": "沉陷之庭",
+   "read": true,
+   "focus": "查看",
+   "wrapped": []
+  },
+  {
+   "name": "建造者的石之记忆",
+   "screen": "relics",
+   "stage": "",
+   "world": "沉陷之庭",
+   "read": true,
+   "focus": "查看",
+   "wrapped": []
+  },
+  {
+   "name": "野外电台",
+   "screen": "relics",
+   "stage": "",
+   "world": "检查站",
+   "read": true,
+   "focus": "查看",
+   "wrapped": []
+  },
+  {
+   "name": "尚未找到",
+   "screen": "relics",
+   "stage": "",
+   "world": "沉没档案馆",
+   "read": false,
+   "focus": "返回",
+   "wrapped": []
+  },
+  {
+   "name": "第一卷莎草纸",
+   "screen": "relic-note",
+   "stage": "",
+   "world": "沉陷之庭",
+   "read": true,
+   "focus": "返回",
+   "wrapped": []
+  },
+  {
+   "name": "第一卷莎草纸",
+   "screen": "relic-note",
+   "stage": "",
+   "world": "沉陷之庭",
+   "read": true,
+   "focus": "返回",
+   "wrapped": []
+  },
+  {
+   "name": "第一卷莎草纸",
+   "screen": "relics",
+   "stage": "",
+   "world": "沉陷之庭",
+   "read": true,
+   "focus": "返回",
+   "wrapped": []
+  },
+  {
+   "name": "第一卷莎草纸",
+   "screen": "relics",
+   "stage": "",
+   "world": "沉陷之庭",
+   "read": true,
+   "focus": "返回",
+   "wrapped": []
+  },
+  {
+   "name": "第一卷莎草纸",
+   "screen": "main",
+   "stage": "",
+   "world": "沉陷之庭",
+   "read": true,
+   "focus": "继续黎明群岛",
+   "wrapped": []
+  }
+ ],
+ "errors": []
+}

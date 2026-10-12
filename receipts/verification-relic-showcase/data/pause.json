@@ -1,0 +1,49 @@
+{
+ "log": [
+  {
+   "name": "the stage is ready after its first build",
+   "ok": true,
+   "detail": {
+    "ms": 139
+   }
+  },
+  {
+   "name": "a second opening is ready at once",
+   "ok": true,
+   "detail": {
+    "ms": 17
+   }
+  },
+  {
+   "name": "from the pause menu the stage shows without the HUD",
+   "ok": true,
+   "detail": {
+    "screen": "relics",
+    "hud": "hidden",
+    "paused": true
+   }
+  },
+  {
+   "name": "Back returns to the paused world with its HUD",
+   "ok": true,
+   "detail": {
+    "screen": "pause",
+    "hud": "visible"
+   }
+  },
+  {
+   "name": "play resumes",
+   "ok": true,
+   "detail": {
+    "mode": "play",
+    "paused": false
+   }
+  },
+  {
+   "name": "no page errors",
+   "ok": true,
+   "detail": []
+  }
+ ],
+ "errors": []
+}

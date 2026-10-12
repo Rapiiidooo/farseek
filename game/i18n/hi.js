@@ -40,6 +40,8 @@ export default {
     "{key} ब्राउज़र के पास रहती है। कोई दूसरी कुंजी चुनो।",
   "{key} switches between walking and running.":
     "{key} से चलने और दौड़ने के बीच बदलो।",
+  "{keys} or drag to turn · <kbd>Enter</kbd> to inspect":
+    "घुमाने के लिए {keys} या खींचो · देखने के लिए <kbd>Enter</kbd>",
   "{keys} or mouse to choose · <kbd>Enter</kbd> to confirm":
     "चुनने के लिए {keys} या माउस · पक्का करने के लिए <kbd>Enter</kbd>",
   "{move} climb · {jump} leap · {drop} let go":
@@ -393,6 +395,7 @@ export default {
   "Don't stop on the thin ice. The arrow points to the ring.":
     "पतली बर्फ़ पर मत रुकना। तीर चक्र की ओर इशारा करता है।",
   "Drag the picture": "दृश्य खींचो",
+  "Drag to turn it over": "घुमाकर देखने के लिए खींचो",
   "Draw both weapons": "दोनों हथियार निकालो",
   "Draw the pistols with <kbd>2</kbd> or {inventory}, hold {aim} and shoot the crystal that locks the lens. Then link to the crystal and pulse the pylon with the charged orb.":
     "<kbd>2</kbd> या {inventory} से पिस्तौलें निकालो, {aim} दबाए रखो और लेंस को जकड़ने वाले क्रिस्टल पर गोली चलाओ। फिर क्रिस्टल से लिंक करो और चार्ज गोले से स्तंभ पर तरंग छोड़ो।",
@@ -774,6 +777,7 @@ export default {
   "Near misses still find the target, and the sight narrows.":
     "करीब से चूकी गोलियाँ भी निशाने पर लगती हैं, और निशाना सिमट जाता है।",
   "New game": "नया गेम",
+  "Next relic": "अगली निशानी",
   "Next!": "अगला!",
   No: "नहीं",
   "No address stamp, no passage. Get stamped, one way or another.":
@@ -921,6 +925,7 @@ export default {
   "Pressure vented. Jump the expanding low wave":
     "दबाव निकल गया। फैलती नीची लहर के ऊपर से कूदो",
   "Pressure vents": "दबाव-निकास",
+  "Previous relic": "पिछली निशानी",
   Processed: "निपटाया गया",
   "Pull with the orb, once earned": "गोले से खींचो, मिलने के बाद",
   "Pulse both amber lenses from the drifting isle; link to this crystal to recharge.":
@@ -1153,6 +1158,8 @@ export default {
   "Swing from the rope onto the bridge before it fades":
     "पुल बुझने से पहले रस्सी से झूलकर उस पर पहुँचो",
   "Swing onto the light": "झूलकर रोशनी पर",
+  "Swipe to turn · Tap the relic to inspect it":
+    "घुमाने के लिए स्वाइप करो · देखने के लिए निशानी पर टैप करो",
   "Switch to running": "दौड़ना चुनो",
   "Switch to walking": "चलना चुनो",
   "Switch walking / running": "चलना / दौड़ना बदलो",

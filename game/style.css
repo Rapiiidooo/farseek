@@ -505,7 +505,9 @@ body.reduce-motion #load-worlds li[data-state="active"] {
   );
 }
 
-#menu.paused:not([hidden]) ~ #local-tools {
+#menu.paused:not([hidden]) ~ #local-tools,
+#menu[data-screen="relics"]:not([hidden]) ~ #local-tools,
+#menu[data-screen="relic-note"]:not([hidden]) ~ #local-tools {
   display: none;
 }
 
@@ -933,47 +935,307 @@ body.touch #address[data-slots="6"] .glyph svg {
   color: rgba(246, 231, 200, 0.55);
 }
 
-/* --- relics ----------------------------------------------------------------------------- */
+/* --- relics: the screens over the showcase's stage -------------------------------------- */
 
-.relic-count {
-  margin: -0.3rem 0 1rem;
-  font-size: 0.95rem;
-  color: rgba(240, 226, 200, 0.82);
-}
-
-.level-card.relic {
-  border-color: rgba(217, 164, 65, 0.45);
-  background: linear-gradient(
-    160deg,
-    rgba(217, 164, 65, 0.2),
-    rgba(18, 12, 9, 0.2)
+#menu[data-screen="relics"],
+#menu[data-screen="relic-note"] {
+  align-items: stretch;
+  justify-items: stretch;
+  padding: clamp(14px, 3vw, 40px);
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    rgba(8, 6, 5, 0) 55%,
+    rgba(8, 6, 5, 0.5)
   );
+  backdrop-filter: none;
 }
 
-.level-card.relic .num {
+/* The stage replaces the world, so nothing of play shows over it. */
+body:has(#menu[data-screen="relics"]) #hud,
+body:has(#menu[data-screen="relic-note"]) #hud {
+  visibility: hidden;
+}
+
+/* Until the stage is built the world stays hidden behind the screen. */
+#menu[data-stage="waiting"] {
+  background: #0b0706;
+}
+
+.panel.showcase {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto auto auto auto;
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  overflow: visible;
+  text-align: center;
+}
+
+.panel.showcase > :not(.relic-stage) {
+  position: relative;
+}
+
+/* Behind the screen's text: a drag anywhere turns the arc, a tap on the relic inspects it. */
+.relic-stage {
+  position: fixed;
+  inset: 0;
+  touch-action: none;
+  cursor: grab;
+}
+
+.relic-stage:active,
+.relic-figure:active {
+  cursor: grabbing;
+}
+
+.showcase-head,
+.relic-caption {
+  pointer-events: none;
+}
+
+.showcase-head .panel-title {
+  margin: 0;
+  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+}
+
+/* The free space between the heading and the caption, where the chosen relic floats. */
+.relic-focus {
+  position: relative;
+  align-self: stretch;
+  justify-self: stretch;
+  min-height: 7rem;
+  pointer-events: none;
+}
+
+.relic-focus .turn {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  padding: 0;
+  border: 1px solid rgba(232, 207, 164, 0.3);
+  border-radius: 50%;
+  background: rgba(16, 12, 10, 0.55);
+  color: rgba(246, 231, 200, 0.8);
+  transform: translateY(-50%);
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+.relic-focus .turn[data-turn="-1"] {
+  left: 0;
+}
+
+.relic-focus .turn[data-turn="1"] {
+  right: 0;
+}
+
+.relic-focus .turn:hover,
+.relic-focus .turn:focus-visible {
+  color: #d9fffa;
+  border-color: var(--light);
+  background: rgba(20, 70, 70, 0.78);
+  box-shadow: 0 0 14px rgba(57, 227, 208, 0.55);
+  outline: none;
+}
+
+.relic-focus .turn svg {
+  width: 46%;
+  height: 46%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.relic-caption {
+  width: min(48rem, 100%);
+  min-height: 5.6rem;
+}
+
+.relic-caption .kicker {
+  margin: 0 0 0.15rem;
   color: var(--ochre);
 }
 
-.level-card.relic.missing {
-  border-color: rgba(232, 207, 164, 0.16);
-  background: rgba(18, 12, 9, 0.25);
+.relic-caption h3 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 3.2vw, 2.2rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--sand-bright);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.level-card.relic.missing h3 {
-  color: rgba(232, 207, 164, 0.45);
+.relic-caption.missing h3 {
+  color: rgba(232, 207, 164, 0.5);
 }
 
-.panel[data-screen="relic-note"] {
-  width: min(42rem, 100%);
+.relic-caption .blurb {
+  margin: 0.3rem auto 0;
+  max-width: 46rem;
+  text-wrap: balance;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: rgba(240, 226, 200, 0.85);
 }
 
-.panel[data-screen="relic-note"] .menu-list {
-  margin: 0 0 1.1rem;
+.relic-tally {
+  display: grid;
+  justify-items: center;
+  gap: 0.1rem;
+  margin-top: 0.5rem;
+}
+
+.relic-count {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(240, 226, 200, 0.7);
+}
+
+/* One diamond a relic: filled once found, lit for the one on the stage. */
+.relic-pips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.relic-pips button {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.relic-pips button::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 1px solid rgba(232, 207, 164, 0.5);
+  transform: rotate(45deg);
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+
+.relic-pips li:not(.missing) button::before {
+  border-color: var(--ochre);
+  background: var(--ochre);
+}
+
+.relic-pips li.current button::before {
+  border-color: var(--light);
+  box-shadow: 0 0 9px rgba(57, 227, 208, 0.7);
+  transform: rotate(45deg) scale(1.4);
+}
+
+.panel.showcase > .menu-list {
+  justify-content: center;
+  margin-top: 0.6rem;
+}
+
+.panel.showcase > .menu-foot {
+  margin-top: 0.5rem;
+}
+
+/* Inspecting: the relic on the left, the account beside it. */
+.panel.showcase.inspect {
+  grid-template-rows: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 31rem);
+  gap: clamp(12px, 3vw, 40px);
+  text-align: left;
+}
+
+.relic-figure {
+  position: relative;
+  align-self: stretch;
+  justify-self: stretch;
+  touch-action: none;
+  cursor: grab;
+}
+
+.relic-hint {
+  position: absolute;
+  inset: auto 0 0;
+  margin: 0;
+  font-size: 0.82rem;
+  text-align: center;
+  color: rgba(232, 207, 164, 0.62);
+  pointer-events: none;
+}
+
+.relic-note {
+  align-self: center;
+  max-height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: clamp(18px, 2.6vw, 30px);
+  border: 1px solid rgba(232, 207, 164, 0.14);
+  border-radius: 6px;
+  background: rgba(16, 11, 8, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.relic-note .kicker {
+  color: var(--ochre);
+}
+
+.relic-note .panel-title {
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
 }
 
 #relic-note-text p.blurb {
+  margin: 0 0 0.8rem;
   font-size: 1rem;
   line-height: 1.65;
+  color: rgba(240, 226, 200, 0.88);
+}
+
+/* Back stays in reach at the foot of a long account. */
+.relic-note > nav {
+  position: sticky;
+  bottom: calc(-1 * clamp(18px, 2.6vw, 30px));
+  margin: 0.4rem 0 calc(-1 * clamp(18px, 2.6vw, 30px));
+  padding: 0.6rem 0 clamp(18px, 2.6vw, 30px);
+  background: linear-gradient(rgba(16, 11, 8, 0), rgb(16, 11, 8) 0.6rem);
+}
+
+@media (orientation: portrait), (max-width: 720px) {
+  .panel.showcase.inspect {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(9rem, 36%) minmax(0, 1fr);
+  }
+
+  .relic-note {
+    align-self: stretch;
+  }
+
+  .relic-focus .turn {
+    width: 3rem;
+    height: 3rem;
+  }
 }
 
 /* --- settings and controls ------------------------------------------------------------ */

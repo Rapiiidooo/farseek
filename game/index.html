@@ -482,28 +482,70 @@
         </nav>
       </div>
 
-      <div class="panel wide" data-screen="relics" hidden>
-        <p class="kicker">Relics</p>
-        <h2 class="panel-title">What they left behind</h2>
-        <p class="relic-count" id="relic-count"></p>
-        <div class="levels" id="relic-list"></div>
+      <!-- The relics turn on a stage drawn by relic-showcase.js behind these screens. -->
+      <div class="panel showcase" data-screen="relics" hidden>
+        <div class="relic-stage" id="relic-stage"></div>
+        <header class="showcase-head">
+          <p class="kicker">Relics</p>
+          <h2 class="panel-title">What they left behind</h2>
+        </header>
+        <div class="relic-focus" id="relic-focus">
+          <button
+            type="button"
+            class="turn"
+            data-turn="-1"
+            aria-label="Previous relic"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.5 5.5 8 12l6.5 6.5" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="turn"
+            data-turn="1"
+            aria-label="Next relic"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9.5 5.5 16 12l-6.5 6.5" />
+            </svg>
+          </button>
+        </div>
+        <section class="relic-caption" aria-live="polite">
+          <p class="kicker" id="relic-world"></p>
+          <h3 id="relic-name"></h3>
+          <p class="blurb" id="relic-line"></p>
+        </section>
+        <div class="relic-tally">
+          <ol class="relic-pips" id="relic-list"></ol>
+          <p class="relic-count" id="relic-count"></p>
+        </div>
         <nav class="menu-list compact">
+          <button type="button" data-action="inspect-relic" id="relic-read">
+            Inspect
+          </button>
           <button type="button" data-action="back">Back</button>
         </nav>
+        <p class="menu-foot"><span data-help="relics"></span></p>
       </div>
 
       <div
-        class="panel wide"
+        class="panel showcase inspect"
         data-screen="relic-note"
         aria-labelledby="relic-note-title"
         hidden
       >
-        <p class="kicker" id="relic-note-world"></p>
-        <h2 class="panel-title" id="relic-note-title"></h2>
-        <nav class="menu-list compact">
-          <button type="button" data-action="back">Back</button>
-        </nav>
-        <article class="level-card relic" id="relic-note-text"></article>
+        <div class="relic-figure" id="relic-figure">
+          <p class="relic-hint">Drag to turn it over</p>
+        </div>
+        <article class="relic-note">
+          <p class="kicker" id="relic-note-world"></p>
+          <h2 class="panel-title" id="relic-note-title"></h2>
+          <div id="relic-note-text"></div>
+          <nav class="menu-list compact">
+            <button type="button" data-action="back">Back</button>
+          </nav>
+        </article>
       </div>
 
       <div class="panel wide" data-screen="settings" hidden>
