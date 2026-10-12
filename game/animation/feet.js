@@ -764,8 +764,11 @@ export const feet = {
       const hip = leg.upper.getWorldPosition(new THREE.Vector3()),
         knee = leg.lower.getWorldPosition(new THREE.Vector3()),
         ankle = leg.foot.getWorldPosition(new THREE.Vector3());
+      // A little slack keeps the stride's knees soft; standing, she straightens all but 3 mm.
       const length =
-        hip.distanceTo(knee) + knee.distanceTo(ankle) - mix(0.012, 0.009, run);
+        hip.distanceTo(knee) +
+        knee.distanceTo(ankle) -
+        mix(mix(0.003, 0.012, moving), 0.009, run);
       const destination = at
         .clone()
         .sub(leg.palm.clone().applyQuaternion(rotation));

@@ -154,15 +154,15 @@ export function locomotion(pose, root, hero, dt, { turnRate, accel }) {
     ((this.weightSide || 1) * idle - (this.weight || 0)) *
       (1 - Math.exp(-dt / 0.8));
   const weight = this.weight;
-  root.sway += 0.045 * weight;
-  add(pose, "hips", 0, 0, -0.1 * weight);
-  add(pose, "spine", idle * breathe, 0, 0.065 * weight);
+  root.sway += 0.02 * weight;
+  add(pose, "hips", 0, 0, -0.035 * weight);
+  add(pose, "spine", idle * breathe, 0, 0.022 * weight);
   add(
     pose,
     "head",
     -idle * breathe,
     idle * Math.sin(t * 0.37) * 0.1,
-    -0.012 * weight,
+    -0.008 * weight,
   );
   add(pose, "leftUpperArm", idle * Math.sin(t * 1.1) * 0.016);
   add(pose, "rightUpperArm", idle * Math.sin(t * 1.1 + 0.5) * 0.016, 0, 0);
