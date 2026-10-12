@@ -16,6 +16,9 @@ import { RelayPull } from "./relay-pull.js";
 import { pistolCraft } from "./pistol-craft.js";
 
 const V = (x = 0, y = 0, z = 0) => new THREE.Vector3(x, y, z);
+// The spare magazines' pouches hang from the belt against the trousers' front, which stands at
+// z 0.08 in the hips' frame beside the buckle; this is their middle.
+const POUCH_Z = 0.1125;
 const AVAILABLE_STATES = new Set(["ground", "air"]);
 const ABILITIES = ["pull", "shield"];
 const fitted = new WeakMap();
@@ -236,7 +239,7 @@ export class Equipment {
       entry.fresh.name = `${entry.key} replacement magazine`;
       entry.belt = new THREE.Group();
       entry.belt.name = `${entry.key} belt magazine attachment`;
-      entry.belt.position.set(-side * 0.125, -0.009, 0.149);
+      entry.belt.position.set(-side * 0.125, -0.009, POUCH_Z + 0.004);
       this.joints.hips.add(entry.belt);
       entry.fresh.position.set(0, 0, 0);
       entry.fresh.scale.setScalar(1 / entry.belt.getWorldScale(V()).x);
@@ -260,17 +263,18 @@ export class Equipment {
     });
     const detail = detailBatch(THREE, pouches);
     for (const side of [-1, 1]) {
-      const x = side * 0.125;
-      detail.box(canvas, [0.038, 0.083, 0.055], [x, -0.025, 0.145]);
-      detail.box(canvas, [0.039, 0.026, 0.006], [x, 0.005, 0.171]);
-      detail.bolt(leather, 0.003, [x, 0.003, 0.175], [0, 0, 1]);
+      const x = side * 0.125,
+        z = POUCH_Z;
+      detail.box(canvas, [0.038, 0.083, 0.055], [x, -0.025, z]);
+      detail.box(canvas, [0.039, 0.026, 0.006], [x, 0.005, z + 0.026]);
+      detail.bolt(leather, 0.003, [x, 0.003, z + 0.03], [0, 0, 1]);
       for (let row = 0; row < 9; row++)
         for (const edge of [-1, 1])
           detail.line(
             thread,
             [
-              [x + edge * 0.015, -0.06 + row * 0.008, 0.17],
-              [x + edge * 0.015, -0.057 + row * 0.008, 0.17],
+              [x + edge * 0.015, -0.06 + row * 0.008, z + 0.025],
+              [x + edge * 0.015, -0.057 + row * 0.008, z + 0.025],
             ],
             0.0004,
           );

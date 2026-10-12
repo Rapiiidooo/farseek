@@ -1,0 +1,126 @@
+{
+ "boxes": {
+  "explorerSatchel / warriorHipPouch": {
+   "min": [
+    -0.083,
+    -0.078,
+    -0.131
+   ],
+   "max": [
+    0.003,
+    0.03,
+    -0.099
+   ]
+  },
+  "explorerSatchel / warriorHipPouchLid": {
+   "min": [
+    -0.075,
+    -0.01,
+    -0.138
+   ],
+   "max": [
+    -0.005,
+    0.018,
+    -0.132
+   ]
+  },
+  "hips / warriorRearPouch": {
+   "min": [
+    0.046,
+    -0.019,
+    -0.147
+   ],
+   "max": [
+    0.144,
+    0.049,
+    -0.079
+   ]
+  },
+  "left replacement magazine / ": {
+   "min": [
+    0.122,
+    0.037,
+    0.117
+   ],
+   "max": [
+    0.128,
+    0.04,
+    0.136
+   ]
+  },
+  "right replacement magazine / ": {
+   "min": [
+    -0.128,
+    0.037,
+    0.117
+   ],
+   "max": [
+    -0.122,
+    0.04,
+    0.136
+   ]
+  },
+  "Spare magazine belt pouches / ": {
+   "min": [
+    -0.142,
+    -0.068,
+    0.137
+   ],
+   "max": [
+    0.142,
+    0.015,
+    0.138
+   ]
+  },
+  "leftFieldTrousers (skinned)": {
+   "min": [
+    -0.004,
+    -0.739,
+    -0.137
+   ],
+   "max": [
+    0.229,
+    0.084,
+    0.108
+   ]
+  },
+  "rightFieldTrousers (skinned)": {
+   "min": [
+    -0.22,
+    -0.741,
+    -0.137
+   ],
+   "max": [
+    0.024,
+    0.083,
+    0.106
+   ]
+  }
+ },
+ "trouserFront": {
+  "x-0.125 y-0.06": {
+   "z": 0.085,
+   "mesh": "rightFieldTrousers"
+  },
+  "x-0.125 y-0.025": {
+   "z": 0.081,
+   "mesh": "rightFieldTrousers"
+  },
+  "x-0.125 y0.005": {
+   "z": 0.08,
+   "mesh": "rightFieldTrousers"
+  },
+  "x0.125 y-0.06": {
+   "z": 0.085,
+   "mesh": "leftFieldTrousers"
+  },
+  "x0.125 y-0.025": {
+   "z": 0.081,
+   "mesh": "leftFieldTrousers"
+  },
+  "x0.125 y0.005": {
+   "z": 0.08,
+   "mesh": "leftFieldTrousers"
+  }
+ }
+}
