@@ -1,6 +1,12 @@
-Farseek title and loading art
+Farseek title, loading and levels art
 
 logo.webp, worlds-landscape.webp and worlds-portrait.webp are composed in the browser from the
 game's own generated textures (see ../textures/NOTICE.txt) with SVG shapes, gradients and
 filters, then rendered and encoded with cwebp. The pages that draw them and the renders are in
 receipts/verification-art-direction/ in the source repository.
+
+levels/<world>.webp, one per world on the levels screen, are frames of the game itself: each
+world started in the browser with the camera held at a chosen viewpoint and the interface
+hidden, captured at 1920 by 1080, then scaled to 960 by 540 and encoded with cwebp.
+scripts/level-shots.mjs in the source repository lists every candidate viewpoint and the one
+chosen; the candidates' frames are in receipts/verification-level-select/.
