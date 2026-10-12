@@ -2,7 +2,8 @@
 // and the rest stack behind it for Back. Keyboard, mouse and gamepad all drive the same
 // virtual focus: up and down move it, left and right change a setting or move along a row of
 // key bindings, Enter or A activates, Escape or B goes back. The movement keys, as the player
-// has bound them, move the focus as the arrows do.
+// has bound them, move the focus as the arrows do. A screen that shows one thing at a time
+// turns to the next with left and right through `onTurn(screen, direction)`.
 
 const NAV_KEYS = new Set([
   "ArrowUp",
@@ -208,6 +209,7 @@ export class Menu {
       right = code === "ArrowRight" || code === "KeyD";
     if ((up || down || left || right) && this.grid(up, down, left, right))
       return;
+    if ((left || right) && this.onTurn?.(this.screen, left ? -1 : 1)) return;
     if (up) this.focus(this.index - 1);
     else if (down) this.focus(this.index + 1);
     else if (left) this.adjust(-1);
