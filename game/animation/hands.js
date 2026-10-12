@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { solveArm, handTurn, LIP } from "./ik.js";
-import { smooth, mix, wrap, noise } from "./math.js";
+import { smooth, mix, wrap } from "./math.js";
 
 export const hands = {
   arm(side, s) {
@@ -300,49 +300,6 @@ export const hands = {
             Math.min(1, weight),
           );
         }
-      }
-    }
-  },
-
-  showHands(hero, dt) {
-    const H = this.model.userData.hands;
-    if (!H) return;
-    const throwing =
-      !hero.equipment && hero.throwT !== undefined && hero.throwT < 0.5;
-    const pistols =
-      hero.equipment === "pistols" &&
-      hero.weaponActive &&
-      !hero.swimming &&
-      ["ground", "air"].includes(hero.state);
-    const closed = {
-      left: pistols || (this.ik.left?.weight ?? 0) > 0.35,
-      right:
-        pistols ||
-        (this.ik.right?.weight ?? 0) > 0.35 ||
-        !!hero.holding ||
-        throwing,
-    };
-    if (hero.weaponReload) closed.left = closed.right = true;
-    for (const side of ["left", "right"]) {
-      const open = H[side + "Open"],
-        grip = H[side + "Grip"];
-      if (!open || !grip) continue;
-      open.visible = !closed[side];
-      grip.visible = closed[side];
-      // Running hands close loosely; a glide on ice spreads them for balance.
-      const run = smooth(1.8, 5, this.gaitSpeed);
-      const target = hero.swimming
-        ? 0
-        : run *
-          (0.5 + 0.08 * noise(this.time * 0.4, side === "left" ? 61 : 67)) *
-          (1 - this.slide);
-      this.handCurl[side] = closed[side]
-        ? 1
-        : mix(this.handCurl[side], target, 1 - Math.exp(-dt * 10));
-      for (const mesh of open.children) {
-        const index = mesh.morphTargetDictionary?.relax;
-        if (index !== undefined)
-          mesh.morphTargetInfluences[index] = this.handCurl[side];
       }
     }
   },

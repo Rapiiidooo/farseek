@@ -67,6 +67,7 @@ export function locomotion(pose, root, hero, dt, { turnRate, accel }) {
       vary * 0.35 * noise(k * 0.33 + clock * 0.05, seed + 2);
     const cycle = sign * Math.cos(theta);
     const forward = Math.max(0, -cycle);
+    this.armSwing[side] = cycle * moving;
     const trail = -sign * Math.cos(theta - 0.5);
     set(
       pose,

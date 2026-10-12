@@ -5,6 +5,7 @@ import { POSES } from "./poses.js";
 import { overlays } from "./overlays.js";
 import { feet } from "./feet.js";
 import { hands } from "./hands.js";
+import { fingers } from "./fingers.js";
 import { face } from "./face.js";
 import { secondary } from "./secondary.js";
 import { reloadArms, reloadBody } from "./reload.js";
@@ -112,6 +113,7 @@ export class HeroAnimator {
     this.weaponPitch = new Spring();
     this.weaponAimDirection = new THREE.Vector3(0, 0, 1);
     this.handCurl = { left: 0, right: 0 };
+    this.armSwing = { left: 0, right: 0 };
     this.articulatedFeet =
       this.legs.length === 2 && this.legs.every((leg) => leg.foot);
     this.pelvisDrop = new Spring();
@@ -126,6 +128,7 @@ export class HeroAnimator {
     this.rollContact = new THREE.Vector3();
     this.rollPivot = new THREE.Vector3();
     this.prepareWall();
+    this.prepareFingers();
   }
 
   controls(handles) {
@@ -361,7 +364,7 @@ export class HeroAnimator {
     this.swimArms(dt, hero);
     this.weaponArms(dt, hero);
     reloadArms.call(this, hero);
-    this.showHands(hero, dt);
+    this.showHands(hero, dt, reduced);
     this.updateFace(dt, hero, reduced);
     this.updateSecondary(dt, hero, reduced);
     this.groundRoll(hero);
@@ -443,5 +446,13 @@ export class HeroAnimator {
   }
 }
 
-Object.assign(HeroAnimator.prototype, feet, hands, face, secondary, wall);
+Object.assign(
+  HeroAnimator.prototype,
+  feet,
+  hands,
+  fingers,
+  face,
+  secondary,
+  wall,
+);
 POSES.wall = wallPose;
