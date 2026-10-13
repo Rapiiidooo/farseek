@@ -225,6 +225,9 @@ try {
     g.chapter === "isles" && g.where === "three",
     `${g.chapter} in ${g.where}`,
   );
+  // Served, that start becomes the continue point; locally it opens a lab session that saves
+  // nothing. Seeding the checkpoint again checks Continue from the same place on both.
+  await page.evaluate(() => sessionStorage.removeItem("seeded"));
   await page.goto(url, { waitUntil: "load" });
   await page.waitForFunction(() => window.__READY__ === true, {
     timeout: 90000,
