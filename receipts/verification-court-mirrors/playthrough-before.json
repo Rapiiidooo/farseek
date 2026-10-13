@@ -1,0 +1,2188 @@
+{
+  "log": [
+    "start 19.4,39.0 feet 8",
+    "jumped the gap: 4.84,37.22 feet 8",
+    "hanging from the edge, feet 6.14",
+    "caught the crack at 4.87,32.62",
+    "climbed up at 9.43,31.75",
+    "reached the court floor",
+    "pulled the block off the beam",
+    "lit: left",
+    "lit: left,right",
+    "on the island 17.35,30.13",
+    "lit: left,top,right",
+    "crossed into the second world at 0.05,-1.96",
+    "briefed by the clerk",
+    "took the disc; the Wardens are coming",
+    "plates stamped with 1 throws and 4 dodges, health 4",
+    "lamp lit, barrier up",
+    "on the isles at -1.00,2.43",
+    "jumped the first two gaps",
+    "caught the first rope",
+    "swung across to the isle of the first pylon",
+    "woke the first pylon",
+    "crossed the first bridge",
+    "woke the pylon across the gap",
+    "crossed the second bridge",
+    "woke both pylons of the pair",
+    "crossed both bridges of the pair",
+    "aboard the drifting isle",
+    "off the ferry onto the far isle",
+    "crossed the crumbling stones: fall, fall, tremble",
+    "on the small isle, still glowing",
+    "woke the far pylon of the relay",
+    "caught the relay rope",
+    "swung onto the far bridge of light",
+    "crossed to Mira's camp",
+    "took Mira's pistols from her case",
+    "read Mira's journal; her ring opens",
+    "through Mira's ring into the frozen reach",
+    "in the frozen reach at 0.00,-2.53",
+    "slid and jumped the crevasse: -0.12,-47.22",
+    "took Mira's ice axes",
+    "let go of the fall at 0.13,-49.15",
+    "caught the fall from a jump, feet 0.88",
+    "climbed the frozen fall with Mira's axes",
+    "pushed the block east to 3, -61",
+    "pushed the block north to 3, -73",
+    "climbed out of the pond by the block",
+    "crossed the lynx's plateau: 0 rolls, 0 pounces landed",
+    "ran the thin ice: gone, gone, sink, crack",
+    "rode the floes",
+    "on the island at 0.85,-134.87",
+    "sidestepped the ice falling down the shelf's fall",
+    "leapt to the upper ice, feet 3.58",
+    "on the prism's shelf at -9.34,-145.10",
+    "freed the third glyph from the ice",
+    "the great ring opened onto the forest",
+    "shader programs at the first start 207, after world preparation 982, at the forest 982",
+    "completed levels 1 through 4 and entered playable level 5",
+    "errors: none"
+  ],
+  "last": {
+    "time": 353.03629999999066,
+    "mode": "play",
+    "where": "five",
+    "chapter": "forest",
+    "paused": false,
+    "menu": null,
+    "pos": [
+      0.11719307327118356,
+      -2.936999267055442
+    ],
+    "feet": 0.320000011920929,
+    "state": "ground",
+    "swimming": false,
+    "climb": {
+      "axes": true,
+      "wall": null,
+      "leaping": false
+    },
+    "lab": false,
+    "equipment": {
+      "selected": "orb",
+      "pistolsUnlocked": true,
+      "orbUnlocked": true,
+      "orbAvailable": true,
+      "ammo": 32,
+      "capacity": 32,
+      "reloading": false,
+      "shots": 0,
+      "hits": 0,
+      "lastHit": null,
+      "reloadProgress": 0,
+      "droppedMagazines": 0,
+      "landedMagazines": 0,
+      "sight": {
+        "ready": false,
+        "blocked": false,
+        "target": false,
+        "bore": [
+          0.03293662700927696,
+          -0.43705652594937894,
+          0.9672877441045103
+        ],
+        "aiming": false,
+        "spread": 8,
+        "reload": 0
+      },
+      "briefing": false,
+      "briefed": true,
+      "abilities": [
+        "pull"
+      ],
+      "shield": {
+        "active": false,
+        "ready": true,
+        "left": 0,
+        "recharge": 0,
+        "raised": 0,
+        "deflected": 0,
+        "yaw": 0
+      },
+      "pull": {
+        "active": false,
+        "held": 0,
+        "cooldown": 0,
+        "pulls": 0,
+        "target": null,
+        "aim": null
+      },
+      "craft": {
+        "steady": 0,
+        "reload": 0,
+        "trigger": 0,
+        "grouping": 0,
+        "heavy": 0,
+        "learned": []
+      },
+      "reloadRate": 1,
+      "shotInterval": 0.22,
+      "aim": {
+        "kind": "wall",
+        "distance": 12.099999999999996,
+        "origin": [
+          0.1826614538958996,
+          3.4175916438819423,
+          2.4445107867322604
+        ],
+        "direction": [
+          -0.011690787011622522,
+          -0.27635564856411376,
+          -0.9609843292196585
+        ]
+      }
+    },
+    "inventoryOpen": false,
+    "fps": 60,
+    "speed": 1.6820380127493328e-24,
+    "pace": "run",
+    "score": 3,
+    "over": false,
+    "draws": 957,
+    "tris": 5033915,
+    "programs": 982,
+    "programsAtLoad": 982,
+    "programsAtStart": 207,
+    "camYaw": -3.1294278242882574,
+    "relics": [],
+    "relicSpots": [
+      {
+        "id": "papyrus",
+        "where": "court",
+        "at": [
+          26.25,
+          0,
+          16.35
+        ]
+      },
+      {
+        "id": "radio",
+        "where": "two",
+        "at": [
+          -10.3,
+          0,
+          -36.4
+        ]
+      },
+      {
+        "id": "page",
+        "where": "three",
+        "at": [
+          14.7,
+          6.09,
+          -102.93
+        ]
+      },
+      {
+        "id": "scarf",
+        "where": "four",
+        "at": [
+          -6.4,
+          3.8,
+          -78.6
+        ]
+      },
+      {
+        "id": "lantern",
+        "where": "four",
+        "at": [
+          -10.4,
+          0.6,
+          -160.6
+        ]
+      },
+      {
+        "id": "grove-map",
+        "where": "five",
+        "at": [
+          9,
+          7.96,
+          -117
+        ]
+      },
+      {
+        "id": "pressure-log",
+        "where": "six",
+        "at": [
+          -4.7,
+          28,
+          -41.2
+        ]
+      }
+    ],
+    "cinematic": false,
+    "beat": null,
+    "voice": {
+      "active": false,
+      "level": null,
+      "playing": [],
+      "lines": [],
+      "clips": {
+        "radio-1": "ready",
+        "radio-2": "ready",
+        "radio-3": "ready",
+        "radio-4": "ready",
+        "camp-1": "ready",
+        "camp-2": "ready",
+        "camp-3": "ready",
+        "ice-1": "ready",
+        "ice-2": "ready",
+        "castle-1": "ready",
+        "castle-2": "ready",
+        "castle-3": "ready"
+      }
+    },
+    "audio": {
+      "muted": false,
+      "gain": 0.6
+    },
+    "crossing": false,
+    "objective": "Wake the waves seal",
+    "mirrors": [
+      {
+        "id": "m1",
+        "yaw": -0.1608752771983212,
+        "locked": "m2"
+      },
+      {
+        "id": "m2",
+        "yaw": -1.2402747423695533,
+        "locked": "m3"
+      },
+      {
+        "id": "m3",
+        "yaw": 2.9200720500117603,
+        "locked": "top"
+      }
+    ],
+    "lit": [
+      "left",
+      "top",
+      "right"
+    ],
+    "gateOpen": true,
+    "health": 4,
+    "checkpoint": "open",
+    "stampReview": {
+      "active": false,
+      "ready": false,
+      "claimed": false,
+      "stamped": [],
+      "guard": null,
+      "at": [
+        -9.4,
+        -12.8
+      ],
+      "radius": 0.533
+    },
+    "plates": [
+      {
+        "glyph": "crescent",
+        "stamped": true
+      },
+      {
+        "glyph": "waves",
+        "stamped": true
+      },
+      {
+        "glyph": "disc",
+        "stamped": true
+      }
+    ],
+    "disc": {
+      "state": "stowed",
+      "charged": false,
+      "activations": 2,
+      "cooldown": 0,
+      "kind": "orb"
+    },
+    "guards": [
+      {
+        "state": "patrol",
+        "glyph": "crescent",
+        "hp": 3,
+        "hostile": false,
+        "pos": [
+          7.6561068056973305,
+          -22.073692707239445
+        ],
+        "target": null
+      },
+      {
+        "state": "patrol",
+        "glyph": "waves",
+        "hp": 3,
+        "hostile": false,
+        "pos": [
+          -9.363486771717096,
+          -17.840413327451788
+        ],
+        "target": null
+      },
+      {
+        "state": "patrol",
+        "glyph": "disc",
+        "hp": 3,
+        "hostile": false,
+        "pos": [
+          2.5446676848219716,
+          -25.13122072501968
+        ],
+        "target": null
+      }
+    ],
+    "exitOpen": true,
+    "isles": {
+      "step": "through",
+      "reached": 15,
+      "on": "camp",
+      "read": true,
+      "disc": {
+        "state": "stowed",
+        "charged": false,
+        "activations": 9,
+        "cooldown": 0,
+        "kind": "orb"
+      },
+      "isles": [
+        {
+          "id": "arrival",
+          "at": [
+            -0.28,
+            3.45,
+            0.01
+          ]
+        },
+        {
+          "id": "step1",
+          "at": [
+            1.42,
+            -9.46,
+            0.4
+          ]
+        },
+        {
+          "id": "step2",
+          "at": [
+            3.42,
+            -16.57,
+            1
+          ]
+        },
+        {
+          "id": "well",
+          "at": [
+            3.98,
+            -30.63,
+            1.61
+          ]
+        },
+        {
+          "id": "gap",
+          "at": [
+            6.35,
+            -51.8,
+            2.61
+          ]
+        },
+        {
+          "id": "pair",
+          "at": [
+            10.27,
+            -71.18,
+            3.81
+          ]
+        },
+        {
+          "id": "rock",
+          "at": [
+            11.9,
+            -86.37,
+            5
+          ]
+        },
+        {
+          "id": "ledge",
+          "at": [
+            11.6,
+            -103.53,
+            6.21
+          ]
+        },
+        {
+          "id": "ferry",
+          "at": [
+            11.8,
+            -114.53,
+            6.4
+          ]
+        },
+        {
+          "id": "far",
+          "at": [
+            11.68,
+            -133.04,
+            6.81
+          ]
+        },
+        {
+          "id": "stone1",
+          "at": [
+            10.37,
+            -141.93,
+            7.1
+          ]
+        },
+        {
+          "id": "stone2",
+          "at": [
+            13.71,
+            -147.18,
+            7.4
+          ]
+        },
+        {
+          "id": "stone3",
+          "at": [
+            10.49,
+            -152.13,
+            7.7
+          ]
+        },
+        {
+          "id": "landing",
+          "at": [
+            11.64,
+            -161.73,
+            8.01
+          ]
+        },
+        {
+          "id": "midway",
+          "at": [
+            12.16,
+            -180.01,
+            8.6
+          ]
+        },
+        {
+          "id": "camp",
+          "at": [
+            11.36,
+            -202.48,
+            9.21
+          ]
+        }
+      ],
+      "wells": [
+        [
+          1.58,
+          -31.83,
+          3.14
+        ],
+        [
+          3.75,
+          -54,
+          4.07
+        ],
+        [
+          7.47,
+          -71.98,
+          5.32
+        ],
+        [
+          9.04,
+          -160.53,
+          9.53
+        ]
+      ],
+      "pylons": [
+        {
+          "id": "first",
+          "lens": [
+            5,
+            -33.83,
+            3.68
+          ],
+          "emit": [
+            5,
+            -34.88,
+            1.37
+          ],
+          "to": -46.947138363802594,
+          "on": false,
+          "left": 0
+        },
+        {
+          "id": "across",
+          "lens": [
+            8.6,
+            -68.08,
+            5.91
+          ],
+          "emit": [
+            8.6,
+            -67.03,
+            3.6
+          ],
+          "to": -56.547138363801906,
+          "on": false,
+          "left": 0
+        },
+        {
+          "id": "twinA",
+          "lens": [
+            12,
+            -73.87,
+            5.91
+          ],
+          "emit": [
+            12,
+            -74.93,
+            3.6
+          ],
+          "to": -85.17054138010359,
+          "on": false,
+          "left": 0
+        },
+        {
+          "id": "twinB",
+          "lens": [
+            12,
+            -87.12,
+            7.27
+          ],
+          "emit": [
+            12,
+            -88.17,
+            4.96
+          ],
+          "to": -98.62728827269896,
+          "on": false,
+          "left": 0
+        },
+        {
+          "id": "relay1",
+          "lens": [
+            12,
+            -165.78,
+            10.07
+          ],
+          "emit": [
+            12,
+            -166.83,
+            7.76
+          ],
+          "to": -178.61269364751283,
+          "on": false,
+          "left": 0
+        },
+        {
+          "id": "relay2",
+          "lens": [
+            12,
+            -194.54,
+            10.97
+          ],
+          "emit": [
+            12,
+            -193.48,
+            8.66
+          ],
+          "to": -188.66269364751398,
+          "on": false,
+          "left": 0
+        }
+      ],
+      "note": [
+        15.18,
+        -199.85,
+        10
+      ],
+      "ring": {
+        "x": 11.36,
+        "z": -206.28,
+        "phase": "open"
+      },
+      "ferry": {
+        "z": -114.53,
+        "a": -114.53,
+        "b": -123.44
+      },
+      "stones": [
+        {
+          "id": "stone1",
+          "phase": "still"
+        },
+        {
+          "id": "stone2",
+          "phase": "still"
+        },
+        {
+          "id": "stone3",
+          "phase": "still"
+        }
+      ],
+      "swings": [
+        {
+          "id": "first",
+          "on": "step2",
+          "toward": "well",
+          "pivot": [
+            3.64,
+            7.25,
+            -22.18
+          ],
+          "heading": [
+            0.04,
+            -0.999
+          ],
+          "grip": [
+            2.8480000000000008,
+            5.0280000000000005
+          ],
+          "held": false,
+          "angle": 0,
+          "mark": [
+            3.64,
+            3.8,
+            -22.18
+          ]
+        },
+        {
+          "id": "relay",
+          "on": "midway",
+          "toward": "camp",
+          "pivot": [
+            11.98,
+            14.87,
+            -185.13
+          ],
+          "heading": [
+            -0.036,
+            -0.999
+          ],
+          "grip": [
+            2.8480000000000008,
+            5.0280000000000005
+          ],
+          "held": false,
+          "angle": 0.002,
+          "mark": [
+            11.98,
+            11.43,
+            -185.13
+          ]
+        }
+      ],
+      "pendulum": null,
+      "edges": [
+        [
+          0.79,
+          -4.64
+        ],
+        [
+          2.01,
+          -11.57
+        ],
+        [
+          3.54,
+          -19.53
+        ],
+        [
+          4.56,
+          -35.76
+        ],
+        [
+          7.63,
+          -58.12
+        ],
+        [
+          10.79,
+          -76.04
+        ],
+        [
+          11.86,
+          -89
+        ],
+        [
+          11.72,
+          -110.13
+        ],
+        [
+          11.78,
+          -117.82
+        ],
+        [
+          10.93,
+          -138.12
+        ],
+        [
+          11.34,
+          -143.45
+        ],
+        [
+          12.66,
+          -148.79
+        ],
+        [
+          10.73,
+          -154.11
+        ],
+        [
+          11.81,
+          -167.67
+        ],
+        [
+          12.07,
+          -182.48
+        ]
+      ]
+    },
+    "frozen": {
+      "reached": 4,
+      "section": "freed",
+      "block": {
+        "x": 3,
+        "z": -73,
+        "state": "rest"
+      },
+      "floes": [
+        2.03,
+        -2.03
+      ],
+      "thin": [
+        "still",
+        "still",
+        "still",
+        "still"
+      ],
+      "fallingIce": [
+        {
+          "at": [
+            0.4,
+            0,
+            -25.8461
+          ],
+          "source": [
+            0.4,
+            4.4,
+            -26
+          ],
+          "state": "idle",
+          "t": 102.31250000000857,
+          "bottom": 2.9275,
+          "radius": 1.2349999999999999,
+          "falls": 1,
+          "contacts": 0,
+          "warning": false,
+          "wall": false
+        },
+        {
+          "at": [
+            -0.4,
+            0,
+            -36.338
+          ],
+          "source": [
+            -0.4,
+            4.4,
+            -36.5
+          ],
+          "state": "idle",
+          "t": 100.4292000000081,
+          "bottom": 2.8500000000000005,
+          "radius": 1.3,
+          "falls": 1,
+          "contacts": 0,
+          "warning": false,
+          "wall": false
+        },
+        {
+          "at": [
+            -8.6,
+            0.6,
+            -143.4609
+          ],
+          "source": [
+            -8.6,
+            5.5,
+            -143.55
+          ],
+          "state": "idle",
+          "t": 1.7999000000000245,
+          "bottom": 4.6475,
+          "radius": 0.7150000000000001,
+          "falls": 1,
+          "contacts": 0,
+          "warning": false,
+          "wall": true
+        }
+      ],
+      "broken": 3,
+      "freed": true,
+      "ring": "open",
+      "disc": {
+        "state": "stowed",
+        "charged": false,
+        "activations": 4,
+        "cooldown": 0,
+        "kind": "orb"
+      },
+      "hunt": {
+        "met": true,
+        "engaged": false,
+        "health": 4,
+        "strikes": 0,
+        "threat": false,
+        "quiet": 0,
+        "covers": [
+          [
+            -4.6,
+            -84.6,
+            0.89
+          ],
+          [
+            5.7,
+            -88.6,
+            0.78
+          ],
+          [
+            8.2,
+            -84,
+            0.48
+          ],
+          [
+            -8,
+            -80,
+            0.55
+          ]
+        ],
+        "lynx": {
+          "state": "lair",
+          "since": 62.95,
+          "hp": 3,
+          "at": [
+            -5.62,
+            3.8,
+            -86.1
+          ],
+          "hidden": true,
+          "windup": 0,
+          "crouch": 0,
+          "leapTo": null,
+          "dazed": false,
+          "wounds": 0,
+          "fromCover": 0
+        }
+      }
+    },
+    "forest": {
+      "phase": "entrance",
+      "health": 4,
+      "checkpoint": -1,
+      "recoveries": 0,
+      "ready": false,
+      "locked": [
+        false,
+        false,
+        false
+      ],
+      "sequence": 0,
+      "refuges": {
+        "active": -1,
+        "visited": [],
+        "points": [
+          {
+            "at": [
+              3.1,
+              0.11893534958362541,
+              -12
+            ],
+            "rest": [
+              0,
+              -12
+            ]
+          },
+          {
+            "at": [
+              11.1,
+              2.1067685365676883,
+              -64
+            ],
+            "rest": [
+              8,
+              -64
+            ]
+          },
+          {
+            "at": [
+              3.1,
+              7.526593208312988,
+              -115
+            ],
+            "rest": [
+              0,
+              -115
+            ]
+          },
+          {
+            "at": [
+              11.1,
+              13.044784832000733,
+              -153
+            ],
+            "rest": [
+              8,
+              -153
+            ]
+          },
+          {
+            "at": [
+              -20.9,
+              25.71071262359619,
+              -207
+            ],
+            "rest": [
+              -24,
+              -207
+            ]
+          },
+          {
+            "at": [
+              -30.9,
+              34.18396110534668,
+              -254
+            ],
+            "rest": [
+              -34,
+              -254
+            ]
+          }
+        ]
+      },
+      "trail": [
+        [
+          0,
+          -2,
+          0.820000011920929
+        ],
+        [
+          0,
+          -12,
+          -0.1356528401374817
+        ],
+        [
+          0,
+          -40,
+          0.8608195781707764
+        ],
+        [
+          7,
+          -58,
+          1.7293164730072021
+        ],
+        [
+          0,
+          -77,
+          3.0798370838165283
+        ],
+        [
+          0,
+          -106,
+          5.996670246124268
+        ],
+        [
+          8,
+          -126,
+          8.807316780090332
+        ],
+        [
+          10,
+          -146,
+          11.982402801513672
+        ],
+        [
+          -8,
+          -169,
+          14.278512001037598
+        ],
+        [
+          -23,
+          -199,
+          22.87862777709961
+        ],
+        [
+          -32,
+          -228,
+          30.599857330322266
+        ],
+        [
+          -34.5,
+          -256,
+          34.47571678161621
+        ],
+        [
+          -34.5,
+          -273,
+          35.4547119140625
+        ]
+      ],
+      "wells": [
+        [
+          -6,
+          2.1342393064498903,
+          -43
+        ],
+        [
+          1,
+          9.99924301147461,
+          -126
+        ],
+        [
+          -29,
+          32.90993522644043,
+          -231
+        ]
+      ],
+      "pylons": [
+        {
+          "at": [
+            8,
+            4.078105545043945,
+            -58.275
+          ],
+          "lit": false
+        },
+        {
+          "at": [
+            10,
+            14.332402801513672,
+            -146.275
+          ],
+          "lit": false
+        }
+      ],
+      "relays": [
+        {
+          "glyph": "waves",
+          "at": [
+            -39,
+            35.10675582885742,
+            -243.275
+          ]
+        },
+        {
+          "glyph": "spiral",
+          "at": [
+            -31,
+            35.93942413330078,
+            -248.275
+          ]
+        },
+        {
+          "glyph": "crescent",
+          "at": [
+            -22.3,
+            41.2342561340332,
+            -248.975
+          ]
+        }
+      ],
+      "guards": [
+        {
+          "at": [
+            6.624340579780109,
+            9.782777040467714,
+            -133.81217028988993
+          ],
+          "hp": 3,
+          "defeated": false,
+          "state": "patrol",
+          "style": "charging-boar",
+          "kind": "boar",
+          "attackRadius": 0.63,
+          "lane": null,
+          "attackIndex": 0,
+          "attacksRemaining": 0,
+          "recoveryKind": "breath",
+          "counterWindow": false
+        },
+        {
+          "at": [
+            13.624340579780126,
+            10.55877862191617,
+            -139.81217028988993
+          ],
+          "hp": 3,
+          "defeated": false,
+          "state": "patrol",
+          "style": "bristle-boar",
+          "kind": "boar",
+          "attackRadius": 0.72,
+          "lane": null,
+          "attackIndex": 0,
+          "attacksRemaining": 0,
+          "recoveryKind": "breath",
+          "counterWindow": false
+        },
+        {
+          "at": [
+            -28.375659420219908,
+            29.27550049090525,
+            -220.81217028988993
+          ],
+          "hp": 3,
+          "defeated": false,
+          "state": "patrol",
+          "style": "charging-boar",
+          "kind": "boar",
+          "attackRadius": 0.63,
+          "lane": null,
+          "attackIndex": 0,
+          "attacksRemaining": 0,
+          "recoveryKind": "breath",
+          "counterWindow": false
+        },
+        {
+          "at": [
+            -38.37565942021985,
+            30.510967821994317,
+            -228.81217028988993
+          ],
+          "hp": 6,
+          "defeated": false,
+          "state": "patrol",
+          "style": "elder-boar",
+          "kind": "boar",
+          "attackRadius": 0.9,
+          "lane": null,
+          "attackIndex": 0,
+          "attacksRemaining": 0,
+          "recoveryKind": "breath",
+          "counterWindow": false,
+          "boss": true,
+          "phase": 1,
+          "maxHp": 6,
+          "windowDamage": 0,
+          "mark": null
+        }
+      ],
+      "spores": [
+        {
+          "at": [
+            -1,
+            0.006367588881403208,
+            -29
+          ],
+          "active": true,
+          "warning": false,
+          "cycle": 4.049899999999977,
+          "quiet": 0,
+          "radius": 2.5
+        },
+        {
+          "at": [
+            4,
+            1.0405447483062744,
+            -38
+          ],
+          "active": false,
+          "warning": false,
+          "cycle": 0.04989999999997188,
+          "quiet": 0,
+          "radius": 2.5
+        },
+        {
+          "at": [
+            6,
+            1.4866621494293213,
+            -53
+          ],
+          "active": true,
+          "warning": false,
+          "cycle": 4.849899999999976,
+          "quiet": 0,
+          "radius": 2.6
+        },
+        {
+          "at": [
+            -5.6,
+            2.84695873260498,
+            -86.6
+          ],
+          "active": true,
+          "warning": false,
+          "cycle": 4.049899999999977,
+          "quiet": 0,
+          "radius": 2.3
+        },
+        {
+          "at": [
+            5.2,
+            3.762833452224733,
+            -90.8
+          ],
+          "active": true,
+          "warning": false,
+          "cycle": 5.349899999999972,
+          "quiet": 0,
+          "radius": 2.3
+        },
+        {
+          "at": [
+            -8.6,
+            2.6617966175079344,
+            -77.4
+          ],
+          "active": false,
+          "warning": false,
+          "cycle": 1.0498999999999663,
+          "quiet": 0,
+          "radius": 2.4
+        },
+        {
+          "at": [
+            7.4,
+            4.693239116668709,
+            -97.8
+          ],
+          "active": false,
+          "warning": true,
+          "cycle": 2.349899999999962,
+          "quiet": 0,
+          "radius": 2.4
+        },
+        {
+          "at": [
+            -9,
+            15.5800199508667,
+            -174
+          ],
+          "active": true,
+          "warning": false,
+          "cycle": 4.049899999999977,
+          "quiet": 0,
+          "radius": 3.2
+        },
+        {
+          "at": [
+            -16,
+            18.73701286315918,
+            -185
+          ],
+          "active": true,
+          "warning": false,
+          "cycle": 5.549899999999972,
+          "quiet": 0,
+          "radius": 3.1
+        },
+        {
+          "at": [
+            -22,
+            21.8842830657959,
+            -196
+          ],
+          "active": false,
+          "warning": false,
+          "cycle": 1.4498999999999653,
+          "quiet": 0,
+          "radius": 3.2
+        },
+        {
+          "at": [
+            -26.3,
+            33.67860298156738,
+            -246.4
+          ],
+          "active": true,
+          "warning": false,
+          "cycle": 5.149899999999974,
+          "quiet": 0,
+          "radius": 2.2
+        }
+      ],
+      "steps": [
+        [
+          0.1,
+          2.9536098937294324,
+          -81.2,
+          1.5
+        ],
+        [
+          -0.25,
+          3.051726295368387,
+          -85.35,
+          1.5
+        ],
+        [
+          0.2,
+          3.130219556855609,
+          -89.35,
+          1.5
+        ],
+        [
+          -0.15,
+          3.2087123794702364,
+          -93.4,
+          1.58
+        ]
+      ],
+      "outerWall": 28.265128148396816,
+      "bastionTop": 38.8842561340332,
+      "stone": -1,
+      "bogFalls": 0,
+      "wildlife": [
+        {
+          "species": "deer",
+          "hp": 2,
+          "alive": true,
+          "resting": false,
+          "at": [
+            -5.8401260721309445,
+            0.532361507962673,
+            -24.0154900749498
+          ]
+        },
+        {
+          "species": "bird",
+          "hp": 1,
+          "alive": true,
+          "resting": false,
+          "at": [
+            42.241511578140646,
+            59.822781480217124,
+            -169.2510563934811
+          ]
+        },
+        {
+          "species": "bird",
+          "hp": 1,
+          "alive": true,
+          "resting": false,
+          "at": [
+            46.930263436895444,
+            62.27141279096321,
+            -130.4214871955408
+          ]
+        },
+        {
+          "species": "bird",
+          "hp": 1,
+          "alive": true,
+          "resting": false,
+          "at": [
+            -10.813007755315965,
+            61.950713817746795,
+            -143.6087547524419
+          ]
+        },
+        {
+          "species": "bird",
+          "hp": 1,
+          "alive": true,
+          "resting": false,
+          "at": [
+            32.54180502533562,
+            65.73793600093573,
+            -178.27717868442028
+          ]
+        },
+        {
+          "species": "bird",
+          "hp": 1,
+          "alive": true,
+          "resting": false,
+          "at": [
+            -3.4567226905474664,
+            10.655428723023133,
+            -21.246383508044094
+          ]
+        },
+        {
+          "species": "bird",
+          "hp": 1,
+          "alive": true,
+          "resting": false,
+          "at": [
+            9.992865703702062,
+            13.724766855209465,
+            -54.91390901127165
+          ]
+        }
+      ],
+      "disc": {
+        "state": "held",
+        "charged": false,
+        "charge": 0,
+        "activations": 0,
+        "cooldown": 0,
+        "kind": "orb"
+      },
+      "gateOpen": false,
+      "gate": [
+        -34.5,
+        -263,
+        35.250412812435506
+      ]
+    },
+    "sea": {
+      "intro": {
+        "active": false,
+        "progress": 0,
+        "ready": false,
+        "beacon": [
+          11,
+          26.3,
+          -18
+        ],
+        "console": "airShieldConsole",
+        "boundary": {
+          "center": [
+            11,
+            26.3,
+            -18
+          ],
+          "radii": [
+            0.02,
+            0.02,
+            0.02
+          ]
+        },
+        "water": 1,
+        "near": false
+      },
+      "swimming": false,
+      "health": 4,
+      "breath": {
+        "base": 45,
+        "capacity": 45,
+        "remaining": 45,
+        "ratio": 1,
+        "submerged": false,
+        "drowning": 0
+      },
+      "ready": false,
+      "completed": false,
+      "seals": [
+        {
+          "lit": false,
+          "center": [
+            3.5,
+            30.35,
+            -26.775
+          ]
+        },
+        {
+          "lit": false,
+          "center": [
+            -3.5,
+            30.35,
+            -43.775
+          ]
+        }
+      ],
+      "wells": [
+        [
+          -3.5,
+          29.615,
+          -18
+        ],
+        [
+          4,
+          29.615,
+          -40
+        ],
+        [
+          -8,
+          25.615,
+          -73
+        ],
+        [
+          8,
+          25.615,
+          -82
+        ]
+      ],
+      "vents": [
+        {
+          "z": -21,
+          "active": false,
+          "warning": false
+        },
+        {
+          "z": -25,
+          "active": false,
+          "warning": false
+        }
+      ],
+      "bridge": {
+        "left": 0,
+        "secured": false,
+        "solid": false
+      },
+      "checkpoint": {
+        "x": 0,
+        "z": -18,
+        "feet": 28,
+        "yaw": 3.141592653589793
+      },
+      "boss": {
+        "name": "Tide Guardian",
+        "health": 6,
+        "maxHealth": 6,
+        "state": "dormant",
+        "phase": 1,
+        "timer": 0,
+        "core": [
+          0,
+          28.65,
+          -84.9
+        ],
+        "warnings": [],
+        "sequence": "pressure-strike",
+        "attackName": "Pressure strike",
+        "pattern": 0,
+        "attack": "dormant",
+        "counterWindow": false,
+        "cracked": false
+      },
+      "currents": {
+        "arrival": {
+          "scale": 1,
+          "box": {
+            "minX": -24,
+            "maxX": 24,
+            "minY": 18,
+            "maxY": 44,
+            "minZ": -15.5,
+            "maxZ": -7.6
+          },
+          "flow": {
+            "x": -1,
+            "z": 0
+          },
+          "shelters": [
+            [
+              4.6,
+              31,
+              -9
+            ],
+            [
+              6.999999999999999,
+              31,
+              -11.3
+            ],
+            [
+              9.399999999999999,
+              30.799999999999997,
+              -13.5
+            ]
+          ],
+          "lees": [
+            {
+              "minX": 2.9,
+              "maxX": 6.3,
+              "minY": 18,
+              "maxY": 33.6,
+              "minZ": -10.600000000000001,
+              "maxZ": -7.4
+            },
+            {
+              "minX": 5.299999999999999,
+              "maxX": 8.7,
+              "minY": 18,
+              "maxY": 33,
+              "minZ": -12.900000000000002,
+              "maxZ": -9.7
+            },
+            {
+              "minX": 7.699999999999999,
+              "maxX": 11.1,
+              "minY": 18,
+              "maxY": 32.4,
+              "minZ": -14.8,
+              "maxZ": -12.2
+            }
+          ]
+        },
+        "flooded": {
+          "phase": "calm",
+          "scale": 0.12,
+          "region": {
+            "minX": -3,
+            "maxX": 3,
+            "minY": 21.5,
+            "maxY": 29.4,
+            "minZ": -61,
+            "maxZ": -53
+          },
+          "lees": [
+            {
+              "minX": -2.9,
+              "maxX": 0.5000000000000001,
+              "minY": 21.5,
+              "maxY": 25.05,
+              "minZ": -55.15,
+              "maxZ": -53.449999999999996
+            },
+            {
+              "minX": -0.5000000000000001,
+              "maxX": 2.9,
+              "minY": 21.5,
+              "maxY": 25.05,
+              "minZ": -57.849999999999994,
+              "maxZ": -56.14999999999999
+            }
+          ]
+        }
+      },
+      "tideSketch": {
+        "inspected": false,
+        "marks": 0,
+        "proof": 0,
+        "completed": false,
+        "ready": false,
+        "claimed": false,
+        "opening": 0,
+        "accessible": false,
+        "stations": [
+          {
+            "at": [
+              2.1,
+              26.9,
+              -56.8
+            ],
+            "visible": true
+          },
+          {
+            "at": [
+              -8.4,
+              24.9,
+              -88
+            ],
+            "visible": false
+          }
+        ]
+      },
+      "gate": "closed",
+      "epilogue": {
+        "active": false,
+        "stage": "off",
+        "time": 0,
+        "replySeen": false,
+        "said": [],
+        "mapCarried": false,
+        "worlds": [
+          "Ocean world",
+          "Ringed world",
+          "Ember world",
+          "Pale moon",
+          "Far moon"
+        ]
+      },
+      "cameraWater": 1,
+      "disc": {
+        "state": "stowed",
+        "charged": false,
+        "hits": [],
+        "activations": 0,
+        "cooldown": 0,
+        "kind": "orb"
+      }
+    },
+    "vault": {
+      "hits": [],
+      "health": 4,
+      "swimming": false,
+      "pendulum": null,
+      "breath": 25,
+      "revealed": false,
+      "completed": false,
+      "beyond": false,
+      "doorOpen": 0,
+      "beats": [],
+      "mira": {
+        "at": [
+          -1.2,
+          2,
+          3.2
+        ],
+        "for": null,
+        "moving": false
+      },
+      "channels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "trials": {
+        "court": {
+          "done": false,
+          "block": {
+            "x": -27,
+            "z": -17,
+            "moving": false
+          },
+          "mirrors": [
+            {
+              "id": "m1",
+              "x": -19,
+              "z": -17,
+              "yaw": 0.785,
+              "solve": -0.785,
+              "locked": null
+            },
+            {
+              "id": "m2",
+              "x": -19,
+              "z": -7,
+              "yaw": -0.785,
+              "solve": -2.356,
+              "locked": null
+            }
+          ],
+          "segments": [
+            "wall"
+          ],
+          "charge": 0
+        },
+        "checkpoint": {
+          "done": false,
+          "keeper": {
+            "state": "patrol",
+            "hostile": false,
+            "hp": 3,
+            "pos": [
+              24.5,
+              -12
+            ],
+            "center": [
+              24.5,
+              0.62,
+              -12
+            ]
+          },
+          "quiet": false,
+          "parried": 0,
+          "crystal": [
+            12.4,
+            1.615,
+            -6
+          ],
+          "seal": [
+            31.15,
+            1.6756800127029419,
+            -12
+          ]
+        },
+        "isles": {
+          "done": false,
+          "locked": true,
+          "hits": 0,
+          "bridge": {
+            "on": false,
+            "left": 0
+          },
+          "lens": [
+            -21,
+            2.35,
+            -27.14
+          ],
+          "lock": [
+            -21,
+            6.21,
+            -38.7
+          ],
+          "rope": {
+            "pivot": [
+              -25,
+              6.55,
+              -33.4
+            ],
+            "heading": [
+              0,
+              1
+            ],
+            "grip": [
+              3,
+              5.18
+            ]
+          },
+          "crystal": [
+            -27.4,
+            1.61,
+            -26.4
+          ],
+          "seal": [
+            -21,
+            1.38,
+            -38.45
+          ],
+          "x": -21,
+          "near": -29,
+          "far": -36
+        },
+        "frost": {
+          "done": false,
+          "powered": false,
+          "block": {
+            "x": 14,
+            "z": -37,
+            "state": "rest"
+          },
+          "wall": {
+            "x": 30.5,
+            "z": -37.3,
+            "top": 3.4
+          },
+          "seal": [
+            32.25,
+            4.775680012702942,
+            -38.4
+          ],
+          "plate": {
+            "x": 22,
+            "z": -29
+          },
+          "home": {
+            "x": 14,
+            "z": -37
+          },
+          "pillars": [
+            [
+              24,
+              -37
+            ],
+            [
+              22,
+              -27
+            ],
+            [
+              16,
+              -31
+            ],
+            [
+              26,
+              -33
+            ]
+          ],
+          "area": [
+            13,
+            -38,
+            27,
+            -26
+          ]
+        },
+        "forest": {
+          "done": false,
+          "stones": [
+            {
+              "x": -15.55,
+              "z": -52,
+              "y": 0.15,
+              "phase": "rest",
+              "held": 0
+            },
+            {
+              "x": -19.55,
+              "z": -51.6,
+              "y": 0.15,
+              "phase": "rest",
+              "held": 0
+            },
+            {
+              "x": -23.55,
+              "z": -52.4,
+              "y": 0.15,
+              "phase": "rest",
+              "held": 0
+            },
+            {
+              "x": -27.55,
+              "z": -51.9,
+              "y": 0.15,
+              "phase": "rest",
+              "held": 0
+            }
+          ],
+          "seal": [
+            -31.6,
+            4.575680012702942,
+            -58.7
+          ],
+          "ivy": {
+            "x": -31.55,
+            "z": -56.5,
+            "top": 3.2
+          },
+          "pool": [
+            -30.1,
+            -13,
+            -0.7
+          ],
+          "radius": 1.45
+        },
+        "sea": {
+          "done": false,
+          "breath": 25,
+          "submerged": false,
+          "seal": [
+            31.7,
+            -9.624319987297058,
+            -52
+          ],
+          "surface": -0.5,
+          "steps": [
+            [
+              17,
+              17.9,
+              -0.45
+            ],
+            [
+              17.9,
+              18.8,
+              -0.9
+            ],
+            [
+              18.8,
+              19.7,
+              -1.35
+            ]
+          ],
+          "tunnel": {
+            "x0": 25,
+            "x1": 29,
+            "z0": -53.2,
+            "z1": -50.8,
+            "top": -8.6
+          },
+          "current": {
+            "box": {
+              "minX": 20.5,
+              "maxX": 29.4,
+              "minY": -11,
+              "maxY": -7.6,
+              "minZ": -54.4,
+              "maxZ": -49.6
+            },
+            "flow": {
+              "x": -1,
+              "z": 0
+            },
+            "speed": 1
+          }
+        }
+      },
+      "hall": {
+        "door": [
+          0,
+          4.72,
+          -66.2
+        ],
+        "medallions": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "memory": {
+        "phase": "sealed",
+        "next": {
+          "phase": "closed",
+          "center": [
+            0,
+            4.5,
+            -92.2
+          ],
+          "radius": 3.5
+        },
+        "masks": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "arrival": {
+        "x": 0,
+        "z": 4.6,
+        "feet": 0,
+        "yaw": 3.141592653589793
+      },
+      "disc": {
+        "state": "hidden",
+        "charged": false,
+        "activations": 0,
+        "cooldown": 0,
+        "kind": "orb"
+      }
+    },
+    "credits": false,
+    "assets": {
+      "push_block": true,
+      "sun_mirror": true,
+      "hero_explorer": true,
+      "glyph_stela": true,
+      "temple_facade": true,
+      "guardian_colossus": true,
+      "broken_column": true,
+      "fallen_head": true,
+      "boulder_cluster": true,
+      "desert_agave": true,
+      "glyph_banner": true,
+      "expedition_tent": true,
+      "supply_crates": true,
+      "clay_urns": true,
+      "rubble_pile": true,
+      "meadow_grass": true,
+      "expedition_rope": true,
+      "brazier": true,
+      "court_gallery": true,
+      "far_gate": true,
+      "field_scroll": true,
+      "basalt_spire": true,
+      "path_lantern": true,
+      "lumen_plant": true,
+      "customs_booth": true,
+      "confiscation_bin": true,
+      "queue_post": true,
+      "crystal_emitter": true,
+      "stamp_plate": true,
+      "warden": true,
+      "field_radio": true,
+      "sun_disc": true,
+      "floating_isle": true,
+      "light_pylon": true,
+      "swing_gantry": true,
+      "snow_pine": true,
+      "frost_cairn": true,
+      "ice_spire": true,
+      "icicle_cluster": true,
+      "frozen_falls": true,
+      "ice_axe": true,
+      "ice_block": true,
+      "ice_casing": true,
+      "frost_lynx": true,
+      "mira_scarf": true,
+      "mira_lantern": true,
+      "wild_tree": true,
+      "fern_cluster": true,
+      "glow_mushroom": true,
+      "giant_tree": true,
+      "hill_castle": true,
+      "wall_vine": true,
+      "forest_deer": true,
+      "forest_bird": true,
+      "forest_boar": true,
+      "ruin_rings": true,
+      "ruin_temple": true,
+      "ruin_house": true,
+      "ruin_tower": true,
+      "ruin_column": true,
+      "ruin_arch": true,
+      "sea_kelp": true,
+      "sea_coral": true,
+      "reef_fish": true,
+      "manta_ray": true,
+      "shield_console": true,
+      "vault_pillar": true,
+      "builder_mask": true,
+      "vault_door": true,
+      "vault_medallion": true
+    },
+    "worlds": {
+      "loaded": [
+        "court",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "vault"
+      ],
+      "pending": [],
+      "resident": [
+        "four",
+        "five",
+        "six"
+      ],
+      "released": {
+        "worlds": 8,
+        "geometries": 0,
+        "textures": 0,
+        "targets": 14,
+        "instances": 0
+      },
+      "residency": {
+        "tier": "all",
+        "budget": 8192,
+        "need": {
+          "all": 875,
+          "neighbors": 375,
+          "next": 250
+        }
+      }
+    },
+    "streaming": {
+      "jobs": [],
+      "background": [],
+      "failures": {},
+      "yields": 1341
+    },
+    "renderBudget": {
+      "quality": "high",
+      "casters": 293,
+      "activeCasters": 293,
+      "portalInterval": 0,
+      "shadowFar": null,
+      "portalSizes": [
+        [
+          1280,
+          720
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "waterSound": {
+      "immersion": 0,
+      "strokes": 0,
+      "kicks": 0,
+      "bubbles": 0,
+      "air": 0
+    }
+  },
+  "errors": []
+}

@@ -1,0 +1,475 @@
+{
+  "label": "after-3",
+  "base": "http://localhost:3009",
+  "path": [
+    [
+      22.5,
+      2.6,
+      30.5,
+      14,
+      1.2,
+      23
+    ],
+    [
+      19,
+      2.4,
+      27,
+      10,
+      1.2,
+      22
+    ],
+    [
+      14,
+      2.4,
+      25.5,
+      6,
+      1.3,
+      21.5
+    ],
+    [
+      9.5,
+      2.4,
+      25,
+      3,
+      1.4,
+      21
+    ],
+    [
+      7,
+      2.6,
+      18.5,
+      12,
+      1.2,
+      26
+    ],
+    [
+      13,
+      2.6,
+      19.5,
+      20,
+      1.2,
+      27
+    ],
+    [
+      19,
+      2.4,
+      21.5,
+      21,
+      1.3,
+      26
+    ],
+    [
+      24,
+      2.4,
+      25.5,
+      17,
+      1.2,
+      30
+    ]
+  ],
+  "lap": 600,
+  "tiers": {
+    "high": {
+      "frames": 1218,
+      "timer": true,
+      "gpuName": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Max, Unspecified Version)",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "interval": {
+        "median": 16.6,
+        "p95": 18.2,
+        "max": 19.4,
+        "mean": 16.667
+      },
+      "cpu": {
+        "median": 4,
+        "p95": 6.4,
+        "max": 6.9,
+        "mean": 4.152
+      },
+      "mirrorCpu": {
+        "median": 0.8,
+        "p95": 3,
+        "max": 3.6,
+        "mean": 0.9
+      },
+      "gpu": {
+        "median": 4.865,
+        "p95": 7.54,
+        "max": 12.163,
+        "mean": 4.979
+      },
+      "gpuMirrors": {
+        "median": 0.513,
+        "p95": 2.795,
+        "max": 7.791,
+        "mean": 0.737
+      },
+      "calls": {
+        "median": 871,
+        "p95": 1099,
+        "max": 1144,
+        "mean": 876.677
+      },
+      "reflections": {
+        "median": 1,
+        "p95": 2,
+        "max": 2,
+        "mean": 0.722,
+        "perFrame": {
+          "0": 606,
+          "1": 344,
+          "2": 268
+        }
+      },
+      "live": {
+        "median": 1,
+        "p95": 2,
+        "max": 2,
+        "mean": 0.76
+      },
+      "byReflections": {
+        "0": {
+          "frames": 606,
+          "cpu": {
+            "median": 3.2,
+            "p95": 4.1,
+            "max": 4.4,
+            "mean": 3.308
+          },
+          "mirrorCpu": {
+            "median": 0,
+            "p95": 0.1,
+            "max": 0.1,
+            "mean": 0.021
+          },
+          "gpu": {
+            "median": 4.365,
+            "p95": 5.424,
+            "max": 6.643,
+            "mean": 4.224
+          },
+          "gpuMirrors": {
+            "median": 0,
+            "p95": 0,
+            "max": 0,
+            "mean": 0
+          }
+        },
+        "1": {
+          "frames": 344,
+          "cpu": {
+            "median": 4.1,
+            "p95": 4.9,
+            "max": 5.5,
+            "mean": 4.208
+          },
+          "mirrorCpu": {
+            "median": 1,
+            "p95": 1.6,
+            "max": 1.8,
+            "mean": 1.083
+          },
+          "gpu": {
+            "median": 5.098,
+            "p95": 6.311,
+            "max": 8.508,
+            "mean": 5.18
+          },
+          "gpuMirrors": {
+            "median": 0.819,
+            "p95": 1.161,
+            "max": 1.61,
+            "mean": 0.832
+          }
+        },
+        "2": {
+          "frames": 268,
+          "cpu": {
+            "median": 5.9,
+            "p95": 6.7,
+            "max": 6.9,
+            "mean": 5.99
+          },
+          "mirrorCpu": {
+            "median": 2.7,
+            "p95": 3.4,
+            "max": 3.6,
+            "mean": 2.652
+          },
+          "gpu": {
+            "median": 6.87,
+            "p95": 10.455,
+            "max": 12.163,
+            "mean": 6.427
+          },
+          "gpuMirrors": {
+            "median": 1.68,
+            "p95": 5.754,
+            "max": 7.791,
+            "mean": 2.278
+          }
+        }
+      }
+    },
+    "balanced": {
+      "frames": 1218,
+      "timer": true,
+      "gpuName": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Max, Unspecified Version)",
+      "programs": 982,
+      "programsAtLoad": 982,
+      "interval": {
+        "median": 16.6,
+        "p95": 18.6,
+        "max": 20.2,
+        "mean": 16.667
+      },
+      "cpu": {
+        "median": 4.1,
+        "p95": 6.4,
+        "max": 7.3,
+        "mean": 4.408
+      },
+      "mirrorCpu": {
+        "median": 0.9,
+        "p95": 3,
+        "max": 3.7,
+        "mean": 0.912
+      },
+      "gpu": {
+        "median": 4.989,
+        "p95": 7.005,
+        "max": 10.797,
+        "mean": 5.139
+      },
+      "gpuMirrors": {
+        "median": 0.528,
+        "p95": 2.539,
+        "max": 6.89,
+        "mean": 0.689
+      },
+      "calls": {
+        "median": 870,
+        "p95": 1078,
+        "max": 1131,
+        "mean": 865.394
+      },
+      "reflections": {
+        "median": 1,
+        "p95": 2,
+        "max": 2,
+        "mean": 0.722,
+        "perFrame": {
+          "0": 606,
+          "1": 344,
+          "2": 268
+        }
+      },
+      "live": {
+        "median": 1,
+        "p95": 2,
+        "max": 2,
+        "mean": 0.76
+      },
+      "byReflections": {
+        "0": {
+          "frames": 606,
+          "cpu": {
+            "median": 3.7,
+            "p95": 4.3,
+            "max": 4.5,
+            "mean": 3.737
+          },
+          "mirrorCpu": {
+            "median": 0,
+            "p95": 0.1,
+            "max": 0.1,
+            "mean": 0.02
+          },
+          "gpu": {
+            "median": 4.386,
+            "p95": 5.373,
+            "max": 6.512,
+            "mean": 4.495
+          },
+          "gpuMirrors": {
+            "median": 0,
+            "p95": 0,
+            "max": 0,
+            "mean": 0
+          }
+        },
+        "1": {
+          "frames": 344,
+          "cpu": {
+            "median": 4.3,
+            "p95": 5,
+            "max": 5.5,
+            "mean": 4.329
+          },
+          "mirrorCpu": {
+            "median": 1.1,
+            "p95": 1.6,
+            "max": 1.9,
+            "mean": 1.107
+          },
+          "gpu": {
+            "median": 5.369,
+            "p95": 6.046,
+            "max": 7.759,
+            "mean": 5.193
+          },
+          "gpuMirrors": {
+            "median": 0.724,
+            "p95": 1,
+            "max": 1.104,
+            "mean": 0.72
+          }
+        },
+        "2": {
+          "frames": 268,
+          "cpu": {
+            "median": 5.9,
+            "p95": 6.9,
+            "max": 7.3,
+            "mean": 6.026
+          },
+          "mirrorCpu": {
+            "median": 2.6,
+            "p95": 3.5,
+            "max": 3.7,
+            "mean": 2.676
+          },
+          "gpu": {
+            "median": 6.491,
+            "p95": 8.873,
+            "max": 10.797,
+            "mean": 6.525
+          },
+          "gpuMirrors": {
+            "median": 1.671,
+            "p95": 5.085,
+            "max": 6.89,
+            "mean": 2.205
+          }
+        }
+      }
+    },
+    "fast": {
+      "frames": 1218,
+      "timer": true,
+      "gpuName": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Max, Unspecified Version)",
+      "programs": 971,
+      "programsAtLoad": 971,
+      "interval": {
+        "median": 16.6,
+        "p95": 18.2,
+        "max": 19.3,
+        "mean": 16.667
+      },
+      "cpu": {
+        "median": 4.1,
+        "p95": 5.1,
+        "max": 5.7,
+        "mean": 4.124
+      },
+      "mirrorCpu": {
+        "median": 0.8,
+        "p95": 1.6,
+        "max": 1.9,
+        "mean": 0.591
+      },
+      "gpu": {
+        "median": 3.511,
+        "p95": 6.316,
+        "max": 7.861,
+        "mean": 3.835
+      },
+      "gpuMirrors": {
+        "median": 0.326,
+        "p95": 2.793,
+        "max": 3.31,
+        "mean": 0.746
+      },
+      "calls": {
+        "median": 771,
+        "p95": 894,
+        "max": 905,
+        "mean": 736.79
+      },
+      "reflections": {
+        "median": 1,
+        "p95": 1,
+        "max": 1,
+        "mean": 0.502,
+        "perFrame": {
+          "0": 606,
+          "1": 612
+        }
+      },
+      "live": {
+        "median": 1,
+        "p95": 1,
+        "max": 1,
+        "mean": 0.522
+      },
+      "byReflections": {
+        "0": {
+          "frames": 606,
+          "cpu": {
+            "median": 3.8,
+            "p95": 4.4,
+            "max": 4.9,
+            "mean": 3.774
+          },
+          "mirrorCpu": {
+            "median": 0,
+            "p95": 0.1,
+            "max": 0.2,
+            "mean": 0.019
+          },
+          "gpu": {
+            "median": 3.081,
+            "p95": 3.706,
+            "max": 5.284,
+            "mean": 3.066
+          },
+          "gpuMirrors": {
+            "median": 0,
+            "p95": 0,
+            "max": 0,
+            "mean": 0
+          }
+        },
+        "1": {
+          "frames": 612,
+          "cpu": {
+            "median": 4.5,
+            "p95": 5.2,
+            "max": 5.7,
+            "mean": 4.471
+          },
+          "mirrorCpu": {
+            "median": 1,
+            "p95": 1.7,
+            "max": 1.9,
+            "mean": 1.157
+          },
+          "gpu": {
+            "median": 4.314,
+            "p95": 6.607,
+            "max": 7.861,
+            "mean": 4.594
+          },
+          "gpuMirrors": {
+            "median": 0.957,
+            "p95": 2.925,
+            "max": 3.31,
+            "mean": 1.483
+          }
+        }
+      }
+    }
+  },
+  "errors": []
+}

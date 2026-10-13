@@ -1,0 +1,50 @@
+{
+  "label": "before",
+  "base": "http://localhost:3010",
+  "cases": [
+    {
+      "name": "swiftshader",
+      "title": 35547,
+      "floor": {
+        "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver)",
+        "software": true,
+        "post": true,
+        "count": null,
+        "stills": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "programsAtLoad": 79,
+        "before": 79,
+        "after": 79,
+        "maxRenders": 0,
+        "rendered": 0
+      },
+      "errors": []
+    },
+    {
+      "name": "phone-tier",
+      "title": 2236,
+      "floor": {
+        "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Max, Unspecified Version)",
+        "software": false,
+        "post": false,
+        "count": null,
+        "stills": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "programsAtLoad": 979,
+        "before": 979,
+        "after": 1012,
+        "maxRenders": 0,
+        "rendered": 0
+      },
+      "errors": []
+    }
+  ]
+}

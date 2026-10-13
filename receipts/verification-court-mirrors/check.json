@@ -1,0 +1,399 @@
+{
+  "base": "http://localhost:3009",
+  "passed": true,
+  "checks": [
+    {
+      "name": "Every polished face is a mirror entry with its capture taken during preparation",
+      "passed": true,
+      "data": {
+        "entries": 4,
+        "probe": [
+          [
+            8.94,
+            1.3,
+            21.06,
+            -1.3
+          ],
+          [
+            21.09,
+            1.3,
+            25,
+            -1.3
+          ],
+          [
+            17.06,
+            1.3,
+            30.94,
+            -1.3
+          ],
+          [
+            3.09,
+            1.5,
+            21,
+            -1.5
+          ]
+        ]
+      }
+    },
+    {
+      "name": "All mirror materials share one program key",
+      "passed": true,
+      "data": {
+        "key": "(shader, renderer) => {\n          compile.call(material, shader, renderer);\n          Object.assign(shader.uniforms, uniforms);\n          shader.vertexShader = shader.vertexShader\n            .replace(\n              \"#include <common>\",\n              \"#include <common>\\nuniform mat4 uMirrorMatrix; varying vec4 vMirrorPosition;\",\n            )\n            .replace(\n              \"#include <project_vertex>\",\n              \"#include <project_vertex>\\nvMirrorPosition = uMirrorMatrix * modelMatrix * vec4(transformed, 1.0);\",\n            );\n          shader.fragmentShader = shader.fragmentShader\n            .replace(\n              \"#include <common>\",\n              `#include <common>\n              uniform sampler2D uMirrorMap; uniform samplerCube uMirrorCube;\n              uniform float uMirrorLive; uniform float uMirrorStill;\n              uniform vec4 uMirrorProbe; uniform vec3 uMirrorNormal; varying vec4 vMirrorPosition;`,\n            )\n            .replace(\n              \"#include <opaque_fragment>\",\n              `\n              {\n                float mirrorGrazing = pow(1.0 - saturate(dot(normal, normalize(vViewPosition))), 4.0);\n                float mirrorAmount = 0.9 + mirrorGrazing * 0.07;\n                vec3 mirrorTint = vec3(0.96, 0.88, 0.72);\n                vec3 mirrorLit = outgoingLight;\n                // The capture is read where the reflected ray meets the floor or an 8 m sphere\n                // around its centre, so it shifts across the face as the live view does.\n                vec3 mirrorEye = (vec4(-vViewPosition, 0.0) * viewMatrix).xyz;\n                vec3 mirrorRay = reflect(normalize(mirrorEye), uMirrorNormal);\n                vec3 mirrorFrom = cameraPosition + mirrorEye - uMirrorProbe.xyz;\n                float mirrorAlong = dot(mirrorFrom, mirrorRay);\n                float mirrorReach = sqrt(max(mirrorAlong * mirrorAlong - dot(mirrorFrom, mirrorFrom) + 64.0, 0.0)) - mirrorAlong;\n                if (mirrorRay.y < -0.001) mirrorReach = min(mirrorReach, (uMirrorProbe.w - mirrorFrom.y) / mirrorRay.y);\n                vec3 mirrorStill = textureCube(uMirrorCube, mirrorFrom + mirrorRay * max(mirrorReach, 0.0)).rgb;\n                outgoingLight = mix(mirrorLit, mirrorStill * mirrorTint, mirrorAmount * uMirrorStill);\n                if (uMirrorLive > 0.0 && vMirrorPosition.w > 0.0) {\n                  vec2 mirrorUV = clamp(vMirrorPosition.xy / vMirrorPosition.w, 0.002, 0.998);\n                  vec3 mirrorLive = mix(mirrorLit, texture2D(uMirrorMap, mirrorUV).rgb * mirrorTint, mirrorAmount);\n                  outgoingLight = mix(outgoingLight, mirrorLive, uMirrorLive);\n                }\n              }\n              #include <opaque_fragment>\n            `,\n            );\n        }|fd-court-mirror-2|csm2|bnc|envd|wrap|aer"
+      }
+    },
+    {
+      "name": "high: 2 mirrors reflect live, at most two drawn per frame",
+      "passed": true,
+      "data": {
+        "live": 2,
+        "renders": [
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "count": 4,
+        "weights": [
+          0,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "name": "balanced: 2 mirrors reflect live, at most two drawn per frame",
+      "passed": true,
+      "data": {
+        "live": 2,
+        "renders": [
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        "count": 2,
+        "weights": [
+          0,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "name": "fast: 1 mirrors reflect live, at most two drawn per frame",
+      "passed": true,
+      "data": {
+        "live": 1,
+        "renders": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "count": 1,
+        "weights": [
+          0,
+          0,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "name": "The best mirror draws at full size, the other at half",
+      "passed": true,
+      "data": {
+        "sizes": [
+          512,
+          256
+        ]
+      }
+    },
+    {
+      "name": "A still camera redraws its live mirrors about every 100 ms, not every frame",
+      "passed": true,
+      "data": {
+        "renders": [
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "A moving camera redraws the best mirror every frame and the other in turn",
+      "passed": true,
+      "data": {
+        "renders": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "name": "A live reflection restores the renderer state and the explorer",
+      "passed": true,
+      "data": {
+        "calls": 1149
+      }
+    },
+    {
+      "name": "A failed reflection restores the renderer state and stops reading its target",
+      "passed": true,
+      "data": {
+        "failed": true,
+        "ready": false
+      }
+    },
+    {
+      "name": "The reflected camera clips at the mirror plane with an oblique near plane",
+      "passed": true,
+      "data": {
+        "row": [
+          4.562859537491735,
+          0.5837970767330701,
+          -3.9124049573240116,
+          -7.947004580675736
+        ]
+      }
+    },
+    {
+      "name": "Leaving the live set blends back to the capture over about a quarter second",
+      "passed": true,
+      "data": {
+        "fading": [
+          0.987,
+          0.951,
+          0.896,
+          0.824,
+          0.74,
+          0.647,
+          0.55,
+          0.45,
+          0.352,
+          0.259,
+          0.176,
+          0.104,
+          0.049,
+          0.012,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "A view through a door shows only the captures and keeps the live weights",
+      "passed": true,
+      "data": {
+        "inside": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "after": [
+          0,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "name": "Leaving the court frees the live targets and keeps the captures",
+      "passed": true,
+      "data": {
+        "freed": 2
+      }
+    },
+    {
+      "name": "Returning reflects live again",
+      "passed": true,
+      "data": {
+        "weights": [
+          0,
+          1,
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "name": "Releasing the court's GPU resources frees every capture",
+      "passed": true,
+      "data": {}
+    },
+    {
+      "name": "Restoring the court captures the mirrors again and reflects live",
+      "passed": true,
+      "data": {
+        "live": 2
+      }
+    },
+    {
+      "name": "No shader program was compiled by any of this",
+      "passed": true,
+      "data": {
+        "before": 982,
+        "after": 982
+      }
+    }
+  ],
+  "errors": []
+}

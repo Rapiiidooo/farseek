@@ -1,0 +1,662 @@
+{
+  "label": "after",
+  "base": "http://localhost:3009",
+  "views": [
+    [
+      "floor-start",
+      [
+        22.5,
+        2.6,
+        30.5,
+        13,
+        1.1,
+        22
+      ],
+      "start"
+    ],
+    [
+      "east-floor",
+      [
+        21.5,
+        4,
+        31,
+        14.43,
+        1.1,
+        23.93
+      ],
+      "solved"
+    ],
+    [
+      "west-gate",
+      [
+        5,
+        2.6,
+        17.5,
+        8.83,
+        1.1,
+        26.74
+      ],
+      "stelae"
+    ],
+    [
+      "gate-high",
+      [
+        8,
+        8.5,
+        16,
+        11.83,
+        1.1,
+        25.24
+      ],
+      "stelae"
+    ],
+    [
+      "overview",
+      [
+        14,
+        10.5,
+        28,
+        14,
+        1.1,
+        18
+      ],
+      "solved"
+    ],
+    [
+      "west-gate-nyra",
+      [
+        5,
+        2.6,
+        17.5,
+        8.83,
+        1.1,
+        26.74
+      ],
+      "stelae",
+      [
+        7.6,
+        19.4,
+        -2.2
+      ]
+    ]
+  ],
+  "frames": [
+    {
+      "name": "floor-start",
+      "quality": "high",
+      "file": "floor-start-high.jpg",
+      "mirrors": {
+        "count": 4,
+        "renders": 0,
+        "live": 2,
+        "mirrors": [
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 256
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 512
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "east-floor",
+      "quality": "high",
+      "file": "east-floor-high.jpg",
+      "mirrors": {
+        "count": 4,
+        "renders": 0,
+        "live": 2,
+        "mirrors": [
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 256
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 512
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "west-gate",
+      "quality": "high",
+      "file": "west-gate-high.jpg",
+      "mirrors": {
+        "count": 4,
+        "renders": 0,
+        "live": 2,
+        "mirrors": [
+          {
+            "live": 1,
+            "still": 1,
+            "size": 256
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 512
+          }
+        ]
+      }
+    },
+    {
+      "name": "gate-high",
+      "quality": "high",
+      "file": "gate-high-high.jpg",
+      "mirrors": {
+        "count": 4,
+        "renders": 2,
+        "live": 2,
+        "mirrors": [
+          {
+            "live": 1,
+            "still": 1,
+            "size": 256
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 512
+          }
+        ]
+      }
+    },
+    {
+      "name": "overview",
+      "quality": "high",
+      "file": "overview-high.jpg",
+      "mirrors": {
+        "count": 4,
+        "renders": 0,
+        "live": 0,
+        "mirrors": [
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "west-gate-nyra",
+      "quality": "high",
+      "file": "west-gate-nyra-high.jpg",
+      "mirrors": {
+        "count": 4,
+        "renders": 0,
+        "live": 2,
+        "mirrors": [
+          {
+            "live": 1,
+            "still": 1,
+            "size": 256
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 512
+          }
+        ]
+      }
+    },
+    {
+      "name": "floor-start",
+      "quality": "balanced",
+      "file": "floor-start-balanced.jpg",
+      "mirrors": {
+        "count": 2,
+        "renders": 0,
+        "live": 2,
+        "mirrors": [
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 192
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 384
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "east-floor",
+      "quality": "balanced",
+      "file": "east-floor-balanced.jpg",
+      "mirrors": {
+        "count": 2,
+        "renders": 0,
+        "live": 2,
+        "mirrors": [
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 192
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 384
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "west-gate",
+      "quality": "balanced",
+      "file": "west-gate-balanced.jpg",
+      "mirrors": {
+        "count": 2,
+        "renders": 0,
+        "live": 2,
+        "mirrors": [
+          {
+            "live": 1,
+            "still": 1,
+            "size": 192
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 384
+          }
+        ]
+      }
+    },
+    {
+      "name": "gate-high",
+      "quality": "balanced",
+      "file": "gate-high-balanced.jpg",
+      "mirrors": {
+        "count": 2,
+        "renders": 0,
+        "live": 2,
+        "mirrors": [
+          {
+            "live": 1,
+            "still": 1,
+            "size": 192
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 384
+          }
+        ]
+      }
+    },
+    {
+      "name": "overview",
+      "quality": "balanced",
+      "file": "overview-balanced.jpg",
+      "mirrors": {
+        "count": 2,
+        "renders": 0,
+        "live": 0,
+        "mirrors": [
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "west-gate-nyra",
+      "quality": "balanced",
+      "file": "west-gate-nyra-balanced.jpg",
+      "mirrors": {
+        "count": 2,
+        "renders": 0,
+        "live": 2,
+        "mirrors": [
+          {
+            "live": 1,
+            "still": 1,
+            "size": 192
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 384
+          }
+        ]
+      }
+    },
+    {
+      "name": "floor-start",
+      "quality": "fast",
+      "file": "floor-start-fast.jpg",
+      "mirrors": {
+        "count": 1,
+        "renders": 0,
+        "live": 1,
+        "mirrors": [
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 256
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "east-floor",
+      "quality": "fast",
+      "file": "east-floor-fast.jpg",
+      "mirrors": {
+        "count": 1,
+        "renders": 1,
+        "live": 1,
+        "mirrors": [
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 256
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "west-gate",
+      "quality": "fast",
+      "file": "west-gate-fast.jpg",
+      "mirrors": {
+        "count": 1,
+        "renders": 1,
+        "live": 1,
+        "mirrors": [
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 256
+          }
+        ]
+      }
+    },
+    {
+      "name": "gate-high",
+      "quality": "fast",
+      "file": "gate-high-fast.jpg",
+      "mirrors": {
+        "count": 1,
+        "renders": 1,
+        "live": 1,
+        "mirrors": [
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 256
+          }
+        ]
+      }
+    },
+    {
+      "name": "overview",
+      "quality": "fast",
+      "file": "overview-fast.jpg",
+      "mirrors": {
+        "count": 1,
+        "renders": 0,
+        "live": 0,
+        "mirrors": [
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "west-gate-nyra",
+      "quality": "fast",
+      "file": "west-gate-nyra-fast.jpg",
+      "mirrors": {
+        "count": 1,
+        "renders": 0,
+        "live": 1,
+        "mirrors": [
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 0,
+            "still": 1,
+            "size": 0
+          },
+          {
+            "live": 1,
+            "still": 1,
+            "size": 256
+          }
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

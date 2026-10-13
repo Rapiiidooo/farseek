@@ -1,0 +1,14 @@
+332 module(s), 2 page(s) in game
+every module parses, every path stays inside the folder
+
+flagged, not failed: geometry should come from Three.js constructors, and a judge will read these:
+  assets/explorer/body.js: base64 data
+  assets/explorer/brows.js: base64 data
+  assets/explorer/gloves-relaxed.js: base64 data
+  assets/explorer/gloves.js: base64 data
+  assets/explorer/hair.js: base64 data
+  assets/explorer/head.js: base64 data
+  assets/explorer/left-eye.js: base64 data
+  assets/explorer/previous/body.js: base64 data
+  assets/explorer/previous/shoulders.js: base64 data
+  assets/explorer/right-eye.js: base64 data
