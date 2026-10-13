@@ -1,0 +1,67 @@
+pass  the gate's drag skips the opening and walks a metre  3.19 m
+pass  the title asks for taps  Tap to choose
+pass  no controls over the title
+pass  a first save's levels show the first world and one sealed door  court,sealed on court
+pass  a swipe to the left turns to the sealed door, which offers no start  sealed 
+pass  a swipe to the right turns back to the first world
+pass  a tap on an arrow turns the stage  sealed
+pass  the levels screen fits in portrait
+pass  the levels screen fits in landscape
+pass  a tap on a later world's start plays it  three then two, playing two
+pass  Controls lists the on-screen controls
+pass  a phone starts on balanced quality
+pass  the opening's title and narration stay apart
+pass  only the stick shows during the shot
+pass  a tap on the picture skips the opening
+pass  the expedition begins unarmed before equipment is recovered  [object Object]
+pass  nothing covers the play text
+pass  the stick walks the explorer to the camp  20.91,39.84 "Use Read the expedition's notes"
+pass  Use opens the notes, which say how to put them back
+pass  the controls step aside for the notes
+pass  a tap puts the notes back and the story moves on
+pass  nothing covers the first hint
+pass  a light push stops at the terrace's edge  19.87,35.81 feet 8.00
+pass  Hang shows at the edge
+pass  nothing covers the edge's prompt
+pass  Hang hangs from the edge
+pass  Jump climbs back onto the terrace
+pass  a drag on the picture turns the view  6.19 → 6.77
+pass  the pause button pauses
+pass  the pause tap leaves the sound on
+pass  a tap on the speaker mutes
+pass  a second tap brings the sound back
+pass  Resume returns to the controls
+pass  nothing covers the text in landscape
+pass  a prompt and a card fit in landscape
+pass  the checkpoint adds Roll
+pass  nothing covers the checkpoint's text
+pass  a prompt and a card fit beside every control
+pass  the checkpoint fits in landscape
+pass  nothing covers the isles' text
+pass  the isles fit a prompt and a card
+pass  the frozen reach fits every control
+pass  the frozen reach fits in landscape
+pass  forest moves with the touch stick
+pass  forest offers Link and Roll
+pass  forest channels the orb with touch  0 to 1
+pass  forest fits in portrait
+pass  forest fits in landscape
+pass  sea moves with the touch stick
+pass  sea begins with buoyant swimming
+pass  swimming offers Rise and Dive with no land combat controls
+pass  holding Rise swims upward  30.890159924098718 to 32.5237225801337
+pass  holding Dive swims downward
+pass  swimming fits in portrait
+pass  swimming fits in landscape
+pass  swim route reaches the submerged beacon
+pass  Use begins the visible shield transition
+pass  shield restores grounded movement
+pass  land controls return after swimming
+pass  sea offers Link and Roll
+pass  sea channels the orb with touch  0 to 1
+pass  sea fits in portrait
+pass  sea fits in landscape
+pass  the credits say a tap skips them
+pass  a tap skips the credits
+pass  no page or console error
+66/66 passed

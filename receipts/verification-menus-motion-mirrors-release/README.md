@@ -1,0 +1,31 @@
+# Menus, motion and mirrors release
+
+```bash
+npm ci --ignore-scripts && npm run check && node scripts/save-check.mjs && python3 scripts/release-check.py
+node scripts/build-release.mjs HEAD outputs/release
+python3 scripts/deploy-release.py outputs/release "$(git rev-parse HEAD)" --verify-only
+node receipts/verification-menus-motion-mirrors-release/public-check.mjs
+U=https://farseek.rapidoai.dev/
+node scripts/playthrough.mjs <dir> --url="${U}?nolock=1"
+node scripts/forest-check.mjs <dir> --url="${U}?nolock=1&chapter=forest"   # sea-check and vault-check likewise, vault-check also with &lang=fr
+node scripts/menu-check.mjs <dir> "--url=${U}?nolock=1"; node scripts/touch-check.mjs <dir> --url=$U
+PUPPETEER_EXECUTABLE_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" node ../404-game-recipe/harness/live.mjs $U [--desktop] --out=<png>
+node receipts/verification-five-language-release/live/start-window.mjs $U <out.json>
+node receipts/verification-mute-start-menu/scripts/network-probe.mjs "${U}?nolock=1" <out.json>
+node receipts/verification-mute-start-menu/scripts/sound-probe.mjs new <out.json> $U 1 20
+```
+
+Release `20261013-e7973643dde5` publishes commit `e7973643dde5ddbd065518ea031ebcd744a8329f` on `farseek.rapidoai.dev` and `fardoor.rapidoai.dev`. Over release `20261012-ef085952c3c5` it brings the owner's menu and character requests: a soft piano on the title ([title music](../verification-title-music/README.md)), the relics on a 3D stage ([relic showcase](../verification-relic-showcase/README.md)), one world at a time on the Levels screen ([level select](../verification-level-select/README.md)), cyclers in Settings with Image quality running from Fast to High ([settings controls](../verification-settings-controls/README.md)), a list of languages ([language choice](../verification-language-choice/README.md)), quieter breathing ([breathing](../verification-breathing/README.md)), a flat door favicon ([favicon](../verification-favicon/README.md)), fingers that move ([finger life](../verification-finger-life/README.md)), the axes lashed to the pack ([axes](../verification-axes-on-pack/README.md)), 24 pistol rounds ([rounds](../verification-pistol-rounds/README.md)), an easier stance at rest ([idle posture](../verification-idle-posture/README.md)), the pouches on the trousers ([pouches](../verification-pouches/README.md)), catches carried onto the hold ([ledge catch](../verification-ledge-catch/README.md)) and a reflection in every court mirror ([court mirrors](../verification-court-mirrors/README.md)). The [manifest](release.json) lists its 650 runtime files. The private builder's archive (SHA-256 `6402792c9b5bf0da4bf8029858091f131b68dca9024d3344574847e8dbf8baf0`) holds the same 650 files with the same hashes as the repository's package; it was checked again on the VM before the immutable-release installer switched `current` and passed its HTTP check. GitHub's validation of the pushed commit passed. Release `20261012-ef085952c3c5` stays on the VM for rollback.
+
+## Results
+
+- Before packaging, on that tree ([logs](local/)): `npm ci`, the ship check (340 modules, 2 pages), the save check, 23 release tests, translations (1,073 keys), the title's 165 module preloads, the architecture checks (9, and 9 in the browser), the formatter on the 107 changed files and the verify-only validation pass. In Chrome the play-through completes levels 1 to 4 and enters the Wildwood (202 programs at the first start, 967 after preparation and at the forest); the forest passes, the sea 24 of 24, the vault 30 of 30, the menus 33 of 33, touch 66 of 66, the relics 48 of 48 and their stage 19 of 19, the Levels screen's turns, the settings paths 18 of 18, the language list 8 of 8, the court mirrors 18 of 18, the animation contracts 62 of 62, the fingers 25 of 25 and the walls 10 of 10.
+- Two checks expected states the round itself changed and were updated. `settings-paths.mjs` still stepped the language cycler that the list replaced and expected Fast left of High. `menu-check.mjs` pressed Continue after starting the isles from the Levels screen; served, that start makes the isles the continue point, while locally it opens a lab session that saves nothing, so the check now seeds the checkpoint again first. [The first public run](routes/menu-before-fix.log) failed on that step.
+- [Public review](public.json): all 650 files served on `farseek.rapidoai.dev` match the manifest, as do the page, main module and tracker on the alias, and the 16 analytics route checks pass unchanged.
+- Campaign routes on the public URL ([summary](routes/summary.txt)): the [play-through](routes/playthrough.log) completes levels 1 to 4 and enters the Wildwood with no error and no program compiled in play; the [forest](routes/forest.log) passes; the [sea](routes/sea.log) passes 24 of 24 and the [vault](routes/vault.log) 30 of 30, again [in French](routes/vault-fr.log) with Mira's 20 lines played from their clips. The [menu check](routes/menu.log) passes 33 of 33, then hung while closing Chrome as on the previous release and was stopped (exit 143). The [touch check](routes/touch.log) passes 66 of 66. [Frames](frames/): [title](frames/title-public.jpg), [levels](frames/levels-public.jpg), [pause](frames/pause-public.jpg), [phone title](frames/title-phone-public.jpg).
+- Start window on the public URL ([runs](live/)): the title is ready after 2.7 s and play begins 2.3 s after New game, as with the previous release. A [first visit](live/network.json) makes 205 requests (5.32 MB) before the title, against 199 (5.29 MB); a return visit is ready after 2.2 s. A New game logs [no bell](live/bells-new-game.json).
+- Recipe live gate: the [desktop run](routes/live-desktop.log) and the [phone run](routes/live-phone.log) pass, each moving 3.2 m, ready after 2.8 s and 3.4 s ([desktop](frames/live-desktop.jpg), [phone](frames/live-phone.jpg)); the phone run failed on the previous release.
+
+## Not checked
+
+The owner's hand test, physical phones, gamepads, Safari and headphones; Spanish, Chinese and Hindi on the public URL; the nightly's fixed views, whose court views with mirrors now differ from their baselines; the strict startup gate. The jam entry and the `jam-entry` media still name `13a7767`.

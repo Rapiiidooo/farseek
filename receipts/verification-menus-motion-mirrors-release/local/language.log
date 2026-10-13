@@ -1,0 +1,8 @@
+pass  a French browser opens in French on Automatic  {"lang":"fr","screen":"main","mode":"title","focus":"ContinuerLa Cour enfouie","row":"Automatique","saved":null,"current":"auto"}
+pass  the row opens every language at once, the one in use marked and in focus  {"list":["AutomatiqueFrançais","English","Français","Español","中文","हिन्दी"],"focus":"AutomatiqueFrançais"}
+pass  one click reloads into Spanish at once and comes back on Settings, the row in focus  {"lang":"es","screen":"settings","mode":"title","focus":"IdiomaEspañol","row":"Español","saved":"es","current":"es","navigationMs":140}
+pass  with keys: Enter opens the list on the language in use, up three and Enter chooses Automatic  {"opened":"Español","chosen":"AutomáticoFrançais","after":{"lang":"fr","screen":"settings","mode":"title","focus":"LangueAutomatique","row":"Automatique","saved":"auto","current":"auto"}}
+pass  choosing French while Automatic already shows French saves it without a reload  {"navigated":false,"lang":"fr","screen":"settings","mode":"title","focus":"LangueFrançais","row":"Français","saved":"fr","current":"fr"}
+pass  a phone taps the row, then Hindi, and comes back on Settings in Hindi  {"lang":"hi","screen":"settings","mode":"title","focus":"भाषाहिन्दी","row":"हिन्दी","saved":"hi","current":"hi"}
+pass  during play the level starts again in English, with no menu reopened  {"lang":"en","screen":"","mode":"play","focus":null,"row":"English","saved":"en","current":"en","url":"?nolock=1&chapter=floor&resume=1"}
+pass  no page errors  []

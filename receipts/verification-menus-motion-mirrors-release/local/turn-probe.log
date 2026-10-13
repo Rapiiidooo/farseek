@@ -1,0 +1,8 @@
+pass  a card's text stays above its picture while the picture fades in  text
+pass  a turn plays the menu's ui sound once  ui
+pass  a turn lights the medallion on its side for a moment  rgba(64, 226, 206, 0.945)
+pass  the cards slide when the stage turns  8 transitions, three to four
+pass  the pointer lights a medallion with the builders' light  rgb(57, 227, 208)
+pass  a gamepad's d-pad and stick turn the stage  sealed then four
+pass  the Reduce motion setting turns the stage without sliding  0 transitions
+pass  the system's reduced motion turns the stage without sliding  0 transitions

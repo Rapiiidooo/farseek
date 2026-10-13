@@ -1,0 +1,1058 @@
+{
+  "checks": [
+    {
+      "name": "left palm contact survives asset normalization",
+      "ok": true,
+      "details": {
+        "native": [
+          -0.008457609013634959,
+          -0.045900532431833674,
+          0.011074329774430375
+        ],
+        "placed": [
+          -0.008457609013634959,
+          -0.04590053243183356,
+          0.011074329774430389
+        ]
+      }
+    },
+    {
+      "name": "right palm contact survives asset normalization",
+      "ok": true,
+      "details": {
+        "native": [
+          0.008457609013634959,
+          -0.045900532431833674,
+          0.011074329774430375
+        ],
+        "placed": [
+          0.008457609013634959,
+          -0.04590053243183356,
+          0.011074329774430389
+        ]
+      }
+    },
+    {
+      "name": "The runtime asset loads its articulated hierarchy",
+      "ok": true,
+      "details": {
+        "joints": 16,
+        "hands": 4
+      }
+    },
+    {
+      "name": "No stride while collision prevents displacement",
+      "ok": true,
+      "details": {
+        "phase": 0,
+        "speed": 0
+      }
+    },
+    {
+      "name": "Teleport does not advance the stride",
+      "ok": true,
+      "details": {
+        "phase": 0
+      }
+    },
+    {
+      "name": "Planted feet ride a moving support without striding",
+      "ok": true,
+      "details": {
+        "carried": 8.912549549191406,
+        "slip": 1.6378141611741371e-15,
+        "lowestHips": 0.9360649175852056
+      }
+    },
+    {
+      "name": "A glide on ice holds a wide balanced stance instead of striding",
+      "ok": true,
+      "details": {
+        "phaseChange": 0,
+        "slide": 0.930360213028547,
+        "width": 0.45998705195674683,
+        "lowestHips": 0.8868879519247872,
+        "lowestBoot": -1.0824674490095276e-15,
+        "speed": 0.8688697172522266
+      }
+    },
+    {
+      "name": "Steering out of a glide hands back to the stride",
+      "ok": true,
+      "details": {
+        "slide": 0.00011481557161989377,
+        "gait": 3.383493920758447
+      }
+    },
+    {
+      "name": "Running arms vary between cycles within a natural range",
+      "ok": true,
+      "details": {
+        "cycles": 19,
+        "leftSpread": 0.15049422104097943,
+        "rightSpread": 0.15662593475310516,
+        "curl": {
+          "left": 0.44994994702094127,
+          "right": 0.561781203643346
+        }
+      }
+    },
+    {
+      "name": "Rendered support stays planted at 2 m/s",
+      "ok": true,
+      "details": {
+        "samples": 209,
+        "maximumError": 3.5531744348457825e-15,
+        "maximumSpeed": 2.1339850440860006e-13
+      }
+    },
+    {
+      "name": "Boot clearance at 2 m/s",
+      "ok": true,
+      "details": {
+        "minimumSoleHeight": -0.0003896656201798909
+      }
+    },
+    {
+      "name": "No reversed knee or discontinuous gait at 2 m/s",
+      "ok": true,
+      "details": {
+        "label": "after",
+        "speed": 2,
+        "minimumSoleHeight": -0.0003896656201798909,
+        "contactSlipSpeed": 0.7355019178858881,
+        "contactFrames": 328,
+        "kneeRange": [
+          0.3475370010298722,
+          1.0873069434324014
+        ],
+        "maximumJointStep": 0.26161977321290336,
+        "renderedSupport": {
+          "samples": 209,
+          "maximumError": 3.5531744348457825e-15,
+          "maximumSpeed": 2.1339850440860006e-13
+        }
+      }
+    },
+    {
+      "name": "Rendered support stays planted at 5 m/s",
+      "ok": true,
+      "details": {
+        "samples": 51,
+        "maximumError": 3.683552856169836e-15,
+        "maximumSpeed": 4.2925027406382256e-13
+      }
+    },
+    {
+      "name": "Boot clearance at 5 m/s",
+      "ok": true,
+      "details": {
+        "minimumSoleHeight": -0.00036576085510750533
+      }
+    },
+    {
+      "name": "No reversed knee or discontinuous gait at 5 m/s",
+      "ok": true,
+      "details": {
+        "label": "after",
+        "speed": 5,
+        "minimumSoleHeight": -0.00036576085510750533,
+        "contactSlipSpeed": 0.11860904471767483,
+        "contactFrames": 91,
+        "kneeRange": [
+          0.30178007529784473,
+          1.9424873120134463
+        ],
+        "maximumJointStep": 0.2276000690977559,
+        "renderedSupport": {
+          "samples": 51,
+          "maximumError": 3.683552856169836e-15,
+          "maximumSpeed": 4.2925027406382256e-13
+        }
+      }
+    },
+    {
+      "name": "Support check rejects a deliberately sliding planted foot",
+      "ok": true,
+      "details": {
+        "samples": 43,
+        "maximumError": 0.030000000000000127,
+        "maximumSpeed": 1.6200362553757128
+      }
+    },
+    {
+      "name": "Start, brake, sharp turns and landing stay continuous",
+      "ok": true,
+      "details": {
+        "label": "after",
+        "maximumJointStep": 0.4974838287889077,
+        "maximumAt": {
+          "time": 8.016666666666667,
+          "joint": "leftUpperArm"
+        },
+        "minimumGround": -0.0003844086402954583,
+        "minimumFootSeparation": 0.14593103495200554,
+        "restartDelta": 0.007242220923210397
+      }
+    },
+    {
+      "name": "Boots stay above the floor through turns and landing",
+      "ok": true,
+      "details": {
+        "label": "after",
+        "maximumJointStep": 0.4974838287889077,
+        "maximumAt": {
+          "time": 8.016666666666667,
+          "joint": "leftUpperArm"
+        },
+        "minimumGround": -0.0003844086402954583,
+        "minimumFootSeparation": 0.14593103495200554,
+        "restartDelta": 0.007242220923210397
+      }
+    },
+    {
+      "name": "Feet do not cross during sharp turns",
+      "ok": true,
+      "details": {
+        "label": "after",
+        "maximumJointStep": 0.4974838287889077,
+        "maximumAt": {
+          "time": 8.016666666666667,
+          "joint": "leftUpperArm"
+        },
+        "minimumGround": -0.0003844086402954583,
+        "minimumFootSeparation": 0.14593103495200554,
+        "restartDelta": 0.007242220923210397
+      }
+    },
+    {
+      "name": "Finite ground rig",
+      "ok": true,
+      "details": {
+        "state": "ground"
+      }
+    },
+    {
+      "name": "Finite air rig",
+      "ok": true,
+      "details": {
+        "state": "air"
+      }
+    },
+    {
+      "name": "Finite roll rig",
+      "ok": true,
+      "details": {
+        "state": "roll"
+      }
+    },
+    {
+      "name": "Finite hang rig",
+      "ok": true,
+      "details": {
+        "state": "hang"
+      }
+    },
+    {
+      "name": "No increase in hang arm contact error",
+      "ok": true,
+      "details": {
+        "before": {
+          "left": 7.890347816632916e-10,
+          "right": 7.890347816632916e-10
+        },
+        "after": {
+          "left": 5.04603827357613e-10,
+          "right": 5.04603827357613e-10
+        }
+      }
+    },
+    {
+      "name": "Finite climb rig",
+      "ok": true,
+      "details": {
+        "state": "climb"
+      }
+    },
+    {
+      "name": "Finite vault rig",
+      "ok": true,
+      "details": {
+        "state": "vault"
+      }
+    },
+    {
+      "name": "Finite grab rig",
+      "ok": true,
+      "details": {
+        "state": "grab"
+      }
+    },
+    {
+      "name": "No increase in grab arm contact error",
+      "ok": true,
+      "details": {
+        "before": {
+          "left": 0.08892844820743907,
+          "right": 0.08892844820743907
+        },
+        "after": {
+          "left": 0.06864375797745297,
+          "right": 0.06864375797745297
+        }
+      }
+    },
+    {
+      "name": "Finite shove rig",
+      "ok": true,
+      "details": {
+        "state": "shove"
+      }
+    },
+    {
+      "name": "No increase in shove arm contact error",
+      "ok": true,
+      "details": {
+        "before": {
+          "left": 0.0905477390648009,
+          "right": 0.0905477390648009
+        },
+        "after": {
+          "left": 0.06931387435786873,
+          "right": 0.06931387435786873
+        }
+      }
+    },
+    {
+      "name": "Finite turn rig",
+      "ok": true,
+      "details": {
+        "state": "turn"
+      }
+    },
+    {
+      "name": "No increase in turn arm contact error",
+      "ok": true,
+      "details": {
+        "before": {
+          "left": 0.24973783244258485,
+          "right": 0.24973783244258485
+        },
+        "after": {
+          "left": 0.23763221876619067,
+          "right": 0.23763221876619067
+        }
+      }
+    },
+    {
+      "name": "Only the disc hand grips while carrying",
+      "ok": true,
+      "details": {}
+    },
+    {
+      "name": "Throwing keeps the gripping hand",
+      "ok": true,
+      "details": {}
+    },
+    {
+      "name": "Hands reopen after the disc leaves",
+      "ok": true,
+      "details": {}
+    },
+    {
+      "name": "Walking stride depends on distance at different frame rates",
+      "ok": true,
+      "details": [
+        {
+          "hz": 30,
+          "phase": 3.6173195411333925
+        },
+        {
+          "hz": 60,
+          "phase": 3.617319541133357
+        },
+        {
+          "hz": 120,
+          "phase": 3.6173195411333054
+        }
+      ]
+    },
+    {
+      "name": "Swing palms stay on the rope through the whole arc",
+      "ok": true,
+      "details": [
+        [
+          0,
+          0.0009
+        ],
+        [
+          0.6,
+          0.001
+        ],
+        [
+          1.1,
+          0.001
+        ],
+        [
+          0.3,
+          0.0009
+        ],
+        [
+          -0.9,
+          0.0009
+        ],
+        [
+          -0.4,
+          0.0009
+        ]
+      ]
+    },
+    {
+      "name": "Swing arms stay within reach and knees never bend backwards",
+      "ok": true,
+      "details": [
+        [
+          0,
+          0.9144,
+          0.14
+        ],
+        [
+          0.6,
+          0.8998,
+          0.347
+        ],
+        [
+          1.1,
+          0.8925,
+          0.555
+        ],
+        [
+          0.3,
+          0.8975,
+          0.918
+        ],
+        [
+          -0.9,
+          0.8925,
+          0.555
+        ],
+        [
+          -0.4,
+          0.9062,
+          0.244
+        ]
+      ]
+    },
+    {
+      "name": "Both hands close on the rope while swinging",
+      "ok": true,
+      "details": {}
+    },
+    {
+      "name": "Swing pose agrees at 20, 30, 60 and 120 Hz",
+      "ok": true,
+      "details": {
+        "spread": 3.071249593074551e-07,
+        "palms": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "Swimming pitches the body around the torso",
+      "ok": true,
+      "details": {
+        "pitch": 1.5707962972176617,
+        "torso": [
+          0,
+          0.9505726875098129,
+          0.09999999593502891
+        ]
+      }
+    },
+    {
+      "name": "Leaving water settles upright",
+      "ok": true,
+      "details": {
+        "pitch": -7.83214312174574e-22,
+        "y": 0,
+        "floor": 0
+      }
+    },
+    {
+      "name": "Real sole contact remains planted on flat ground",
+      "ok": true,
+      "details": {
+        "name": "flat",
+        "error": 3.5531744348457825e-15,
+        "planeError": 1.3322676295501878e-15,
+        "maximumContactSpeed": 2.1339850440860006e-13,
+        "samples": 242,
+        "minPitch": -0.1647343848520385,
+        "maxPitch": 0.36407355191019475
+      }
+    },
+    {
+      "name": "Heel strike and toe release articulate on flat ground",
+      "ok": true,
+      "details": {
+        "name": "flat",
+        "error": 3.5531744348457825e-15,
+        "planeError": 1.3322676295501878e-15,
+        "maximumContactSpeed": 2.1339850440860006e-13,
+        "samples": 242,
+        "minPitch": -0.1647343848520385,
+        "maxPitch": 0.36407355191019475
+      }
+    },
+    {
+      "name": "Real sole contact remains planted on slope ground",
+      "ok": true,
+      "details": {
+        "name": "slope",
+        "error": 3.568399980426893e-15,
+        "planeError": 1.3322676295501878e-15,
+        "maximumContactSpeed": 2.1691741479950914e-13,
+        "samples": 235,
+        "minPitch": -0.1647343848520385,
+        "maxPitch": 0.36407355191019475
+      }
+    },
+    {
+      "name": "Heel strike and toe release articulate on slope ground",
+      "ok": true,
+      "details": {
+        "name": "slope",
+        "error": 3.568399980426893e-15,
+        "planeError": 1.3322676295501878e-15,
+        "maximumContactSpeed": 2.1691741479950914e-13,
+        "samples": 235,
+        "minPitch": -0.1647343848520385,
+        "maxPitch": 0.36407355191019475
+      }
+    },
+    {
+      "name": "Blink morph closes and reopens",
+      "ok": true,
+      "details": {
+        "peakBlink": 1,
+        "peakEffort": 0.39982601655111716,
+        "peakBreath": 0.29911753658546236,
+        "peakGaze": 0.08797583023524166,
+        "peakHair": 0.8218778716293607,
+        "peakBag": 0.06444505803949051,
+        "finalBlink": 0
+      }
+    },
+    {
+      "name": "Effort and breathing remain restrained",
+      "ok": true,
+      "details": {
+        "peakBlink": 1,
+        "peakEffort": 0.39982601655111716,
+        "peakBreath": 0.29911753658546236,
+        "peakGaze": 0.08797583023524166,
+        "peakHair": 0.8218778716293607,
+        "peakBag": 0.06444505803949051,
+        "finalBlink": 0
+      }
+    },
+    {
+      "name": "Eyes anticipate a turn without extreme gaze",
+      "ok": true,
+      "details": {
+        "peakBlink": 1,
+        "peakEffort": 0.39982601655111716,
+        "peakBreath": 0.29911753658546236,
+        "peakGaze": 0.08797583023524166,
+        "peakHair": 0.8218778716293607,
+        "peakBag": 0.06444505803949051,
+        "finalBlink": 0
+      }
+    },
+    {
+      "name": "Hair deforms without rotating its scalp",
+      "ok": true,
+      "details": {
+        "peakBlink": 1,
+        "peakEffort": 0.39982601655111716,
+        "peakBreath": 0.29911753658546236,
+        "peakGaze": 0.08797583023524166,
+        "peakHair": 0.8218778716293607,
+        "peakBag": 0.06444505803949051,
+        "finalBlink": 0
+      }
+    },
+    {
+      "name": "Equipment responds with bounded inertia",
+      "ok": true,
+      "details": {
+        "peakBlink": 1,
+        "peakEffort": 0.39982601655111716,
+        "peakBreath": 0.29911753658546236,
+        "peakGaze": 0.08797583023524166,
+        "peakHair": 0.8218778716293607,
+        "peakBag": 0.06444505803949051,
+        "finalBlink": 0
+      }
+    },
+    {
+      "name": "ice climb takes hold, climbs, leaps and pulls up at every rate",
+      "ok": true,
+      "details": [
+        {
+          "hz": 20,
+          "states": [
+            "ground",
+            "wall",
+            "climb",
+            "ground"
+          ],
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.682,
+            "z": -2.55
+          }
+        },
+        {
+          "hz": 30,
+          "states": [
+            "ground",
+            "wall",
+            "climb",
+            "ground"
+          ],
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.677,
+            "z": -2.55
+          }
+        },
+        {
+          "hz": 60,
+          "states": [
+            "ground",
+            "wall",
+            "climb",
+            "ground"
+          ],
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.684,
+            "z": -2.55
+          }
+        },
+        {
+          "hz": 120,
+          "states": [
+            "ground",
+            "wall",
+            "climb",
+            "ground"
+          ],
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.683,
+            "z": -2.55
+          }
+        }
+      ]
+    },
+    {
+      "name": "ice climb keeps palms on its holds without passing into the wall",
+      "ok": true,
+      "details": [
+        {
+          "hz": 20,
+          "palm": 0.026628236559899085,
+          "behind": 0,
+          "samples": 114
+        },
+        {
+          "hz": 30,
+          "palm": 0.02882040772571591,
+          "behind": 0,
+          "samples": 164
+        },
+        {
+          "hz": 60,
+          "palm": 0.0180561982463076,
+          "behind": 0,
+          "samples": 320
+        },
+        {
+          "hz": 120,
+          "palm": 0.026232555327660438,
+          "behind": 0,
+          "samples": 628
+        }
+      ]
+    },
+    {
+      "name": "ice climb keeps planted soles on the surface",
+      "ok": true,
+      "details": [
+        {
+          "hz": 20,
+          "sole": 9.992007221626409e-16,
+          "samples": 88
+        },
+        {
+          "hz": 30,
+          "sole": 1.0057327710640516e-15,
+          "samples": 131
+        },
+        {
+          "hz": 60,
+          "sole": 1.0565363201361521e-15,
+          "samples": 256
+        },
+        {
+          "hz": 120,
+          "sole": 9.930136612989092e-16,
+          "samples": 516
+        }
+      ]
+    },
+    {
+      "name": "ice climb reaches the same place at 20, 30, 60 and 120 Hz",
+      "ok": true,
+      "details": [
+        {
+          "hz": 20,
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.682,
+            "z": -2.55
+          },
+          "strikes": 11
+        },
+        {
+          "hz": 30,
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.677,
+            "z": -2.55
+          },
+          "strikes": 10
+        },
+        {
+          "hz": 60,
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.684,
+            "z": -2.55
+          },
+          "strikes": 11
+        },
+        {
+          "hz": 120,
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.683,
+            "z": -2.55
+          },
+          "strikes": 11
+        }
+      ]
+    },
+    {
+      "name": "vine climb takes hold, climbs, leaps and pulls up at every rate",
+      "ok": true,
+      "details": [
+        {
+          "hz": 20,
+          "states": [
+            "ground",
+            "wall",
+            "climb",
+            "ground"
+          ],
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.486,
+            "z": -2.55
+          }
+        },
+        {
+          "hz": 30,
+          "states": [
+            "ground",
+            "wall",
+            "climb",
+            "ground"
+          ],
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.484,
+            "z": -2.55
+          }
+        },
+        {
+          "hz": 60,
+          "states": [
+            "ground",
+            "wall",
+            "climb",
+            "ground"
+          ],
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.486,
+            "z": -2.55
+          }
+        },
+        {
+          "hz": 120,
+          "states": [
+            "ground",
+            "wall",
+            "climb",
+            "ground"
+          ],
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.483,
+            "z": -2.55
+          }
+        }
+      ]
+    },
+    {
+      "name": "vine climb keeps palms on its holds without passing into the wall",
+      "ok": true,
+      "details": [
+        {
+          "hz": 20,
+          "palm": 0.005192869008940511,
+          "behind": 0,
+          "samples": 110
+        },
+        {
+          "hz": 30,
+          "palm": 0.006034724440976638,
+          "behind": 0,
+          "samples": 162
+        },
+        {
+          "hz": 60,
+          "palm": 0.005450879209244808,
+          "behind": 0,
+          "samples": 334
+        },
+        {
+          "hz": 120,
+          "palm": 0.005559313159293958,
+          "behind": 0,
+          "samples": 654
+        }
+      ]
+    },
+    {
+      "name": "vine climb keeps planted soles on the surface",
+      "ok": true,
+      "details": [
+        {
+          "hz": 20,
+          "sole": 9.09180472805593e-16,
+          "samples": 87
+        },
+        {
+          "hz": 30,
+          "sole": 8.671119018262734e-16,
+          "samples": 133
+        },
+        {
+          "hz": 60,
+          "sole": 9.742167503148516e-16,
+          "samples": 277
+        },
+        {
+          "hz": 120,
+          "sole": 1.0175362097255202e-15,
+          "samples": 554
+        }
+      ]
+    },
+    {
+      "name": "vine climb reaches the same place at 20, 30, 60 and 120 Hz",
+      "ok": true,
+      "details": [
+        {
+          "hz": 20,
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.486,
+            "z": -2.55
+          },
+          "strikes": 9
+        },
+        {
+          "hz": 30,
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.484,
+            "z": -2.55
+          },
+          "strikes": 9
+        },
+        {
+          "hz": 60,
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.486,
+            "z": -2.55
+          },
+          "strikes": 9
+        },
+        {
+          "hz": 120,
+          "end": {
+            "state": "ground",
+            "feet": 4.6,
+            "x": 0.483,
+            "z": -2.55
+          },
+          "strikes": 10
+        }
+      ]
+    },
+    {
+      "name": "Axe picks bite the ice at planted holds",
+      "ok": true,
+      "details": [
+        {
+          "hz": 20,
+          "pick": 0.011700739575225771
+        },
+        {
+          "hz": 30,
+          "pick": 0.005812624127269572
+        },
+        {
+          "hz": 60,
+          "pick": 0.0033600440589793834
+        },
+        {
+          "hz": 120,
+          "pick": 0.013009763994090484
+        }
+      ]
+    },
+    {
+      "name": "Axes ride the pack once owned and off the climb",
+      "ok": true,
+      "details": [
+        {
+          "kind": "ice",
+          "hz": 20,
+          "onPack": true
+        },
+        {
+          "kind": "ice",
+          "hz": 30,
+          "onPack": true
+        },
+        {
+          "kind": "ice",
+          "hz": 60,
+          "onPack": true
+        },
+        {
+          "kind": "ice",
+          "hz": 120,
+          "onPack": true
+        },
+        {
+          "kind": "vine",
+          "hz": 20,
+          "onPack": true
+        },
+        {
+          "kind": "vine",
+          "hz": 30,
+          "onPack": true
+        },
+        {
+          "kind": "vine",
+          "hz": 60,
+          "onPack": true
+        },
+        {
+          "kind": "vine",
+          "hz": 120,
+          "onPack": true
+        }
+      ]
+    },
+    {
+      "name": "Letting go falls clear and does not catch the same wall again",
+      "ok": true,
+      "details": [
+        {
+          "hz": 20,
+          "states": [
+            "ground",
+            "wall",
+            "air",
+            "ground"
+          ],
+          "end": {
+            "state": "ground",
+            "feet": 0,
+            "x": 0,
+            "z": -1.2
+          }
+        },
+        {
+          "hz": 60,
+          "states": [
+            "ground",
+            "wall",
+            "air",
+            "ground"
+          ],
+          "end": {
+            "state": "ground",
+            "feet": 0,
+            "x": 0,
+            "z": -1.2
+          }
+        },
+        {
+          "hz": 120,
+          "states": [
+            "ground",
+            "wall",
+            "air",
+            "ground"
+          ],
+          "end": {
+            "state": "ground",
+            "feet": 0,
+            "x": 0,
+            "z": -1.204
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+PASS Every polished face is a mirror entry with its capture taken during preparation
+PASS All mirror materials share one program key
+PASS high: 2 mirrors reflect live, at most two drawn per frame
+PASS balanced: 2 mirrors reflect live, at most two drawn per frame
+PASS fast: 1 mirrors reflect live, at most two drawn per frame
+PASS The best mirror draws at full size, the other at half
+PASS A still camera redraws its live mirrors about every 100 ms, not every frame
+PASS A moving camera redraws the best mirror every frame and the other in turn
+PASS A live reflection restores the renderer state and the explorer
+PASS A failed reflection restores the renderer state and stops reading its target
+PASS The reflected camera clips at the mirror plane with an oblique near plane
+PASS Leaving the live set blends back to the capture over about a quarter second
+PASS A view through a door shows only the captures and keeps the live weights
+PASS Leaving the court frees the live targets and keeps the captures
+PASS Returning reflects live again
+PASS Releasing the court's GPU resources frees every capture
+PASS Restoring the court captures the mirrors again and reflects live
+PASS No shader program was compiled by any of this

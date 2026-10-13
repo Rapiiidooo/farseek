@@ -1,0 +1,100 @@
+{
+  "url": "https://farseek.rapidoai.dev/",
+  "errors": [],
+  "samples": [
+    {
+      "t": 0.001,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 0.253,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 0.506,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 0.758,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 1.011,
+      "mode": "title",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 1.27,
+      "mode": "play",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 1.522,
+      "mode": "play",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 1.779,
+      "mode": "play",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    },
+    {
+      "t": 2.031,
+      "mode": "play",
+      "loading": true,
+      "text": "An expedition between worlds\n        \n          \n        \n  ",
+      "pos": [
+        19.4,
+        39
+      ]
+    }
+  ],
+  "ready": 2.667,
+  "playAfterClick": 2.282,
+  "movedWithoutSkip": 3.1917268173699327,
+  "movedAfterSkip": 0
+}

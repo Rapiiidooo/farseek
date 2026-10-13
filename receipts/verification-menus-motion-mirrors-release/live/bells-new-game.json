@@ -1,0 +1,91 @@
+{
+  "scenario": "new",
+  "url": "https://farseek.rapidoai.dev/",
+  "errors": [],
+  "ready": 2.68,
+  "clickAt": 3.68,
+  "playAfterClick": 1.253,
+  "playAt": 4.98,
+  "residency": {
+    "tier": "all",
+    "budget": 8192,
+    "need": {
+      "all": 875,
+      "neighbors": 375,
+      "next": 250
+    }
+  },
+  "log": [
+    {
+      "t": 2.66,
+      "kind": "ctx-suspend",
+      "state": "running"
+    },
+    {
+      "t": 2.66,
+      "kind": "startMusic",
+      "args": [],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": true,
+      "jobs": "",
+      "where": "Sound.setTitle (/sound.js:230:12) < Object.toTitle (/app/campaign.js:203:11) < load (/app/bootstrap.js:310:18)"
+    },
+    {
+      "t": 2.67,
+      "kind": "setMusic",
+      "args": [
+        "title"
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": true,
+      "jobs": "",
+      "where": "Sound.setTitle (/sound.js:231:12) < Object.toTitle (/app/campaign.js:203:11) < load (/app/bootstrap.js:310:18)"
+    },
+    {
+      "t": 3.73,
+      "kind": "ctx-resume",
+      "state": "suspended"
+    },
+    {
+      "t": 3.73,
+      "kind": "ctx-resume",
+      "state": "suspended"
+    },
+    {
+      "t": 3.73,
+      "kind": "play",
+      "args": [
+        "ui"
+      ],
+      "ctx": "suspended",
+      "mode": "title",
+      "loading": false,
+      "jobs": "two:prepare three:queued four:queued five:queued six:queued vault:queued",
+      "where": "menuAction (/app/ui.js:393:11) < Menu.onAction (/app/ui.js:297:49) < Menu.activate (/menu.js:181:20) < HTMLElement.<anonymous> (/menu.js:54:12)"
+    },
+    {
+      "t": 4.03,
+      "kind": "startMusic",
+      "args": [],
+      "ctx": "running",
+      "mode": "play",
+      "loading": true,
+      "jobs": "three:queued four:queued five:queued six:queued vault:queued",
+      "where": "app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:103:17) < async Object.withLoading (/app/ui.js:833:22)"
+    },
+    {
+      "t": 4.03,
+      "kind": "setMusic",
+      "args": [
+        "court"
+      ],
+      "ctx": "running",
+      "mode": "play",
+      "loading": true,
+      "jobs": "three:queued four:queued five:queued six:queued vault:queued",
+      "where": "app.ui.withLoading.retry.startChapter.continuing.continuing (/app/campaign.js:116:17) < async Object.withLoading (/app/ui.js:833:22)"
+    }
+  ]
+}

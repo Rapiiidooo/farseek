@@ -1,0 +1,17 @@
+PASS: All 650 public Farseek files match
+PASS farseek.rapidoai.dev: Tracker script
+PASS farseek.rapidoai.dev: Matched collection reaches payload validation
+PASS farseek.rapidoai.dev: Dashboard API is not exposed
+PASS farseek.rapidoai.dev: Unrelated origin is rejected
+PASS farseek.rapidoai.dev: Unrelated hostname is rejected
+PASS farseek.rapidoai.dev: Unrelated website is rejected
+PASS farseek.rapidoai.dev: Crossed origin and hostname is rejected
+PASS farseek.rapidoai.dev: Collection body limit
+PASS fardoor.rapidoai.dev: Tracker script
+PASS fardoor.rapidoai.dev: Matched collection reaches payload validation
+PASS fardoor.rapidoai.dev: Dashboard API is not exposed
+PASS fardoor.rapidoai.dev: Unrelated origin is rejected
+PASS fardoor.rapidoai.dev: Unrelated hostname is rejected
+PASS fardoor.rapidoai.dev: Unrelated website is rejected
+PASS fardoor.rapidoai.dev: Crossed origin and hostname is rejected
+PASS fardoor.rapidoai.dev: Collection body limit

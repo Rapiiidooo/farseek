@@ -1,0 +1,19 @@
+pass  each select is a cycler; the select stays rendered and labelled, its arrows and value hidden from screen readers and from the menu's actions  []
+pass  a screen reader still meets each select as a combobox named by its row, with its value, and no unnamed button  Aim=Hold, Image quality=High, Subtitle size=Medium, Subtitle backing=None, Difficulty=Standard; 0 unnamed buttons
+pass  every cycler opens on its saved option and lights its pip  hold=Hold, high=High, medium=Medium, none=None, standard=Standard
+pass  the right arrow steps Image quality forward through every option, saved each time  High > Fast > Balanced > High
+pass  the arrows keep their place whichever option shows  671.4/823.4, 671.4/823.4, 671.4/823.4
+pass  the left arrow steps back  high < balanced
+pass  a click on the value steps forward and applies the subtitle size  large:large:large:true, small:small:small:true, medium:medium:medium:true
+pass  right and left keys on the focused Difficulty row step it and save it  Right>hard, Left>standard, Left>story, Right>standard
+pass  Enter on the focused Aim row steps forward  Toggle then Hold
+pass  the gamepad's d-pad steps the focused row  Soft then None
+pass  a drag on Master volume moves it, saves it and fills the groove to the thumb  0.8 -> 0.25, fill 0.25
+pass  right on the focused Field of view row steps it, its fill and its shown degrees  62, 62°, fill 0.3
+pass  a click on a switch, then on its row's name, turns Invert vertical look on and off  true then false
+pass  the save holds every value chosen above  {"sensitivity":1,"invertY":false,"volume":0.25,"music":0.7,"ambience":0.8,"effects":0.9,"voice":0.9,"muted":false,"quality":"high","markers":true,"hints":true,"shake":true,"invertX":false,"fov":62,"recenter":true,"aimMode":"hold","reduceMotion":false,"subtitleSize":"medium","subtitleBacking":"none","contrast":false,"difficulty":"standard","language":"auto"}
+pass  settings rows stay 48 px tall on a phone  48
+pass  on a phone each arrow answers across 44 px and the value across 44 px of height  60 probes; 
+pass  taps on the arrows and the value step Difficulty on a phone  hard, story, hard
+pass  no page errors
+18/18 passed
