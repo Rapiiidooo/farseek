@@ -1,7 +1,7 @@
 // Changes settings every way the screen offers and checks what each cycler shows and what is
 // saved: arrow and value clicks, left and right keys and Enter on a focused row, a gamepad's
-// d-pad (a stubbed pad polled by the game), a range drag, switch clicks, a language change that
-// reloads once into the language chosen, and taps and hit areas on a phone.
+// d-pad (a stubbed pad polled by the game), a range drag, switch clicks, and taps and hit areas
+// on a phone. The language row opens a list of its own, checked by the language choice receipt.
 //   node receipts/verification-settings-controls/scripts/settings-paths.mjs <outDir> [url]
 import puppeteer from "puppeteer-core";
 import { mkdir, writeFile } from "node:fs/promises";
@@ -182,7 +182,6 @@ async function frame(page, id, name) {
 
 const SELECTS = [
   "set-aim",
-  "set-language",
   "set-quality",
   "set-subtitle-size",
   "set-subtitle-backing",
@@ -192,10 +191,6 @@ const SELECTS = [
 try {
   // --- desktop, mouse, keys and pad ---------------------------------------------------------
   const page = await open({ width: 1280, height: 720, deviceScaleFactor: 2 });
-  const navigations = [];
-  page.on("framenavigated", (f) => {
-    if (f === page.mainFrame()) navigations.push(Date.now());
-  });
   await page.goto(`${base}?nolock=1`, { waitUntil: "load" });
   await title(page);
   await settingsScreen(page);
@@ -248,7 +243,7 @@ try {
   check(
     "a screen reader still meets each select as a combobox named by its row, with its value, and no unnamed button",
     boxes.join() ===
-      "Aim=Hold,Language=Automatic,Image quality=High,Subtitle size=Medium,Subtitle backing=None,Difficulty=Standard" &&
+      "Aim=Hold,Image quality=High,Subtitle size=Medium,Subtitle backing=None,Difficulty=Standard" &&
       unnamed.length === 0,
     `${boxes.join(", ")}; ${unnamed.length} unnamed buttons`,
   );
@@ -296,7 +291,7 @@ try {
   s = await read(page, "set-quality");
   check(
     "the left arrow steps back",
-    consistent(s) && s.value === "fast" && s.saved === "fast",
+    consistent(s) && s.value === "balanced" && s.saved === "balanced",
     `${startQuality} < ${s.value}`,
   );
   await click(page, "set-quality", NEXT);
@@ -467,89 +462,6 @@ try {
     JSON.stringify(saved),
   );
 
-  // Language: two quick steps reload once, into the second language, after a pause.
-  const loads = navigations.length;
-  let reloaded = page.waitForNavigation({ waitUntil: "load", timeout: 15000 });
-  await click(page, "set-language", NEXT);
-  await click(page, "set-language", NEXT);
-  const lastStep = Date.now() - 160;
-  const stepped = await read(page, "set-language");
-  const settling = await page.evaluate(() =>
-    document
-      .getElementById("set-language")
-      .closest(".cycler")
-      .classList.contains("settling"),
-  );
-  await sleep(250);
-  await frame(page, "set-language", "row-language-settling");
-  await reloaded;
-  const waited = navigations[loads] - lastStep;
-  await title(page);
-  const french = await page.evaluate(() => ({
-    lang: document.documentElement.lang,
-    settings: document.querySelector('#menu [data-action="settings"] .label')
-      .textContent,
-    saved: JSON.parse(localStorage.getItem("far-door-settings")).language,
-  }));
-  await settingsScreen(page);
-  const shownFrench = await read(page, "set-language");
-  check(
-    "two quick steps on Language show the groove, then reload once into French about 1.2 s after the last",
-    stepped.value === "fr" &&
-      stepped.shown === "Français" &&
-      settling &&
-      waited >= 1100 &&
-      waited < 3000 &&
-      navigations.length - loads === 1 &&
-      french.lang === "fr" &&
-      french.saved === "fr" &&
-      french.settings === "Paramètres" &&
-      shownFrench.shown === "Français" &&
-      consistent(shownFrench),
-    JSON.stringify({
-      waited,
-      loads: navigations.length - loads,
-      ...french,
-      shown: shownFrench.shown,
-    }),
-  );
-
-  // A step away and back to the language loaded does not reload.
-  const settled = navigations.length;
-  await click(page, "set-language", NEXT);
-  await click(page, "set-language", PREVIOUS);
-  await sleep(2500);
-  const stayed = await read(page, "set-language");
-  const quiet = await page.evaluate(() =>
-    document
-      .getElementById("set-language")
-      .closest(".cycler")
-      .classList.contains("settling"),
-  );
-  check(
-    "stepping away from French and back keeps the page, with no reload pending",
-    navigations.length === settled &&
-      stayed.value === "fr" &&
-      stayed.saved === "fr" &&
-      !quiet,
-    `${navigations.length - settled} reloads`,
-  );
-
-  // The keys reach a language too: left from French is English.
-  await focusRow(page, "set-language");
-  reloaded = page.waitForNavigation({ waitUntil: "load", timeout: 15000 });
-  await key(page, "ArrowLeft");
-  await reloaded;
-  await title(page);
-  const english = await page.evaluate(() => ({
-    lang: document.documentElement.lang,
-    saved: JSON.parse(localStorage.getItem("far-door-settings")).language,
-  }));
-  check(
-    "left on the focused Language row reloads into English",
-    english.lang === "en" && english.saved === "en",
-    JSON.stringify(english),
-  );
   await page.close();
 
   // --- phone: taps and hit areas --------------------------------------------------------------

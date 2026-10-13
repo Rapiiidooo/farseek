@@ -37,6 +37,8 @@ The [ship check](logs/ship.log) (333 modules, 2 pages), [translations](logs/i18n
 
 Merged on `main` after the relic showcase, the foot of Settings and Controls keeps one row: its buttons may shrink, `fitLines` sets a long label smaller, and the Spanish reset reads "Borrar el progreso". The Spanish phone's foot no longer wraps or covers Difficulty ([frame](frames/settings-difficulty-es-phone-merged.jpg)), and the five languages on both viewports still show no wrapped, cut or overflowing line ([Spanish](data/lines-es-phone-merged.json), [French](data/lines-fr-phone-merged.json) phones).
 
+The language row has since opened a list of its own ([language choice](../verification-language-choice/README.md)) and Image quality runs from Fast to High, so `settings-paths.mjs` now checks the five remaining cyclers, with Balanced left of High, and passes [18 of 18](../verification-menus-motion-mirrors-release/local/settings-paths.log).
+
 ## Open
 
 - Not checked: physical phones and Safari, Firefox (the ranges carry `-moz` rules unseen here), a physical gamepad (a stubbed pad drove the game's own polling), a real screen reader (Chrome's accessibility tree was read), and high contrast, which leaves these controls unchanged.
