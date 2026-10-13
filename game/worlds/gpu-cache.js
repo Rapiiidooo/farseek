@@ -140,6 +140,7 @@ export class WorldGPUCache {
       portal.target.setSize(1, 1);
       this.released.targets++;
     }
+    world.releaseTargets?.();
     this.released.worlds++;
   }
 }

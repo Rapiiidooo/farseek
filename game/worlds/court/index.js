@@ -98,6 +98,7 @@ export default class CourtWorld {
 
   async wire({ hero, heroModel, follow }) {
     Object.assign(this, { hero, heroModel, follow });
+    this.mirrors.hero = heroModel;
     this.story = new CourtStory({
       hero,
       level: this.level,
@@ -140,6 +141,10 @@ export default class CourtWorld {
   leave() {
     this.active = false;
     this.mirrors.release();
+  }
+
+  releaseTargets() {
+    this.mirrors.release({ captures: true });
   }
 
   startStory(id) {
@@ -197,12 +202,12 @@ export default class CourtWorld {
   render(camera, dt) {
     const { renderer } = this;
     const { rig } = this.services;
-    const reflection =
+    const reflection = this.mirrors.render(
+      camera,
       this.active &&
-      !this.services.state.intro &&
-      !this.services.state.cinematic
-        ? this.mirrors.render(camera, this.gate.renderScale)
-        : null;
+        !this.services.state.intro &&
+        !this.services.state.cinematic,
+    );
     if (reflection) renderer.info.reset();
     this.gate.renderPortal(camera);
     const portal = rig.post ? { ...renderer.info.render } : null;
@@ -216,18 +221,7 @@ export default class CourtWorld {
   }
 
   renderInto(renderer, camera) {
-    const readiness = this.mirrors.entries.map(
-      (entry) => entry.uniforms.uMirrorReady.value,
-    );
-    for (const entry of this.mirrors.entries)
-      entry.uniforms.uMirrorReady.value = 0;
-    try {
-      renderer.render(this.scene, camera);
-    } finally {
-      this.mirrors.entries.forEach(
-        (entry, i) => (entry.uniforms.uMirrorReady.value = readiness[i]),
-      );
-    }
+    this.mirrors.withoutLive(() => renderer.render(this.scene, camera));
   }
 
   reset() {

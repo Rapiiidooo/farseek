@@ -102,7 +102,7 @@ export function fitCamera(camera) {
 
 export function createRendering(app) {
   const { renderer, camera, state, view, worlds, heroLooks, workBudget } = app;
-  const budget = new RenderBudget(renderer, settings, app.rig);
+  const budget = new RenderBudget(renderer, settings, app.rig, view.software);
   const lighting = (app.lighting = createAtmosphere(app));
   const withPreparation = (owner, run, model = null) => {
     try {
@@ -309,6 +309,22 @@ export function createRendering(app) {
       await warmBatches(next.scene, app.rig.post?.rt ?? null, camera, (run) =>
         run(),
       );
+      // Captures draw into half float targets as live reflections do and so build their pipelines;
+      // without post the court was compiled for the screen, and targets need programs of their own.
+      if (!app.rig.post) {
+        const target = new THREE.WebGLRenderTarget(1, 1, {
+          type: THREE.HalfFloatType,
+        });
+        await compile(target, next.scene);
+        target.dispose();
+      }
+      await next.mirrors.capture({
+        csm: view.software ? null : app.rig.csm,
+        hide: [app.heroModel, next.gate.disc],
+        frame: () => workBudget.frame(),
+        around: (probe) => budget.update(next, probe),
+      });
+      budget.update(next, camera);
     } else if (!view.software) {
       await workBudget.yield(true);
       const preview = createShaderPreview(app.heroModel, heroLooks, id);

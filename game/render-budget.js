@@ -11,6 +11,9 @@ export const RENDER_BUDGETS = {
     portalInterval: 0,
     shadowSize: 2048,
     shadowDistance: Infinity,
+    mirrors: 4,
+    mirrorSize: 512,
+    mirrorCapture: 256,
   },
   balanced: {
     samples: 2,
@@ -21,6 +24,9 @@ export const RENDER_BUDGETS = {
     portalInterval: 1000 / 30,
     shadowSize: 1024,
     shadowDistance: 65,
+    mirrors: 2,
+    mirrorSize: 384,
+    mirrorCapture: 128,
   },
   fast: {
     samples: 0,
@@ -31,6 +37,9 @@ export const RENDER_BUDGETS = {
     portalInterval: 1000 / 20,
     shadowSize: 512,
     shadowDistance: 28,
+    mirrors: 1,
+    mirrorSize: 256,
+    mirrorCapture: 128,
   },
 };
 
@@ -50,8 +59,8 @@ export function worldPortals(world) {
 }
 
 export class RenderBudget {
-  constructor(renderer, settings, rig) {
-    Object.assign(this, { renderer, settings, rig });
+  constructor(renderer, settings, rig, software = false) {
+    Object.assign(this, { renderer, settings, rig, software });
     this.entries = new WeakMap();
     this.point = new THREE.Vector3();
   }
@@ -129,6 +138,11 @@ export class RenderBudget {
         policy.portalSamples,
         policy.portalInterval,
       );
+    world.mirrors?.setQuality?.(
+      this.software ? 1 : policy.mirrors,
+      policy.mirrorSize,
+      this.software ? 128 : policy.mirrorCapture,
+    );
     for (const { node, size } of entry.lights) {
       const width = Math.min(size.x, policy.shadowSize),
         height = Math.min(size.y, policy.shadowSize);
@@ -193,6 +207,7 @@ export class RenderBudget {
             portal.target.width,
             portal.target.height,
           ]),
+          mirrors: world.mirrors?.telemetry?.() ?? null,
         }
       : null;
   }
